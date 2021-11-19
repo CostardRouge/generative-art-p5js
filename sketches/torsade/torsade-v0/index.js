@@ -4,7 +4,6 @@ const canvas = {
   width: canvasSize,
   height: canvasSize, // * 1.5
 };
-let gindex = 0;
 let stop = false;
 
 function mousePressed() {
@@ -31,27 +30,26 @@ function windowResized() {
   shapes.forEach((shape) => shape.onWindowResized());
 }
 
-let fontFace = "font.ttf";
-
 function preload() {
-  font = loadFont(fontFace);
+  font = loadFont("assets/fonts/roboto-mono.ttf");
 }
 
 const polarCoefficients = [
   [1, 1],
   [2, 3],
   [4, 3],
-  [2, 6],
-  [4, 6],
-  [6, 3],
+  [2, 4],
+  [3, 3],
+  [1, 1],
 ];
 
 function setup() {
   createCanvas(canvas.width, canvas.height);
+  // createCanvas(windowWidth, windowHeight);
   // frameRate(30)
   //pixelDensity(0.004)
 
-  const xCount = 2;
+  const xCount = 3
   const yCount = 1;
   const size = (width + height) / 2 / (xCount + yCount) / 3.5;
 
@@ -125,12 +123,12 @@ class Spiral {
     this.calculateRealtivePosition();
   }
 
-  draw(time, index, angleStep) {
+  draw(time, index) {
     let { position, size, start, end } = this;
 
-    const hueCadence = index + time / 2;
-    const cadence = index / shapes.length + time / 2;
-    const interpolation = 0.05;
+    const hueCadence = index + time * 3;
+    const cadence = index / shapes.length + time;
+    const interpolation = 0.09;
     const [x, y] = circularIndex(cadence, polarCoefficients);
 
     this.xPolarCoefficient = lerp(
@@ -144,8 +142,11 @@ class Spiral {
       interpolation
     );
 
+    // this.xPolarCoefficient = map(cos(time+index), -1, 1, -PI/2, PI);
+    // this.yPolarCoefficient = map(sin(time), -1, 1, -PI, PI/2);
+
     const { xPolarCoefficient, yPolarCoefficient } = this;
-    const waveAmplitude = size / 2;
+    const waveAmplitude = size;
 
     push();
     translate(
@@ -153,9 +154,9 @@ class Spiral {
       position.y // * easeInOutBack(map(cos(time+index), -1, 1, 0.2, 1))
     );
 
-    //size = easeOutElastic(map(sin(time), -1, 1, 0, 0.1)) * size
+    // size = easeOutElastic(map(sin(time), -1, 1, 0, 1)) * size
     // const lerpStep = 1/10;
-    const lerpStep = 1 / 200; //map(mouseY, height, 0, 1, 64, true);
+    const lerpStep = 1 / 300; //map(mouseY, height, 0, 1, 64, true);
 
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
       const lerpPosition = p5.Vector.lerp(start, end, lerpIndex);
@@ -163,17 +164,17 @@ class Spiral {
       push();
       translate(lerpPosition.x, lerpPosition.y);
 
-      const angle = map(lerpIndex, 0, 1, -PI / 2, PI / 2);
+      const angle = map(lerpIndex, 0, 1, -PI, PI);
 
       const yOffset = map(
-        sin(angle + index + time * 2),
+        cos(angle + index + time * 2),
         -1,
         1,
         -waveAmplitude,
         waveAmplitude
       );
       const xOffset = map(
-        cos(angle + index + time * 2),
+        sin(angle + index + time),
         -1,
         1,
         waveAmplitude,
@@ -185,18 +186,18 @@ class Spiral {
         getPolar(cos, yOffset, angle + xPolarCoefficient, yPolarCoefficient)
       );
       const nextVector = createVector(
-        getPolar(sin, size + yOffset, angle + angleStep, xPolarCoefficient),
-        getPolar(cos, size + xOffset, angle + angleStep, yPolarCoefficient)
+        getPolar(sin, xOffset, angle, xPolarCoefficient),
+        getPolar(cos, yOffset, angle, yPolarCoefficient)
       );
 
       beginShape();
       strokeWeight(75);
 
       stroke(
-        map(sin(angle + index + hueCadence), -1, 1, 0, 255),
-        map(cos(angle + index + hueCadence), -1, 1, 0, 255),
-        map(sin(angle + index + hueCadence), -1, 1, 255, 0)
-        //map(xPolarCoefficient + yPolarCoefficient, 0, 10, 0, 255)
+        map(sin(angle + hueCadence), -1, 1, 0, 360),
+        map(cos(angle + hueCadence), -1, 1, 0, 255),
+        map(sin(angle + hueCadence), -1, 1, 255, 0)
+        //map(xPolarCoefficient + yPolarCoefficient, 0, 15, 0, 255)
       );
 
       vertex(vector.x, nextVector.y);
@@ -206,7 +207,7 @@ class Spiral {
       pop();
     }
 
-    write(`${xPolarCoefficient} - ${yPolarCoefficient}`, -size, size + 20);
+    //write(`${xPolarCoefficient} - ${yPolarCoefficient}`, -size, size + 20);
 
     pop();
   }
@@ -214,8 +215,6 @@ class Spiral {
 
 function circularIndex(index, values) {
   const valuesIndex = floor(index % values.length);
-  gindex = valuesIndex;
-  // console.log(valuesIndex, index)
 
   return values[abs(valuesIndex)];
 }
@@ -244,48 +243,13 @@ function fps() {
   text(frameRate(), 10, 22);
 }
 
-function displayIndex() {
-  const txt = `${gindex}`;
-  const tSize = width / 2;
-  const tX = width / 2;
-  const tY = height / 2;
-  const bbox = font.textBounds(txt, tX, tY, tSize);
-
-  // fill(0)
-  textFont(font);
-  textSize(tSize);
-  text(txt, tX - bbox.w / 2, tY + bbox.h / 2);
-}
-
 function draw() {
   const seconds = frameCount / 60;
   const time = seconds;
-  const angleAmount = 512 / shapes.length;
-  const angleStep = TAU / angleAmount;
 
   background(0);
 
-  //  background(
-  //     map(sin(time), -1, 1, 128, 255),
-  //     map(cos(time), -1, 1, 128, 255),
-  //     map(sin(time), -1, 1, 255, 128),
-  //    128
-  //   )
+  shapes.forEach((shape, index) => shape.draw(time, index));
 
-  // noFill()
-  // stroke(255)
-  // rect(bbox.x, bbox.y, bbox.w, bbox.h);
-
-  shapes.forEach((shape, index) => shape.draw(time, index, angleStep));
-
-  if (frameCount % 60 == 0) {
-    console.log(gindex);
-    console.log(frameRate());
-  }
-
-  //displayIndex()
-
-  // write(`TAU / ${angleAmount}`, shapes[0 ].size * 2, shapes[0 ].size );
-
-  fps();
+  //fps();
 }
