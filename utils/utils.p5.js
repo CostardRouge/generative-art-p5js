@@ -39,7 +39,7 @@ utils.text = {
     const bbox = this.bounds(font, str, x, y, size);
 
     fill(255);
-    stroke(0);
+    // stroke(0);
     textSize(size);
     textFont(font);
 
@@ -210,6 +210,15 @@ function doubleClicked() {
 }
 function windowResized() {
   utils.events.handle("windowResized");
+}
+
+function circularMap(index, length, min, max) {
+  return map(abs((index % length) - length / 2), 0, length / 2, max, min);
+}
+
+function circularIndex(index, values) {
+  const valuesIndex = floor(index % values.length);
+  return values[valuesIndex];
 }
 
 // full screen

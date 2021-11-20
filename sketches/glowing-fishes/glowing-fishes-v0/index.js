@@ -35,15 +35,6 @@ function setup() {
   }
 }
 
-function circularMap(index, length, min, max) {
-  return map(abs((index % length) - length / 2), 0, length / 2, max, min);
-}
-
-function circularIndex(index, values) {
-  const valuesIndex = floor(index % values.length);
-  return values[valuesIndex];
-}
-
 class RibbonStrip {
   constructor(options) {
     Object.assign(this, options);
