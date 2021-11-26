@@ -1,15 +1,16 @@
 function setup() {
   utils.canvas.create(utils.presets.SQUARE.HD);
+  utils.canvas.create(utils.presets.IPHONE_12.PORTRAIT);
   utils.canvas.create(utils.presets.FILL);
 
   utils.events.fullScreenOnDoubleClick();
-  utils.events.extendCanvasOnResize();
+  //utils.events.extendCanvasOnResize();
   utils.events.toggleNoLoopOnSingleClick();
   //noStroke();
   // pixelDensity(1);
-  // frameRate(30);
+  //frameRate(30);
 
-  fullscreen(!fullscreen)
+  fullscreen(!fullscreen);
 
   const xCount = 1;
   const yCount = 1;
@@ -50,11 +51,12 @@ class Spiral {
   }
 
   draw(time, index) {
-    const { position, shadowsCount, size, weightRange, opacityFactorRange } = this;
+    const { position, shadowsCount, size, weightRange, opacityFactorRange } =
+      this;
     const hueCadence = index + time;
     const waveAmplitude = size; //map(sin(time), -1, 1, size, 0);
 
-    utils.time.at(60, () => console.log(Object.keys(this.cachedColors).length));
+    //utils.time.at(60, () => console.log(Object.keys(this.cachedColors).length));
 
     push();
     translate(position.x, position.y + 100);
@@ -74,13 +76,20 @@ class Spiral {
         opacityFactorRange[0],
         opacityFactorRange[1]
       );
-      const d = map(sin(time/2), -1, 1, 1, 3)
-      const angleStep = TAU / 3// map(shadowIndex, 0, shadowsCount, 64, 300);
-      const shadowOffset = radians(shadowIndex);
+      const d = map(sin(time), -1, 1, 1, 5);
+      const angleStep = TAU / d; // map(shadowIndex, 0, shadowsCount, 64, 300);
+      const shadowOffset = radians(shadowIndex * 1);
 
       for (let angle = 0; angle < TAU; angle += angleStep) {
         push();
-        translate(utils.converters.polar.vector(angle+(angle > angleStep === 0 ? time : -time)+shadowOffset, size));
+        translate(
+          utils.converters.polar.vector(
+            angle +
+              (shadowIndex % 2 === 0 ? time : -time) +
+              shadowOffset,
+            size
+          )
+        );
 
         // const vector = this.getVector(angle, time, waveAmplitude);
         // const nextVector = this.getVector(angle + time, 0, waveAmplitude);
@@ -89,24 +98,29 @@ class Spiral {
         const nextVector = this.getVector(angle + angleStep, 0, waveAmplitude);
 
         beginShape();
-        // const wmin = weight * 2;
+        // const wMin = weight * 2;
         // const wMax = weight * 2;
-        // strokeWeight(map(sin(time + shadowIndex), -1, 1, wmin, wMax));
+        // strokeWeight(map(sin(time + shadowIndex), -1, 1, wMin, wMax));
         strokeWeight(weight);
 
-        // stroke( this.getCachedColor(`${angle}-${shadowIndex}`, () => (
-        //   color(
-        //     map(sin(angle + hueCadence+shadowOffset), -1, 1, 0, 360) / opacityFactor,
-        //     map(cos(angle + hueCadence+shadowOffset), -1, 1, 0, 255) / opacityFactor,
-        //     map(sin(angle + hueCadence+shadowOffset), -1, 1, 255, 0) / opacityFactor
+        // stroke(
+        //   this.getCachedColor(`${angle}-${shadowIndex}`, () =>
+        //     color(
+        //       map(sin(angle + hueCadence + shadowOffset), -1, 1, 0, 360) /
+        //         opacityFactor,
+        //       map(cos(angle + hueCadence + shadowOffset), -1, 1, 0, 255) /
+        //         opacityFactor,
+        //       map(sin(angle + hueCadence + shadowOffset), -1, 1, 255, 0) /
+        //         opacityFactor
+        //     )
         //   )
-        // ) ) );
+        // );
 
         stroke(
           color(
-            map(sin(angle+0+shadowOffset), -1, 1, 0, 360) / opacityFactor,
-            map(cos(angle+0+shadowOffset), -1, 1, 0, 255) / opacityFactor,
-            map(sin(angle+0+shadowOffset), -1, 1, 255, 0) / opacityFactor
+            map(sin(angle + 0 + shadowOffset), -1, 1, 0, 360) / opacityFactor,
+            map(cos(angle + 0 + shadowOffset), -1, 1, 0, 255) / opacityFactor,
+            map(sin(angle + 0 + shadowOffset), -1, 1, 255, 0) / opacityFactor
           )
         );
 
@@ -114,19 +128,18 @@ class Spiral {
         vertex(vector.x, vector.y);
         // vertex(nextVector.y, nextVector.y);
         // vertex(-nextVector.x, -nextVector.y);
-        
+
         // vertex(
         //   map(cos(time), -1, 1, -vector.x, vector.x),
         //   map(sin(time), -1, 1, -vector.x, vector.y)
         // );
-
 
         // vertex(
         //   map(sin(time), -1, 1, -nextVector.x, nextVector.x),
         //   map(cos(time), -1, 1, -nextVector.y, nextVector.y)
         // );
 
-        fill(0)
+        fill(0);
 
         endShape();
         pop();
@@ -139,11 +152,11 @@ class Spiral {
   cachedColors = {};
 
   getCachedColor(cacheItemKey, computeCacheValue) {
-    if ( this.cachedColors[ cacheItemKey ] ) {
-      return this.cachedColors[ cacheItemKey ];
+    if (this.cachedColors[cacheItemKey]) {
+      return this.cachedColors[cacheItemKey];
     }
 
-    return this.cachedColors[ cacheItemKey ] = computeCacheValue();
+    return (this.cachedColors[cacheItemKey] = computeCacheValue());
   }
 
   getVector(angle, time, waveAmplitude) {

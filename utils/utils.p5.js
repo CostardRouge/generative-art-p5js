@@ -43,7 +43,7 @@ utils.mappers = {
 // time
 utils.time = {
   seconds: function () {
-    return frameCount / 60;
+    return frameCount / 45;
   },
   at: function (second, callback) {
     return frameCount % second === 0 && callback();
