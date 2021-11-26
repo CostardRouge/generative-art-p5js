@@ -6,7 +6,7 @@ function setup() {
   //utils.events.extendCanvasOnResize();
   utils.events.toggleNoLoopOnSingleClick();
   //noStroke();
-  pixelDensity(1);
+  // pixelDensity(1);
 
   const xCount = 1;
   const yCount = 2;
@@ -66,30 +66,14 @@ class Spiral {
 
     const hueCadence = index + time;
     const cadence = index / shapes.length + time;
-    const interpolation = 0.05;
-    // const [x, y] = circularIndex(cadence, polarCoefficients);
-
-    // this.xPolarCoefficient = lerp(
-    //   this.xPolarCoefficient || 0,
-    //   x,
-    //   interpolation
-    // );
-    // this.yPolarCoefficient = lerp(
-    //   this.yPolarCoefficient || 0,
-    //   y,
-    //   interpolation
-    // );
-
-    // this.xPolarCoefficient = map(cos(time+index), -1, 1, -PI/4, PI/4);
-    // this.yPolarCoefficient = map(sin(time), -1, 1, -PI/4, PI/4);
 
     const { xPolarCoefficient, yPolarCoefficient } = this;
-    const waveAmplitude = size// *  map(sin(time), -1, 1, 1.5, -1.5);
+    const waveAmplitude = size * map(sin(time), -1, 1, -1.5, 1.5);
 
     push();
     translate(position.x, position.y);
 
-    let lerpStep = 1 / 200;//map(index, 0, shapes.length -1, 75, 200); //map(mouseY, height, 0, 1, 64, true);
+    let lerpStep = 1 / 200;
 
     if ( index === 0) {
       lerpStep = 1 / circularIndex(cadence, [5, 10, 20, 40, 80, 100, 150, 150, 150]);

@@ -30,8 +30,8 @@ function setup() {
           start: createVector(0, -height / 2),
           end: createVector(0, height / 2),
           relativePosition: {
-            x: 0,//x / (xCount + 1),
-            y: 0//y / (yCount + 1),
+            x: 0, //x / (xCount + 1),
+            y: 0, //y / (yCount + 1),
           },
         })
       );
@@ -42,14 +42,6 @@ function setup() {
 function circularIndex(index, values) {
   const valuesIndex = floor(index % values.length);
   return values[valuesIndex];
-}
-
-function getPolar(func, size, angle, coefficient = 1) {
-  return size * func(angle * coefficient);
-}
-
-function getPolarVector(angle, sizeX, sizeY = sizeX) {
-  return createVector(getPolar(sin, sizeX, angle), getPolar(cos, sizeY, angle));
 }
 
 class Spiral {
@@ -92,12 +84,12 @@ class Spiral {
     // this.yPolarCoefficient = map(sin(time), -1, 1, -PI/4, PI/4);
 
     const { xPolarCoefficient, yPolarCoefficient } = this;
-    const waveAmplitude = size *  map(sin(time), -1, 1, 1.5, -1.5);
+    const waveAmplitude = size * map(sin(time), -1, 1, 1.5, -1.5);
 
     push();
     translate(width / 2, height / 2);
 
-    const lerpStep = 1 / map(index, 0, shapes.length -1, 75, 200); //map(mouseY, height, 0, 1, 64, true);
+    const lerpStep = 1 / map(index, 0, shapes.length - 1, 75, 200); //map(mouseY, height, 0, 1, 64, true);
 
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
       const lerpPosition = p5.Vector.lerp(start, end, lerpIndex);
@@ -110,8 +102,18 @@ class Spiral {
       const xOffset = map(sin(angle + time), -1, 1, -PI, PI);
 
       const vector = createVector(
-        getPolar(sin, waveAmplitude, xOffset, xPolarCoefficient),
-        getPolar(cos, waveAmplitude, yOffset, yPolarCoefficient)
+        utils.converters.polar.get(
+          sin,
+          waveAmplitude,
+          xOffset,
+          xPolarCoefficient
+        ),
+        utils.converters.polar.get(
+          cos,
+          waveAmplitude,
+          yOffset,
+          yPolarCoefficient
+        )
       );
 
       beginShape();
@@ -143,3 +145,6 @@ function draw() {
   shapes.forEach((shape, index) => shape.draw(time, index));
   //utils.debug.fps();
 }
+
+window.setup = setup;
+window.draw = draw;
