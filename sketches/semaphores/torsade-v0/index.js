@@ -1,6 +1,6 @@
 function setup() {
-  utils.canvas.create(utils.presets.SQUARE.HD);
-  utils.canvas.create(utils.presets.IPHONE_12.PORTRAIT);
+  // utils.canvas.create(utils.presets.SQUARE.HD);
+  // utils.canvas.create(utils.presets.IPHONE_12.PORTRAIT);
   utils.canvas.create(utils.presets.FILL);
 
   utils.events.fullScreenOnDoubleClick();
@@ -9,8 +9,6 @@ function setup() {
   //noStroke();
   // pixelDensity(1);
   //frameRate(30);
-
-  fullscreen(!fullscreen);
 
   const xCount = 1;
   const yCount = 1;
@@ -22,7 +20,7 @@ function setup() {
         new Spiral({
           size,
           shadowsCount: 10,
-          weightRange: [1000, 150],
+          weightRange: [1000, 75],
           opacityFactorRange: [7, 1],
           relativePosition: {
             x: x / (xCount + 1),
@@ -56,8 +54,6 @@ class Spiral {
     const hueCadence = index + time;
     const waveAmplitude = size; //map(sin(time), -1, 1, size, 0);
 
-    //utils.time.at(60, () => console.log(Object.keys(this.cachedColors).length));
-
     push();
     translate(position.x, position.y + 100);
 
@@ -76,19 +72,14 @@ class Spiral {
         opacityFactorRange[0],
         opacityFactorRange[1]
       );
-      const d = map(sin(time), -1, 1, 1, 5);
+      const d = map(sin(time / 4), -1, 1, 1, 5);
       const angleStep = TAU / d; // map(shadowIndex, 0, shadowsCount, 64, 300);
       const shadowOffset = radians(shadowIndex * 1);
 
       for (let angle = 0; angle < TAU; angle += angleStep) {
         push();
         translate(
-          utils.converters.polar.vector(
-            angle +
-              (shadowIndex % 2 === 0 ? time : -time) +
-              shadowOffset,
-            size
-          )
+          utils.converters.polar.vector(angle + time + shadowOffset, size)
         );
 
         // const vector = this.getVector(angle, time, waveAmplitude);
@@ -102,19 +93,6 @@ class Spiral {
         // const wMax = weight * 2;
         // strokeWeight(map(sin(time + shadowIndex), -1, 1, wMin, wMax));
         strokeWeight(weight);
-
-        // stroke(
-        //   this.getCachedColor(`${angle}-${shadowIndex}`, () =>
-        //     color(
-        //       map(sin(angle + hueCadence + shadowOffset), -1, 1, 0, 360) /
-        //         opacityFactor,
-        //       map(cos(angle + hueCadence + shadowOffset), -1, 1, 0, 255) /
-        //         opacityFactor,
-        //       map(sin(angle + hueCadence + shadowOffset), -1, 1, 255, 0) /
-        //         opacityFactor
-        //     )
-        //   )
-        // );
 
         stroke(
           color(
@@ -152,7 +130,7 @@ class Spiral {
   cachedColors = {};
 
   getCachedColor(cacheItemKey, computeCacheValue) {
-    if (this.cachedColors[cacheItemKey]) {
+    if (undefined !== this.cachedColors[cacheItemKey]) {
       return this.cachedColors[cacheItemKey];
     }
 

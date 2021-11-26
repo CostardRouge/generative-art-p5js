@@ -43,9 +43,9 @@ utils.mappers = {
 // time
 utils.time = {
   seconds: function () {
-    return frameCount / 45;
+    return frameCount / 60;
   },
-  at: function (second, callback) {
+  every: function (second, callback) {
     return frameCount % second === 0 && callback();
   }
 };
