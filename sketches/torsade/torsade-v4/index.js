@@ -4,7 +4,7 @@ function setup() {
 
   utils.events.fullScreenOnDoubleClick();
   //utils.events.extendCanvasOnResize();
-  utils.events.toggleNoLoopOnSingleClick();
+  utils.events.pauseOnSpaceKeyPressed();
   noStroke();
   pixelDensity(0.8);
 
@@ -51,7 +51,7 @@ class Spiral {
 
     const hueCadence = index + -time;
     const coefficient = map(sin(time), -1, 1, 3, 8);
-    const waveAmplitude = size //coefficient * map(sin(time), -1, 1, size / 8, size);
+    const waveAmplitude = size; //coefficient * map(sin(time), -1, 1, size / 8, size);
     const angleLimit = map(sin(time), -1, 1, 0, 1);
 
     push();

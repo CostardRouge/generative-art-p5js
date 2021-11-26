@@ -11,7 +11,7 @@ function setup() {
   utils.canvas.create(utils.presets.FILL);
   utils.events.fullScreenOnDoubleClick();
   utils.events.extendCanvasOnResize();
-  utils.events.toggleNoLoopOnSingleClick();
+  utils.events.pauseOnSpaceKeyPressed();
   // frameRate(30)
   //pixelDensity(0.004)
 
@@ -132,12 +132,32 @@ class Spiral {
       );
 
       const vector = createVector(
-        utils.converters.polar.get(sin, xOffset, angle + yPolarCoefficient, xPolarCoefficient),
-        utils.converters.polar.get(cos, yOffset, angle + xPolarCoefficient, yPolarCoefficient)
+        utils.converters.polar.get(
+          sin,
+          xOffset,
+          angle + yPolarCoefficient,
+          xPolarCoefficient
+        ),
+        utils.converters.polar.get(
+          cos,
+          yOffset,
+          angle + xPolarCoefficient,
+          yPolarCoefficient
+        )
       );
       const nextVector = createVector(
-        utils.converters.polar.get(sin, size + yOffset, angle + angleStep, xPolarCoefficient),
-        utils.converters.polar.get(cos, size + xOffset, angle + angleStep, yPolarCoefficient)
+        utils.converters.polar.get(
+          sin,
+          size + yOffset,
+          angle + angleStep,
+          xPolarCoefficient
+        ),
+        utils.converters.polar.get(
+          cos,
+          size + xOffset,
+          angle + angleStep,
+          yPolarCoefficient
+        )
       );
 
       beginShape();
@@ -157,7 +177,11 @@ class Spiral {
       pop();
     }
 
-    utils.text.write(`${xPolarCoefficient} - ${yPolarCoefficient}`, -size, size + 20);
+    utils.text.write(
+      `${xPolarCoefficient} - ${yPolarCoefficient}`,
+      -size,
+      size + 20
+    );
 
     pop();
   }
@@ -179,7 +203,6 @@ function draw() {
   //   )
 
   shapes.forEach((shape, index) => shape.draw(time, index, angleStep));
-
 
   // write(`TAU / ${angleAmount}`, shapes[0 ].size * 2, shapes[0 ].size );
 

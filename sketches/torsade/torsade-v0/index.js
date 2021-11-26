@@ -11,13 +11,13 @@ function setup() {
   utils.canvas.create(utils.presets.FILL);
   utils.events.fullScreenOnDoubleClick();
   utils.events.extendCanvasOnResize();
-  utils.events.toggleNoLoopOnSingleClick();
-  
+  utils.events.pauseOnSpaceKeyPressed();
+
   // createCanvas(windowWidth, windowHeight);
   // frameRate(30)
   //pixelDensity(0.004)
 
-  const xCount = 3
+  const xCount = 3;
   const yCount = 1;
   const size = (width + height) / 2 / (xCount + yCount) / 3.5;
 
@@ -137,8 +137,18 @@ class Spiral {
       );
 
       const vector = createVector(
-        utils.converters.polar.get(sin, xOffset, angle + yPolarCoefficient, xPolarCoefficient),
-        utils.converters.polar.get(cos, yOffset, angle + xPolarCoefficient, yPolarCoefficient)
+        utils.converters.polar.get(
+          sin,
+          xOffset,
+          angle + yPolarCoefficient,
+          xPolarCoefficient
+        ),
+        utils.converters.polar.get(
+          cos,
+          yOffset,
+          angle + xPolarCoefficient,
+          yPolarCoefficient
+        )
       );
       const nextVector = createVector(
         utils.converters.polar.get(sin, xOffset, angle, xPolarCoefficient),

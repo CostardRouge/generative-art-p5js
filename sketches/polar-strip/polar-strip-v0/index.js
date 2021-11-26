@@ -11,7 +11,7 @@ function setup() {
   utils.canvas.create(utils.presets.FILL);
   utils.events.fullScreenOnDoubleClick();
   utils.events.extendCanvasOnResize();
-  utils.events.toggleNoLoopOnSingleClick();
+  utils.events.pauseOnSpaceKeyPressed();
 
   const xCount = 1;
   const yCount = 1;
@@ -116,12 +116,32 @@ class Spiral {
       translate(utils.converters.polar.vector(angle, size));
 
       const vector = createVector(
-        utils.converters.polar.get(sin, size, angle + yOffset, xPolarCoefficient),
-        utils.converters.polar.get(cos, size, angle + xOffset, yPolarCoefficient)
+        utils.converters.polar.get(
+          sin,
+          size,
+          angle + yOffset,
+          xPolarCoefficient
+        ),
+        utils.converters.polar.get(
+          cos,
+          size,
+          angle + xOffset,
+          yPolarCoefficient
+        )
       );
       const nextVector = createVector(
-        utils.converters.polar.get(sin, size, angle + angleStep, xPolarCoefficient),
-        utils.converters.polar.get(cos, size, angle + angleStep, yPolarCoefficient)
+        utils.converters.polar.get(
+          sin,
+          size,
+          angle + angleStep,
+          xPolarCoefficient
+        ),
+        utils.converters.polar.get(
+          cos,
+          size,
+          angle + angleStep,
+          yPolarCoefficient
+        )
       );
 
       beginShape();

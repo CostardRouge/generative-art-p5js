@@ -2,10 +2,10 @@ function setup() {
   // utils.canvas.create(utils.presets.SQUARE.HD);
   // utils.canvas.create(utils.presets.IPHONE_12.PORTRAIT);
   utils.canvas.create(utils.presets.FILL);
+  utils.events.extendCanvasOnResize();
+  utils.events.pauseOnSpaceKeyPressed();
   utils.events.fullScreenOnDoubleClick();
   utils.events.toggleCanvasRecordingOnKey();
-  utils.events.extendCanvasOnResize();
-  utils.events.toggleNoLoopOnSingleClick();
 
   const xCount = 1;
   const yCount = 1;
@@ -69,9 +69,9 @@ class Spiral {
         opacityFactorRange[0],
         opacityFactorRange[1]
       );
-      const d = map(sin(time / 4), -1, 1, 1, 5);
+      const d = map(sin(time / 4), -1, 1, 1, 9);
       const angleStep = TAU / d; // map(shadowIndex, 0, shadowsCount, 64, 300);
-      const shadowOffset = radians(shadowIndex * 1);
+      const shadowOffset = radians(shadowIndex * 5);
 
       for (let angle = 0; angle < TAU; angle += angleStep) {
         push();

@@ -254,6 +254,23 @@ utils.events = {
       }
     });
   },
+  pauseOnSpaceKeyPressed: function () {
+    let stop = false;
+
+    this.register("keyTyped", function () {
+      if (key !== " ") {
+        return;
+      }
+
+      stop = !stop;
+
+      if (stop) {
+        noLoop();
+      } else {
+        loop();
+      }
+    });
+  },
   fullScreenOnDoubleClick: function () {
     this.register("doubleClicked", utils.canvas.fullscreen);
   },
@@ -322,8 +339,8 @@ utils.recorder = {
     framerate: 60,
     verbose: true,
     name: location.pathname.split("/").slice(1, -1).join("-"),
-    format: "gif",
-    workersPath: "libraries/",
+    // format: "gif",
+    // workersPath: "libraries/",
   }),
   start: () => {
     utils.recorder.recording = true;

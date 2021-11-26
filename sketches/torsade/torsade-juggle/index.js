@@ -3,7 +3,7 @@ function setup() {
   utils.canvas.create({ height: 1080, width: 1080 });
   utils.events.fullScreenOnDoubleClick();
   //utils.events.extendCanvasOnResize();
-  utils.events.toggleNoLoopOnSingleClick();
+  utils.events.pauseOnSpaceKeyPressed();
   //noStroke();
   // pixelDensity(1);
 
@@ -29,7 +29,6 @@ function setup() {
     }
   }
 }
-
 
 class Spiral {
   constructor(options) {
@@ -62,8 +61,13 @@ class Spiral {
 
     let lerpStep = 1 / 200;
 
-    if ( index === 0) {
-      lerpStep = 1 / utils.mappers.circularIndex(cadence, [5, 10, 20, 40, 80, 100, 150, 150, 150]);
+    if (index === 0) {
+      lerpStep =
+        1 /
+        utils.mappers.circularIndex(
+          cadence,
+          [5, 10, 20, 40, 80, 100, 150, 150, 150]
+        );
     }
 
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
@@ -77,8 +81,18 @@ class Spiral {
       const xOffset = map(sin(angle + time), -1, 1, -PI, PI);
 
       const vector = createVector(
-        utils.converters.polar.get(sin, waveAmplitude, xOffset, xPolarCoefficient),
-        utils.converters.polar.get(cos, waveAmplitude, yOffset, yPolarCoefficient)
+        utils.converters.polar.get(
+          sin,
+          waveAmplitude,
+          xOffset,
+          xPolarCoefficient
+        ),
+        utils.converters.polar.get(
+          cos,
+          waveAmplitude,
+          yOffset,
+          yPolarCoefficient
+        )
       );
 
       beginShape();

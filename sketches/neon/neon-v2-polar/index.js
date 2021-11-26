@@ -4,7 +4,7 @@ function setup() {
 
   utils.events.fullScreenOnDoubleClick();
   utils.events.extendCanvasOnResize();
-  utils.events.toggleNoLoopOnSingleClick();
+  utils.events.pauseOnSpaceKeyPressed();
   //noStroke();
   // pixelDensity(1);
   // frameRate(30);
@@ -48,7 +48,8 @@ class Spiral {
   }
 
   draw(time, index) {
-    const { position, shadowsCount, size, weightRange, opacityFactorRange } = this;
+    const { position, shadowsCount, size, weightRange, opacityFactorRange } =
+      this;
     const hueCadence = index + time;
 
     const waveAmplitude = size; //map(sin(time), -1, 1, size, 0);
@@ -117,15 +118,15 @@ class Spiral {
   getCachedColor(angle, hueCadence, opacityFactor) {
     const colorKey = `${angle}-${hueCadence}-${opacityFactor}`;
 
-    if ( this.cachedColors[ colorKey ] ) {
-      return this.cachedColors[ colorKey ];
+    if (this.cachedColors[colorKey]) {
+      return this.cachedColors[colorKey];
     }
 
-    return this.cachedColors[ colorKey ] = color(
+    return (this.cachedColors[colorKey] = color(
       map(sin(angle + hueCadence), -1, 1, 0, 360) / opacityFactor,
       map(cos(angle + 0), -1, 1, 0, 255) / opacityFactor,
       map(sin(angle + hueCadence), -1, 1, 255, 0) / opacityFactor
-    );
+    ));
   }
 
   getVector(angle, time, waveAmplitude) {

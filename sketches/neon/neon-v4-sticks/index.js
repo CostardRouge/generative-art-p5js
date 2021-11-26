@@ -5,7 +5,7 @@ function setup() {
 
   utils.events.fullScreenOnDoubleClick();
   utils.events.extendCanvasOnResize();
-  utils.events.toggleNoLoopOnSingleClick();
+  utils.events.pauseOnSpaceKeyPressed();
   //noStroke();
   //pixelDensity(1);
   //frameRate(30);
@@ -74,11 +74,11 @@ class Spiral {
         opacityFactorRange[0],
         opacityFactorRange[1]
       );
-      const angleStep = TAU / 10//map(shadowIndex, 0, shadowsCount, 1, 15);
+      const angleStep = TAU / 10; //map(shadowIndex, 0, shadowsCount, 1, 15);
 
       for (let angle = 0; angle < TAU; angle += angleStep) {
         push();
-        const s = size//map(cos(time), -1, 1, -size, size);
+        const s = size; //map(cos(time), -1, 1, -size, size);
         translate(utils.converters.polar.vector(angle, s));
 
         const vector = this.getVector(angle, time, s);

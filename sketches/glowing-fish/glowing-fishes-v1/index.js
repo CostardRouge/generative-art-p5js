@@ -5,7 +5,7 @@ function setup() {
   utils.canvas.create(utils.presets.FILL);
   utils.events.fullScreenOnDoubleClick();
   utils.events.extendCanvasOnResize();
-  utils.events.toggleNoLoopOnSingleClick();
+  utils.events.pauseOnSpaceKeyPressed();
 
   pixilatedCanvas = createGraphics(
     utils.canvas.main.width,

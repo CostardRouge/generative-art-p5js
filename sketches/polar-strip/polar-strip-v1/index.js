@@ -13,7 +13,7 @@ function setup() {
   utils.canvas.create(utils.presets.FILL);
   utils.events.fullScreenOnDoubleClick();
   utils.events.extendCanvasOnResize();
-  utils.events.toggleNoLoopOnSingleClick();
+  utils.events.pauseOnSpaceKeyPressed();
 
   pixilatedCanvas = createGraphics(
     utils.canvas.main.width,
@@ -134,12 +134,32 @@ class Spiral {
         easeInOutBack(map(sin(time + index), -1, 1, 0.2, 1));
 
       const vector = createVector(
-        utils.converters.polar.get(sin, size, angle + xOffset, xPolarCoefficient),
-        utils.converters.polar.get(cos, size, angle + yOffset, yPolarCoefficient)
+        utils.converters.polar.get(
+          sin,
+          size,
+          angle + xOffset,
+          xPolarCoefficient
+        ),
+        utils.converters.polar.get(
+          cos,
+          size,
+          angle + yOffset,
+          yPolarCoefficient
+        )
       );
       const nextVector = createVector(
-        utils.converters.polar.get(sin, size, angle + angleStep, xPolarCoefficient),
-        utils.converters.polar.get(cos, size, angle + angleStep, yPolarCoefficient)
+        utils.converters.polar.get(
+          sin,
+          size,
+          angle + angleStep,
+          xPolarCoefficient
+        ),
+        utils.converters.polar.get(
+          cos,
+          size,
+          angle + angleStep,
+          yPolarCoefficient
+        )
       );
 
       beginShape();
