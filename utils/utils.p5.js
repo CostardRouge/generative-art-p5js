@@ -1,29 +1,29 @@
 const shapes = [];
 const utils = {
-  __VERSION: 1
+  __VERSION: 1,
 };
 
 // presets
 utils.presets = {
   FILL: {
-    size: "FILL"
+    size: "FILL",
   },
   SQUARE: {
     HD: {
       width: 1080,
-      height: 1080
+      height: 1080,
     },
   },
   IPHONE_12: {
     PORTRAIT: {
       width: 1170,
-      height: 2532
+      height: 2532,
     },
     LANDSCAPE: {
       width: 2532,
-      height: 1170
+      height: 1170,
     },
-  }
+  },
 };
 
 // mappers
@@ -31,13 +31,13 @@ utils.mappers = {
   circularMap: function (index, length, min, max) {
     return map(abs((index % length) - length / 2), 0, length / 2, max, min);
   },
-  circularIndex: function(index, values) {
+  circularIndex: function (index, values) {
     const valuesIndex = floor(index % values.length);
     return values[valuesIndex];
   },
-  circularValueOn: function(index, scale, values) {
+  circularValueOn: function (index, scale, values) {
     return values[ceil(circularMap(index, scale, 0, values.length - 1))];
-  }
+  },
 };
 
 // time
@@ -47,7 +47,7 @@ utils.time = {
   },
   every: function (second, callback) {
     return frameCount % second === 0 && callback();
-  }
+  },
 };
 
 // converters
@@ -75,15 +75,20 @@ utils.text = {
   bounds: function (font, str, x, y, size) {
     return font.textBounds(str, x, y, size);
   },
-  write: function (str, x, y, size = 18, font = this.defaultFont) {
+  write: function (
+    str,
+    x,
+    y,
+    size = 18,
+    font = utils.text.defaultFont,
+    graphics = utils.canvas.main
+  ) {
     const bbox = this.bounds(font, str, x, y, size);
 
-    fill(255);
-    // stroke(0);
-    textSize(size);
-    textFont(font);
-
-    text(str, x - bbox.w / 2, y + bbox.h / 2);
+    graphics.fill(55);
+    graphics.textSize(size);
+    graphics.textFont?.(font);
+    graphics.text(str, x - bbox.w / 2, y + bbox.h / 2);
   },
 };
 
@@ -99,6 +104,11 @@ utils.debug = {
       frequency: 60,
     },
   },
+  //debugGraphics: undefined,
+  debugDOMelement: undefined,
+  // createDebugGraphics: () => {
+  //   utils.debug.debugGraphics = createGraphics(48, 32, P2D);
+  // },
   fps: function (fpsOptions = {}) {
     const { frequency, log, text } = {
       ...this.defaultOptions.fps,
@@ -106,28 +116,49 @@ utils.debug = {
     };
 
     if (log === true) {
-      if (frameCount % frequency === 0) {
+      utils.time.every(frequency, () => {
         console.log(frameRate());
-      }
+      });
     }
 
     if (text === true) {
+      if (this.debugDOMelement === undefined) {
+        //utils.debug.createDebugGraphics();
+        this.debugDOMelement = createElement(
+          "fps-counter",
+          String(ceil(this.lastFrameRate))
+        );
+      }
+
       this.lastFrameRate =
         this.lastFrameRate === undefined ? 0 : this.lastFrameRate;
 
-      if (frameCount % frequency == 0) {
+      utils.time.every(frequency, () => {
         this.lastFrameRate = frameRate();
-      }
+      });
 
-      utils.text.write(String(ceil(this.lastFrameRate)), 22, 15);
+      this.debugDOMelement.elt.innerHTML = String(ceil(this.lastFrameRate));
+
+      // utils.debug.debugGraphics.clear();
+
+      // utils.text.write(
+      //   String(ceil(this.lastFrameRate)),
+      //   18,
+      //   16,
+      //   18,
+      //   utils.text.defaultFont,
+      //   utils.debug.debugGraphics
+      // );
+
+      // image(utils.debug.debugGraphics, 0, 0);
     }
   },
   print: function (what, printOptions = {}) {
     const { frequency } = { ...this.defaultOptions.print, ...printOptions };
 
-    if (frameCount % frequency === 0) {
+    utils.time.every(frequency, () => {
       console.log(what);
-    }
+    });
   },
   lines: function () {
     stroke(255);
@@ -178,7 +209,7 @@ utils.canvas = {
   },
 };
 
-// comon events
+// common events
 utils.events = {
   lastEventId: 0,
   registeredEvents: {},
@@ -212,7 +243,7 @@ utils.events = {
     this.register("mousePressed", function () {
       stop = !stop;
 
-      if ( mouseButton !== mouseButtonKey ) {
+      if (mouseButton !== mouseButtonKey) {
         return;
       }
 
@@ -244,8 +275,27 @@ utils.events = {
       shapes.forEach((shape) => shape.onWindowResized?.());
     });
   },
+  toggleCanvasRecordingOnKey: function (pressedKey = "r") {
+    utils.events.register("keyTyped", function () {
+      if (key !== pressedKey) {
+        return;
+      }
+
+      if (utils.recorder.recording) {
+        utils.recorder.stop();
+      } else {
+        utils.recorder.start();
+      }
+    });
+  },
 };
 
+function keyTyped() {
+  utils.events.handle("keyTyped");
+}
+function keyPressed() {
+  utils.events.handle("keyPressed");
+}
 function mousePressed() {
   utils.events.handle("mousePressed");
 }
@@ -256,9 +306,46 @@ function windowResized() {
   utils.events.handle("windowResized");
 }
 
-// grip
+// grid
 // shapes instances
 // canvases instances
 // relation coordonates
 // easing
+
 // recorder
+utils.recorder = {
+  recording: false,
+  recordingIconDOMEelement: undefined,
+  capturer: new CCapture({
+    format: "webm",
+    quality: "best",
+    framerate: 60,
+    verbose: true,
+    name: location.pathname.split("/").slice(1, -1).join("-"),
+    format: "gif",
+    workersPath: "libraries/",
+  }),
+  start: () => {
+    utils.recorder.recording = true;
+    document.body.classList.add("recording");
+
+    utils.recorder.capturer.start();
+  },
+  stop: () => {
+    utils.recorder.recording = false;
+    document.body.classList.remove("recording");
+
+    utils.recorder.capturer.stop();
+    utils.recorder.capturer.save();
+  },
+  render: () => {
+    requestAnimationFrame(utils.recorder.render);
+
+    if (false === this.recording) return;
+    if (undefined === utils.canvas.main) return;
+
+    utils.recorder.capturer.capture(utils.canvas.main.elt);
+  },
+};
+
+utils.recorder.render();

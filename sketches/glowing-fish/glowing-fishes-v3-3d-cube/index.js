@@ -157,31 +157,10 @@ class Spiral {
       pop();
     }
 
-    write(`${xPolarCoefficient} - ${yPolarCoefficient}`, -size, size + 20);
+    utils.text.write(`${xPolarCoefficient} - ${yPolarCoefficient}`, -size, size + 20);
 
     pop();
   }
-}
-
-function write(str, x, y, size) {
-  fill(255);
-  stroke(0);
-  strokeWeight(0);
-  textSize(size || 18);
-  text(str, x, y);
-}
-
-function displayIndex() {
-  const txt = `${gindex}`;
-  const tSize = width / 2;
-  const tX = width / 2;
-  const tY = height / 2;
-  const bbox = font.textBounds(txt, tX, tY, tSize);
-
-  // fill(0)
-  textFont(font);
-  textSize(tSize);
-  text(txt, tX - bbox.w / 2, tY + bbox.h / 2);
 }
 
 function draw() {
@@ -199,18 +178,8 @@ function draw() {
   //    128
   //   )
 
-  // noFill()
-  // stroke(255)
-  // rect(bbox.x, bbox.y, bbox.w, bbox.h);
-
   shapes.forEach((shape, index) => shape.draw(time, index, angleStep));
 
-  if (frameCount % 60 == 0) {
-    console.log(gindex);
-    console.log(frameRate());
-  }
-
-  //displayIndex()
 
   // write(`TAU / ${angleAmount}`, shapes[0 ].size * 2, shapes[0 ].size );
 

@@ -2,13 +2,10 @@ function setup() {
   // utils.canvas.create(utils.presets.SQUARE.HD);
   // utils.canvas.create(utils.presets.IPHONE_12.PORTRAIT);
   utils.canvas.create(utils.presets.FILL);
-
   utils.events.fullScreenOnDoubleClick();
-  //utils.events.extendCanvasOnResize();
+  utils.events.toggleCanvasRecordingOnKey();
+  utils.events.extendCanvasOnResize();
   utils.events.toggleNoLoopOnSingleClick();
-  //noStroke();
-  // pixelDensity(1);
-  //frameRate(30);
 
   const xCount = 1;
   const yCount = 1;
@@ -150,7 +147,6 @@ class Spiral {
 
 function draw() {
   background(0);
-
   shapes.forEach((shape, index) => shape.draw(utils.time.seconds(), index));
   utils.debug.fps();
 }
