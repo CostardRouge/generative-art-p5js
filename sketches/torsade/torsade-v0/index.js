@@ -1,39 +1,3 @@
-const shapes = [];
-const canvasSize = 1080;
-const canvas = {
-  width: canvasSize,
-  height: canvasSize, // * 1.5
-};
-let stop = false;
-
-function mousePressed() {
-  stop = !stop;
-
-  if (stop) {
-    noLoop();
-  } else {
-    loop();
-  }
-}
-
-function doubleClicked() {
-  fullscreen(!fullscreen());
-}
-
-function windowResized() {
-  if (fullscreen()) {
-    resizeCanvas(windowWidth, windowHeight);
-  } else {
-    resizeCanvas(canvas.width, canvas.height);
-  }
-
-  shapes.forEach((shape) => shape.onWindowResized());
-}
-
-function preload() {
-  font = loadFont("assets/fonts/roboto-mono.ttf");
-}
-
 const polarCoefficients = [
   [1, 1],
   [2, 3],
@@ -44,7 +8,11 @@ const polarCoefficients = [
 ];
 
 function setup() {
-  createCanvas(canvas.width, canvas.height);
+  utils.canvas.create(utils.presets.FILL);
+  utils.events.fullScreenOnDoubleClick();
+  utils.events.extendCanvasOnResize();
+  utils.events.toggleNoLoopOnSingleClick();
+  
   // createCanvas(windowWidth, windowHeight);
   // frameRate(30)
   //pixelDensity(0.004)
@@ -68,19 +36,6 @@ function setup() {
       );
     }
   }
-}
-
-function circularIndex(index, values) {
-  const valuesIndex = floor(index % values.length);
-  return values[valuesIndex];
-}
-
-function getPolar(func, size, angle, coefficient = 1) {
-  return size * func(angle * coefficient);
-}
-
-function getPolarVector(angle, sizeX, sizeY = sizeX) {
-  return createVector(getPolar(sin, sizeX, angle), getPolar(cos, sizeY, angle));
 }
 
 function easeInOutQuint(x) {
@@ -129,7 +84,7 @@ class Spiral {
     const hueCadence = index + time * 3;
     const cadence = index / shapes.length + time;
     const interpolation = 0.09;
-    const [x, y] = circularIndex(cadence, polarCoefficients);
+    const [x, y] = utils.mappers.circularIndex(cadence, polarCoefficients);
 
     this.xPolarCoefficient = lerp(
       this.xPolarCoefficient || 0,
@@ -182,12 +137,12 @@ class Spiral {
       );
 
       const vector = createVector(
-        getPolar(sin, xOffset, angle + yPolarCoefficient, xPolarCoefficient),
-        getPolar(cos, yOffset, angle + xPolarCoefficient, yPolarCoefficient)
+        utils.converters.polar.get(sin, xOffset, angle + yPolarCoefficient, xPolarCoefficient),
+        utils.converters.polar.get(cos, yOffset, angle + xPolarCoefficient, yPolarCoefficient)
       );
       const nextVector = createVector(
-        getPolar(sin, xOffset, angle, xPolarCoefficient),
-        getPolar(cos, yOffset, angle, yPolarCoefficient)
+        utils.converters.polar.get(sin, xOffset, angle, xPolarCoefficient),
+        utils.converters.polar.get(cos, yOffset, angle, yPolarCoefficient)
       );
 
       beginShape();
@@ -213,34 +168,12 @@ class Spiral {
   }
 }
 
-function circularIndex(index, values) {
-  const valuesIndex = floor(index % values.length);
-
-  return values[abs(valuesIndex)];
-}
-
-function circularMap(index, length, min, max) {
-  return map(abs((index % length) - length / 2), 0, length / 2, max, min);
-}
-
-function circularValueOn(index, scale, values) {
-  return values[ceil(circularMap(index, scale, 0, values.length - 1))];
-}
-
 function write(str, x, y, size) {
   fill(255);
   stroke(0);
   strokeWeight(0);
   textSize(size || 18);
   text(str, x, y);
-}
-
-function fps() {
-  fill(255);
-  stroke(0);
-  strokeWeight(0);
-  textSize(18);
-  text(frameRate(), 10, 22);
 }
 
 function draw() {

@@ -1,5 +1,5 @@
 function setup() {
-  // utils.canvas.create({ size: "FILL" });
+  // utils.canvas.create(utils.presets.FILL);
   utils.canvas.create({ height: 960, width: 960 });
 
   utils.events.fullScreenOnDoubleClick();

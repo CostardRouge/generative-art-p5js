@@ -1,7 +1,5 @@
-import { SQUARE, FILL } from "./utils/utils.presets.js";
-
 function setup() {
-  utils.canvas.create(SQUARE.HD);
+  utils.canvas.create(utils.presets.SQUARE.HD);
   // utils.canvas.create(FILL);
 
   utils.events.fullScreenOnDoubleClick();
@@ -32,11 +30,6 @@ function setup() {
       );
     }
   }
-}
-
-function circularIndex(index, values) {
-  const valuesIndex = floor(index % values.length);
-  return values[valuesIndex];
 }
 
 class Spiral {
@@ -147,6 +140,3 @@ function draw() {
   shapes.forEach((shape, index) => shape.draw(time, index));
   //utils.debug.fps();
 }
-
-window.setup = setup;
-window.draw = draw;

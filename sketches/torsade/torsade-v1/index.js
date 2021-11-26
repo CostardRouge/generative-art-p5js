@@ -1,5 +1,5 @@
 function setup() {
-  utils.canvas.create({ size: "FILL" });
+  utils.canvas.create(utils.presets.FILL);
 
   utils.events.fullScreenOnDoubleClick();
   utils.events.extendCanvasOnResize();
@@ -26,15 +26,6 @@ function setup() {
     }
   }
 }
-
-function getPolar(func, size, angle, coefficient = 1) {
-  return size * func(angle * coefficient);
-}
-
-function getPolarVector(angle, sizeX, sizeY = sizeX) {
-  return createVector(getPolar(sin, sizeX, angle), getPolar(cos, sizeY, angle));
-}
-
 class Spiral {
   constructor(options) {
     Object.assign(this, options);
@@ -86,12 +77,11 @@ class Spiral {
 }
 
 function draw() {
-  const seconds = frameCount / 60;
-  const time = seconds;
+  const time = frameCount / 60;
 
   background(0);
 
   shapes.forEach((shape, index) => shape.draw(time, index));
 
-  //utils.debug.fps();
+  utils.debug.fps();
 }

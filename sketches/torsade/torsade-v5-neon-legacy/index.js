@@ -7,7 +7,7 @@ const polarCoefficients = [
 ];
 
 function setup() {
-  // utils.canvas.create({ size: "FILL" });
+  // utils.canvas.create(utils.presets.FILL);
   utils.canvas.create({ height: 1080, width: 1080 });
 
   utils.events.fullScreenOnDoubleClick();
@@ -39,11 +39,6 @@ function setup() {
   }
 }
 
-function circularIndex(index, values) {
-  const valuesIndex = floor(index % values.length);
-  return values[valuesIndex];
-}
-
 class Spiral {
   constructor(options) {
     Object.assign(this, options);
@@ -67,7 +62,7 @@ class Spiral {
     const hueCadence = index + time;
     const cadence = index / shapes.length + time;
     const interpolation = 0.05;
-    // const [x, y] = circularIndex(cadence, polarCoefficients);
+    // const [x, y] = utils.mappers.circularIndex(cadence, polarCoefficients);
 
     // this.xPolarCoefficient = lerp(
     //   this.xPolarCoefficient || 0,

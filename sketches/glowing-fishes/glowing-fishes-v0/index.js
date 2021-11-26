@@ -2,7 +2,7 @@ let pixilatedCanvas;
 
 function setup() {
   // utils.canvas.create({ width: 844/2, ratio: 9/19.5 });
-  utils.canvas.create({ size: "FILL" });
+  utils.canvas.create(utils.presets.FILL);
 
   utils.events.fullScreenOnDoubleClick();
   utils.events.extendCanvasOnResize();

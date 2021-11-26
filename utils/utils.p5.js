@@ -1,6 +1,29 @@
 const shapes = [];
 const utils = {
-  __VERSION: 1,
+  __VERSION: 1
+};
+
+// presets
+utils.presets = {
+  FILL: {
+    size: "FILL"
+  },
+  SQUARE: {
+    HD: {
+      width: 1080,
+      height: 1080
+    },
+  },
+  IPHONE_12: {
+    PORTRAIT: {
+      width: 1170,
+      height: 2532
+    },
+    LANDSCAPE: {
+      width: 2532,
+      height: 1170
+    },
+  }
 };
 
 // mappers
@@ -8,6 +31,23 @@ utils.mappers = {
   circularMap: function (index, length, min, max) {
     return map(abs((index % length) - length / 2), 0, length / 2, max, min);
   },
+  circularIndex: function(index, values) {
+    const valuesIndex = floor(index % values.length);
+    return values[valuesIndex];
+  },
+  circularValueOn: function(index, scale, values) {
+    return values[ceil(circularMap(index, scale, 0, values.length - 1))];
+  }
+};
+
+// time
+utils.time = {
+  seconds: function () {
+    return frameCount / 60;
+  },
+  at: function (second, callback) {
+    return frameCount % second === 0 && callback();
+  }
 };
 
 // converters
@@ -166,11 +206,15 @@ utils.events = {
     };
   },
 
-  toggleNoLoopOnSingleClick: function () {
+  toggleNoLoopOnSingleClick: function (mouseButtonKey = LEFT) {
     let stop = false;
 
     this.register("mousePressed", function () {
       stop = !stop;
+
+      if ( mouseButton !== mouseButtonKey ) {
+        return;
+      }
 
       if (stop) {
         noLoop();
@@ -179,10 +223,10 @@ utils.events = {
       }
     });
   },
-  fullScreenOnDoubleClick: function (extend) {
+  fullScreenOnDoubleClick: function () {
     this.register("doubleClicked", utils.canvas.fullscreen);
   },
-  extendCanvasOnFullScreen: function (extend) {
+  extendCanvasOnFullScreen: function () {
     this.register("windowResized", () => {
       if (fullscreen()) {
         utils.canvas.resize(windowWidth, windowHeight);
@@ -212,20 +256,9 @@ function windowResized() {
   utils.events.handle("windowResized");
 }
 
-function circularMap(index, length, min, max) {
-  return map(abs((index % length) - length / 2), 0, length / 2, max, min);
-}
-
-function circularIndex(index, values) {
-  const valuesIndex = floor(index % values.length);
-  return values[valuesIndex];
-}
-
-// full screen
-
 // grip
-
 // shapes instances
 // canvases instances
-
 // relation coordonates
+// easing
+// recorder

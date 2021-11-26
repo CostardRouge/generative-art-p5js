@@ -2,8 +2,7 @@ let pixilatedCanvas;
 
 function setup() {
   // utils.canvas.create({ width: 844 / 2, ratio: 9 / 19.5 });
-  utils.canvas.create({ size: "FILL" });
-
+  utils.canvas.create(utils.presets.FILL);
   utils.events.fullScreenOnDoubleClick();
   utils.events.extendCanvasOnResize();
   utils.events.toggleNoLoopOnSingleClick();
@@ -33,15 +32,6 @@ function setup() {
       })
     );
   }
-}
-
-function circularMap(index, length, min, max) {
-  return map(abs((index % length) - length / 2), 0, length / 2, max, min);
-}
-
-function circularIndex(index, values) {
-  const valuesIndex = floor(index % values.length);
-  return values[valuesIndex];
 }
 
 class RibbonStrip {

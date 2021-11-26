@@ -1,7 +1,6 @@
 function setup() {
-  // utils.canvas.create({ size: "FILL" });
+  // utils.canvas.create(utils.presets.FILL);
   utils.canvas.create({ height: 1080, width: 1080 });
-
   utils.events.fullScreenOnDoubleClick();
   //utils.events.extendCanvasOnResize();
   utils.events.toggleNoLoopOnSingleClick();
@@ -31,18 +30,6 @@ function setup() {
   }
 }
 
-function circularIndex(index, values) {
-  const valuesIndex = floor(index % values.length);
-  return values[valuesIndex];
-}
-
-function getPolar(func, size, angle, coefficient = 1) {
-  return size * func(angle * coefficient);
-}
-
-function getPolarVector(angle, sizeX, sizeY = sizeX) {
-  return createVector(getPolar(sin, sizeX, angle), getPolar(cos, sizeY, angle));
-}
 
 class Spiral {
   constructor(options) {
@@ -76,7 +63,7 @@ class Spiral {
     let lerpStep = 1 / 200;
 
     if ( index === 0) {
-      lerpStep = 1 / circularIndex(cadence, [5, 10, 20, 40, 80, 100, 150, 150, 150]);
+      lerpStep = 1 / utils.mappers.circularIndex(cadence, [5, 10, 20, 40, 80, 100, 150, 150, 150]);
     }
 
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
@@ -90,8 +77,8 @@ class Spiral {
       const xOffset = map(sin(angle + time), -1, 1, -PI, PI);
 
       const vector = createVector(
-        getPolar(sin, waveAmplitude, xOffset, xPolarCoefficient),
-        getPolar(cos, waveAmplitude, yOffset, yPolarCoefficient)
+        utils.converters.polar.get(sin, waveAmplitude, xOffset, xPolarCoefficient),
+        utils.converters.polar.get(cos, waveAmplitude, yOffset, yPolarCoefficient)
       );
 
       beginShape();
