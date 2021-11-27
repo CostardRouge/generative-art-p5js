@@ -1,15 +1,19 @@
 function setup() {
-  // utils.canvas.create(utils.presets.FILL);
-  utils.canvas.create({ height: 960, width: 960 });
+  utils.canvas.create(utils.presets.FILL);
+  utils.canvas.create(utils.presets.SQUARE.HD);
+  // utils.canvas.create({ height: 960, width: 960 });
 
   utils.events.fullScreenOnDoubleClick();
-  //utils.events.extendCanvasOnResize();
+  utils.events.extendCanvasOnResize();
+  utils.events.toggleCanvasRecordingOnKey();
   utils.events.pauseOnSpaceKeyPressed();
-  noStroke();
-  pixelDensity(0.8);
+  utils.events.toggleFPSCounter();
 
-  const xCount = 5;
-  const yCount = 1;
+  noStroke();
+  //pixelDensity(0.1);
+
+  const xCount = 1;
+  const yCount = 10;
   const size = (width + height) / 2 / (xCount + yCount) / 3.5;
 
   for (let x = 1; x <= xCount; x++) {
@@ -19,8 +23,8 @@ function setup() {
           size,
           start: createVector(0, -height / 2),
           end: createVector(0, height / 2),
-          // start: createVector(width / 2, 0),
-          // end: createVector(-width / 2, 0),
+          start: createVector(width / 2, 0),
+          end: createVector(-width / 2, 0),
           relativePosition: {
             x: x / (xCount + 1),
             y: y / (yCount + 1),
@@ -51,7 +55,7 @@ class Spiral {
   draw(time, index) {
     let { position, size, start, end } = this;
 
-    const hueCadence = index;
+    const hueCadence = index + time;
     const mult = map(sin(time), -1, 1, 3, 8);
 
     const waveAmplitude = mult * map(sin(time), -1, 1, size / 8, size);
@@ -60,10 +64,10 @@ class Spiral {
     push();
     translate(position.x, position.y);
 
-    const lerpStep = 1 / 190; //map(mouseY, height, 0, 1, 200, true);
+    const lerpStep = 1 / 15; //map(mouseY, height, 0, 1, 200, true);
 
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
-      const angle = map(lerpIndex, 0, 5, -angleLimit, angleLimit);
+      const angle = map(lerpIndex, 0, 3, -angleLimit, angleLimit);
       const lerpPosition = p5.Vector.lerp(start, end, lerpIndex);
       // const cadence = map(sin(time + lerpIndex), -1, 1, 0, 4);
       const t = map(sin(time + lerpIndex + index / 10), -1, 1, -4, 4);
@@ -72,9 +76,9 @@ class Spiral {
       const yOffset = map(cos(waveIndex), -1, 1, -waveAmplitude, waveAmplitude);
 
       fill(
-        map(sin(angle + hueCadence + t), -1, 1, 0, 360),
-        map(cos(angle + hueCadence + t), -1, 1, 0, 255),
-        map(sin(angle + hueCadence + t), -1, 1, 255, 0)
+        map(sin(angle + hueCadence), 1, -1, 360, 0),
+        map(cos(angle + hueCadence), 1, -1, 255, 0),
+        map(sin(angle + hueCadence), 1, -1, 0, 255)
       );
 
       //circle(lerpPosition.x + xOffset, lerpPosition.y + yOffset, 100);
@@ -86,12 +90,9 @@ class Spiral {
 }
 
 function draw() {
-  const seconds = frameCount / 60;
-  const time = seconds;
-
   background(0);
 
-  shapes.forEach((shape, index) => shape.draw(time, index));
+  shapes.forEach((shape, index) => shape.draw(utils.time.seconds(), index));
 
-  //utils.debug.fps();
+  utils.debug.fps();
 }

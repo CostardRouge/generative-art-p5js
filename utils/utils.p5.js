@@ -98,7 +98,7 @@ utils.debug = {
     fps: {
       frequency: 15,
       log: false,
-      text: true,
+      display: true,
     },
     print: {
       frequency: 60,
@@ -110,10 +110,17 @@ utils.debug = {
   //   utils.debug.debugGraphics = createGraphics(48, 32, P2D);
   // },
   fps: function (fpsOptions = {}) {
-    const { frequency, log, text } = {
+    const { frequency, log, display } = {
       ...this.defaultOptions.fps,
-      ...fpsOptions,
+      //...fpsOptions,
     };
+
+    this.lastFrameRate =
+      this.lastFrameRate === undefined ? 0 : this.lastFrameRate;
+
+    utils.time.every(frequency, () => {
+      this.lastFrameRate = frameRate();
+    });
 
     if (log === true) {
       utils.time.every(frequency, () => {
@@ -121,7 +128,7 @@ utils.debug = {
       });
     }
 
-    if (text === true) {
+    if (display === true) {
       if (this.debugDOMelement === undefined) {
         //utils.debug.createDebugGraphics();
         this.debugDOMelement = createElement(
@@ -129,13 +136,6 @@ utils.debug = {
           String(ceil(this.lastFrameRate))
         );
       }
-
-      this.lastFrameRate =
-        this.lastFrameRate === undefined ? 0 : this.lastFrameRate;
-
-      utils.time.every(frequency, () => {
-        this.lastFrameRate = frameRate();
-      });
 
       this.debugDOMelement.elt.innerHTML = String(ceil(this.lastFrameRate));
 
@@ -151,6 +151,11 @@ utils.debug = {
       // );
 
       // image(utils.debug.debugGraphics, 0, 0);
+    } else {
+      if (this.debugDOMelement !== undefined) {
+        this.debugDOMelement.elt.remove();
+        this.debugDOMelement = undefined;
+      }
     }
   },
   print: function (what, printOptions = {}) {
@@ -303,6 +308,16 @@ utils.events = {
       } else {
         utils.recorder.start();
       }
+    });
+  },
+  toggleFPSCounter: function (pressedKey = "f") {
+    utils.events.register("keyTyped", function () {
+      if (key !== pressedKey) {
+        return;
+      }
+
+      utils.debug.defaultOptions.fps.display =
+        !utils.debug.defaultOptions.fps.display;
     });
   },
 };

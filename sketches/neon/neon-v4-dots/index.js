@@ -1,12 +1,13 @@
 function setup() {
-  // utils.canvas.create(SQUARE.HD);
-  utils.canvas.create(FILL);
+  utils.canvas.create(SQUARE.HD);
+  // utils.canvas.create(FILL);
   // utils.canvas.create({ height: windowWidth, width: windowWidth });
 
   utils.events.fullScreenOnDoubleClick();
   utils.events.extendCanvasOnResize();
   utils.events.pauseOnSpaceKeyPressed();
   utils.events.toggleCanvasRecordingOnKey();
+  utils.events.toggleFPSCounter();
 
   //noStroke();
   //pixelDensity(1);

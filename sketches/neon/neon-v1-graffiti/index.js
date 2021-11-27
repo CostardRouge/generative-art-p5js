@@ -5,6 +5,7 @@ function setup() {
   utils.events.fullScreenOnDoubleClick();
   // utils.events.extendCanvasOnResize();
   utils.events.pauseOnSpaceKeyPressed();
+  utils.events.toggleCanvasRecordingOnKey();
   //noStroke();
   //pixelDensity(1);
 
@@ -18,8 +19,8 @@ function setup() {
         new Spiral({
           size,
           shadowsCount: 3,
-          weightRange: [150, 75],
-          opacityFactorRange: [4, 1],
+          weightRange: [250, 100],
+          opacityFactorRange: [10, 1],
           start: createVector(0, -height / 2),
           end: createVector(0, height / 2),
           relativePosition: {
@@ -68,7 +69,7 @@ class Spiral {
     translate(position.x, position.y);
 
     for (let shadowIndex = 0; shadowIndex <= shadowsCount; shadowIndex++) {
-      const lerpStep = 1 / 300;
+      const lerpStep = 1 / 200;
       //map(shadowIndex, 0, shadowsCount, 75, 20);
       const weight = map(
         shadowIndex,
@@ -138,5 +139,5 @@ function draw() {
   background(0);
 
   shapes.forEach((shape, index) => shape.draw(time, index));
-  //utils.debug.fps();
+  utils.debug.fps();
 }
