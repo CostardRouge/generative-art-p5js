@@ -318,6 +318,8 @@ utils.events = {
 
       utils.debug.defaultOptions.fps.display =
         !utils.debug.defaultOptions.fps.display;
+
+        return false
     });
   },
 };
@@ -349,7 +351,7 @@ utils.recorder = {
   recording: false,
   recordingIconDOMEelement: undefined,
   capturer: new CCapture({
-    format: "webm",
+    format: "png",
     quality: "best",
     framerate: 60,
     verbose: true,

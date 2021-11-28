@@ -7,6 +7,7 @@ function setup() {
   utils.events.extendCanvasOnResize();
   utils.events.pauseOnSpaceKeyPressed();
   utils.events.toggleCanvasRecordingOnKey();
+  utils.events.toggleFPSCounter();
 
   //noStroke();
   //pixelDensity(1);
@@ -80,7 +81,13 @@ class Spiral {
 
       for (let angle = 0; angle < TAU; angle += angleStep) {
         push();
-        const s = map(cos(time), -1, 1, 0, size * 1.5);
+        const s = map(
+          cos(time + radians(shadowIndex*20)),
+          -1,
+          1,
+          0,
+          size
+        );
         translate(utils.converters.polar.vector(angle, s));
 
         const vector = this.getVector(angle, time, s);
@@ -91,12 +98,12 @@ class Spiral {
 
         stroke(
           map(sin(angle + hueCadence), -1, 1, 0, 360) / opacityFactor,
-          map(cos(angle + 0), -1, 1, 0, 255) / opacityFactor,
+          map(cos(angle), -1, 1, 0, 255) / opacityFactor,
           map(sin(angle + hueCadence), -1, 1, 255, 0) / opacityFactor
         );
 
-        vertex(vector.x, vector.y);
-        vertex(vector.x, vector.y);
+        vertex(-vector.x, vector.y);
+        vertex(vector.x, -vector.y);
         // vertex(nextVector.x, nextVector.y);
         // vertex(
         //   map(cos(time), -1, 1, -vector.x, vector.x),
