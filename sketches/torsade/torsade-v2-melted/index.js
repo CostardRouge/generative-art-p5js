@@ -1,9 +1,12 @@
 function setup() {
-  utils.canvas.create(utils.presets.FILL);
+  // utils.canvas.create(utils.presets.FILL);
+  utils.canvas.create(utils.presets.SQUARE.RETINA);
 
   utils.events.fullScreenOnDoubleClick();
   utils.events.extendCanvasOnResize();
+  utils.events.toggleCanvasRecordingOnKey();
   utils.events.pauseOnSpaceKeyPressed();
+  utils.events.toggleFPSCounter();
   noStroke();
 
   const xCount = 1;
@@ -47,12 +50,12 @@ class Spiral {
     let { position, size, start, end } = this;
 
     const hueCadence = index + time;
-    const waveAmplitude = size / 2.5; //map(sin(time), -1, 1, size / 8, size / 7.5);
+    const waveAmplitude = size / 3.5; //map(sin(time), -1, 1, size / 8, size / 7.5);
 
     push();
     translate(position.x, position.y);
 
-    const lerpStep = 1 / 200; //map(mouseY, height, 0, 1, 200, true);
+    const lerpStep = 1 / 300; //map(mouseY, height, 0, 1, 200, true);
 
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
       const angle = map(lerpIndex, 0, 1, -PI, PI);
@@ -68,8 +71,8 @@ class Spiral {
         map(sin(angle + hueCadence), -1, 1, 255, 0)
       );
 
-      circle(lerpPosition.x + xOffset, lerpPosition.y + yOffset, 100);
-      circle(lerpPosition.x - xOffset, lerpPosition.y - yOffset, 100);
+      circle(lerpPosition.x + xOffset, lerpPosition.y + yOffset, 200);
+      circle(lerpPosition.x - xOffset, lerpPosition.y - yOffset, 200);
     }
 
     pop();
