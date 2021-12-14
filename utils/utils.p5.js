@@ -323,7 +323,7 @@ utils.events = {
       utils.debug.defaultOptions.fps.display =
         !utils.debug.defaultOptions.fps.display;
 
-        return false
+      return false;
     });
   },
 };
