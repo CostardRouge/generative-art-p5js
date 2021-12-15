@@ -6,6 +6,7 @@ body {
 
 canvas {
   display: block;
+  outline: 1px rgb(255 255 255 / 20%) dashed;
 }
 
 body {
