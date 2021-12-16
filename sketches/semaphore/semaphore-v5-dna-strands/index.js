@@ -14,8 +14,8 @@ function setup() {
   utils.events.fullScreenOnDoubleClick();
   utils.events.toggleCanvasRecordingOnKey();
 
-  const xCount = 3;
-  const yCount = 3;
+  const xCount = 5;
+  const yCount = 5;
   const size = (width + height) / 2 / (xCount + yCount) / 5.5;
 
   for (let x = 1; x <= xCount; x++) {
@@ -23,8 +23,8 @@ function setup() {
       shapes.push(
         new Spiral({
           size,
-          shadowsCount: 250,
-          weightRange: [70, 20],
+          shadowsCount: 150,
+          weightRange: [10, 50],
           opacityFactorRange: [7, 1],
           relativePosition: {
             x: x / (xCount + 1),
@@ -34,6 +34,28 @@ function setup() {
       );
     }
   }
+}
+
+function easeInElastic(x) {
+  const c4 = (2 * Math.PI) / 3;
+
+  return x === 0
+    ? 0
+    : x === 1
+    ? 1
+    : -pow(2, 10 * x - 10) * sin((x * 10 - 10.75) * c4);
+}
+
+function easeInOutElastic(x) {
+  const c5 = (2 * Math.PI) / 4.5;
+
+  return x === 0
+    ? 0
+    : x === 1
+    ? 1
+    : x < 0.5
+    ? -(pow(2, 20 * x - 10) * sin((20 * x - 11.125) * c5)) / 2
+    : (pow(2, -20 * x + 10) * sin((20 * x - 11.125) * c5)) / 2 + 1;
 }
 
 class Spiral {
@@ -79,14 +101,15 @@ class Spiral {
       const angleStep = TAU / 1;
       const shadowOffset = radians(shadowIndex * 7);
 
-      const indexCoefficient = index / 5;
+      const indexCoefficient = index / 50;
+      //const d = dist(position.x, position.y, width / 2, height / 2);
       const l = 0.7;
-      const x = map(sin(time*2 + indexCoefficient), -1, 1, -0.5, 0.5);
-      const y = map(cos(time + indexCoefficient), -1, 1, -l, l);
+      const x = map(sin(time * 2 + indexCoefficient), -1, 1, 0, 1);
+      const y = map(sin(time + indexCoefficient), -1, 1, 0, 1);
 
       translate(
-        x,
-        y// * sin(shadowOffset + time / 2) * cos(shadowOffset + time / 2) * waveAmplitude
+        map(easeInElastic(x), 0, 1, -l, l),
+        map(easeInOutElastic(y), 0, 1, -l, l)
       );
 
       for (let angle = 0; angle < TAU; angle += angleStep) {
@@ -94,10 +117,7 @@ class Spiral {
         translate(
           utils.converters.polar.vector(angle + time * 3 + shadowOffset, size)
         );
-
-        // const aS = map(sin(angle + time), -1, 1, 0, PI);
         const vector = this.getVector(angle, 0, waveAmplitude);
-        // const nextVector = this.getVector(angle + 0, 0, waveAmplitude);
 
         beginShape();
         strokeWeight(weight);
@@ -111,7 +131,6 @@ class Spiral {
 
         vertex(vector.x, vector.y);
         vertex(vector.x, vector.y);
-        // vertex(nextVector.x, nextVector.y);
 
         endShape();
         pop();
