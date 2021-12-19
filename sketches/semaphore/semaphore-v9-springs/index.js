@@ -14,18 +14,18 @@ function setup() {
   utils.events.fullScreenOnDoubleClick();
   utils.events.toggleCanvasRecordingOnKey();
 
-  const xCount = 1;
-  const yCount = 1;
-  const size = (width + height) / 2 / (xCount + yCount) / 3;
+  const xCount = 3;
+  const yCount = 3;
+  const size = (width + height) / 2 / (xCount + yCount) / 5.5;
 
   for (let x = 1; x <= xCount; x++) {
     for (let y = 1; y <= yCount; y++) {
       shapes.push(
         new Spiral({
           size,
-          shadowsCount: 20,
-          weightRange: [160, 20],
-          opacityFactorRange: [5, 1],
+          shadowsCount: 100,
+          weightRange: [30, 30],
+          opacityFactorRange: [7, 1],
           relativePosition: {
             x: x / (xCount + 1),
             y: y / (yCount + 1),
@@ -34,15 +34,6 @@ function setup() {
       );
     }
   }
-}
-
-function inverseArguments(condition, a, b) {
-    if (condition) {
-      return [a, b]
-    }
-    else {
-      return [b, a]
-    }
 }
 
 class Spiral {
@@ -69,9 +60,7 @@ class Spiral {
     push();
     translate(position.x, position.y);
 
-    const shadowIndexStep = map(sin(time), -1, 1, 0.2, 0.05)
-
-    for (let shadowIndex = 0; shadowIndex <= shadowsCount; shadowIndex += shadowIndexStep) {
+    for (let shadowIndex = 0; shadowIndex <= shadowsCount; shadowIndex += 1) {
       const weight = map(
         shadowIndex,
         0,
@@ -88,20 +77,23 @@ class Spiral {
       );
       const shadowOffset = radians(shadowIndex * 7);
 
-      const indexCoeefficient = index / 8;
-      const x = map(sin(time + indexCoeefficient), -1, 1, -1, 1);
-      const y = map(cos(time + indexCoeefficient), -1, 1, -1, 1);
+      const indexCoefficient = index / 8;
+      const x = map(sin(time + indexCoefficient), -1, 1, -1, 1);
+      const y = map(cos(time + indexCoefficient), -1, 1, -1, 1);
 
-      translate(
-        x,
-        y
-      );
-
-      const angleStep = TAU / map(sin(time / 2), -1, 1, 1, 10);
+      translate(x, y);
+      const angleStep = TAU / 3; //map(sin(time + indexCoefficient), -1, 1, 1, 3);
 
       for (let angle = 0; angle < TAU; angle += angleStep) {
         push();
-        const vector = utils.converters.polar.vector(angle + (index % 2 ? -time : time) * 3 + shadowOffset, size);
+        translate(
+          utils.converters.polar.vector(
+            angle + sin(time) * 5 + shadowOffset,
+            size
+          )
+        );
+
+        const vector = utils.converters.polar.vector(angle, 5);
 
         beginShape();
         strokeWeight(weight);
@@ -122,7 +114,7 @@ class Spiral {
     }
 
     pop();
-  };
+  }
 }
 
 function draw() {
