@@ -12,10 +12,7 @@ function setup() {
   utils.events.fullScreenOnDoubleClick();
   utils.events.extendCanvasOnResize();
   utils.events.pauseOnSpaceKeyPressed();
-
-  // createCanvas(windowWidth, windowHeight);
-  // frameRate(30)
-  //pixelDensity(0.004)
+  utils.events.toggleFPSCounter();
 
   const xCount = 3;
   const yCount = 1;
@@ -161,8 +158,8 @@ class Spiral {
       stroke(
         map(sin(angle + hueCadence), -1, 1, 0, 360),
         map(cos(angle + hueCadence), -1, 1, 0, 255),
-        map(sin(angle + hueCadence), -1, 1, 255, 0)
-        //map(xPolarCoefficient + yPolarCoefficient, 0, 15, 0, 255)
+        map(sin(angle + hueCadence), -1, 1, 255, 0),
+        map(xPolarCoefficient + yPolarCoefficient, 0, 15, 0, 255)
       );
 
       vertex(vector.x, nextVector.y);
@@ -172,27 +169,17 @@ class Spiral {
       pop();
     }
 
-    //write(`${xPolarCoefficient} - ${yPolarCoefficient}`, -size, size + 20);
-
     pop();
   }
-}
-
-function write(str, x, y, size) {
-  fill(255);
-  stroke(0);
-  strokeWeight(0);
-  textSize(size || 18);
-  text(str, x, y);
 }
 
 function draw() {
   const seconds = frameCount / 60;
   const time = seconds;
 
-  background(0);
+  background(0, 8);
 
   shapes.forEach((shape, index) => shape.draw(time, index));
 
-  //fps();
+  utils.debug.fps();
 }
