@@ -11,10 +11,8 @@ function setup() {
   utils.canvas.create({ height: 1080, width: 1080 });
 
   utils.events.fullScreenOnDoubleClick();
-  //utils.events.extendCanvasOnResize();
+  utils.events.extendCanvasOnResize();
   utils.events.pauseOnSpaceKeyPressed();
-  //noStroke();
-  pixelDensity(1);
 
   const xCount = 1;
   const yCount = 3;
@@ -42,10 +40,10 @@ function setup() {
 class Spiral {
   constructor(options) {
     Object.assign(this, options);
-    this.calculateRealtivePosition();
+    this.calculateRelativePosition();
   }
 
-  calculateRealtivePosition() {
+  calculateRelativePosition() {
     this.position = createVector(
       lerp(0, width, this.relativePosition.x),
       lerp(0, height, this.relativePosition.y)
@@ -53,7 +51,7 @@ class Spiral {
   }
 
   onWindowResized() {
-    this.calculateRealtivePosition();
+    this.calculateRelativePosition();
   }
 
   draw(time, index) {
@@ -138,8 +136,5 @@ function draw() {
   background(0);
 
   shapes.forEach((shape, index) => shape.draw(time, index));
-  //utils.debug.fps();
+  utils.debug.fps();
 }
-
-window.setup = setup;
-window.draw = draw;

@@ -10,9 +10,9 @@ function setup() {
 
   noStroke();
 
-  const xCount = 5;
-  const yCount = 5;
-  const size = (width + height) / 2 / (xCount + yCount) / 3;
+  const xCount = 1;
+  const yCount = 1;
+  const size = (width + height) / 2 / (xCount + yCount) / 6;
 
   for (let x = 1; x <= xCount; x++) {
     for (let y = 1; y <= yCount; y++) {
@@ -52,11 +52,11 @@ class Spiral {
     push();
     translate(position.x, position.y);
 
-    const lerpStep = 1 / 300;
+    const lerpStep = 1 / 3000;
 
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
-      const angle = map(lerpIndex, 0, 1/200, -PI, PI);
-      const t = map(sin(time - lerpIndex / 8 + index / 8), -1, 1, -8, 8);
+      const angle = map(lerpIndex, 0, 1 / 200, PI, -PI);
+      const t = map(sin(time / 2 - lerpIndex / 8 + index / 8), -1, 1, -8, 8);
       const waveIndex = angle + t;
       const xOffset = map(sin(waveIndex), -1, 1, -size * 2, size * 2);
       const yOffset = map(cos(waveIndex), -1, 1, -size * 2, size * 2);
@@ -74,7 +74,7 @@ class Spiral {
       const yOff = map(cos(time), -1, 1, -yOffset, yOffset);
       let s = map(lerpIndex, 0, 1, height / (shapes.length + 2), 1);
 
-      circle(xOff, yOff, s*2);
+      circle(xOff, yOff, s);
     }
 
     pop();

@@ -36,14 +36,6 @@ function setup() {
   }
 }
 
-function inverseArguments(condition, a, b) {
-  if (condition) {
-    return [a, b];
-  } else {
-    return [b, a];
-  }
-}
-
 class Spiral {
   constructor(options) {
     Object.assign(this, options);

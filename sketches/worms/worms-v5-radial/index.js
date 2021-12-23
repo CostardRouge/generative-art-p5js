@@ -23,9 +23,8 @@ function setup() {
       shapes.push(
         new Spiral({
           size,
-          shadowsCount: 10,
           weightRange: [300, 20],
-          opacityFactorRange: [5, 1],
+          opacityFactorRange: [10, 1],
           relativePosition: {
             x: x / (xCount + 1),
             y: y / (yCount + 1),
@@ -33,14 +32,6 @@ function setup() {
         })
       );
     }
-  }
-}
-
-function inverseArguments(condition, a, b) {
-  if (condition) {
-    return [a, b];
-  } else {
-    return [b, a];
   }
 }
 
@@ -67,8 +58,8 @@ class Spiral {
     push();
     translate(position.x, position.y);
 
-    const shadowsCount = 3; //map(sin(time), -1, 1, 10, 20)
-    const shadowIndexStep = 0.1; //map(sin(time), -1, 1, 0.2, 0.05);
+    const shadowsCount = 10; //map(sin(time), -1, 1, 10, 20)
+    const shadowIndexStep = 0.01; //map(sin(time), -1, 1, 0.2, 0.05);
 
     for (
       let shadowIndex = 0;
@@ -79,26 +70,20 @@ class Spiral {
         shadowIndex,
         0,
         shadowsCount,
-        map(
-          sin(time),
-          -1,
-          1,
-          opacityFactorRange[0],
-          opacityFactorRange[0]
-        ),
+        opacityFactorRange[0],
         opacityFactorRange[1]
       );
 
       const indexCoefficient = shadowIndex;
-      const l = map(sin(time + shadowIndex), -1, 1, 1.5, 2);
+      const l = 1.5;
       const x = map(sin(time * -2 + indexCoefficient), -1, 1, -l, l);
       const y = map(cos(time + indexCoefficient), -1, 1, -l, l);
 
       translate(x, y);
 
-      const i = map(sin(time), -1, 1, 1, 10);
+      const i = map(sin(time), -1, 1, 1, 100);
       const shadowOffset = radians(shadowIndex * i);
-      const angleStep = TAU/ 7; // map(sin(time + shadowIndex), -1, 1, 1, 5);
+      const angleStep = map(shadowIndex, 0, shadowsCount, TAU*2, TAU) / 7; //map(sin(time + shadowIndex), -1, 1, 1, 5);
 
       for (let angle = 0; angle < TAU; angle += angleStep) {
         push();
@@ -111,7 +96,7 @@ class Spiral {
           shadowIndex,
           0,
           shadowsCount,
-          map(sin(time + angle), -1, 1, weightRange[0], weightRange[0] * 5),
+          map(sin(time * 2 + angle), -1, 1, weightRange[0], weightRange[0] * 5),
           weightRange[1]
         );
 

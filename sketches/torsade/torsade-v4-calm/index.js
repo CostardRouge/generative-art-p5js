@@ -88,5 +88,5 @@ function draw() {
 
   shapes.forEach((shape, index) => shape.draw(time, index));
 
-  //utils.debug.fps();
+  utils.debug.fps();
 }

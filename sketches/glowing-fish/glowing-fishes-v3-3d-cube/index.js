@@ -62,10 +62,10 @@ function easeOutElastic(x) {
 class Spiral {
   constructor(options) {
     Object.assign(this, options);
-    this.calculateRealtivePosition();
+    this.calculateRelativePosition();
   }
 
-  calculateRealtivePosition() {
+  calculateRelativePosition() {
     this.position = createVector(
       lerp(0, width, this.relativePosition.x),
       lerp(0, height, this.relativePosition.y)
@@ -73,7 +73,7 @@ class Spiral {
   }
 
   onWindowResized() {
-    this.calculateRealtivePosition();
+    this.calculateRelativePosition();
   }
 
   draw(time, index, angleStep) {
