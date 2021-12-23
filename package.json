@@ -1,0 +1,9 @@
+{
+    "name": "generative-art-p5js",
+    "scripts": {
+        "deploy": "gh-pages -d ."
+    },
+    "devDependencies": {
+        "gh-pages": "^3.2.3"
+    }
+}
