@@ -23,7 +23,6 @@ function setup() {
       shapes.push(
         new Spiral({
           size,
-          shadowsCount: 10,
           weightRange: [150, 50],
           opacityFactorRange: [7, 1],
           relativePosition: {
@@ -67,8 +66,8 @@ class Spiral {
     push();
     translate(position.x, position.y);
 
-    const shadowsCount = 1; //map(sin(time), -1, 1, 10, 20)
-    const shadowIndexStep = 0.02; //map(sin(time), -1, 1, 0.2, 0.05);
+    const shadowsCount = 5; //map(sin(time), -1, 1, 10, 20)
+    const shadowIndexStep = 0.02
 
     for (
       let shadowIndex = 0;
@@ -90,15 +89,15 @@ class Spiral {
         opacityFactorRange[1]
       );
 
-      const l = 1.5*5
+      const l = 5/3
       const indexCoefficient = shadowIndex;
       const x = map(sin(time*3 + indexCoefficient), -1, 1, -l, l);
       const y = map(cos(time + indexCoefficient), -1, 1, -l, l);
 
       translate(x, y);
 
-      const i = map(sin(time), -1, 1, -3, 3)
-      const shadowOffset = 0//radians(shadowIndex * i);
+      const i = map(sin(time), -1, 1, 1, 70)
+      const shadowOffset = radians(shadowIndex * i);
       const angleStep = TAU / 10//ceil(map(index, 0, shapes.length - 1, 5, 200));
 
       for (let angle = 0; angle < TAU; angle += angleStep) {
@@ -110,12 +109,11 @@ class Spiral {
 
         beginShape();
         strokeWeight(weight);
-        // strokeWeight(1);
         stroke(
           color(
-            map(sin(angle + hueCadence), -1, 1, 0, 128) / opacityFactor,
-            map(cos(angle + hueCadence), -1, 1, 255, 0) / opacityFactor-15,
-            map(sin(angle + hueCadence), -1, 1, 128, 0) / opacityFactor
+            map(sin(angle + hueCadence), -1, 1, 0, 360) / opacityFactor,
+            map(cos(angle + hueCadence), -1, 1, 360, 0) / opacityFactor,
+            map(sin(angle + hueCadence), -1, 1, 360, 0) / opacityFactor
           )
         );
 

@@ -2,7 +2,7 @@ function setup() {
   utils.canvas.create(utils.presets.FILL);
   utils.canvas.create(utils.presets.SQUARE.HD);
 
-  //utils.events.fullScreenOnDoubleClick();
+  utils.events.fullScreenOnDoubleClick();
   utils.events.extendCanvasOnResize();
   utils.events.pauseOnSpaceKeyPressed();
   utils.events.toggleCanvasRecordingOnKey();
