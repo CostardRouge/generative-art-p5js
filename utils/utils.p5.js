@@ -70,7 +70,9 @@ utils.converters = {
 };
 
 function preload() {
-  utils.text.defaultFont = loadFont("assets/fonts/roboto-mono.ttf");
+  utils.text.defaultFont = loadFont(
+    gitHubPagesPathHack("/assets/fonts/roboto-mono.ttf")
+  );
 }
 
 // text
