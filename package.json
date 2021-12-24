@@ -1,7 +1,7 @@
 {
     "name": "generative-art-p5js",
     "scripts": {
-        "deploy": "gh-pages -d .",
+        "deploy": "gh-pages -d . -v node_modules",
         "predeploy": "npm --prefix ./sketches-explorer run deploy"
     },
     "devDependencies": {
