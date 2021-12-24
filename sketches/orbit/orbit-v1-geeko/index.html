@@ -15,7 +15,7 @@
         return path;
       }
 
-      document.querySelector("head > link").href = gitHubPagesPathHack(document.querySelector("head > link").href);
+      document.querySelector("head > link").href = gitHubPagesPathHack("/assets/stylesheets/common.css");
 
       // title
       const pathnameParts = location.pathname.split("/").slice(1, -1);
