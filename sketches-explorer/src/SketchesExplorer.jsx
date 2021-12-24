@@ -17,7 +17,9 @@ const SketchesExplorer = () => {
             <ul>
               {map(sketches, ({ name, _path }) => (
                 <li key={name}>
-                  <a href={`/generative-art-p5js/sketches/${name}`}>{name}</a>
+                  <a href={`/generative-art-p5js/sketches/${sketchTheme}/${name}`}>
+                    {name}
+                  </a>
                 </li>
               ))}
             </ul>
