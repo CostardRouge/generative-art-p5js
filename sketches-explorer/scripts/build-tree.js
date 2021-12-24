@@ -1,10 +1,3 @@
-// const fs = require("fs");
-// const files = fs.readdirSync("..", { withFileTypes: true });
-// const folders = files.filter((file) => file.isDirectory());
-
-// console.log(files);
-// console.log(folders);
-
 const { writeFileSync, promises } = require("fs");
 const { resolve } = require("path");
 const { readdir } = promises;
