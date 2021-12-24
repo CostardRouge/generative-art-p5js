@@ -17,7 +17,7 @@ const SketchesExplorer = () => {
             <ul>
               {map(sketches, ({ name, _path }) => (
                 <li key={name}>
-                  <a href={`${import.meta.env.BASE_URL}${name}`}>{name}</a>
+                  <a href={`/generative-art-p5js/sketches/${name}`}>{name}</a>
                 </li>
               ))}
             </ul>

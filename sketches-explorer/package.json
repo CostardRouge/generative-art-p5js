@@ -6,7 +6,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "build:tree": "node ./scripts/build-tree.js ../sketches src/tree.json",
-    "deploy": "npm run build:tree && npm run build -- --base=/generative-art-p5js/"
+    "deploy": "npm run build:tree && npm run build -- --base=/generative-art-p5js/sketches-explorer/dist/"
   },
   "dependencies": {
     "lodash": "^4.17.21",
