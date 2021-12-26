@@ -12,20 +12,16 @@ function setup() {
   utils.events.fullScreenOnDoubleClick();
   utils.events.extendCanvasOnResize();
   utils.events.pauseOnSpaceKeyPressed();
-  // frameRate(30)
-  //pixelDensity(0.004)
 
-  const xCount = 2;
+  const xCount = 1;
   const yCount = 1;
-  const size = (width + height) / 2 / (xCount + yCount) / 3.5;
+  const size = (width + height) / 2 / (xCount + yCount) / 4.5;
 
   for (let x = 1; x <= xCount; x++) {
     for (let y = 1; y <= yCount; y++) {
       shapes.push(
         new Spiral({
           size,
-          start: createVector(0, -height / 2),
-          end: createVector(0, height / 2),
           relativePosition: {
             x: x / (xCount + 1),
             y: y / (yCount + 1),
@@ -77,96 +73,84 @@ class Spiral {
   }
 
   draw(time, index, angleStep) {
-    let { position, size, start, end } = this;
+    let { position, size } = this;
 
-    const hueCadence = index + time / 2;
-    const cadence = index / shapes.length + time / 2;
-    const interpolation = 0.05;
-    const [x, y] = utils.mappers.circularIndex(cadence, polarCoefficients);
+    const hueCadence = index + time;
+    const offsetCadence = index + time * 3.5;
+    const offsetAccelerationCadence = index + time;
+    //const cadence = (index/shapes.length) + time/2;
+    //const interpolation = 0.05
+    //const [x, y] = utils.mappers.circularIndex(cadence, polarCoefficients);
 
-    this.xPolarCoefficient = lerp(
-      this.xPolarCoefficient || 0,
-      x,
-      interpolation
-    );
-    this.yPolarCoefficient = lerp(
-      this.yPolarCoefficient || 0,
-      y,
-      interpolation
-    );
+    this.xPolarCoefficient = 1; //lerp(this.xPolarCoefficient || 0, x, interpolation);
+    this.yPolarCoefficient = 1; //lerp(this.yPolarCoefficient || 0, y, interpolation);
 
     const { xPolarCoefficient, yPolarCoefficient } = this;
-    const waveAmplitude = size / 2;
 
     push();
     translate(
-      position.x, // * easeInOutBack(map(sin(time+index), -1, 1, 0.2, 1)),
+      position.x, //* easeInOutBack(map(sin(time+index), -1, 1, 0.2, 1)),
       position.y // * easeInOutBack(map(cos(time+index), -1, 1, 0.2, 1))
     );
 
-    //size = easeOutElastic(map(sin(time), -1, 1, 0, 0.1)) * size
-    // const lerpStep = 1/10;
-    const lerpStep = 1 / 200; //map(mouseY, height, 0, 1, 64, true);
-
-    for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
-      const lerpPosition = p5.Vector.lerp(start, end, lerpIndex);
-
+    for (let angle = 0; angle < TAU; angle += angleStep) {
       push();
-      translate(lerpPosition.x, lerpPosition.y);
 
-      const angle = map(lerpIndex, 0, 1, -PI / 2, PI / 2);
-
-      const yOffset = map(
-        sin(angle + index + time * 2),
-        -1,
-        1,
-        -waveAmplitude,
-        waveAmplitude
-      );
+      const offsetAngle = angle * 3;
+      const offsetPIFactor = PI / 3;
       const xOffset = map(
-        cos(angle + index + time * 2),
+        sin(offsetAngle + offsetCadence),
         -1,
         1,
-        waveAmplitude,
-        -waveAmplitude
-      );
+        -offsetPIFactor,
+        offsetPIFactor
+      ); // * easeInOutBack(map(sin(offsetAccelerationCadence), -1, 1, 0.0, 1));
+      const yOffset = map(
+        cos(offsetAngle + offsetCadence),
+        -1,
+        1,
+        -offsetPIFactor,
+        offsetPIFactor
+      ); // * easeInOutBack(map(cos(offsetAccelerationCadence), -1, 1, 0.0, 1));
+
+      translate(utils.converters.polar.vector(angle, size));
 
       const vector = createVector(
         utils.converters.polar.get(
           sin,
-          xOffset,
-          angle + yPolarCoefficient,
+          size,
+          angle + yOffset,
           xPolarCoefficient
         ),
         utils.converters.polar.get(
           cos,
-          yOffset,
-          angle + xPolarCoefficient,
+          size,
+          angle + xOffset,
           yPolarCoefficient
         )
       );
       const nextVector = createVector(
         utils.converters.polar.get(
           sin,
-          size + yOffset,
+          size,
           angle + angleStep,
           xPolarCoefficient
         ),
         utils.converters.polar.get(
           cos,
-          size + xOffset,
+          size,
           angle + angleStep,
           yPolarCoefficient
         )
       );
 
       beginShape();
-      strokeWeight(75);
+      strokeWeight(size / shapes.length);
 
       stroke(
-        map(sin(angle + index + hueCadence), -1, 1, 0, 255),
-        map(cos(angle + index + hueCadence), -1, 1, 0, 255),
-        map(sin(angle + index + hueCadence), -1, 1, 255, 0)
+        map(sin(angle + hueCadence), -1, 1, 0, 360),
+        map(cos(angle + hueCadence), -1, 1, 0, 360),
+        map(sin(angle + hueCadence), -1, 1, 360, 0)
         //map(xPolarCoefficient + yPolarCoefficient, 0, 10, 0, 255)
       );
 
@@ -177,34 +161,43 @@ class Spiral {
       pop();
     }
 
-    utils.text.write(
-      `${xPolarCoefficient} - ${yPolarCoefficient}`,
-      -size,
-      size + 20
-    );
+    //write(`${xPolarCoefficient} - ${yPolarCoefficient}`, -size, size + 20);
 
     pop();
   }
 }
 
+function write(str, x, y, size = 18) {
+  const bbox = font.textBounds(str, x, y, size);
+
+  fill(255);
+  stroke(0);
+  strokeWeight(0);
+  textSize(size);
+  text(str, x - bbox.w / 2, y + bbox.h / 2);
+}
+
 function draw() {
   const seconds = frameCount / 60;
   const time = seconds;
-  const angleAmount = 512 / shapes.length;
+
+  const angleAmountFactor = 192; //utils.mappers.circularIndex(seconds, [2, 4, 8, 16, 32, 64, 128, 256]);
+  const angleAmount = angleAmountFactor / shapes.length;
   const angleStep = TAU / angleAmount;
 
   background(0);
 
   //  background(
-  //     map(sin(time), -1, 1, 128, 255),
-  //     map(cos(time), -1, 1, 128, 255),
-  //     map(sin(time), -1, 1, 255, 128),
+  //     map(sin(time), -1, 1, 128, 360),
+  //     map(cos(time), -1, 1, 128, 360),
+  //     map(sin(time), -1, 1, 360, 128),
   //    128
   //   )
 
   shapes.forEach((shape, index) => shape.draw(time, index, angleStep));
 
   // write(`TAU / ${angleAmount}`, shapes[0 ].size * 2, shapes[0 ].size );
+  //write(`${angleAmountFactor}`, width /2, height/2, 72 );
 
   utils.debug.fps();
 }

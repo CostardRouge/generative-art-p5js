@@ -1,10 +1,10 @@
 {
     "name": "generative-art-p5js",
     "scripts": {
-        "deploy": "gh-pages -d .",
-        "predeploy": "npm --prefix ./sketches-explorer run deploy"
+        "deploy:gallery": "npm run nft-gallery deploy sketches-tree.json",
+        "build:tree": "node ./scripts/build-sketches-tree.js sketches sketches-tree.json"
     },
     "devDependencies": {
-        "gh-pages": "^3.2.3"
+        "nft-gallery": "github:CostardRouge/nft-gallery"
     }
 }

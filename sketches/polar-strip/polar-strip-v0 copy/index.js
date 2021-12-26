@@ -64,15 +64,17 @@ class Spiral {
   }
 
   draw(time, index, angleStep) {
-    const { position, size } = this;
-    const hueCadence = index + time;
+    let { position, size } = this;
 
+    const hueCadence = index + time;
     push();
     translate(position);
 
     for (let angle = 0; angle < TAU; angle += angleStep) {
       push();
-      translate(utils.converters.polar.vector(angle, size));
+      translate(
+        utils.converters.polar.vector(angle, size)
+      );
 
       const xOffset =
         map(sin(angle + time), -1, 1, -PI, PI) *
@@ -85,8 +87,10 @@ class Spiral {
         utils.converters.polar.get(sin, size, angle + xOffset),
         utils.converters.polar.get(cos, size, angle + yOffset)
       );
-
-      const nextVector = utils.converters.polar.vector(angle + angleStep, size);
+      const nextVector = utils.converters.polar.vector(
+        cos,
+        angle + angleStep
+      );
 
       beginShape();
       strokeWeight(150);
@@ -109,8 +113,10 @@ class Spiral {
 }
 
 function draw() {
-  const time = utils.time.seconds();
-  const angleAmountFactor = 192;
+  const seconds = frameCount / 60;
+  const time = seconds;
+
+  const angleAmountFactor = 192//utils.mappers.circularIndex(seconds, [2, 4, 8, 16, 32, 64, 128, 256]);
   const angleAmount = angleAmountFactor / shapes.length;
   const angleStep = TAU / angleAmount;
 

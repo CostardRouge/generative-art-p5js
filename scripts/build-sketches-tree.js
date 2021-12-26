@@ -20,7 +20,7 @@ const output = process.argv[3];
 (async () => {
   let tree = {};
   const excluding = resolve(input);
-  for await (const filePath of getFiles("../sketches")) {
+  for await (const filePath of getFiles(input)) {
     const parts = filePath.split("/");
     const name = parts[parts.length - 2];
     const sketchTheme = parts[parts.length - 3];
