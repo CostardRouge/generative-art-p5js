@@ -1,10 +1,11 @@
 {
     "name": "generative-art-p5js",
     "scripts": {
-        "deploy:gallery": "npm run nft-gallery deploy sketches-tree.json",
+        "deploy:gallery": "nft-gallery deploy generative-art-p5js ./sketches-tree.json assets libraries utils sketches",
+        "predeploy:gallery": "npm run build:tree",
         "build:tree": "node ./scripts/build-sketches-tree.js sketches sketches-tree.json"
     },
-    "devDependencies": {
-        "nft-gallery": "github:CostardRouge/nft-gallery"
+    "dependencies": {
+        "nft-gallery": "file:nft-gallery"
     }
 }

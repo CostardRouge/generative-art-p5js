@@ -19,24 +19,26 @@ const output = process.argv[3];
 
 (async () => {
   let tree = {};
-  const excluding = resolve(input);
   for await (const filePath of getFiles(input)) {
     const parts = filePath.split("/");
     const name = parts[parts.length - 2];
-    const sketchTheme = parts[parts.length - 3];
+    const folder = parts[parts.length - 3];
 
     tree = {
       ...tree,
-      [sketchTheme]: {
-        ...tree[sketchTheme],
+      [folder]: {
+        ...tree[folder],
         [name]: {
-          name,
-          path: filePath.replace(excluding, ""),
+          meta: {
+            name,
+            folder
+          },
+          path: `sketches/${folder}/${name}`,
         },
       },
     };
   }
   console.log(tree);
 
-  writeFileSync(output, JSON.stringify(tree, null, 2));
+  writeFileSync(output, JSON.stringify(tree, null, 3));
 })();

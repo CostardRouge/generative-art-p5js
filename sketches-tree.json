@@ -1,204 +1,382 @@
 {
-  "glowing-fish": {
-    "glowing-fishes-v0": {
-      "name": "glowing-fishes-v0",
-      "path": "/glowing-fish/glowing-fishes-v0/index.html"
-    },
-    "glowing-fishes-v1": {
-      "name": "glowing-fishes-v1",
-      "path": "/glowing-fish/glowing-fishes-v1/index.html"
-    },
-    "glowing-fishes-v3-3d-cube": {
-      "name": "glowing-fishes-v3-3d-cube",
-      "path": "/glowing-fish/glowing-fishes-v3-3d-cube/index.html"
-    }
-  },
-  "neon": {
-    "neon-v0-legacy": {
-      "name": "neon-v0-legacy",
-      "path": "/neon/neon-v0-legacy/index.html"
-    },
-    "neon-v1-graffiti": {
-      "name": "neon-v1-graffiti",
-      "path": "/neon/neon-v1-graffiti/index.html"
-    },
-    "neon-v2-polar": {
-      "name": "neon-v2-polar",
-      "path": "/neon/neon-v2-polar/index.html"
-    },
-    "neon-v3-can": {
-      "name": "neon-v3-can",
-      "path": "/neon/neon-v3-can/index.html"
-    },
-    "neon-v4-dots": {
-      "name": "neon-v4-dots",
-      "path": "/neon/neon-v4-dots/index.html"
-    },
-    "neon-v5-atoms": {
-      "name": "neon-v5-atoms",
-      "path": "/neon/neon-v5-atoms/index.html"
-    },
-    "neon-v6-sticks-offset": {
-      "name": "neon-v6-sticks-offset",
-      "path": "/neon/neon-v6-sticks-offset/index.html"
-    }
-  },
-  "noise-field": {
-    "noise-field-v0": {
-      "name": "noise-field-v0",
-      "path": "/noise-field/noise-field-v0/index.html"
-    }
-  },
-  "orbit": {
-    "orbit-v1-geeko": {
-      "name": "orbit-v1-geeko",
-      "path": "/orbit/orbit-v1-geeko/index.html"
-    },
-    "orbit-v2-molecule": {
-      "name": "orbit-v2-molecule",
-      "path": "/orbit/orbit-v2-molecule/index.html"
-    },
-    "orbit-v3-disk": {
-      "name": "orbit-v3-disk",
-      "path": "/orbit/orbit-v3-disk/index.html"
-    }
-  },
-  "polar-strip": {
-    "polar-strip-v0": {
-      "name": "polar-strip-v0",
-      "path": "/polar-strip/polar-strip-v0/index.html"
-    },
-    "polar-strip-v1-lights": {
-      "name": "polar-strip-v1-lights",
-      "path": "/polar-strip/polar-strip-v1-lights/index.html"
-    },
-    "polar-strip-v2-lights-mouse": {
-      "name": "polar-strip-v2-lights-mouse",
-      "path": "/polar-strip/polar-strip-v2-lights-mouse/index.html"
-    }
-  },
-  "semaphore": {
-    "semaphore-v0-dots": {
-      "name": "semaphore-v0-dots",
-      "path": "/semaphore/semaphore-v0-dots/index.html"
-    },
-    "semaphore-v1-lines": {
-      "name": "semaphore-v1-lines",
-      "path": "/semaphore/semaphore-v1-lines/index.html"
-    },
-    "semaphore-v2-flies": {
-      "name": "semaphore-v2-flies",
-      "path": "/semaphore/semaphore-v2-flies/index.html"
-    }
-  },
-  "spirals": {
-    "spiral-v1-plots": {
-      "name": "spiral-v1-plots",
-      "path": "/spirals/spiral-v1-plots/index.html"
-    },
-    "spiral-v2-worms": {
-      "name": "spiral-v2-worms",
-      "path": "/spirals/spiral-v2-worms/index.html"
-    },
-    "spiral-v3-easing-field": {
-      "name": "spiral-v3-easing-field",
-      "path": "/spirals/spiral-v3-easing-field/index.html"
-    },
-    "spiral-v4-springs": {
-      "name": "spiral-v4-springs",
-      "path": "/spirals/spiral-v4-springs/index.html"
-    },
-    "spiral-v5-lolipop": {
-      "name": "spiral-v5-lolipop",
-      "path": "/spirals/spiral-v5-lolipop/index.html"
-    },
-    "spiral-v6-tornado": {
-      "name": "spiral-v6-tornado",
-      "path": "/spirals/spiral-v6-tornado/index.html"
-    },
-    "spiral-v7-petals": {
-      "name": "spiral-v7-petals",
-      "path": "/spirals/spiral-v7-petals/index.html"
-    },
-    "spiral-v8-sticks": {
-      "name": "spiral-v8-sticks",
-      "path": "/spirals/spiral-v8-sticks/index.html"
-    },
-    "spiral-v9-donut": {
-      "name": "spiral-v9-donut",
-      "path": "/spirals/spiral-v9-donut/index.html"
-    }
-  },
-  "torsade": {
-    "torsade-juggle": {
-      "name": "torsade-juggle",
-      "path": "/torsade/torsade-juggle/index.html"
-    },
-    "torsade-v0": {
-      "name": "torsade-v0",
-      "path": "/torsade/torsade-v0/index.html"
-    },
-    "torsade-v1-unmelted": {
-      "name": "torsade-v1-unmelted",
-      "path": "/torsade/torsade-v1-unmelted/index.html"
-    },
-    "torsade-v2-chain": {
-      "name": "torsade-v2-chain",
-      "path": "/torsade/torsade-v2-chain/index.html"
-    },
-    "torsade-v3-leaping-over": {
-      "name": "torsade-v3-leaping-over",
-      "path": "/torsade/torsade-v3-leaping-over/index.html"
-    },
-    "torsade-v4-calm": {
-      "name": "torsade-v4-calm",
-      "path": "/torsade/torsade-v4-calm/index.html"
-    },
-    "torsade-v5-flag": {
-      "name": "torsade-v5-flag",
-      "path": "/torsade/torsade-v5-flag/index.html"
-    },
-    "torsade-v6-horn": {
-      "name": "torsade-v6-horn",
-      "path": "/torsade/torsade-v6-horn/index.html"
-    },
-    "torsade-v7-melted": {
-      "name": "torsade-v7-melted",
-      "path": "/torsade/torsade-v7-melted/index.html"
-    },
-    "torsade-v8-chain": {
-      "name": "torsade-v8-chain",
-      "path": "/torsade/torsade-v8-chain/index.html"
-    },
-    "torsade-v9-dna-spiral": {
-      "name": "torsade-v9-dna-spiral",
-      "path": "/torsade/torsade-v9-dna-spiral/index.html"
-    }
-  },
-  "worms": {
-    "worms-v0-alga": {
-      "name": "worms-v0-alga",
-      "path": "/worms/worms-v0-alga/index.html"
-    },
-    "worms-v1-rainbow": {
-      "name": "worms-v1-rainbow",
-      "path": "/worms/worms-v1-rainbow/index.html"
-    },
-    "worms-v2-wavy": {
-      "name": "worms-v2-wavy",
-      "path": "/worms/worms-v2-wavy/index.html"
-    },
-    "worms-v3-jar": {
-      "name": "worms-v3-jar",
-      "path": "/worms/worms-v3-jar/index.html"
-    },
-    "worms-v4-starry": {
-      "name": "worms-v4-starry",
-      "path": "/worms/worms-v4-starry/index.html"
-    },
-    "worms-v5-radial": {
-      "name": "worms-v5-radial",
-      "path": "/worms/worms-v5-radial/index.html"
-    }
-  }
+   "glowing-fish": {
+      "glowing-fishes-v0": {
+         "meta": {
+            "name": "glowing-fishes-v0",
+            "folder": "glowing-fish"
+         },
+         "path": "sketches/glowing-fish/glowing-fishes-v0"
+      },
+      "glowing-fishes-v1": {
+         "meta": {
+            "name": "glowing-fishes-v1",
+            "folder": "glowing-fish"
+         },
+         "path": "sketches/glowing-fish/glowing-fishes-v1"
+      }
+   },
+   "neon": {
+      "neon-v0-legacy": {
+         "meta": {
+            "name": "neon-v0-legacy",
+            "folder": "neon"
+         },
+         "path": "sketches/neon/neon-v0-legacy"
+      },
+      "neon-v1-graffiti": {
+         "meta": {
+            "name": "neon-v1-graffiti",
+            "folder": "neon"
+         },
+         "path": "sketches/neon/neon-v1-graffiti"
+      },
+      "neon-v2-polar": {
+         "meta": {
+            "name": "neon-v2-polar",
+            "folder": "neon"
+         },
+         "path": "sketches/neon/neon-v2-polar"
+      },
+      "neon-v3-can": {
+         "meta": {
+            "name": "neon-v3-can",
+            "folder": "neon"
+         },
+         "path": "sketches/neon/neon-v3-can"
+      },
+      "neon-v4-dots": {
+         "meta": {
+            "name": "neon-v4-dots",
+            "folder": "neon"
+         },
+         "path": "sketches/neon/neon-v4-dots"
+      },
+      "neon-v5-atoms": {
+         "meta": {
+            "name": "neon-v5-atoms",
+            "folder": "neon"
+         },
+         "path": "sketches/neon/neon-v5-atoms"
+      },
+      "neon-v6-sticks-offset": {
+         "meta": {
+            "name": "neon-v6-sticks-offset",
+            "folder": "neon"
+         },
+         "path": "sketches/neon/neon-v6-sticks-offset"
+      }
+   },
+   "orbit": {
+      "orbit-v1-geeko": {
+         "meta": {
+            "name": "orbit-v1-geeko",
+            "folder": "orbit"
+         },
+         "path": "sketches/orbit/orbit-v1-geeko"
+      },
+      "orbit-v2-molecule": {
+         "meta": {
+            "name": "orbit-v2-molecule",
+            "folder": "orbit"
+         },
+         "path": "sketches/orbit/orbit-v2-molecule"
+      },
+      "orbit-v3-disk": {
+         "meta": {
+            "name": "orbit-v3-disk",
+            "folder": "orbit"
+         },
+         "path": "sketches/orbit/orbit-v3-disk"
+      }
+   },
+   "polar-strip": {
+      "polar-strip-v0": {
+         "meta": {
+            "name": "polar-strip-v0",
+            "folder": "polar-strip"
+         },
+         "path": "sketches/polar-strip/polar-strip-v0"
+      },
+      "polar-strip-v0 copy": {
+         "meta": {
+            "name": "polar-strip-v0 copy",
+            "folder": "polar-strip"
+         },
+         "path": "sketches/polar-strip/polar-strip-v0 copy"
+      },
+      "polar-strip-v1": {
+         "meta": {
+            "name": "polar-strip-v1",
+            "folder": "polar-strip"
+         },
+         "path": "sketches/polar-strip/polar-strip-v1"
+      },
+      "polar-strip-v1-lights": {
+         "meta": {
+            "name": "polar-strip-v1-lights",
+            "folder": "polar-strip"
+         },
+         "path": "sketches/polar-strip/polar-strip-v1-lights"
+      },
+      "polar-strip-v2-lights-mouse": {
+         "meta": {
+            "name": "polar-strip-v2-lights-mouse",
+            "folder": "polar-strip"
+         },
+         "path": "sketches/polar-strip/polar-strip-v2-lights-mouse"
+      }
+   },
+   "semaphore": {
+      "semaphore-v0-dots": {
+         "meta": {
+            "name": "semaphore-v0-dots",
+            "folder": "semaphore"
+         },
+         "path": "sketches/semaphore/semaphore-v0-dots"
+      },
+      "semaphore-v1-lines": {
+         "meta": {
+            "name": "semaphore-v1-lines",
+            "folder": "semaphore"
+         },
+         "path": "sketches/semaphore/semaphore-v1-lines"
+      }
+   },
+   "spirals": {
+      "spiral-v1-plots": {
+         "meta": {
+            "name": "spiral-v1-plots",
+            "folder": "spirals"
+         },
+         "path": "sketches/spirals/spiral-v1-plots"
+      },
+      "spiral-v2-worms": {
+         "meta": {
+            "name": "spiral-v2-worms",
+            "folder": "spirals"
+         },
+         "path": "sketches/spirals/spiral-v2-worms"
+      },
+      "spiral-v3-easing-field": {
+         "meta": {
+            "name": "spiral-v3-easing-field",
+            "folder": "spirals"
+         },
+         "path": "sketches/spirals/spiral-v3-easing-field"
+      },
+      "spiral-v4-springs": {
+         "meta": {
+            "name": "spiral-v4-springs",
+            "folder": "spirals"
+         },
+         "path": "sketches/spirals/spiral-v4-springs"
+      },
+      "spiral-v5-lolipop": {
+         "meta": {
+            "name": "spiral-v5-lolipop",
+            "folder": "spirals"
+         },
+         "path": "sketches/spirals/spiral-v5-lolipop"
+      },
+      "spiral-v6-tornado": {
+         "meta": {
+            "name": "spiral-v6-tornado",
+            "folder": "spirals"
+         },
+         "path": "sketches/spirals/spiral-v6-tornado"
+      },
+      "spiral-v7-petals": {
+         "meta": {
+            "name": "spiral-v7-petals",
+            "folder": "spirals"
+         },
+         "path": "sketches/spirals/spiral-v7-petals"
+      },
+      "spiral-v8-sticks": {
+         "meta": {
+            "name": "spiral-v8-sticks",
+            "folder": "spirals"
+         },
+         "path": "sketches/spirals/spiral-v8-sticks"
+      },
+      "spiral-v9-donut": {
+         "meta": {
+            "name": "spiral-v9-donut",
+            "folder": "spirals"
+         },
+         "path": "sketches/spirals/spiral-v9-donut"
+      }
+   },
+   "torsade": {
+      "torsade-juggle": {
+         "meta": {
+            "name": "torsade-juggle",
+            "folder": "torsade"
+         },
+         "path": "sketches/torsade/torsade-juggle"
+      },
+      "torsade-v0": {
+         "meta": {
+            "name": "torsade-v0",
+            "folder": "torsade"
+         },
+         "path": "sketches/torsade/torsade-v0"
+      },
+      "torsade-v1-unmelted": {
+         "meta": {
+            "name": "torsade-v1-unmelted",
+            "folder": "torsade"
+         },
+         "path": "sketches/torsade/torsade-v1-unmelted"
+      },
+      "torsade-v2-chain": {
+         "meta": {
+            "name": "torsade-v2-chain",
+            "folder": "torsade"
+         },
+         "path": "sketches/torsade/torsade-v2-chain"
+      },
+      "torsade-v3-leaping-over": {
+         "meta": {
+            "name": "torsade-v3-leaping-over",
+            "folder": "torsade"
+         },
+         "path": "sketches/torsade/torsade-v3-leaping-over"
+      },
+      "torsade-v4-calm": {
+         "meta": {
+            "name": "torsade-v4-calm",
+            "folder": "torsade"
+         },
+         "path": "sketches/torsade/torsade-v4-calm"
+      },
+      "torsade-v5-flag": {
+         "meta": {
+            "name": "torsade-v5-flag",
+            "folder": "torsade"
+         },
+         "path": "sketches/torsade/torsade-v5-flag"
+      },
+      "torsade-v6-horn": {
+         "meta": {
+            "name": "torsade-v6-horn",
+            "folder": "torsade"
+         },
+         "path": "sketches/torsade/torsade-v6-horn"
+      },
+      "torsade-v7-melted": {
+         "meta": {
+            "name": "torsade-v7-melted",
+            "folder": "torsade"
+         },
+         "path": "sketches/torsade/torsade-v7-melted"
+      },
+      "torsade-v8-chain": {
+         "meta": {
+            "name": "torsade-v8-chain",
+            "folder": "torsade"
+         },
+         "path": "sketches/torsade/torsade-v8-chain"
+      },
+      "torsade-v9-dna-spiral": {
+         "meta": {
+            "name": "torsade-v9-dna-spiral",
+            "folder": "torsade"
+         },
+         "path": "sketches/torsade/torsade-v9-dna-spiral"
+      }
+   },
+   "worms": {
+      "worms-v0-alga": {
+         "meta": {
+            "name": "worms-v0-alga",
+            "folder": "worms"
+         },
+         "path": "sketches/worms/worms-v0-alga"
+      },
+      "worms-v1-rainbow": {
+         "meta": {
+            "name": "worms-v1-rainbow",
+            "folder": "worms"
+         },
+         "path": "sketches/worms/worms-v1-rainbow"
+      },
+      "worms-v10-starry-eating": {
+         "meta": {
+            "name": "worms-v10-starry-eating",
+            "folder": "worms"
+         },
+         "path": "sketches/worms/worms-v10-starry-eating"
+      },
+      "worms-v2-wavy": {
+         "meta": {
+            "name": "worms-v2-wavy",
+            "folder": "worms"
+         },
+         "path": "sketches/worms/worms-v2-wavy"
+      },
+      "worms-v3-jar": {
+         "meta": {
+            "name": "worms-v3-jar",
+            "folder": "worms"
+         },
+         "path": "sketches/worms/worms-v3-jar"
+      },
+      "worms-v4-starry": {
+         "meta": {
+            "name": "worms-v4-starry",
+            "folder": "worms"
+         },
+         "path": "sketches/worms/worms-v4-starry"
+      },
+      "worms-v5-radial": {
+         "meta": {
+            "name": "worms-v5-radial",
+            "folder": "worms"
+         },
+         "path": "sketches/worms/worms-v5-radial"
+      },
+      "worms-v6-tentacule": {
+         "meta": {
+            "name": "worms-v6-tentacule",
+            "folder": "worms"
+         },
+         "path": "sketches/worms/worms-v6-tentacule"
+      },
+      "worms-v6-tentacule-aperturing": {
+         "meta": {
+            "name": "worms-v6-tentacule-aperturing",
+            "folder": "worms"
+         },
+         "path": "sketches/worms/worms-v6-tentacule-aperturing"
+      },
+      "worms-v6-tentacule-dancing": {
+         "meta": {
+            "name": "worms-v6-tentacule-dancing",
+            "folder": "worms"
+         },
+         "path": "sketches/worms/worms-v6-tentacule-dancing"
+      },
+      "worms-v7-doodle": {
+         "meta": {
+            "name": "worms-v7-doodle",
+            "folder": "worms"
+         },
+         "path": "sketches/worms/worms-v7-doodle"
+      },
+      "worms-v8-starry-blooming": {
+         "meta": {
+            "name": "worms-v8-starry-blooming",
+            "folder": "worms"
+         },
+         "path": "sketches/worms/worms-v8-starry-blooming"
+      },
+      "worms-v9-starry-dancing": {
+         "meta": {
+            "name": "worms-v9-starry-dancing",
+            "folder": "worms"
+         },
+         "path": "sketches/worms/worms-v9-starry-dancing"
+      }
+   }
 }
