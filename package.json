@@ -1,8 +1,8 @@
 {
     "name": "generative-art-p5js",
     "scripts": {
-        "deploy:gallery": "nft-gallery deploy generative-art-p5js ./sketches-tree.json assets libraries utils sketches",
-        "predeploy:gallery": "npm run build:tree",
+        "gallery:deploy": "nft-gallery deploy generative-art-p5js ./sketches-tree.json assets libraries utils sketches",
+        "pregallery:deploy": "npm run build:tree",
         "build:tree": "node ./scripts/build-sketches-tree.js sketches sketches-tree.json"
     },
     "dependencies": {
