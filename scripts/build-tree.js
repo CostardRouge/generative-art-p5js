@@ -31,9 +31,9 @@ const output = process.argv[3];
         [name]: {
           meta: {
             name,
-            folder
+            folder,
           },
-          path: `sketches/${folder}/${name}`,
+          path: `${input}/${folder}/${name}`,
         },
       },
     };
