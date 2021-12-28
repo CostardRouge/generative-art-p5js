@@ -5,7 +5,7 @@
         "pregallery:deploy": "npm run build:tree",
         "build:tree": "node ./scripts/build-tree.js sketches tree.json"
     },
-    "dependencies": {
-        "nft-gallery": "file:nft-gallery"
+    "devDependencies": {
+        "nft-gallery": "github:CostardRouge/nft-gallery#0.0.1"
     }
 }

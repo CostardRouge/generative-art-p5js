@@ -308,6 +308,13 @@
          },
          "path": "sketches/worms/worms-v10-starry-eating"
       },
+      "worms-v11-starry-pulsing": {
+         "meta": {
+            "name": "worms-v11-starry-pulsing",
+            "folder": "worms"
+         },
+         "path": "sketches/worms/worms-v11-starry-pulsing"
+      },
       "worms-v2-wavy": {
          "meta": {
             "name": "worms-v2-wavy",
