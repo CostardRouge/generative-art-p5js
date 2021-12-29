@@ -114,8 +114,8 @@ class Spiral {
   }
 }
 
-function draw() {
+utils.sketch.draw(time => {
   background(0);
-  shapes.forEach((shape, index) => shape.draw(utils.time.seconds(), index));
-  utils.debug.fps();
-}
+
+  shapes.forEach((shape, index) => shape.draw(time, index));
+})

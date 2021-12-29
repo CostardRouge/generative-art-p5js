@@ -14,8 +14,6 @@ function setup() {
   utils.events.fullScreenOnDoubleClick();
   utils.events.toggleCanvasRecordingOnKey();
 
-  // pixelDensity(0.1)
-
   const xCount = 1;
   const yCount = 1;
   const size = (width + height) / 2 / (xCount + yCount) / 3;
@@ -80,7 +78,6 @@ class Spiral {
         shadowIndex,
         0,
         shadowsCount,
-        // map(sin(angle), -1, 1, opacityFactorRange[0], opacityFactorRange[0]),
         opacityFactorRange[0],
         opacityFactorRange[1]
       );
@@ -90,15 +87,15 @@ class Spiral {
       const x = map(sin(time * 5 + indexCoefficient), -1, 1, -l, l);
       const y = map(cos(time * -5 + indexCoefficient), -1, 1, -l, l);
 
-      translate(x, y);
+      //translate(x, y);
 
-      const i = map(sin(time + index), -1, 1, 0, 10);
+      const i = 0//map(sin(time + index), -1, 1, 0, 10);
       const shadowOffset = radians(shadowIndex * i);
       const angleStep = TAU / 7
       for (let angle = 0; angle < TAU; angle += angleStep) {
         push();
         const vector = utils.converters.polar.vector(
-          angle + (index % 2 ? -time : time) * -1 + shadowOffset,
+          angle + (index % 2 ? -time : time) * 0 + shadowOffset,
           map(sin(time + shadowIndex), -1, 1, size * 0.1, size * 1.5)
         );
 
@@ -124,8 +121,8 @@ class Spiral {
   }
 }
 
-function draw() {
+utils.sketch.draw((time) => {
   background(0);
-  shapes.forEach((shape, index) => shape.draw(utils.time.seconds(), index));
-  utils.debug.fps();
-}
+
+  shapes.forEach((shape, index) => shape.draw(time, index));
+});

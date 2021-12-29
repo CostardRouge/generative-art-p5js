@@ -1,7 +1,5 @@
 const shapes = [];
-const utils = {
-  __VERSION: 1,
-};
+const utils = {};
 
 // presets
 utils.presets = {
@@ -346,6 +344,7 @@ function windowResized() {
   utils.events.handle("windowResized");
 }
 
+
 // grid
 // shapes instances
 // canvases instances
@@ -389,3 +388,48 @@ utils.recorder = {
 };
 
 utils.recorder.render();
+
+// sketch
+utils.sketch = {
+  setup: (
+    setup,
+    canvasOptions
+  ) => {
+    utils.sketch.setup = () => {
+      utils.canvas.create(canvasOptions || utils.presets.SQUARE.HD);
+      // utils.events.toggleNoLoopOnSingleClick();
+      utils.events.toggleCanvasRecordingOnKey();
+      utils.events.pauseOnSpaceKeyPressed();
+      utils.events.toggleFPSCounter();
+      utils.events.extendCanvasOnFullScreen();
+      utils.events.extendCanvasOnResize();
+      utils.events.fullScreenOnDoubleClick();
+
+      setup?.();
+    };
+  },
+  draw: (draw) => {
+    utils.sketch.draw = () => {
+      utils.debug.fps();
+      draw?.(utils.time.seconds());
+    };
+  },
+};
+
+function setup() {
+  utils.sketch.setup();
+}
+
+function draw() {
+  utils.sketch.draw();
+}
+
+// colors
+utils.colors = {
+  rainbow: (cadence, opacityFactor = 1) =>
+    color(
+      map(sin(cadence), -1, 1, 0, 360) / opacityFactor,
+      map(cos(cadence), -1, 1, 360, 0) / opacityFactor,
+      map(sin(cadence), -1, 1, 360, 0) / opacityFactor
+    ),
+};
