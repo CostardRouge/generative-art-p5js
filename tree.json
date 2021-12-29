@@ -126,6 +126,57 @@
          "path": "sketches/polar-strip/polar-strip-v2-lights-mouse"
       }
    },
+   "pulse": {
+      "pulse-v1-guts": {
+         "meta": {
+            "name": "pulse-v1-guts",
+            "folder": "pulse"
+         },
+         "path": "sketches/pulse/pulse-v1-guts"
+      },
+      "pulse-v2-kraken": {
+         "meta": {
+            "name": "pulse-v2-kraken",
+            "folder": "pulse"
+         },
+         "path": "sketches/pulse/pulse-v2-kraken"
+      },
+      "pulse-v3-asterix": {
+         "meta": {
+            "name": "pulse-v3-asterix",
+            "folder": "pulse"
+         },
+         "path": "sketches/pulse/pulse-v3-asterix"
+      },
+      "pulse-v4-trinity": {
+         "meta": {
+            "name": "pulse-v4-trinity",
+            "folder": "pulse"
+         },
+         "path": "sketches/pulse/pulse-v4-trinity"
+      },
+      "pulse-v5-flower": {
+         "meta": {
+            "name": "pulse-v5-flower",
+            "folder": "pulse"
+         },
+         "path": "sketches/pulse/pulse-v5-flower"
+      },
+      "pulse-v6-sonar": {
+         "meta": {
+            "name": "pulse-v6-sonar",
+            "folder": "pulse"
+         },
+         "path": "sketches/pulse/pulse-v6-sonar"
+      },
+      "pulse-v7-scan": {
+         "meta": {
+            "name": "pulse-v7-scan",
+            "folder": "pulse"
+         },
+         "path": "sketches/pulse/pulse-v7-scan"
+      }
+   },
    "semaphore": {
       "semaphore-v0-dots": {
          "meta": {
@@ -308,26 +359,12 @@
          },
          "path": "sketches/worms/worms-v10-starry-eating"
       },
-      "worms-v11-starry-pulsing": {
-         "meta": {
-            "name": "worms-v11-starry-pulsing",
-            "folder": "worms"
-         },
-         "path": "sketches/worms/worms-v11-starry-pulsing"
-      },
       "worms-v2-wavy": {
          "meta": {
             "name": "worms-v2-wavy",
             "folder": "worms"
          },
          "path": "sketches/worms/worms-v2-wavy"
-      },
-      "worms-v3-jar": {
-         "meta": {
-            "name": "worms-v3-jar",
-            "folder": "worms"
-         },
-         "path": "sketches/worms/worms-v3-jar"
       },
       "worms-v4-starry": {
          "meta": {

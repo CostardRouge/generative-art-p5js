@@ -1,21 +1,4 @@
-function setup() {
-  utils.canvas.create(utils.presets.SQUARE.HD);
-  // utils.canvas.create(utils.presets.IPHONE_12.PORTRAIT);
-  // utils.canvas.create(utils.presets.FILL);
-
-  // utils.canvas.create({
-  //   width: 1080,
-  //   height: 1080,
-  //   ratio: 9 / 16,
-  // });
-
-  utils.events.extendCanvasOnResize();
-  utils.events.pauseOnSpaceKeyPressed();
-  utils.events.fullScreenOnDoubleClick();
-  utils.events.toggleCanvasRecordingOnKey();
-
-  // pixelDensity(0.1)
-
+utils.sketch.setup(() => {
   const xCount = 1;
   const yCount = 1;
   const size = (width + height) / 2 / (xCount + yCount) / 3;
@@ -25,7 +8,7 @@ function setup() {
       shapes.push(
         new Spiral({
           size,
-          weightRange: [400, 20],
+          weightRange: [600 , 20],
           opacityFactorRange: [10, 1],
           relativePosition: {
             x: x / (xCount + 1),
@@ -35,7 +18,7 @@ function setup() {
       );
     }
   }
-}
+})
 
 class Spiral {
   constructor(options) {
@@ -60,8 +43,8 @@ class Spiral {
     push();
     translate(position.x, position.y);
 
-    const shadowsCount = 15;
-    const shadowIndexStep = 0.015;
+    const shadowsCount = 10;
+    const shadowIndexStep = 0.03;
 
     for (
       let shadowIndex = 0;
@@ -80,35 +63,38 @@ class Spiral {
         shadowIndex,
         0,
         shadowsCount,
-        opacityFactorRange[0],
-        opacityFactorRange[1]
+        map(
+          sin(shadowIndex + time * 3),
+          -1,
+          1,
+          opacityFactorRange[0],
+          opacityFactorRange[0] * 25
+        ),
+        // opacityFactorRange[0],
+        opacityFactorRange[1]/2
       );
 
-      const l = map(sin(time + shadowIndex), -1, 1, 0.5, 0.2);
-      const indexCoefficient = shadowIndex;
-      const x = map(sin(time * 5 + indexCoefficient), -1, 1, -l, l);
-      const y = map(cos(time * -5 + indexCoefficient), -1, 1, -l, l);
+      // const l = map(sin(time + shadowIndex), -1, 1, 0.5, 0.2)/5;
+      // const indexCoefficient = shadowIndex;
+      // const x = map(sin(time * -2 + indexCoefficient), -1, 1, -l, l);
+      // const y = map(cos(time * 2 + indexCoefficient), -1, 1, -l, l);
 
-      translate(x, y);
+      // translate(x, y);
 
-      const i = map(sin(time + index), -1, 1, 0, 10);
+      const i = 0//map(sin(time/5 + index), -1, 1, 0, 10);
       const shadowOffset = radians(shadowIndex * i);
-      const angleStep = TAU / 7;
+      const angleStep = TAU / 3//map(sin(time/2), -1, 1, 10, 1);
       for (let angle = 0; angle < TAU; angle += angleStep) {
         push();
         const vector = utils.converters.polar.vector(
-          angle + (index % 2 ? -time : time) * -1 + shadowOffset,
+          angle + (index % 2 ? -time : time) * 0 + shadowOffset,
           map(sin(time + shadowIndex), -1, 1, size * 0.1, size * 1.5)
         );
 
         beginShape();
         strokeWeight(weight);
         stroke(
-          color(
-            map(sin(angle + hueCadence), -1, 1, 0, 360) / opacityFactor,
-            map(cos(angle + hueCadence), -1, 1, 360, 0) / opacityFactor,
-            map(sin(angle + hueCadence), -1, 1, 360, 0) / opacityFactor
-          )
+          utils.colors.rainbow(hueCadence + angle, opacityFactor),
         );
 
         vertex(vector.x, vector.y);
@@ -123,8 +109,8 @@ class Spiral {
   }
 }
 
-utils.sketch.draw(time => {
+utils.sketch.draw((time) => {
   background(0);
 
   shapes.forEach((shape, index) => shape.draw(time, index));
-})
+});

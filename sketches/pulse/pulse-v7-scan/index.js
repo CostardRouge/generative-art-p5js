@@ -23,8 +23,7 @@ function setup() {
       shapes.push(
         new Spiral({
           size,
-          shadowsCount: 10,
-          weightRange: [300, 20],
+          weightRange: [200, 20],
           opacityFactorRange: [5, 1],
           relativePosition: {
             x: x / (xCount + 1),
@@ -59,7 +58,7 @@ class Spiral {
     push();
     translate(position.x, position.y);
 
-    const shadowsCount = 10; //map(sin(time), -1, 1, 10, 20)
+    const shadowsCount = 5; //map(sin(time), -1, 1, 10, 20)
     const shadowIndexStep = 0.01; //map(sin(time), -1, 1, 0.2, 0.05);
 
     for (
@@ -75,36 +74,36 @@ class Spiral {
         weightRange[1]
       );
 
-      const l = 0.2;
+      const opacityFactor = map(
+        shadowIndex,
+        0,
+        shadowsCount,
+        map(
+          sin(time * 3 + shadowIndex),
+          -1,
+          1,
+          opacityFactorRange[0],
+          opacityFactorRange[0] * 10
+        ),
+        opacityFactorRange[1]
+      );
+
+      const l = 0.4;
       const indexCoefficient = shadowIndex;
-      const x = map(sin(time * -2 + indexCoefficient), -1, 1, -l, l);
-      const y = map(cos(time * 2 + indexCoefficient), -1, 1, -l, l);
+      const x = map(sin(time * -3 + indexCoefficient), -1, 1, -l, l);
+      const y = map(cos(time * 1 + indexCoefficient), -1, 1, -l, l);
 
       translate(x, y);
 
-      const i = map(sin(time), -1, 1, 1, 1);
+      const i = map(sin(time/2), -1, 1, 0, 5);
       const shadowOffset = radians(shadowIndex * i);
-      const angleStep = map(shadowIndex, 0, shadowsCount, TAU, TAU/2) / map(sin(time + shadowIndex), -1, 1, 1, 5);
+      const angleStep = TAU / 8
 
       for (let angle = 0; angle < TAU; angle += angleStep) {
         push();
         const vector = utils.converters.polar.vector(
-          angle + (index % 2 ? -time : time) * 0 + shadowOffset,
-          map(sin(time + shadowIndex), -1, 1, size * 0.1, size)
-        );
-
-        const opacityFactor = map(
-          shadowIndex,
-          0,
-          shadowsCount,
-          map(
-            sin(time*3+angle),
-            -1,
-            1,
-            opacityFactorRange[0],
-            opacityFactorRange[0] * 5
-          ),
-          opacityFactorRange[1]
+          angle + (index % 2 ? -time : time) * -1 + shadowOffset,
+          map(cos(time + shadowIndex), -1, 1, size * 0.5, size)
         );
 
         beginShape();
@@ -117,7 +116,7 @@ class Spiral {
           )
         );
 
-        vertex(vector.x, vector.y);
+        vertex(vector.x, -vector.y);
         vertex(vector.x, vector.y);
 
         endShape();
@@ -129,8 +128,8 @@ class Spiral {
   }
 }
 
-function draw() {
+utils.sketch.draw((time) => {
   background(0);
-  shapes.forEach((shape, index) => shape.draw(utils.time.seconds(), index));
-  utils.debug.fps();
-}
+
+  shapes.forEach((shape, index) => shape.draw(time, index));
+});
