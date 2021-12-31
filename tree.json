@@ -175,6 +175,13 @@
             "folder": "pulse"
          },
          "path": "sketches/pulse/pulse-v7-scan"
+      },
+      "pulse-v8-quadra": {
+         "meta": {
+            "name": "pulse-v8-quadra",
+            "folder": "pulse"
+         },
+         "path": "sketches/pulse/pulse-v8-quadra"
       }
    },
    "semaphore": {
