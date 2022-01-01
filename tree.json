@@ -1,4 +1,13 @@
 {
+   "genuary2022": {
+      "genuary2022-day1": {
+         "meta": {
+            "name": "genuary2022-day1",
+            "folder": "genuary2022"
+         },
+         "path": "sketches/genuary2022/genuary2022-day1"
+      }
+   },
    "glowing-fish": {
       "glowing-fishes-v0": {
          "meta": {
