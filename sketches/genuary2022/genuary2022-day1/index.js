@@ -1,7 +1,7 @@
 function setup() {
   utils.canvas.create(utils.presets.FILL);
   utils.canvas.create(utils.presets.SQUARE.HD);
-  // utils.canvas.create({ height: 960, width: 960 });
+  // utils.canvas.create({ height: 80, width: 800 });
 
   utils.events.fullScreenOnDoubleClick();
   utils.events.extendCanvasOnResize();
@@ -10,17 +10,16 @@ function setup() {
   utils.events.toggleFPSCounter();
 
   noStroke();
+  // frameRate(120);
   //pixelDensity(0.1);
 
   const xCount = 1;
   const yCount = 100;
-  const size = (width + height) / 2 / (xCount + yCount) / 3.5;
 
   for (let x = 1; x <= xCount; x++) {
     for (let y = 1; y <= yCount; y++) {
       shapes.push(
         new Spiral({
-          size,
           start: createVector(0, -height / 2),
           end: createVector(0, height / 2),
           start: createVector(width / 2, 0),
@@ -53,10 +52,10 @@ class Spiral {
   }
 
   draw(time, index) {
-    let { position, size, start, end } = this;
+    let { position, start, end } = this;
 
     const hueCadence = index + time;
-    const waveAmplitude = size * 8;
+    const waveAmplitude = 18;
 
     push();
     translate(position.x, position.y);
