@@ -3,8 +3,10 @@ let capture = null;
 
 function setup() {
   // utils.canvas.create(utils.presets.FILL);
+  const s = 300;
+
   utils.canvas.create(utils.presets.SQUARE.HD);
-  // utils.canvas.create({ width: 400, height: 400 });
+  // utils.canvas.create({ width: s, height: s });
 
   utils.events.fullScreenOnDoubleClick();
   // utils.events.extendCanvasOnResize();
@@ -33,7 +35,7 @@ function setup() {
   }
 
   // pixelDensity(1);
-  // frameRate(10);
+  // frameRate(5);
 
   // capture = createCapture(VIDEO);
   // capture.size(size, size);
@@ -67,34 +69,34 @@ class Spiral {
     target.translate(position.x, position.y);
 
     const lerpStep = 1 / 60;
-    const speed = 2//map(cos(time*2), -1, 1, -PI, PI);
+    // const speed = 0//map(cos(time*2), -1, 1, -PI, PI);
 
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
       const angle = map(lerpIndex, 0, 0.1, -PI, PI);
-      const t = map(
-        sin(time - lerpIndex / 3 + index / 8),
-        -1,
-        1,
-        -speed,
-        speed
-      );
-      const waveIndex = angle + t;
+      // const t = map(
+      //   sin(time - lerpIndex / 3 + index / 8),
+      //   -1,
+      //   1,
+      //   -speed,
+      //   speed
+      // );
+      const waveIndex = angle - 2// + t;
       const xOffset = map(sin(waveIndex), -1, 1, -size * 2, size * 2);
       const yOffset = map(cos(waveIndex), -1, 1, -size * 2, size * 2);
 
-      const hueIndex = lerpIndex + angle - time;
-      const hueFactor = map(lerpIndex, 0, 5, 1, 5);
-      const col = color(
+      const hueIndex = lerpIndex*5 + angle - time*2;
+      const hueIndex2 = lerpIndex + angle - time / 2;
+      const hueFactor = map(lerpIndex, 1, 0, 1, 3);
+
+      target.fill(
         map(sin(hueIndex), -1, 1, 0, 255) / hueFactor,
         map(cos(hueIndex), -1, 1, 0, 255) / hueFactor,
         map(sin(hueIndex), -1, 1, 255, 0) / hueFactor
       );
-
-      target.fill(col);
       target.stroke(
-        map(sin(hueIndex - 150), -1, 1, 0, 360) / hueFactor,
-        map(cos(hueIndex - 150), -1, 1, 0, 255) / hueFactor,
-        map(sin(hueIndex - 150), -1, 1, 255, 0) / hueFactor
+        map(sin(hueIndex2), -1, 1, 0, 360) / hueFactor,
+        map(cos(hueIndex2), -1, 1, 0, 255) / hueFactor,
+        map(sin(hueIndex2), -1, 1, 255, 0) / hueFactor
       );
       target.strokeWeight(5);
 
@@ -193,17 +195,17 @@ function dithering(source, factor, step = 10) {
 
 function draw() {
   background(0);
-  noSmooth();
+  // noSmooth();
 
   // const time = millis() / 1000;
   const time = utils.time.seconds();
 
-  target.background(0, 128);
+  target.background(0);
   shapes.forEach((shape, index) => shape.draw(time, index, target));
 
   dithering(target, 1, 1);
   image(target, 0, 0);
-  // filter(GRAY);
+  filter(GRAY);
   
   utils.debug.fps();
 }
