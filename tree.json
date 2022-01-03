@@ -13,6 +13,13 @@
             "folder": "genuary2022"
          },
          "path": "sketches/genuary2022/genuary2022-day2"
+      },
+      "genuary2022-day3": {
+         "meta": {
+            "name": "genuary2022-day3",
+            "folder": "genuary2022"
+         },
+         "path": "sketches/genuary2022/genuary2022-day3"
       }
    },
    "glowing-fish": {
