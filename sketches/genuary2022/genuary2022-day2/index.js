@@ -3,19 +3,19 @@ let capture = null;
 
 function setup() {
   // utils.canvas.create(utils.presets.FILL);
-  const s = 300;
-
-  utils.canvas.create(utils.presets.SQUARE.HD);
+  // const s = 300;
   // utils.canvas.create({ width: s, height: s });
 
+  utils.canvas.create(utils.presets.SQUARE.HD);
+
   utils.events.fullScreenOnDoubleClick();
-  // utils.events.extendCanvasOnResize();
+  utils.events.extendCanvasOnResize();
   utils.events.pauseOnSpaceKeyPressed();
   utils.events.toggleCanvasRecordingOnKey();
   utils.events.toggleFPSCounter();
 
-  noStroke();
-  // stroke(0, 0, 255);
+  // noStroke();
+  stroke(0, 0, 0);
 
   const xCount = 1;
   const yCount = 1;
@@ -80,12 +80,12 @@ class Spiral {
       //   -speed,
       //   speed
       // );
-      const waveIndex = angle - 2// + t;
+      const waveIndex = angle// + t;
       const xOffset = map(sin(waveIndex), -1, 1, -size * 2, size * 2);
       const yOffset = map(cos(waveIndex), -1, 1, -size * 2, size * 2);
 
-      const hueIndex = lerpIndex*5 + angle - time*2;
-      const hueIndex2 = lerpIndex + angle - time / 2;
+      const hueIndex = lerpIndex*5 + angle;
+      const hueIndex2 = lerpIndex*5 + angle;
       const hueFactor = map(lerpIndex, 1, 0, 1, 3);
 
       target.fill(
@@ -98,7 +98,7 @@ class Spiral {
         map(cos(hueIndex2), -1, 1, 0, 255) / hueFactor,
         map(sin(hueIndex2), -1, 1, 255, 0) / hueFactor
       );
-      target.strokeWeight(5);
+      target.strokeWeight(2);
 
       const xOff = map(sin(time), -1, 1, -xOffset, xOffset);
       const yOff = map(cos(time), -1, 1, -yOffset, yOffset);
