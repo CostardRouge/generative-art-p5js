@@ -1,9 +1,11 @@
 function setup() {
   // utils.canvas.create(utils.presets.FILL);
-  utils.canvas.create({ height: 1080, width: 1080 });
+  utils.canvas.create(utils.presets.SQUARE.HD);
   utils.events.fullScreenOnDoubleClick();
   utils.events.extendCanvasOnResize();
   utils.events.pauseOnSpaceKeyPressed();
+  utils.events.toggleCanvasRecordingOnKey();
+  utils.events.toggleFPSCounter();
 
   const xCount = 1;
   const yCount = 2;
