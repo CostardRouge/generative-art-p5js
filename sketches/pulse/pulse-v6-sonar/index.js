@@ -59,12 +59,13 @@ class Spiral {
         weightRange[1]
       );
 
+      const r = map(shadowIndex, 0, shadowsCount, 1, 5);
       const opacityFactor = map(
         shadowIndex,
         0,
         shadowsCount,
         map(
-          sin(shadowIndex*5 + time * 3),
+          sin(shadowIndex * r + time * 5),
           -1,
           1,
           opacityFactorRange[0],
@@ -83,9 +84,7 @@ class Spiral {
 
         beginShape();
         strokeWeight(weight);
-        stroke(
-          utils.colors.rainbow(hueCadence + angle, opacityFactor),
-        );
+        stroke(utils.colors.rainbow(hueCadence + angle, opacityFactor));
 
         vertex(vector.x, vector.y);
         vertex(vector.x, vector.y);
