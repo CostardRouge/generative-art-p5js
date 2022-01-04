@@ -16,6 +16,16 @@ utils.presets = {
       height: 2048,
     },
   },
+  PORTRAIT: {
+    HD: {
+      width: 540,
+      height: 960,
+    },
+    RETINA: {
+      width: 1080,
+      height: 1920,
+    },
+  },
   IPHONE_12: {
     PORTRAIT: {
       width: 1170,

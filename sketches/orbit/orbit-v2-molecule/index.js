@@ -12,7 +12,7 @@ function setup() {
 
   const xCount = 5;
   const yCount = 5;
-  const size = (width + height) / 2 / (xCount + yCount) / 3;
+  const size = (width + height) / (xCount + yCount) / 6;
 
   for (let x = 1; x <= xCount; x++) {
     for (let y = 1; y <= yCount; y++) {
@@ -47,7 +47,8 @@ class Spiral {
   }
 
   draw(time, index) {
-    const { position, size } = this;
+    const { position, size: s } = this;
+    const size = map(sin(time+index), -1, 1, s/4, s)
 
     push();
     translate(position.x, position.y);
@@ -55,13 +56,13 @@ class Spiral {
     const lerpStep = 1 / 300;
 
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
-      const angle = map(lerpIndex, 0, 1/200, -PI, PI);
-      const t = map(sin(time - lerpIndex / 8 + index / 8), -1, 1, -8, 8);
+      const angle = map(lerpIndex, 0, 1/100, -PI, PI);
+      const t = map(sin(time - lerpIndex / 5 + index / 8), -1, 1, -8, 8);
       const waveIndex = angle + t;
       const xOffset = map(sin(waveIndex), -1, 1, -size * 2, size * 2);
       const yOffset = map(cos(waveIndex), -1, 1, -size * 2, size * 2);
 
-      const hueIndex = lerpIndex + angle - time + index / 8;
+      const hueIndex = lerpIndex + angle - time + index;
       const hueFactor = map(lerpIndex, 0, 3, 1, 2);
 
       fill(
