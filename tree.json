@@ -110,6 +110,13 @@
             "folder": "orbit"
          },
          "path": "sketches/orbit/orbit-v3-disk"
+      },
+      "orbit-v4-chewing-gum": {
+         "meta": {
+            "name": "orbit-v4-chewing-gum",
+            "folder": "orbit"
+         },
+         "path": "sketches/orbit/orbit-v4-chewing-gum"
       }
    },
    "polar-strip": {
