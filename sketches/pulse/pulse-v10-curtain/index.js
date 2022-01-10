@@ -1,5 +1,6 @@
 function setup() {
   utils.canvas.create(utils.presets.SQUARE.HD);
+  // utils.canvas.create(utils.presets.PORTRAIT.HD);
   // utils.canvas.create(utils.presets.IPHONE_12.PORTRAIT);
   // utils.canvas.create(utils.presets.FILL);
 
@@ -14,17 +15,16 @@ function setup() {
   utils.events.fullScreenOnDoubleClick();
   utils.events.toggleCanvasRecordingOnKey();
 
-  const xCount = 1;
+  const xCount = 7;
   const yCount = 1;
-  const size = (width + height) / 2 / (xCount + yCount) / 3;
+  const size = (width + height) / (xCount + yCount) / 3;
 
   for (let x = 1; x <= xCount; x++) {
     for (let y = 1; y <= yCount; y++) {
       shapes.push(
-        new Spiral({
+        new GroundLine({
           size,
-          weightRange: [200, 20],
-          opacityFactorRange: [5, 1],
+          weightRange: [150, 20],
           relativePosition: {
             x: x / (xCount + 1),
             y: y / (yCount + 1),
@@ -35,7 +35,7 @@ function setup() {
   }
 }
 
-class Spiral {
+class GroundLine {
   constructor(options) {
     Object.assign(this, options);
     this.calculateRelativePosition();
@@ -53,66 +53,60 @@ class Spiral {
   }
 
   draw(time, index) {
-    const { position, size, weightRange, opacityFactorRange } = this;
+    const { position, size, weightRange } = this;
     const hueCadence = index + time;
     push();
-    translate(position.x, position.y);
+    translate(position.x, height / 2 - position.y + -15);
 
-    const shadowsCount = 5; //map(sin(time), -1, 1, 10, 20)
-    const shadowIndexStep = 0.01; //map(sin(time), -1, 1, 0.2, 0.05);
+    const shadowsCount = 50; //map(sin(time), -1, 1, 10, 10)
+    const shadowIndexStep = 0.1; //map(sin(time), -1, 1, 0.2, 0.05);
 
     for (
       let shadowIndex = 0;
       shadowIndex <= shadowsCount;
       shadowIndex += shadowIndexStep
     ) {
-      const weight = map(
-        shadowIndex,
-        0,
-        shadowsCount,
-        weightRange[0],
-        weightRange[1]
-      );
 
-      const opacityFactor = map(
-        shadowIndex,
-        0,
-        shadowsCount,
+      // const shadowOffset = radians(shadowIndex * map(sin(time), -1, 1, 15, -15));
+
+      const w = map(shadowIndex, 0, shadowsCount, -1/3, 5);
+      const h = (((size * 10) / shadowsCount) * shadowIndexStep);
+      translate(
         map(
-          sin(time * 3 + shadowIndex),
+          sin(time*1.5 + index / 10 + (shadowIndex / 5 + index / 4)),
           -1,
           1,
-          opacityFactorRange[0],
-          opacityFactorRange[0] * 10
-        ),
-        opacityFactorRange[1]
+          -w,
+          w
+        ) + 0,
+        h*2
       );
 
-      const l = 0.9;
-      const indexCoefficient = shadowIndex;
-      const x = map(sin(time * -3 + indexCoefficient), -1, 1, -l, l);
-      const y = map(cos(time * 1 + indexCoefficient), -1, 1, -l, l);
-
-      translate(x, y);
-
-      const i = map(sin(time/2), -1, 1, 0, 5);
-      const shadowOffset = radians(shadowIndex * i);
-      const angleStep = TAU / 8
-
-      for (let angle = 0; angle < TAU; angle += angleStep) {
         push();
         const vector = utils.converters.polar.vector(
-          angle + (index % 2 ? -time : time) * -1 + shadowOffset,
-          map(cos(time + shadowIndex), -1, 1, size * 0.5, size)
+          0,//map(shadowIndex, 0, shadowsCount, -TAU, TAU),
+          size / map(shadowIndex, 0, shadowsCount, 10, 1)
         );
 
+        const f = map(shadowIndex, 0, shadowsCount, 1, 5);
+        let opacityFactor = map(
+          sin(shadowIndex / f - time * 3 + index / 2),
+          -1,
+          1,
+          1,
+          15
+        );
+
+        // opacityFactor = 1;
+
         beginShape();
-        strokeWeight(weight);
+        // strokeWeight(map(sin(time*3 + index + shadowIndex/2), -1, 1, weightRange[0], weightRange[1]));
+        strokeWeight(map(sin(time+shadowIndex/3) ,-1, 1, weightRange[0], weightRange[1]));
         stroke(
           color(
-            map(sin(angle + hueCadence), -1, 1, 0, 360) / opacityFactor,
-            map(cos(angle + hueCadence), -1, 1, 360, 0) / opacityFactor,
-            map(sin(angle + hueCadence), -1, 1, 360, 0) / opacityFactor
+            map(sin(hueCadence), -1, 1, 0, 360) / opacityFactor,
+            map(cos(hueCadence), -1, 1, 0, 360) / opacityFactor,
+            map(sin(hueCadence), -1, 1, 360, 0) / opacityFactor
           )
         );
 
@@ -121,13 +115,11 @@ class Spiral {
 
         endShape();
         pop();
-      }
     }
 
     pop();
   }
 }
-
 utils.sketch.draw((time) => {
   background(0);
 

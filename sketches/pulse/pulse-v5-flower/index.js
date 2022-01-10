@@ -43,7 +43,7 @@ class Spiral {
     push();
     translate(position.x, position.y);
 
-    const shadowsCount = 40;
+    const shadowsCount = 30;
     const shadowIndexStep = 0.03;
 
     for (
@@ -88,7 +88,7 @@ class Spiral {
         push();
         const vector = utils.converters.polar.vector(
           angle + (index % 2 ? -time : time) * 0 + shadowOffset,
-          map(sin(time + shadowIndex), -1, 1, size * 0.1, size * 1.5)
+          map(sin(time + shadowIndex), -1, 1, size * 0.2, size * 1.5)
         );
 
         beginShape();
