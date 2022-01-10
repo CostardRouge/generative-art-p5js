@@ -61,7 +61,7 @@ class Spiral {
     translate(position.x, position.y);
 
     const shadowsCount = 15;
-    const shadowIndexStep = 0.015;
+    const shadowIndexStep = 0.03;
 
     for (
       let shadowIndex = 0;

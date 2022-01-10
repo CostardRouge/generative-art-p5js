@@ -20,6 +20,13 @@
             "folder": "genuary2022"
          },
          "path": "sketches/genuary2022/genuary2022-day3"
+      },
+      "genuary2022-day5": {
+         "meta": {
+            "name": "genuary2022-day5",
+            "folder": "genuary2022"
+         },
+         "path": "sketches/genuary2022/genuary2022-day5"
       }
    },
    "glowing-fish": {
@@ -164,6 +171,13 @@
          },
          "path": "sketches/pulse/pulse-v1-guts"
       },
+      "pulse-v10-curtain": {
+         "meta": {
+            "name": "pulse-v10-curtain",
+            "folder": "pulse"
+         },
+         "path": "sketches/pulse/pulse-v10-curtain"
+      },
       "pulse-v2-kraken": {
          "meta": {
             "name": "pulse-v2-kraken",
@@ -212,6 +226,13 @@
             "folder": "pulse"
          },
          "path": "sketches/pulse/pulse-v8-quadra"
+      },
+      "pulse-v9-flow-fileld": {
+         "meta": {
+            "name": "pulse-v9-flow-fileld",
+            "folder": "pulse"
+         },
+         "path": "sketches/pulse/pulse-v9-flow-fileld"
       }
    },
    "semaphore": {
@@ -316,6 +337,13 @@
             "folder": "torsade"
          },
          "path": "sketches/torsade/torsade-v1-unmelted"
+      },
+      "torsade-v10-rabbit-hole": {
+         "meta": {
+            "name": "torsade-v10-rabbit-hole",
+            "folder": "torsade"
+         },
+         "path": "sketches/torsade/torsade-v10-rabbit-hole"
       },
       "torsade-v2-chain": {
          "meta": {

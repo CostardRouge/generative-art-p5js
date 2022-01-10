@@ -73,12 +73,12 @@ class Spiral {
         opacityFactorRange[1]/2
       );
 
-      const angleStep = TAU / 5
+      const angleStep = TAU / 7
       for (let angle = 0; angle < TAU; angle += angleStep) {
         push();
         const vector = utils.converters.polar.vector(
           angle + (index % 2 ? -time : time) * 0,
-          map(sin(time + shadowIndex), -1, 1, size * 0.1, size * 1.5)
+          map(sin(time + shadowIndex), -1, 1, size * 0.2, size * 1.5)
         );
 
         beginShape();
