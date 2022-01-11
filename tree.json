@@ -27,6 +27,27 @@
             "folder": "genuary2022"
          },
          "path": "sketches/genuary2022/genuary2022-day5"
+      },
+      "genuary2022-day8": {
+         "meta": {
+            "name": "genuary2022-day8",
+            "folder": "genuary2022"
+         },
+         "path": "sketches/genuary2022/genuary2022-day8"
+      },
+      "genuary2022-day8-polar-worm": {
+         "meta": {
+            "name": "genuary2022-day8-polar-worm",
+            "folder": "genuary2022"
+         },
+         "path": "sketches/genuary2022/genuary2022-day8-polar-worm"
+      },
+      "genuary2022-day8-wave": {
+         "meta": {
+            "name": "genuary2022-day8-wave",
+            "folder": "genuary2022"
+         },
+         "path": "sketches/genuary2022/genuary2022-day8-wave"
       }
    },
    "glowing-fish": {
