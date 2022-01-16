@@ -15,6 +15,8 @@ function setup() {
   utils.events.fullScreenOnDoubleClick();
   utils.events.toggleCanvasRecordingOnKey();
 
+  noLoop()
+
   const xCount = 7;
   const yCount = 1;
   const size = (width + height) / (xCount + yCount) / 3;
