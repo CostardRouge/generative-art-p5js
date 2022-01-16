@@ -1,6 +1,6 @@
 utils.sketch.setup(() => {
-  const xCount = 1;
-  const yCount = 1;
+  const xCount = 5;
+  const yCount = 10;
   const size = (width + height) / 2 / (xCount + yCount) / 30;
 
   for (let x = 1; x <= xCount; x++) {
@@ -8,7 +8,7 @@ utils.sketch.setup(() => {
       shapes.push(
         new Spiral({
           size,
-          weightRange: [400, 20],
+          weightRange: [150, 20],
           opacityFactorRange: [10, 1],
           relativePosition: {
             x: x / (xCount + 1),
@@ -18,7 +18,7 @@ utils.sketch.setup(() => {
       );
     }
   }
-})
+},  { width: 768, height: 1368 });
 
 class Spiral {
   constructor(options) {
@@ -38,13 +38,17 @@ class Spiral {
   }
 
   draw(time, index) {
+        const f = 1;
+
     const { position, size, weightRange, opacityFactorRange } = this;
-    const hueCadence = index + time;
+    const hueCadence = index + time * f;
     push();
-    translate(position.x, position.y);
+    const x = map(sin(time + index), -1, 1, 0, position.x * 2);
+    const y = map(cos(time+index), -1, 1, 0, position.y * 2);
+    translate(x % width, y % height);
 
     const shadowsCount = 15;
-    const shadowIndexStep = 0.05;
+    const shadowIndexStep = 0.1;
 
     for (
       let shadowIndex = 0;
@@ -64,7 +68,7 @@ class Spiral {
         0,
         shadowsCount,
         map(
-          sin(shadowIndex + time * 3),
+          sin(shadowIndex + time * f),
           -1,
           1,
           opacityFactorRange[0],
@@ -83,7 +87,7 @@ class Spiral {
 
       // const i = map(sin(time/5 + index), -1, 1, 0, 100);
       const shadowOffset = radians(shadowIndex * 100);
-      const angleStep = TAU / 1.5//map(sin(time/2), -1, 1, 10, 1);
+      const angleStep = TAU / 1//map(sin(time/2), -1, 1, 10, 1);
       for (let angle = 0; angle < TAU; angle += angleStep) {
         push();
         // const vector = utils.converters.polar.vector(
@@ -94,12 +98,12 @@ class Spiral {
         // const s = map(sin(time + shadowIndex), -1, 1, size * 0.2, size * 1.5);
 
 
-        const a = angle + (index % 2 ? -time : time) * -1 + shadowOffset;
-        const w = map(sin(time), -1, 1, 10, 1);
-        const h = map(cos(time), -1, 1, 10, 1);
+        const a = angle + (index % 2 ? -time : time) * -f + shadowOffset;
+        const w = 1//map(sin(time*f), -1, 1, 10, 1);
+        const h = 1//map(cos(time*-f), -1, 1, 5, 1);
         const vector = createVector(
-          utils.converters.polar.get(sin, size, a*-h/10, 1),
-          utils.converters.polar.get(cos, size, a*w/10, 1)
+          utils.converters.polar.get(sin, size*w, a),
+          utils.converters.polar.get(cos, size*h, a)
         );
 
         beginShape();

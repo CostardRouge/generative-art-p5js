@@ -98,8 +98,8 @@ class Spiral {
         const w = map(sin(time), -1, 1, 10, 1);
         const h = map(cos(time), -1, 1, 10, 1);
         const vector = createVector(
-          utils.converters.polar.get(sin, size, a*-h/10, 1),
-          utils.converters.polar.get(cos, size, a*w/10, 1)
+          utils.converters.polar.get(sin, w, a*-h/10, 1),
+          utils.converters.polar.get(cos, h, a*w/10, 1)
         );
 
         beginShape();
