@@ -68,7 +68,7 @@ class Spiral {
           -1,
           1,
           opacityFactorRange[0],
-          opacityFactorRange[0]/60
+          opacityFactorRange[0]/50
         ),
         // opacityFactorRange[0],
         opacityFactorRange[1]/2
@@ -81,9 +81,9 @@ class Spiral {
 
       // translate(x, y);
 
-      // const i = map(sin(time/5 + index), -1, 1, 0, 100);
+      // const i = map(sin(time + index), -1, 1, -100, 100);
       const shadowOffset = radians(shadowIndex * 100);
-      const angleStep = TAU / 1.5//map(sin(time/2), -1, 1, 10, 1);
+      const angleStep = TAU / 2//map(sin(time/2), -1, 1, 10, 1);
       for (let angle = 0; angle < TAU; angle += angleStep) {
         push();
         // const vector = utils.converters.polar.vector(
@@ -94,12 +94,12 @@ class Spiral {
         // const s = map(sin(time + shadowIndex), -1, 1, size * 0.2, size * 1.5);
 
 
-        const a = angle + (index % 2 ? -time : time) * -1 + shadowOffset;
+        const a = angle + (index % 2 ? -time : time) * 0 + shadowOffset;
         const w = map(sin(time), -1, 1, 10, 1);
         const h = map(cos(time), -1, 1, 10, 1);
         const vector = createVector(
-          utils.converters.polar.get(sin, size, a*-h/10, 1),
-          utils.converters.polar.get(cos, size, a*w/10, 1)
+          utils.converters.polar.get(sin, size*w/3, a*h/10, 1),
+          utils.converters.polar.get(cos, size*h/3, a*w/10, 1)
         );
 
         beginShape();
