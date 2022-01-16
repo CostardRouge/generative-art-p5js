@@ -20,6 +20,7 @@ utils.sketch.setup(() => {
   }
 
   // pixelDensity(0.11)
+  noLoop();
 })
 
 class Spiral {
@@ -46,7 +47,7 @@ class Spiral {
     translate(position.x, position.y);
 
     const shadowsCount = 30;
-    const shadowIndexStep = 0.1;
+    const shadowIndexStep = 0.05;
 
     for (
       let shadowIndex = 0;
@@ -88,17 +89,17 @@ class Spiral {
       // translate(x, y);
 
       // const i = map(sin(time/5 + index), -1, 1, 0, 100);
-      const shadowOffset = 0; //radians(shadowIndex * i);
+      const shadowOffset = 0//radians(shadowIndex * 100);
       const vector = utils.converters.polar.vector(
         (index % 2 ? -time : time) * 0 + shadowOffset,
-        map(sin(0 + shadowIndex), -1, 1, -2, size * 1.5)
+        map(sin(time + shadowIndex), -1, 1, -2, size * 1.5)
       );
 
       strokeWeight(weight);
       // stroke(utils.colors.rainbow(hueCadence + angle, opacityFactor));
       // stroke(color(64 / opacityFactor));
 
-      // stroke(utils.colors.rainbow(2.1, opacityFactor));
+      // stroke(utils.colors.rainbow(1.8, opacityFactor*15));
       // point(vector.x, vector.y);
 
       // fill(utils.colors.rainbow(2.1, opacityFactor));
@@ -109,7 +110,7 @@ class Spiral {
         vector.y,
         utils.colors.rainbow(2.1, opacityFactor),
         weight / 2,
-        map(shadowIndex, 0, shadowsCount, 1500, 0)
+        1000//map(shadowIndex, 0, shadowsCount, 0, 500)
       );
     }
 

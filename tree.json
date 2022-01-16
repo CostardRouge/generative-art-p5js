@@ -21,6 +21,13 @@
          },
          "path": "sketches/genuary2022/genuary2022-day15"
       },
+      "genuary2022-day16": {
+         "meta": {
+            "name": "genuary2022-day16",
+            "folder": "genuary2022"
+         },
+         "path": "sketches/genuary2022/genuary2022-day16"
+      },
       "genuary2022-day2": {
          "meta": {
             "name": "genuary2022-day2",
