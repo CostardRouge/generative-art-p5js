@@ -59,19 +59,23 @@ class Spiral {
         weightRange[1]
       );
 
+        const f = map(shadowIndex, 0, shadowsCount, 1, 0.5);
+
       const opacityFactor = map(
         shadowIndex,
         0,
         shadowsCount,
         map(
-          sin(shadowIndex + time * 3),
+          // sin(shadowIndex + time * 5),
+          sin(shadowIndex / f + time * 5 + index / 2),
+
           -1,
           1,
           opacityFactorRange[0],
-          opacityFactorRange[0] / 2
+          opacityFactorRange[0] / 0.5
         ),
         // opacityFactorRange[0],
-        opacityFactorRange[1]/2
+        opacityFactorRange[1]
       );
 
       // const l = map(sin(time + shadowIndex), -1, 1, 0.5, 0.2)/5;
@@ -82,20 +86,20 @@ class Spiral {
       // translate(x, y);
 
       const i = map(sin(time/5 + index), -1, 1, 0, 100);
-      const shadowOffset = radians(shadowIndex * i);
+      const shadowOffset = 0//radians(shadowIndex);
       const angleStep = TAU / 1//map(sin(time/2), -1, 1, 10, 1);
       for (let angle = 0; angle < TAU; angle += angleStep) {
         push();
         const vector = utils.converters.polar.vector(
           angle + (index % 2 ? -time : time) * 0 + shadowOffset,
-          map(sin(time + shadowIndex), -1, 1, size * 0.2, size * 1.5)
+          map(sin(time + shadowIndex), -1, 1, -2, size * 1.5)
         );
 
         beginShape();
         strokeWeight(weight);
-        stroke(
-          utils.colors.rainbow(hueCadence + angle, opacityFactor),
-        );
+        // stroke(utils.colors.rainbow(hueCadence + angle, opacityFactor));
+        stroke(utils.colors.rainbow(2.1, opacityFactor));
+        // print(hueCadence + angle);
 
         vertex(vector.x, vector.y);
         vertex(vector.x, vector.y);

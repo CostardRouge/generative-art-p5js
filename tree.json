@@ -14,6 +14,13 @@
          },
          "path": "sketches/genuary2022/genuary2022-day13"
       },
+      "genuary2022-day15": {
+         "meta": {
+            "name": "genuary2022-day15",
+            "folder": "genuary2022"
+         },
+         "path": "sketches/genuary2022/genuary2022-day15"
+      },
       "genuary2022-day2": {
          "meta": {
             "name": "genuary2022-day2",
@@ -42,13 +49,6 @@
          },
          "path": "sketches/genuary2022/genuary2022-day8"
       },
-      "genuary2022-day8-aberration": {
-         "meta": {
-            "name": "genuary2022-day8-aberration",
-            "folder": "genuary2022"
-         },
-         "path": "sketches/genuary2022/genuary2022-day8-aberration"
-      },
       "genuary2022-day8-polar-worm": {
          "meta": {
             "name": "genuary2022-day8-polar-worm",
@@ -56,12 +56,12 @@
          },
          "path": "sketches/genuary2022/genuary2022-day8-polar-worm"
       },
-      "genuary2022-day8-wave": {
+      "genuary2022-day8-silk": {
          "meta": {
-            "name": "genuary2022-day8-wave",
+            "name": "genuary2022-day8-silk",
             "folder": "genuary2022"
          },
-         "path": "sketches/genuary2022/genuary2022-day8-wave"
+         "path": "sketches/genuary2022/genuary2022-day8-silk"
       },
       "genuary2022-game": {
          "meta": {
