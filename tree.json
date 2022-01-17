@@ -28,6 +28,13 @@
          },
          "path": "sketches/genuary2022/genuary2022-day16"
       },
+      "genuary2022-day17": {
+         "meta": {
+            "name": "genuary2022-day17",
+            "folder": "genuary2022"
+         },
+         "path": "sketches/genuary2022/genuary2022-day17"
+      },
       "genuary2022-day2": {
          "meta": {
             "name": "genuary2022-day2",
@@ -220,13 +227,6 @@
          },
          "path": "sketches/pulse/pulse-v1-guts"
       },
-      "pulse-v10-curtain": {
-         "meta": {
-            "name": "pulse-v10-curtain",
-            "folder": "pulse"
-         },
-         "path": "sketches/pulse/pulse-v10-curtain"
-      },
       "pulse-v2-kraken": {
          "meta": {
             "name": "pulse-v2-kraken",
@@ -276,12 +276,12 @@
          },
          "path": "sketches/pulse/pulse-v8-quadra"
       },
-      "pulse-v9-flow-fileld": {
+      "pulse-v9-curtain": {
          "meta": {
-            "name": "pulse-v9-flow-fileld",
+            "name": "pulse-v9-curtain",
             "folder": "pulse"
          },
-         "path": "sketches/pulse/pulse-v9-flow-fileld"
+         "path": "sketches/pulse/pulse-v9-curtain"
       }
    },
    "semaphore": {
