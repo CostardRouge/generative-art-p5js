@@ -19,8 +19,13 @@ utils.sketch.setup(() => {
     }
   }
 
+  // utils.events.register("windowResized", function () {
+  //   // radialNoise.target = undefined;
+  //   console.log("called", radialNoise.target);
+  // });
+
   // pixelDensity(0.11)
-  noLoop();
+  // noLoop();
 })
 
 class Spiral {
@@ -62,7 +67,7 @@ class Spiral {
         weightRange[1]
       );
 
-      const f = 1; //map(shadowIndex, 0, shadowsCount, 1, 0.5);
+      const f = 1//map(shadowIndex, 0, shadowsCount, 1, 0.5);
 
       const opacityFactor = map(
         shadowIndex,
@@ -70,7 +75,7 @@ class Spiral {
         shadowsCount,
         map(
           // sin(shadowIndex + time * 5),
-          sin(shadowIndex / f + time * 3 + index / 2),
+          sin(shadowIndex / f + time * 5 + index / 2),
 
           -1,
           1,
@@ -92,26 +97,26 @@ class Spiral {
       const shadowOffset = 0//radians(shadowIndex * 100);
       const vector = utils.converters.polar.vector(
         (index % 2 ? -time : time) * 0 + shadowOffset,
-        map(sin(time + shadowIndex), -1, 1, -2, size * 1.5)
+        map(sin(time + shadowIndex), -1, 1, 0, size * 1.5)
       );
 
       strokeWeight(weight);
-      // stroke(utils.colors.rainbow(hueCadence + angle, opacityFactor));
+      // stroke(utils.colors.rainbow(hueCadence + shadowIndex/16, opacityFactor));
       // stroke(color(64 / opacityFactor));
 
-      // stroke(utils.colors.rainbow(1.8, opacityFactor*15));
-      // point(vector.x, vector.y);
+      stroke(utils.colors.rainbow(2, opacityFactor));
+      point(vector.x, vector.y);
 
       // fill(utils.colors.rainbow(2.1, opacityFactor));
       // circle(0, 0, weight);
       
-      noiseCircle(
-        vector.x,
-        vector.y,
-        utils.colors.rainbow(2.1, opacityFactor),
-        weight / 2,
-        1000//map(shadowIndex, 0, shadowsCount, 0, 500)
-      );
+      // noiseCircle(
+      //   vector.x,
+      //   vector.y,
+      //   utils.colors.rainbow(2.1, opacityFactor),
+      //   weight / 2,
+      //   1000//map(shadowIndex, 0, shadowsCount, 0, 500)
+      // );
     }
 
     pop();
@@ -136,27 +141,33 @@ function noiseCircle(x, y, color, size, count) {
 const getPixelIndex = (x, y, width, offset = 0, density = 1) =>
   4 * (y * density * (width * density) + x * density) + offset;
 
-function noisePixels(source, step = 10) {
-  source.loadPixels();
+function radialNoise(step = 10, offset = 3, minStroke = 1, maxStroke = 10, stroke = color(0)) {
+  if (!this.target) {
+    this.target = createGraphics(width, height);
+  } else if (this.target) {
+    image(this.target, 0, 0);
+    return;
+  }
+
+  this.target.stroke(stroke);
 
   for (let y = 0; y < height; y += step) {
     for (let x = 0; x < width; x += step) {
-      const alpha = getPixelIndex(x, y, source.width, 3, 2);
+      const d = dist(x, y, width / 2, height / 2);
 
-      // source.pixels[pixelAlphaIndex] = 255;
-      source.pixels[alpha] = 0;//random(1, 255);
+      this.target.strokeWeight(map(d, 0, width, minStroke, maxStroke));
 
-      // set(x, y, color(random(1, 255), random(1, 255), random(1, 255)));
+      this.target.point(
+        x + random(-offset, offset),
+        y + random(-offset, offset)
+      );
     }
   }
-
-  source.updatePixels();
 }
 
 utils.sketch.draw(time => {
   background(0);
-  // noSmooth();
 
   shapes.forEach((shape, index) => shape.draw(time, index));
-  // noisePixels(window, 1.1);
+  radialNoise(2, 1, 0.5, 5, color(0));
 })
