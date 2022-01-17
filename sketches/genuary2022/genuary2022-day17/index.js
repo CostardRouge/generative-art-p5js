@@ -8,7 +8,7 @@ utils.sketch.setup(() => {
       shapes.push(
         new Spiral({
           size,
-          weightRange: [400, 1],
+          weightRange: [600 , 20],
           opacityFactorRange: [10, 1],
           relativePosition: {
             x: x / (xCount + 1),
@@ -19,25 +19,6 @@ utils.sketch.setup(() => {
     }
   }
 })
-
-function easeInElastic(x) {
-  const c4 = (2 * Math.PI) / 3;
-
-  return x === 0
-    ? 0
-    : x === 1
-    ? 1
-    : -pow(2, 10 * x - 10) * sin((x * 10 - 10.75) * c4);
-}
-
-function easeInOutBack(x) {
-  const c1 = 1.70158;
-  const c2 = c1 * 1.525;
-
-  return x < 0.5
-    ? (pow(2 * x, 2) * ((c2 + 1) * 2 * x - c2)) / 2
-    : (pow(2 * x - 2, 2) * ((c2 + 1) * (x * 2 - 2) + c2) + 2) / 2;
-}
 
 class Spiral {
   constructor(options) {
@@ -62,8 +43,8 @@ class Spiral {
     push();
     translate(position.x, position.y);
 
-    const shadowsCount = 70;
-    const shadowIndexStep = 0.05;
+    const shadowsCount = 30;
+    const shadowIndexStep = 0.02;
 
     for (
       let shadowIndex = 0;
@@ -86,43 +67,34 @@ class Spiral {
           sin(shadowIndex + time * 3),
           -1,
           1,
-          opacityFactorRange[1]/2 + opacityFactorRange[1]/2,
-          opacityFactorRange[0] * 15
+          opacityFactorRange[0],
+          opacityFactorRange[0] * 25
         ),
-        opacityFactorRange[1] / 2
+        // opacityFactorRange[0],
+        opacityFactorRange[1]/2
       );
 
-      // const l = map(sin(time + shadowIndex), -1, 1, 0.5, 0.2) / 3;
-      // const x = map(easeInElastic(map(cos(time), -1, 1, 0, 1)), 0, 1, l, -l);
-      // const y = map(easeInElastic(map(sin(time), -1, 1, 0, 1)), 0, 1, l, -l);
+      // const l = map(sin(time + shadowIndex), -1, 1, 0.5, 0.2)*2;
+      // const indexCoefficient = shadowIndex;
+      // const x = map(sin(time * -2 + indexCoefficient), -1, 1, -l, l);
+      // const y = map(cos(time * 2 + indexCoefficient), -1, 1, -l, l);
 
       // translate(x, y);
 
-      const t = map(sin(time), -1, 1, -50, 50);
-      const i = map(
-        sin(time + shadowIndex),
-        -1,
-        1,
-        map(cos(time), -1, 1, -t, t),
-        map(sin(time), -1, 1, t, -t)
-      );
-      const shadowOffset = radians(i);
-      const angleStep = TAU / 5//map(sin(time), -1, 1, 3, 5);
+      const i = map(sin(time + index), -1, 1, 0, 10);
+      const shadowOffset = radians(shadowIndex * i);
+      const angleStep = TAU / 3//map(sin(time/2), -1, 1, 10, 1);
       for (let angle = 0; angle < TAU; angle += angleStep) {
         push();
         const vector = utils.converters.polar.vector(
-          angle + (index % 2 ? -time : time) * 0 + 0,
-          size//map(sin(time + shadowIndex), -1, 1, size * 0.2, size * 1.2)
+          angle + (index % 2 ? -time : time) * 0 + shadowOffset,
+          map(sin(time + shadowIndex), -1, 1, size * 0.1, size * 1.5)
         );
 
         beginShape();
-        strokeWeight(weight+i);
+        strokeWeight(weight);
         stroke(
-          utils.colors.rainbow(
-            hueCadence + shadowIndex * 2 + angle,
-            opacityFactor / 2
-          )
-          // utils.colors.rainbow(hueCadence + angle, opacityFactor / 2)
+          utils.colors.rainbow(hueCadence + angle, opacityFactor),
         );
 
         vertex(vector.x, vector.y);
@@ -137,8 +109,8 @@ class Spiral {
   }
 }
 
-utils.sketch.draw(time => {
+utils.sketch.draw((time) => {
   background(0);
 
   shapes.forEach((shape, index) => shape.draw(time, index));
-})
+});
