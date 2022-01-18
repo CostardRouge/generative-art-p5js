@@ -54,7 +54,7 @@ class Spiral {
     let { position, size, start, end } = this;
 
     const hueCadence = index + time;
-    const waveAmplitude = size / 2.5; //map(sin(time), -1, 1, size / 8, size / 7.5);
+    const waveAmplitude = size / 2 //map(sin(time), -1, 1, size / 8, size / 1);
 
     target.push();
     target.translate(position.x, position.y);
@@ -62,12 +62,12 @@ class Spiral {
     const lerpStep = 1 / 300; //map(mouseY, height, 0, 1, 200, true);
 
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
-      const angle = map(lerpIndex, 0, 1, -PI, PI);
+      const angle = map(lerpIndex, 0, 0.5, PI, -PI);
       const lerpPosition = p5.Vector.lerp(start, end, lerpIndex);
-      const cadence = map(sin(-time + lerpIndex + index), -1, 1, -4, 4);
-      const waveIndex = angle * cadence;
-      const xOffset = map(sin(waveIndex), -1, 1, -waveAmplitude, waveAmplitude);
-      const yOffset = map(cos(waveIndex), -1, 1, -waveAmplitude, waveAmplitude);
+      let waveIndex = angle * sin(-time + lerpIndex + index);
+      waveIndex = angle + time*2;
+      const xOffset = map(sin(waveIndex), 0, 1, -waveAmplitude, waveAmplitude);
+      const yOffset = map(cos(waveIndex), 1, 0, -waveAmplitude, waveAmplitude);
 
       target.fill(
         map(sin(angle + hueCadence), -1, 1, 0, 360),
