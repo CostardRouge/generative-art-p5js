@@ -3,7 +3,10 @@ let target = null;
 function setup() {
     // utils.canvas.create(utils.presets.FILL);
     // utils.canvas.create(utils.presets.SQUARE.RETINA);
-    utils.canvas.create(utils.presets.SQUARE.HD);
+//     utils.canvas.create(utils.presets.SQUARE.HD);
+    utils.canvas.create({ width: 768, height: 1368 });
+    utils.canvas.create({ width: 768/2, height: 1368/2 });
+    
     utils.events.fullScreenOnDoubleClick();
     utils.events.extendCanvasOnResize();
     utils.events.pauseOnSpaceKeyPressed();
@@ -54,29 +57,71 @@ class Spiral {
     let { position, size, start, end } = this;
 
     const hueCadence = index + time;
-    const waveAmplitude = size / 2 //map(sin(time), -1, 1, size / 8, size / 1);
+    const waveAmplitude = size / 1.5//map(sin(time), -1, 1, 1, 2);
 
     target.push();
     target.translate(position.x, position.y);
 
-    const lerpStep = 1 / 300; //map(mouseY, height, 0, 1, 200, true);
+    const lerpStep = 1 / 350; //map(mouseY, height, 0, 1, 200, true);
+
 
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
-      const angle = map(lerpIndex, 0, 0.5, PI, -PI);
+
+//       const f = 15//map(lerpIndex, 0, 1, 1, 30)
+//       const opacityFactor = map(
+//         lerpIndex,
+//         0,
+//         1,
+//         map(
+//           sin(lerpIndex*f + time * 3),
+//           -1,
+//           1,
+//           1,
+//           2
+//         ),
+//         1
+//       );
+
+
+      let angle = map(lerpIndex, 0, 1.5, map(sin(time/2), -1, 1, -TAU, TAU), -map(cos(time/2), -1, 1, -TAU, TAU));
+      //  angle = map(lerpIndex, 0, 1.5, sin(lerpIndex) * TAU, cos(lerpIndex) * TAU);
+      //  angle = map(lerpIndex, 0, 1/5, cos(TAU*lerpIndex), sin(TAU*lerpIndex));
+      //  angle = map(
+      //    lerpIndex,
+      //    0,
+      //    1.5,
+      //    sin(lerpIndex) * TAU,
+      //    cos(lerpIndex) * TAU
+      //  );
+      //  angle = map(
+      //    lerpIndex,
+      //    0,
+      //    1 / map(sin(time), -1, 1, -8, 8),
+      //    cos(lerpIndex * PI),
+      //    sin(lerpIndex * PI)
+      //  );
+       angle = map(
+         lerpIndex,
+         0,
+         1 / map(sin(time), -1, 1, -8, 8),
+         cos(lerpIndex * map(cos(time), -1, 1, -PI, PI)),
+         sin(lerpIndex * map(sin(time), -1, 1, -PI, PI))
+       );
+//       angle = lerpIndex*12;
       const lerpPosition = p5.Vector.lerp(start, end, lerpIndex);
       let waveIndex = angle * sin(-time + lerpIndex + index);
-      waveIndex = angle + time*2;
-      const xOffset = map(sin(waveIndex), 0, 1, -waveAmplitude, waveAmplitude);
-      const yOffset = map(cos(waveIndex), 1, 0, -waveAmplitude, waveAmplitude);
+      waveIndex = angle + time * 2;
+      const xOffset = map(sin(waveIndex), -1, 1, -waveAmplitude, waveAmplitude);
+      const yOffset = map(cos(waveIndex), 1, -1, -waveAmplitude, waveAmplitude);
 
       target.fill(
-        map(sin(angle + hueCadence), -1, 1, 0, 360),
-        map(cos(angle + hueCadence), -1, 1, 0, 255),
-        map(sin(angle + hueCadence), -1, 1, 255, 0)
+        map(sin(waveIndex + waveIndex), -1, 1, 0, 255) / 1,
+        map(cos(angle - hueCadence), -1, 1, 0, 255) / 1,
+        map(sin(angle + hueCadence), -1, 1, 255, 0) / 1
       );
 
-      target.circle(lerpPosition.x + xOffset, lerpPosition.y + yOffset, 100);
-      target.circle(lerpPosition.x - xOffset, lerpPosition.y - yOffset, 100);
+      target.circle(lerpPosition.x + xOffset, lerpPosition.y + yOffset, 100/1.2);
+      target.circle(lerpPosition.x - xOffset, lerpPosition.y - yOffset, 100/1.2);
     }
 
     target.pop();
@@ -88,3 +133,4 @@ utils.sketch.draw( time => {
 
   shapes.forEach((shape, index) => shape.draw(time, index, window));
 });
+// 
