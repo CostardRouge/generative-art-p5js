@@ -16,40 +16,24 @@ function setup() {
     noStroke();
 
   const xCount = 1;
-  const yCount = 3;
+  const yCount = 1;
   const size = (width + height) / 2 / (xCount + yCount) / 3.5;
 
-  // for (let x = 1; x <= xCount; x++) {
-  //   for (let y = 1; y <= yCount; y++) {
-  //     shapes.push(
-  //       new Spiral({
-  //         size,
-  //         start: createVector(0, -height / 3),
-  //         end: createVector(0, height / 3),
-  //         relativePosition: {
-  //           x: x / (xCount + 1),
-  //           y: y / (yCount + 1),
-  //         },
-  //       })
-  //     );
-  //   }
-  // }
-
-   for (let x = 1; x <= xCount; x++) {
-     for (let y = 1; y <= yCount; y++) {
-       shapes.push(
-         new Spiral({
-           size,
-           start: createVector(-width / 3, 0),
-           end: createVector(width / 3, 0),
-           relativePosition: {
-             x: x / (xCount + 1),
-             y: y / (yCount + 1),
-           },
-         })
-       );
-     }
-   }
+  for (let x = 1; x <= xCount; x++) {
+    for (let y = 1; y <= yCount; y++) {
+      shapes.push(
+        new Spiral({
+          size,
+          start: createVector(0, -height / 3),
+          end: createVector(0, height / 3),
+          relativePosition: {
+            x: x / (xCount + 1),
+            y: y / (yCount + 1),
+          },
+        })
+      );
+    }
+  }
 }
 
 class Spiral {
@@ -104,14 +88,8 @@ class Spiral {
         map(sin(time / 2), -1, 1, -TAU, TAU),
         -map(cos(time / 2), -1, 1, -TAU, TAU)
       );
-      // angle = lerpIndex * 10;
-      // angle = map(
-      //   lerpIndex,
-      //   0,
-      //   1.5,
-      //   sin(lerpIndex) * TAU,
-      //   cos(lerpIndex) * TAU
-      // );
+      angle = lerpIndex * 10;
+      //  angle = map(lerpIndex, 0, 1.5, sin(lerpIndex) * TAU, cos(lerpIndex) * TAU);
       //  angle = map(lerpIndex, 0, 1/5, cos(TAU*lerpIndex), sin(TAU*lerpIndex));
       //  angle = map(
       //    lerpIndex,
@@ -120,13 +98,13 @@ class Spiral {
       //    sin(lerpIndex) * TAU,
       //    cos(lerpIndex) * TAU
       //  );
-       angle = map(
-         lerpIndex,
-         0,
-         1 / map(sin(time + index), -1, 1, -8, 8),
-         cos(lerpIndex * PI),
-         sin(lerpIndex * PI)
-       );
+      //  angle = map(
+      //    lerpIndex,
+      //    0,
+      //    1 / map(sin(time), -1, 1, -8, 8),
+      //    cos(lerpIndex * PI),
+      //    sin(lerpIndex * PI)
+      //  );
       //  angle = map(
       //    lerpIndex,
       //    0,
@@ -134,7 +112,7 @@ class Spiral {
       //    cos(lerpIndex * map(cos(time), -1, 1, -PI, PI)),
       //    sin(lerpIndex * map(sin(time), -1, 1, -PI, PI))
       //  );
-      // angle = lerpIndex * 12;
+      //       angle = lerpIndex*12;
       const lerpPosition = p5.Vector.lerp(start, end, lerpIndex);
       let waveIndex = angle * sin(-time + lerpIndex + index);
       waveIndex = angle + time * 2;
@@ -142,34 +120,15 @@ class Spiral {
       const yOffset = map(cos(waveIndex), 1, -1, -waveAmplitude, waveAmplitude);
 
       target.fill(
-        map(sin(angle + lerpIndex), -1, 1, 0, 360) / 1,
-        map(cos(angle + hueCadence), -1, 1, 0, 255) / 1,
+        map(sin(angle + hueCadence), -1, 1, 0, 360) / 1,
+        map(cos(angle - hueCadence), -1, 1, 0, 255) / 1,
         map(sin(angle + hueCadence), -1, 1, 255, 0) / 1
       );
 
-      let s = 30;
+      let s = sin(waveIndex + time ) * 300 * cos(waveIndex + time);
 
-      // target.translate(map(sin(waveIndex), -1, 1, -1, 1), 0);
-
-      const c = map(sin(time+waveIndex), -1, 1, 2, 5);
-
-      for (let i = 0; i < c; i++) {
-        const x = lerp(
-          lerpPosition.x + xOffset,
-          lerpPosition.x - xOffset,
-          i / c
-        );
-        const y = lerp(
-          lerpPosition.y + yOffset,
-          lerpPosition.y - yOffset,
-          i / c
-        );
-
-        target.circle(x, y, s);
-      }
-
-      // target.circle(lerpPosition.x + xOffset, lerpPosition.y + yOffset, s);
-      // target.circle(lerpPosition.x - xOffset, lerpPosition.y - yOffset, s);
+      target.circle(lerpPosition.x + xOffset, lerpPosition.y + yOffset, s);
+      target.circle(lerpPosition.x - xOffset, lerpPosition.y - yOffset, s);
     }
 
     target.pop();
