@@ -1,4 +1,76 @@
 {
+   "accident": {
+      "accident-v1-bubble": {
+         "meta": {
+            "name": "accident-v1-bubble",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v1-bubble"
+      },
+      "accident-v2-rotating-bubble": {
+         "meta": {
+            "name": "accident-v2-rotating-bubble",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v2-rotating-bubble"
+      },
+      "accident-v3-lava-lamp": {
+         "meta": {
+            "name": "accident-v3-lava-lamp",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v3-lava-lamp"
+      },
+      "accident-v4-crack-fire": {
+         "meta": {
+            "name": "accident-v4-crack-fire",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v4-crack-fire"
+      },
+      "accident-v4-cross-fire": {
+         "meta": {
+            "name": "accident-v4-cross-fire",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v4-cross-fire"
+      },
+      "accident-v4-fire-angles-test": {
+         "meta": {
+            "name": "accident-v4-fire-angles-test",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v4-fire-angles-test"
+      },
+      "accident-v5-chandelier": {
+         "meta": {
+            "name": "accident-v5-chandelier",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v5-chandelier"
+      },
+      "accident-v6-chandelier-warp": {
+         "meta": {
+            "name": "accident-v6-chandelier-warp",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v6-chandelier-warp"
+      },
+      "accident-v7-chewing-gum-strings": {
+         "meta": {
+            "name": "accident-v7-chewing-gum-strings",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v7-chewing-gum-strings"
+      },
+      "accident-v8-circle": {
+         "meta": {
+            "name": "accident-v8-circle",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v8-circle"
+      }
+   },
    "genuary2022": {
       "genuary2022-day1": {
          "meta": {
