@@ -53,17 +53,60 @@ class Spiral {
     this.calculateRelativePosition();
   }
 
+  getAngle(time, index, lerpIndex) {
+    let angles = [
+      lerpIndex * 1,
+      lerpIndex * 2,
+      lerpIndex * 4,
+      lerpIndex * 8,
+      lerpIndex * 16,
+      lerpIndex * 32,
+
+      map(
+        lerpIndex,
+        0,
+        1.5,
+        map(sin(time / 2), -1, 1, -TAU, TAU),
+        -map(cos(time / 2), -1, 1, -TAU, TAU)
+      ),
+      map(lerpIndex, 0, 1.5, sin(lerpIndex) * TAU, cos(lerpIndex) * TAU),
+      map(lerpIndex, 0, 1 / 5, cos(TAU * lerpIndex), sin(TAU * lerpIndex)),
+      map(lerpIndex, 0, 1.5, sin(lerpIndex) * TAU, cos(lerpIndex) * TAU),
+      map(
+        lerpIndex,
+        0,
+        1 / map(sin(time + index), -1, 1, -8, 8),
+        cos(lerpIndex * PI),
+        sin(lerpIndex * PI)
+      ),
+      map(
+        lerpIndex,
+        0,
+        1 / map(sin(time), -1, 1, -8, 8),
+        cos(lerpIndex * map(cos(time), -1, 1, -PI, PI)),
+        sin(lerpIndex * map(sin(time), -1, 1, -PI, PI))
+      ),
+      map(
+        lerpIndex + sin(time),
+        0,
+        1 / 2,
+        cos(TAU * lerpIndex),
+        sin(TAU * lerpIndex)
+      ),
+    ];
+    return utils.mappers.circularIndex(time, angles);
+  }
+
   draw(time, index, target) {
     let { position, size, start, end } = this;
 
     const hueCadence = index + time;
-    const waveAmplitude = size / map(sin(time*2), -1, 1, 1, 3);
+    const waveAmplitude = size / map(sin(time * 2), -1, 1, 1, 3);
 
     target.push();
     target.translate(position.x, position.y);
 
     const lerpStep = 1 / 350; //map(mouseY, height, 0, 1, 200, true);
-
 
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
       //       const f = 15//map(lerpIndex, 0, 1, 1, 30)
@@ -81,53 +124,8 @@ class Spiral {
       //         1
       //       );
 
-      let angles = [
-        map(
-          lerpIndex,
-          0,
-          1.5,
-          map(sin(time / 2), -1, 1, -TAU, TAU),
-          -map(cos(time / 2), -1, 1, -TAU, TAU)
-        ),
-       lerpIndex * 12,
-        map(
-          lerpIndex,
-          0,
-          1.5,
-          sin(lerpIndex) * TAU,
-          cos(lerpIndex) * TAU
-        ),
-        map(lerpIndex, 0, 1/5, cos(TAU*lerpIndex), sin(TAU*lerpIndex)),
-        map(
-         lerpIndex,
-         0,
-         1.5,
-         sin(lerpIndex) * TAU,
-         cos(lerpIndex) * TAU
-       ),
-        map(
-        lerpIndex,
-         0,
-         1 / map(sin(time + index), -1, 1, -8, 8),
-         cos(lerpIndex * PI),
-         sin(lerpIndex * PI)
-         ),
-        map(
-         lerpIndex,
-         0,
-         1 / map(sin(time), -1, 1, -8, 8),
-         cos(lerpIndex * map(cos(time), -1, 1, -PI, PI)),
-         sin(lerpIndex * map(sin(time), -1, 1, -PI, PI))
-       ),
-        map(
-        lerpIndex + sin(time),
-        0,
-        1/2,
-        cos(TAU * lerpIndex),
-        sin(TAU * lerpIndex)
-      )
-      ]
-      let angle = utils.mappers.circularIndex(time, angles);
+      const angle = this.getAngle(time, index, lerpIndex);
+
       const lerpPosition = p5.Vector.lerp(start, end, lerpIndex);
       let waveIndex = angle * sin(-time + lerpIndex + index);
       waveIndex = angle + time * 2;
@@ -142,18 +140,18 @@ class Spiral {
 
       let s = sin(waveIndex + time) * 150 * sin(waveIndex + time);
 
-      target.translate(map(sin(lerpIndex*20), -1, 1, -1, 1), 0);
+      // target.translate(map(sin(lerpIndex * 20), -1, 1, -1, 1), 0);
 
-      const c = 5//map(sin(time+waveIndex), -1, 1, 2, 5);
+      const c = map(sin(time+waveIndex), -1, 1, 2, 5);
 
       for (let i = 0; i < c; i++) {
         const x = lerp(
-          lerpPosition.y - xOffset,
+          lerpPosition.x - xOffset,
           lerpPosition.x + xOffset,
           i / c
         );
         const y = lerp(
-          lerpPosition.x - yOffset,
+          lerpPosition.y - yOffset,
           lerpPosition.y + yOffset,
           i / c
         );
