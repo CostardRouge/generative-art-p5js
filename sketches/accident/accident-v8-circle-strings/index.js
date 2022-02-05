@@ -55,7 +55,12 @@ class Spiral {
 
   getAngle(time, index, lerpIndex) {
     let angles = [
-      lerpIndex * 10,
+      lerpIndex * 1,
+      lerpIndex * 2,
+      lerpIndex * 4,
+      lerpIndex * 8,
+      lerpIndex * 16,
+      lerpIndex * 32,
 
       map(
         lerpIndex,
@@ -89,6 +94,9 @@ class Spiral {
         sin(TAU * lerpIndex)
       ),
     ];
+
+    return angles[ 1 ]
+
     return utils.mappers.circularIndex(time, angles);
   }
 
@@ -96,7 +104,7 @@ class Spiral {
     let { position, size, start, end } = this;
 
     const hueCadence = index + time;
-    const waveAmplitude = size / map(sin(time * 2), -1, 1, 1, 3);
+    const waveAmplitude = size * 2;
 
     target.push();
     target.translate(position.x, position.y);
@@ -104,50 +112,50 @@ class Spiral {
     const lerpStep = 1 / 350; //map(mouseY, height, 0, 1, 200, true);
 
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
-      //       const f = 15//map(lerpIndex, 0, 1, 1, 30)
-      //       const opacityFactor = map(
-      //         lerpIndex,
-      //         0,
-      //         1,
-      //         map(
-      //           sin(lerpIndex*f + time * 3),
-      //           -1,
-      //           1,
-      //           1,
-      //           2
-      //         ),
-      //         1
-      //       );
+    const f = 10//map(lerpIndex, 0, 1, 1, 10)
+      const opacityFactor = map(
+        lerpIndex,
+        0,
+        1,
+        map(
+          sin(lerpIndex*f + time * 3),
+          -1,
+          1,
+          1,
+          10
+        ),
+        1
+      );
 
-      const angle = this.getAngle(time, index, lerpIndex);
+      const angle = this.getAngle(time / 2, index, lerpIndex);
 
-      const lerpPosition = p5.Vector.lerp(start, end, lerpIndex);
+      const lerpPosition = p5.Vector.lerp(start, end, 0.5);
       let waveIndex = angle * sin(-time + lerpIndex + index);
       waveIndex = angle + time * 2;
       const xOffset = map(sin(waveIndex), -1, 1, -waveAmplitude, waveAmplitude);
       const yOffset = map(cos(waveIndex), 1, -1, -waveAmplitude, waveAmplitude);
 
       target.fill(
-        map(sin(angle + hueCadence), -1, 1, 0, 360) / 1,
-        map(cos(angle - hueCadence), -1, 1, 0, 255) / 1,
-        map(sin(angle + hueCadence), -1, 1, 255, 0) / 1
+        map(sin(angle + hueCadence), -1, 1, 0, 360) / opacityFactor,
+        map(cos(angle - hueCadence), -1, 1, 0, 255) / opacityFactor,
+        map(sin(angle + hueCadence), -1, 1, 255, 0) / opacityFactor
       );
 
-      let s = sin(waveIndex + time) * 150 * sin(waveIndex + time);
+      let s = map(sin(time + waveIndex * 2), -1, 1, 15, 150);
 
-      // target.translate(map(sin(lerpIndex * 20), -1, 1, -1, 1), 0);
+      // target.translate(map(sin(waveIndex), -1, 1, -1, 1), 0);
 
-      const c = map(sin(time+waveIndex), -1, 1, 2, 5);
+      const c = map(sin(time + waveIndex), -1, 1, 2, 10);
 
       for (let i = 0; i < c; i++) {
         const x = lerp(
-          lerpPosition.x - xOffset,
           lerpPosition.x + xOffset,
+          lerpPosition.x - xOffset,
           i / c
         );
         const y = lerp(
-          lerpPosition.y - yOffset,
           lerpPosition.y + yOffset,
+          lerpPosition.y - yOffset,
           i / c
         );
 
