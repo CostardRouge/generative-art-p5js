@@ -49,12 +49,26 @@
          },
          "path": "sketches/accident/accident-v5-chandelier"
       },
+      "accident-v6-chandelier-vertical-warp": {
+         "meta": {
+            "name": "accident-v6-chandelier-vertical-warp",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v6-chandelier-vertical-warp"
+      },
       "accident-v6-chandelier-warp": {
          "meta": {
             "name": "accident-v6-chandelier-warp",
             "folder": "accident"
          },
          "path": "sketches/accident/accident-v6-chandelier-warp"
+      },
+      "accident-v6-chandelier-warps": {
+         "meta": {
+            "name": "accident-v6-chandelier-warps",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v6-chandelier-warps"
       },
       "accident-v7-chewing-gum-strings": {
          "meta": {
@@ -69,6 +83,20 @@
             "folder": "accident"
          },
          "path": "sketches/accident/accident-v8-circle"
+      },
+      "accident-v8-circle-strings": {
+         "meta": {
+            "name": "accident-v8-circle-strings",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v8-circle-strings"
+      },
+      "accident-v8-eccentric-dna": {
+         "meta": {
+            "name": "accident-v8-eccentric-dna",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v8-eccentric-dna"
       }
    },
    "genuary2022": {
