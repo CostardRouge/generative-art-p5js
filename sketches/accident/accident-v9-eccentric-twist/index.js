@@ -57,13 +57,12 @@ class Spiral {
     let { position, size, start, end } = this;
 
     const hueCadence = index + time;
-    const waveAmplitude = size / map(sin(time*2), -1, 1, 1, 2);
+    const waveAmplitude = size / map(sin(time*2), -1, 1, 1, 5);
 
     target.push();
     target.translate(position.x, position.y);
 
-    const lerpStep = 1 / 350; //map(mouseY, height, 0, 1, 200, true);
-
+    const lerpStep = 1 / 1000; //map(mouseY, height, 0, 1, 200, true);
 
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
       //       const f = 15//map(lerpIndex, 0, 1, 1, 30)
@@ -96,20 +95,20 @@ class Spiral {
       //   sin(lerpIndex) * TAU,
       //   cos(lerpIndex) * TAU
       // );
+       angle = map(
+         lerpIndex,
+         0,
+         map(cos(time * 2), -1, 1, 0.1, 10),
+         cos(time * lerpIndex),
+         sin(time * lerpIndex)
+       );
       //  angle = map(
-      //    lerpIndex,
-      //    0,
-      //    1 / 2,
+      //    lerpIndex + sin(time+angle) + cos(-time*5+0),
+      //    -1,
+      //    1,
       //    cos(TAU * lerpIndex),
       //    sin(TAU * lerpIndex)
       //  );
-       angle = map(
-         lerpIndex + sin(time),
-         0,
-         1/2,
-         cos(TAU * lerpIndex),
-         sin(TAU * lerpIndex)
-       );
       //  angle = map(
       //    lerpIndex + sin(time),
       //    0,
@@ -141,18 +140,18 @@ class Spiral {
       // angle = lerpIndex * 12;
 
 
-      const f = map(lerpIndex, 0, 1, 1, 15);
+      const f = map(lerpIndex, 0, 1, 1, 50);
       const opacityFactor = map(
         lerpIndex,
         0,
         1,
-        map(sin(lerpIndex * f + time * 5), -1, 1, 1, 10),
+        map(sin(lerpIndex * 10 + time + f), -1, 1, 1, 10),
         1
       );
 
       const lerpPosition = p5.Vector.lerp(start, end, lerpIndex);
       let waveIndex = angle * sin(-time + lerpIndex + index);
-      waveIndex = angle + time * 2;
+      waveIndex = angle - time * 2;
       const xOffset = map(sin(waveIndex), -1, 1, -waveAmplitude, waveAmplitude);
       const yOffset = map(cos(waveIndex), 1, -1, -waveAmplitude, waveAmplitude);
 
@@ -163,7 +162,7 @@ class Spiral {
       );
 
       let s = map(
-        sin(time * 2 + waveIndex * 5 + map(lerpIndex, 0, 1, 0, 10) * lerpIndex),
+        sin(time * 5 + waveIndex + f + map(lerpIndex, 0, 1, 0, 10) / lerpIndex),
         -1,
         1,
         20,
@@ -173,12 +172,12 @@ class Spiral {
 
       // target.translate(map(sin(waveIndex), -1, 1, -1, 1), 0);
 
-      const c = map(sin(time*2+waveIndex), -1, 1, 2, 5);
+      const c = map(sin(time*2+waveIndex), -1, 1, 5, 2);
 
       for (let i = 0; i < c; i++) {
         const x = lerp(
-          lerpPosition.x + xOffset*1.5,
-          lerpPosition.x - xOffset,
+          lerpPosition.x + xOffset*2,
+          lerpPosition.x - xOffset*2,
           i / c
         );
         const y = lerp(
@@ -201,6 +200,6 @@ class Spiral {
 utils.sketch.draw( time => {
   background(0);
 
-  shapes.forEach((shape, index) => shape.draw(time, index, window));
+  shapes.forEach((shape, index) => shape.draw(-time, index, window));
 });
 // 
