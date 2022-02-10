@@ -54,17 +54,23 @@ class Spiral {
     push();
     translate(position.x, position.y);
 
-    const lerpStep = 1 / 2000;
+    const lerpStep = 1 / 3000;
 
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
-      const angle = map(lerpIndex, 0, 1 /10, PI, -PI);
+      const angle = map(lerpIndex, 0, 1/10, PI, -PI);
       const t = map(sin(time / 2 - lerpIndex / 8 + index), -1, 1, -8, 8);
       const waveIndex = angle + t;
       const xOffset = map(sin(waveIndex), -1, 1, -size * 2, size * 2);
       const yOffset = map(cos(waveIndex), -1, 1, -size * 2, size * 2);
 
       const hueIndex = lerpIndex + angle - time + index / 3;
-      let hueFactor = map(lerpIndex, 0, 1, 5, 1);
+      let hueFactor = map(
+        lerpIndex,
+        0,
+        1 / map(sin(time), -1, 1, 1, 1.8),
+        5,
+        1
+      );
 
       fill(
         map(sin(hueIndex), -1, 1, 0, 360) / hueFactor,
@@ -73,7 +79,7 @@ class Spiral {
       );
 
       const xOff =
-        map(sin(time), 1, 0, -xOffset, xOffset) *
+        map(sin(time), -1, 0, -xOffset, xOffset) *
         map(cos(time), -1, 1, 0.3, 0.1);
       const yOff =
         map(cos(time), 0, 1, -yOffset, yOffset) * map(sin(time), -1, 1, 0, 0.8);
@@ -81,8 +87,8 @@ class Spiral {
         lerpIndex,
         0,
         1,
-        (height) / (shapes.length + 2),
-        map(sin(angle*2+time) * cos(angle*2+time), -1, 1, -20, 70)
+        (height) / (shapes.length +2),
+        map(sin(angle*2+time) * cos(angle*2+time), -1, 1, 0, 80)
       );
 
       circle(xOff, yOff, s);
