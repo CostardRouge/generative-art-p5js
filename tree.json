@@ -49,13 +49,6 @@
          },
          "path": "sketches/accident/accident-v5-chandelier"
       },
-      "accident-v6-chandelier-vertical-warp": {
-         "meta": {
-            "name": "accident-v6-chandelier-vertical-warp",
-            "folder": "accident"
-         },
-         "path": "sketches/accident/accident-v6-chandelier-vertical-warp"
-      },
       "accident-v6-chandelier-warp": {
          "meta": {
             "name": "accident-v6-chandelier-warp",
@@ -69,6 +62,13 @@
             "folder": "accident"
          },
          "path": "sketches/accident/accident-v6-chandelier-warps"
+      },
+      "accident-v6-chandelier-warps-2": {
+         "meta": {
+            "name": "accident-v6-chandelier-warps-2",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v6-chandelier-warps-2"
       },
       "accident-v7-chewing-gum-strings": {
          "meta": {
@@ -84,19 +84,47 @@
          },
          "path": "sketches/accident/accident-v8-circle"
       },
-      "accident-v8-circle-strings": {
+      "accident-v8-dansing-dna": {
          "meta": {
-            "name": "accident-v8-circle-strings",
+            "name": "accident-v8-dansing-dna",
             "folder": "accident"
          },
-         "path": "sketches/accident/accident-v8-circle-strings"
+         "path": "sketches/accident/accident-v8-dansing-dna"
       },
-      "accident-v8-eccentric-dna": {
+      "accident-v9-eccentric-acid": {
          "meta": {
-            "name": "accident-v8-eccentric-dna",
+            "name": "accident-v9-eccentric-acid",
             "folder": "accident"
          },
-         "path": "sketches/accident/accident-v8-eccentric-dna"
+         "path": "sketches/accident/accident-v9-eccentric-acid"
+      },
+      "accident-v9-eccentric-audio": {
+         "meta": {
+            "name": "accident-v9-eccentric-audio",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v9-eccentric-audio"
+      },
+      "accident-v9-eccentric-mirror": {
+         "meta": {
+            "name": "accident-v9-eccentric-mirror",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v9-eccentric-mirror"
+      },
+      "accident-v9-eccentric-strip": {
+         "meta": {
+            "name": "accident-v9-eccentric-strip",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v9-eccentric-strip"
+      },
+      "accident-v9-eccentric-twist": {
+         "meta": {
+            "name": "accident-v9-eccentric-twist",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v9-eccentric-twist"
       }
    },
    "genuary2022": {
@@ -280,6 +308,13 @@
             "folder": "orbit"
          },
          "path": "sketches/orbit/orbit-v4-chewing-gum"
+      },
+      "orbit-v5-chakra": {
+         "meta": {
+            "name": "orbit-v5-chakra",
+            "folder": "orbit"
+         },
+         "path": "sketches/orbit/orbit-v5-chakra"
       }
    },
    "polar-strip": {
