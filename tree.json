@@ -91,6 +91,13 @@
          },
          "path": "sketches/accident/accident-v8-dansing-dna"
       },
+      "accident-v9-blurry-strip": {
+         "meta": {
+            "name": "accident-v9-blurry-strip",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v9-blurry-strip"
+      },
       "accident-v9-eccentric-acid": {
          "meta": {
             "name": "accident-v9-eccentric-acid",
