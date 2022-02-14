@@ -1,32 +1,19 @@
 let target = null;
-let pixilatedCanvas = null;
 
 function setup() {
-  // utils.canvas.create(utils.presets.FILL);
-  // utils.canvas.create(utils.presets.SQUARE.RETINA);
-  // utils.canvas.create(utils.presets.SQUARE.HD);
-  utils.canvas.create({ width: 768, height: 1368 });
-  // utils.canvas.create({ width: 768/2, height: 1368/2 });
-
-  utils.events.fullScreenOnDoubleClick();
-  utils.events.extendCanvasOnResize();
-  utils.events.pauseOnSpaceKeyPressed();
-  utils.events.toggleCanvasRecordingOnKey();
-  utils.events.toggleFPSCounter();
-
-  noStroke();
-
-  pixilatedCanvas = createGraphics(
-    utils.canvas.main.width,
-    utils.canvas.main.height
-  );
-  pixilatedCanvas.pixelDensity(0.05);
-
-  utils.events.register("windowResized", () => {
-    pixilatedCanvas.width = utils.canvas.main.width;
-    pixilatedCanvas.height = utils.canvas.main.height;
-    pixilatedCanvas.pixelDensity(0.05);
-  });
+    // utils.canvas.create(utils.presets.FILL);
+    // utils.canvas.create(utils.presets.SQUARE.RETINA);
+    // utils.canvas.create(utils.presets.SQUARE.HD);
+    utils.canvas.create({ width: 768, height: 1368 });
+    // utils.canvas.create({ width: 768/2, height: 1368/2 });
+    
+    utils.events.fullScreenOnDoubleClick();
+    utils.events.extendCanvasOnResize();
+    utils.events.pauseOnSpaceKeyPressed();
+    utils.events.toggleCanvasRecordingOnKey();
+    utils.events.toggleFPSCounter();
+    
+    noStroke();
 
   const xCount = 1;
   const yCount = 1;
@@ -66,16 +53,19 @@ class Spiral {
     this.calculateRelativePosition();
   }
 
-  draw(time, index, target, lerpStep = 1 / 800) {
+  draw(time, index, target) {
     let { position, size, start, end } = this;
 
     const hueCadence = index + time;
-    const waveAmplitude = size / map(sin(time * 2), -1, 1, 1, 2);
+    const waveAmplitude = size / map(sin(time*2), -1, 1, 1, 2);
 
     target.push();
     target.translate(position.x, position.y);
 
+    const lerpStep = 1 / 500//map(mouseY, height, 0, 1, 800, true);
+
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
+
       let angle = map(
         lerpIndex,
         0,
@@ -98,13 +88,13 @@ class Spiral {
       //    cos(TAU * lerpIndex),
       //    sin(TAU * lerpIndex)
       //  );
-      angle += map(
-        lerpIndex + sin(time + angle) + cos(-time * 5 + 0),
-        -1,
-        1,
-        cos(TAU * lerpIndex),
-        sin(TAU * lerpIndex)
-      );
+       angle += map(
+         lerpIndex + sin(time+angle) + cos(-time*5+0),
+         -1,
+         1,
+         cos(TAU * lerpIndex),
+         sin(TAU * lerpIndex)
+       );
       //  angle = map(
       //    lerpIndex + sin(time),
       //    0,
@@ -126,16 +116,15 @@ class Spiral {
       //    cos(lerpIndex * PI),
       //    sin(lerpIndex * PI)
       //  );
-      //  angle += map(
-      //    lerpIndex,
-      //    0,
-      //    1 / map(sin(time) + cos(time), -1, 1, -4, 4),
-      //    cos(lerpIndex * map(cos(time), -1, 1, -PI, PI)),
-      //    sin(lerpIndex * map(sin(time), -1, 1, -PI, PI))
-      //  );
-      angle += lerpIndex * 12;
-      angle += lerpIndex * map(sin(time), -1, 1, -PI, PI);
+       angle += map(
+         lerpIndex,
+         0,
+         1 / map(sin(time) + cos(time), -1, 1, -4, 4),
+         cos(lerpIndex * map(cos(time), -1, 1, -PI, PI)),
+         sin(lerpIndex * map(sin(time), -1, 1, -PI, PI))
+       );
       // angle = lerpIndex * 12;
+
 
       const f = map(lerpIndex, 0, 1, 1, 40);
       const opacityFactor = map(
@@ -153,7 +142,7 @@ class Spiral {
       const yOffset = map(cos(waveIndex), 1, -1, -waveAmplitude, waveAmplitude);
 
       target.fill(
-        map(sin(angle + hueCadence/2), -1, 1, 0, 360) / opacityFactor,
+        map(sin(angle + hueCadence), -1, 1, 0, 360) / opacityFactor,
         map(cos(angle - hueCadence), -1, 1, 0, 255) / opacityFactor,
         map(sin(angle + hueCadence), -1, 1, 255, 0) / opacityFactor
       );
@@ -162,25 +151,24 @@ class Spiral {
         sin(time * 5 + waveIndex + f + map(lerpIndex, 0, 1, 0, 10) / lerpIndex),
         -1,
         1,
-      10,
+        20,
         70
       );
       //sin(waveIndex + time) * 300 * cos(waveIndex + time);
 
-      //target.translate(map(sin(waveIndex), -1, 1, -1, 1), 0);
+      // target.translate(map(sin(waveIndex), -1, 1, -1, 1), 0);
 
-      let c = 5; //map(sin(time*2+waveIndex), -1, 1, 0, 5)+1;
-      // c = map(lerpIndex, 0, 1, 5, 0);
+      const c = 10//map(sin(time*2+waveIndex), -1, 1, 0, 5)+1;
 
       for (let i = 0; i < c; i++) {
         const x = lerp(
-          lerpPosition.x + xOffset * map(sin(waveIndex), -1, 1, -1, 1),
-          lerpPosition.x + xOffset,
+          lerpPosition.x + xOffset * map(sin(waveIndex), -1, 1, -1,1),
+          lerpPosition.x + xOffset * 2,
           i / c
         );
         const y = lerp(
-          lerpPosition.y + yOffset,
           lerpPosition.y - yOffset,
+          lerpPosition.y + yOffset,
           i / c
         );
 
@@ -195,18 +183,9 @@ class Spiral {
   }
 }
 
-utils.sketch.draw((time) => {
-  //noSmooth()
-
+utils.sketch.draw( time => {
   background(0);
 
-  pixilatedCanvas.filter(BLUR, 2);
-  pixilatedCanvas.background(0, 0, 0, 8);
-  image(pixilatedCanvas, 0, 0);
-
-  shapes.forEach((shape, index) => {
-    shape.draw(-time, index, pixilatedCanvas, 1 / 20);
-    shape.draw(-time, index, window);
-  });
+  shapes.forEach((shape, index) => shape.draw(-time, index, window));
 });
-//
+// 
