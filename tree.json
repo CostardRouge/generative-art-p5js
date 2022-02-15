@@ -35,13 +35,6 @@
          },
          "path": "sketches/accident/accident-v4-cross-fire"
       },
-      "accident-v4-fire-angles-test": {
-         "meta": {
-            "name": "accident-v4-fire-angles-test",
-            "folder": "accident"
-         },
-         "path": "sketches/accident/accident-v4-fire-angles-test"
-      },
       "accident-v5-chandelier": {
          "meta": {
             "name": "accident-v5-chandelier",
@@ -63,12 +56,26 @@
          },
          "path": "sketches/accident/accident-v6-chandelier-warps"
       },
-      "accident-v6-chandelier-warps-2": {
+      "accident-v6-chandelier-warps-blurry": {
          "meta": {
-            "name": "accident-v6-chandelier-warps-2",
+            "name": "accident-v6-chandelier-warps-blurry",
             "folder": "accident"
          },
-         "path": "sketches/accident/accident-v6-chandelier-warps-2"
+         "path": "sketches/accident/accident-v6-chandelier-warps-blurry"
+      },
+      "accident-v6-chandelier-warps-gradient": {
+         "meta": {
+            "name": "accident-v6-chandelier-warps-gradient",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v6-chandelier-warps-gradient"
+      },
+      "accident-v6-chanderlier-warps-red": {
+         "meta": {
+            "name": "accident-v6-chanderlier-warps-red",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v6-chanderlier-warps-red"
       },
       "accident-v7-chewing-gum-strings": {
          "meta": {
@@ -90,13 +97,6 @@
             "folder": "accident"
          },
          "path": "sketches/accident/accident-v8-dansing-dna"
-      },
-      "accident-v9-blurry-strip": {
-         "meta": {
-            "name": "accident-v9-blurry-strip",
-            "folder": "accident"
-         },
-         "path": "sketches/accident/accident-v9-blurry-strip"
       },
       "accident-v9-eccentric-acid": {
          "meta": {
@@ -125,6 +125,13 @@
             "folder": "accident"
          },
          "path": "sketches/accident/accident-v9-eccentric-strip"
+      },
+      "accident-v9-eccentric-strip-blurry": {
+         "meta": {
+            "name": "accident-v9-eccentric-strip-blurry",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v9-eccentric-strip-blurry"
       },
       "accident-v9-eccentric-twist": {
          "meta": {
