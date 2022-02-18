@@ -49,6 +49,13 @@
          },
          "path": "sketches/accident/accident-v6-chandelier-warp"
       },
+      "accident-v6-chandelier-warp-blurry-vertical": {
+         "meta": {
+            "name": "accident-v6-chandelier-warp-blurry-vertical",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v6-chandelier-warp-blurry-vertical"
+      },
       "accident-v6-chandelier-warps": {
          "meta": {
             "name": "accident-v6-chandelier-warps",
@@ -111,6 +118,13 @@
             "folder": "accident"
          },
          "path": "sketches/accident/accident-v9-eccentric-audio"
+      },
+      "accident-v9-eccentric-balls-blurry": {
+         "meta": {
+            "name": "accident-v9-eccentric-balls-blurry",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v9-eccentric-balls-blurry"
       },
       "accident-v9-eccentric-mirror": {
          "meta": {
