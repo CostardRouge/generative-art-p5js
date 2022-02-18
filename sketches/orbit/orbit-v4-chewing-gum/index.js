@@ -1,6 +1,7 @@
 function setup() {
   // utils.canvas.create(utils.presets.FILL);
   utils.canvas.create(utils.presets.SQUARE.HD);
+  utils.canvas.create({ width: 768, height: 1368 });
   // utils.canvas.create(utils.presets.PORTRAIT.HD);
 
   utils.events.fullScreenOnDoubleClick();
@@ -12,7 +13,7 @@ function setup() {
   noStroke();
 
   const xCount = 3;
-  const yCount = 3;
+  const yCount = 5;
   const size = (width + height) / (xCount + yCount) / 12;
 
   for (let x = 1; x <= xCount; x++) {
@@ -51,6 +52,17 @@ class Spiral {
     const { position, size: s } = this;
     const size = map(sin(time*5+index), -1, 1, s/10, s)
 
+    const hideRate = map(sin(time), -1, 1, -1, 1);
+
+    if (
+      utils.mappers.circularIndex(
+        index / (shapes.length / 2) + (time + sin(time)),
+        [true, true, false, false, false]
+      )
+    ) {
+      return;
+    }
+
     push();
     translate(position.x, position.y);
 
@@ -64,7 +76,7 @@ class Spiral {
       const yOffset = map(cos(waveIndex), -1, 1, -size * 2, size * 2);
 
       const hueIndex = lerpIndex + angle - time;
-      const hueFactor = map(lerpIndex, 0, 3, 1, 2);
+      const hueFactor = 1//map(lerpIndex, 0, 1, 1, 2);
 
       fill(
         map(sin(hueIndex + index), -1, 1, 0, 360) / hueFactor,
