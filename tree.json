@@ -564,6 +564,13 @@
          },
          "path": "sketches/torsade/torsade-v11-infinite"
       },
+      "torsade-v12-gradient-worms": {
+         "meta": {
+            "name": "torsade-v12-gradient-worms",
+            "folder": "torsade"
+         },
+         "path": "sketches/torsade/torsade-v12-gradient-worms"
+      },
       "torsade-v2-chain": {
          "meta": {
             "name": "torsade-v2-chain",

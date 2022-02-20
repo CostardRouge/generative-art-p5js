@@ -1,7 +1,6 @@
 function setup() {
   utils.canvas.create(utils.presets.FILL);
   utils.canvas.create(utils.presets.SQUARE.HD);
-  // utils.canvas.create({ height: 960, width: 960 });
 
   utils.events.fullScreenOnDoubleClick();
   utils.events.extendCanvasOnResize();
@@ -64,9 +63,9 @@ class Spiral {
     push();
     translate(position.x, position.y);
 
-    const lerpStep = 1 / 15; //map(mouseY, height, 0, 1, 200, true);
+    const lerpStep = 1 / 150; //map(mouseY, height, 0, 1, 200, true);
 
-    for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
+    for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep+sin(time)) {
       const angle = map(lerpIndex, 0, 3, -angleLimit, angleLimit);
       const lerpPosition = p5.Vector.lerp(start, end, lerpIndex);
       // const cadence = map(sin(time + lerpIndex), -1, 1, 0, 4);
