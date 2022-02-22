@@ -257,6 +257,22 @@
          "path": "sketches/glowing-fish/glowing-fishes-v1"
       }
    },
+   "midi": {
+      "midi-v1-output": {
+         "meta": {
+            "name": "midi-v1-output",
+            "folder": "midi"
+         },
+         "path": "sketches/midi/midi-v1-output"
+      },
+      "midi-v2-input": {
+         "meta": {
+            "name": "midi-v2-input",
+            "folder": "midi"
+         },
+         "path": "sketches/midi/midi-v2-input"
+      }
+   },
    "neon": {
       "neon-v0-legacy": {
          "meta": {
