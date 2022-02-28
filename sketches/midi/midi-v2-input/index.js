@@ -153,7 +153,7 @@ class Dot {
       this;
 
     if (undefined === note) {
-    return
+      return
     }
 
     const hueIndex = map(

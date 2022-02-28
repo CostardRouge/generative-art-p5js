@@ -1,5 +1,7 @@
 const midiInputDevices = [];
 const midiOutputDevices = [];
+let pixilatedCanvas = null;
+
 
 function throttle(func, wait, leading, trailing, context) {
   var ctx, args, result;
@@ -37,7 +39,7 @@ function setup() {
   utils.canvas.create(SQUARE.HD);
   // utils.canvas.create(FILL);
   // utils.canvas.create({ height: windowWidth, width: windowWidth });
-  utils.canvas.create({ width: 768, height: 1368 });
+  // utils.canvas.create({ width: 768, height: 1368 });
   // utils.canvas.create({ width: 700, height: 700 });
 
   // utils.events.fullScreenOnDoubleClick();
@@ -48,16 +50,28 @@ function setup() {
 
   noStroke();
 
-  const xCount = 1;
-  const yCount = 7;
+  pixilatedCanvas = createGraphics(
+    utils.canvas.main.width,
+    utils.canvas.main.height
+  );
+  pixilatedCanvas.pixelDensity(0.09);
+
+  utils.events.register("windowResized", () => {
+    pixilatedCanvas.width = utils.canvas.main.width;
+    pixilatedCanvas.height = utils.canvas.main.height;
+    pixilatedCanvas.pixelDensity(0.05);
+  });
+
+  const xCount = 5;
+  const yCount = 5;
 
   for (let x = 1; x <= xCount; x++) {
     for (let y = 1; y <= yCount; y++) {
       shapes.push(
         new Dot({
-          shadowsCount: 5,
-          weightRange: [150, 15],
-          opacityFactorRange: [7, 1],
+          shadowsCount: 6,
+          weightRange: [180, 15],
+          opacityFactorRange: [2, 1],
           relativePosition: {
             x: x / (xCount + 1),
             y: y / (yCount + 1),
@@ -172,7 +186,7 @@ class Dot {
     strokeWeight(0)
   }
 
-  draw(time, index) {
+  draw(time, index, target) {
     // this.drawLines(index);
 
     const { position, shadowsCount, weightRange, opacityFactorRange } = this;
@@ -184,7 +198,7 @@ class Dot {
       -PI/2,
       PI
     )
-    const hueSpeed = hueIndex + time;
+    const hueSpeed = hueIndex// + time*2;
 
     for (let shadowIndex = 0; shadowIndex < shadowsCount; shadowIndex++) {
       const opacity = map(
@@ -210,17 +224,19 @@ class Dot {
         opacityFactorRange[1]
       );
 
+      const si = shadowIndex / 10
+
       this.color = color(
-        map(sin(hueSpeed), -1, 1, 0, 360) / opacityFactor,
-        map(cos(-hueSpeed), -1, 1, 0, 360) / opacityFactor,
-        map(sin(hueSpeed), -1, 1, 360, 0) / opacityFactor,
+        map(sin(hueSpeed+si), -1, 1, 0, 360) / opacityFactor,
+        map(cos(-hueSpeed+si), -1, 1, 0, 360) / opacityFactor,
+        map(sin(hueSpeed+si), -1, 1, 360, 0) / opacityFactor,
         opacity
       );
-      fill(this.color);
-      circle(position.x, position.y, weight);
+      target.fill(this.color);
+      target.circle(position.x, position.y, weight);
     }
 
-    this.move();
+    // this.move();
     this.weightRange[1] = lerp(this.weightRange[1], this.initial, 0.05);
   }
 
@@ -249,6 +265,7 @@ class Dot {
 
     if (widthReached || heightReached) {
       this.play();
+      this.bounce();
     }
   }
 
@@ -283,12 +300,18 @@ function getRandNote() {
   )
 }
 
-function draw() {
-  const seconds = frameCount / 60;
-  const time = seconds;
+utils.sketch.draw((time) => {
+  noSmooth()
 
   background(0);
 
-  shapes.forEach((shape, index) => shape.draw(time, index));
-  utils.debug.fps();
-}
+  // pixilatedCanvas.filter(BLUR, 1);
+  // pixilatedCanvas.background(0, 0, 0, 8);
+  // image(pixilatedCanvas, 0, 0);
+
+  shapes.forEach((shape, index) => {
+    // shape.draw(time, index, pixilatedCanvas);
+    shape.draw(time, index, window);
+  });
+});
+//

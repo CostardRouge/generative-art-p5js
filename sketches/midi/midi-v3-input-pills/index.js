@@ -34,19 +34,21 @@ function throttle(func, wait, leading, trailing, context) {
 };
 
 function setup() {
+  rectMode(CENTER);
   utils.canvas.create(SQUARE.HD);
   // utils.canvas.create(FILL);
   // utils.canvas.create({ height: windowWidth, width: windowWidth });
   utils.canvas.create({ width: 768, height: 1368 });
   // utils.canvas.create({ width: 700, height: 700 });
 
-  // utils.events.fullScreenOnDoubleClick();
+
+  //utils.events.fullScreenOnDoubleClick();
   utils.events.extendCanvasOnResize();
   utils.events.pauseOnSpaceKeyPressed();
   utils.events.toggleCanvasRecordingOnKey();
   utils.events.toggleFPSCounter();
 
-  noStroke();
+  strokeWeight(0);
 
   const xCount = 1;
   const yCount = 7;
@@ -89,8 +91,25 @@ function setup() {
     // const myInput = WebMidi.getInputByName("IAC Driver Bus 1");
     // const myOutput = WebMidi.getOutputByName("IAC Driver Bus 1");
 
+    midiInputDevices.forEach( input => {
+      input.addListener("noteon", (e) => {
+        const assignedShapes = shapes.filter( shape => shape.note === e.note.identifier);
+
+        if ( assignedShapes.length !== 0 ) {
+          return assignedShapes[0].bounce();
+        }
+
+        const unAssignedShapes = shapes.filter( shape => shape.note === undefined );
+
+        if ( unAssignedShapes.length !== 0 ) {
+          unAssignedShapes[0].note = e.note.identifier;
+          unAssignedShapes[0].bounce();
+        }
+      });
+    });
+
     utils.events.register("mousePressed", function () {
-      shapes.forEach((shape, index) => shape.play());
+      shapes.forEach(shape => shape.bounce());
 
       playNote(
         new Note("A4", {
@@ -100,7 +119,7 @@ function setup() {
       );
     });
   }
-} 
+}
 
 const playNote = throttle(playNoteLogic, 50);
 // const playNote = playNoteLogic;
@@ -117,15 +136,6 @@ class Dot {
     this.calculateRelativePosition();
 
     this.initial = this.weightRange[1];
-
-    const v = 5
-    this.vx = random(-v, v);
-    this.vy = random(-v, v);
-
-    // this.vx = random(v);
-    // this.vy = random(v);
-
-    this.initial = this.weightRange[1];
   }
 
   calculateRelativePosition() {
@@ -139,43 +149,13 @@ class Dot {
     this.calculateRelativePosition();
   }
 
-  drawLines( index) {
-    const { position } = this;
-
-    // if (index === 0) {
-      strokeWeight(5)
-      noFill();
-
-      beginShape();
-
-      shapes.forEach((shape, _index) => {
-        if (_index === index) {
-          return
-        }
-
-        if (position.dist(shape.position) < 200) {
-          curveVertex(position.x, position.y);
-          // curveVertex(width /2, height /2);
-          curveVertex(shape.position.x, shape.position.y);
-        }
-
-        // line(position.x, position.y, shape.position.x, shape.position.y)
-        
-      });
-
-      stroke(255, 16)
-
-      curveVertex(position.x, position.y);
-      endShape();
-    // }
-
-    strokeWeight(0)
-  }
-
   draw(time, index) {
-    // this.drawLines(index);
+    const { note, position, shadowsCount, weightRange, opacityFactorRange } =
+      this;
 
-    const { position, shadowsCount, weightRange, opacityFactorRange } = this;
+    if (undefined === note) {
+    // return
+    }
 
     const hueIndex = map(
       index,
@@ -184,7 +164,7 @@ class Dot {
       -PI/2,
       PI
     )
-    const hueSpeed = hueIndex + time;
+    const hueSpeed = hueIndex// + time;
 
     for (let shadowIndex = 0; shadowIndex < shadowsCount; shadowIndex++) {
       const opacity = map(
@@ -210,84 +190,42 @@ class Dot {
         opacityFactorRange[1]
       );
 
-      this.color = color(
+      fill(
         map(sin(hueSpeed), -1, 1, 0, 360) / opacityFactor,
-        map(cos(-hueSpeed), -1, 1, 0, 360) / opacityFactor,
+        map(cos(hueSpeed), -1, 1, 0, 360) / opacityFactor,
         map(sin(hueSpeed), -1, 1, 360, 0) / opacityFactor,
         opacity
       );
-      fill(this.color);
-      circle(position.x, position.y, weight);
+      // circle(position.x, position.y, weight);
+      // ellipse(position.x, position.y, 500, weight);
+      const r = 0//map(sin(time+index), -1, 1, 0, 50);
+      const h = 100//map(sin(time+index), -1, 1, 10, 100);
+      rect(position.x, position.y, weight*3, h, r );
     }
 
-    this.move();
-    this.weightRange[1] = lerp(this.weightRange[1], this.initial, 0.05);
+    this.weightRange[1] = lerp(this.weightRange[1], this.initial, 0.07);
   }
 
   bounce() {
-    this.weightRange[1] = this.weightRange[0]/1.5;
-  }
-
-  move() {
-    const { position, weightRange } = this;
-
-    const h = weightRange[0]/2;    
-    const w = h
-
-    position.x = constrain(this.vx + position.x, w, width);
-    position.y = constrain(this.vy + position.y, h, height);
-
-    const widthReached = position.x + this.vx + w >= width || position.x - w + this.vx <= 0;
-    const heightReached = position.y + this.vy + h >= height || position.y - h + this.vy <= 0;
-
-    if (widthReached) {
-      this.vx = -this.vx;
-    }
-    if (heightReached) {
-      this.vy = -this.vy;
-    }
-
-    if (widthReached || heightReached) {
-      this.play();
-    }
-  }
-
-  play() {
-    this.bounce();
-    this.note = this.note ?? getRandNote();
-
-    playNote(
-      new Note(this.note, {
-        duration: 1000,
-        release: 0.5,
-      })
-    );
+    this.weightRange[1] = this.weightRange[0] / 1.5;
   }
 }
 
 function getRandNote() {
-  return (
-    random(["E", "C", "F"]) +
-    random([ "1", "2"])
-  )
-
-
   const note =
   random(["A", "B", "C", "D", "E", "F", "G"]) +
-  random([ "1", "6"]);
+    random([ "1", "2", "3", "4", "5", "6"]);
 
-  console.log(">>> " + note)
-  return (
-    random(["A", "B", "C", "D"]) +
-    random([ "1", "2"])
-  )
+    console.log(">>>" + note)
+  return random(["A", "B", "C", "D", "E", "F", "G"]) + "4"//random([ "1", "2", "3", "4", "5", "6"])
 }
 
 function draw() {
   const seconds = frameCount / 60;
   const time = seconds;
 
-  background(0);
+  background(0, 0, 0, 65);
+
 
   shapes.forEach((shape, index) => shape.draw(time, index));
   utils.debug.fps();
