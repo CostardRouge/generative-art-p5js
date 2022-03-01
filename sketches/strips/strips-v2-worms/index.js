@@ -1,14 +1,11 @@
-const midiInputDevices = [];
-const midiOutputDevices = [];
-
 function setup() {
-  utils.canvas.create(SQUARE.HD);
+  // utils.canvas.create(SQUARE.HD);
   // utils.canvas.create(FILL);
   // utils.canvas.create({ height: windowWidth, width: windowWidth });
   utils.canvas.create({ width: 768, height: 1368 });
   // utils.canvas.create({ width: 700, height: 700 });
 
-  //utils.events.fullScreenOnDoubleClick();
+  utils.events.fullScreenOnDoubleClick();
   utils.events.extendCanvasOnResize();
   utils.events.pauseOnSpaceKeyPressed();
   utils.events.toggleCanvasRecordingOnKey();
@@ -18,11 +15,7 @@ function setup() {
 
   shapes.push(
     new Strip({
-      size: 100,
-      notes: {},
-      shadowsCount: 5,
-      weightRange: [150, 15],
-      opacityFactorRange: [7, 1],
+      size: 50,
       start: createVector(0, -height / 3),
       end: createVector(0, height / 3),
       relativePosition: {
@@ -32,13 +25,6 @@ function setup() {
     })
   );
 }
-
-function playNote(note) {
-  midiOutputDevices.forEach((device) => {
-    device.playNote(note);
-  });
-}
-
 class Strip {
   constructor(options) {
     Object.assign(this, options);
@@ -56,27 +42,10 @@ class Strip {
     this.calculateRelativePosition();
   }
 
-  play(note) {
-    this.notes[note] = this.notes[note] || [];
-    this.notes[note] = [
-      ...this.notes[note],
-      100
-    ];
-  }
-
-  updateNoteLevels() {
-    for(const note in this.notes) {
-      // this.notes[note] = lerp(this.notes[note], 70, 0.1);
-      this.notes[note].slice(-20)
-    }
-  }
-
   draw(time, index, target) {
-    // return// console.log(this.notes)
     let { position, size, start, end } = this;
 
     const hueCadence = index + time;
-    const waveAmplitude = size//map(sin(time*2), -1, 1, 1, 2);
 
     target.push();
     target.translate(position.x, position.y);
@@ -84,45 +53,58 @@ class Strip {
     const lerpStep = 1 / 500;
 
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
-      const angle = lerpIndex * 2;
+      const angle = lerpIndex * 4;
 
       const f = map(lerpIndex, 0, 1, 1, map(sin(time), -1, 1, 1, 5));
       const opacityFactor = map(
         lerpIndex,
         0,
         1,
-        map(sin(lerpIndex * 10 + time*10 + f), -1, 1, 1, 10),
+        map(sin(lerpIndex * 10 + time*3 + f), -1, 1, 1, 50),
         1
       );
 
       const lerpPosition = p5.Vector.lerp(start, end, lerpIndex);
       let waveIndex = angle * sin(-time + lerpIndex + index);
-      waveIndex = angle - time * 2;
-      const xOffset = map(sin(waveIndex), -1, 1, -waveAmplitude, waveAmplitude);
-      const yOffset = map(cos(waveIndex), 1, -1, -waveAmplitude*2, waveAmplitude*2);
+      waveIndex = angle - time;
+      const xOffset = map(sin(waveIndex), -1, 1, -size, size)*2;
+      const yOffset = map(cos(waveIndex), 1, -1, -size, size)*2;
 
-      target.fill(
-        map(sin(angle + lerpIndex), -1, 1, 0, 360) / opacityFactor,
-        map(cos(angle - hueCadence), -1, 1, 64, 255) / opacityFactor,
-        map(sin(angle + hueCadence), -1, 1, 255, 64) / opacityFactor
-      );
+      // target.fill(
+      //   map(sin(angle + lerpIndex), -1, 1, 0, 360) / opacityFactor,
+      //   map(cos(angle - hueCadence), -1, 1, 64, 255) / opacityFactor,
+      //   map(sin(angle + hueCadence), -1, 1, 255, 64) / opacityFactor
+      // );
       
-      const noteIndexes = Object.keys(this.notes)
-      const noteIndexesCount = 7//noteIndexes.length
+      const innerShapesCount = map(sin(angle + time), -1, 1, 1, 7);
 
-      for (let noteIndex = 0; noteIndex < noteIndexesCount; noteIndex++) {
+      for (let i = 0; i < innerShapesCount; i++) {
         const x = lerp(
           lerpPosition.x - xOffset * map(sin(waveIndex), -1, 1, -1, 1),
-          lerpPosition.x + xOffset * 6,
-          noteIndex / noteIndexesCount
+          lerpPosition.x + xOffset * 10,
+          i / innerShapesCount
         );
         const y = lerp(
-          lerpPosition.y - yOffset * 10,
+          lerpPosition.y - yOffset * 5,
           lerpPosition.y + yOffset,
-          noteIndex / noteIndexesCount
+          i / innerShapesCount
         );
 
-        target.circle(x, y, 100 );
+        target.fill(
+          map(sin(0 + hueCadence + i), -1, 1, 0, 255) / opacityFactor,
+          map(cos(0 + hueCadence - i), -1, 1, 64, 255) / opacityFactor/2,
+          map(sin(0 + hueCadence + i), -1, 1, 255, 64) / opacityFactor
+        );
+
+        // target.fill(
+        //   map(sin(0 + hueCadence + i), -1, 1, 0, 255) / opacityFactor/2,
+        //   map(cos(0 + hueCadence - i), -1, 1, 0, 255) / opacityFactor,
+        //   map(sin(0 + hueCadence + i), -1, 1, 0, 255) / opacityFactor/2
+        // );
+
+        //utils.mappers.circularIndex(time*2+lerpIndex, [100, 50])
+
+        target.circle(x, y, 100/f );
       }
     }
 

@@ -156,7 +156,7 @@ class Strip {
       //   map(sin(angle + hueCadence), -1, 1, 255, 0) / opacityFactor
       // );
       const noteIndexes = Object.keys(this.notes)
-      const noteIndexesCount = noteIndexes.length
+      const noteIndexesCount = 8//noteIndexes.length
 
       for (let noteIndex = 0; noteIndex < noteIndexesCount; noteIndex++) {
         const midW = xOffset;
@@ -174,10 +174,10 @@ class Strip {
         );
 
         const notes = this.notes[noteIndexes[noteIndex]]
-        let noteLevelIndex = map(lerpIndex, 0, 1, 0, notes.length)
+        let noteLevelIndex = map(lerpIndex, 0, 1, 0, notes?.length)
         
         noteLevelIndex = Math.ceil(noteLevelIndex)
-        let noteLevel = notes[noteLevelIndex];
+        const noteLevel = notes[noteLevelIndex];
 
         // target.fill(
         //   map(sin(0 + noteIndex), -1, 1, 0, 360) / 1,
@@ -192,8 +192,6 @@ class Strip {
         map(sin(lerpIndex * 15 + -time), -1, 1, 1, 15),
         1
       );
-
-     
 
         // if (noteLevel === this.noteOn) {
           target.fill(
@@ -231,3 +229,39 @@ utils.sketch.draw( time => {
 
   shapes.forEach((shape, index) => shape.draw(time, index, window));
 });
+
+
+// NAME
+// TYPE (string, number, boolean, array, color)
+// STRING TYPE: text input
+// NUMBER TYPE: slider
+// BOOLEAN TYPE: checkbox
+// ARRAY TYPE: select
+// COLOR TYPE: color picker
+// DEFAULT VALUE
+// DESCRIPTION
+// ENABLED
+
+// utils.options("show_").value
+// utils.options("").value
+
+
+// _____DEFAULT OPTIONS
+// QUALITY
+// SHOW FPS
+// SHAPES COUNT on X
+// SHAPES COUNT on Y
+// SHAPES SIZE
+// COLORS PALETTE
+// BACKGROUND COLOR
+// CLEAR COLOR
+// BLUR
+// TOGGLE EVENTS
+// TOGGLE PANEL VISIBILITY
+// TIME SPEED
+// RESOLUTION
+// SAVE CANVAS
+// RECORD CANVAS
+// PAUSE CANVAS
+// RESET OVERRIDES
+// SAVE OVERRIDES (LOCAL STORAGE)
