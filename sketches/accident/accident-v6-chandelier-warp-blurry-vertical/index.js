@@ -1,33 +1,20 @@
-let target = null;
 let pixilatedCanvas = null;
 
-function setup() {
-    // utils.canvas.create(utils.presets.FILL);
-    // utils.canvas.create(utils.presets.SQUARE.RETINA);
-    // utils.canvas.create(utils.presets.SQUARE.HD);
-    utils.canvas.create({ width: 768, height: 1368 });
-    // utils.canvas.create({ width: 768/2, height: 1368/2 });
-    
-    utils.events.fullScreenOnDoubleClick();
-    utils.events.extendCanvasOnResize();
-    utils.events.pauseOnSpaceKeyPressed();
-    utils.events.toggleCanvasRecordingOnKey();
-    utils.events.toggleFPSCounter();
-    
-    noStroke();
+utils.sketch.setup(() => {
+  noStroke();
 
-      pixilatedCanvas = createGraphics(
-        utils.canvas.main.width,
-        utils.canvas.main.height
-      );
-      pixilatedCanvas.pixelDensity(0.05);
-      pixilatedCanvas.noStroke();
+  pixilatedCanvas = createGraphics(
+    utils.canvas.main.width,
+    utils.canvas.main.height
+  );
+  pixilatedCanvas.pixelDensity(0.05);
+  pixilatedCanvas.noStroke();
 
-      utils.events.register("windowResized", () => {
-        pixilatedCanvas.width = utils.canvas.main.width;
-        pixilatedCanvas.height = utils.canvas.main.height;
-        pixilatedCanvas.pixelDensity(0.05);
-      });
+  utils.events.register("windowResized", () => {
+    pixilatedCanvas.width = utils.canvas.main.width;
+    pixilatedCanvas.height = utils.canvas.main.height;
+    pixilatedCanvas.pixelDensity(0.05);
+  });
 
   const xCount = 1;
   const yCount = 1;
@@ -64,7 +51,7 @@ function setup() {
   //      );
   //    }
   //  }
-}
+} );
 
 class Spiral {
   constructor(options) {

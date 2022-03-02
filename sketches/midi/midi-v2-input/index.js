@@ -1,54 +1,7 @@
 const midiInputDevices = [];
 const midiOutputDevices = [];
 
-function throttle(func, wait, leading, trailing, context) {
-  var ctx, args, result;
-  var timeout = null;
-  var previous = 0;
-  var later = function () {
-    previous = new Date();
-    timeout = null;
-    result = func.apply(ctx, args);
-  };
-  return function () {
-    var now = new Date();
-    if (!previous && !leading) previous = now;
-    var remaining = wait - (now - previous);
-    ctx = context || this;
-    args = arguments;
-    // Si la période d'attente est écoulée
-    if (remaining <= 0) {
-      // Réinitialiser les compteurs
-      clearTimeout(timeout);
-      timeout = null;
-      // Enregistrer le moment du dernier appel
-      previous = now;
-      // Appeler la fonction
-      result = func.apply(ctx, args);
-    } else if (!timeout && trailing) {
-      // Sinon on s’endort pendant le temps restant
-      timeout = setTimeout(later, remaining);
-    }
-    return result;
-  };
-};
-
-function setup() {
-  utils.canvas.create(SQUARE.HD);
-  // utils.canvas.create(FILL);
-  // utils.canvas.create({ height: windowWidth, width: windowWidth });
-  utils.canvas.create({ width: 768, height: 1368 });
-  // utils.canvas.create({ width: 700, height: 700 });
-
-
-  utils.events.fullScreenOnDoubleClick();
-  utils.events.extendCanvasOnResize();
-  utils.events.pauseOnSpaceKeyPressed();
-  utils.events.toggleCanvasRecordingOnKey();
-  utils.events.toggleFPSCounter();
-
-  strokeWeight(0);
-
+utils.sketch.setup(() => {
   const xCount = 3;
   const yCount = 5;
 
@@ -118,12 +71,9 @@ function setup() {
       );
     });
   }
-}
+} )
 
-const playNote = throttle(playNoteLogic, 50);
-// const playNote = playNoteLogic;
-
-function playNoteLogic(note) {
+function playNote(note) {
   midiOutputDevices.forEach((device) => {
     device.playNote(note);
   });
@@ -215,12 +165,7 @@ function getRandNote() {
   return random(["A", "B", "C", "D", "E", "F", "G"]) + "4"//random([ "1", "2", "3", "4", "5", "6"])
 }
 
-function draw() {
-  const seconds = frameCount / 60;
-  const time = seconds;
-
+utils.sketch.draw( time => {
   background(0);
-
   shapes.forEach((shape, index) => shape.draw(time, index));
-  utils.debug.fps();
-}
+});

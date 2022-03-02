@@ -7,15 +7,7 @@ const polarCoefficients = [
   [1, 1],
 ];
 
-function setup() {
-  // utils.canvas.create(utils.presets.FILL);
-  utils.canvas.create(utils.presets.SQUARE.HD);
-  utils.events.fullScreenOnDoubleClick();
-  utils.events.extendCanvasOnResize();
-  utils.events.pauseOnSpaceKeyPressed();
-  utils.events.toggleCanvasRecordingOnKey();
-  utils.events.toggleFPSCounter();
-
+utils.sketch.setup(() => {
   const xCount = 3;
   const yCount = 1;
   const size = (width + height) / 2 / (xCount + yCount) / 3.5;
@@ -35,7 +27,7 @@ function setup() {
       );
     }
   }
-}
+} );
 
 function easeInOutQuint(x) {
   return x < 0.5 ? 16 * x * x * x * x * x : 1 - pow(-2 * x + 2, 5) / 2;
@@ -175,13 +167,7 @@ class Spiral {
   }
 }
 
-function draw() {
-  const seconds = frameCount / 60;
-  const time = seconds;
-
+utils.sketch.draw( time => {
   background(0, 8);
-
   shapes.forEach((shape, index) => shape.draw(time, index));
-
-  utils.debug.fps();
-}
+});

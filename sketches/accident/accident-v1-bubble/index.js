@@ -1,19 +1,7 @@
 let target = null;
 
-function setup() {
-    // utils.canvas.create(utils.presets.FILL);
-    // utils.canvas.create(utils.presets.SQUARE.RETINA);
-    // utils.canvas.create(utils.presets.SQUARE.HD);
-    utils.canvas.create({ width: 768, height: 1368 });
-    // utils.canvas.create({ width: 768/2, height: 1368/2 });
-    
-    utils.events.fullScreenOnDoubleClick();
-    utils.events.extendCanvasOnResize();
-    utils.events.pauseOnSpaceKeyPressed();
-    utils.events.toggleCanvasRecordingOnKey();
-    utils.events.toggleFPSCounter();
-    
-    noStroke();
+utils.sketch.setup(() => {
+  noStroke();
 
   const xCount = 1;
   const yCount = 1;
@@ -34,7 +22,7 @@ function setup() {
       );
     }
   }
-}
+} )
 
 class Spiral {
   constructor(options) {
@@ -125,7 +113,7 @@ class Spiral {
         map(sin(angle + hueCadence), -1, 1, 255, 0) / 1
       );
 
-      let s =
+      const s =
         sin(waveIndex + 0) *
         map(sin(time + waveIndex), -1, 1, 150, 250) *
         cos(waveIndex + 0);

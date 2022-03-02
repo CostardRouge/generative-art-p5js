@@ -1,15 +1,4 @@
-function setup() {
-  // utils.canvas.create(utils.presets.FILL);
-  // utils.canvas.create(utils.presets.SQUARE.RETINA);
-  utils.canvas.create(utils.presets.SQUARE.HD);
-
-  utils.events.fullScreenOnDoubleClick();
-  utils.events.extendCanvasOnResize();
-  utils.events.toggleCanvasRecordingOnKey();
-  utils.events.pauseOnSpaceKeyPressed();
-  utils.events.toggleFPSCounter();
-  noStroke();
-
+utils.sketch.setup(() => {
   const xCount = 1;
   const yCount = 1;
   const size = (width + height) / 2 / (xCount + yCount) / 3.5;
@@ -29,7 +18,8 @@ function setup() {
       );
     }
   }
-}
+} );
+
 class Spiral {
   constructor(options) {
     Object.assign(this, options);
@@ -80,12 +70,7 @@ class Spiral {
   }
 }
 
-function draw() {
-  const time = frameCount / 60;
-
+utils.sketch.draw( time => {
   background(0);
-
   shapes.forEach((shape, index) => shape.draw(time, index));
-
-  utils.debug.fps();
-}
+});

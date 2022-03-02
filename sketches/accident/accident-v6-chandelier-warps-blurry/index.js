@@ -1,32 +1,19 @@
-let target = null;
 let pixilatedCanvas = null;
 
-function setup() {
-    // utils.canvas.create(utils.presets.FILL);
-    // utils.canvas.create(utils.presets.SQUARE.RETINA);
-    // utils.canvas.create(utils.presets.SQUARE.HD);
-    utils.canvas.create({ width: 768, height: 1368 });
-    // utils.canvas.create({ width: 768/2, height: 1368/2 });
-    
-    utils.events.fullScreenOnDoubleClick();
-    utils.events.extendCanvasOnResize();
-    utils.events.pauseOnSpaceKeyPressed();
-    utils.events.toggleCanvasRecordingOnKey();
-    utils.events.toggleFPSCounter();
-    
-    noStroke();
+utils.sketch.setup(() => {
+  noStroke();
 
-      pixilatedCanvas = createGraphics(
-        utils.canvas.main.width,
-        utils.canvas.main.height
-      );
-      pixilatedCanvas.pixelDensity(0.05);
+  pixilatedCanvas = createGraphics(
+    utils.canvas.main.width,
+    utils.canvas.main.height
+  );
+  pixilatedCanvas.pixelDensity(0.05);
 
-      utils.events.register("windowResized", () => {
-        pixilatedCanvas.width = utils.canvas.main.width;
-        pixilatedCanvas.height = utils.canvas.main.height;
-        pixilatedCanvas.pixelDensity(0.05);
-      });
+  utils.events.register("windowResized", () => {
+    pixilatedCanvas.width = utils.canvas.main.width;
+    pixilatedCanvas.height = utils.canvas.main.height;
+    pixilatedCanvas.pixelDensity(0.05);
+  });
 
   const xCount = 1;
   const yCount = 4;
@@ -48,22 +35,22 @@ function setup() {
   //   }
   // }
 
-   for (let x = 1; x <= xCount; x++) {
-     for (let y = 1; y <= yCount; y++) {
-       shapes.push(
-         new Spiral({
-           size,
-           start: createVector(-width / 3, 0),
-           end: createVector(width / 3, 0),
-           relativePosition: {
-             x: x / (xCount + 1),
-             y: y / (yCount + 1),
-           },
-         })
-       );
-     }
-   }
-}
+  for (let x = 1; x <= xCount; x++) {
+    for (let y = 1; y <= yCount; y++) {
+      shapes.push(
+        new Spiral({
+          size,
+          start: createVector(-width / 3, 0),
+          end: createVector(width / 3, 0),
+          relativePosition: {
+            x: x / (xCount + 1),
+            y: y / (yCount + 1),
+          },
+        })
+      );
+    }
+  }
+} );
 
 class Spiral {
   constructor(options) {

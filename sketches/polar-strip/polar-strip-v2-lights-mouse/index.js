@@ -9,12 +9,7 @@ const polarCoefficients = [
 
 let pixilatedCanvas;
 
-function setup() {
-  utils.canvas.create(utils.presets.FILL);
-  utils.events.fullScreenOnDoubleClick();
-  utils.events.extendCanvasOnResize();
-  utils.events.pauseOnSpaceKeyPressed();
-
+utils.sketch.setup(() => {
   pixilatedCanvas = createGraphics(
     utils.canvas.main.width,
     utils.canvas.main.height
@@ -46,7 +41,7 @@ function setup() {
       );
     }
   }
-}
+} );
 
 function easeInOutQuint(x) {
   return x < 0.5 ? 16 * x * x * x * x * x : 1 - pow(-2 * x + 2, 5) / 2;
@@ -197,9 +192,7 @@ function write(str, x, y, size) {
   text(str, x, y);
 }
 
-function draw() {
-  const seconds = frameCount / 60;
-  const time = seconds;
+utils.sketch.draw( time => {
   const angleAmount = 256 / shapes.length;
   const angleStep = TAU / angleAmount;
 
@@ -224,6 +217,4 @@ function draw() {
   // stroke(255)
   // rect(bbox.x, bbox.y, bbox.w, bbox.h);
   // write(`TAU / ${angleAmount}`, shapes[0 ].size * 2, shapes[0 ].size );
-
-  utils.debug.fps();
-}
+} );

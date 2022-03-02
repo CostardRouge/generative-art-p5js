@@ -1,22 +1,7 @@
 const midiInputDevices = [];
 const midiOutputDevices = [];
 
-function setup() {
-  utils.canvas.create(SQUARE.HD);
-  // utils.canvas.create(FILL);
-  // utils.canvas.create({ height: windowWidth, width: windowWidth });
-  utils.canvas.create({ width: 768, height: 1368 });
-  // utils.canvas.create({ width: 700, height: 700 });
-
-  //utils.events.fullScreenOnDoubleClick();
-  utils.events.extendCanvasOnResize();
-  utils.events.pauseOnSpaceKeyPressed();
-  utils.events.toggleCanvasRecordingOnKey();
-  utils.events.toggleFPSCounter();
-
-  noStroke();
-  // frameRate(10);
-
+utils.sketch.setup(() => {
   shapes.push(
     new Strip({
       size: 100,
@@ -75,7 +60,7 @@ function setup() {
       );
     });
   }
-}
+} );
 
 function playNote(note) {
   midiOutputDevices.forEach((device) => {

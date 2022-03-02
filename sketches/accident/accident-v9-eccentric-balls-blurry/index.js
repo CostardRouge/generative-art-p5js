@@ -1,19 +1,6 @@
-let target = null;
 let pixilatedCanvas = null;
 
-function setup() {
-  // utils.canvas.create(utils.presets.FILL);
-  // utils.canvas.create(utils.presets.SQUARE.RETINA);
-  // utils.canvas.create(utils.presets.SQUARE.HD);
-  utils.canvas.create({ width: 768, height: 1368 });
-  // utils.canvas.create({ width: 768/2, height: 1368/2 });
-
-  utils.events.fullScreenOnDoubleClick();
-  utils.events.extendCanvasOnResize();
-  utils.events.pauseOnSpaceKeyPressed();
-  utils.events.toggleCanvasRecordingOnKey();
-  utils.events.toggleFPSCounter();
-
+utils.sketch.setup(() => {
   noStroke();
 
   pixilatedCanvas = createGraphics(
@@ -48,7 +35,7 @@ function setup() {
       );
     }
   }
-}
+} );
 
 class Spiral {
   constructor(options) {

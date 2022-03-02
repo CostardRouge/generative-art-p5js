@@ -1,15 +1,6 @@
 let pixilatedCanvas;
 
-function setup() {
-  // utils.canvas.create({ width: 844/2, ratio: 9/19.5 });
-  // utils.canvas.create(utils.presets.FILL);
-  utils.canvas.create({ height: 80, width: 800, /*ratio: 800/80*/ });
-
-  utils.events.fullScreenOnDoubleClick();
-  // utils.events.extendCanvasOnResize();
-  utils.events.pauseOnSpaceKeyPressed();
-  utils.events.toggleCanvasRecordingOnKey();
-
+utils.sketch.setup(() => {
   pixilatedCanvas = createGraphics(
     utils.canvas.main.width,
     utils.canvas.main.height
@@ -35,7 +26,7 @@ function setup() {
       })
     );
   }
-}
+}, { height: 80, width: 800, /*ratio: 800/80*/ } );
 
 class GlowingFish {
   constructor(options) {
@@ -141,15 +132,12 @@ class GlowingFish {
   }
 }
 
-function draw() {
-  const time = frameCount / 60;
-
-  noSmooth();
+utils.sketch.draw( time => {
+  noSmooth()
   background(0);
   pixilatedCanvas.filter(BLUR, 1);
   pixilatedCanvas.background(0, 0, 0, 8);
   image(pixilatedCanvas, 0, 0);
 
   shapes.forEach((shape, index) => shape.draw(time, index));
-  utils.debug.fps();
-}
+});
