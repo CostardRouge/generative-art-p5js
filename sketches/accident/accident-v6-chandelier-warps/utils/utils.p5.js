@@ -407,6 +407,7 @@ utils.sketch = {
   ) => {
     utils.sketch.setup = () => {
       utils.canvas.create(canvasOptions || utils.presets.SQUARE.HD);
+      
       // utils.events.toggleNoLoopOnSingleClick();
       utils.events.toggleCanvasRecordingOnKey();
       utils.events.pauseOnSpaceKeyPressed();
@@ -414,6 +415,8 @@ utils.sketch = {
       utils.events.extendCanvasOnFullScreen();
       utils.events.extendCanvasOnResize();
       utils.events.fullScreenOnDoubleClick();
+
+      noStroke();
 
       setup?.();
     };

@@ -1,63 +1,18 @@
 const midiInputDevices = [];
 const midiOutputDevices = [];
 
-function throttle(func, wait, leading, trailing, context) {
-  var ctx, args, result;
-  var timeout = null;
-  var previous = 0;
-  var later = function () {
-    previous = new Date();
-    timeout = null;
-    result = func.apply(ctx, args);
-  };
-  return function () {
-    var now = new Date();
-    if (!previous && !leading) previous = now;
-    var remaining = wait - (now - previous);
-    ctx = context || this;
-    args = arguments;
-    // Si la période d'attente est écoulée
-    if (remaining <= 0) {
-      // Réinitialiser les compteurs
-      clearTimeout(timeout);
-      timeout = null;
-      // Enregistrer le moment du dernier appel
-      previous = now;
-      // Appeler la fonction
-      result = func.apply(ctx, args);
-    } else if (!timeout && trailing) {
-      // Sinon on s’endort pendant le temps restant
-      timeout = setTimeout(later, remaining);
-    }
-    return result;
-  };
-};
+utils.sketch.setup(() => {
+  noStroke();
 
-function setup() {
-  utils.canvas.create(SQUARE.HD);
-  // utils.canvas.create(FILL);
-  // utils.canvas.create({ height: windowWidth, width: windowWidth });
-  utils.canvas.create({ width: 768, height: 1368 });
-  // utils.canvas.create({ width: 700, height: 700 });
-
-
-  // utils.events.fullScreenOnDoubleClick();
-  utils.events.extendCanvasOnResize();
-  utils.events.pauseOnSpaceKeyPressed();
-  utils.events.toggleCanvasRecordingOnKey();
-  utils.events.toggleFPSCounter();
-
-  strokeWeight(0);
-
-  const xCount = 3;
-  const yCount = 5;
+  const xCount = 1;
+  const yCount = 7;
 
   for (let x = 1; x <= xCount; x++) {
     for (let y = 1; y <= yCount; y++) {
       shapes.push(
         new Dot({
           shadowsCount: 5,
-          weightRange: [150, 50],
+          weightRange: [150, 15],
           opacityFactorRange: [7, 1],
           relativePosition: {
             x: x / (xCount + 1),
@@ -101,12 +56,9 @@ function setup() {
       );
     });
   }
-}
+} );
 
-const playNote = throttle(playNoteLogic, 50);
-// const playNote = playNoteLogic;
-
-function playNoteLogic(note) {
+function playNote(note) {
   midiOutputDevices.forEach((device) => {
     device.playNote(note);
   });
@@ -119,8 +71,14 @@ class Dot {
 
     this.initial = this.weightRange[1];
 
-    this.vx = random(-5, 5);
-    this.vy = random(-5, 5);
+    const v = 5
+    this.vx = random(-v, v);
+    this.vy = random(-v, v);
+
+    // this.vx = random(v);
+    // this.vy = random(v);
+
+    this.initial = this.weightRange[1];
   }
 
   calculateRelativePosition() {
@@ -134,7 +92,42 @@ class Dot {
     this.calculateRelativePosition();
   }
 
+  drawLines( index) {
+    const { position } = this;
+
+    // if (index === 0) {
+      strokeWeight(5)
+      noFill();
+
+      beginShape();
+
+      shapes.forEach((shape, _index) => {
+        if (_index === index) {
+          return
+        }
+
+        if (position.dist(shape.position) < 200) {
+          curveVertex(position.x, position.y);
+          // curveVertex(width /2, height /2);
+          curveVertex(shape.position.x, shape.position.y);
+        }
+
+        // line(position.x, position.y, shape.position.x, shape.position.y)
+        
+      });
+
+      stroke(255, 16)
+
+      curveVertex(position.x, position.y);
+      endShape();
+    // }
+
+    strokeWeight(0)
+  }
+
   draw(time, index) {
+    // this.drawLines(index);
+
     const { position, shadowsCount, weightRange, opacityFactorRange } = this;
 
     const hueIndex = map(
@@ -170,16 +163,22 @@ class Dot {
         opacityFactorRange[1]
       );
 
-      fill(
+      this.color = color(
         map(sin(hueSpeed), -1, 1, 0, 360) / opacityFactor,
-        map(cos(hueSpeed), -1, 1, 0, 360) / opacityFactor,
+        map(cos(-hueSpeed), -1, 1, 0, 360) / opacityFactor,
         map(sin(hueSpeed), -1, 1, 360, 0) / opacityFactor,
         opacity
       );
+      fill(this.color);
       circle(position.x, position.y, weight);
     }
 
     this.move();
+    this.weightRange[1] = lerp(this.weightRange[1], this.initial, 0.05);
+  }
+
+  bounce() {
+    this.weightRange[1] = this.weightRange[0]/1.5;
   }
 
   move() {
@@ -207,8 +206,11 @@ class Dot {
   }
 
   play() {
+    this.bounce();
+    this.note = this.note ?? getRandNote();
+
     playNote(
-      new Note(getRandNote(), {
+      new Note(this.note, {
         duration: 1000,
         release: 0.5,
       })
@@ -217,20 +219,24 @@ class Dot {
 }
 
 function getRandNote() {
+  return (
+    random(["E", "C", "F"]) +
+    random([ "1", "2"])
+  )
+
+
   const note =
   random(["A", "B", "C", "D", "E", "F", "G"]) +
-  random([ "1", "2", "3", "4", "5", "6"]);
+  random([ "1", "6"]);
 
   console.log(">>> " + note)
-  return note
+  return (
+    random(["A", "B", "C", "D"]) +
+    random([ "1", "2"])
+  )
 }
 
-function draw() {
-  const seconds = frameCount / 60;
-  const time = seconds;
-
+utils.sketch.draw( time => {
   background(0);
-
   shapes.forEach((shape, index) => shape.draw(time, index));
-  utils.debug.fps();
-}
+});

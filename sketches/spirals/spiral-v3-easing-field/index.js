@@ -1,19 +1,4 @@
-function setup() {
-  utils.canvas.create(utils.presets.SQUARE.HD);
-  // utils.canvas.create(utils.presets.IPHONE_12.PORTRAIT);
-  // utils.canvas.create(utils.presets.FILL);
-
-  // utils.canvas.create({
-  //   width: 1080,
-  //   height: 1080,
-  //   ratio: 9 / 16,
-  // });
-
-  utils.events.extendCanvasOnResize();
-  utils.events.pauseOnSpaceKeyPressed();
-  utils.events.fullScreenOnDoubleClick();
-  utils.events.toggleCanvasRecordingOnKey();
-
+utils.sketch.setup(() => {
   const xCount = 5;
   const yCount = 5;
   const size = (width + height) / 2 / (xCount + yCount) / 5.5;
@@ -34,7 +19,7 @@ function setup() {
       );
     }
   }
-}
+} );
 
 function easeInElastic(x) {
   const c4 = (2 * Math.PI) / 3;

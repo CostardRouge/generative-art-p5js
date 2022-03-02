@@ -1,17 +1,4 @@
-function setup() {
-  utils.canvas.create(utils.presets.FILL);
-  utils.canvas.create(utils.presets.SQUARE.HD);
-  utils.canvas.create({ width: 768, height: 1368 });
-
-  utils.events.fullScreenOnDoubleClick();
-  utils.events.extendCanvasOnResize();
-  utils.events.toggleCanvasRecordingOnKey();
-  utils.events.pauseOnSpaceKeyPressed();
-  utils.events.toggleFPSCounter();
-
-  noStroke();
-  //pixelDensity(0.1);
-
+utils.sketch.setup(() => {
   const xCount = 1;
   const yCount = 10;
   const size = (width + height) / 2 / (xCount + yCount) / 3.5;
@@ -23,8 +10,8 @@ function setup() {
   //         size,
   //         start: createVector(0, -height / 2),
   //         end: createVector(0, height / 2),
-  //         start: createVector(width / 2, 0),
-  //         end: createVector(-width / 2, 0),
+  //         // start: createVector(width / 2, 0),
+  //         // end: createVector(-width / 2, 0),
   //         relativePosition: {
   //           x: x / (xCount + 1),
   //           y: y / (yCount + 1),
@@ -34,22 +21,22 @@ function setup() {
   //   }
   // }
 
-   for (let x = 1; x <= xCount; x++) {
-     for (let y = 1; y <= yCount; y++) {
-       shapes.push(
-         new Spiral({
-           size,
-           start: createVector(-width / 3, 0),
-           end: createVector(width / 3, 0),
-           relativePosition: {
-             x: x / (xCount + 1),
-             y: y / (yCount + 1),
-           },
-         })
-       );
-     }
-   }
-}
+  for (let x = 1; x <= xCount; x++) {
+    for (let y = 1; y <= yCount; y++) {
+      shapes.push(
+        new Spiral({
+          size,
+          start: createVector(-width / 3, 0),
+          end: createVector(width / 3, 0),
+          relativePosition: {
+            x: x / (xCount + 1),
+            y: y / (yCount + 1),
+          },
+        })
+      );
+    }
+  }
+} );
 
 class Spiral {
   constructor(options) {
@@ -82,7 +69,7 @@ class Spiral {
     push();
     translate(position.x, position.y);
 
-    const lerpStep = 1 / 150; //map(mouseY, height, 0, 1, 200, true);
+    const lerpStep = 1 / 500; //map(mouseY, height, 0, 1, 200, true);
 
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
       const angle = map(lerpIndex, 0, 1, -angleLimit, angleLimit);
@@ -106,7 +93,7 @@ class Spiral {
          lerpIndex,
          0,
          1,
-         map(sin(lerpIndex * f + tt*3), -1, 1, 1, 50),
+         map(sin(lerpIndex * f + tt*3), -1, 1, 1, 200),
          1
        );
 
@@ -125,12 +112,9 @@ class Spiral {
   }
 }
 
-function draw() {
+utils.sketch.draw( time => {
   background(0);
-  const time = utils.time.seconds();
   const timeSpeed = map(sin(time), -1, 1, 0, 2);
 
   shapes.forEach((shape, index) => shape.draw(time + timeSpeed, index));
-
-  utils.debug.fps();
-}
+});

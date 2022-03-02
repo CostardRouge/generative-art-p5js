@@ -1,13 +1,4 @@
-function setup() {
-  // utils.canvas.create(utils.presets.FILL);
-  utils.canvas.create(utils.presets.SQUARE.HD);
-
-  utils.events.fullScreenOnDoubleClick();
-  utils.events.extendCanvasOnResize();
-  utils.events.pauseOnSpaceKeyPressed();
-  noStroke();
-  //pixelDensity(1);
-
+utils.sketch.setup(() => {
   const xCount = 1;
   const yCount = 5;
   const size = (width + height) / 2 / (xCount + yCount) / 5.5;
@@ -43,7 +34,7 @@ function setup() {
       );
     }
   }
-}
+} );
 
 class Spiral {
   constructor(options) {
@@ -95,12 +86,7 @@ class Spiral {
   }
 }
 
-function draw() {
-  const seconds = frameCount / 60;
-  const time = seconds;
-
+utils.sketch.draw( time => {
   background(0, 0, 0, 255);
   shapes.forEach((shape, index) => shape.draw(time, index));
-
-  utils.debug.fps();
-}
+});

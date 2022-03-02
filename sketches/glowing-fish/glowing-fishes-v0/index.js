@@ -1,13 +1,6 @@
 let pixilatedCanvas;
 
-function setup() {
-  // utils.canvas.create({ width: 844/2, ratio: 9/19.5 });
-  utils.canvas.create(utils.presets.FILL);
-
-  utils.events.fullScreenOnDoubleClick();
-  utils.events.extendCanvasOnResize();
-  utils.events.pauseOnSpaceKeyPressed();
-
+utils.sketch.setup(() => {
   pixilatedCanvas = createGraphics(
     utils.canvas.main.width,
     utils.canvas.main.height
@@ -33,7 +26,7 @@ function setup() {
       })
     );
   }
-}
+} );
 
 class RibbonStrip {
   constructor(options) {
@@ -139,15 +132,12 @@ class RibbonStrip {
   }
 }
 
-function draw() {
-  const time = frameCount / 60;
-
-  noSmooth();
+utils.sketch.draw( time => {
+  noSmooth()
   background(0);
   pixilatedCanvas.filter(BLUR, 1);
   pixilatedCanvas.background(0, 0, 0, 8);
   image(pixilatedCanvas, 0, 0);
 
   shapes.forEach((shape, index) => shape.draw(time, index));
-  utils.debug.fps();
-}
+});

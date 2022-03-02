@@ -1,13 +1,7 @@
 let target = null;
 let capture = null;
 
-function setup() {
-  // utils.canvas.create(utils.presets.FILL);
-  // const s = 300;
-  // utils.canvas.create({ width: s, height: s });
-
-  utils.canvas.create(utils.presets.SQUARE.HD);
-
+utils.sketch.setup(() => {
   utils.events.fullScreenOnDoubleClick();
   utils.events.extendCanvasOnResize();
   utils.events.pauseOnSpaceKeyPressed();
@@ -43,7 +37,7 @@ function setup() {
 
   target = createGraphics(width, height, P2D);
   target.pixelDensity(1);
-}
+} );
 
 class Spiral {
   constructor(options) {
@@ -193,19 +187,11 @@ function dithering(source, factor, step = 10) {
   source.updatePixels();
 }
 
-function draw() {
-  background(0);
-  // noSmooth();
-
-  // const time = millis() / 1000;
-  const time = utils.time.seconds();
-
+utils.sketch.draw( time => {
   target.background(0);
   shapes.forEach((shape, index) => shape.draw(time, index, target));
 
   dithering(target, 1, 1);
   image(target, 0, 0);
   filter(GRAY);
-  
-  utils.debug.fps();
-}
+});

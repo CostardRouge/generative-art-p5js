@@ -7,12 +7,7 @@ const polarCoefficients = [
   [6, 3],
 ];
 
-function setup() {
-  utils.canvas.create(utils.presets.FILL);
-  utils.events.fullScreenOnDoubleClick();
-  utils.events.extendCanvasOnResize();
-  utils.events.pauseOnSpaceKeyPressed();
-
+utils.sketch.setup(() => {
   const xCount = 1;
   const yCount = 1;
   const size = (width + height) / 2 / (xCount + yCount) / 4.5;
@@ -30,7 +25,7 @@ function setup() {
       );
     }
   }
-}
+} );
 
 function easeInOutQuint(x) {
   return x < 0.5 ? 16 * x * x * x * x * x : 1 - pow(-2 * x + 2, 5) / 2;
@@ -177,10 +172,7 @@ function write(str, x, y, size = 18) {
   text(str, x - bbox.w / 2, y + bbox.h / 2);
 }
 
-function draw() {
-  const seconds = frameCount / 60;
-  const time = seconds;
-
+utils.sketch.draw( time => {
   const angleAmountFactor = 192; //utils.mappers.circularIndex(seconds, [2, 4, 8, 16, 32, 64, 128, 256]);
   const angleAmount = angleAmountFactor / shapes.length;
   const angleStep = TAU / angleAmount;
@@ -198,6 +190,4 @@ function draw() {
 
   // write(`TAU / ${angleAmount}`, shapes[0 ].size * 2, shapes[0 ].size );
   //write(`${angleAmountFactor}`, width /2, height/2, 72 );
-
-  utils.debug.fps();
-}
+} );

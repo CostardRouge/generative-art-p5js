@@ -8,12 +8,7 @@ const polarCoefficients = [
 ];
 
 let pixilatedCanvas;
-
-function setup() {
-  utils.canvas.create(utils.presets.FILL);
-  utils.events.fullScreenOnDoubleClick();
-  utils.events.extendCanvasOnResize();
-  utils.events.pauseOnSpaceKeyPressed();
+utils.sketch.setup(() => {
 
   pixilatedCanvas = createGraphics(
     utils.canvas.main.width,
@@ -26,10 +21,6 @@ function setup() {
     pixilatedCanvas.height = utils.canvas.main.height;
     pixilatedCanvas.pixelDensity(0.05);
   });
-
-  //frameRate(30)
-  //pixelDensity(1);
-  // noSmooth();
 
   const xCount = 1;
   const yCount = 1;
@@ -50,7 +41,7 @@ function setup() {
       );
     }
   }
-}
+} );
 
 function easeInOutQuint(x) {
   return x < 0.5 ? 16 * x * x * x * x * x : 1 - pow(-2 * x + 2, 5) / 2;
@@ -201,19 +192,16 @@ function write(str, x, y, size) {
   text(str, x, y);
 }
 
-function draw() {
-  const seconds = frameCount / 60;
-  const time = seconds;
+
+utils.sketch.draw( time => {
   const angleAmount = 256 / shapes.length;
   const angleStep = TAU / angleAmount;
 
-  if (frameCount % 2 == 0) {
-    background(0);
+  background(0);
 
-    //pixilatedCanvas.background(0, 0, 0, 0.5);
-    pixilatedCanvas.filter(BLUR, 3);
-    image(pixilatedCanvas, 0, 0);
-  }
+  pixilatedCanvas.background(0, 0, 0, 0.5);
+  pixilatedCanvas.filter(BLUR, 3);
+  image(pixilatedCanvas, 0, 0);
 
   shapes.forEach((shape, index) => shape.draw(time, index, angleStep));
 
@@ -229,5 +217,4 @@ function draw() {
   // rect(bbox.x, bbox.y, bbox.w, bbox.h);
   // write(`TAU / ${angleAmount}`, shapes[0 ].size * 2, shapes[0 ].size );
 
-  utils.debug.fps();
-}
+} );

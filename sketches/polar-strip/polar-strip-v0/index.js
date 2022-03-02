@@ -1,9 +1,4 @@
-function setup() {
-  utils.canvas.create(utils.presets.FILL);
-  utils.events.fullScreenOnDoubleClick();
-  utils.events.extendCanvasOnResize();
-  utils.events.pauseOnSpaceKeyPressed();
-
+utils.sketch.setup(() => {
   const xCount = 1;
   const yCount = 1;
   const size = (width + height) / 2 / (xCount + yCount) / 4.5;
@@ -21,7 +16,7 @@ function setup() {
       );
     }
   }
-}
+} );
 
 function easeInOutQuint(x) {
   return x < 0.5 ? 16 * x * x * x * x * x : 1 - pow(-2 * x + 2, 5) / 2;
@@ -108,15 +103,11 @@ class Spiral {
   }
 }
 
-function draw() {
-  const time = utils.time.seconds();
+utils.sketch.draw( time => {
   const angleAmountFactor = 192;
   const angleAmount = angleAmountFactor / shapes.length;
   const angleStep = TAU / angleAmount;
 
   background(0);
-
   shapes.forEach((shape, index) => shape.draw(time, index, angleStep));
-
-  utils.debug.fps();
-}
+} );
