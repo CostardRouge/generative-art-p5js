@@ -271,6 +271,27 @@
             "folder": "midi"
          },
          "path": "sketches/midi/midi-v2-input"
+      },
+      "midi-v3-input-pills": {
+         "meta": {
+            "name": "midi-v3-input-pills",
+            "folder": "midi"
+         },
+         "path": "sketches/midi/midi-v3-input-pills"
+      },
+      "midi-v4-blurry": {
+         "meta": {
+            "name": "midi-v4-blurry",
+            "folder": "midi"
+         },
+         "path": "sketches/midi/midi-v4-blurry"
+      },
+      "midi-v6-visualizer-strips": {
+         "meta": {
+            "name": "midi-v6-visualizer-strips",
+            "folder": "midi"
+         },
+         "path": "sketches/midi/midi-v6-visualizer-strips"
       }
    },
    "neon": {
@@ -542,6 +563,29 @@
             "folder": "spirals"
          },
          "path": "sketches/spirals/spiral-v9-donut"
+      }
+   },
+   "strips": {
+      "strips-v1-up-and-down": {
+         "meta": {
+            "name": "strips-v1-up-and-down",
+            "folder": "strips"
+         },
+         "path": "sketches/strips/strips-v1-up-and-down"
+      },
+      "strips-v2-worms": {
+         "meta": {
+            "name": "strips-v2-worms",
+            "folder": "strips"
+         },
+         "path": "sketches/strips/strips-v2-worms"
+      },
+      "strips-v2-worms copy": {
+         "meta": {
+            "name": "strips-v2-worms copy",
+            "folder": "strips"
+         },
+         "path": "sketches/strips/strips-v2-worms copy"
       }
    },
    "torsade": {
