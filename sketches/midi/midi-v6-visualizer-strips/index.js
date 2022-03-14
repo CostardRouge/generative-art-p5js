@@ -214,39 +214,3 @@ utils.sketch.draw( time => {
 
   shapes.forEach((shape, index) => shape.draw(time, index, window));
 });
-
-
-// NAME
-// TYPE (string, number, boolean, array, color)
-// STRING TYPE: text input
-// NUMBER TYPE: slider
-// BOOLEAN TYPE: checkbox
-// ARRAY TYPE: select
-// COLOR TYPE: color picker
-// DEFAULT VALUE
-// DESCRIPTION
-// ENABLED
-
-// utils.options("show_").value
-// utils.options("").value
-
-
-// _____DEFAULT OPTIONS
-// QUALITY
-// SHOW FPS
-// SHAPES COUNT on X
-// SHAPES COUNT on Y
-// SHAPES SIZE
-// COLORS PALETTE
-// BACKGROUND COLOR
-// CLEAR COLOR
-// BLUR
-// TOGGLE EVENTS
-// TOGGLE PANEL VISIBILITY
-// TIME SPEED
-// RESOLUTION
-// SAVE CANVAS
-// RECORD CANVAS
-// PAUSE CANVAS
-// RESET OVERRIDES
-// SAVE OVERRIDES (LOCAL STORAGE)
