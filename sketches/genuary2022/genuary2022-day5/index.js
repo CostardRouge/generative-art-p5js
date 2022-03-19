@@ -4,9 +4,11 @@ const count = 20;
 const margin = 15;
 const timeShift = 2;
 
-utils.sketch.setup(() => {});
+import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
 
-utils.sketch.draw((time) => {
+sketch.setup(() => {});
+
+sketch.draw((time) => {
   background(0);
 
   noFill();

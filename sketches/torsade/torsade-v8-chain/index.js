@@ -1,4 +1,6 @@
-utils.sketch.setup(() => {
+import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+
+sketch.setup(() => {
   //pixelDensity(1);
 
   const xCount = 1;
@@ -121,7 +123,7 @@ class Spiral {
     pop();
   }
 }
-utils.sketch.draw( time => {
+sketch.draw( time => {
   background(0, 0, 0, 255);
   shapes.forEach((shape, index) => shape.draw(time, index));
 });

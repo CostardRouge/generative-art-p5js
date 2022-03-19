@@ -1,12 +1,14 @@
 let target = null;
 let capture = null;
 
-utils.sketch.setup(() => {
-  utils.events.fullScreenOnDoubleClick();
-  utils.events.extendCanvasOnResize();
-  utils.events.pauseOnSpaceKeyPressed();
-  utils.events.toggleCanvasRecordingOnKey();
-  utils.events.toggleFPSCounter();
+import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+
+sketch.setup(() => {
+  events.fullScreenOnDoubleClick();
+  events.extendCanvasOnResize();
+  events.pauseOnSpaceKeyPressed();
+  events.toggleCanvasRecordingOnKey();
+  events.toggleFPSCounter();
 
   // noStroke();
   stroke(0, 0, 0);
@@ -187,7 +189,7 @@ function dithering(source, factor, step = 10) {
   source.updatePixels();
 }
 
-utils.sketch.draw( time => {
+sketch.draw( time => {
   target.background(0);
   shapes.forEach((shape, index) => shape.draw(time, index, target));
 

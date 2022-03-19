@@ -1,4 +1,6 @@
-utils.sketch.setup(() => {
+import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+
+sketch.setup(() => {
   const xCount = 3;
   const yCount = 5;
   const size = (width + height) / (xCount + yCount) / 12;
@@ -42,7 +44,7 @@ class Spiral {
     const hideRate = map(sin(time), -1, 1, -1, 1);
 
     if (
-      utils.mappers.circularIndex(
+      mappers.circularIndex(
         index / (shapes.length / 2) + (time + sin(time)),
         [true, true, false, false, false]
       )
@@ -83,7 +85,7 @@ class Spiral {
 }
 
 
-utils.sketch.draw( time => {
+sketch.draw( time => {
   background(0);
   shapes.forEach((shape, index) => shape.draw(time, index));
 });

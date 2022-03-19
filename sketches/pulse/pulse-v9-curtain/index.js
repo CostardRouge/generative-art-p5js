@@ -1,4 +1,6 @@
-utils.sketch.setup(() => {
+import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+
+sketch.setup(() => {
   const xCount = 7;
   const yCount = 1;
   const size = (width + height) / (xCount + yCount) / 3;
@@ -67,7 +69,7 @@ class GroundLine {
       );
 
         push();
-        const vector = utils.converters.polar.vector(
+        const vector = converters.polar.vector(
           0,//map(shadowIndex, 0, shadowsCount, -TAU, TAU),
           size / map(shadowIndex, 0, shadowsCount, 10, 1)
         );
@@ -104,7 +106,7 @@ class GroundLine {
     pop();
   }
 }
-utils.sketch.draw((time) => {
+sketch.draw((time) => {
   background(0);
 
   shapes.forEach((shape, index) => shape.draw(time, index));

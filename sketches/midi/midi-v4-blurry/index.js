@@ -3,16 +3,18 @@ const midiOutputDevices = [];
 
 let pixilatedCanvas = null;
 
-utils.sketch.setup(() => {
+import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+
+sketch.setup(() => {
   pixilatedCanvas = createGraphics(
-    utils.canvas.main.width,
-    utils.canvas.main.height
+    canvas.main.width,
+    canvas.main.height
   );
   pixilatedCanvas.pixelDensity(0.09);
 
-  utils.events.register("windowResized", () => {
-    pixilatedCanvas.width = utils.canvas.main.width;
-    pixilatedCanvas.height = utils.canvas.main.height;
+  events.register("windowResized", () => {
+    pixilatedCanvas.width = canvas.main.width;
+    pixilatedCanvas.height = canvas.main.height;
     pixilatedCanvas.pixelDensity(0.05);
   });
 
@@ -57,7 +59,7 @@ utils.sketch.setup(() => {
     // const myInput = WebMidi.getInputByName("IAC Driver Bus 1");
     // const myOutput = WebMidi.getOutputByName("IAC Driver Bus 1");
 
-    utils.events.register("mousePressed", function () {
+    events.register("mousePressed", function () {
       shapes.forEach((shape, index) => shape.play());
 
       playNote(
@@ -251,7 +253,7 @@ function getRandNote() {
   )
 }
 
-utils.sketch.draw((time) => {
+sketch.draw((time) => {
   noSmooth()
 
   background(0);

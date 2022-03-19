@@ -1,17 +1,19 @@
 let pixilatedCanvas = null;
 
-utils.sketch.setup(() => {
+import { shapes, sketch, canvas, events } from './utils/index.js';
+
+sketch.setup(() => {
   noStroke();
 
   pixilatedCanvas = createGraphics(
-    utils.canvas.main.width,
-    utils.canvas.main.height
+    canvas.main.width,
+    canvas.main.height
   );
   pixilatedCanvas.pixelDensity(0.05);
 
-  utils.events.register("windowResized", () => {
-    pixilatedCanvas.width = utils.canvas.main.width;
-    pixilatedCanvas.height = utils.canvas.main.height;
+  events.register("windowResized", () => {
+    pixilatedCanvas.width = canvas.main.width;
+    pixilatedCanvas.height = canvas.main.height;
     pixilatedCanvas.pixelDensity(0.05);
   });
 
@@ -176,7 +178,7 @@ class Spiral {
   }
 }
 
-utils.sketch.draw((time) => {
+sketch.draw((time) => {
   // noSmooth()
 
   background(0);

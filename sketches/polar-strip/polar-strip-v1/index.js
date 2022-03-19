@@ -7,7 +7,9 @@ const polarCoefficients = [
   [6, 3],
 ];
 
-utils.sketch.setup(() => {
+import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+
+sketch.setup(() => {
   const xCount = 1;
   const yCount = 1;
   const size = (width + height) / 2 / (xCount + yCount) / 4.5;
@@ -75,7 +77,7 @@ class Spiral {
     const offsetAccelerationCadence = index + time;
     //const cadence = (index/shapes.length) + time/2;
     //const interpolation = 0.05
-    //const [x, y] = utils.mappers.circularIndex(cadence, polarCoefficients);
+    //const [x, y] = mappers.circularIndex(cadence, polarCoefficients);
 
     this.xPolarCoefficient = 1; //lerp(this.xPolarCoefficient || 0, x, interpolation);
     this.yPolarCoefficient = 1; //lerp(this.yPolarCoefficient || 0, y, interpolation);
@@ -108,16 +110,16 @@ class Spiral {
         offsetPIFactor
       ); // * easeInOutBack(map(cos(offsetAccelerationCadence), -1, 1, 0.0, 1));
 
-      translate(utils.converters.polar.vector(angle, size));
+      translate(converters.polar.vector(angle, size));
 
       const vector = createVector(
-        utils.converters.polar.get(
+        converters.polar.get(
           sin,
           size,
           angle + yOffset,
           xPolarCoefficient
         ),
-        utils.converters.polar.get(
+        converters.polar.get(
           cos,
           size,
           angle + xOffset,
@@ -125,13 +127,13 @@ class Spiral {
         )
       );
       const nextVector = createVector(
-        utils.converters.polar.get(
+        converters.polar.get(
           sin,
           size,
           angle + angleStep,
           xPolarCoefficient
         ),
-        utils.converters.polar.get(
+        converters.polar.get(
           cos,
           size,
           angle + angleStep,
@@ -172,8 +174,8 @@ function write(str, x, y, size = 18) {
   text(str, x - bbox.w / 2, y + bbox.h / 2);
 }
 
-utils.sketch.draw( time => {
-  const angleAmountFactor = 192; //utils.mappers.circularIndex(seconds, [2, 4, 8, 16, 32, 64, 128, 256]);
+sketch.draw( time => {
+  const angleAmountFactor = 192; //mappers.circularIndex(seconds, [2, 4, 8, 16, 32, 64, 128, 256]);
   const angleAmount = angleAmountFactor / shapes.length;
   const angleStep = TAU / angleAmount;
 

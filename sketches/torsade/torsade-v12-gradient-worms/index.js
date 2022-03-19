@@ -1,4 +1,6 @@
-utils.sketch.setup(() => {
+import { shapes, sketch, converters, canvas, events, colors, mappers, time as gt } from './utils/index.js';
+
+sketch.setup(() => {
   const xCount = 1;
   const yCount = 10;
   const size = (width + height) / 2 / (xCount + yCount) / 3.5;
@@ -58,7 +60,7 @@ class Spiral {
   draw(time, index) {
     let { position, size, start, end } = this;
 
-    const tt = utils.time.seconds();
+    const tt = gt.seconds();
     const hueCadence = index + tt;
     const mult = map(sin(time), -1, 1, 8, 4);
 
@@ -112,7 +114,7 @@ class Spiral {
   }
 }
 
-utils.sketch.draw( time => {
+sketch.draw( time => {
   background(0);
   const timeSpeed = map(sin(time), -1, 1, 0, 2);
 

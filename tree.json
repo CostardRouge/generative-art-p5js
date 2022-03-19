@@ -514,6 +514,22 @@
          "path": "sketches/semaphore/semaphore-v1-lines"
       }
    },
+   "sketch-ui": {
+      "test": {
+         "meta": {
+            "name": "test",
+            "folder": "sketch-ui"
+         },
+         "path": "sketches/sketch-ui/test"
+      },
+      "ukraine": {
+         "meta": {
+            "name": "ukraine",
+            "folder": "sketch-ui"
+         },
+         "path": "sketches/sketch-ui/ukraine"
+      }
+   },
    "spirals": {
       "spiral-v1-plots": {
          "meta": {

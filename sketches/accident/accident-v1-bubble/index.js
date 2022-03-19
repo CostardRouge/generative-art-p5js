@@ -1,6 +1,6 @@
-let target = null;
+import { shapes, sketch } from './utils/index.js';
 
-utils.sketch.setup(() => {
+sketch.setup(() => {
   noStroke();
 
   const xCount = 1;
@@ -51,7 +51,6 @@ class Spiral {
     target.translate(position.x, position.y);
 
     const lerpStep = 1 / 350; //map(mouseY, height, 0, 1, 200, true);
-
 
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
       //       const f = 15//map(lerpIndex, 0, 1, 1, 30)
@@ -126,7 +125,7 @@ class Spiral {
   }
 }
 
-utils.sketch.draw( time => {
+sketch.draw( time => {
   background(0);
 
   shapes.forEach((shape, index) => shape.draw(time, index, window));

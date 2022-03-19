@@ -9,16 +9,18 @@ const polarCoefficients = [
 
 let pixilatedCanvas;
 
-utils.sketch.setup(() => {
+import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+
+sketch.setup(() => {
   pixilatedCanvas = createGraphics(
-    utils.canvas.main.width,
-    utils.canvas.main.height
+    canvas.main.width,
+    canvas.main.height
   );
   pixilatedCanvas.pixelDensity(0.1);
 
-  utils.events.register("windowResized", () => {
-    pixilatedCanvas.width = utils.canvas.main.width;
-    pixilatedCanvas.height = utils.canvas.main.height;
+  events.register("windowResized", () => {
+    pixilatedCanvas.width = canvas.main.width;
+    pixilatedCanvas.height = canvas.main.height;
     pixilatedCanvas.pixelDensity(0.1);
   });
 
@@ -89,7 +91,7 @@ class Spiral {
     const hueCadence = index + time;
     const cadence = index / shapes.length + time / 2;
     const interpolation = 0.05;
-    const [x, y] = utils.mappers.circularIndex(cadence, polarCoefficients);
+    const [x, y] = mappers.circularIndex(cadence, polarCoefficients);
 
     this.xPolarCoefficient = lerp(
       this.xPolarCoefficient || 0,
@@ -115,7 +117,7 @@ class Spiral {
 
     for (let angle = 0; angle < TAU; angle += angleStep) {
       push();
-      translate(utils.converters.polar.vector(angle, size));
+      translate(converters.polar.vector(angle, size));
 
       const xOffset =
         map(sin(angle + time), -1, 1, -PI, PI) *
@@ -125,13 +127,13 @@ class Spiral {
         easeInOutBack(map(sin(time + index), -1, 1, 0.2, 1));
 
       const vector = createVector(
-        utils.converters.polar.get(
+        converters.polar.get(
           sin,
           size,
           angle + xOffset,
           xPolarCoefficient
         ),
-        utils.converters.polar.get(
+        converters.polar.get(
           cos,
           size,
           angle + yOffset,
@@ -139,13 +141,13 @@ class Spiral {
         )
       );
       const nextVector = createVector(
-        utils.converters.polar.get(
+        converters.polar.get(
           sin,
           size,
           angle + angleStep,
           xPolarCoefficient
         ),
-        utils.converters.polar.get(
+        converters.polar.get(
           cos,
           size,
           angle + angleStep,
@@ -192,17 +194,15 @@ function write(str, x, y, size) {
   text(str, x, y);
 }
 
-utils.sketch.draw( time => {
+sketch.draw( time => {
   const angleAmount = 256 / shapes.length;
   const angleStep = TAU / angleAmount;
 
-  if (frameCount % 2 == 0) {
-    background(0);
+  background(0);
 
-    //pixilatedCanvas.background(0, 0, 0, 0.5);
-    pixilatedCanvas.filter(BLUR, 3);
-    image(pixilatedCanvas, 0, 0);
-  }
+  //pixilatedCanvas.background(0, 0, 0, 0.5);
+  pixilatedCanvas.filter(BLUR, 3);
+  image(pixilatedCanvas, 0, 0);
 
   shapes.forEach((shape, index) => shape.draw(time, index, angleStep));
 

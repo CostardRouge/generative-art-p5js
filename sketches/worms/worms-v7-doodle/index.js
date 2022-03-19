@@ -1,4 +1,6 @@
-utils.sketch.setup(() => {
+import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+
+sketch.setup(() => {
   const xCount = 1;
   const yCount = 1;
   const size = (width + height) / 2 / (xCount + yCount) / 2;
@@ -59,7 +61,7 @@ class Spiral {
       const w = map(sin(time+index+shadowIndex), -1, 1, 10, 30);
       const angleStep = TAU / 4;
       for (let angle = 0; angle < TAU; angle += angleStep) {
-        const vector = utils.converters.polar.vector(
+        const vector = converters.polar.vector(
           angle + (index % 2 ? -time : time) * -1 + radians(shadowIndex * 30),
           map(sin(time + angle), -1, 1, 1, size)
         );
@@ -94,7 +96,7 @@ class Spiral {
   }
 }
 
-utils.sketch.draw(time => {
+sketch.draw(time => {
   background(0);
   shapes.forEach((shape, index) => shape.draw(time, index));
 })
