@@ -1,4 +1,6 @@
-utils.sketch.setup(() => {
+import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+
+sketch.setup(() => {
   const xCount = 5;
   const yCount = 5;
 
@@ -77,7 +79,7 @@ class Spiral {
         push();
         beginShape();
         strokeWeight(weight);
-        stroke(utils.colors.rainbow(hueCadence + angle, opacityFactor));
+        stroke(colors.rainbow(hueCadence + angle, opacityFactor));
 
         vertex(0, 0);
         vertex(0, 0);
@@ -91,7 +93,7 @@ class Spiral {
   }
 }
 
-utils.sketch.draw(time => {
+sketch.draw(time => {
   background(0);
 
   shapes.forEach((shape, index) => shape.draw(time, index));

@@ -1,4 +1,6 @@
-utils.sketch.setup(() => { 
+import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+
+sketch.setup(() => { 
   shapes.push(
     new Strip({
       size: 50,
@@ -10,9 +12,7 @@ utils.sketch.setup(() => {
       },
     })
   );
-}, { width: 768, height: 1366 });
-// }, utils.presets.IPHONE_12.PORTRAIT);
-// }, utils.presets.PORTRAIT.HD);
+});
 
 class Strip {
   constructor(options) {
@@ -43,7 +43,7 @@ class Strip {
 
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
       let a = map(lerpIndex, 0, 1, -PI, PI)
-      let lerpPosition = utils.converters.polar.vector(a, 100)
+      let lerpPosition = converters.polar.vector(a, 100)
 
       const xOffset = map(sin(a), -1, 1, -width/3, width/3);
       const yOffset = map(cos(a), -1, 1, -height/3, height/3)
@@ -90,7 +90,7 @@ class Strip {
   }
 }
 
-utils.sketch.draw( time => {
+sketch.draw( time => {
   background(0);
   shapes.forEach((shape, index) => shape.draw(time, index, window));
 });

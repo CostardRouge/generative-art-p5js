@@ -1,4 +1,6 @@
-utils.sketch.setup(() => {
+import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+
+sketch.setup(() => {
   shapes.push(
     new Strip({
       size: 50,
@@ -89,7 +91,7 @@ class Strip {
         //   map(sin(0 + hueCadence + i), -1, 1, 0, 255) / opacityFactor/2
         // );
 
-        //utils.mappers.circularIndex(time*2+lerpIndex, [100, 50])
+        //mappers.circularIndex(time*2+lerpIndex, [100, 50])
 
         target.circle(x, y, 100/f );
       }
@@ -99,7 +101,7 @@ class Strip {
   }
 }
 
-utils.sketch.draw( time => {
+sketch.draw( time => {
   background(0);
   shapes.forEach((shape, index) => shape.draw(time, index, window));
 });

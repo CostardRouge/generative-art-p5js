@@ -1,7 +1,9 @@
 const midiInputDevices = [];
 const midiOutputDevices = [];
 
-utils.sketch.setup(() => {
+import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+
+sketch.setup(() => {
   shapes.push(
     new Strip({
       size: 100,
@@ -47,7 +49,7 @@ utils.sketch.setup(() => {
       });
     });
 
-    utils.events.register("mousePressed", function () {
+    events.register("mousePressed", function () {
       const note = "A4"
 
       shapes.forEach(shape => shape.play(note));
@@ -209,7 +211,7 @@ function getRandNote() {
   return random(["A", "B", "C", "D", "E", "F", "G"]) + "4"//random([ "1", "2", "3", "4", "5", "6"])
 }
 
-utils.sketch.draw( time => {
+sketch.draw( time => {
   background(0);
 
   shapes.forEach((shape, index) => shape.draw(time, index, window));

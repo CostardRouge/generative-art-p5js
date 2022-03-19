@@ -1,4 +1,6 @@
-utils.sketch.setup(() => { 
+import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+
+sketch.setup(() => { 
   shapes.push(
     new Strip({
       size: 100,
@@ -41,7 +43,7 @@ class Strip {
 
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
       let a = map(lerpIndex, 0, 1, -PI, PI)
-      let lerpPosition = utils.converters.polar.vector(a, size)
+      let lerpPosition = converters.polar.vector(a, size)
 
       const xOffset = map(sin(a+time), -1, 1, -size, size)*2;
       const yOffset = map(cos(time+a), 1, -1, -height, height)/3;
@@ -85,7 +87,7 @@ class Strip {
   }
 }
 
-utils.sketch.draw( time => {
+sketch.draw( time => {
   background(0);
   shapes.forEach((shape, index) => shape.draw(time, index, window));
 });

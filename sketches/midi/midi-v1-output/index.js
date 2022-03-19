@@ -1,7 +1,9 @@
 const midiInputDevices = [];
 const midiOutputDevices = [];
 
-utils.sketch.setup(() => {
+import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+
+sketch.setup(() => {
   noStroke();
 
   const xCount = 1;
@@ -45,7 +47,7 @@ utils.sketch.setup(() => {
     // const myInput = WebMidi.getInputByName("IAC Driver Bus 1");
     // const myOutput = WebMidi.getOutputByName("IAC Driver Bus 1");
 
-    utils.events.register("mousePressed", function () {
+    events.register("mousePressed", function () {
       shapes.forEach((shape, index) => shape.play());
 
       playNote(
@@ -236,7 +238,7 @@ function getRandNote() {
   )
 }
 
-utils.sketch.draw( time => {
+sketch.draw( time => {
   background(0);
   shapes.forEach((shape, index) => shape.draw(time, index));
 });

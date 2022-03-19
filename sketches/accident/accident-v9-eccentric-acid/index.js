@@ -1,4 +1,6 @@
-utils.sketch.setup(() => {
+import { shapes, sketch } from './utils/index.js';
+
+sketch.setup(() => {
   noStroke();
 
   const xCount = 1;
@@ -170,7 +172,7 @@ class Spiral {
   }
 }
 
-utils.sketch.draw( time => {
+sketch.draw( time => {
   background(0);
 
   shapes.forEach((shape, index) => shape.draw(-time, index, window));

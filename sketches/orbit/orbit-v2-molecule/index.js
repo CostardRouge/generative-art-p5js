@@ -1,4 +1,6 @@
-utils.sketch.setup(() => {
+import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+
+sketch.setup(() => {
   const xCount = 5;
   const yCount = 5;
   const size = (width + height) / (xCount + yCount) / 6;
@@ -71,7 +73,7 @@ class Spiral {
   }
 }
 
-utils.sketch.draw( time => {
+sketch.draw( time => {
   background(0);
   shapes.forEach((shape, index) => shape.draw(time, index));
 });

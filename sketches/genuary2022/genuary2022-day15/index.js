@@ -1,4 +1,6 @@
-utils.sketch.setup(() => {
+import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+
+sketch.setup(() => {
   const xCount = 1;
   const yCount = 1;
   const size = (width + height) / 2 / (xCount + yCount) / 30;
@@ -19,7 +21,7 @@ utils.sketch.setup(() => {
     }
   }
 
-  // utils.events.register("windowResized", function () {
+  // events.register("windowResized", function () {
   //   // radialNoise.target = undefined;
   //   console.log("called", radialNoise.target);
   // });
@@ -95,25 +97,25 @@ class Spiral {
 
       // const i = map(sin(time/5 + index), -1, 1, 0, 100);
       const shadowOffset = 0//radians(shadowIndex * 100);
-      const vector = utils.converters.polar.vector(
+      const vector = converters.polar.vector(
         (index % 2 ? -time : time) * 0 + shadowOffset,
         map(sin(time + shadowIndex), -1, 1, 0, size * 1.5)
       );
 
       strokeWeight(weight);
-      // stroke(utils.colors.rainbow(hueCadence + shadowIndex/16, opacityFactor));
+      // stroke(colors.rainbow(hueCadence + shadowIndex/16, opacityFactor));
       // stroke(color(64 / opacityFactor));
 
-      stroke(utils.colors.rainbow(2, opacityFactor));
+      stroke(colors.rainbow(2, opacityFactor));
       point(vector.x, vector.y);
 
-      // fill(utils.colors.rainbow(2.1, opacityFactor));
+      // fill(colors.rainbow(2.1, opacityFactor));
       // circle(0, 0, weight);
       
       // noiseCircle(
       //   vector.x,
       //   vector.y,
-      //   utils.colors.rainbow(2.1, opacityFactor),
+      //   colors.rainbow(2.1, opacityFactor),
       //   weight / 2,
       //   1000//map(shadowIndex, 0, shadowsCount, 0, 500)
       // );
@@ -165,7 +167,7 @@ function radialNoise(step = 10, offset = 3, minStroke = 1, maxStroke = 10, strok
   }
 }
 
-utils.sketch.draw(time => {
+sketch.draw(time => {
   background(0);
 
   shapes.forEach((shape, index) => shape.draw(time, index));

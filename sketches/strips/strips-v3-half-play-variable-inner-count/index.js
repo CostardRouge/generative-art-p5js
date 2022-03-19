@@ -1,4 +1,6 @@
-utils.sketch.setup(() => { 
+import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+
+sketch.setup(() => { 
   shapes.push(
     new Strip({
       size: 50,
@@ -10,9 +12,7 @@ utils.sketch.setup(() => {
       },
     })
   );
-}, { width: 768, height: 1366 });
-// }, utils.presets.IPHONE_12.PORTRAIT);
-// }, utils.presets.PORTRAIT.HD);
+});
 
 class Strip {
   constructor(options) {
@@ -48,7 +48,7 @@ class Strip {
       // let lerpPosition = p5.Vector.lerp(start, end, lerpIndex);
 
       let a = map(lerpIndex, 0, 1, -PI, PI)/2//map(sin(time*2), -1, 1, 0.5, 5);
-      let lerpPosition = utils.converters.polar.vector(a, 100)
+      let lerpPosition = converters.polar.vector(a, 100)
 
       const xOffset = map(sin(a), -1, 1, -width/3, width/3);
       const yOffset = map(cos(a), -1, 1, -height/3, height/3)
@@ -93,7 +93,7 @@ class Strip {
         //   map(sin(0 + hueCadence + i), -1, 1, 0, 255) / opacityFactor/2
         // );
 
-        //utils.mappers.circularIndex(time*2+lerpIndex, [100, 50])
+        //mappers.circularIndex(time*2+lerpIndex, [100, 50])
 
         // target.rect(x, y, map(sin(angle + time), -1, 1, 1, 20));
         // target.circle(x, y, map(cos(angle + time*2), -1, 1, 10, 50) );
@@ -106,7 +106,7 @@ class Strip {
   }
 }
 
-utils.sketch.draw( time => {
+sketch.draw( time => {
   background(0);
   shapes.forEach((shape, index) => shape.draw(time, index, window));
 });

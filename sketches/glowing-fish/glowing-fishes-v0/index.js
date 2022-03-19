@@ -1,18 +1,20 @@
 let pixilatedCanvas;
 
-utils.sketch.setup(() => {
+import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+
+sketch.setup(() => {
   pixilatedCanvas = createGraphics(
-    utils.canvas.main.width,
-    utils.canvas.main.height
+    canvas.main.width,
+    canvas.main.height
   );
   pixilatedCanvas.pixelDensity(0.05);
 
   pixelDensity(1);
   noStroke();
 
-  utils.events.register("windowResized", () => {
-    pixilatedCanvas.width = utils.canvas.main.width;
-    pixilatedCanvas.height = utils.canvas.main.height;
+  events.register("windowResized", () => {
+    pixilatedCanvas.width = canvas.main.width;
+    pixilatedCanvas.height = canvas.main.height;
     pixilatedCanvas.pixelDensity(0.1);
   });
 
@@ -62,10 +64,10 @@ class RibbonStrip {
     } = this;
 
     const x =
-      utils.converters.polar.get(sin, circleSize, time / 2 + index, 3) +
+      converters.polar.get(sin, circleSize, time / 2 + index, 3) +
       width / 2;
     const y =
-      utils.converters.polar.get(cos, circleSize, time / 1 + index, 1) +
+      converters.polar.get(cos, circleSize, time / 1 + index, 1) +
       height / 2;
 
     const target = createVector(
@@ -132,7 +134,7 @@ class RibbonStrip {
   }
 }
 
-utils.sketch.draw( time => {
+sketch.draw( time => {
   noSmooth()
   background(0);
   pixilatedCanvas.filter(BLUR, 1);

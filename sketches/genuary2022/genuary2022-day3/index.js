@@ -1,4 +1,6 @@
-utils.sketch.setup(() => {
+import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+
+sketch.setup(() => {
   noStroke();
 
   const xCount = 1;
@@ -71,7 +73,7 @@ class Spiral {
       const eclipse = map(sin(time*2 + index), -1, 1, 15, 50)
 
       fill(
-        utils.colors.rainbow(
+        colors.rainbow(
           lerpIndex + angle - time + index / 2,
           map(lerpIndex, 0, 1, 1, eclipse),
           // opacityFactor
@@ -90,7 +92,7 @@ class Spiral {
   }
 }
 
-utils.sketch.draw( time => {
+sketch.draw( time => {
   background(0);
   shapes.forEach((shape, index) => shape.draw(time, index));
 });

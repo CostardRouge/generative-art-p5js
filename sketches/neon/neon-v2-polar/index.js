@@ -1,4 +1,6 @@
-utils.sketch.setup(() => {
+import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+
+sketch.setup(() => {
   const xCount = 1;
   const yCount = 1;
   const size = (width + height) / 2 / (xCount + yCount) / 3.5;
@@ -45,7 +47,7 @@ class Spiral {
 
     const waveAmplitude = size; //map(sin(time), -1, 1, size, 0);
 
-    //utils.time.at(60, () => console.log(Object.keys(this.cachedColors).length));
+    //time.at(60, () => console.log(Object.keys(this.cachedColors).length));
 
     push();
     translate(position.x, position.y);
@@ -69,7 +71,7 @@ class Spiral {
 
       for (let angle = 0; angle < TAU; angle += angleStep) {
         push();
-        translate(utils.converters.polar.vector(angle, size));
+        translate(converters.polar.vector(angle, size));
 
         const vector = this.getVector(angle, time, waveAmplitude);
         const nextVector = this.getVector(angle + time, 0, waveAmplitude);
@@ -125,13 +127,13 @@ class Spiral {
     const yAngle = map(cos(angle + time / 2), -1, 1, -PI, PI);
 
     return createVector(
-      utils.converters.polar.get(sin, waveAmplitude, xAngle),
-      utils.converters.polar.get(cos, waveAmplitude, yAngle)
+      converters.polar.get(sin, waveAmplitude, xAngle),
+      converters.polar.get(cos, waveAmplitude, yAngle)
     );
   }
 }
 
-utils.sketch.draw( time => {
+sketch.draw( time => {
   background(0);
   shapes.forEach((shape, index) => shape.draw(time, index));
 });

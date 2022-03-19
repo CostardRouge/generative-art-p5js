@@ -6,7 +6,9 @@ const polarCoefficients = [
   [1, 1],
 ];
 
-utils.sketch.setup(() => {
+import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+
+sketch.setup(() => {
   const xCount = 1;
   const yCount = 3;
   const size = (width + height) / 2 / (xCount + yCount) / 3.5;
@@ -53,7 +55,7 @@ class Spiral {
     const hueCadence = index + time;
     const cadence = index / shapes.length + time;
     const interpolation = 0.05;
-    // const [x, y] = utils.mappers.circularIndex(cadence, polarCoefficients);
+    // const [x, y] = mappers.circularIndex(cadence, polarCoefficients);
 
     // this.xPolarCoefficient = lerp(
     //   this.xPolarCoefficient || 0,
@@ -88,13 +90,13 @@ class Spiral {
       const xOffset = map(sin(angle + time), -1, 1, -PI, PI);
 
       const vector = createVector(
-        utils.converters.polar.get(
+        converters.polar.get(
           sin,
           waveAmplitude,
           xOffset,
           xPolarCoefficient
         ),
-        utils.converters.polar.get(
+        converters.polar.get(
           cos,
           waveAmplitude,
           yOffset,
@@ -122,7 +124,7 @@ class Spiral {
   }
 }
 
-utils.sketch.draw( time => {
+sketch.draw( time => {
   background(0);
   shapes.forEach((shape, index) => shape.draw(time, index));
 });
