@@ -91,6 +91,20 @@
          },
          "path": "sketches/accident/accident-v7-chewing-gum-strings"
       },
+      "accident-v7-chewing-gum-strings-v2": {
+         "meta": {
+            "name": "accident-v7-chewing-gum-strings-v2",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v7-chewing-gum-strings-v2"
+      },
+      "accident-v7-chewing-gum-strings-v3": {
+         "meta": {
+            "name": "accident-v7-chewing-gum-strings-v3",
+            "folder": "accident"
+         },
+         "path": "sketches/accident/accident-v7-chewing-gum-strings-v3"
+      },
       "accident-v8-circle": {
          "meta": {
             "name": "accident-v8-circle",
@@ -500,6 +514,22 @@
          "path": "sketches/semaphore/semaphore-v1-lines"
       }
    },
+   "sketch-ui": {
+      "test": {
+         "meta": {
+            "name": "test",
+            "folder": "sketch-ui"
+         },
+         "path": "sketches/sketch-ui/test"
+      },
+      "ukraine": {
+         "meta": {
+            "name": "ukraine",
+            "folder": "sketch-ui"
+         },
+         "path": "sketches/sketch-ui/ukraine"
+      }
+   },
    "spirals": {
       "spiral-v1-plots": {
          "meta": {
@@ -580,12 +610,68 @@
          },
          "path": "sketches/strips/strips-v2-worms"
       },
-      "strips-v2-worms copy": {
+      "strips-v3-half-curve-fix-inner-count": {
          "meta": {
-            "name": "strips-v2-worms copy",
+            "name": "strips-v3-half-curve-fix-inner-count",
             "folder": "strips"
          },
-         "path": "sketches/strips/strips-v2-worms copy"
+         "path": "sketches/strips/strips-v3-half-curve-fix-inner-count"
+      },
+      "strips-v3-half-curve-fix-inner-count-2": {
+         "meta": {
+            "name": "strips-v3-half-curve-fix-inner-count-2",
+            "folder": "strips"
+         },
+         "path": "sketches/strips/strips-v3-half-curve-fix-inner-count-2"
+      },
+      "strips-v3-half-play-fix-inner-count": {
+         "meta": {
+            "name": "strips-v3-half-play-fix-inner-count",
+            "folder": "strips"
+         },
+         "path": "sketches/strips/strips-v3-half-play-fix-inner-count"
+      },
+      "strips-v3-half-play-variable-inner-count": {
+         "meta": {
+            "name": "strips-v3-half-play-variable-inner-count",
+            "folder": "strips"
+         },
+         "path": "sketches/strips/strips-v3-half-play-variable-inner-count"
+      },
+      "strips-v3-half-play-variable-inner-count copy": {
+         "meta": {
+            "name": "strips-v3-half-play-variable-inner-count copy",
+            "folder": "strips"
+         },
+         "path": "sketches/strips/strips-v3-half-play-variable-inner-count copy"
+      },
+      "strips-v3-knot-fix-inner-count": {
+         "meta": {
+            "name": "strips-v3-knot-fix-inner-count",
+            "folder": "strips"
+         },
+         "path": "sketches/strips/strips-v3-knot-fix-inner-count"
+      },
+      "strips-v3-play-fix-inner-count": {
+         "meta": {
+            "name": "strips-v3-play-fix-inner-count",
+            "folder": "strips"
+         },
+         "path": "sketches/strips/strips-v3-play-fix-inner-count"
+      },
+      "strips-v3-play-fix-inner-count-high-opacity-factor": {
+         "meta": {
+            "name": "strips-v3-play-fix-inner-count-high-opacity-factor",
+            "folder": "strips"
+         },
+         "path": "sketches/strips/strips-v3-play-fix-inner-count-high-opacity-factor"
+      },
+      "strips-v3-play-variable-inner-count": {
+         "meta": {
+            "name": "strips-v3-play-variable-inner-count",
+            "folder": "strips"
+         },
+         "path": "sketches/strips/strips-v3-play-variable-inner-count"
       }
    },
    "torsade": {

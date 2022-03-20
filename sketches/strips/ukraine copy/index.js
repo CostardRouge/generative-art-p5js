@@ -8,7 +8,7 @@ options.add( [
     min: 1,
     max: 1000,
     step: 10,
-    defaultValue: 500,
+    defaultValue: 600,
     category: 'Integers'
   },
   {
@@ -18,7 +18,7 @@ options.add( [
     min: 5,
     max: 100,
     step: 5,
-    defaultValue: 32,
+    defaultValue: 30,
     category: 'Integers'
   },
   {
@@ -27,7 +27,7 @@ options.add( [
     label: 'Lines count',
     min: 1,
     max: 25,
-    defaultValue: 5,
+    defaultValue: 7,
     category: 'Integers'
   }
 ] );
@@ -39,11 +39,11 @@ sketch.setup(() => {
       end: createVector(0, height / 3),
       relativePosition: {
         x: 1/2,
-        y: 1/2,
+        y: 1/2
       },
     })
   );
-}, { width: 768, height: 1366 });
+});
 
 class Strip {
   constructor(options) {
@@ -74,47 +74,41 @@ class Strip {
 
     const l = 1//map(sin(time*2), -1, 1, 0.5, 0.9);
     for (let lerpIndex = 0; lerpIndex < l; lerpIndex += lerpStep) {
-
-      let a = map(sin(lerpIndex+time), -1, 1, -PI, PI)*2//map(sin(time), -1, 1, 1, 5);
-      let lerpPosition = converters.polar.vector(a, 0)
+      let a = map(sin(lerpIndex+time), -1, 1, -PI, PI)*2
+      let lerpPosition = converters.polar.vector(a, 50)
 
       const xOffset = map(sin(a), -1, 1, -width/2.5, width/2.5);
       const yOffset = map(cos(a), -1, 1, -height/3, height/3)
       
-      const aa = map(sin(time+a), -1, 1, 0.5, 1)*a;
-      const innerShapesCount = options.get( 'lines-count' );//map(cos(time+aa), -1, 1, 1, 15);
+      const innerShapesCount = options.get( 'lines-count' );
 
       const opacityFactor = map(
         cos(lerpIndex*15+time*2),
         -1,
         1,
-        10,
+        5,
         1
       );
 
+      const op = map(cos(a+time*2), -1, 1, 1, 10);
+
       for (let i = 0; i < innerShapesCount; i++) {
         const x = lerp(
-          lerpPosition.x + xOffset * sin(time),
-          lerpPosition.x - xOffset * cos(time),
+          lerpPosition.x + xOffset * sin(time-a),
+          lerpPosition.x - xOffset * cos(time+a),
           i / innerShapesCount
         );
         const y = lerp(
-          lerpPosition.y + yOffset * cos(time),
-          lerpPosition.y - yOffset * sin(time),
+          lerpPosition.y + yOffset * cos(time+a),
+          lerpPosition.y - yOffset * sin(time-a),
           i / innerShapesCount
         );
 
-        // target.fill(
-        //   map(sin(0 + hueCadence - i), -1, 1, 360, 0) / opacityFactor,
-        //   map(cos(0 - hueCadence + i), -1, 1, 255, 0) / opacityFactor,
-        //   map(sin(0 - hueCadence + i), -1, 1, 255, 0) / opacityFactor,
-        // );
-
-        // ukraine
         target.fill(
           map(sin(0 + hueCadence - i), -1, 1, 360, 0) / opacityFactor,
-          map(sin(0 + hueCadence - i), -1, 1, 255, 0) / opacityFactor,
-          map(sin(0 - hueCadence + i), -1, 1, 360, 0) / opacityFactor,
+          map(cos(0 - hueCadence + i), -1, 1, 255, 0) / opacityFactor,
+          map(sin(0 - hueCadence + i), -1, 1, 255, 0) / opacityFactor,
+          opacityFactor*op
         );
 
         target.circle(x, y, options.get( 'circle-weight' ) );

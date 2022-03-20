@@ -104,7 +104,6 @@ class Strip {
     for(const note in this.notes) {
       this.notes[note].shift()
       this.notes[note].push(this.noteOff)
-      console.log(note, this.notes[note].length)
     }
   }
 
@@ -143,7 +142,7 @@ class Strip {
       //   map(sin(angle + hueCadence), -1, 1, 255, 0) / opacityFactor
       // );
       const noteIndexes = Object.keys(this.notes)
-      const noteIndexesCount = 8//noteIndexes.length
+      const noteIndexesCount = noteIndexes.length
 
       for (let noteIndex = 0; noteIndex < noteIndexesCount; noteIndex++) {
         const midW = xOffset;
