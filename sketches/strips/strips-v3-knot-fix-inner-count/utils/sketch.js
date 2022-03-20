@@ -7,15 +7,15 @@ const sketch = {
     canvasOptions
   ) => {
     sketch.setup = () => {
-      canvas.create(canvasOptions || presets.SQUARE.HD);
+      canvas.create(canvasOptions || presets.PORTRAIT.DEFAULT);
       
-      // events.toggleNoLoopOnSingleClick();
+      events.toggleNoLoopOnSingleClick();
       events.toggleCanvasRecordingOnKey();
       events.pauseOnSpaceKeyPressed();
-      events.toggleFPSCounter();
+      events.toggleFPSCounterOnKeyPressed();
       events.extendCanvasOnFullScreen();
       events.extendCanvasOnResize();
-      events.fullScreenOnDoubleClick();
+      events.toggleFullScreenOnDoubleClick();
 
       noStroke();
 
@@ -30,7 +30,7 @@ const sketch = {
       pixelDensity(options.get("pixel-density"));
       frameRate(options.get("framerate"));
       noSmooth();
-      draw?.(time.seconds());
+      draw?.(time.seconds() * options.get("time-speed"));
     };
   },
 };

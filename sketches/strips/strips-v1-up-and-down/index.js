@@ -1,4 +1,35 @@
-import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+import { options, shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+
+options.add( [
+  {
+    id: "circles-count",
+    type: 'number',
+    label: 'Circles cont',
+    min: 1,
+    max: 1000,
+    defaultValue: 600,
+    category: 'Integers'
+  },
+  {
+    id: "lines-count",
+    type: 'number',
+    label: 'Max lines count',
+    min: 1,
+    max: 25,
+    defaultValue: 7,
+    category: 'Integers'
+  },
+  {
+    id: "circle-weight",
+    type: 'number',
+    label: 'Circle weight',
+    min: 1,
+    max: 200,
+    step: 10,
+    defaultValue: 100,
+    category: 'Integers'
+  }
+] );
 
 sketch.setup(() => { 
   shapes.push(
@@ -39,7 +70,7 @@ class Strip {
     target.push();
     target.translate(position.x, position.y);
 
-    const lerpStep = 1 / 500;
+    const lerpStep = 1 / options.get( 'circles-count' );
 
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
       const angle = lerpIndex * 3;
@@ -65,7 +96,7 @@ class Strip {
         map(sin(angle + hueCadence), -1, 1, 255, 64) / opacityFactor
       );
       
-      const innerShapesCount = 7;
+      const innerShapesCount = options.get( 'lines-count' );
 
       for (let i = 0; i < innerShapesCount; i++) {
         const x = lerp(
@@ -79,7 +110,7 @@ class Strip {
           i / innerShapesCount
         );
 
-        target.circle(x, y, 100 );
+        target.circle(x, y, options.get( 'circle-weight' ) );
       }
     }
 

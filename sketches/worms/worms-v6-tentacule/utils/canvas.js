@@ -4,8 +4,8 @@ const canvas = {
   main: undefined,
   configuration: {
     type: "p2d",
-    width: 1080,
-    height: 1080,
+    width: 768,
+    height: 1366,
   },
   create: function (options = {}) {
     const { size } = options;
@@ -42,7 +42,17 @@ const canvas = {
   },
   save: (format = 'png') => {
     saveCanvas(canvas.main, sketch.name, format);
-  }
+  },
+  toggleNoLoop: function () {
+    this.stop = this.stop ?? false;
+    this.stop = !this.stop;
+
+    if (this.stop) {
+      noLoop();
+    } else {
+      loop();
+    }
+  },
 };
 
 export default canvas;

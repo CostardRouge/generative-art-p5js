@@ -4,6 +4,55 @@ import { canvas, recorder, debug } from './index.js';
 
 const getDefaultOptions = () => [
   {
+    id: 'pause-canvas-on-single-click',
+    type: 'switch',
+    label: 'Pause canvas on single click',
+    defaultValue: false,
+    category: 'Events'
+  },
+  {
+    id: 'press-r-to-record',
+    type: 'switch',
+    label: 'Press R to record',
+    defaultValue: true,
+    category: 'Events'
+  },
+  {
+    id: 'pause-on-space-key-pressed',
+    type: 'switch',
+    label: 'Pause canvas on space key',
+    defaultValue: true,
+    category: 'Events'
+  },
+  {
+    id: 'press-f-to-toggle-fps-counter',
+    type: 'switch',
+    label: 'Press F to toggle FPS counter',
+    defaultValue: true,
+    category: 'Events'
+  },
+  {
+    id: 'extend-canvas-on-full-screen',
+    type: 'switch',
+    label: 'Extend canvas on full screen',
+    defaultValue: true,
+    category: 'Events'
+  },
+  {
+    id: 'extend-canvas-on-resize',
+    type: 'switch',
+    label: 'Extend canvas on resize',
+    defaultValue: true,
+    category: 'Events'
+  },
+  {
+    id: 'toggle-full-screen-on-double-click',
+    type: 'switch',
+    label: 'Toggle full screen on double click',
+    defaultValue: true,
+    category: 'Events'
+  },
+  {
     id: 'show-fps',
     type: 'switch',
     label: 'Show framerate',
@@ -35,7 +84,6 @@ const getDefaultOptions = () => [
     defaultValue: 60,
     min: 1,
     max: 120,
-    defaultValue: 60,
     marks: [
       { value: 20, label: '20 fps' },
       { value: 60, label: '60 fps' },
@@ -44,12 +92,40 @@ const getDefaultOptions = () => [
     category: 'Debug'
   },
   {
+    id: 'time-speed',
+    type: 'slider',
+    label: 'General time speed',
+    defaultValue: 1,
+    step: 0.1,
+    min: -3,
+    max: 3,
+    marks: [
+      { value: -3, label: '-3' },
+      { value: 0, label: 'stop' },
+      { value: 3, label: '3' },
+    ],
+    category: 'Debug'
+  },
+  {
+    type: 'button',
+    text: 'Toggle fullscreen',
+    icon: 'ScreenShare',
+    onClick: () => canvas.fullscreen(),
+    category: 'Canvas'
+  },
+  {
     id: "canvas-size",
     type: 'select',
     label: 'Canvas size',
     defaultValue: '768x1366',
     onChange: value => {
-      const [width, height] = value.split('x').map(Number);
+      let [width, height] = value.split('x').map(Number);
+      
+      if (value === 'fill') {
+        width = windowWidth;
+        height = windowHeight;
+      }
+
       canvas.resize(width, height);
       console.log(width, height);
     },

@@ -13,6 +13,10 @@ const presets = {
     },
   },
   PORTRAIT: {
+    DEFAULT: {
+      width: 768,
+      height: 1366,
+    },
     HD: {
       width: 540,
       height: 960,

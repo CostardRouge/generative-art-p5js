@@ -1,4 +1,4 @@
-import { shapes, canvas, debug, recorder } from './index.js';
+import { shapes, canvas, debug, recorder, options } from './index.js';
 
 const events = {
   lastEventId: 0,
@@ -26,46 +26,48 @@ const events = {
       delete events.registeredEvents[eventName][eventId];
     };
   },
-
+  // GENERAL SKETCH EVENTS
   toggleNoLoopOnSingleClick: function (mouseButtonKey = LEFT) {
-    let stop = false;
-
     events.register("mousePressed", function () {
-      stop = !stop;
+      if (true !== options.get("pause-canvas-on-single-click")) {
+        return;
+      }
 
       if (mouseButton !== mouseButtonKey) {
         return;
       }
 
-      if (stop) {
-        noLoop();
-      } else {
-        loop();
-      }
+      canvas.toggleNoLoop()
     });
   },
   pauseOnSpaceKeyPressed: function () {
-    let stop = false;
-
     events.register("keyTyped", function () {
+      if (true !== options.get("pause-on-space-key-pressed")) {
+        return;
+      }
+
       if (key !== " ") {
         return;
       }
 
-      stop = !stop;
-
-      if (stop) {
-        noLoop();
-      } else {
-        loop();
-      }
+      canvas.toggleNoLoop()
     });
   },
-  fullScreenOnDoubleClick: function () {
-    events.register("doubleClicked", canvas.fullscreen);
+  toggleFullScreenOnDoubleClick: function () {
+    events.register("doubleClicked", () => {
+      if (true !== options.get("toggle-full-screen-on-double-click")) {
+        return;
+      }
+
+      canvas.fullscreen();
+    });
   },
   extendCanvasOnFullScreen: function () {
     events.register("windowResized", () => {
+      if (true !== options.get("extend-canvas-on-fullscreen")) {
+        return;
+      }
+
       if (fullscreen()) {
         canvas.resize(windowWidth, windowHeight);
       } else {
@@ -77,11 +79,19 @@ const events = {
   },
   extendCanvasOnResize: function () {
     events.register("windowResized", () => {
+      if (true !== options.get("extend-canvas-on-resize")) {
+        return;
+      }
+
       canvas.resize(windowWidth, windowHeight);
     });
   },
   toggleCanvasRecordingOnKey: function (pressedKey = "r") {
     events.register("keyTyped", function () {
+      if (true !== options.get("press-r-to-record")) {
+        return;
+      }
+
       if (key !== pressedKey) {
         return;
       }
@@ -93,7 +103,7 @@ const events = {
       }
     });
   },
-  toggleFPSCounter: function (pressedKey = "f") {
+  toggleFPSCounterOnKeyPressed: function (pressedKey = "f") {
     events.register("keyTyped", function () {
       if (key !== pressedKey) {
         return;
