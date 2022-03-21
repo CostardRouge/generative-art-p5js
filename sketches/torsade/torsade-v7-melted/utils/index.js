@@ -6,7 +6,6 @@ import canvas from './canvas.js';
 import colors from './colors.js';
 import events from './events.js';
 import mappers from './mappers.js';
-import presets from './presets.js';
 import options from './options.js';
 import recorder from './recorder.js';
 import converters from './converters.js';
@@ -58,7 +57,6 @@ export {
   events,
   mappers,
   options,
-  presets,
   recorder,
   converters
 };

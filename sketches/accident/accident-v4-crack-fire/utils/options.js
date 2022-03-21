@@ -1,6 +1,6 @@
 import SketchUI from '../libraries/sketch-ui.es.js';
 
-import { canvas, recorder, debug } from './index.js';
+import { canvas, recorder, debug, sketch } from './index.js';
 
 const getDefaultOptions = () => [
   {
@@ -35,14 +35,14 @@ const getDefaultOptions = () => [
     id: 'extend-canvas-on-full-screen',
     type: 'switch',
     label: 'Extend canvas on full screen',
-    defaultValue: true,
+    defaultValue: false,
     category: 'Events'
   },
   {
     id: 'extend-canvas-on-resize',
     type: 'switch',
     label: 'Extend canvas on resize',
-    defaultValue: true,
+    defaultValue: false,
     category: 'Events'
   },
   {
@@ -127,7 +127,6 @@ const getDefaultOptions = () => [
       }
 
       canvas.resize(width, height);
-      console.log(width, height);
     },
     options: [
       {
@@ -268,9 +267,10 @@ const options = {
   sketchUI: undefined,
   registeredOptions: [],
   add: _options => options.registeredOptions = _options,
-  init: _options => {
+  init: () => {
     options.sketchUI = new SketchUI( {
       open: false,
+      name: sketch.name,
       options: [
         ...options.registeredOptions,
         ...getDefaultOptions()

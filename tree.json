@@ -657,6 +657,20 @@
          },
          "path": "sketches/strips/strips-v4-square-cords"
       },
+      "strips-v5-perpetual-lines": {
+         "meta": {
+            "name": "strips-v5-perpetual-lines",
+            "folder": "strips"
+         },
+         "path": "sketches/strips/strips-v5-perpetual-lines"
+      },
+      "strips-v6-white-lines": {
+         "meta": {
+            "name": "strips-v6-white-lines",
+            "folder": "strips"
+         },
+         "path": "sketches/strips/strips-v6-white-lines"
+      },
       "test": {
          "meta": {
             "name": "test",

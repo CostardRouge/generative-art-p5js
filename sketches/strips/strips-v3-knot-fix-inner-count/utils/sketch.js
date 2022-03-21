@@ -1,4 +1,4 @@
-import { canvas, events, time, debug, options, presets } from './index.js';
+import { canvas, events, time, debug, options } from './index.js';
 
 const sketch = {
   name: location.pathname.split("/").slice(1, -1).join("-"),
@@ -7,7 +7,15 @@ const sketch = {
     canvasOptions
   ) => {
     sketch.setup = () => {
-      canvas.create(canvasOptions || presets.PORTRAIT.DEFAULT);
+      options.init()
+      const canvasSize = options.get("canvas-size");
+      const [width, height] = canvasSize.split('x').map(Number);
+
+      canvas.create({
+        width: canvasSize === 'fill' ? windowWidth : width,
+        height: canvasSize === 'fill' ? windowHeight : height,
+        ...canvasOptions
+      });
       
       events.toggleNoLoopOnSingleClick();
       events.toggleCanvasRecordingOnKey();
@@ -18,8 +26,6 @@ const sketch = {
       events.toggleFullScreenOnDoubleClick();
 
       noStroke();
-
-      options.init()
 
       setup?.();
     };

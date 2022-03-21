@@ -8,17 +8,10 @@ const canvas = {
     height: 1366,
   },
   create: function (options = {}) {
-    const { size } = options;
-
     canvas.configuration = {
       ...canvas.configuration,
       ...options,
     };
-
-    if (size === "FILL") {
-      canvas.configuration.width = windowWidth;
-      canvas.configuration.height = windowHeight;
-    }
 
     const { width, height, ratio, type } = canvas.configuration;
 
