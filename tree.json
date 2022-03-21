@@ -514,22 +514,6 @@
          "path": "sketches/semaphore/semaphore-v1-lines"
       }
    },
-   "sketch-ui": {
-      "test": {
-         "meta": {
-            "name": "test",
-            "folder": "sketch-ui"
-         },
-         "path": "sketches/sketch-ui/test"
-      },
-      "ukraine": {
-         "meta": {
-            "name": "ukraine",
-            "folder": "sketch-ui"
-         },
-         "path": "sketches/sketch-ui/ukraine"
-      }
-   },
    "spirals": {
       "spiral-v1-plots": {
          "meta": {
@@ -638,13 +622,6 @@
          },
          "path": "sketches/strips/strips-v3-half-play-variable-inner-count"
       },
-      "strips-v3-half-play-variable-inner-count copy": {
-         "meta": {
-            "name": "strips-v3-half-play-variable-inner-count copy",
-            "folder": "strips"
-         },
-         "path": "sketches/strips/strips-v3-half-play-variable-inner-count copy"
-      },
       "strips-v3-knot-fix-inner-count": {
          "meta": {
             "name": "strips-v3-knot-fix-inner-count",
@@ -672,6 +649,48 @@
             "folder": "strips"
          },
          "path": "sketches/strips/strips-v3-play-variable-inner-count"
+      },
+      "strips-v4-square-cords": {
+         "meta": {
+            "name": "strips-v4-square-cords",
+            "folder": "strips"
+         },
+         "path": "sketches/strips/strips-v4-square-cords"
+      },
+      "strips-v5-perpetual-lines": {
+         "meta": {
+            "name": "strips-v5-perpetual-lines",
+            "folder": "strips"
+         },
+         "path": "sketches/strips/strips-v5-perpetual-lines"
+      },
+      "strips-v6-white-lines": {
+         "meta": {
+            "name": "strips-v6-white-lines",
+            "folder": "strips"
+         },
+         "path": "sketches/strips/strips-v6-white-lines"
+      },
+      "test": {
+         "meta": {
+            "name": "test",
+            "folder": "strips"
+         },
+         "path": "sketches/strips/test"
+      },
+      "ukraine": {
+         "meta": {
+            "name": "ukraine",
+            "folder": "strips"
+         },
+         "path": "sketches/strips/ukraine"
+      },
+      "ukraine copy": {
+         "meta": {
+            "name": "ukraine copy",
+            "folder": "strips"
+         },
+         "path": "sketches/strips/ukraine copy"
       }
    },
    "torsade": {
