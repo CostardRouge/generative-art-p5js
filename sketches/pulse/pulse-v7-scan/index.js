@@ -20,7 +20,7 @@ sketch.setup(() => {
       );
     }
   }
-} );
+});
 
 class Spiral {
   constructor(options) {
@@ -46,7 +46,7 @@ class Spiral {
     translate(position.x, position.y);
 
     const shadowsCount = 5; //map(sin(time), -1, 1, 10, 20)
-    const shadowIndexStep = 0.01; //map(sin(time), -1, 1, 0.2, 0.05);
+    const shadowIndexStep = 0.05; //map(sin(time), -1, 1, 0.2, 0.05);
 
     for (
       let shadowIndex = 0;
