@@ -483,6 +483,41 @@
          },
          "path": "sketches/pulse/pulse-v7-scan"
       },
+      "pulse-v7-scan-asterix": {
+         "meta": {
+            "name": "pulse-v7-scan-asterix",
+            "folder": "pulse"
+         },
+         "path": "sketches/pulse/pulse-v7-scan-asterix"
+      },
+      "pulse-v7-scan-bar": {
+         "meta": {
+            "name": "pulse-v7-scan-bar",
+            "folder": "pulse"
+         },
+         "path": "sketches/pulse/pulse-v7-scan-bar"
+      },
+      "pulse-v7-scan-churros": {
+         "meta": {
+            "name": "pulse-v7-scan-churros",
+            "folder": "pulse"
+         },
+         "path": "sketches/pulse/pulse-v7-scan-churros"
+      },
+      "pulse-v7-scan-folding": {
+         "meta": {
+            "name": "pulse-v7-scan-folding",
+            "folder": "pulse"
+         },
+         "path": "sketches/pulse/pulse-v7-scan-folding"
+      },
+      "pulse-v7-scan-up-down": {
+         "meta": {
+            "name": "pulse-v7-scan-up-down",
+            "folder": "pulse"
+         },
+         "path": "sketches/pulse/pulse-v7-scan-up-down"
+      },
       "pulse-v8-quadra": {
          "meta": {
             "name": "pulse-v8-quadra",
@@ -580,6 +615,13 @@
       }
    },
    "strips": {
+      "rainbow-orbit": {
+         "meta": {
+            "name": "rainbow-orbit",
+            "folder": "strips"
+         },
+         "path": "sketches/strips/rainbow-orbit"
+      },
       "strips-v1-up-and-down": {
          "meta": {
             "name": "strips-v1-up-and-down",
@@ -684,13 +726,6 @@
             "folder": "strips"
          },
          "path": "sketches/strips/ukraine"
-      },
-      "ukraine copy": {
-         "meta": {
-            "name": "ukraine copy",
-            "folder": "strips"
-         },
-         "path": "sketches/strips/ukraine copy"
       }
    },
    "torsade": {

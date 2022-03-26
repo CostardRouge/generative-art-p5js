@@ -22,7 +22,7 @@ const debug = {
     options.set( 'show-fps', debug.options.fps.display );
   },
   fps: () => {
-    debug.options.fps.display = options.get( 'show-fps', debug.options.fps.display );
+    debug.options.fps.display = options.get( 'show-fps');
 
     const { fps: { frequency, log, display } } = debug.options;
 

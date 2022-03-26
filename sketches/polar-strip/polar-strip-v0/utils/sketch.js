@@ -8,7 +8,7 @@ const sketch = {
   ) => {
     sketch.setup = () => {
       options.init()
-      const canvasSize = options.get("canvas-size");
+      const canvasSize = options.get("canvas-size") ?? `${canvas.configuration.width}x${canvas.configuration.height}`;
       const [width, height] = canvasSize.split('x').map(Number);
 
       canvas.create({

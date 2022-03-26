@@ -117,7 +117,7 @@ const getDefaultOptions = () => [
     id: "canvas-size",
     type: 'select',
     label: 'Canvas size',
-    defaultValue: '768x1366',
+    defaultValue: `${canvas.configuration.width}x${canvas.configuration.height}`,
     onChange: value => {
       let [width, height] = value.split('x').map(Number);
       
@@ -150,8 +150,8 @@ const getDefaultOptions = () => [
         group: 'Square'
       },
       {
-        label: '768 x 1366',
-        value: '768x1366',
+        label: `Default ${canvas.configuration.width} x ${canvas.configuration.height}`,
+        value: `${canvas.configuration.width}x${canvas.configuration.height}`,
         group: 'Portrait'
       },
       {
@@ -218,7 +218,7 @@ const getDefaultOptions = () => [
   {
     id: 'recording-format',
     type: 'select',
-    label: 'Recording format',
+    label: 'Video recording format',
     defaultValue: 'png',
     options: [
       {

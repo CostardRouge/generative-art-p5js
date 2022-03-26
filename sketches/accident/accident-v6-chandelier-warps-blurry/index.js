@@ -1,6 +1,6 @@
 let pixilatedCanvas = null;
 
-import { shapes, sketch } from './utils/index.js';
+import { shapes, sketch, canvas, events } from './utils/index.js';
 
 sketch.setup(() => {
   noStroke();
