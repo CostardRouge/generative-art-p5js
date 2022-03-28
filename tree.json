@@ -1,4 +1,13 @@
 {
+   "3d-star": {
+      "hsb": {
+         "meta": {
+            "name": "hsb",
+            "folder": "3d-star"
+         },
+         "path": "sketches/3d-star/hsb"
+      }
+   },
    "accident": {
       "accident-v1-bubble": {
          "meta": {
@@ -517,6 +526,34 @@
             "folder": "pulse"
          },
          "path": "sketches/pulse/pulse-v7-scan-up-down"
+      },
+      "pulse-v7-torsade": {
+         "meta": {
+            "name": "pulse-v7-torsade",
+            "folder": "pulse"
+         },
+         "path": "sketches/pulse/pulse-v7-torsade"
+      },
+      "pulse-v7-turbine": {
+         "meta": {
+            "name": "pulse-v7-turbine",
+            "folder": "pulse"
+         },
+         "path": "sketches/pulse/pulse-v7-turbine"
+      },
+      "pulse-v7-turbine-grid": {
+         "meta": {
+            "name": "pulse-v7-turbine-grid",
+            "folder": "pulse"
+         },
+         "path": "sketches/pulse/pulse-v7-turbine-grid"
+      },
+      "pulse-v8-mirror": {
+         "meta": {
+            "name": "pulse-v8-mirror",
+            "folder": "pulse"
+         },
+         "path": "sketches/pulse/pulse-v8-mirror"
       },
       "pulse-v8-quadra": {
          "meta": {
