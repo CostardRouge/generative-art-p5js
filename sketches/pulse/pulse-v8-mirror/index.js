@@ -9,6 +9,9 @@ sketch.setup(() => {
     for (let y = 1; y <= yCount; y++) {
       shapes.push(
         new Spiral({
+          size,
+          weightRange: [400, 20],
+          opacityFactorRange: [10, 1],
           relativePosition: {
             x: x / (xCount + 1),
             y: y / (yCount + 1),
@@ -17,7 +20,26 @@ sketch.setup(() => {
       );
     }
   }
-});
+})
+
+function easeInElastic(x) {
+  const c4 = (2 * Math.PI) / 3;
+
+  return x === 0
+    ? 0
+    : x === 1
+    ? 1
+    : -pow(2, 10 * x - 10) * sin((x * 10 - 10.75) * c4);
+}
+
+function easeInOutBack(x) {
+  const c1 = 1.70158;
+  const c2 = c1 * 1.525;
+
+  return x < 0.5
+    ? (pow(2 * x, 2) * ((c2 + 1) * 2 * x - c2)) / 2
+    : (pow(2 * x - 2, 2) * ((c2 + 1) * (x * 2 - 2) + c2) + 2) / 2;
+}
 
 class Spiral {
   constructor(options) {
@@ -42,8 +64,8 @@ class Spiral {
     push();
     translate(position.x, position.y);
 
-    const shadowsCount = 7//map(sin(time), -1, 1, 2.5, 5)
-    const shadowIndexStep = 0.01; //map(sin(time), -1, 1, 0.2, 0.05);
+    const shadowsCount = 70;
+    const shadowIndexStep = 0.07;
 
     for (
       let shadowIndex = 0;
@@ -54,8 +76,8 @@ class Spiral {
         shadowIndex,
         0,
         shadowsCount,
-        200,
-        1
+        weightRange[0],
+        weightRange[1]
       );
 
       const opacityFactor = map(
@@ -63,61 +85,51 @@ class Spiral {
         0,
         shadowsCount,
         map(
-          sin(-time * 5 + shadowIndex * 4),
+          sin(shadowIndex + time * 3),
           -1,
           1,
-          5,
-          25
+          opacityFactorRange[0],
+          opacityFactorRange[0] * 100
         ),
-        1
+        // opacityFactorRange[0],
+        opacityFactorRange[1]/2
       );
 
-      const l = shadowIndex/3;
-      const indexCoefficient = shadowIndex;
-      const x = map(sin(time * 1 + indexCoefficient), -1, 1, -l, l);
-      const y = map(cos(time * -2 + indexCoefficient), -1, 1, -l, l);
+      // const l = map(sin(time + shadowIndex), -1, 1, 0.5, 0.2) / 3;
+      // const x = map(easeInElastic(map(cos(time), -1, 1, 0, 1)), 0, 1, l, -l);
+      // const y = map(easeInElastic(map(sin(time), -1, 1, 0, 1)), 0, 1, l, -l);
 
-      translate(x, y);
+      // translate(x, y);
 
-      const angleStep = TAU / 1
-
+      const t = map(sin(time), -1, 1, -50, 50);
+      const i = map(
+        sin(time + shadowIndex),
+        -1,
+        1,
+        map(cos(time), -1, 1, -t, t),
+        map(sin(time), -1, 1, t, -t)
+      );
+      const shadowOffset = radians(i);
+      const angleStep = TAU / 4//map(sin(time), -1, 1, 3, 5);
       for (let angle = 0; angle < TAU; angle += angleStep) {
         push();
         const vector = converters.polar.vector(
-          angle,
-          weight*5
+          angle + (index % 2 ? -time : time) * 1 + shadowOffset,
+          map(sin(time + shadowIndex), -1, 1, size * 0.2, size * 1.2)
         );
 
         beginShape();
         strokeWeight(weight);
-        // stroke(
-        //   color(
-        //     map(sin(angle + hueCadence), -1, 1, 0, 360) / opacityFactor,
-        //     map(cos(angle + hueCadence), -1, 1, 360, 0) / opacityFactor,
-        //     map(sin(angle + hueCadence), -1, 1, 360, 0) / opacityFactor,
-        //     10
-        //   )
-        // );
-
-        rotate(sin(time+shadowIndex));
-        // rotate(TAU, 0, TAU, -1, 1);
-
         stroke(
-          color(
-            map(sin(hueCadence + shadowIndex + l), -1, 1, 0, 360) /
-              opacityFactor,
-            map(cos(hueCadence - shadowIndex + l), -1, 1, 360, 0) /
-              opacityFactor,
-            map(sin(hueCadence + shadowIndex + l), -1, 1, 360, 0) /
-              opacityFactor,
-              10//map(sin(shadowIndex + time*2), -1, 1, 0, 360)
+          colors.rainbow(
+            hueCadence + shadowIndex*2 + angle,
+            opacityFactor / 2
           )
+          // colors.rainbow(hueCadence + angle, opacityFactor / 2)
         );
 
         vertex(vector.x, vector.y);
-        vertex(-vector.x, -vector.y);
-
-        
+        vertex(-vector.x, vector.y);
 
         endShape();
         pop();
@@ -128,8 +140,8 @@ class Spiral {
   }
 }
 
-sketch.draw((time) => {
+sketch.draw(time => {
   background(0);
 
   shapes.forEach((shape, index) => shape.draw(time, index));
-});
+})
