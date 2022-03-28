@@ -1,0 +1,61 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  display: block;
+}
+
+/* canvas:hover {
+  outline: 1px rgb(255 255 255 / 20%) dashed;
+} */
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  background-color: #212121;
+}
+
+body.recording::before {
+  content: "";
+  display: block;
+  width: 1em;
+  height: 1em;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+
+  animation: pulse 1s infinite;
+}
+
+fps-counter {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  color: rgb(255, 255, 255);
+  padding: 4px 6px;
+  font-family: system-ui;
+  text-shadow: 0 0 3px rgb(24 24 24);
+}
+
+body.recording fps-counter {
+  right: 24px;
+}
+
+#sketch-ui-drawer {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+}

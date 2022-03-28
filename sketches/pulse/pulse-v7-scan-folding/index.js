@@ -17,7 +17,7 @@ sketch.setup(() => {
       );
     }
   }
-})//, { width: 500, height: 500 });
+});
 
 class Spiral {
   constructor(options) {
@@ -63,7 +63,7 @@ class Spiral {
         0,
         shadowsCount,
         map(
-          sin(-time * 2 + shadowIndex * 4),
+          sin(-time * 5 + shadowIndex * 4),
           -1,
           1,
           5,
@@ -106,11 +106,11 @@ class Spiral {
           color(
             map(sin(hueCadence + shadowIndex + l), -1, 1, 0, 360) /
               opacityFactor,
-            map(cos(hueCadence + shadowIndex + l), -1, 1, 360, 0) /
+            map(cos(hueCadence - shadowIndex + l), -1, 1, 360, 0) /
               opacityFactor,
             map(sin(hueCadence + shadowIndex + l), -1, 1, 360, 0) /
               opacityFactor,
-              25//map(sin(shadowIndex + time*2), -1, 1, 0, 360)
+              10//map(sin(shadowIndex + time*2), -1, 1, 0, 360)
           )
         );
 
