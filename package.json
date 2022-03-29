@@ -3,9 +3,11 @@
     "scripts": {
         "gallery:deploy": "nft-gallery deploy generative-art-p5js tree.json assets libraries utils sketches",
         "pregallery:deploy": "npm run build:tree",
-        "build:tree": "node ./scripts/build-tree.js sketches tree.json"
+        "build:tree": "node ./scripts/build-tree.js sketches tree.json",
+        "build:previews": "node ./scripts/build-previews.js tree.json 512x512 png" 
     },
     "devDependencies": {
-        "nft-gallery": "github:CostardRouge/nft-gallery#0.0.1"
+        "nft-gallery": "github:CostardRouge/nft-gallery#0.0.1",
+        "puppeteer-core": "^10.4.0"
     }
 }
