@@ -5,10 +5,13 @@
         "pregallery:deploy": "npm run build:tree",
         "build:tree": "node ./scripts/build-tree.js sketches tree.json",
         "prebuild:previews": "npm run build:tree",
-        "build:previews": "node ./scripts/build-previews.js tree.json 512x512 png" 
+        "build:previews": "node ./scripts/build-previews.js tree.json 512x512 png"
     },
     "devDependencies": {
-        "nft-gallery": "github:CostardRouge/nft-gallery#0.0.1",
-        "puppeteer-core": "^10.4.0"
+        "nft-gallery": "github:CostardRouge/nft-gallery#0.0.1"
+    },
+    "dependencies": {
+        "chrome-aws-lambda": "^9.1.0",
+        "puppeteer-core": "^13.5.1"
     }
 }
