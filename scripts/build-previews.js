@@ -48,22 +48,26 @@ async function getScreenshotWithURL(url) {
 
   return await page.screenshot({ type });
 }
+async function buildPreviews(url) {
+  const treeFileContent = readFileSync(treePath, 'utf8');
+  const tree = JSON.parse(treeFileContent);
 
-const treeFileContent = readFileSync(treePath, 'utf8');
-const tree = JSON.parse(treeFileContent);
+  for (const [ , sketches ] of Object.entries(tree)) {
+    for (const [ sketchName, sketch ] of Object.entries(sketches)) {
 
-for (const [ , sketches ] of Object.entries(tree)) {
-  for (const [ sketchName, sketch ] of Object.entries(sketches)) {
+      //const indexPath = `${sketch.path}/index.html`;
+      //const indexFileContent = readFileSync(indexPath, 'utf8');
+      console.log(">>: ", sketchName);
 
-    //const indexPath = `${sketch.path}/index.html`;
-    //const indexFileContent = readFileSync(indexPath, 'utf8');
-    const screenShootFilePath = `${sketch.path}/screenshoot.${type}`;
-    const indexFileURL = `http://localhost:5500/${sketch.path}/?preview&size=${size}`;
-    const screenShootFileContent = await getScreenshotWithURL(indexFileURL);
+      const screenShootFilePath = `${sketch.path}/screenshoot.${type}`;
+      const indexFileURL = `http://localhost:5500/${sketch.path}/?preview&size=${size}`;
+      const screenShootFileContent = await getScreenshotWithURL(indexFileURL);
 
-    writeFileSync(screenShootFilePath, screenShootFileContent);
+      writeFileSync(screenShootFilePath, screenShootFileContent);
 
-    console.log("OK: ", sketchName, screenShootFilePath);
+      console.log("OK: ", sketchName, screenShootFilePath);
+    }
   }
 }
 
+buildPreviews();
