@@ -38,5 +38,11 @@
     <div id="sketch-ui-drawer"></div>
     <span id="sketch-ui-icon"></span>
     <script type="module" src="index.js"></script>
+    <script>
+      // hide ui in preview mode
+      if (location.search.includes("preview")) {
+        document.querySelector("body").classList.add("preview");
+      }
+    </script>
   </body>
 </html>
