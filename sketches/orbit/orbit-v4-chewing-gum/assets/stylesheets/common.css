@@ -20,6 +20,11 @@ body {
   background-color: #212121;
 }
 
+body.preview fps-counter,
+body.preview #sketch-ui-drawer {
+  display: none;
+}
+
 body.recording::before {
   content: "";
   display: block;
