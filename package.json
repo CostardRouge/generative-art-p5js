@@ -8,7 +8,7 @@
         "build:previews": "node ./scripts/build-previews.js tree.json 512x512 png"
     },
     "devDependencies": {
-        "nft-gallery": "github:CostardRouge/nft-gallery#0.0.1"
+        "nft-gallery": "github:CostardRouge/sketch-gallery#0.0.1"
     },
     "dependencies": {
         "chrome-aws-lambda": "^9.1.0",
