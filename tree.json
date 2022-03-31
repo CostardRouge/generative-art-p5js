@@ -541,12 +541,40 @@
          },
          "path": "sketches/pulse/pulse-v7-turbine"
       },
+      "pulse-v7-turbine-butterfly": {
+         "meta": {
+            "name": "pulse-v7-turbine-butterfly",
+            "folder": "pulse"
+         },
+         "path": "sketches/pulse/pulse-v7-turbine-butterfly"
+      },
+      "pulse-v7-turbine-eccentric": {
+         "meta": {
+            "name": "pulse-v7-turbine-eccentric",
+            "folder": "pulse"
+         },
+         "path": "sketches/pulse/pulse-v7-turbine-eccentric"
+      },
+      "pulse-v7-turbine-flower": {
+         "meta": {
+            "name": "pulse-v7-turbine-flower",
+            "folder": "pulse"
+         },
+         "path": "sketches/pulse/pulse-v7-turbine-flower"
+      },
       "pulse-v7-turbine-grid": {
          "meta": {
             "name": "pulse-v7-turbine-grid",
             "folder": "pulse"
          },
          "path": "sketches/pulse/pulse-v7-turbine-grid"
+      },
+      "pulse-v7-turbines-familly": {
+         "meta": {
+            "name": "pulse-v7-turbines-familly",
+            "folder": "pulse"
+         },
+         "path": "sketches/pulse/pulse-v7-turbines-familly"
       },
       "pulse-v8-mirror": {
          "meta": {
