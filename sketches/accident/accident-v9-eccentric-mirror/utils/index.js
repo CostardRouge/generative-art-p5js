@@ -18,28 +18,6 @@ const shapes = [];
 // relation coordinates
 // easing
 
-window.setup = () => {
-  sketch.setup();
-}
-window.draw = () => {
-  sketch.draw();
-}
-window.keyTyped = () => {
-  events.handle("keyTyped");
-}
-window.keyPressed = () => {
-  events.handle("keyPressed");
-}
-window.mousePressed = () => {
-  events.handle("mousePressed");
-}
-// window.doubleClicked = () => {
-//   console.log("window doubleClicked");
-//   events.handle("doubleClicked");
-// }
-window.windowResized = () => {
-  events.handle("windowResized");
-}
 window.preload = () => {
   text.defaultFont = loadFont(
     gitHubPagesPathHack("/assets/fonts/roboto-mono.ttf")

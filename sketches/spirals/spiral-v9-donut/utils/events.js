@@ -116,4 +116,26 @@ const events = {
   },
 };
 
+window.keyTyped = () => {
+  events.handle("keyTyped");
+}
+window.keyPressed = () => {
+  events.handle("keyPressed");
+}
+window.mousePressed = () => {
+  events.handle("mousePressed");
+}
+window.mouseDragged = () => {
+  events.handle("mouseDragged");
+}
+window.mouseReleased = () => {
+  events.handle("mouseReleased");
+}
+// window.doubleClicked = () => {
+//   events.handle("doubleClicked");
+// }
+window.windowResized = () => {
+  events.handle("windowResized");
+}
+
 export default events;

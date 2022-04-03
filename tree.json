@@ -405,6 +405,22 @@
          "path": "sketches/orbit/orbit-v5-chakra"
       }
    },
+   "pen": {
+      "pen-v1-draw-in-a-grid": {
+         "meta": {
+            "name": "pen-v1-draw-in-a-grid",
+            "folder": "pen"
+         },
+         "path": "sketches/pen/pen-v1-draw-in-a-grid"
+      },
+      "pen-v1-draw-in-a-grid copy": {
+         "meta": {
+            "name": "pen-v1-draw-in-a-grid copy",
+            "folder": "pen"
+         },
+         "path": "sketches/pen/pen-v1-draw-in-a-grid copy"
+      }
+   },
    "polar-strip": {
       "polar-strip-v0": {
          "meta": {
@@ -554,6 +570,13 @@
             "folder": "pulse"
          },
          "path": "sketches/pulse/pulse-v7-turbine-eccentric"
+      },
+      "pulse-v7-turbine-eccentric copy": {
+         "meta": {
+            "name": "pulse-v7-turbine-eccentric copy",
+            "folder": "pulse"
+         },
+         "path": "sketches/pulse/pulse-v7-turbine-eccentric copy"
       },
       "pulse-v7-turbine-flower": {
          "meta": {
