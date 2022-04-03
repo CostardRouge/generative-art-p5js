@@ -131,9 +131,9 @@ window.mouseDragged = () => {
 window.mouseReleased = () => {
   events.handle("mouseReleased");
 }
-window.doubleClicked = () => {
-  events.handle("doubleClicked");
-}
+// window.doubleClicked = () => {
+//   events.handle("doubleClicked");
+// }
 window.windowResized = () => {
   events.handle("windowResized");
 }
