@@ -84,7 +84,10 @@ const getDefaultOptions = () => {
       precision: 1,
       step: 0.1,
       defaultValue: defaultPixelDensity,
-      category: 'Debug'
+      category: 'Debug',
+      onChange: (value) => {
+        pixelDensity(value);
+      }
     },
     {
       id: 'smooth-pixel',
@@ -134,6 +137,7 @@ const getDefaultOptions = () => {
   defaultOptions.push( {
     id: "canvas-size",
     type: 'select',
+    hidden: isMobile,
     label: 'Canvas size',
     defaultValue: defaultCanvasSize,
     onChange: value => {
