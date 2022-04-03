@@ -37,9 +37,8 @@ const sketch = {
   draw: (draw) => {
     sketch.draw = () => {
       debug.fps();
-      pixelDensity(options.get("pixel-density"));
       frameRate(options.get("framerate"));
-      // noSmooth();
+      options.get("smooth-pixel") ? smooth() : noSmooth();
       draw?.(time.seconds() * options.get("time-speed"));
     };
   },
