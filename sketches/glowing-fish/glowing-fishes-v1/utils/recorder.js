@@ -9,9 +9,8 @@ const recorder = {
       quality: "best",
       framerate: 60,
       verbose: true,
-      name: sketch.name
-      // format: "gif",
-      // workersPath: "libraries/",
+      name: sketch.name,
+      workersPath: "libraries/",
     })
   },
   start: () => {

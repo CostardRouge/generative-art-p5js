@@ -1,24 +1,6 @@
 import { shapes, sketch, converters, canvas, events, colors, mappers, options } from './utils/index.js';
 
 options.add( [
-  // {
-  //   id: "shapes-count",
-  //   type: 'number',
-  //   label: 'Shapes count',
-  //   min: 1,
-  //   max: 1000,
-  //   defaultValue: 500,
-  //   category: 'Integers'
-  // },
-  {
-    id: "lines-count",
-    type: 'number',
-    label: 'Max lines count',
-    min: 1,
-    max: 32,
-    defaultValue: 3,
-    category: 'Integers'
-  },
   {
     id: "start-size",
     type: 'number',

@@ -178,6 +178,15 @@
          "path": "sketches/accident/accident-v9-eccentric-twist"
       }
    },
+   "churros": {
+      "churros-v1-circle": {
+         "meta": {
+            "name": "churros-v1-circle",
+            "folder": "churros"
+         },
+         "path": "sketches/churros/churros-v1-circle"
+      }
+   },
    "genuary2022": {
       "genuary2022-day1": {
          "meta": {
@@ -571,12 +580,12 @@
          },
          "path": "sketches/pulse/pulse-v7-turbine-eccentric"
       },
-      "pulse-v7-turbine-eccentric copy": {
+      "pulse-v7-turbine-eccentric-squid": {
          "meta": {
-            "name": "pulse-v7-turbine-eccentric copy",
+            "name": "pulse-v7-turbine-eccentric-squid",
             "folder": "pulse"
          },
-         "path": "sketches/pulse/pulse-v7-turbine-eccentric copy"
+         "path": "sketches/pulse/pulse-v7-turbine-eccentric-squid"
       },
       "pulse-v7-turbine-flower": {
          "meta": {
