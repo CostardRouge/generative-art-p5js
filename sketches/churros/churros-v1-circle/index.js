@@ -140,7 +140,7 @@ sketch.setup(() => {});
 
 function churro(time) {
   const angleMin = 0;
-  const angleMax = TAU-0.98;
+  const angleMax = TAU-0.3;
   const angleStep = angleMax / options.get('quality');
   
   for (let angle = angleMin; angle <= angleMax; angle += angleStep) {
@@ -150,16 +150,16 @@ function churro(time) {
     push();
     // translate(converters.polar.vector(angle+time, width/3));
     // translate(
-    //   converters.polar.get(sin, width/3, angle, map(sin(time/3), -1, 1, 1, 2)),
-    //   converters.polar.get(cos, height/3, angle, map(cos(time/2), -1, 1, 3, 1))
+    //   converters.polar.get(sin, width/3, angle, map(cos(time/3), -1, 1, 1, 2)),
+    //   converters.polar.get(cos, height/3, angle, map(sin(time/3), -1, 1, 3, 1))
     // );
 
     translate(
       converters.polar.get(sin, width/3, angle, options.get('x-coefficient')),
-      converters.polar.get(cos, width/3, angle, options.get('y-coefficient'))
+      converters.polar.get(cos, height/3, angle, options.get('y-coefficient'))
     );
 
-    rotate(-time*options.get('rotation-speed')+angle*options.get('rotation-count'));
+    rotate(time*options.get('rotation-speed')+angle*options.get('rotation-count'));
 
     const opacitySpeed = options.get('opacity-speed');
     const opacityCount = options.get('opacity-group-count');
@@ -171,7 +171,19 @@ function churro(time) {
       map(
         sin(-time * opacitySpeed + angle * opacityCount ), -1, 1,
         options.get("start-opacity-factor"),
-        options.get("start-opacity-factor") * 15
+        options.get("start-opacity-factor") * 10
+      ),
+      options.get("end-opacity-factor")
+    );
+
+    opacityFactor = mappers.circularMap(
+      angle,
+      // angleMin,
+      angleMax*4,
+      map(
+        sin(-time * opacitySpeed + angle * opacityCount ), -1, 1,
+        options.get("start-opacity-factor"),
+        options.get("start-opacity-factor") * 5
       ),
       options.get("end-opacity-factor")
     );
@@ -187,6 +199,8 @@ function churro(time) {
         1
       );
     }
+
+    // opacityFactor = 1
   
     let linesCount = options.get("max-lines-count");
 
@@ -200,8 +214,9 @@ function churro(time) {
   
     for (let lineIndex = lineMin; lineIndex < lineMax; lineIndex += lineStep) {
       const vector = converters.polar.vector(
-        lineIndex,
-        options.get("lines-length")
+        angle+lineIndex,
+        options.get('lines-length'),
+        // map(sin(angle*2+time*2), -1, 1, 1, options.get('lines-length'), true)
       );
       push();
   
@@ -214,7 +229,7 @@ function churro(time) {
         color(
           map(sin(hueSpeed+angle), -1, 1, 0, 360) /
             opacityFactor,
-          map(cos(hueSpeed-angle), -1, 1, 360, 0) /
+          map(sin(hueSpeed-angle), -1, 1, 360, 0) /
             opacityFactor,
           map(sin(hueSpeed+angle), -1, 1, 360, 0) /
             opacityFactor,

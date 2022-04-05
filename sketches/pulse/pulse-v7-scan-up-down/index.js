@@ -45,14 +45,18 @@ class Spiral {
     push();
     translate(position.x, position.y);
 
-    const shadowsCount = 5; //map(sin(time), -1, 1, 10, 20)
-    const shadowIndexStep = 0.01; //map(sin(time), -1, 1, 0.2, 0.05);
+
+    const shadowsCount = 5//map(sin(time), -1, 1, 1, 5)
+    const shadowIndexStep = 0.02; //map(sin(time), -1, 1, 0.2, 0.05);
 
     for (
       let shadowIndex = 0;
       shadowIndex <= shadowsCount;
       shadowIndex += shadowIndexStep
     ) {
+
+    // rotate(radians(sin(time/2)/2+shadowIndex/2000));
+
       const weight = map(
         shadowIndex,
         0,
@@ -66,7 +70,7 @@ class Spiral {
         0,
         shadowsCount,
         map(
-          sin(time * 3 + shadowIndex),
+          sin(-time * 3 + shadowIndex),
           -1,
           1,
           opacityFactorRange[0],
@@ -84,7 +88,7 @@ class Spiral {
 
       const i = map(sin(time/2), -1, 1, 0, 5);
       const shadowOffset = radians(shadowIndex * i);
-      const angleStep = TAU / 7
+      const angleStep = TAU / 7//map(cos(time), -1, 1, 3, 5);
 
       for (let angle = 0; angle < TAU; angle += angleStep) {
         push();
@@ -103,8 +107,11 @@ class Spiral {
           )
         );
 
-        vertex(vector.x, -vector.y);
+        // vertex(vector.x, vector.y);
+        // vertex(-vector.y, vector.x);
+
         vertex(vector.x, vector.y);
+        vertex(vector.x, -vector.y);
 
         endShape();
         pop();

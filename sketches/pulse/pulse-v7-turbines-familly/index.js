@@ -1,24 +1,6 @@
 import { shapes, sketch, converters, canvas, events, colors, mappers, options } from './utils/index.js';
 
 options.add( [
-  // {
-  //   id: "shapes-count",
-  //   type: 'number',
-  //   label: 'Shapes count',
-  //   min: 1,
-  //   max: 1000,
-  //   defaultValue: 500,
-  //   category: 'Integers'
-  // },
-  {
-    id: "lines-count",
-    type: 'number',
-    label: 'Max lines count',
-    min: 1,
-    max: 32,
-    defaultValue: 3,
-    category: 'Integers'
-  },
   {
     id: "start-size",
     type: 'number',
@@ -69,8 +51,8 @@ options.add( [
 ] );
 
 sketch.setup(() => {
-  const xCount = 5;
-  const yCount = 5;
+  const xCount = 3;
+  const yCount = 4;
 
   for (let x = 1; x <= xCount; x++) {
     for (let y = 1; y <= yCount; y++) {
@@ -110,7 +92,7 @@ class Spiral {
 
     // const shadowsCount = map(cos(index+time*3)+sin(-time/3+index), -1, 1, 1, 5, true)
     const shadowsCount = map(cos(index+time*3), -1, 1, 1, 5, true)
-    const shadowIndexStep = 0.05; //map(sin(time), -1, 1, 0.2, 0.05);
+    const shadowIndexStep = 0.1; //map(sin(time), -1, 1, 0.2, 0.05);
 
     for (
       let shadowIndex = 0;
@@ -139,7 +121,7 @@ class Spiral {
         options.get("end-opacity-factor")
       );
 
-      const l = shadowIndex/3;
+      const l = shadowIndex/2;
       const indexCoefficient = shadowIndex + index;
       const x = map(sin(time + sin(time*2) - indexCoefficient), -1, 1, -l, l);
       const y = map(cos(time * 2 - indexCoefficient), -1, 1, -l, l);
