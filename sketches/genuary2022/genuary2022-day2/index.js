@@ -4,12 +4,6 @@ let capture = null;
 import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
 
 sketch.setup(() => {
-  events.fullScreenOnDoubleClick();
-  events.extendCanvasOnResize();
-  events.pauseOnSpaceKeyPressed();
-  events.toggleCanvasRecordingOnKey();
-  events.toggleFPSCounter();
-
   // noStroke();
   stroke(0, 0, 0);
 
