@@ -2,30 +2,12 @@ import { shapes, sketch, converters, canvas, events, colors, mappers, options } 
 
 options.add( [
   {
-    id: "x-coefficient",
-    type: 'slider',
-    label: 'X coefficient',
-    min: 1,
-    max: 10,
-    defaultValue: 1,
-    category: 'Shape'
-  },
-  {
-    id: "y-coefficient",
-    type: 'slider',
-    label: 'y coefficient',
-    min: 1,
-    max: 10,
-    defaultValue: 1,
-    category: 'Shape'
-  },
-  {
     id: "quality",
     type: 'number',
     label: 'Quality',
     min: 1,
-    max: 1600,
-    defaultValue: 500,
+    max: 1200,
+    defaultValue: 400,
     category: 'Shape'
   },
   {
@@ -51,7 +33,7 @@ options.add( [
     label: 'Lines length',
     min: 1,
     max: 100,
-    defaultValue: 50,
+    defaultValue: 100,
     category: 'Lines'
   },
   {
@@ -61,14 +43,14 @@ options.add( [
     min: 1,
     max: 300,
     step: 10,
-    defaultValue: 20,
+    defaultValue: 40,
     category: 'Lines'
   },
   {
     id: "ping-pong-opacity",
     type: 'switch',
     label: 'Ping Pong opacity',
-    defaultValue: false,
+    defaultValue: true,
     category: 'Opacity'
   },
   {
@@ -139,42 +121,49 @@ options.add( [
 sketch.setup(() => {});
 
 function churro(time) {
-  const angleMin = 0;
-  const angleMax = TAU-0.16;
+  // const angleMin = 0//map(sin(time), -1, 1, PI*1.5, 0);
+  const angleMax = map(cos(time), -1, 1, 0.5, PI);
+  const angleMin = -map(cos(time), -1, 1, 0.5, PI);
   const angleStep = angleMax / options.get('quality');
+
+  // rotate(-time)
+
   
-  for (let angle = angleMin; angle <= angleMax; angle += angleStep) {
+  for (let angle = angleMin; ( angle <= angleMax-1); angle += angleStep) {
     
-    // rotate(radians(time/10));
+    // rotate(radians(cos(time+(angle)*2)*sin(time+angle*2)*1));
+    // rotate(radians(cos(time-(angle)*2)*sin(time/3-angle*2)*1));
     
     push();
-    // translate(converters.polar.vector(angle+time, width/3));
+    // translate(converters.polar.vector(angle, width/3, height/3));
     // translate(
-    //   converters.polar.get(sin, width/3, angle, map(cos(time/3), -1, 1, 1, 2)),
-    //   converters.polar.get(cos, height/3, angle, map(sin(time/3), -1, 1, 3, 1))
+    //   converters.polar.get(sin, width/10, angle, map(sin(time/3), -1, 1, -3, 3)),
+    //   converters.polar.get(cos, height/7, angle, map(cos(time/3), -1, 1, 2, -2))
     // );
 
     translate(
-      converters.polar.get(sin, width/3, angle, options.get('x-coefficient')),
-      converters.polar.get(cos, height/3, angle, options.get('y-coefficient'))
+      converters.polar.get(sin, width/4, angle, 1),
+      converters.polar.get(cos, height/4, angle, 1)
     );
 
-    rotate(time*options.get('rotation-speed')+angle*options.get('rotation-count'));
+    rotate(time*options.get('rotation-speed')+angle*angle/2*options.get('rotation-count'));
 
     const opacitySpeed = options.get('opacity-speed');
     const opacityCount = options.get('opacity-group-count');
 
-    let opacityFactor = map(
-      angle,
-      angleMin,
-      angleMax,
-      map(
-        sin(-time * opacitySpeed + angle * opacityCount ), -1, 1,
-        options.get("start-opacity-factor"),
-        options.get("start-opacity-factor") * 10
-      ),
-      options.get("end-opacity-factor")
-    );
+    let opacityFactor;
+    
+    // map(
+    //   angle,
+    //   angleMin,
+    //   angleMax,
+    //   map(
+    //     sin(-time * opacitySpeed + angle * opacityCount ), -1, 1,
+    //     options.get("start-opacity-factor"),
+    //     options.get("start-opacity-factor") * 10
+    //   ),
+    //   options.get("end-opacity-factor")
+    // );
 
     opacityFactor = mappers.circularMap(
       angle,
@@ -183,7 +172,7 @@ function churro(time) {
       map(
         sin(-time * opacitySpeed + angle * opacityCount ), -1, 1,
         options.get("start-opacity-factor"),
-        options.get("start-opacity-factor") * 5
+        options.get("end-opacity-factor")
       ),
       options.get("end-opacity-factor")
     );
@@ -194,7 +183,7 @@ function churro(time) {
         -1,
         1,
         // map(sin(angle/2), -1, 1, 1, 500),
-        map(cos(angle*opacityCount+time*opacitySpeed), -1, 1, 1, 50),
+        map(cos(angle*opacityCount+time*opacitySpeed), -1, 1, 1, 15),
         // 10,
         1
       );
@@ -205,7 +194,7 @@ function churro(time) {
     let linesCount = options.get("max-lines-count");
 
     if (options.get("change-lines-count")) {
-      linesCount = map(cos(time*2), -1, 1, 1, options.get("max-lines-count"));
+      linesCount = map(cos(angle*1+time), -1, 1, 1, options.get("max-lines-count"));
     }
 
     const lineMin = 0;
@@ -214,7 +203,7 @@ function churro(time) {
   
     for (let lineIndex = lineMin; lineIndex < lineMax; lineIndex += lineStep) {
       const vector = converters.polar.vector(
-        angle+lineIndex,
+        angle-lineIndex,
         options.get('lines-length'),
         // map(sin(angle*2+time*2), -1, 1, 1, options.get('lines-length'), true)
       );
@@ -229,18 +218,17 @@ function churro(time) {
         color(
           map(sin(hueSpeed+angle), -1, 1, 0, 360) /
             opacityFactor,
-          map(sin(hueSpeed-angle), -1, 1, 360, 0) /
+          map(sin(hueSpeed-angle*2.5), -1, 1, 360, 0) /
             opacityFactor,
           map(sin(hueSpeed+angle), -1, 1, 360, 0) /
             opacityFactor,
             // 50
         )
       );
-
-      // line(-vector.x, vector.y, vector.x, -vector.y);
-      // line(-vector.x, vector.y, vector.x, -vector.y);
-      // line(vector.x, vector.y, 0, 0, );
       
+      // vertex(vector.x, -vector.x);
+      // vertex(vector.y, -vector.x);
+
       vertex(vector.x, vector.y);
       vertex(-vector.x, -vector.y);
   
@@ -252,11 +240,53 @@ function churro(time) {
   }
 }
 
+function drawGrid(xCount, yCount, time) {
+  const xSize = width / xCount;
+  const ySize = height / yCount;
+
+  strokeWeight(3)
+
+  stroke(
+    128,
+    128,
+    255,
+    // map(sin(time), -1, 1, 0, 100)
+  );
+
+  // stroke(
+  //   color(
+  //     map(sin(time), -1, 1, 0, 360) /
+  //       1,
+  //     map(sin(time*10), -1, 1, 360, 0) /
+  //       1,
+  //     map(sin(time), -1, 1, 360, 0) /
+  //       1,
+  //       // 50
+  //   )
+  // );
+
+  const offset = 0;
+  const xx = xSize/2//100 * sin(time) * 2
+  const yy = ySize * time
+
+  for (let x = offset; x <= xCount - offset; x++) {
+    for (let y = offset; y <= yCount - offset; y++) {
+      line(0, (yy + y * ySize) % height, width, (y * ySize + yy) % height);
+      line((xx + x * xSize) % width, 0, (xx + x * xSize) % width, height);
+    }
+  }
+}
+
 sketch.draw((time) => {
   background(0);
 
+  // drawGrid(map(sin(time/10), -1, 1, 1, 3), map(cos(time/10), -1, 1, 1, 7), time);
+  drawGrid(5, 6, time);
+
   translate(width / 2, height / 2);
   churro(time);
+
+
 
   // shapes.forEach((shape, index) => shape.draw(time, index));
 });
