@@ -77,10 +77,11 @@ async function buildPreviews() {
       console.log(">>: ", sketchName);
 
       const screenShootFilePath = `${sketch.path}/screenshot.${type}`;
-      const indexFileURL = `http://localhost:5500/${sketch.path}/?preview&size=${size}`;
-      const screenShootFileContent = await getScreenshotWithURL(indexFileURL, size);
 
       if (!existsSync(screenShootFilePath)) {
+        const indexFileURL = `http://localhost:5500/${sketch.path}/?preview&size=${size}`;
+        const screenShootFileContent = await getScreenshotWithURL(indexFileURL, size);
+
         writeFileSync(screenShootFilePath, screenShootFileContent);
         console.log("OK: ", sketchName, screenShootFilePath);
       }

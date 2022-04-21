@@ -14,7 +14,7 @@ options.add( [
     id: "change-lines-count",
     type: 'switch',
     label: 'Change lines count over time',
-    defaultValue: true,
+    defaultValue: false,
     category: 'Lines'
   },
   {
@@ -24,7 +24,7 @@ options.add( [
     min: 1,
     max: 10,
     step: 0.1,
-    defaultValue: 3,
+    defaultValue: 2.8,
     category: 'Lines'
   },
   {
@@ -33,7 +33,7 @@ options.add( [
     label: 'Lines length',
     min: 1,
     max: 100,
-    defaultValue: 75,
+    defaultValue: 60,
     category: 'Lines'
   },
   {
@@ -43,14 +43,14 @@ options.add( [
     min: 1,
     max: 300,
     step: 10,
-    defaultValue: 80,
+    defaultValue: 20,
     category: 'Lines'
   },
   {
     id: "ping-pong-opacity",
     type: 'switch',
     label: 'Ping Pong opacity',
-    defaultValue: false,
+    defaultValue: true,
     category: 'Opacity'
   },
   {
@@ -59,7 +59,7 @@ options.add( [
     label: 'Opacity speed',
     min: -10,
     max: 10,
-    defaultValue: 3,
+    defaultValue: 4,
     category: 'Opacity'
   },
   {
@@ -68,7 +68,7 @@ options.add( [
     label: 'Opacity group count',
     min: 1,
     max: 10,
-    defaultValue: 3,
+    defaultValue: 5,
     category: 'Opacity'
   },
   {
@@ -276,12 +276,12 @@ function drawGrid(xCount, yCount, time) {
   // );
 
   const offset = 0;
-  const xx = xSize * sin(time + xSize )
-  const yy = ySize * cos(time + ySize)
+  const xx = xSize/2//xSize * sin(time + xSize )
+  const yy = ySize * cos(time + ySize )
 
   for (let x = offset; x <= xCount - offset; x++) {
     for (let y = offset; y <= yCount - offset; y++) {
-      line(0, (yy + y * ySize) % height, width, (y * ySize + yy) % height);
+      line(0, (y * ySize + yy) % height, width, (y * ySize + yy) % height);
       line((xx + x * xSize) % width, 0, (xx + x * xSize) % width, height);
     }
   }
@@ -291,16 +291,16 @@ sketch.draw((time) => {
   background(0);
 
   // drawGrid(map(sin(time/10), -1, 1, 1, 3), map(cos(time/10), -1, 1, 1, 7), time);
-  drawGrid(3, 4, time );
+  drawGrid(6, 8, time );
 
   // translate(width / 2, height / 2);
   // churro(time);
 
   drawer(
     ( time, index ) => {
-      const margin = 0.25;
-      const lerpMin = 0//margin-map(cos(time), -1, 1, 0.5, PI);
-      const lerpMax = PI//margin+map(cos(time), -1, 1, 0.5, PI);
+      const margin = 0;
+      const lerpMin = margin-map(sin(time), -1, 1, 0.1, PI);
+      const lerpMax = margin+map(sin(time), -1, 1, 0.1, PI);
       const lerpStep = lerpMax / options.get('quality');
     
       return [lerpMin, lerpMax, lerpStep];
@@ -311,19 +311,20 @@ sketch.draw((time) => {
       //   converters.polar.get(cos, height/3, lerpIndex, 1)
       // );
 
-      // translate(
-      //   p5.Vector.fromAngle(lerpIndex, options.get('lines-length')).x,
-      //   p5.Vector.fromAngle(lerpIndex, options.get('lines-length')).y
-      // );
-
-      const l = map(cos(lerpIndex-time), -1, 1, -1.5, 1.5);
-
       translate(
-        map(sin(-lerpIndex*l+time), -1, 1, width/2-200, width/2+200),
-        map(lerpIndex, lerpMin, lerpMax, 150, height - 150)
+        p5.Vector.fromAngle(lerpIndex, 200).x,
+        p5.Vector.fromAngle(lerpIndex, 200).y
       );
 
-      rotate(time*options.get('rotation-speed')+lerpIndex*1*options.get('rotation-count'));
+      const l = map(cos(lerpIndex-time), -1, 1, 0, 3, true);
+
+      translate(
+        map(sin(-lerpIndex*-2.5+time*2), -1, 1, width/2-200, width/2+200),
+        // map(lerpIndex, lerpMin, lerpMax, map(cos(time), -1, 1, 150, height-150*2), map(sin(time), -1, 1, 150*2, height-150)),
+        map(lerpIndex, lerpMin, lerpMax, 150, height-150)
+      );
+
+      rotate(cos(time+lerpIndex*l*2)+options.get('rotation-speed')+lerpIndex*options.get('rotation-count'));
     },
     ( lerpIndex, lerpMin, lerpMax, time, index ) => {
 
@@ -363,13 +364,13 @@ sketch.draw((time) => {
       const lineMin = 0;
       const lineMax = PI;
       const lineStep = lineMax / linesCount;
+
     
       for (let lineIndex = lineMin; lineIndex < lineMax; lineIndex += lineStep) {
         const vector = converters.polar.vector(
-          lineIndex,
+          lineIndex*5,
           options.get('lines-length'),
           // map(sin(lerpIndex*2+time*2), -1, 1, 1, options.get('lines-length'), true)
-          // map(lerpIndex, lerpMin, lerpMax, 1, options.get('lines-length'), true)
           );
         push();
     
@@ -380,11 +381,11 @@ sketch.draw((time) => {
     
         stroke(
           color(
-            map(sin(hueSpeed+lerpIndex*5), -1, 1, 0, 360) /
-              opacityFactor,
-            map(sin(hueSpeed-lerpIndex*5), -1, 1, 360, 0) /
+            map(sin(hueSpeed-lerpIndex*5), -1, 1, 0, 360) /
               opacityFactor,
             map(sin(hueSpeed+lerpIndex*5), -1, 1, 360, 0) /
+              opacityFactor,
+            map(sin(hueSpeed-lerpIndex*5), -1, 1, 360, 0) /
               opacityFactor,
               // 50
           )
