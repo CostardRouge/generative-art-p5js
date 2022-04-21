@@ -185,6 +185,48 @@
             "folder": "churros"
          },
          "path": "sketches/churros/churros-v1-circle"
+      },
+      "churros-v2-string": {
+         "meta": {
+            "name": "churros-v2-string",
+            "folder": "churros"
+         },
+         "path": "sketches/churros/churros-v2-string"
+      },
+      "churros-v3-loop": {
+         "meta": {
+            "name": "churros-v3-loop",
+            "folder": "churros"
+         },
+         "path": "sketches/churros/churros-v3-loop"
+      },
+      "churros-v4-line": {
+         "meta": {
+            "name": "churros-v4-line",
+            "folder": "churros"
+         },
+         "path": "sketches/churros/churros-v4-line"
+      },
+      "churros-v5-serpent": {
+         "meta": {
+            "name": "churros-v5-serpent",
+            "folder": "churros"
+         },
+         "path": "sketches/churros/churros-v5-serpent"
+      },
+      "churros-v6-cat-tongue": {
+         "meta": {
+            "name": "churros-v6-cat-tongue",
+            "folder": "churros"
+         },
+         "path": "sketches/churros/churros-v6-cat-tongue"
+      },
+      "churros-v6-langue-de-chat": {
+         "meta": {
+            "name": "churros-v6-langue-de-chat",
+            "folder": "churros"
+         },
+         "path": "sketches/churros/churros-v6-langue-de-chat"
       }
    },
    "genuary2022": {

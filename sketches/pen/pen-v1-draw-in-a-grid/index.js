@@ -122,6 +122,7 @@ function drawChurro(start, end, index, colorIndex, time) {
 
     shadowPosition = p5.Vector.lerp(start, end, lerpIndex);
     translate(shadowPosition);
+    rotate(lerpIndex+radians(-time*20+lerpIndex*2));
 
     const size = map(
       colorIndex,
@@ -160,45 +161,44 @@ function drawChurro(start, end, index, colorIndex, time) {
 
     circle(0, 0, size);
 
-      // const angleCount = 5;
-    // const angleStep = TAU / angleCount;
+      const angleCount = 5;
+    const angleStep = TAU / angleCount;
 
   
-    // for (let angle = 0; angle < TAU; angle += angleStep) {
-    //   const vector = converters.polar.vector(
-    //     angle,
-    //     size * options.get("size-ratio")
-    //   );
-    //   push();
+    for (let angle = 0; angle < TAU; angle += angleStep) {
+      const vector = converters.polar.vector(
+        angle,
+        size * options.get("size-ratio")
+      );
+      push();
   
-    //   beginShape();
-    //   strokeWeight(size/2);
+      beginShape();
+      strokeWeight(size/2);
   
-    //   rotate(lerpIndex+radians(-time*20+lerpIndex*2));
-    //   // rotate(sin(0+time+lerpIndex+colorIndex));
+      // rotate(sin(0+time+lerpIndex+colorIndex));
   
-    //   stroke(
-    //     color(
-    //       map(sin(-time+colorIndex), -1, 1, 0, 360) /
-    //         opacityFactor,
-    //       map(cos(-time-colorIndex), -1, 1, 360, 0) /
-    //         opacityFactor,
-    //       map(sin(-time+colorIndex), -1, 1, 360, 0) /
-    //         opacityFactor,
-    //         // 50
-    //     )
-    //   );
+      stroke(
+        color(
+          map(sin(-time+colorIndex), -1, 1, 0, 360) /
+            opacityFactor,
+          map(cos(-time-colorIndex), -1, 1, 360, 0) /
+            opacityFactor,
+          map(sin(-time+colorIndex), -1, 1, 360, 0) /
+            opacityFactor,
+            // 50
+        )
+      );
 
-    //   line(-vector.x, vector.y, vector.x, -vector.y);
-    //   line(-vector.x, vector.y, vector.x, -vector.y);
-    //   // line(vector.x, vector.y, 0, 0, );
+      line(-vector.x, vector.y, vector.x, -vector.y);
+      line(-vector.x, vector.y, vector.x, -vector.y);
+      // line(vector.x, vector.y, 0, 0, );
       
-    //   // vertex(vector.x, vector.y);
-    //   // vertex(-vector.x, -vector.y);
+      // vertex(vector.x, vector.y);
+      // vertex(-vector.x, -vector.y);
   
-    //   endShape();
-    //   pop();
-    // }
+      endShape();
+      pop();
+    }
 
     lerpIndex += lerpStep;
 
@@ -281,66 +281,65 @@ function drawPath(path, time) {
     // const hueIndex = map(i, 0, segmentKeys.length/2, -PI/2, PI/2)
     const hueIndex = map(sin(i+time), -1, 1, -PI/2, PI/2)
 
-    const angleCount = 5;
-    const angleStep = TAU / angleCount;
+    // const angleCount = 5;
+    // const angleStep = TAU / angleCount;
 
-  
-    for (let angle = 0; angle < TAU; angle += angleStep) {
+    // for (let angle = 0; angle < TAU; angle += angleStep) {
      
-      push();
+    //   push();
   
-      beginShape();
-      strokeWeight(35);
+    //   beginShape();
+    //   strokeWeight(35);
   
-      // rotate(hueIndex+radians(-time*20+hueIndex*2));
-      // rotate(sin(0+time+lerpIndex+colorIndex));
+    //   // rotate(hueIndex+radians(-time*20+hueIndex*2));
+    //   // rotate(sin(0+time+lerpIndex+colorIndex));
   
-      stroke(
-        color(
-          map(sin(-time+hueIndex), -1, 1, 0, 360) /
-            1,
-          map(cos(-time-hueIndex), -1, 1, 360, 0) /
-            1,
-          map(sin(-time+hueIndex), -1, 1, 360, 0) /
-            1,
-            // 50
-        )
-      );
-
-      vertex(vector.x, vector.y, vector.z);
-      vertex(nextVector.x, nextVector.y, nextVector.z);
-
-      // line(vector.x, vector.y, 0, 0, );
-      
-      // vertex(vector.x, vector.y);
-      // vertex(-vector.x, -vector.y);
-  
-      endShape();
-      pop();
-    }
-    
-    // beginShape(LINES)
-  
-    // // strokeWeight( map(i+time*5, path.length, 150, 1) );
-    // strokeWeight( 35 );
-    
-    // stroke(
-    //     map(sin(hueIndex), -1, 1, 0, 360),
-    //     map(cos(hueIndex), -1, 1, 0, 255),
-    //     map(sin(hueIndex), -1, 1, 255, 0),
-    //     //map(i, 0, path.length, 0, 255)
+    //   stroke(
+    //     color(
+    //       map(sin(-time+hueIndex), -1, 1, 0, 360) /
+    //         1,
+    //       map(cos(-time-hueIndex), -1, 1, 360, 0) /
+    //         1,
+    //       map(sin(-time+hueIndex), -1, 1, 360, 0) /
+    //         1,
+    //         // 50
+    //     )
     //   );
-    
-    // vertex(vector.x, vector.y, vector.z);
-    // vertex(nextVector.x, nextVector.y, nextVector.z);
+
+    //   vertex(vector.x, vector.y, vector.z);
+    //   vertex(nextVector.x, nextVector.y, nextVector.z);
+
+    //   // line(vector.x, vector.y, 0, 0, );
+      
+    //   // vertex(vector.x, vector.y);
+    //   // vertex(-vector.x, -vector.y);
   
-    // endShape(CLOSE)
+    //   endShape();
+    //   pop();
+    // }
+    
+    beginShape(LINES)
+  
+    // strokeWeight( map(i+time*5, path.length, 150, 1) );
+    strokeWeight( 35 );
+    
+    stroke(
+        map(sin(hueIndex), -1, 1, 0, 360),
+        map(cos(hueIndex), -1, 1, 0, 255),
+        map(sin(hueIndex), -1, 1, 255, 0),
+        //map(i, 0, path.length, 0, 255)
+      );
+    
+    vertex(vector.x, vector.y, vector.z);
+    vertex(nextVector.x, nextVector.y, nextVector.z);
+  
+    endShape(CLOSE)
   }
 }
 
 sketch.draw((time) => {
   background(0);
   drawGrid();
-  // drawPaths(time);
+  drawPaths(time);
   drawChurros(time);
 });

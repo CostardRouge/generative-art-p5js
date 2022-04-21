@@ -24,7 +24,7 @@ options.add( [
     type: 'number',
     label: 'Quality',
     min: 1,
-    max: 800,
+    max: 1600,
     defaultValue: 500,
     category: 'Shape'
   },
@@ -140,7 +140,7 @@ sketch.setup(() => {});
 
 function churro(time) {
   const angleMin = 0;
-  const angleMax = TAU-0.3;
+  const angleMax = TAU-0.16;
   const angleStep = angleMax / options.get('quality');
   
   for (let angle = angleMin; angle <= angleMax; angle += angleStep) {
