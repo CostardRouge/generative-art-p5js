@@ -8,6 +8,15 @@
          "path": "sketches/3d-star/hsb"
       }
    },
+   "abrupt": {
+      "abrupt-v1-pulse": {
+         "meta": {
+            "name": "abrupt-v1-pulse",
+            "folder": "abrupt"
+         },
+         "path": "sketches/abrupt/abrupt-v1-pulse"
+      }
+   },
    "accident": {
       "accident-v1-bubble": {
          "meta": {
@@ -214,19 +223,19 @@
          },
          "path": "sketches/churros/churros-v5-serpent"
       },
-      "churros-v6-cat-tongue": {
+      "churros-v6-scarf": {
          "meta": {
-            "name": "churros-v6-cat-tongue",
+            "name": "churros-v6-scarf",
             "folder": "churros"
          },
-         "path": "sketches/churros/churros-v6-cat-tongue"
+         "path": "sketches/churros/churros-v6-scarf"
       },
-      "churros-v6-langue-de-chat": {
+      "churros-v7-bandelette": {
          "meta": {
-            "name": "churros-v6-langue-de-chat",
+            "name": "churros-v7-bandelette",
             "folder": "churros"
          },
-         "path": "sketches/churros/churros-v6-langue-de-chat"
+         "path": "sketches/churros/churros-v7-bandelette"
       }
    },
    "genuary2022": {
