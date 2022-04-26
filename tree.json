@@ -15,6 +15,13 @@
             "folder": "abrupt"
          },
          "path": "sketches/abrupt/abrupt-v1-pulse"
+      },
+      "abrupt-v2-feather": {
+         "meta": {
+            "name": "abrupt-v2-feather",
+            "folder": "abrupt"
+         },
+         "path": "sketches/abrupt/abrupt-v2-feather"
       }
    },
    "accident": {
@@ -229,13 +236,6 @@
             "folder": "churros"
          },
          "path": "sketches/churros/churros-v6-scarf"
-      },
-      "churros-v7-bandelette": {
-         "meta": {
-            "name": "churros-v7-bandelette",
-            "folder": "churros"
-         },
-         "path": "sketches/churros/churros-v7-bandelette"
       }
    },
    "genuary2022": {

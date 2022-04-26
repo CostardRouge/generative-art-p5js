@@ -86,18 +86,12 @@ class Spiral {
 
       translate(x, y);
 
-      // const i = map(sin(time), -1, 1, 0, 2);
-
-      // const quantity = map(sin(time * 1 + shadowIndex), -1, 1, 0, 2);
-      
-
-
       const angleStep = TAU / this.quantity//
 
       for (let angle = 0; angle < TAU; angle += angleStep) {
         // const angleIndex = mappers.circularIndex(angle, [0, 1, 2]);
-        // const hide = mappers.circularIndex(time/2+angle/2, [true, false]);
-        const hide = false//mappers.circularIndex(angle+time/2, [true, false]);
+        const hide = mappers.circularIndex(time/2+angle/2, [true, false]);
+        // const hide = false//mappers.circularIndex(angle+time/2, [true, false]);
 
         push();
         const vector = converters.polar.vector(
@@ -112,12 +106,12 @@ class Spiral {
           color(
             map(sin(angle + shadowIndex*c + hueCadence), -1, 1, 0, 360) / opacityFactor,
             map(cos(angle + shadowIndex*c - hueCadence), -1, 1, 360, 0) / opacityFactor,
-            map(sin(angle + shadowIndex*c*1.1 + hueCadence), -1, 1, 360, 0) / opacityFactor,
-            hide ? 0 : undefined
+            map(sin(angle + shadowIndex*c + hueCadence), -1, 1, 360, 0) / opacityFactor,
+            hide ? 10 : undefined
           )
         );
 
-        rotate(-map(cos(shadowIndex*1+time), -1, 1, -0.5, 0.5));
+        rotate(-map(cos(shadowIndex*2+time), -1, 1, -0.5, 0.5));
         // rotate(TAU, 0, TAU, -1, 1);
 
         // stroke(

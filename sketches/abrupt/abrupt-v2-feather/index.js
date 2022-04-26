@@ -260,7 +260,7 @@ function drawGrid(xCount, yCount, time) {
     128,
     128,
     255,
-    // map(sin(time), -1, 1, 0, 100)
+    map(sin(time), -1, 1, 0, 20, true)
   );
 
   // stroke(
@@ -275,9 +275,9 @@ function drawGrid(xCount, yCount, time) {
   //   )
   // );
 
-  const offset = -10;
-  const xx = xSize/2//xSize * sin(time + xSize )
-  const yy = ySize * cos( time ) * 3
+  const offset = -1;
+  const xx = xSize * -sin( time )
+  const yy = ySize * sin( time )
 
   for (let x = offset; x <= xCount - offset; x++) {
     for (let y = offset; y <= yCount - offset; y++) {
@@ -290,8 +290,8 @@ function drawGrid(xCount, yCount, time) {
 sketch.draw((time) => {
   background(0);
 
-  // drawGrid(map(sin(time/10), -1, 1, 1, 3), map(cos(time/10), -1, 1, 1, 7), time);
-  drawGrid(6, 8, time );
+  drawGrid(3, map(cos(time/10), -1, 1, 1, 1.01), time/4);
+  drawGrid(3, 2, time/4 );
 
   // translate(width / 2, height / 2);
   // churro(time);
@@ -299,9 +299,10 @@ sketch.draw((time) => {
   drawer(
     ( time, index ) => {
       const margin = 0;
-      const lerpMin = 0//margin-map(sin(time), -1, 1, 0.5, PI);
-      const lerpMax = PI//margin+map(sin(time), -1, 1, 0.5, PI);
-      const lerpStep = lerpMax / options.get('quality');
+      const lerpMin = margin-map(sin(time/2), -1, 1, 0.1, TAU);
+      const lerpMax = margin+map(sin(time), -1, 1, 0.1, PI);
+      // const lerpStep = lerpMax / options.get('quality');
+      const lerpStep = lerpMax / 400//mappers.circularIndex(time*10, [150, /*500, 800,*/ 250, 50, 400 ]);
     
       return [lerpMin, lerpMax, lerpStep];
     },
@@ -311,25 +312,28 @@ sketch.draw((time) => {
       //   converters.polar.get(cos, height/3, lerpIndex, 1)
       // );
 
-      translate(
-        p5.Vector.fromAngle(lerpIndex, 200).x,
-        p5.Vector.fromAngle(lerpIndex, 200).y
-      );
+      // const angle = map(lerpIndex, lerpMin, lerpMax, 0, TAU);
+
+      // translate(
+      //   p5.Vector.fromAngle(angle, 200).x,
+      //   p5.Vector.fromAngle(angle, 200).y
+      // );
 
       const l = map(cos(lerpIndex-time), -1, 1, 0, 3, true);
 
       translate(
-        map(sin(-lerpIndex*-2.5+time*2), -1, 1, width/2-200, width/2+200),
-        // width/2,
-        // map(lerpIndex, lerpMin, lerpMax, map(cos(time), -1, 1, 300, height-300*2), map(sin(time), -1, 1, 150*2, height-150)),
+        // width / 2,
+        map(sin(-lerpIndex*1.5+time), -1, 1, width/2-100, width/2+100),
+        // width/mappers.circularIndex(time, [1, 2]),
+        // map(lerpIndex, lerpMin, lerpMax, map(cos(time/2), -1, 1, 100, height-300), map(sin(time), -1, 1, 150*2, height-150)),
         map(lerpIndex, lerpMin, lerpMax, 150, height-150)
       );
 
 
-      rotate(degrees(80));
+      // rotate(time+degrees(mappers.circularIndex(time-lerpIndex, [0, 2])));
 
+      rotate(cos(time+lerpIndex)+options.get('rotation-speed')+lerpIndex*options.get('rotation-count'));
       // rotate(cos(time+lerpIndex*l*2)+options.get('rotation-speed')+lerpIndex*options.get('rotation-count'));
-      // rotate(cos(time+lerpIndex*l*2)+options.get('rotation-speed')+lerspIndex*options.get('rotation-count'));
     },
     ( lerpIndex, lerpMin, lerpMax, time, index ) => {
 
@@ -363,41 +367,55 @@ sketch.draw((time) => {
       let linesCount = options.get("max-lines-count");
 
       if (options.get("change-lines-count")) {
-        linesCount = map(cos(lerpIndex/2-time*3), 0, 1, 1, options.get("max-lines-count"), true);
+        linesCount = map(cos(lerpIndex/2-time), 0, 1, 1, options.get("max-lines-count"), true);
       }
 
       const lineMin = 0;
       const lineMax = PI;
-      const lineStep = lineMax / linesCount;
-
-    
+      const lineStep = lineMax / mappers.circularIndex(time*2+lerpIndex*2, [1, 2, 3, 4 ]);
+  
       for (let lineIndex = lineMin; lineIndex < lineMax; lineIndex += lineStep) {
+        const hide = mappers.circularIndex(lineIndex/4+time, [true, false, false]);
+
         const vector = converters.polar.vector(
-          lineIndex*5,
-          options.get('lines-length'),
-          // map(sin(lerpIndex*2+time*2), -1, 1, 1, options.get('lines-length'), true)
+          lineIndex,
+          // mappers.circularIndex(time*2, [2, 3, 10, 50, 40 , 25, 36, 98, 41, 21, 23 ]),
+          1.5*options.get('lines-length')*sin(time+lerpIndex-lineIndex),
+          // map(sin(lerpIndex*2+time*2),-1, 1, 1, options.get('lines-length'), true)
           );
         push();
     
         beginShape();
-        strokeWeight(options.get("lines-weight"));
+        strokeWeight( 30 );
+        // strokeWeight( mappers.circularIndex(time+lineIndex/2, [20, 50, 40, 25, 40, 70, 41, 20, 10 ]));
 
         const hueSpeed = -time * options.get("hue-speed");
     
         stroke(
           color(
-            map(sin(hueSpeed-lerpIndex*5), -1, 1, 0, 360) /
+            map(sin(hueSpeed-lerpIndex*2), -1, 1, 0, 360) /
               opacityFactor,
-            map(sin(hueSpeed+lerpIndex*5), -1, 1, 360, 0) /
+            map(sin(hueSpeed+lerpIndex*2), -1, 1, 360, 0) /
               opacityFactor,
-            map(sin(hueSpeed-lerpIndex*5), -1, 1, 360, 0) /
+            map(sin(hueSpeed-lerpIndex*2), -1, 1, 360, 0) /
               opacityFactor,
-              // 50
+            hide ? 10 : undefined
           )
         );
+
+        // const c = map(lerpIndex, 0, lerpMax, 1, 5);
+
+        // stroke(
+        //   color(
+        //     map(sin(lineIndex + lerpIndex*c + hueSpeed), -1, 1, 0, 360) / opacityFactor,
+        //     map(cos(lineIndex - lerpIndex*2 - hueSpeed*2), -1, 1, 360, 0) / opacityFactor,
+        //     map(sin(lineIndex + lerpIndex*c + hueSpeed), -1, 1, 360, 0) / opacityFactor,
+        //     // hide ? 10 : undefined
+        //   )
+        // );
       
         vertex(vector.x, vector.y);
-        vertex(-vector.x, -vector.y);
+        vertex(-vector.x, vector.y);
     
         endShape();
         pop()

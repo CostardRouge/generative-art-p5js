@@ -228,16 +228,16 @@ const getDefaultOptions = () => {
     },
     {
       type: 'button',
-      text: 'Draw next frame',
-      icon: 'PlayerTrackNext',
-      onClick: () => redraw(),
+      text: 'Resume',
+      icon: 'PlayerPlay',
+      onClick: () => loop(),
       category: 'Canvas'
     },
     {
       type: 'button',
-      text: 'Resume',
-      icon: 'PlayerPlay',
-      onClick: () => loop(),
+      text: 'Draw next frame',
+      icon: 'PlayerTrackNext',
+      onClick: () => redraw(),
       category: 'Canvas'
     },
     {

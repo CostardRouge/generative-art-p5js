@@ -277,11 +277,11 @@ function drawGrid(xCount, yCount, time) {
 
   const offset = 0;
   const xx = 100 * time
-  const yy = ySize + time
+  const yy = ySize * time
 
   for (let x = offset; x <= xCount - offset; x++) {
     for (let y = offset; y <= yCount - offset; y++) {
-      //line(0, (yy + y * ySize) % height, width, (y * ySize + yy) % height);
+      line(0, (yy + y * ySize) % height, width, (y * ySize + yy) % height);
       line((xx + x * xSize) % width, 0, (xx + x * xSize) % width, height);
     }
   }
