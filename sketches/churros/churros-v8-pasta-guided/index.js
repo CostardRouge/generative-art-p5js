@@ -163,7 +163,7 @@ sketch.draw((time) => {
   background(0);
 
   // drawGrid(1, 1, time/4);
-  //drawGrid(2, 2, -time/2 );
+  // drawGrid(3, 4, time );
   //drawGrid(0, 0, time );
 
   // translate(width / 2, height / 2);
@@ -173,7 +173,7 @@ sketch.draw((time) => {
 
   drawer(
     ( time, index ) => {
-      const lerpMin = map(cos(time), -1, 1, 0.5, -PI);
+      const lerpMin = 0//map(cos(time), -1, 1, 0.1, -PI);
       const lerpMax = map(sin(time), -1, 1, 0.5, PI);
       const lerpStep = lerpMax / options.get('quality');
     
@@ -190,13 +190,13 @@ sketch.draw((time) => {
       //   p5.Vector.fromAngle(lerpIndex, options.get('lines-length')).y
       // );
 
-      const l = map(cos(lerpIndex-time/5), -1, 1, -1.5, 1.5);
+      const l = map(cos(lerpIndex-time), -1, 1, -1.5, 1.5);
 
       translate(
-        map(sin(lerpIndex*1.5-time), -1, 1, width/2-200, width/2+200),
+        map(sin(lerpIndex*1.5-time*2), -1, 1, width/2-200, width/2+200),
         map(lerpIndex, lerpMin, lerpMax,
-          map(cos(time/2), -1, 1, 150, height-150),
-          map(sin(time/2), -1, 1, 150, height-150), true
+          map(cos(time), -1, 1, 150, height-150),
+          map(sin(time), -1, 1, 150, height-150), true
         )
         // map(lerpIndex, lerpMin, lerpMax, 150, height-150, true)
       );
@@ -221,7 +221,7 @@ sketch.draw((time) => {
         line(0, -height, 0, height)
       }
 
-      rotate(time*options.get('rotation-speed')+lerpIndex*2*options.get('rotation-count'));
+      rotate(time*options.get('rotation-speed')+lerpIndex*l*2*options.get('rotation-count'));
     },
     ( lerpIndex, lerpMin, lerpMax, time, index ) => {
 
@@ -255,7 +255,7 @@ sketch.draw((time) => {
       let linesCount = options.get("max-lines-count");
 
       if (options.get("change-lines-count")) {
-        linesCount = map(cos(lerpIndex/2-time*3), 0, 1, 1, options.get("max-lines-count"), true);
+        linesCount = map(sin(lerpIndex-time*3), 0, 1, 1, options.get("max-lines-count"), true);
       }
 
       //const weight = map(cos(lerpIndex/2-time*3), 0, 1, 25, options.get("lines-weight"), true);
@@ -280,13 +280,13 @@ sketch.draw((time) => {
 
         const hueSpeed = -time * options.get("hue-speed");
         const c = color(
-          map(sin(hueSpeed+lerpIndex*5), -1, 1, 0, 360) /
+          map(sin(hueSpeed+lerpIndex*7), -1, 1, 0, 360) /
             opacityFactor,
-          map(sin(hueSpeed-lerpIndex*5), -1, 1, 360, 0) /
+          map(sin(hueSpeed-lerpIndex*7), -1, 1, 360, 0) /
             opacityFactor,
-          map(sin(hueSpeed+lerpIndex*5), -1, 1, 360, 0) /
+          map(sin(hueSpeed+lerpIndex*7), -1, 1, 360, 0) /
             opacityFactor,
-          // map(lerpIndex, lerpMin, lerpMax, 0, 100)
+            mappers.circularMap(lerpIndex, lerpMax, 0, 100)
         )
     
         stroke( c );
