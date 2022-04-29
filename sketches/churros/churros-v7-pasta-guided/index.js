@@ -122,12 +122,15 @@ sketch.setup(() => {});
 
 function drawer( lerper, positioner, shaper, time, index ) {
   const [lerpMin, lerpMax, lerpStep] = lerper(time, index);
+  // noStroke();
 
-  for (let lerpIndex = lerpMin; lerpIndex <= lerpMax; lerpIndex += lerpStep) {
+  for (let lerpIndex = lerpMin; lerpIndex <= lerpMax; ) {
     push();
-    positioner(lerpIndex, lerpMin, lerpMax, time, index);
+    positioner(lerpIndex, lerpMin, lerpMax, lerpStep, time, index);
     shaper(lerpIndex, lerpMin, lerpMax, time, index);
     pop();
+
+    lerpIndex += lerpStep
   }
 }
 
@@ -159,8 +162,9 @@ function drawGrid(xCount, yCount, time) {
 sketch.draw((time) => {
   background(0);
 
-  drawGrid(1, 1, time/4);
-  drawGrid(3, 4, time );
+  // drawGrid(1, 1, time/4);
+  //drawGrid(2, 2, -time/2 );
+  //drawGrid(0, 0, time );
 
   // translate(width / 2, height / 2);
   // churro(time);
@@ -169,31 +173,55 @@ sketch.draw((time) => {
 
   drawer(
     ( time, index ) => {
-      const lerpMin = map(cos(time), -1, 1, 0.1, -PI);
-      const lerpMax = map(sin(time), -1, 1, 0.1, PI);
+      const lerpMin = map(cos(time), -1, 1, 0.5, -PI);
+      const lerpMax = map(sin(time), -1, 1, 0.5, PI);
       const lerpStep = lerpMax / options.get('quality');
     
       return [lerpMin, lerpMax, lerpStep];
     },
-    ( lerpIndex, lerpMin, lerpMax, time, index ) => {
+    ( lerpIndex, lerpMin, lerpMax, lerpStep, time, index ) => {
       // translate(
-      //   converters.polar.get(sin, width/4, lerpIndex, 2),
+      //   converters.polar.get(sin, width/4, lerpIndex, 1),
       //   converters.polar.get(cos, height/3, lerpIndex, 1)
       // );
 
       // translate(
-      //   p5.Vector.fromAngle(lerpIndex, options.get('lines-length')).x*4,
-      //   p5.Vector.fromAngle(lerpIndex, options.get('lines-length')).y*4
+      //   p5.Vector.fromAngle(lerpIndex, options.get('lines-length')).x,
+      //   p5.Vector.fromAngle(lerpIndex, options.get('lines-length')).y
       // );
 
-      const l = map(cos(lerpIndex-time), -1, 1, -1.5, 1.5);
+      const l = map(cos(lerpIndex-time/5), -1, 1, -1.5, 1.5);
 
       translate(
         map(sin(lerpIndex*1.5-time), -1, 1, width/2-200, width/2+200),
-        map(lerpIndex, lerpMin, lerpMax, map(cos(time), -1, 1, 150, height-150), map(sin(time), -1, 1, 150, height-150), true)
+        map(lerpIndex, lerpMin, lerpMax,
+          map(cos(time/2), -1, 1, 150, height-150),
+          map(sin(time/2), -1, 1, 150, height-150), true
+        )
+        // map(lerpIndex, lerpMin, lerpMax, 150, height-150, true)
       );
 
-      rotate(time*options.get('rotation-speed')+lerpIndex*5*options.get('rotation-count'));
+      strokeWeight(4)
+      stroke(
+        128,
+        128,
+        255,
+        // map(sin(time), -1, 1, 0, 100)
+      );
+
+      if (lerpIndex == lerpMin) {
+        // stroke('red')
+        line(-width, 0, width, 0)
+        line(0, -height, 0, height)
+      }
+
+      if (lerpIndex+lerpStep > lerpMax ) {
+        // stroke('red')
+        line(-width, 0, width, 0)
+        line(0, -height, 0, height)
+      }
+
+      rotate(time*options.get('rotation-speed')+lerpIndex*2*options.get('rotation-count'));
     },
     ( lerpIndex, lerpMin, lerpMax, time, index ) => {
 
@@ -251,18 +279,17 @@ sketch.draw((time) => {
         //strokeWeight(weight);
 
         const hueSpeed = -time * options.get("hue-speed");
+        const c = color(
+          map(sin(hueSpeed+lerpIndex*5), -1, 1, 0, 360) /
+            opacityFactor,
+          map(sin(hueSpeed-lerpIndex*5), -1, 1, 360, 0) /
+            opacityFactor,
+          map(sin(hueSpeed+lerpIndex*5), -1, 1, 360, 0) /
+            opacityFactor,
+          // map(lerpIndex, lerpMin, lerpMax, 0, 100)
+        )
     
-        stroke(
-          color(
-            map(sin(hueSpeed+lerpIndex*5), -1, 1, 0, 360) /
-              opacityFactor,
-            map(sin(hueSpeed-lerpIndex*4.5), -1, 1, 360, 0) /
-              opacityFactor,
-            map(sin(hueSpeed+lerpIndex*5), -1, 1, 360, 0) /
-              opacityFactor,
-              // 50
-          )
-        );
+        stroke( c );
       
         vertex(vector.x, vector.y);
         vertex(-vector.x, -vector.y);
