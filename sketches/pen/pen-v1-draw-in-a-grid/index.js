@@ -1,4 +1,4 @@
-import { shapes, sketch, converters, canvas, events, colors, mappers, options } from './utils/index.js';
+import { shapes, sketch, converters, iterators, events, colors, mappers, options } from './utils/index.js';
 
 options.add( [
   {
@@ -96,10 +96,10 @@ function drawChurros(time){
     const path = paths[id];
     const pathKeys = Object.keys( path );
 
-    console.log({
-      path,
-      pathKeys
-    });
+    // console.log({
+    //   path,
+    //   pathKeys
+    // });
 
     for (let i = 0; i < pathKeys.length; i++) {
       const vector = path[pathKeys[i]];
@@ -111,99 +111,86 @@ function drawChurros(time){
 }
 
 function drawChurro(start, end, index, colorIndex, time) {
-  const lerpStep = 0.03;
-
-  let shadowPosition = start.copy();
-  let lerpIndex = 0;
-  let lerpCount = 0 + colorIndex;
-  
-  while (shadowPosition.dist(end) > 10) {
+  iterators.vector(start, end, 0.03, (position, lerpIndex) => {
     push();
+    translate(position);
+    // rotate(lerpIndex+radians(-time*20+lerpIndex*2));
 
-    shadowPosition = p5.Vector.lerp(start, end, lerpIndex);
-    translate(shadowPosition);
-    rotate(lerpIndex+radians(-time*20+lerpIndex*2));
+    // const size = map(
+    //   colorIndex,
+    //   0,
+    //   100,
+    //   options.get("start-size"),
+    //   options.get("end-size")
+    // );
+  
+    // const opacityFactor = map(
+    //   colorIndex,
+    //   0,
+    //   100,
+    //   map(
+    //     sin(lerpIndex + -time * 5 + colorIndex * 5), -1, 1,
+    //     options.get("start-opacity-factor"),
+    //     options.get("start-opacity-factor") * 2
+    //   ),
+    //   options.get("end-opacity-factor")
+    // );
 
-    const size = map(
-      colorIndex,
-      0,
-      100,
-      options.get("start-size"),
-      options.get("end-size")
-    );
-  
-    const opacityFactor = map(
-      colorIndex,
-      0,
-      100,
-      map(
-        sin(lerpIndex + -time * 5 + colorIndex * 5), -1, 1,
-        options.get("start-opacity-factor"),
-        options.get("start-opacity-factor") * 2
-      ),
-      options.get("end-opacity-factor")
-    );
-  
-    // const angleCount = 5;
+    // stroke(
+    //   color(
+    //     map(sin(-time+colorIndex), -1, 1, 0, 360) /
+    //       opacityFactor,
+    //     map(cos(-time-colorIndex), -1, 1, 360, 0) /
+    //       opacityFactor,
+    //     map(sin(-time+colorIndex), -1, 1, 360, 0) /
+    //       opacityFactor,
+    //       // 50
+    //   )
+    // );
+
+    noStroke()
+    // noFill()
+    circle(0, 0, 20);
+
+    // const angleCount = 2;
     // const angleStep = TAU / angleCount;
 
-    stroke(
-      color(
-        map(sin(-time+colorIndex), -1, 1, 0, 360) /
-          opacityFactor,
-        map(cos(-time-colorIndex), -1, 1, 360, 0) /
-          opacityFactor,
-        map(sin(-time+colorIndex), -1, 1, 360, 0) /
-          opacityFactor,
-          // 50
-      )
-    );
-
-    circle(0, 0, size);
-
-      const angleCount = 5;
-    const angleStep = TAU / angleCount;
-
+    // iterators.angle(0, TAU, angleStep, angle => {
+    //   const vector = converters.polar.vector(
+    //     angle,
+    //     size * options.get("size-ratio")
+    //   );
+    //   push();
+    //   beginShape();
+    //   // strokeWeight(size/2);
   
-    for (let angle = 0; angle < TAU; angle += angleStep) {
-      const vector = converters.polar.vector(
-        angle,
-        size * options.get("size-ratio")
-      );
-      push();
+    //   rotate(sin(0+time+colorIndex));
   
-      beginShape();
-      strokeWeight(size/2);
-  
-      // rotate(sin(0+time+lerpIndex+colorIndex));
-  
-      stroke(
-        color(
-          map(sin(-time+colorIndex), -1, 1, 0, 360) /
-            opacityFactor,
-          map(cos(-time-colorIndex), -1, 1, 360, 0) /
-            opacityFactor,
-          map(sin(-time+colorIndex), -1, 1, 360, 0) /
-            opacityFactor,
-            // 50
-        )
-      );
+    //   stroke(
+    //     color(
+    //       map(sin(-time+colorIndex), -1, 1, 0, 360) /
+    //         opacityFactor,
+    //       map(cos(-time-colorIndex), -1, 1, 360, 0) /
+    //         opacityFactor,
+    //       map(sin(-time+colorIndex), -1, 1, 360, 0) /
+    //         opacityFactor,
+    //         // 50
+    //     )
+    //   );
 
-      line(-vector.x, vector.y, vector.x, -vector.y);
-      line(-vector.x, vector.y, vector.x, -vector.y);
-      // line(vector.x, vector.y, 0, 0, );
+    //   // line(-vector.x, vector.y, vector.x, -vector.y);
+    //   // line(-vector.x, vector.y, vector.x, -vector.y);
+    //   // line(vector.x, vector.y, 0, 0, );
       
-      // vertex(vector.x, vector.y);
-      // vertex(-vector.x, -vector.y);
+    //   vertex(vector.x, vector.y);
+    //   vertex(-vector.x, -vector.y);
   
-      endShape();
-      pop();
-    }
-
-    lerpIndex += lerpStep;
+    //   endShape();
+    //   pop();
+    // } );
 
     pop()
-  }
+  } );
 
   return 0;
 }
@@ -267,7 +254,7 @@ function drawPaths(time){
 
     drawPath(paths[id], time);
 
-    console.log(paths[id]);
+    // console.log(paths[id])
   }
 }
 
@@ -279,7 +266,7 @@ function drawPath(path, time) {
     const vector = path[segmentKeys[i]];
     const nextVector = path[segmentKeys[i+1]] ?? vector;
     // const hueIndex = map(i, 0, segmentKeys.length/2, -PI/2, PI/2)
-    const hueIndex = map(sin(i+time), -1, 1, -PI/2, PI/2)
+    const hueIndex = map(sin(i/10+time), -1, 1, -PI/2, PI/2)
 
     // const angleCount = 5;
     // const angleStep = TAU / angleCount;
@@ -321,12 +308,12 @@ function drawPath(path, time) {
     beginShape(LINES)
   
     // strokeWeight( map(i+time*5, path.length, 150, 1) );
-    strokeWeight( 35 );
+    strokeWeight( 50 );
     
     stroke(
-        map(sin(hueIndex), -1, 1, 0, 360),
-        map(cos(hueIndex), -1, 1, 0, 255),
-        map(sin(hueIndex), -1, 1, 255, 0),
+        map(sin(-time+hueIndex), -1, 1, 0, 360),
+        map(cos(-time-hueIndex), -1, 1, 0, 255),
+        map(sin(-time+hueIndex), -1, 1, 255, 0),
         //map(i, 0, path.length, 0, 255)
       );
     

@@ -8,6 +8,7 @@ import events from './events.js';
 import mappers from './mappers.js';
 import options from './options.js';
 import recorder from './recorder.js';
+import iterators from './iterators.js';
 import converters from './converters.js';
 
 const shapes = [];
@@ -36,5 +37,6 @@ export {
   mappers,
   options,
   recorder,
+  iterators,
   converters
 };
