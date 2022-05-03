@@ -6,6 +6,13 @@
             "folder": "3d-star"
          },
          "path": "sketches/3d-star/hsb"
+      },
+      "lines": {
+         "meta": {
+            "name": "lines",
+            "folder": "3d-star"
+         },
+         "path": "sketches/3d-star/lines"
       }
    },
    "abrupt": {

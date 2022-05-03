@@ -148,7 +148,8 @@ function drawChurro(start, end, index, colorIndex, time) {
     //   )
     // );
 
-    noStroke()
+    // noStroke()
+    strokeWeight(1)
     // noFill()
     circle(0, 0, 20);
 
@@ -252,13 +253,13 @@ function drawPaths(time){
       return;
     }
 
-    drawPath(paths[id], time);
+    drawPath(paths[id], time, id);
 
     // console.log(paths[id])
   }
 }
 
-function drawPath(path, time) {
+function drawPath(path, time, id) {
   const step = 1;
   const segmentKeys = Object.keys( path );
   
@@ -266,7 +267,7 @@ function drawPath(path, time) {
     const vector = path[segmentKeys[i]];
     const nextVector = path[segmentKeys[i+1]] ?? vector;
     // const hueIndex = map(i, 0, segmentKeys.length/2, -PI/2, PI/2)
-    const hueIndex = map(sin(i/10+time), -1, 1, -PI/2, PI/2)
+    const hueIndex = map(sin(i/4+id), -1, 1, -PI/2, PI/2)
 
     // const angleCount = 5;
     // const angleStep = TAU / angleCount;

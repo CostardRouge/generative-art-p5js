@@ -219,6 +219,7 @@ sketch.draw((time) => {
         // stroke('red')
         line(-width, 0, width, 0)
         line(0, -height, 0, height)
+        text.write(0, 0)
       }
 
       rotate(time*options.get('rotation-speed')+lerpIndex*l*2*options.get('rotation-count'));
@@ -286,7 +287,7 @@ sketch.draw((time) => {
             opacityFactor,
           map(sin(hueSpeed+lerpIndex*7), -1, 1, 360, 0) /
             opacityFactor,
-            mappers.circularMap(lerpIndex, lerpMax, 0, 100)
+          mappers.circularMap(lerpIndex, lerpMax, 0, 100)
         )
     
         stroke( c );

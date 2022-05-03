@@ -22,4 +22,10 @@ const text = {
   },
 };
 
+window.preload = () => {
+  text.defaultFont = loadFont(
+    gitHubPagesPathHack("/assets/fonts/roboto-mono.ttf")
+  );
+}
+
 export default text;

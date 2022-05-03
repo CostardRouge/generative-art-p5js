@@ -19,12 +19,6 @@ const shapes = [];
 // relation coordinates
 // easing
 
-window.preload = () => {
-  text.defaultFont = loadFont(
-    gitHubPagesPathHack("/assets/fonts/roboto-mono.ttf")
-  );
-}
-
 export {
   text,
   time,
