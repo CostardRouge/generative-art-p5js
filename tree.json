@@ -201,6 +201,15 @@
          "path": "sketches/accident/accident-v9-eccentric-twist"
       }
    },
+   "blob": {
+      "blob-v1-jump": {
+         "meta": {
+            "name": "blob-v1-jump",
+            "folder": "blob"
+         },
+         "path": "sketches/blob/blob-v1-jump"
+      }
+   },
    "churros": {
       "churros-v1-circle": {
          "meta": {
