@@ -6,6 +6,13 @@
             "folder": "3d-star"
          },
          "path": "sketches/3d-star/hsb"
+      },
+      "lines": {
+         "meta": {
+            "name": "lines",
+            "folder": "3d-star"
+         },
+         "path": "sketches/3d-star/lines"
       }
    },
    "abrupt": {
@@ -202,6 +209,13 @@
          },
          "path": "sketches/churros/churros-v1-circle"
       },
+      "churros-v10-tracer": {
+         "meta": {
+            "name": "churros-v10-tracer",
+            "folder": "churros"
+         },
+         "path": "sketches/churros/churros-v10-tracer"
+      },
       "churros-v2-string": {
          "meta": {
             "name": "churros-v2-string",
@@ -236,6 +250,27 @@
             "folder": "churros"
          },
          "path": "sketches/churros/churros-v6-scarf"
+      },
+      "churros-v7-pasta": {
+         "meta": {
+            "name": "churros-v7-pasta",
+            "folder": "churros"
+         },
+         "path": "sketches/churros/churros-v7-pasta"
+      },
+      "churros-v8-pasta-guided": {
+         "meta": {
+            "name": "churros-v8-pasta-guided",
+            "folder": "churros"
+         },
+         "path": "sketches/churros/churros-v8-pasta-guided"
+      },
+      "churros-v9-pasta-scanner": {
+         "meta": {
+            "name": "churros-v9-pasta-scanner",
+            "folder": "churros"
+         },
+         "path": "sketches/churros/churros-v9-pasta-scanner"
       }
    },
    "genuary2022": {

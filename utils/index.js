@@ -8,6 +8,7 @@ import events from './events.js';
 import mappers from './mappers.js';
 import options from './options.js';
 import recorder from './recorder.js';
+import iterators from './iterators.js';
 import converters from './converters.js';
 
 const shapes = [];
@@ -17,12 +18,6 @@ const shapes = [];
 // canvases instances
 // relation coordinates
 // easing
-
-window.preload = () => {
-  text.defaultFont = loadFont(
-    gitHubPagesPathHack("/assets/fonts/roboto-mono.ttf")
-  );
-}
 
 export {
   text,
@@ -36,5 +31,6 @@ export {
   mappers,
   options,
   recorder,
+  iterators,
   converters
 };
