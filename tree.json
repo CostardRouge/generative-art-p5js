@@ -225,6 +225,13 @@
          },
          "path": "sketches/churros/churros-v10-tracer"
       },
+      "churros-v11-perspective": {
+         "meta": {
+            "name": "churros-v11-perspective",
+            "folder": "churros"
+         },
+         "path": "sketches/churros/churros-v11-perspective"
+      },
       "churros-v2-string": {
          "meta": {
             "name": "churros-v2-string",
@@ -948,6 +955,13 @@
             "folder": "torsade"
          },
          "path": "sketches/torsade/torsade-v10-rabbit-hole"
+      },
+      "torsade-v10-rabbit-hole copy 2": {
+         "meta": {
+            "name": "torsade-v10-rabbit-hole copy 2",
+            "folder": "torsade"
+         },
+         "path": "sketches/torsade/torsade-v10-rabbit-hole copy 2"
       },
       "torsade-v11-infinite": {
          "meta": {
