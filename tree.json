@@ -1,18 +1,18 @@
 {
-   "3d-star": {
+   "3d-stuff": {
       "hsb": {
          "meta": {
             "name": "hsb",
-            "folder": "3d-star"
+            "folder": "3d-stuff"
          },
-         "path": "sketches/3d-star/hsb"
+         "path": "sketches/3d-stuff/hsb"
       },
       "lines": {
          "meta": {
             "name": "lines",
-            "folder": "3d-star"
+            "folder": "3d-stuff"
          },
-         "path": "sketches/3d-star/lines"
+         "path": "sketches/3d-stuff/lines"
       }
    },
    "abrupt": {
@@ -225,6 +225,13 @@
          },
          "path": "sketches/churros/churros-v10-tracer"
       },
+      "churros-v11-perspective": {
+         "meta": {
+            "name": "churros-v11-perspective",
+            "folder": "churros"
+         },
+         "path": "sketches/churros/churros-v11-perspective"
+      },
       "churros-v2-string": {
          "meta": {
             "name": "churros-v2-string",
@@ -273,6 +280,13 @@
             "folder": "churros"
          },
          "path": "sketches/churros/churros-v8-pasta-guided"
+      },
+      "churros-v9-pasta-fixer": {
+         "meta": {
+            "name": "churros-v9-pasta-fixer",
+            "folder": "churros"
+         },
+         "path": "sketches/churros/churros-v9-pasta-fixer"
       },
       "churros-v9-pasta-scanner": {
          "meta": {
@@ -962,6 +976,13 @@
             "folder": "torsade"
          },
          "path": "sketches/torsade/torsade-v12-gradient-worms"
+      },
+      "torsade-v13-medusa": {
+         "meta": {
+            "name": "torsade-v13-medusa",
+            "folder": "torsade"
+         },
+         "path": "sketches/torsade/torsade-v13-medusa"
       },
       "torsade-v2-chain": {
          "meta": {

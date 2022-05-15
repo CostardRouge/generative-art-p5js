@@ -42,8 +42,8 @@ class Spiral {
     push();
     translate(position.x, position.y);
 
-    const shadowsCount = map(sin(time), -1, 1, 15, 7.5)
-    const shadowIndexStep = 0.05; //map(sin(time), -1, 1, 0.2, 0.05);
+    const shadowsCount = 10//map(sin(time), -1, 1, 15, 5)
+    const shadowIndexStep = 0.03; //map(sin(time), -1, 1, 0.2, 0.05);
 
     for (
       let shadowIndex = 0;
@@ -56,13 +56,13 @@ class Spiral {
         push()
 
         const angleVector = converters.polar.vector(
-          angle+time,// + (index % 2 ? -time : time) * 1 - radians(7),
-          size/map(shadowIndex, 0, shadowsCount, 4, 1)
+          angle-time,// + (index % 2 ? -time : time) * 1 - radians(7),
+          size/map(shadowIndex, 0, shadowsCount, 5, 1)
         );
 
         translate(angleVector.x, angleVector.y);
 
-        let linesCount = 3//map(cos(angle-time*3), 0, 1, 1, 3, true);
+        let linesCount = 3//map(cos(time), 0, 1, 1, 3, true);
         let opacityFactor = mappers.circularMap(
           shadowIndex,
           // 1,
@@ -82,9 +82,10 @@ class Spiral {
 
         push();
         const rotationSpeed = -time * 3;
+        const rotationMax = map(sin(time/2), -1, 1, 1, 5);
 
         rotate(
-          rotationSpeed+map(shadowIndex, 0, shadowsCount, 1, 2),
+          rotationSpeed+map(shadowIndex, 0, shadowsCount, 0, rotationMax),
         );
       
         for (let lineIndex = lineMin; lineIndex < lineMax; lineIndex += lineStep) {
@@ -92,7 +93,6 @@ class Spiral {
             lineIndex,
             // map(shadowIndex, 0, shadowsCount, 1, 150),
             map(sin(time), -1, 1, 50, 150, true)
-            // map(lerpIndex, lerpMin, lerpMax, 1, options.get('lines-length'), true)
           );
           beginShape();
           // strokeWeight(map(shadowIndex, 0, shadowsCount, 160, 10));
@@ -113,20 +113,21 @@ class Spiral {
           // fill( hue );
           stroke( hue );
 
-          // if ( shadowIndex + shadowIndexStep >= shadowsCount) {
-          //   strokeWeight(4)
-          //   stroke(red(hue) -10 , green(hue) -10 , blue(hue) - 10 );
-          // }
-          // else {
-          //   noStroke()
-          // }
+          if ( shadowIndex + shadowIndexStep >= shadowsCount) {
+            strokeWeight(4)
+            const reduceFactor = 32;
+            stroke(red(hue) -reduceFactor , green(hue) -reduceFactor , blue(hue) - reduceFactor );
+          }
+          else {
+            // noStroke()
+          }
 
           vertex(vector.x, vector.y);
           vertex(vector.x, vector.y);
 
 
           const wMax = map(sin(time), -1, 1, 50, 100);
-          strokeWeight(map(shadowIndex, 0, shadowsCount, 0, wMax));
+          strokeWeight(map(shadowIndex, 0, shadowsCount, 0, wMax, true));
 
           
           // noStroke()
@@ -153,9 +154,11 @@ sketch.draw((time) => {
   strokeWeight(4)
   stroke(128, 128, 255)
   const size = map(-sin(time), -1, 1, width / 6, width-10)
-
+  const xOffset = sin(time*5) * 30;
+  const yOffset = cos(time*5) * 30;
   for (let i = 2; i < count; i++) {
-    circle(width / 2, height / 2, i * size/6 * i);
+    
+    circle(width / 2 - xOffset, height / 2 - yOffset, i * size/5 * i);
   }
 
   shapes.forEach((shape, index) => shape.draw(time, index));

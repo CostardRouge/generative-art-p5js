@@ -156,11 +156,15 @@ function drawGrid(xCount, yCount, time) {
 
   strokeWeight(3)
 
+  // stroke(
+  //   128,
+  //   128,
+  //   255,
+  //   // map(sin(time), -1, 1, 0, 100)
+  // );
+
   stroke(
-    128,
-    128,
-    255,
-    // map(sin(time), -1, 1, 0, 100)
+    255
   );
 
   const offset = 0;
@@ -182,7 +186,7 @@ sketch.draw((time) => {
 
 
   // drawGrid(1, 1, time/4);
-  //drawGrid(2, 2, -time/2 );
+  drawGrid(2, 2, -time/2 );
   //drawGrid(0, 0, time );
 
   // translate(width / 2, height / 2);
@@ -212,50 +216,47 @@ sketch.draw((time) => {
       const l = map(cos(lerpIndex-time/5), -1, 1, -1.5, 1.5);
 
       translate(
-        // width/2,
+        //width/2,
         map(sin(lerpIndex-time*2), -1, 1, width/2-200, width/2+200),
-        map(lerpIndex, lerpMin, lerpMax,
-          map(cos(time+lerpIndex), -1, 1, 150, height-150),
-          map(sin(-time+lerpIndex), -1, 1, 150, height-150), true
-        ),
-        // map(lerpIndex, lerpMin, lerpMax, 150, height-150, true)
+        // map(lerpIndex, lerpMin, lerpMax,
+        //   map(cos(time+lerpIndex), -1, 1, 150, height-150),
+        //   map(sin(-time+lerpIndex), -1, 1, 150, height-150), true
+        // )
+        map(lerpIndex, lerpMin, lerpMax, 150, height-150, true)
       );
 
-      strokeWeight(4)
+      strokeWeight(3)
       stroke(
         128,
         128,
-        255,
-        // map(sin(time), -1, 1, 0, 100)
+        255
       );
 
-
-      const cursorSpeed = 200
+      const cursorSpeed = 150
       const cursorIndex = Math.ceil(time*cursorSpeed)%400;
-      // const cursorIndex = map(mouseX, 0, width, lerpMin, lerpMax, true);
       const shapeIndex = map(lerpIndex, lerpMin, lerpMax, 0, options.get('quality'), true);
 
       if (Math.ceil(shapeIndex) == cursorIndex) {
           // stroke('red')
-        // line(-width, 0, width, 0)
-        // line(0, -height, 0, height)
+        line(-width, 0, width, 0)
+        line(0, -height, 0, height)
         noFill()
         circle(0, 0, 300)
       }
-
-      if (lerpIndex+lerpStep > lerpMax ) {
-        stroke('red')
-        line(-width, 0, width, 0)
-        line(0, -height, 0, height)
+      
+      if (Math.ceil(shapeIndex) > cursorIndex) {
+        rotate(time*options.get('rotation-speed')+lerpIndex*4*options.get('rotation-count'));
+      }
+      else {
+        rotate(time*options.get('rotation-speed')+lerpIndex*options.get('rotation-count'));
       }
 
-      if (lerpIndex-lerpStep < lerpMin ) {
-        stroke('blue')
-        line(-width, 0, width, 0)
-        line(0, -height, 0, height)
-      }
+      // if (lerpIndex+lerpStep > lerpMax ) {
+      //   // stroke('red')
+      //   line(-width, 0, width, 0)
+      //   line(0, -height, 0, height)
+      // }
 
-      rotate(time*options.get('rotation-speed')+lerpIndex*2*options.get('rotation-count'));
     },
     ( lerpIndex, lerpMin, lerpMax, time, index ) => {
 
@@ -294,6 +295,12 @@ sketch.draw((time) => {
 
       //const weight = map(cos(lerpIndex/2-time*3), 0, 1, 25, options.get("lines-weight"), true);
 
+      const cursorSpeed = 150
+      const cursorIndex = Math.ceil(time*cursorSpeed)%400;
+      const shapeIndex = map(lerpIndex, lerpMin, lerpMax, 0, options.get('quality'), true);
+
+      
+      let colorOn = Math.ceil(shapeIndex) > cursorIndex;
 
       const lineMin = -PI;
       const lineMax = PI;
@@ -312,6 +319,12 @@ sketch.draw((time) => {
         strokeWeight(options.get("lines-weight"));
         //strokeWeight(weight);
 
+
+        if (!colorOn) {
+          opacityFactor *= 1.5
+        }
+
+
         const hueSpeed = -time * options.get("hue-speed");
         const c = color(
           map(sin(hueSpeed+lerpIndex*5), -1, 1, 0, 360) /
@@ -320,9 +333,11 @@ sketch.draw((time) => {
             opacityFactor,
           map(sin(hueSpeed+lerpIndex*5), -1, 1, 360, 0) /
             opacityFactor,
-          // map(lerpIndex, lerpMin, lerpMax, 0, 100)
         )
     
+        //colorOn && 
+        
+        
         stroke( c );
       
         vertex(vector.x, vector.y);
@@ -335,6 +350,4 @@ sketch.draw((time) => {
     time,
     0
   )
-
-  shapes.forEach((shape, index) => shape.draw(time, index));
 });
