@@ -67,7 +67,7 @@ class Spiral {
         map(sin(time*2), -1, 1, -l, l),
         map(cos(time), -1, 1, -l, l)
       );
-      const angleStep = TAU / 15//map(sin(time), -1, 1, 3, 15);
+      const angleStep = TAU / 14//map(sin(time), -1, 1, 3, 15);
 
       for (let angle = 0; angle < TAU; angle += angleStep) {
         push();
@@ -76,10 +76,11 @@ class Spiral {
           size/map(shadowIndex, 0, shadowsCount, 5, 1/5)
         );
 
-      let opacityFactor = map(sin(shadowIndex/5-time*5+angle), -1, 1, 1, 15);
+      let opacityFactor = map(sin(shadowIndex/5-time*5+angle*2), -1, 1, 1, 15);
 
         beginShape();
         strokeWeight(weight);
+        // strokeWeight(map(shadowIndex, 0, shadowsCount, weightRange[1], weightRange[0]*2));
         // strokeWeight(map(sin(2*time+angle+shadowIndex*2),-1, 1, weightRange[0], weightRange[1]));
         stroke(
           color(

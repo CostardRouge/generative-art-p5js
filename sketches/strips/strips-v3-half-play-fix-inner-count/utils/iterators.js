@@ -4,9 +4,23 @@ const iterators = {
       const position = p5.Vector.lerp(start, end, lerpIndex);
   
       handler(position, lerpIndex);
-    }
+    };
   },
-  angle: function (angleMin, angleMax = TAU, angleStep = TAU / 12, handler) {
+  vectors: function (vectors, handler, lerpStep = 0.1) {
+    let totalStep = 0;
+    
+    vectors.forEach(( startVector, index) => {
+      const endVector = vectors[index + 1];
+
+      if ( endVector ) {
+        iterators.vector(startVector, endVector, lerpStep, ( position, lerpIndex ) => {
+          handler(position, endVector, totalStep, lerpStep);
+          totalStep += lerpStep;
+        });
+      }
+    });
+  },
+  angle: function (angleMin = 0, angleMax = TAU, angleStep = TAU / 12, handler) {
     for (let angleIndex = angleMin; angleIndex <= angleMax; angleIndex += angleStep) {
       handler(angleIndex);
     }

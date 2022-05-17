@@ -1,18 +1,25 @@
 {
-   "3d-star": {
+   "3d-stuff": {
       "hsb": {
          "meta": {
             "name": "hsb",
-            "folder": "3d-star"
+            "folder": "3d-stuff"
          },
-         "path": "sketches/3d-star/hsb"
+         "path": "sketches/3d-stuff/hsb"
       },
       "lines": {
          "meta": {
             "name": "lines",
-            "folder": "3d-star"
+            "folder": "3d-stuff"
          },
-         "path": "sketches/3d-star/lines"
+         "path": "sketches/3d-stuff/lines"
+      },
+      "lines copy": {
+         "meta": {
+            "name": "lines copy",
+            "folder": "3d-stuff"
+         },
+         "path": "sketches/3d-stuff/lines copy"
       }
    },
    "abrupt": {
@@ -281,6 +288,20 @@
          },
          "path": "sketches/churros/churros-v8-pasta-guided"
       },
+      "churros-v9-pasta-fixer": {
+         "meta": {
+            "name": "churros-v9-pasta-fixer",
+            "folder": "churros"
+         },
+         "path": "sketches/churros/churros-v9-pasta-fixer"
+      },
+      "churros-v9-pasta-rgb-fixer": {
+         "meta": {
+            "name": "churros-v9-pasta-rgb-fixer",
+            "folder": "churros"
+         },
+         "path": "sketches/churros/churros-v9-pasta-rgb-fixer"
+      },
       "churros-v9-pasta-scanner": {
          "meta": {
             "name": "churros-v9-pasta-scanner",
@@ -530,6 +551,13 @@
             "folder": "pen"
          },
          "path": "sketches/pen/pen-v1-draw-in-a-grid copy"
+      },
+      "pen-vectors-test": {
+         "meta": {
+            "name": "pen-vectors-test",
+            "folder": "pen"
+         },
+         "path": "sketches/pen/pen-vectors-test"
       }
    },
    "polar-strip": {
@@ -956,13 +984,6 @@
          },
          "path": "sketches/torsade/torsade-v10-rabbit-hole"
       },
-      "torsade-v10-rabbit-hole copy 2": {
-         "meta": {
-            "name": "torsade-v10-rabbit-hole copy 2",
-            "folder": "torsade"
-         },
-         "path": "sketches/torsade/torsade-v10-rabbit-hole copy 2"
-      },
       "torsade-v11-infinite": {
          "meta": {
             "name": "torsade-v11-infinite",
@@ -976,6 +997,13 @@
             "folder": "torsade"
          },
          "path": "sketches/torsade/torsade-v12-gradient-worms"
+      },
+      "torsade-v13-medusa": {
+         "meta": {
+            "name": "torsade-v13-medusa",
+            "folder": "torsade"
+         },
+         "path": "sketches/torsade/torsade-v13-medusa"
       },
       "torsade-v2-chain": {
          "meta": {

@@ -6,7 +6,7 @@ const mappers = {
     const valuesIndex = floor(index % values.length);
     return values[valuesIndex];
   },
-  circularValueOn: function (index, scale, values) {
+  circularValueOn: function (index, values, scale = values.length - 1) {
     return values[ceil(circularMap(index, scale, 0, values.length - 1))];
   },
 };

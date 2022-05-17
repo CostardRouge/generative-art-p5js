@@ -212,16 +212,16 @@ sketch.draw((time) => {
       const l = map(cos(lerpIndex-time/5), -1, 1, -1.5, 1.5);
 
       translate(
-        //width/2,
+        // width/2,
         map(sin(lerpIndex-time*2), -1, 1, width/2-200, width/2+200),
         map(lerpIndex, lerpMin, lerpMax,
           map(cos(time+lerpIndex), -1, 1, 150, height-150),
           map(sin(-time+lerpIndex), -1, 1, 150, height-150), true
-        )
+        ),
         // map(lerpIndex, lerpMin, lerpMax, 150, height-150, true)
       );
 
-      strokeWeight(10)
+      strokeWeight(4)
       stroke(
         128,
         128,
@@ -235,22 +235,25 @@ sketch.draw((time) => {
       // const cursorIndex = map(mouseX, 0, width, lerpMin, lerpMax, true);
       const shapeIndex = map(lerpIndex, lerpMin, lerpMax, 0, options.get('quality'), true);
 
-
-      // console.log(lerpMax/lerpStep);
-
       if (Math.ceil(shapeIndex) == cursorIndex) {
           // stroke('red')
-        line(-width, 0, width, 0)
-        line(0, -height, 0, height)
+        // line(-width, 0, width, 0)
+        // line(0, -height, 0, height)
         noFill()
         circle(0, 0, 300)
       }
 
-      // if (lerpIndex+lerpStep > lerpMax ) {
-      //   // stroke('red')
-      //   line(-width, 0, width, 0)
-      //   line(0, -height, 0, height)
-      // }
+      if (lerpIndex+lerpStep > lerpMax ) {
+        stroke('red')
+        line(-width, 0, width, 0)
+        line(0, -height, 0, height)
+      }
+
+      if (lerpIndex-lerpStep < lerpMin ) {
+        stroke('blue')
+        line(-width, 0, width, 0)
+        line(0, -height, 0, height)
+      }
 
       rotate(time*options.get('rotation-speed')+lerpIndex*2*options.get('rotation-count'));
     },
