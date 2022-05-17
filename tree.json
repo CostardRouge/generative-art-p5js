@@ -13,6 +13,13 @@
             "folder": "3d-stuff"
          },
          "path": "sketches/3d-stuff/lines"
+      },
+      "lines copy": {
+         "meta": {
+            "name": "lines copy",
+            "folder": "3d-stuff"
+         },
+         "path": "sketches/3d-stuff/lines copy"
       }
    },
    "abrupt": {
@@ -288,6 +295,13 @@
          },
          "path": "sketches/churros/churros-v9-pasta-fixer"
       },
+      "churros-v9-pasta-rgb-fixer": {
+         "meta": {
+            "name": "churros-v9-pasta-rgb-fixer",
+            "folder": "churros"
+         },
+         "path": "sketches/churros/churros-v9-pasta-rgb-fixer"
+      },
       "churros-v9-pasta-scanner": {
          "meta": {
             "name": "churros-v9-pasta-scanner",
@@ -537,6 +551,13 @@
             "folder": "pen"
          },
          "path": "sketches/pen/pen-v1-draw-in-a-grid copy"
+      },
+      "pen-vectors-test": {
+         "meta": {
+            "name": "pen-vectors-test",
+            "folder": "pen"
+         },
+         "path": "sketches/pen/pen-vectors-test"
       }
    },
    "polar-strip": {
