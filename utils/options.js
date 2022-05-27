@@ -94,7 +94,8 @@ const getDefaultOptions = () => {
       type: 'switch',
       label: 'Smooth pixel',
       defaultValue: true,
-      category: 'Debug'
+      category: 'Debug',
+      onChange: checked => checked ? smooth() : noSmooth()
     },
     {
       id: 'framerate',
@@ -108,7 +109,8 @@ const getDefaultOptions = () => {
         { value: 60, label: '60 fps' },
         { value: 100, label: '100 fps' },
       ],
-      category: 'Debug'
+      category: 'Debug',
+      onChange: frameRate
     },
     {
       id: 'time-speed',
@@ -262,6 +264,27 @@ const getDefaultOptions = () => {
           value: 'webm',
           label: '.webm',
         }
+      ],
+      category: 'Canvas'
+    },
+    {
+      id: 'recording-framerate',
+      type: 'select',
+      label: 'Recording framerate',
+      defaultValue: '60',
+      options: [
+        {
+          value: '25',
+          label: '25 fps',
+        },
+        {
+          value: '60',
+          label: '60 fps',
+        },
+        {
+          value: '120',
+          label: '120 fps',
+        },
       ],
       category: 'Canvas'
     },
