@@ -7,7 +7,7 @@ const recorder = {
     recorder.capturer = new CCapture({
       format: options.get('recording-format'),
       quality: "best",
-      framerate: 60,
+      framerate: options.get('recording-framerate'),
       verbose: true,
       name: sketch.name,
       workersPath: "libraries/",

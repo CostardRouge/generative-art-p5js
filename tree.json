@@ -449,6 +449,15 @@
          "path": "sketches/midi/midi-v6-visualizer-strips"
       }
    },
+   "motion-blur": {
+      "motion-blur-v1": {
+         "meta": {
+            "name": "motion-blur-v1",
+            "folder": "motion-blur"
+         },
+         "path": "sketches/motion-blur/motion-blur-v1"
+      }
+   },
    "neon": {
       "neon-v0-legacy": {
          "meta": {

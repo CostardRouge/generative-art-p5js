@@ -7,7 +7,11 @@ const sketch = {
     canvasOptions
   ) => {
     sketch.setup = () => {
-      options.init()
+      options.init();
+
+      frameRate(options.get("framerate"));
+      options.get("smooth-pixel") ? smooth() : noSmooth();
+
       const canvasSize = (
         (new URLSearchParams(document.location.search)).get('size')     ??
         options.get("canvas-size")                                      ??
@@ -37,9 +41,12 @@ const sketch = {
   draw: (draw) => {
     sketch.draw = () => {
       debug.fps();
-      frameRate(options.get("framerate"));
-      options.get("smooth-pixel") ? smooth() : noSmooth();
-      draw?.(time.seconds() * options.get("time-speed"));
+      
+      let t = time.seconds() * options.get("time-speed");
+      //t = (frameCount-1)/options.get("framerate");
+
+
+      draw?.(t);
     };
   },
 };
