@@ -317,7 +317,12 @@ const getDefaultOptions = () => {
 const options = {
   sketchUI: undefined,
   registeredOptions: [],
-  add: _options => options.registeredOptions = _options,
+  add: _options => (
+    options.registeredOptions = [
+      ...options.registeredOptions,
+      ..._options
+    ]
+  ),
   init: () => {
     options.sketchUI = new SketchUI( {
       open: false,

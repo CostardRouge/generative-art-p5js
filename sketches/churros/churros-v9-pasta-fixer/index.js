@@ -118,23 +118,7 @@ options.add( [
   }
 ] );
 
-sketch.setup(() => {
-  shapes.push( new Churro( {
-    
-  }))
-});
-
-class Churro {
-  constructor(x, y, time, index) {
-    this.x = x;
-    this.y = y;
-    this.time = time;
-    this.index = index;
-  }
-
-  draw() {
-  }
-}
+sketch.setup();
 
 function drawer( lerper, positioner, shaper, time, index ) {
   const [lerpMin, lerpMax, lerpStep] = lerper(time, index);
@@ -183,7 +167,6 @@ sketch.draw((time) => {
   background(0);
 
   // console.log(Math.ceil(time*2));
-
 
   // drawGrid(1, 1, time/4);
   drawGrid(2, 2, -time/2 );

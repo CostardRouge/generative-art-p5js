@@ -1,6 +1,7 @@
 import time from './time.js';
 import text from './text.js';
 import debug from './debug.js';
+import easing from './easing.js';
 import sketch from './sketch.js';
 import canvas from './canvas.js';
 import colors from './colors.js';
@@ -17,12 +18,12 @@ const shapes = [];
 // shapes instances
 // canvases instances
 // relation coordinates
-// easing
 
 export {
   text,
   time,
   debug,
+  easing,
   sketch,
   colors,
   canvas,

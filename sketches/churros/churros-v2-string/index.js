@@ -136,17 +136,16 @@ options.add( [
   }
 ] );
 
-sketch.setup(() => {});
+sketch.setup();
 
 function churro(time) {
   const angleMin = 0;
-  const angleMax = TAU-0.3;
+  const angleMax = PI-0.3;
   const angleStep = angleMax / options.get('quality');
   
   for (let angle = angleMin; angle <= angleMax; angle += angleStep) {
     
     rotate(radians(cos(time+(angle)*2)-sin(time/3-angle*2)*1));
-    // rotate(radians(cos(time+(angle)*2)*sin(time/3-angle*2)*1));
     
     push();
     // translate(converters.polar.vector(angle+time, width/3));
@@ -293,7 +292,6 @@ sketch.draw((time) => {
 
   translate(width / 2, height / 2);
   churro(time);
-
 
 
   // shapes.forEach((shape, index) => shape.draw(time, index));

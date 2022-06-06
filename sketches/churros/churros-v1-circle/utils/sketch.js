@@ -9,9 +9,6 @@ const sketch = {
     sketch.setup = () => {
       options.init();
 
-      frameRate(options.get("framerate"));
-      options.get("smooth-pixel") ? smooth() : noSmooth();
-
       const canvasSize = (
         (new URLSearchParams(document.location.search)).get('size')     ??
         options.get("canvas-size")                                      ??
@@ -24,6 +21,9 @@ const sketch = {
         height: canvasSize === 'fill' ? windowHeight : height,
         ...canvasOptions
       });
+
+      frameRate(options.get("framerate"));
+      options.get("smooth-pixel") ? smooth() : noSmooth();
       
       events.toggleNoLoopOnSingleClick();
       events.toggleCanvasRecordingOnKey();

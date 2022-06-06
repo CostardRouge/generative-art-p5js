@@ -1,5 +1,12 @@
 {
    "3d-stuff": {
+      "ball": {
+         "meta": {
+            "name": "ball",
+            "folder": "3d-stuff"
+         },
+         "path": "sketches/3d-stuff/ball"
+      },
       "hsb": {
          "meta": {
             "name": "hsb",
@@ -13,13 +20,6 @@
             "folder": "3d-stuff"
          },
          "path": "sketches/3d-stuff/lines"
-      },
-      "lines copy": {
-         "meta": {
-            "name": "lines copy",
-            "folder": "3d-stuff"
-         },
-         "path": "sketches/3d-stuff/lines copy"
       }
    },
    "abrupt": {
@@ -215,6 +215,13 @@
             "folder": "blob"
          },
          "path": "sketches/blob/blob-v1-jump"
+      },
+      "blob-v2-invisible-walls": {
+         "meta": {
+            "name": "blob-v2-invisible-walls",
+            "folder": "blob"
+         },
+         "path": "sketches/blob/blob-v2-invisible-walls"
       }
    },
    "churros": {
@@ -456,6 +463,13 @@
             "folder": "motion-blur"
          },
          "path": "sketches/motion-blur/motion-blur-v1"
+      },
+      "motion-blur-v2-alpha-echo": {
+         "meta": {
+            "name": "motion-blur-v2-alpha-echo",
+            "folder": "motion-blur"
+         },
+         "path": "sketches/motion-blur/motion-blur-v2-alpha-echo"
       }
    },
    "neon": {
@@ -767,6 +781,43 @@
             "folder": "pulse"
          },
          "path": "sketches/pulse/pulse-v9-curtain"
+      }
+   },
+   "ribbons": {
+      "ribbons-v1-invisible-walls-a": {
+         "meta": {
+            "name": "ribbons-v1-invisible-walls-a",
+            "folder": "ribbons"
+         },
+         "path": "sketches/ribbons/ribbons-v1-invisible-walls-a"
+      },
+      "ribbons-v1-invisible-walls-b": {
+         "meta": {
+            "name": "ribbons-v1-invisible-walls-b",
+            "folder": "ribbons"
+         },
+         "path": "sketches/ribbons/ribbons-v1-invisible-walls-b"
+      },
+      "ribbons-v1-invisible-walls-c": {
+         "meta": {
+            "name": "ribbons-v1-invisible-walls-c",
+            "folder": "ribbons"
+         },
+         "path": "sketches/ribbons/ribbons-v1-invisible-walls-c"
+      },
+      "ribbons-v1-invisible-walls-d": {
+         "meta": {
+            "name": "ribbons-v1-invisible-walls-d",
+            "folder": "ribbons"
+         },
+         "path": "sketches/ribbons/ribbons-v1-invisible-walls-d"
+      },
+      "ribbons-v2-circle": {
+         "meta": {
+            "name": "ribbons-v2-circle",
+            "folder": "ribbons"
+         },
+         "path": "sketches/ribbons/ribbons-v2-circle"
       }
    },
    "semaphore": {
