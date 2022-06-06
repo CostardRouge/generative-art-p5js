@@ -86,7 +86,7 @@ options.add( [
     label: 'Opacity group count',
     min: 1,
     max: 10,
-    defaultValue: 3,
+    defaultValue: 6,
     category: 'Opacity'
   },
   {
@@ -95,7 +95,7 @@ options.add( [
     label: 'Start opacity (reduction factor)',
     min: 1,
     max: 50,
-    defaultValue: 3,
+    defaultValue: 6,
     category: 'Opacity'
   },
   {
@@ -140,7 +140,7 @@ sketch.setup(() => {});
 
 function churro(time) {
   const angleMin = 0;
-  const angleMax = TAU-0.16;
+  const angleMax = TAU-0.5;
   const angleStep = angleMax / options.get('quality');
   
   for (let angle = angleMin; angle <= angleMax; angle += angleStep) {
@@ -156,7 +156,7 @@ function churro(time) {
 
     translate(
       converters.polar.get(sin, width/3, angle, options.get('x-coefficient')),
-      converters.polar.get(cos, height/3, angle, options.get('y-coefficient'))
+      converters.polar.get(cos, width/3, angle, options.get('y-coefficient'))
     );
 
     rotate(time*options.get('rotation-speed')+angle*options.get('rotation-count'));
@@ -171,7 +171,7 @@ function churro(time) {
       map(
         sin(-time * opacitySpeed + angle * opacityCount ), -1, 1,
         options.get("start-opacity-factor"),
-        options.get("start-opacity-factor") * 10
+        options.get("start-opacity-factor") * 1
       ),
       options.get("end-opacity-factor")
     );
@@ -182,8 +182,8 @@ function churro(time) {
       angleMax*4,
       map(
         sin(-time * opacitySpeed + angle * opacityCount ), -1, 1,
-        options.get("start-opacity-factor"),
-        options.get("start-opacity-factor") * 5
+        options.get("end-opacity-factor"),
+        options.get("start-opacity-factor")
       ),
       options.get("end-opacity-factor")
     );
@@ -205,7 +205,7 @@ function churro(time) {
     let linesCount = options.get("max-lines-count");
 
     if (options.get("change-lines-count")) {
-      linesCount = map(cos(time*2), -1, 1, 1, options.get("max-lines-count"));
+      linesCount = map(cos(angle+time*2), -1, 1, 1, options.get("max-lines-count"));
     }
 
     const lineMin = 0;

@@ -1,4 +1,4 @@
-import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+import { shapes, sketch, converters, canvas, events, colors, mappers, easing } from './utils/index.js';
 
 sketch.setup(() => {
   const xCount = 5;
@@ -22,28 +22,6 @@ sketch.setup(() => {
     }
   }
 } );
-
-function easeInElastic(x) {
-  const c4 = (2 * Math.PI) / 3;
-
-  return x === 0
-    ? 0
-    : x === 1
-    ? 1
-    : -pow(2, 10 * x - 10) * sin((x * 10 - 10.75) * c4);
-}
-
-function easeInOutElastic(x) {
-  const c5 = (2 * Math.PI) / 4.5;
-
-  return x === 0
-    ? 0
-    : x === 1
-    ? 1
-    : x < 0.5
-    ? -(pow(2, 20 * x - 10) * sin((20 * x - 11.125) * c5)) / 2
-    : (pow(2, -20 * x + 10) * sin((20 * x - 11.125) * c5)) / 2 + 1;
-}
 
 class Spiral {
   constructor(options) {
@@ -95,8 +73,8 @@ class Spiral {
       const y = map(sin(time + indexCoefficient), -1, 1, 0, 1);
 
       translate(
-        map(easeInElastic(x), 0, 1, -l, l),
-        map(easeInOutElastic(y), 0, 1, -l, l)
+        map(easing.easeInElastic(x), 0, 1, -l, l),
+        map(easing.easeInOutElastic(y), 0, 1, -l, l)
       );
 
       for (let angle = 0; angle < TAU; angle += angleStep) {
