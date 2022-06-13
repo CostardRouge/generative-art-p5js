@@ -75,7 +75,7 @@ options.add( [
     label: 'Opacity group count',
     min: 1,
     max: 10,
-    defaultValue: 3,
+    defaultValue: 6,
     category: 'Opacity'
   },
   {
@@ -147,7 +147,7 @@ function drawGrid(xCount, yCount, time, color) {
   strokeWeight(3)
   stroke( color );
 
-  const offset = 0;
+  const offset = -1;
   const xx = xSize * cos(time + xSize )
   const yy = ySize * sin(time + ySize)
 
@@ -169,8 +169,8 @@ sketch.draw((time) => {
 
   drawer(
     ( time, index ) => {
-      const lerpMin = 0//map(sin(time), -1, 1, -PI, 0, true);
-      const lerpMax = PI//map(cos(time/2), -1, 1, TAU-0.3, 0);
+      const lerpMin = map(cos(time), -1, 1, -PI, 0, true);
+      const lerpMax = PI//]map(cos(time/2), -1, 1, TAU-0.3, 0);
       const lerpStep = lerpMax / options.get('quality');
     
       return [lerpMin, lerpMax, lerpStep];
@@ -195,7 +195,7 @@ sketch.draw((time) => {
       //   text.write("start", 0, 0)
       // }
 
-      rotate(sin(lerpIndex*2-time)*options.get('rotation-speed')+lerpIndex*options.get('rotation-count'));
+      rotate(cos(lerpIndex*2-time*2)*options.get('rotation-speed')+options.get('rotation-count'));
     },
     ( lerpIndex, lerpMin, lerpMax, time, index ) => {
 
@@ -229,7 +229,7 @@ sketch.draw((time) => {
       let linesCount = options.get("max-lines-count");
 
       if (options.get("change-lines-count")) {
-        linesCount = map(cos(lerpIndex/2-time*2), 0, 1, 1, options.get("max-lines-count"), true);
+        linesCount = map(cos(lerpIndex/2-time), 0, 1, 1, options.get("max-lines-count"), true);
       }
 
       const c = map(sin(time+lerpIndex), -1, 1, -20, 20);
@@ -238,8 +238,9 @@ sketch.draw((time) => {
       const lw = 1.5//mappers.circularIndex(time + c, [1.5, 1.5, 1.5, 0, 0, 0])
 
       const lineMin = 0;
-      const lineMax = PI;
-      const lineStep = lineMax / linesCount;
+      const lineMax = PI/ mappers.circularIndex(time, [2, 1, 2]);
+      let lineStep = lineMax / linesCount;
+      lineStep = lineMax / mappers.circularIndex(time, [2, 5, 3, 2, 4, 1]);
 
       const ll = options.get('lines-length');
 
@@ -250,7 +251,7 @@ sketch.draw((time) => {
         const vector = converters.polar.vector(
           lineIndex,
           // s * 1.5,
-          s * z
+          s * z 
         );
 
         push();
@@ -271,12 +272,12 @@ sketch.draw((time) => {
         ) );
 
         // BLUE - PURPLE
-        stroke( color(
-          90 / opacityFactor,
-          map(sin(hueSpeed-lerpIndex*4), -1, 1, 128, 0) / opacityFactor,
-          360 / opacityFactor,
-          mappers.circularMap(lerpIndex, lerpMax, 1, 255)
-        ) );
+        // stroke( color(
+        //   90 / opacityFactor,
+        //   map(sin(hueSpeed-lerpIndex*4), -1, 1, 128, 0) / opacityFactor,
+        //   360 / opacityFactor,
+        //   mappers.circularMap(lerpIndex, lerpMax, 1, 255)
+        // ) );
 
         // PINK
         // stroke( color(
