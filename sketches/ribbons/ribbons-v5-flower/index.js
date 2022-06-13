@@ -299,7 +299,6 @@ sketch.draw((time) => {
   translate(width / 2, height / 2);
   // drawRadial(10, time/4, color( 128, 128, 255, 128));
   drawRadialPattern(400, time, color( 128, 128, 255, 32));
-  return;
 
   //drawBackground(15, time, color(128, 128, 255));
 

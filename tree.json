@@ -784,33 +784,19 @@
       }
    },
    "ribbons": {
-      "ribbons-v1-invisible-walls-a": {
+      "ribbons-v1-invisible-walls-purple": {
          "meta": {
-            "name": "ribbons-v1-invisible-walls-a",
+            "name": "ribbons-v1-invisible-walls-purple",
             "folder": "ribbons"
          },
-         "path": "sketches/ribbons/ribbons-v1-invisible-walls-a"
+         "path": "sketches/ribbons/ribbons-v1-invisible-walls-purple"
       },
-      "ribbons-v1-invisible-walls-b": {
+      "ribbons-v1-invisible-walls-rainbow": {
          "meta": {
-            "name": "ribbons-v1-invisible-walls-b",
+            "name": "ribbons-v1-invisible-walls-rainbow",
             "folder": "ribbons"
          },
-         "path": "sketches/ribbons/ribbons-v1-invisible-walls-b"
-      },
-      "ribbons-v1-invisible-walls-c": {
-         "meta": {
-            "name": "ribbons-v1-invisible-walls-c",
-            "folder": "ribbons"
-         },
-         "path": "sketches/ribbons/ribbons-v1-invisible-walls-c"
-      },
-      "ribbons-v1-invisible-walls-d": {
-         "meta": {
-            "name": "ribbons-v1-invisible-walls-d",
-            "folder": "ribbons"
-         },
-         "path": "sketches/ribbons/ribbons-v1-invisible-walls-d"
+         "path": "sketches/ribbons/ribbons-v1-invisible-walls-rainbow"
       },
       "ribbons-v2-circle": {
          "meta": {
@@ -818,6 +804,34 @@
             "folder": "ribbons"
          },
          "path": "sketches/ribbons/ribbons-v2-circle"
+      },
+      "ribbons-v3-caterpillar-circle": {
+         "meta": {
+            "name": "ribbons-v3-caterpillar-circle",
+            "folder": "ribbons"
+         },
+         "path": "sketches/ribbons/ribbons-v3-caterpillar-circle"
+      },
+      "ribbons-v3-caterpillar-up-down": {
+         "meta": {
+            "name": "ribbons-v3-caterpillar-up-down",
+            "folder": "ribbons"
+         },
+         "path": "sketches/ribbons/ribbons-v3-caterpillar-up-down"
+      },
+      "ribbons-v4-petals": {
+         "meta": {
+            "name": "ribbons-v4-petals",
+            "folder": "ribbons"
+         },
+         "path": "sketches/ribbons/ribbons-v4-petals"
+      },
+      "ribbons-v5-flower": {
+         "meta": {
+            "name": "ribbons-v5-flower",
+            "folder": "ribbons"
+         },
+         "path": "sketches/ribbons/ribbons-v5-flower"
       }
    },
    "semaphore": {
