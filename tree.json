@@ -832,6 +832,20 @@
             "folder": "ribbons"
          },
          "path": "sketches/ribbons/ribbons-v5-flower"
+      },
+      "ribbons-v6-flower-abrupt": {
+         "meta": {
+            "name": "ribbons-v6-flower-abrupt",
+            "folder": "ribbons"
+         },
+         "path": "sketches/ribbons/ribbons-v6-flower-abrupt"
+      },
+      "ribbons-v7-travelling-flower-abrubt": {
+         "meta": {
+            "name": "ribbons-v7-travelling-flower-abrubt",
+            "folder": "ribbons"
+         },
+         "path": "sketches/ribbons/ribbons-v7-travelling-flower-abrubt"
       }
    },
    "semaphore": {

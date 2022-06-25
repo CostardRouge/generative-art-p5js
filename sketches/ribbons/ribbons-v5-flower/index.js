@@ -31,7 +31,7 @@ options.add( [
     min: 1,
     max: 10,
     step: 0.1,
-    defaultValue: 4,
+    defaultValue: 3,
     category: 'Lines'
   },
   {
@@ -148,6 +148,15 @@ options.add( [
     ],
     category: 'Colors'
   },
+  {
+    id: "background-lines-count",
+    type: 'number',
+    min: 1,
+    max: 1000,
+    label: 'Lines count',
+    defaultValue: 400,
+    category: 'Background'
+  },
 ] );
 
 sketch.setup();
@@ -257,14 +266,14 @@ const drawRadialPattern = (count = 7, time, color) => {
   const size = (width + height)/2;
 
   const p = 0.5//map(sin(time*2), -1, 1, 0.05, 0.9);
-  const m = 7//map(sin(time*2), -1, 1, 5, 10);
+  const m = 7//map(sin(time), -1, 1, 1, 50);
 
   iterators.angle(0, TAU, TAU / count, angle => {
     const edge = converters.polar.vector(
       angle,
-      // size * abs(sin(time + angle*5)),
+      //size * abs(sin(time + angle*5)),
 
-      // size * (sin(time + angle*5) + 2),// * cos(time),
+      //size * (sin(time + angle*5) + 2),// * cos(time),
       size * (sin(time + angle) + 1.5),
       size * (cos(time - angle) + 2),
     );
@@ -298,9 +307,12 @@ sketch.draw((time) => {
 
   translate(width / 2, height / 2);
   // drawRadial(10, time/4, color( 128, 128, 255, 128));
-  drawRadialPattern(400, time, color( 128, 128, 255, 32));
+  drawRadialPattern(
+    options.get("background-lines-count"),
+    time, color( 128, 128, 255, 32)
+  );
 
-  //drawBackground(15, time, color(128, 128, 255));
+  // drawBackground(15, time, color(128, 128, 255));
 
   drawer(
     ( time, index ) => {
