@@ -206,8 +206,8 @@ sketch.draw((time) => {
   //rotate(-cos(time/2))
   rotate(-time/2)
 
-  const ls = mappers.circularIndex(time/2, [1, 1.5, 2.5, 1]);
-  v = lerp(v, ls, 0.01)
+  const ls = mappers.circularIndex(time/2, [1, 1.5, 4, 1]);
+  v = lerp(v, ls, 0.05)
 
   drawer(
     ( time, index ) => {
@@ -226,8 +226,8 @@ sketch.draw((time) => {
       // translate( x, y );
 
       translate(
-        p5.Vector.fromAngle(lerpIndex, options.get('lines-length')*1.5).x,//*lerpIndex*sin(time+lerpIndex),
-        p5.Vector.fromAngle(lerpIndex, options.get('lines-length')*1.5).y * 2// * cos(time - lerpIndex)
+        p5.Vector.fromAngle(lerpIndex, options.get('lines-length')*2.5).x,//*lerpIndex*sin(time+lerpIndex),
+        p5.Vector.fromAngle(lerpIndex, options.get('lines-length')*2.5).y// * cos(time - lerpIndex)
       );
 
       // const l = map(cos(lerpIndex-time), -1, 1, -1.5, 1.5);
@@ -264,7 +264,7 @@ sketch.draw((time) => {
         // text.write("start", 0, 0)
       }
 
-      rotate(sin(lerpIndex*2-time)*options.get('rotation-speed')+lerpIndex*2*options.get('rotation-count'));
+      //rotate(sin(lerpIndex*2-time)*options.get('rotation-speed')+lerpIndex*2*options.get('rotation-count'));
       //rotate(-time+options.get('rotation-speed')+lerpIndex*3*options.get('rotation-count'));
     },
     ( lerpIndex, lerpMin, lerpMax, time, index ) => {
@@ -304,7 +304,7 @@ sketch.draw((time) => {
 
       const lineMin = 0;
       const lineMax = PI;
-      const lineStep = lineMax / linesCount;
+      const lineStep = lineMax / v;
 
       const c = map(sin(time+lerpIndex), -1, 1, -20, 20);
       const s = mappers.circularMap(lerpIndex, lineMax, 0, options.get('lines-length'))

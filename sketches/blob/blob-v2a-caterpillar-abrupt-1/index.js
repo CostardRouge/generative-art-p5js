@@ -327,7 +327,7 @@ sketch.draw((time) => {
     
         beginShape();
         strokeWeight(options.get("lines-weight"));
-        strokeWeight(mappers.circularMap(lerpIndex, lineMax, 10, options.get('lines-weight')),);
+        strokeWeight(mappers.circularMap(lerpIndex, lineMax/30, 10, options.get('lines-weight')),);
 
         const hueSpeed = -time * options.get("hue-speed");
     

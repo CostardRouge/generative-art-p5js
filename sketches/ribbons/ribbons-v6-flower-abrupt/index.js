@@ -157,6 +157,15 @@ options.add( [
     defaultValue: 400,
     category: 'Background'
   },
+  {
+    id: "background-lines-weight",
+    type: 'slider',
+    min: 1,
+    max: 25,
+    label: 'Lines weight',
+    defaultValue: 4,
+    category: 'Background'
+  },
 ] );
 
 sketch.setup();
@@ -226,52 +235,22 @@ const drawBackground = (count = 7, time, color) => {
   }
 }
 
-
-// const drawRadial = (count = 7, time, color) => {
-//   noFill();
-//   stroke(color);
-//   strokeWeight(4);
-
-//   push()
-//   for (let i = 0; i < count; i++) {
-//     beginShape()
-//     let s = map(sin(time + i * 0.1), -1, 1, 515, width * 2.5)
-//     s = map(i, 0, count, 275, width*1.2)
-
-//     let aS = 64//map(sin(i+time), -1, 1, 6, 24)
-
-//     for (let angle = 0; angle < TAU; angle += TAU / aS) {
-
-//       let x = s * sin(angle)// + sin(time*2+angle) * 150
-//       let y = s * cos(angle)// + sin(time*2+angle) * 250
-
-//       // y = i/2 * 250 * cos(time*5 + angle);
-//       // y = s * 250 * cos(time*5 + angle);
-
-//       vertex(x, y);
-//     }
-
-//     endShape(CLOSE);
-//   }
-
-//   pop()
-// }
-
 const drawRadialPattern = (count = 7, time, color) => {
   noFill();
   stroke(color);
-  strokeWeight(4);
+  strokeWeight(options.get("background-lines-weight"));
 
   const center = createVector( 0, 0 );
   const size = (width + height)/2;
 
   const p = 0.5//map(sin(time*2), -1, 1, 0.05, 0.9);
-  const m = 7//map(sin(time), -1, 1, 1, 50);
+  const m = 30//map(cos(time), -1, 1, 1, 100);
 
   iterators.angle(0, TAU, TAU / count, angle => {
     const edge = converters.polar.vector(
       angle,
-      //size * abs(sin(time + angle*5)),
+      // size * abs(sin(time)),
+      //size *abs(cos(time+angle*2)),
 
       //size * (sin(time + angle*5) + 2),// * cos(time),
       size * (sin(time + angle) + 1.5),
@@ -285,12 +264,12 @@ const drawRadialPattern = (count = 7, time, color) => {
 
     iterators.vector(edge, center, p, (vector, lerpIndex) => {
       const lerpIndexOffset = lerpIndex * 10 * angle;
-      const x = map(sin(time*2+lerpIndexOffset), -1, 1, -m, m);
+      const x = map(sin(time*2+lerpIndexOffset), -1, 1, m, -m);
       const y = map(cos(time-lerpIndexOffset), -1, 1, -m, m);
 
       vertex(
         vector.x + x,// * sin(time + lerpIndex),
-        vector.y - y// * cos(time - lerpIndex),
+        vector.y - y * cos(time - lerpIndex),
       );
     })
 
@@ -301,18 +280,14 @@ const drawRadialPattern = (count = 7, time, color) => {
 sketch.draw((time) => {
   background(0);
 
-  // drawGrid(1, 1, time/4, color( 128, 128, 255));
-  //drawGrid(3, 7, time, color( 128, 128, 255, 64) );
-
-
   translate(width / 2, height / 2);
-  // drawRadial(10, time/4, color( 128, 128, 255, 128));
   drawRadialPattern(
     options.get("background-lines-count"),
-    time, color( 128, 128, 255, 32)
+    time, color( 128, 128, 255, 64)
   );
 
-  // drawBackground(15, time, color(128, 128, 255));
+  return
+
 
   drawer(
     ( time, index ) => {
