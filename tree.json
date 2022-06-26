@@ -216,12 +216,33 @@
          },
          "path": "sketches/blob/blob-v1-jump"
       },
+      "blob-v2-caterpillar": {
+         "meta": {
+            "name": "blob-v2-caterpillar",
+            "folder": "blob"
+         },
+         "path": "sketches/blob/blob-v2-caterpillar"
+      },
       "blob-v2-invisible-walls": {
          "meta": {
             "name": "blob-v2-invisible-walls",
             "folder": "blob"
          },
          "path": "sketches/blob/blob-v2-invisible-walls"
+      },
+      "blob-v2a-caterpillar-abrupt-1": {
+         "meta": {
+            "name": "blob-v2a-caterpillar-abrupt-1",
+            "folder": "blob"
+         },
+         "path": "sketches/blob/blob-v2a-caterpillar-abrupt-1"
+      },
+      "blob-v2a-caterpillar-abrupt-2": {
+         "meta": {
+            "name": "blob-v2a-caterpillar-abrupt-2",
+            "folder": "blob"
+         },
+         "path": "sketches/blob/blob-v2a-caterpillar-abrupt-2"
       }
    },
    "churros": {
@@ -846,6 +867,13 @@
             "folder": "ribbons"
          },
          "path": "sketches/ribbons/ribbons-v7-travelling-flower-abrubt"
+      },
+      "ribbons-v8-atom": {
+         "meta": {
+            "name": "ribbons-v8-atom",
+            "folder": "ribbons"
+         },
+         "path": "sketches/ribbons/ribbons-v8-atom"
       }
    },
    "semaphore": {
