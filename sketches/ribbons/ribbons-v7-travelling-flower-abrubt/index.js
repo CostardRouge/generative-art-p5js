@@ -292,15 +292,21 @@ const drawRadialPattern = (count = 7, time, color) => {
 
 sketch.draw((time) => {
   background(0);
+  
+  // translate(
+  //   250 * sin(time),
+  //   350 * cos(time),
+  // )
 
   translate(width / 2, height / 2);
   drawRadialPattern(
     options.get("background-lines-count"),
-    time, color( 128, 128, 255, 32)
+    time/2,
+    color( 128, 128, 255, 48)
   );
 
-  const ls = mappers.circularIndex(time/2, [1, 1.5, 2, 2.5, 1]);
-  v = lerp(v ?? 1, ls, 0.05)
+  const ls = mappers.circularIndex(time/2, [1, 1.5, 2.5, 1]);
+  v = lerp(v, ls, 0.01)
 
   drawer(
     ( time, index ) => {
@@ -381,9 +387,7 @@ sketch.draw((time) => {
       const lineMax = PI
 
       const ll = options.get('lines-length');
-      const s = mappers.circularMap(lerpIndex, lineMax, 0, ll)
-
-      //print(v)
+      const s = mappers.circularMap(lerpIndex, lineMax, -ll, ll)
 
       const lineStep = lineMax / v;
 
@@ -409,16 +413,16 @@ sketch.draw((time) => {
             map(sin(hueSpeed+lerpIndex*5), -1, 1, 360, 0) /
               opacityFactor,
             // map(lerpIndex, lerpMin, lerpMax, 0, 100)
-            //mappers.circularMap(lerpIndex, lerpMax, 1, 255)
+            mappers.circularMap(lerpIndex, lerpMax/10, 1, 255)
           ) );
         }
         
-        if (colorOn || options.get('hue-palette') === "purple") {
+        if (options.get('hue-palette') === "purple") {
           stroke( color(
             90 / opacityFactor,
             map(sin(hueSpeed-lerpIndex*4), -1, 1, 128, 0) / opacityFactor,
             360 / opacityFactor,
-            mappers.circularMap(lerpIndex, lerpMax, 1, 255)
+            //mappers.circularMap(lerpIndex, lerpMax, 1, 255)
           ) );
         }
         
@@ -431,7 +435,7 @@ sketch.draw((time) => {
           ) );
         }
 
-        if (options.get('hue-palette') === "red") {
+        if (colorOn || options.get('hue-palette') === "red") {
           stroke( color(
             360 / opacityFactor,
             32 / opacityFactor,

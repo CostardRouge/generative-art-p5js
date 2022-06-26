@@ -194,6 +194,8 @@ function drawGrid(xCount, yCount, time, color) {
   }
 }
 
+let v = 1;
+
 sketch.draw((time) => {
   background(0);
 
@@ -203,6 +205,9 @@ sketch.draw((time) => {
   translate(width / 2, height / 2);
   //rotate(-cos(time/2))
   rotate(-time/2)
+
+  const ls = mappers.circularIndex(time/2, [1, 1.5, 2.5, 1]);
+  v = lerp(v, ls, 0.01)
 
   drawer(
     ( time, index ) => {
