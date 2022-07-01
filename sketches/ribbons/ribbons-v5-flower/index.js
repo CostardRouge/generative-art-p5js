@@ -31,7 +31,7 @@ options.add( [
     min: 1,
     max: 10,
     step: 0.1,
-    defaultValue: 3,
+    defaultValue: 2.5,
     category: 'Lines'
   },
   {
@@ -50,7 +50,7 @@ options.add( [
     min: 1,
     max: 300,
     step: 10,
-    defaultValue: 50,
+    defaultValue: 80,
     category: 'Lines'
   },
   {
@@ -193,164 +193,57 @@ function drawer( lerper, positioner, shaper, time, index ) {
   }
 }
 
-function drawGrid(xCount, yCount, time, color) {
-  const xSize = width / xCount;
-  const ySize = height / yCount;
-
-  strokeWeight(3)
-  stroke( color );
-
-  const offset = -1;
-  const xx = xSize * cos(time + xSize )
-  const yy = ySize * sin(time + ySize)
-
-  for (let x = offset; x <= xCount - offset; x++) {
-    for (let y = offset; y <= yCount - offset; y++) {
-      line(0, (yy + y * ySize) % height, width, (y * ySize + yy) % height);
-      line((xx + x * xSize) % width, 0, (xx + x * xSize) % width, height);
-    }
-  }
-}
-
-const drawBackground = (count = 7, time, color) => {
-  noFill();
-  stroke(color);
-
-  for (let i = 0; i < count; i++) {
-    strokeWeight(1);
-    
-    circle(
-      0, 0,
-      map(sin(time + i * 0.1), -1, 1, 515, width * 2.5)
-    );
-  }
-}
-
-
-// const drawRadial = (count = 7, time, color) => {
-//   noFill();
-//   stroke(color);
-//   strokeWeight(4);
-
-//   push()
-//   for (let i = 0; i < count; i++) {
-//     beginShape()
-//     let s = map(sin(time + i * 0.1), -1, 1, 515, width * 2.5)
-//     s = map(i, 0, count, 275, width*1.2)
-
-//     let aS = 64//map(sin(i+time), -1, 1, 6, 24)
-
-//     for (let angle = 0; angle < TAU; angle += TAU / aS) {
-
-//       let x = s * sin(angle)// + sin(time*2+angle) * 150
-//       let y = s * cos(angle)// + sin(time*2+angle) * 250
-
-//       // y = i/2 * 250 * cos(time*5 + angle);
-//       // y = s * 250 * cos(time*5 + angle);
-
-//       vertex(x, y);
-//     }
-
-//     endShape(CLOSE);
-//   }
-
-//   pop()
-// }
-
-const drawRadialPattern = (count = 7, time, color) => {
+const drawRadial = (count = 7, time, color) => {
   noFill();
   stroke(color);
   strokeWeight(4);
 
-  const center = createVector( 0, 0 );
-  const size = (width + height)/2;
+  push()
+  for (let i = 0; i < count; i++) {
+    beginShape()
+    let s = map(sin(time + i * 0.1), -1, 1, 515, width * 2.5)
+    s = map(i, 0, count, 275, width*1.2)
 
-  const p = 0.5//map(sin(time*2), -1, 1, 0.05, 0.9);
-  const m = 7//map(sin(time), -1, 1, 1, 50);
+    let aS = 64//map(sin(i+time), -1, 1, 6, 24)
 
-  iterators.angle(0, TAU, TAU / count, angle => {
-    const edge = converters.polar.vector(
-      angle,
-      //size * abs(sin(time + angle*5)),
+    for (let angle = 0; angle < TAU; angle += TAU / aS) {
 
-      //size * (sin(time + angle*5) + 2),// * cos(time),
-      size * (sin(time + angle) + 1.5),
-      size * (cos(time - angle) + 2),
-    );
+      let x = s * sin(angle)// + sin(time*2+angle) * 150
+      let y = s * cos(angle)// + sin(time*2+angle) * 250
 
-    // point(edge.x, edge.y);
-    // line(edge.x, edge.y, center.x, center.y);
+      // y = i/2 * 250 * cos(time*5 + angle);
+      // y = s * 250 * cos(time*5 + angle);
 
-    beginShape();
+      vertex(x, y);
+    }
 
-    iterators.vector(edge, center, p, (vector, lerpIndex) => {
-      const lerpIndexOffset = lerpIndex * 10 * angle;
-      const x = map(sin(time*2+lerpIndexOffset), -1, 1, -m, m);
-      const y = map(cos(time-lerpIndexOffset), -1, 1, -m, m);
+    endShape(CLOSE);
+  }
 
-      vertex(
-        vector.x + x,// * sin(time + lerpIndex),
-        vector.y - y// * cos(time - lerpIndex),
-      );
-    })
-
-    endShape();
-  } )
+  pop()
 }
 
 sketch.draw((time) => {
   background(0);
 
-  // drawGrid(1, 1, time/4, color( 128, 128, 255));
-  //drawGrid(3, 7, time, color( 128, 128, 255, 64) );
-
-
   translate(width / 2, height / 2);
-  // drawRadial(10, time/4, color( 128, 128, 255, 128));
-  drawRadialPattern(
-    options.get("background-lines-count"),
-    time, color( 128, 128, 255, 32)
-  );
-
-  // drawBackground(15, time, color(128, 128, 255));
+  drawRadial(10, time/4, color( 128, 128, 255, 128));
 
   drawer(
     ( time, index ) => {
-      const lerpMin = map(cos(time), -1, 1, -PI, 0, true);
+      const lerpMin = 0
       const lerpMax = PI//]map(cos(time/2), -1, 1, TAU-0.3, 0);
       const lerpStep = lerpMax / options.get('quality');
     
       return [lerpMin, lerpMax, lerpStep];
     },
     ( lerpIndex, lerpMin, lerpMax, lerpStep, time, index ) => {
-      // stroke(
-      //   128,
-      //   128,
-      //   255,
-      //   // map(sin(time), -1, 1, 0, 100)
-      // );
-      // if (lerpIndex == lerpMin) {
-      //   // stroke('blue')
-      //   line(-width, 0, width, 0)
-      //   line(0, -height, 0, height)
-      //   text.write("end", 0, 0)
-      // }
-      // if (lerpIndex+lerpStep > lerpMax ) {
-      //   // stroke('red')
-      //   line(-width, 0, width, 0)
-      //   line(0, -height, 0, height)
-      //   text.write("start", 0, 0)
-      // }
-
-      //const shapeIndex = Math.ceil(map(lerpIndex, lerpMin, lerpMax, 0, options.get('quality'), true) );
-
+      
       for (const fixer in fixers) {
         const { speed, index } = fixers[fixer];
 
-        // fixers[fixer].index = Math.ceil(time*speed)%options.get('quality');
         fixers[fixer].index = Math.ceil(map(sin(time*speed), -1, 1, 0, options.get('quality'), true));
       }
-
 
       rotate(cos(lerpIndex*2-time*2)*options.get('rotation-speed')+lerpIndex*options.get('rotation-count'));
     },
@@ -395,7 +288,7 @@ sketch.draw((time) => {
       const lw = 1.5//mappers.circularIndex(time + c, [1.5, 2.5, 2, 1.5,])
 
       const lineMin = -PI;
-      const lineMax = PI // mappers.circularIndex(time / 2 , [2, 1, 1, 1, 2]);
+      const lineMax = PI // mappers.circularIndex(c + time / 2 , [2, 1, 1, 1, 2]);
       let lineStep = lineMax / linesCount;
       // lineStep = lineMax / mappers.circularIndex(time, [2, 5, 3, 2, 4, 1]);
 
@@ -411,7 +304,6 @@ sketch.draw((time) => {
       for (let lineIndex = lineMin; lineIndex < lineMax; lineIndex += lineStep) {
         const vector = converters.polar.vector(
           lineIndex,
-          // s * 1.5,
           s * z 
         );
 
@@ -461,21 +353,15 @@ sketch.draw((time) => {
           ) );
         }
 
-        const a = 1//map(sin(time * 2 + lerpIndex), -1, 1, -1, 1);
-        const b = 1//map(cos(time * 2 + lerpIndex), -1, 1, -1, 1);
+        // if (shapeIndex == lerpIndex) {
+        //   stroke('red');
+        //   noFill();
+        //   strokeWeight(10)
+        //   circle(vector.x, vector.y, 50);
+        // }
 
-        if (shapeIndex == lerpIndex) {
-          stroke('red');
-          noFill();
-          strokeWeight(10)
-          circle(vector.x, vector.y, 50);
-        }
-
-        vertex(vector.y * a, vector.x * b);
-        vertex(vector.y * a, vector.x) * b;
-
-        // vertex(-vector.y, -vector.x);
-        // vertex(vector.y, vector.x);
+        vertex(vector.y, vector.x);
+        vertex(vector.y, vector.x);
     
         endShape();
         pop()

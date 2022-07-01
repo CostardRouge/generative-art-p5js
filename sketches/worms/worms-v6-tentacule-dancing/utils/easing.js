@@ -1,12 +1,12 @@
 const easing = {
   easeInSine: (x) => {
-    return 1 - Math.cos((x * PI) / 2);
+    return 1 - Math.cos((x * Math.PI) / 2);
   },
   easeOutSine: (x) => {
-    return Math.sin((x * PI) / 2);
+    return Math.sin((x * Math.PI) / 2);
   },
   easeInOutSine: (x) => {
-    return -(Math.cos(PI * x) - 1) / 2;
+    return -(Math.cos(Math.PI * x) - 1) / 2;
   },
   easeInQuad: (x) => {
     return x * x;
