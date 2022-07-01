@@ -260,16 +260,16 @@ const drawRadialPattern = (count = 7, time, color) => {
   const size = (width + height)/2;
 
   const p = options.get("background-lines-precision")//map(sin(time*2), -1, 1, 0.05, 0.9);
-  const m = 0//map(cos(time), -1, 1, 1, 100);
+  const m = 15//map(cos(time), -1, 1, 1, 100);
 
   iterators.angle(0, TAU, TAU / count, angle => {
     const edge = converters.polar.vector(
       angle,
-      // size * abs(sin(time)),
-      //size *abs(cos(time+angle*2)),
+      //size * abs(sin(time)),
+      //size * abs(cos(time+angle*v)),
 
-      // size * (sin(time + angle*5) + 2),// * cos(time),
-      size * (sin(time*2 - angle) + 1.5),
+      //size * (sin(time + angle*5) + 2),// * cos(time),
+      //size * (sin(time*2 - angle) + 1.5),
       size * (cos(time*2 + angle*2) + 2),
     );
 
@@ -298,15 +298,19 @@ sketch.draw((time) => {
   //   350 * cos(time),
   // )
 
+  //drawGrid(3, 10, time, color( 128, 128, 255, 48)) 
+
+
   translate(width / 2, height / 2);
   drawRadialPattern(
     options.get("background-lines-count"),
     time/2,
-    color( 128, 128, 255, 48)
+    color( 128, 128, 255, 64)
   );
 
-  const ls = mappers.circularIndex(time/2, [1, 0.75, 1.5, 2]);
-  v = lerp(v, ls, 0.07)
+
+  const ls = mappers.circularIndex(time/2, [1, 0.75, 1.5, 1]);
+  v = lerp(v, ls, 0.1)
 
   drawer(
     ( time, index ) => {
@@ -345,8 +349,8 @@ sketch.draw((time) => {
         fixers[fixer].index = Math.ceil(map(sin(time*speed), -1, 1, 0, options.get('quality'), true));
       }
 
-      rotate(cos(lerpIndex*2-time*2)*options.get('rotation-speed')+lerpIndex*options.get('rotation-count'));
-      rotate(time*0.75);
+      rotate(cos(lerpIndex*2-time*2)*options.get('rotation-speed')+lerpIndex*2*options.get('rotation-count'));
+      //rotate(time*0.75);
     },
     ( lerpIndex, lerpMin, lerpMax, time, index ) => {
 
@@ -371,7 +375,7 @@ sketch.draw((time) => {
           -1,
           1,
           // map(sin(lerpIndex), -1, 1, 1, 50),
-          map(cos(lerpIndex*opacityCount+time*opacitySpeed), -1, 1, 1, 150),
+          map(cos(lerpIndex*opacityCount+time*opacitySpeed), -1, 1, 1, 15),
           // 10,
           1
         );
@@ -435,7 +439,7 @@ sketch.draw((time) => {
           ) );
         }
 
-        if (colorOn || options.get('hue-palette') === "red") {
+        if (0 || options.get('hue-palette') === "red") {
           stroke( color(
             360 / opacityFactor,
             32 / opacityFactor,

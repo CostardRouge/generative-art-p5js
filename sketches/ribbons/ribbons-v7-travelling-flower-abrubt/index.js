@@ -306,7 +306,7 @@ sketch.draw((time) => {
   );
 
   const ls = mappers.circularIndex(time/2, [1, 1.5, 2.5, 1]);
-  v = lerp(v, ls, 0.01)
+  v = lerp(v, ls, 0.05)
 
   drawer(
     ( time, index ) => {
@@ -387,11 +387,11 @@ sketch.draw((time) => {
       const lineMax = PI
 
       const ll = options.get('lines-length');
-      const s = mappers.circularMap(lerpIndex, lineMax, -ll, ll)
+      const s = mappers.circularMap(lerpIndex, lineMax, 0, ll)
 
       const lineStep = lineMax / v;
 
-      const shapeIndex = Math.ceil( map(lerpIndex, lerpMin, lerpMax, 0, options.get('quality'), true) );
+      const shapeIndex = Math.ceil( map(lerpIndex, lerpMin, lerpMax/10, 0, options.get('quality'), true) );
 
       let colorOn = shapeIndex < fixers?.["#8080ff"]?.index;
 
@@ -400,7 +400,7 @@ sketch.draw((time) => {
 
         push();
         beginShape();
-        strokeWeight(mappers.circularMap(lerpIndex, lineMax, 10, options.get('lines-weight')));
+        strokeWeight(mappers.circularMap(lerpIndex, lineMax/10, 10, options.get('lines-weight')));
 
         const hueSpeed = -time * options.get("hue-speed");
 
@@ -413,7 +413,7 @@ sketch.draw((time) => {
             map(sin(hueSpeed+lerpIndex*5), -1, 1, 360, 0) /
               opacityFactor,
             // map(lerpIndex, lerpMin, lerpMax, 0, 100)
-            mappers.circularMap(lerpIndex, lerpMax/10, 1, 255)
+            //mappers.circularMap(lerpIndex, lerpMax/10, 1, 255)
           ) );
         }
         

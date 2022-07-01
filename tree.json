@@ -243,6 +243,13 @@
             "folder": "blob"
          },
          "path": "sketches/blob/blob-v2a-caterpillar-abrupt-2"
+      },
+      "test-easing": {
+         "meta": {
+            "name": "test-easing",
+            "folder": "blob"
+         },
+         "path": "sketches/blob/test-easing"
       }
    },
    "churros": {
@@ -868,12 +875,19 @@
          },
          "path": "sketches/ribbons/ribbons-v7-travelling-flower-abrubt"
       },
-      "ribbons-v8-atom": {
+      "ribbons-v8-spider": {
          "meta": {
-            "name": "ribbons-v8-atom",
+            "name": "ribbons-v8-spider",
             "folder": "ribbons"
          },
-         "path": "sketches/ribbons/ribbons-v8-atom"
+         "path": "sketches/ribbons/ribbons-v8-spider"
+      },
+      "ribbons-v9-atom": {
+         "meta": {
+            "name": "ribbons-v9-atom",
+            "folder": "ribbons"
+         },
+         "path": "sketches/ribbons/ribbons-v9-atom"
       }
    },
    "semaphore": {
