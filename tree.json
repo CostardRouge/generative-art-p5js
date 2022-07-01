@@ -243,13 +243,6 @@
             "folder": "blob"
          },
          "path": "sketches/blob/blob-v2a-caterpillar-abrupt-2"
-      },
-      "test-easing": {
-         "meta": {
-            "name": "test-easing",
-            "folder": "blob"
-         },
-         "path": "sketches/blob/test-easing"
       }
    },
    "churros": {
@@ -343,6 +336,80 @@
             "folder": "churros"
          },
          "path": "sketches/churros/churros-v9-pasta-scanner"
+      }
+   },
+   "demo-festival-2022": {
+      "1-guided-pasta": {
+         "meta": {
+            "name": "1-guided-pasta",
+            "folder": "demo-festival-2022"
+         },
+         "path": "sketches/demo-festival-2022/1-guided-pasta"
+      },
+      "2-caterpillar-up-down": {
+         "meta": {
+            "name": "2-caterpillar-up-down",
+            "folder": "demo-festival-2022"
+         },
+         "path": "sketches/demo-festival-2022/2-caterpillar-up-down"
+      },
+      "3-pasta-to-purple": {
+         "meta": {
+            "name": "3-pasta-to-purple",
+            "folder": "demo-festival-2022"
+         },
+         "path": "sketches/demo-festival-2022/3-pasta-to-purple"
+      },
+      "4-pasta-or-churros": {
+         "meta": {
+            "name": "4-pasta-or-churros",
+            "folder": "demo-festival-2022"
+         },
+         "path": "sketches/demo-festival-2022/4-pasta-or-churros"
+      },
+      "5-churros-tracer": {
+         "meta": {
+            "name": "5-churros-tracer",
+            "folder": "demo-festival-2022"
+         },
+         "path": "sketches/demo-festival-2022/5-churros-tracer"
+      },
+      "6-perspective": {
+         "meta": {
+            "name": "6-perspective",
+            "folder": "demo-festival-2022"
+         },
+         "path": "sketches/demo-festival-2022/6-perspective"
+      },
+      "7-medusa": {
+         "meta": {
+            "name": "7-medusa",
+            "folder": "demo-festival-2022"
+         },
+         "path": "sketches/demo-festival-2022/7-medusa"
+      },
+      "8-pasta-scan": {
+         "meta": {
+            "name": "8-pasta-scan",
+            "folder": "demo-festival-2022"
+         },
+         "path": "sketches/demo-festival-2022/8-pasta-scan"
+      },
+      "9-scarf": {
+         "meta": {
+            "name": "9-scarf",
+            "folder": "demo-festival-2022"
+         },
+         "path": "sketches/demo-festival-2022/9-scarf"
+      }
+   },
+   "easing": {
+      "easing-v1-all-functions": {
+         "meta": {
+            "name": "easing-v1-all-functions",
+            "folder": "easing"
+         },
+         "path": "sketches/easing/easing-v1-all-functions"
       }
    },
    "genuary2022": {
@@ -861,12 +928,12 @@
          },
          "path": "sketches/ribbons/ribbons-v5-flower"
       },
-      "ribbons-v6-flower-abrupt": {
+      "ribbons-v5-flower-dotted": {
          "meta": {
-            "name": "ribbons-v6-flower-abrupt",
+            "name": "ribbons-v5-flower-dotted",
             "folder": "ribbons"
          },
-         "path": "sketches/ribbons/ribbons-v6-flower-abrupt"
+         "path": "sketches/ribbons/ribbons-v5-flower-dotted"
       },
       "ribbons-v7-travelling-flower-abrubt": {
          "meta": {
@@ -875,12 +942,12 @@
          },
          "path": "sketches/ribbons/ribbons-v7-travelling-flower-abrubt"
       },
-      "ribbons-v8-spider": {
+      "ribbons-v8-globule": {
          "meta": {
-            "name": "ribbons-v8-spider",
+            "name": "ribbons-v8-globule",
             "folder": "ribbons"
          },
-         "path": "sketches/ribbons/ribbons-v8-spider"
+         "path": "sketches/ribbons/ribbons-v8-globule"
       },
       "ribbons-v9-atom": {
          "meta": {
