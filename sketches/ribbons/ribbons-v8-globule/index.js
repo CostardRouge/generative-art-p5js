@@ -14,13 +14,6 @@ options.add( [
     id: "change-lines-count",
     type: 'switch',
     label: 'Change lines count over time',
-    defaultValue: false,
-    category: 'Lines'
-  },
-  {
-    id: "regular-lines-length",
-    type: 'switch',
-    label: 'Regular lines length',
     defaultValue: true,
     category: 'Lines'
   },
@@ -31,7 +24,7 @@ options.add( [
     min: 1,
     max: 10,
     step: 0.5,
-    defaultValue: 2,
+    defaultValue: 3,
     category: 'Lines'
   },
   {
@@ -57,7 +50,7 @@ options.add( [
     id: "ping-pong-opacity",
     type: 'switch',
     label: 'Ping Pong opacity',
-    defaultValue: true,
+    defaultValue: false,
     category: 'Opacity'
   },
   {
@@ -102,7 +95,7 @@ options.add( [
     label: 'Rotation count ?',
     min: -5,
     max: 5,
-    defaultValue: 3,
+    defaultValue: 0,
     category: 'Rotation'
   },
   {
@@ -111,7 +104,7 @@ options.add( [
     label: 'Rotation speed',
     min: -10,
     max: 10,
-    defaultValue: 0,
+    defaultValue: 1,
     category: 'Rotation'
   },
   {
@@ -127,7 +120,7 @@ options.add( [
     id: 'hue-palette',
     type: 'select',
     label: 'Hue palette',
-    defaultValue: 'rainbow',
+    defaultValue: 'red',
     options: [
       {
         value: 'rainbow',
@@ -310,34 +303,13 @@ sketch.draw((time) => {
 
   drawer(
     ( time, index ) => {
-      const lerpMin = 0//map(cos(time), -1, 1, -PI, 0, true);
+      const lerpMin = 0;
       const lerpMax = PI/2//map(cos(time/2), -1, 1, TAU-0.3, 0);
       const lerpStep = lerpMax / options.get('quality');
     
       return [lerpMin, lerpMax, lerpStep];
     },
     ( lerpIndex, lerpMin, lerpMax, lerpStep, time, index ) => {
-      // stroke(
-      //   128,
-      //   128,
-      //   255,
-      //   // map(sin(time), -1, 1, 0, 100)
-      // );
-      // if (lerpIndex == lerpMin) {
-      //   // stroke('blue')
-      //   line(-width, 0, width, 0)
-      //   line(0, -height, 0, height)
-      //   text.write("end", 0, 0)
-      // }
-      // if (lerpIndex+lerpStep > lerpMax ) {
-      //   // stroke('red')
-      //   line(-width, 0, width, 0)
-      //   line(0, -height, 0, height)
-      //   text.write("start", 0, 0)
-      // }
-
-      //const shapeIndex = Math.ceil(map(lerpIndex, lerpMin, lerpMax, 0, options.get('quality'), true) );
-
       for (const fixer in fixers) {
         const { speed, index } = fixers[fixer];
 
@@ -346,7 +318,7 @@ sketch.draw((time) => {
       }
 
       rotate(cos(lerpIndex*2-time*2)*options.get('rotation-speed')+lerpIndex*options.get('rotation-count'));
-      rotate(time*0.75);
+      rotate(-time*0.75);
     },
     ( lerpIndex, lerpMin, lerpMax, time, index ) => {
 
@@ -383,14 +355,13 @@ sketch.draw((time) => {
         linesCount = map(cos(lerpIndex/2-time), -1, 1, 1, options.get("max-lines-count"), true);
       }
 
-      const lineMin = -PI;
-      const lineMax = PI
+      const lineMin = -PI/2;
+      const lineMax = PI/2
 
       const ll = options.get('lines-length');
-      const s = mappers.circularMap(lerpIndex, lineMax, -ll, ll)
+      const s = mappers.circularMap(lerpIndex, lineMax, 0, ll)
 
-      const lineStep = lineMax / v;
-
+      const lineStep = lineMax / linesCount;
       const shapeIndex = Math.ceil( map(lerpIndex, lerpMin, lerpMax, 0, options.get('quality'), true) );
 
       let colorOn = shapeIndex < fixers?.["#8080ff"]?.index;
@@ -413,7 +384,7 @@ sketch.draw((time) => {
             map(sin(hueSpeed+lerpIndex*5), -1, 1, 360, 0) /
               opacityFactor,
             // map(lerpIndex, lerpMin, lerpMax, 0, 100)
-            //mappers.circularMap(lerpIndex, lerpMax/10, 1, 255)
+            mappers.circularMap(lerpIndex, lerpMax, 1, 255)
           ) );
         }
         
@@ -426,7 +397,7 @@ sketch.draw((time) => {
           ) );
         }
         
-        if (options.get('hue-palette') === "pink") {
+        if (colorOn || options.get('hue-palette') === "pink") {
           stroke( color(
             360 / opacityFactor,
             90 / opacityFactor,
@@ -435,7 +406,7 @@ sketch.draw((time) => {
           ) );
         }
 
-        if (colorOn || options.get('hue-palette') === "red") {
+        if (options.get('hue-palette') === "red") {
           stroke( color(
             360 / opacityFactor,
             32 / opacityFactor,
