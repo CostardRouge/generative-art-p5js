@@ -43,8 +43,7 @@ const sketch = {
       debug.fps();
       
       let t = time.seconds() * options.get("time-speed");
-      t = (frameCount-1)/options.get("framerate");
-
+      //t = (frameCount-1)/options.get("framerate");
 
       draw?.(t * options.get("time-speed") );
     };

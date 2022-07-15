@@ -208,6 +208,22 @@
          "path": "sketches/accident/accident-v9-eccentric-twist"
       }
    },
+   "background-pattern": {
+      "background-pattern-v3-radial-eyelashes": {
+         "meta": {
+            "name": "background-pattern-v3-radial-eyelashes",
+            "folder": "background-pattern"
+         },
+         "path": "sketches/background-pattern/background-pattern-v3-radial-eyelashes"
+      },
+      "background-pattern-v4-radial-purple": {
+         "meta": {
+            "name": "background-pattern-v4-radial-purple",
+            "folder": "background-pattern"
+         },
+         "path": "sketches/background-pattern/background-pattern-v4-radial-purple"
+      }
+   },
    "blob": {
       "blob-v1-jump": {
          "meta": {
@@ -346,61 +362,54 @@
          },
          "path": "sketches/demo-festival-2022/1-guided-pasta"
       },
-      "2-caterpillar-up-down": {
+      "2-wormy-churros": {
          "meta": {
-            "name": "2-caterpillar-up-down",
+            "name": "2-wormy-churros",
             "folder": "demo-festival-2022"
          },
-         "path": "sketches/demo-festival-2022/2-caterpillar-up-down"
+         "path": "sketches/demo-festival-2022/2-wormy-churros"
       },
-      "3-pasta-to-purple": {
+      "3-rainbow-to-purple": {
          "meta": {
-            "name": "3-pasta-to-purple",
+            "name": "3-rainbow-to-purple",
             "folder": "demo-festival-2022"
          },
-         "path": "sketches/demo-festival-2022/3-pasta-to-purple"
+         "path": "sketches/demo-festival-2022/3-rainbow-to-purple"
       },
-      "4-pasta-or-churros": {
+      "4-rainbowed-medusa": {
          "meta": {
-            "name": "4-pasta-or-churros",
+            "name": "4-rainbowed-medusa",
             "folder": "demo-festival-2022"
          },
-         "path": "sketches/demo-festival-2022/4-pasta-or-churros"
+         "path": "sketches/demo-festival-2022/4-rainbowed-medusa"
       },
-      "5-churros-tracer": {
+      "5-fox-tail": {
          "meta": {
-            "name": "5-churros-tracer",
+            "name": "5-fox-tail",
             "folder": "demo-festival-2022"
          },
-         "path": "sketches/demo-festival-2022/5-churros-tracer"
+         "path": "sketches/demo-festival-2022/5-fox-tail"
       },
-      "6-perspective": {
+      "6-caterpillar": {
          "meta": {
-            "name": "6-perspective",
+            "name": "6-caterpillar",
             "folder": "demo-festival-2022"
          },
-         "path": "sketches/demo-festival-2022/6-perspective"
+         "path": "sketches/demo-festival-2022/6-caterpillar"
       },
-      "7-medusa": {
+      "7-rainbow-turbine": {
          "meta": {
-            "name": "7-medusa",
+            "name": "7-rainbow-turbine",
             "folder": "demo-festival-2022"
          },
-         "path": "sketches/demo-festival-2022/7-medusa"
+         "path": "sketches/demo-festival-2022/7-rainbow-turbine"
       },
-      "8-pasta-scan": {
+      "8-rainbow-turbine-chain": {
          "meta": {
-            "name": "8-pasta-scan",
+            "name": "8-rainbow-turbine-chain",
             "folder": "demo-festival-2022"
          },
-         "path": "sketches/demo-festival-2022/8-pasta-scan"
-      },
-      "9-scarf": {
-         "meta": {
-            "name": "9-scarf",
-            "folder": "demo-festival-2022"
-         },
-         "path": "sketches/demo-festival-2022/9-scarf"
+         "path": "sketches/demo-festival-2022/8-rainbow-turbine-chain"
       }
    },
    "easing": {
@@ -928,12 +937,12 @@
          },
          "path": "sketches/ribbons/ribbons-v5-flower"
       },
-      "ribbons-v5-flower-dotted": {
+      "ribbons-v6-flower-dotted": {
          "meta": {
-            "name": "ribbons-v5-flower-dotted",
+            "name": "ribbons-v6-flower-dotted",
             "folder": "ribbons"
          },
-         "path": "sketches/ribbons/ribbons-v5-flower-dotted"
+         "path": "sketches/ribbons/ribbons-v6-flower-dotted"
       },
       "ribbons-v7-travelling-flower-abrubt": {
          "meta": {

@@ -166,8 +166,9 @@ options.add( [
   }
 ] );
 
-sketch.setup(undefined
-  ,
+sketch.setup( () => {
+  frameRate(25);
+  },
   {
     width: 1080,
     height: 1920,

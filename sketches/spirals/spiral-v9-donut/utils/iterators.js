@@ -1,6 +1,6 @@
 const iterators = {
   vector: function (start, end, lerpStep = 0.1, handler) {
-    for (let lerpIndex = 0; lerpIndex <= 1; lerpIndex += lerpStep) {
+    for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
       const position = p5.Vector.lerp(start, end, lerpIndex);
   
       handler(position, lerpIndex);
@@ -9,7 +9,7 @@ const iterators = {
   vectors: function (vectors, handler, lerpStep = 0.1) {
     let totalStep = 0;
     
-    vectors.forEach(( startVector, index) => {
+    vectors.forEach((startVector, index) => {
       const endVector = vectors[index + 1];
 
       if ( endVector ) {
