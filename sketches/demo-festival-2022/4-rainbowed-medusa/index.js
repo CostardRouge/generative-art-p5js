@@ -1,6 +1,9 @@
 import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
 
-sketch.setup(() => {
+sketch.setup( () => {
+  frameRate(25);
+  pixelDensity(1);
+
   const xCount = 1;
   const yCount = 1;
   const size = (width + height) / (xCount + yCount) / 3;
@@ -18,7 +21,12 @@ sketch.setup(() => {
       );
     }
   }
-} );
+  },
+  {
+    width: 1080,
+    height: 1920,
+  }
+);
 
 class Spiral {
   constructor(options) {

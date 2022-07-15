@@ -118,7 +118,14 @@ options.add( [
   }
 ] );
 
-sketch.setup(() => {});
+sketch.setup( () => {
+  frameRate(25);
+  },
+  {
+    width: 1080,
+    height: 1920,
+  }
+);
 
 function drawer( lerper, positioner, shaper, time, index ) {
   const [lerpMin, lerpMax, lerpStep] = lerper(time, index);

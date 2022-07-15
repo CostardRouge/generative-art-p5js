@@ -125,7 +125,16 @@ options.add( [
   }
 ] );
 
-sketch.setup(() => {});
+sketch.setup( () => {
+  frameRate(25);
+  pixelDensity(1);
+  },
+  {
+    width: 1080,
+    height: 1920,
+  }
+);
+
 
 function drawer( lerper, positioner, shaper, time, index ) {
   const [lerpMin, lerpMax, lerpStep] = lerper(time, index);
@@ -239,13 +248,13 @@ sketch.draw((time) => {
         // stroke('blue')
         line(-width, 0, width, 0)
         line(0, -height, 0, height)
-        text.write("end", 0, 0)
+        text.write("end", 0, 0, 30)
       }
       if (lerpIndex+lerpStep > lerpMax ) {
         // stroke('red')
         line(-width, 0, width, 0)
         line(0, -height, 0, height)
-        text.write("start", 0, 0)
+        text.write("start", 0, 0, 30)
       }
 
       rotate(sin(lerpIndex*2-time)*options.get('rotation-speed')+lerpIndex*2*options.get('rotation-count'));
@@ -312,13 +321,13 @@ sketch.draw((time) => {
         strokeWeight(mappers.circularMap(lerpIndex, lineMax, 10, options.get('lines-weight')));
 
         const hueSpeed = -time * options.get("hue-speed");
-    
+        const c = 10//*sin(time+lerpIndex/2);
         stroke( color(
-          map(sin(hueSpeed+lerpIndex*5), -1, 1, 0, 360) /
+          map(sin(hueSpeed+lerpIndex*c), -1, 1, 0, 360) /
             opacityFactor,
-          map(sin(hueSpeed-lerpIndex*5), -1, 1, 360, 0) /
+          map(sin(hueSpeed-lerpIndex*c), -1, 1, 360, 0) /
             opacityFactor,
-          map(sin(hueSpeed+lerpIndex*5), -1, 1, 360, 0) /
+          map(sin(hueSpeed+lerpIndex*c), -1, 1, 360, 0) /
             opacityFactor,
           // map(lerpIndex, lerpMin, lerpMax, 0, 100)
           mappers.circularMap(lerpIndex, lerpMax, 1, 255)

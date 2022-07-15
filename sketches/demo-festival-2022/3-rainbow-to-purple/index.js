@@ -118,7 +118,15 @@ options.add( [
   }
 ] );
 
-sketch.setup();
+sketch.setup( () => {
+  frameRate(25);
+  pixelDensity(1);
+  },
+  {
+    width: 1080,
+    height: 1920,
+  }
+);
 
 const fixers = {
   "#8080ff": {
