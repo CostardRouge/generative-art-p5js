@@ -169,7 +169,6 @@ class RibbonStrip {
 }
 
 sketch.draw( time => {
-  //noSmooth()
   background(0);
   pixilatedCanvas.filter(BLUR, 2);
   pixilatedCanvas.background(0, 0, 0, 8);
