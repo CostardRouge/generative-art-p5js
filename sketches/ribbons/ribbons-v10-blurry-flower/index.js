@@ -7,7 +7,7 @@ options.add( [
     label: 'Quality',
     min: 1,
     max: 1200,
-    defaultValue: 400,
+    defaultValue: 200,
     category: 'Shape'
   },
   {
@@ -40,7 +40,7 @@ options.add( [
     label: 'Lines length',
     min: 1,
     max: 200,
-    defaultValue: 160,
+    defaultValue: 190,
     category: 'Lines'
   },
   {
@@ -50,14 +50,14 @@ options.add( [
     min: 1,
     max: 300,
     step: 10,
-    defaultValue: 21,
+    defaultValue: 110,
     category: 'Lines'
   },
   {
     id: "ping-pong-opacity",
     type: 'switch',
     label: 'Ping Pong opacity',
-    defaultValue: false,
+    defaultValue: true,
     category: 'Opacity'
   },
   {
@@ -66,7 +66,7 @@ options.add( [
     label: 'Opacity speed',
     min: -10,
     max: 10,
-    defaultValue: 3,
+    defaultValue: 2,
     category: 'Opacity'
   },
   {
@@ -75,7 +75,7 @@ options.add( [
     label: 'Opacity group count',
     min: 1,
     max: 10,
-    defaultValue: 6,
+    defaultValue: 1,
     category: 'Opacity'
   },
   {
@@ -84,7 +84,7 @@ options.add( [
     label: 'Start opacity (reduction factor)',
     min: 1,
     max: 50,
-    defaultValue: 3,
+    defaultValue: 12,
     category: 'Opacity'
   },
   {
@@ -103,7 +103,7 @@ options.add( [
     min: -5,
     max: 5,
     step: 0.1,
-    defaultValue: 1,
+    defaultValue: 0.1,
     category: 'Rotation'
   },
   {
@@ -155,7 +155,7 @@ options.add( [
     min: 1,
     max: 1000,
     label: 'Lines amount',
-    defaultValue: 400,
+    defaultValue: 141,
     category: 'Background'
   },
   {
@@ -164,7 +164,7 @@ options.add( [
     min: 1,
     max: 50,
     label: 'Lines weight',
-    defaultValue: 4,
+    defaultValue: 10,
     category: 'Background'
   },
   {
@@ -183,7 +183,7 @@ options.add( [
     max: 1,
     step: 0.01,
     label: 'Pixelated pixel density',
-    defaultValue: 0.05,
+    defaultValue: 0.1,
     category: 'Background',
     onChange: value => {
       pixilatedCanvas.pixelDensity(value); 
