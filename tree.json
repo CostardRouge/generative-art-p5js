@@ -259,6 +259,13 @@
             "folder": "blob"
          },
          "path": "sketches/blob/blob-v2a-caterpillar-abrupt-2"
+      },
+      "blob-v3-sequence": {
+         "meta": {
+            "name": "blob-v3-sequence",
+            "folder": "blob"
+         },
+         "path": "sketches/blob/blob-v3-sequence"
       }
    },
    "churros": {
@@ -901,6 +908,13 @@
             "folder": "ribbons"
          },
          "path": "sketches/ribbons/ribbons-v1-invisible-walls-rainbow"
+      },
+      "ribbons-v10-blurry-flower": {
+         "meta": {
+            "name": "ribbons-v10-blurry-flower",
+            "folder": "ribbons"
+         },
+         "path": "sketches/ribbons/ribbons-v10-blurry-flower"
       },
       "ribbons-v2-circle": {
          "meta": {
