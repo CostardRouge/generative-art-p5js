@@ -2,65 +2,6 @@ import { shapes, sketch, converters, canvas, events, colors, mappers, iterators,
 
 options.add( [
   {
-    id: "quality",
-    type: 'number',
-    label: 'Quality',
-    min: 1,
-    max: 1200,
-    defaultValue: 400,
-    category: 'Shape'
-  },
-  {
-    id: "change-lines-count",
-    type: 'switch',
-    label: 'Change lines count over time',
-    defaultValue: false,
-    category: 'Lines'
-  },
-  {
-    id: "regular-lines-length",
-    type: 'switch',
-    label: 'Regular lines length',
-    defaultValue: true,
-    category: 'Lines'
-  },
-  {
-    id: "max-lines-count",
-    type: 'slider',
-    label: 'Max lines count',
-    min: 1,
-    max: 10,
-    step: 0.5,
-    defaultValue: 2,
-    category: 'Lines'
-  },
-  {
-    id: "lines-length",
-    type: 'slider',
-    label: 'Lines length',
-    min: 1,
-    max: 200,
-    defaultValue: 150,
-    category: 'Lines'
-  },
-  {
-    id: "lines-weight",
-    type: 'slider',
-    label: 'Lines weight',
-    min: 1,
-    max: 300,
-    step: 10,
-    defaultValue: 50,
-    category: 'Lines'
-  },
-  {
-    id: "ping-pong-opacity",
-    type: 'switch',
-    label: 'Ping Pong opacity',
-    defaultValue: false,
-    category: 'Opacity'
-  },
-  {
     id: "opacity-speed",
     type: 'slider',
     label: 'Opacity speed',
@@ -97,24 +38,6 @@ options.add( [
     category: 'Opacity'
   },
   {
-    id: "rotation-count",
-    type: 'slider',
-    label: 'Rotation count ?',
-    min: -5,
-    max: 5,
-    defaultValue: 1,
-    category: 'Rotation'
-  },
-  {
-    id: "rotation-speed",
-    type: 'slider',
-    label: 'Rotation speed',
-    min: -10,
-    max: 10,
-    defaultValue: 1,
-    category: 'Rotation'
-  },
-  {
     id: "hue-speed",
     type: 'slider',
     label: 'Hue speed',
@@ -123,38 +46,6 @@ options.add( [
     defaultValue: 2,
     category: 'Colors'
   },
-  {
-    id: 'hue-palette',
-    type: 'select',
-    label: 'Hue palette',
-    defaultValue: 'rainbow',
-    options: [
-      {
-        value: 'rainbow',
-        label: 'Rainbow',
-      },
-      {
-        value: 'rainbow-trip',
-        label: 'Rainbow trip',
-      },
-      {
-        value: 'purple',
-        label: 'Purple',
-      },
-      {
-        value: 'pink',
-        label: 'Pink',
-      },
-      {
-        value: 'red',
-        label: 'Red',
-      }
-    ],
-    category: 'Colors'
-  },
-
-
-
 
   {
     id: "background-lines-count",
@@ -171,17 +62,17 @@ options.add( [
     min: 1,
     max: 25,
     label: 'Lines weight',
-    defaultValue: 2,
+    defaultValue: 1,
     category: 'Background'
   },
   {
     id: "background-lines-precision",
     type: 'slider',
-    min: 0.05,
+    min: 0.1,
     max: 1,
-    step: 0.05,
+    step: 0.1,
     label: 'Lines precision',
-    defaultValue: 0.05,
+    defaultValue: 0.1,
     category: 'Background'
   },
 ] );
@@ -190,34 +81,81 @@ sketch.setup();
 
 const drawRadialPattern = (count = 7, time, _color) => {
   noFill();
-  strokeWeight(2);
+  strokeWeight(options.get("background-lines-weight"));
 
-  const center = createVector( 0, 0 );
-  const size = (width + height)/4;
+  const position = mappers.seq(
+    "position",
+    time,
+    [
+      createVector( 0, -height /2 ),
+      createVector( width /2, 0 ),
+      createVector( 0, height /2 ),
+      createVector(-width /2, 0 ),
+    ],
+    0.1,
+    p5.Vector.lerp
+  );
+
+  const weight = mappers.seq(
+    "strokeWeight",
+    time/2,
+    [
+      1,
+      20,
+      40
+    ],
+    0.1
+  );
+
+  const ccount = mappers.seq(
+    "ccount",
+    time,
+    [
+      2,
+      4,
+      8
+    ],
+    0.1
+  );
+
+  const size = (width + height)/15;
+
+  strokeWeight(weight);
+
 
   const p = options.get("background-lines-precision")
+  const hueSpeed = time * options.get("hue-speed");
 
-  const hueSpeed = time;
-
-  iterators.angle(0, TAU, TAU / count, angle => {
+  iterators.angle(0, PI, PI / ccount, angle => {
     const edge = converters.polar.vector(
       angle,
       size,
       size
     );
 
+    const opacityFactor = mappers.circularMap(
+      angle,
+      TAU,
+      map(
+        sin(-time * options.get("opacity-speed") + angle * options.get("opacity-group-count") ), -1, 1,
+        options.get("start-opacity-factor"),
+        options.get("end-opacity-factor")
+      ),
+      options.get("end-opacity-factor")
+    );
+
     beginShape();
 
-    iterators.vector(edge, center, p, (vector, lerpIndex) => {
+    iterators.vector(edge, position, p, (vector, lerpIndex) => {
       stroke( color(
-        map(sin(hueSpeed+angle+lerpIndex*5), -1, 1, 0, 360),
-        map(sin(hueSpeed-angle+lerpIndex*5), -1, 1, 360, 0),
-        map(sin(hueSpeed+angle+lerpIndex*5), -1, 1, 360, 0),
+        map(sin(hueSpeed+angle+lerpIndex*5), -1, 1, 0, 360) / opacityFactor,
+        map(sin(hueSpeed-angle+lerpIndex*5), -1, 1, 360, 0) / opacityFactor,
+        map(sin(hueSpeed+angle+lerpIndex*5), -1, 1, 360, 0) / opacityFactor,
       ) );
 
       const pos = createVector(
-        vector.x * (sin(time*2 + angle + lerpIndex) + 1.5),
-        vector.y * (cos(time - angle+ lerpIndex) + 1.5),
+        vector.x,// * (sin(time*2 + angle + lerpIndex) + 1.5),
+        vector.y// * (cos(time - angle+ lerpIndex) + 1.5),
       );
 
       vertex( pos.x, pos.y );
@@ -231,9 +169,8 @@ sketch.draw((time) => {
   background(0);
 
   translate(width / 2, height / 2);
-  rotate(-time/4)
   drawRadialPattern(
-    100,
+    options.get("background-lines-count"),
     time
   );
 });

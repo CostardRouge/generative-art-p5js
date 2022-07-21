@@ -9,13 +9,13 @@ const mappers = {
   circularValueOn: function (index, values, scale = values.length - 1) {
     return values[ceil(circularMap(index, scale, 0, values.length - 1))];
   },
-  morph: function(key, values, speed, amount = 0.07) {
+  seq: function(key, speed, values, amount = 0.07, lerpFn = lerp) {
     this.values = this.values ?? {};
 
     const newValue = mappers.circularIndex(speed, values);
     const currentSavedValue = this.values[ key ] ?? newValue
 
-    return this.values[ key ] = lerp(currentSavedValue, newValue, amount);
+    return this.values[ key ] = lerpFn(currentSavedValue, newValue, amount);
   }
 };
 
