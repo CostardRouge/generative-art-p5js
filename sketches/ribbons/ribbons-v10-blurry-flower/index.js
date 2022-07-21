@@ -7,7 +7,7 @@ options.add( [
     label: 'Quality',
     min: 1,
     max: 1200,
-    defaultValue: 200,
+    defaultValue: 150,
     category: 'Shape'
   },
   {
@@ -201,13 +201,6 @@ sketch.setup( () => {
   pixilatedCanvas.pixelDensity(options.get("background-pixel-density"));
 });
 
-const fixers = {
-  "#8080ff": {
-    speed: 1,
-    index: 0
-  }
-}
-
 function drawer( lerper, positioner, shaper, time, index ) {
   const [lerpMin, lerpMax, lerpStep] = lerper(time, index);
 
@@ -261,36 +254,6 @@ const drawBackground = (count = 7, time, color) => {
   pop();
 }
 
-// const drawRadial = (count = 7, time, color) => {
-//   noFill();
-//   stroke(color);
-//   strokeWeight(4);
-
-//   push()
-//   for (let i = 0; i < count; i++) {
-//     beginShape()
-//     let s = map(sin(time + i * 0.1), -1, 1, 515, width * 2.5)
-//     s = map(i, 0, count, 275, width*1.2)
-
-//     let aS = 64//map(sin(i+time), -1, 1, 6, 24)
-
-//     for (let angle = 0; angle < TAU; angle += TAU / aS) {
-
-//       let x = s * sin(angle)// + sin(time*2+angle) * 150
-//       let y = s * cos(angle)// + sin(time*2+angle) * 250
-
-//       // y = i/2 * 250 * cos(time*5 + angle);
-//       // y = s * 250 * cos(time*5 + angle);
-
-//       vertex(x, y);
-//     }
-
-//     endShape(CLOSE);
-//   }
-
-//   pop()
-// }
-
 const drawRadialPattern = (count = 7, time, color) => {
   push()
   noFill();
@@ -301,8 +264,8 @@ const drawRadialPattern = (count = 7, time, color) => {
   const center = createVector( 0, 0 );
   const size = (width + height);
 
-  const p = 0.1//map(sin(time*2), -1, 1, 0.05, 0.9);
-  const m = 7//map(sin(time), -1, 1, 1, 50);
+  const p = 1//map(sin(time*2), -1, 1, 0.05, 0.9);
+  const m = 0//map(sin(time), -1, 1, 1, 50);
 
   iterators.angle(0, TAU, TAU / count, angle => {
     const edge = converters.polar.vector(
@@ -313,20 +276,12 @@ const drawRadialPattern = (count = 7, time, color) => {
       size,// * (sin(time + angle) + 1.5),
       size// * (cos(time - angle) + 2),
     );
-
-    // point(edge.x, edge.y);
-    // line(edge.x, edge.y, center.x, center.y);
-
     beginShape();
 
     iterators.vector(edge, center, p, (vector, lerpIndex) => {
-      const lerpIndexOffset = lerpIndex //* 10 * angle;
-      const x = map(sin(time*2+lerpIndexOffset), -1, 1, -m, m);
-      const y = map(cos(time-lerpIndexOffset), -1, 1, -m, m);
-
       vertex(
-        vector.x + x,// * sin(time + lerpIndex),
-        vector.y - y// * cos(time - lerpIndex),
+        vector.x,
+        vector.y
       );
     })
 
@@ -337,67 +292,36 @@ const drawRadialPattern = (count = 7, time, color) => {
 }
 
 sketch.draw((time) => {
-  // noSmooth()
   background(0);
-  
-  // drawGrid(1, 1, time/4, color( 128, 128, 255));
-  // drawGrid(3, 7, time, color( 128, 128, 255, 64) );
 
   pixilatedCanvas.filter(BLUR, options.get("background-pixelated-blur"));
   pixilatedCanvas.background(0, 0, 0, 16);
   image(pixilatedCanvas, 0, 0 );
   
-  // drawRadial(10, time/4, color( 128, 128, 255, 128));
   drawRadialPattern(
     options.get("background-lines-amount"),
     time/4,
-    color( 128, 128, 255, 20)
+    color( 128, 128, 255, 40)
   );
-
-  // drawBackground(15, time, color(128, 128, 255, 64));
-  // return
 
   drawer(
     ( time, index ) => {
-      const lerpMin = 0//map(cos(time), -1, 1, -PI, 0, true);
-      const lerpMax = PI/2//]map(cos(time/2), -1, 1, TAU-0.3, 0);
+      const lerpMin = 0;
+      const lerpMax = PI/1
       const lerpStep = lerpMax / options.get('quality');
     
       return [lerpMin, lerpMax, lerpStep];
     },
     ( lerpIndex, lerpMin, lerpMax, lerpStep, time, index, givenCanvas ) => {
       givenCanvas.translate(width / 2, height / 2);
-      givenCanvas.rotate(cos(time))
+      givenCanvas.rotate(cos(time)/2)
 
-      givenCanvas.rotate(options.get('rotation-speed')+lerpIndex*options.get('rotation-count')*cos(time));
+      givenCanvas.rotate(options.get('rotation-speed')+lerpIndex*3*options.get('rotation-count')*cos(time));
     },
     ( lerpIndex, lerpMin, lerpMax, time, index, givenCanvas ) => {
       const opacitySpeed = options.get('opacity-speed');
       const opacityCount = options.get('opacity-group-count');
 
-      let opacityFactor = mappers.circularMap(
-        lerpIndex,
-        lerpMax*2,
-        map(
-          sin(-time * opacitySpeed + lerpIndex * opacityCount ), -1, 1,
-          options.get("start-opacity-factor"),
-          options.get("end-opacity-factor")
-        ),
-        options.get("end-opacity-factor")
-      );
-
-      if (options.get('ping-pong-opacity')) {
-        opacityFactor = map(
-          map(sin(lerpIndex*opacityCount+time*opacitySpeed), -1, 1, -1, 1),
-          -1,
-          1,
-          // map(sin(lerpIndex), -1, 1, 1, 50),
-          map(cos(lerpIndex*opacityCount+time*opacitySpeed), -1, 1, 200, 1),
-          // 10,
-          1
-        );
-      }
-    
       let linesCount = options.get("max-lines-count");
 
       if (options.get("change-lines-count")) {
@@ -416,26 +340,21 @@ sketch.draw((time) => {
       //   "linesCount",
       //   time,
       //   [
-      //     1, 2
+      //     1, 2, 3, 4, 5
       //   ],
-      //   0.01
+      //   0.001
       // );
 
       let lineStep = lineMax / linesCount;
-      //lineStep = lineMax / mappers.circularIndex(time, [2, 5, 3, 2, 4, 1]);
+      // lineStep = lineMax / mappers.circularIndex(time, [2, 5, 3, 2, 4, 1]);
 
       const ll = options.get('lines-length');
       const s = mappers.circularMap(lerpIndex, lineMax, 0, ll)
       const z = options.get('regular-lines-length') ? lw : lc;
 
-      const shapeIndex = Math.ceil( map(lerpIndex, lerpMin, lerpMax, 0, options.get('quality'), true) );
-
-      let colorOn = shapeIndex < fixers?.["#8080ff"]?.index;
-
       for (let lineIndex = lineMin; lineIndex < lineMax; lineIndex += lineStep) {
         const vector = converters.polar.vector(
           lineIndex,
-          // s * 1.5,
           s * z 
         );
 
@@ -445,13 +364,11 @@ sketch.draw((time) => {
 
         const hueSpeed = -time * options.get("hue-speed");
 
-        opacityFactor = map(
+        const opacityFactor = map(
           map(sin(lerpIndex*opacityCount+time*opacitySpeed), -1, 1, -1, 1),
           -1,
           1,
-          // map(sin(lerpIndex), -1, 1, 1, 50),
           map(cos(lineIndex*opacityCount+time*opacitySpeed), -1, 1, 250, 1),
-          // 10,
           1
         );
 
@@ -468,7 +385,7 @@ sketch.draw((time) => {
           ) );
         }
         
-        if (colorOn || options.get('hue-palette') === "purple") {
+        if ( options.get('hue-palette') === "purple") {
           givenCanvas.stroke( color(
             90 / opacityFactor,
             map(sin(hueSpeed-lerpIndex*4), -1, 1, 128, 0) / opacityFactor,
