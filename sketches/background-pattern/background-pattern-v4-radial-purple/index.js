@@ -76,9 +76,7 @@ const drawRadialPattern = (count = 7, time, _color) => {
 
   const center = createVector( 0, 0 );
   const size = (width + height)/4;
-
   const p = 0.05
-
   const hueSpeed = time;
 
   iterators.angle(0, TAU, TAU / count, angle => {
@@ -130,7 +128,6 @@ const drawRadialPattern2 = (count = 7, time, _color) => {
   const size = (width + height)/12;
 
   const p = options.get("background-lines-precision")
-
   const hueSpeed = time;
 
   iterators.angle(0, TAU, TAU / count, angle => {
@@ -154,7 +151,6 @@ const drawRadialPattern2 = (count = 7, time, _color) => {
     beginShape();
 
     iterators.vector(edge, center, p, (vector, lerpIndex) => {
-
       stroke( color(
         map(sin(hueSpeed+angle+lerpIndex*5), -1, 1, 0, 360) / opacityFactor,
         128 / opacityFactor,
@@ -187,8 +183,8 @@ sketch.draw((time) => {
     time
   );
 
-  drawRadialPattern2(
-    options.get("background-lines-count"),
-    time
-  );
+  // drawRadialPattern2(
+  //   options.get("background-lines-count"),
+  //   time
+  // );
 });

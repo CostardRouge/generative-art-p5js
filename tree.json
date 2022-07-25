@@ -209,12 +209,19 @@
       }
    },
    "background-pattern": {
-      "background-pattern-v3-radial-eyelashes": {
+      "background-pattern-v2-radial": {
          "meta": {
-            "name": "background-pattern-v3-radial-eyelashes",
+            "name": "background-pattern-v2-radial",
             "folder": "background-pattern"
          },
-         "path": "sketches/background-pattern/background-pattern-v3-radial-eyelashes"
+         "path": "sketches/background-pattern/background-pattern-v2-radial"
+      },
+      "background-pattern-v3-radial-eyelashes copy": {
+         "meta": {
+            "name": "background-pattern-v3-radial-eyelashes copy",
+            "folder": "background-pattern"
+         },
+         "path": "sketches/background-pattern/background-pattern-v3-radial-eyelashes copy"
       },
       "background-pattern-v4-radial-purple": {
          "meta": {
@@ -994,6 +1001,15 @@
             "folder": "semaphore"
          },
          "path": "sketches/semaphore/semaphore-v1-lines"
+      }
+   },
+   "sound-reactive": {
+      "sound-reactive-v1": {
+         "meta": {
+            "name": "sound-reactive-v1",
+            "folder": "sound-reactive"
+         },
+         "path": "sketches/sound-reactive/sound-reactive-v1"
       }
    },
    "spirals": {

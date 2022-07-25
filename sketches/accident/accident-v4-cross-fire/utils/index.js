@@ -14,6 +14,20 @@ import converters from './converters.js';
 
 const shapes = [];
 
+
+const midi = {
+  on: {
+    note: function() {
+
+    }
+  }
+};
+
+
+// midi.on("C3", console.log)
+// midi.map("C", 3, 5, 10, 9)
+
+
 // grid
 // shapes instances
 // canvases instances
