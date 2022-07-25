@@ -83,50 +83,12 @@ const drawRadialPattern = (count = 7, time, _color) => {
   noFill();
   strokeWeight(options.get("background-lines-weight"));
 
-  const position = mappers.seq(
-    "position",
-    time,
-    [
-      createVector( 0, -height /2 ),
-      createVector( width /2, 0 ),
-      createVector( 0, height /2 ),
-      createVector(-width /2, 0 ),
-    ],
-    0.1,
-    p5.Vector.lerp
-  );
-
-  const weight = mappers.seq(
-    "strokeWeight",
-    time/2,
-    [
-      1,
-      20,
-      40
-    ],
-    0.1
-  );
-
-  const ccount = mappers.seq(
-    "ccount",
-    time,
-    [
-      2,
-      4,
-      8
-    ],
-    0.1
-  );
-
-  const size = (width + height)/15;
-
-  strokeWeight(weight);
-
-
+  const size = (width + height)/5;
+  const position = createVector( 0, 0 );
   const p = options.get("background-lines-precision")
   const hueSpeed = time * options.get("hue-speed");
 
-  iterators.angle(0, PI, PI / ccount, angle => {
+  iterators.angle(0, TAU, TAU / count, angle => {
     const edge = converters.polar.vector(
       angle,
       size,
@@ -154,8 +116,8 @@ const drawRadialPattern = (count = 7, time, _color) => {
       ) );
 
       const pos = createVector(
-        vector.x,// * (sin(time*2 + angle + lerpIndex) + 1.5),
-        vector.y// * (cos(time - angle+ lerpIndex) + 1.5),
+        vector.x * (sin(time*2 + angle + lerpIndex) + 1.5),
+        vector.y * (cos(time - angle+ lerpIndex) + 1.5),
       );
 
       vertex( pos.x, pos.y );

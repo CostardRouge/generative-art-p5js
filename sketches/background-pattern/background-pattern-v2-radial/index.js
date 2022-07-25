@@ -15,8 +15,8 @@ options.add( [
     type: 'slider',
     label: 'Opacity group count',
     min: 1,
-    max: 20,
-    defaultValue: 10,
+    max: 10,
+    defaultValue: 6,
     category: 'Opacity'
   },
   {
@@ -37,6 +37,15 @@ options.add( [
     defaultValue: 1,
     category: 'Opacity'
   },
+  {
+    id: "hue-speed",
+    type: 'slider',
+    label: 'Hue speed',
+    min: -10,
+    max: 10,
+    defaultValue: 2,
+    category: 'Colors'
+  },
 
   {
     id: "background-lines-count",
@@ -44,7 +53,7 @@ options.add( [
     min: 1,
     max: 1000,
     label: 'Lines count',
-    defaultValue: 400,
+    defaultValue: 100,
     category: 'Background'
   },
   {
@@ -53,17 +62,17 @@ options.add( [
     min: 1,
     max: 25,
     label: 'Lines weight',
-    defaultValue: 15,
+    defaultValue: 1,
     category: 'Background'
   },
   {
     id: "background-lines-precision",
     type: 'slider',
-    min: 0.05,
+    min: 0.1,
     max: 1,
-    step: 0.05,
+    step: 0.1,
     label: 'Lines precision',
-    defaultValue: 0.5,
+    defaultValue: 0.1,
     category: 'Background'
   },
 ] );
@@ -72,12 +81,12 @@ sketch.setup();
 
 const drawRadialPattern = (count = 7, time, _color) => {
   noFill();
-  strokeWeight(2);
+  strokeWeight(options.get("background-lines-weight"));
 
-  const center = createVector( 0, 0 );
-  const size = (width + height)/4;
-  const p = 0.05
-  const hueSpeed = time;
+  const size = (width + height)/5;
+  const position = createVector( 0, 0 );
+  const p = options.get("background-lines-precision")
+  const hueSpeed = time * options.get("hue-speed");
 
   iterators.angle(0, TAU, TAU / count, angle => {
     const edge = converters.polar.vector(
@@ -99,92 +108,31 @@ const drawRadialPattern = (count = 7, time, _color) => {
 
     beginShape();
 
-    iterators.vector(edge, center, p, (vector, lerpIndex) => {
+    iterators.vector(edge, position, p, (vector, lerpIndex) => {
       stroke( color(
         map(sin(hueSpeed+angle+lerpIndex*5), -1, 1, 0, 360) / opacityFactor,
-        128 / opacityFactor,
-        360 / opacityFactor
+        map(sin(hueSpeed-angle+lerpIndex*5), -1, 1, 360, 0) / opacityFactor,
+        map(sin(hueSpeed+angle+lerpIndex*5), -1, 1, 360, 0) / opacityFactor,
       ) );
 
       const pos = createVector(
-        vector.x * (sin(time*2 + angle + lerpIndex) + 1.5),
-        vector.y * (cos(time - angle+ lerpIndex) + 1.5),
+        vector.x,// * (sin(time*2 + angle + lerpIndex) + 1.5),
+        vector.y// * (cos(time - angle+ lerpIndex) + 1.5),
       );
 
       vertex( pos.x, pos.y );
-
     })
 
     endShape();
   } )
-}
-
-const drawRadialPattern2 = (count = 7, time, _color) => {
-  noFill();
-  // stroke(_color);
-  strokeWeight(options.get("background-lines-weight"));
-
-  const center = createVector( 0, 0 );
-  const size = (width + height)/12;
-
-  const p = options.get("background-lines-precision")
-  const hueSpeed = time;
-
-  iterators.angle(0, TAU, TAU / count, angle => {
-    const edge = converters.polar.vector(
-      angle,
-      size * abs(sin(time - angle)),
-      size * abs(cos(time + angle)),
-    );
-
-    const opacityFactor = mappers.circularMap(
-      angle,
-      TAU,
-      map(
-        sin(-time * options.get("opacity-speed") + angle * options.get("opacity-group-count") ), -1, 1,
-        options.get("start-opacity-factor"),
-        options.get("end-opacity-factor")
-      ),
-      options.get("end-opacity-factor")
-    );
-
-    beginShape();
-
-    iterators.vector(edge, center, p, (vector, lerpIndex) => {
-      stroke( color(
-        map(sin(hueSpeed+angle+lerpIndex*5), -1, 1, 0, 360) / opacityFactor,
-        128 / opacityFactor,
-        360 / opacityFactor
-      ) );
-
-      const pos = createVector(
-        vector.x * (sin(time*2 + angle + lerpIndex) + 1.5),
-        vector.y * (cos(time - angle+ lerpIndex) + 1.5),
-      );
-
-      vertex( pos.x, pos.y );
-
-    })
-
-    endShape();
-  } )
-
-
-  // throw 5;
 }
 
 sketch.draw((time) => {
   background(0);
 
   translate(width / 2, height / 2);
-  rotate(-time/4)
   drawRadialPattern(
-    100,
+    options.get("background-lines-count"),
     time
   );
-
-  // drawRadialPattern2(
-  //   options.get("background-lines-count"),
-  //   time
-  // );
 });
