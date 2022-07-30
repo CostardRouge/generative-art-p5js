@@ -326,7 +326,6 @@ sketch.draw((time) => {
         beginShape();
         strokeWeight(options.get("lines-weight"));
 
-
         let cc = mappers.circularIndex(switchSpeed, colors)
         cc = mappers.circularIndex(switchSpeed, colors)
 

@@ -273,7 +273,6 @@ function drawPath(path, time, id) {
     // const angleStep = TAU / angleCount;
 
     // for (let angle = 0; angle < TAU; angle += angleStep) {
-     
     //   push();
   
     //   beginShape();

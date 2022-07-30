@@ -256,7 +256,7 @@ const drawBackground = (count = 7, time, color) => {
 
 const drawRadialPattern = (count = 7, time, color) => {
   push()
-  noFill();
+  // noFill();
   stroke(color);
   strokeWeight(options.get("background-lines-weight"));
   translate(width /2, height /2 )
@@ -264,7 +264,7 @@ const drawRadialPattern = (count = 7, time, color) => {
   const center = createVector( 0, 0 );
   const size = (width + height);
 
-  const p = 1//map(sin(time*2), -1, 1, 0.05, 0.9);
+  const p = 0.1//map(sin(time*2), -1, 1, 0.05, 0.9);
   const m = 0//map(sin(time), -1, 1, 1, 50);
 
   iterators.angle(0, TAU, TAU / count, angle => {
@@ -304,10 +304,12 @@ sketch.draw((time) => {
     color( 128, 128, 255, 40)
   );
 
+  // return;
+
   drawer(
     ( time, index ) => {
       const lerpMin = 0;
-      const lerpMax = PI/1
+      const lerpMax = PI
       const lerpStep = lerpMax / options.get('quality');
     
       return [lerpMin, lerpMax, lerpStep];
