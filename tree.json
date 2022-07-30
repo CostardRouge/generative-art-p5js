@@ -209,6 +209,27 @@
       }
    },
    "background-pattern": {
+      "background-pattern-easing-lines": {
+         "meta": {
+            "name": "background-pattern-easing-lines",
+            "folder": "background-pattern"
+         },
+         "path": "sketches/background-pattern/background-pattern-easing-lines"
+      },
+      "background-pattern-sinwave-lines": {
+         "meta": {
+            "name": "background-pattern-sinwave-lines",
+            "folder": "background-pattern"
+         },
+         "path": "sketches/background-pattern/background-pattern-sinwave-lines"
+      },
+      "background-pattern-spring": {
+         "meta": {
+            "name": "background-pattern-spring",
+            "folder": "background-pattern"
+         },
+         "path": "sketches/background-pattern/background-pattern-spring"
+      },
       "background-pattern-v2-radial": {
          "meta": {
             "name": "background-pattern-v2-radial",
@@ -922,6 +943,13 @@
             "folder": "ribbons"
          },
          "path": "sketches/ribbons/ribbons-v10-blurry-flower"
+      },
+      "ribbons-v11": {
+         "meta": {
+            "name": "ribbons-v11",
+            "folder": "ribbons"
+         },
+         "path": "sketches/ribbons/ribbons-v11"
       },
       "ribbons-v2-circle": {
          "meta": {
