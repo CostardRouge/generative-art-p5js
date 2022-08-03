@@ -308,14 +308,14 @@ sketch.draw((time) => {
       const lineMin = -PI;
       const lineMax = PI // mappers.circularIndex(time/1.5 + lerpIndex/2, [2, 1, 3, 1, 2]);
 
-      // linesCount = mappers.seq(
-      //   "linesCount",
-      //   time,
-      //   [
-      //     1, 2, 3, 4
-      //   ],
-      //   0.0005
-      // );
+      linesCount = mappers.seq(
+        "linesCount",
+        time  /2 ,
+        [
+          1, 2, 2, 3, 3, 4, 4, 5
+        ],
+        0.0005
+      );
 
       let lineStep = lineMax / linesCount;
       // lineStep = lineMax / mappers.circularIndex(time, [2, 5, 3, 2, 4, 1]);
