@@ -258,7 +258,6 @@ const drawRadialPattern = (count = 7, time, color) => {
     endShape();
   } )
   pop()
-
 }
 
 sketch.draw((time) => {
@@ -303,16 +302,16 @@ sketch.draw((time) => {
       const c = map(sin(time+lerpIndex), -1, 1, -20, 20);
 
       const lc = mappers.circularIndex(time + c, [2, 5, 2, 3, 2, 4, 1])/3
-      const lw = 1.5//mappers.circularIndex(time + c, [1.5, 2.5, 2, 1.5,])
+      const lw = mappers.circularIndex(time + c, [1.5, 2.5, 2, 1.5])
 
       const lineMin = -PI;
       const lineMax = PI // mappers.circularIndex(time/1.5 + lerpIndex/2, [2, 1, 3, 1, 2]);
 
       linesCount = mappers.seq(
         "linesCount",
-        time  /2 ,
+        time,
         [
-          1, 2, 2, 3, 3, 4, 4, 5
+          1, 1.5, 2, 2, 2.5, 3, 3.5, 3.5, 4, 4, 4
         ],
         0.0005
       );
@@ -320,9 +319,8 @@ sketch.draw((time) => {
       let lineStep = lineMax / linesCount;
       // lineStep = lineMax / mappers.circularIndex(time, [2, 5, 3, 2, 4, 1]);
 
-      const ll = options.get('lines-length');
+      const ll = options.get('lines-length')*1.5;
       const s = mappers.circularMap(lerpIndex, lineMax, 0, ll)
-      const z = options.get('regular-lines-length') ? lw : lc;
 
       for (let lineIndex = lineMin; lineIndex < lineMax; lineIndex += lineStep) {
         givenCanvas.push();
@@ -330,7 +328,7 @@ sketch.draw((time) => {
 
         const vector = converters.polar.vector(
           lineIndex,
-          s * z 
+          s//*options.get('lines-length')
         );
 
         givenCanvas.strokeWeight(mappers.circularMap(lerpIndex, lineMax, 10, options.get('lines-weight')));
@@ -339,7 +337,7 @@ sketch.draw((time) => {
           map(sin(lerpIndex*opacityCount+time*opacitySpeed), -1, 1, -1, 1),
           -1,
           1,
-          map(cos(lineIndex+lerpIndex*opacityCount+time*opacitySpeed), -1, 1, 250, 1),
+          map(cos(lineIndex+lerpIndex*opacityCount+time*opacitySpeed), -1, 1, 50, 1),
           1
         );
 
@@ -450,8 +448,8 @@ sketch.draw((time) => {
           ) );
         }
 
-        givenCanvas.vertex(vector.x, vector.y);
-        givenCanvas.vertex(vector.x, vector.y)
+        givenCanvas.vertex(-vector.x, vector.y);
+        givenCanvas.vertex(-vector.y, -vector.x)
 
         givenCanvas.endShape();
         givenCanvas.pop()

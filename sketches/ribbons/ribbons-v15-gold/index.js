@@ -7,7 +7,7 @@ options.add( [
     label: 'Quality',
     min: 1,
     max: 1200,
-    defaultValue: 150,
+    defaultValue: 400,
     category: 'Shape'
   },
   {
@@ -18,20 +18,13 @@ options.add( [
     category: 'Lines'
   },
   {
-    id: "regular-lines-length",
-    type: 'switch',
-    label: 'Regular lines length',
-    defaultValue: true,
-    category: 'Lines'
-  },
-  {
     id: "max-lines-count",
     type: 'slider',
     label: 'Max lines count',
     min: 1,
     max: 10,
-    step: 0.1,
-    defaultValue: 3,
+    step: 0.5,
+    defaultValue: 2,
     category: 'Lines'
   },
   {
@@ -40,7 +33,7 @@ options.add( [
     label: 'Lines length',
     min: 1,
     max: 200,
-    defaultValue: 190,
+    defaultValue: 200,
     category: 'Lines'
   },
   {
@@ -50,14 +43,14 @@ options.add( [
     min: 1,
     max: 300,
     step: 10,
-    defaultValue: 110,
+    defaultValue: 150,
     category: 'Lines'
   },
   {
     id: "ping-pong-opacity",
     type: 'switch',
     label: 'Ping Pong opacity',
-    defaultValue: true,
+    defaultValue: false,
     category: 'Opacity'
   },
   {
@@ -66,7 +59,7 @@ options.add( [
     label: 'Opacity speed',
     min: -10,
     max: 10,
-    defaultValue: 2,
+    defaultValue: 3,
     category: 'Opacity'
   },
   {
@@ -74,8 +67,8 @@ options.add( [
     type: 'slider',
     label: 'Opacity group count',
     min: 1,
-    max: 10,
-    defaultValue: 1,
+    max: 50,
+    defaultValue: 20,
     category: 'Opacity'
   },
   {
@@ -84,7 +77,7 @@ options.add( [
     label: 'Start opacity (reduction factor)',
     min: 1,
     max: 50,
-    defaultValue: 12,
+    defaultValue: 20,
     category: 'Opacity'
   },
   {
@@ -103,7 +96,7 @@ options.add( [
     min: -5,
     max: 5,
     step: 0.1,
-    defaultValue: 0.1,
+    defaultValue: 0,
     category: 'Rotation'
   },
   {
@@ -112,6 +105,7 @@ options.add( [
     label: 'Rotation speed',
     min: -10,
     max: 10,
+    step: 0.1,
     defaultValue: 0,
     category: 'Rotation'
   },
@@ -128,7 +122,7 @@ options.add( [
     id: 'hue-palette',
     type: 'select',
     label: 'Hue palette',
-    defaultValue: 'rainbow',
+    defaultValue: 'gold',
     options: [
       {
         value: 'rainbow',
@@ -158,21 +152,31 @@ options.add( [
     category: 'Colors'
   },
   {
-    id: "background-lines-amount",
-    type: 'slider',
+    id: "background-lines-count",
+    type: 'number',
     min: 1,
     max: 1000,
-    label: 'Lines amount',
-    defaultValue: 141,
+    label: 'Lines count',
+    defaultValue: 200,
     category: 'Background'
   },
   {
     id: "background-lines-weight",
     type: 'slider',
     min: 1,
-    max: 50,
+    max: 25,
     label: 'Lines weight',
-    defaultValue: 10,
+    defaultValue: 3,
+    category: 'Background'
+  },
+  {
+    id: "background-lines-precision",
+    type: 'slider',
+    min: 0.05,
+    max: 1,
+    step: 0.05,
+    label: 'Lines precision',
+    defaultValue: 0.5,
     category: 'Background'
   },
   {
@@ -181,7 +185,7 @@ options.add( [
     min: 1,
     max: 8,
     label: 'Pixelated blur value',
-    defaultValue: 2,
+    defaultValue: 4,
     category: 'Background'
   },
   {
@@ -191,7 +195,7 @@ options.add( [
     max: 1,
     step: 0.01,
     label: 'Pixelated pixel density',
-    defaultValue: 0.1,
+    defaultValue: 0.05,
     category: 'Background',
     onChange: value => {
       pixilatedCanvas.pixelDensity(value); 
@@ -228,169 +232,143 @@ function drawer( lerper, positioner, shaper, time, index ) {
 
 const drawRadialPattern = (count = 7, time, color) => {
   push()
-  stroke(color);
-  strokeWeight(options.get("background-lines-weight"));
   translate(width /2, height /2 )
 
-  const center = createVector( 0, 0 );
-  const size = (width + height);
+  noFill();
+  stroke(color);
+  strokeWeight(options.get("background-lines-weight"));
 
-  const p = 0.1//map(sin(time*2), -1, 1, 0.05, 0.9);
-  const m = 0//map(sin(time), -1, 1, 1, 50);
+  const center = createVector( 0, 0 );
+  const size = (width + height)/4;
+
+  const p = options.get("background-lines-precision")//map(sin(time*2), -1, 1, 0.05, 0.9);
+  const m = 0//map(cos(time), -1, 1, 1, 100);
 
   iterators.angle(0, TAU, TAU / count, angle => {
     const edge = converters.polar.vector(
-      angle + time,
-      // size * abs(sin(time + angle*5)),
+      angle,
+      // size * abs(sin(time)),
+      // size * abs(cos(time+angle)),
 
-      //size * (sin(time + angle*5) + 2),// * cos(time),
-      size,// * (sin(time + angle) + 1.5),
-      size// * (cos(time - angle) + 2),
+      size * (abs(sin(time + angle*5) + l)+2 * abs(cos(time + angle))+2)/l,
+      // size * (sin(time*2 - angle) + 1.5),
+      // size * (cos(time*2 + angle*2) + 2),
     );
 
     beginShape();
+
     iterators.vector(edge, center, p, (vector, lerpIndex) => {
+      const lerpIndexOffset = lerpIndex * 10 * angle;
+      const x = map(sin(time+lerpIndexOffset), -1, 1, m, -m);
+      const y = map(cos(time-lerpIndexOffset), -1, 1, -m, m);
+
       vertex(
-        vector.x,
-        vector.y
+        vector.x + x,//* sin(time + lerpIndex),
+        vector.y - y// * cos(time - lerpIndex),
       );
     })
+
     endShape();
   } )
   pop()
-
 }
+
+let l;
 
 sketch.draw((time) => {
   background(0);
-  noFill();
+
+  l = mappers.seq(
+    "l",
+    time,
+    [
+      1.5, 2.5, 3.5, 0.5
+    ],
+    0.1
+  );
 
   pixilatedCanvas.filter(BLUR, options.get("background-pixelated-blur"));
-  pixilatedCanvas.background(0, 0, 0, 16);
+  pixilatedCanvas.background(0, 0, 0, 32);
   image(pixilatedCanvas, 0, 0 );
-  
+
   drawRadialPattern(
-    options.get("background-lines-amount"),
-    time/4,
-    color( 128, 128, 255, 40)
+    options.get("background-lines-count"),
+    time,
+    color( 128, 128, 255, 64)
   );
 
   drawer(
     ( time, index ) => {
-      const lerpMin = 0;
-      const lerpMax = PI
+      const lerpMin = 0//map(cos(time), -1, 1, -PI, 0, true);
+      const lerpMax = PI/6//map(sin(time), -1, 1, 3, 4);
       const lerpStep = lerpMax / options.get('quality');
     
       return [lerpMin, lerpMax, lerpStep];
     },
     ( lerpIndex, lerpMin, lerpMax, lerpStep, time, index, givenCanvas ) => {
       givenCanvas.translate(width / 2, height / 2);
-      givenCanvas.rotate(-time/2)
-
-      //givenCanvas.rotate(options.get('rotation-speed')+lerpIndex*5*options.get('rotation-count')*cos(time));
+      givenCanvas.rotate(lerpIndex*2*options.get('rotation-count'));
+      givenCanvas.rotate(time/2);
     },
-    ( lerpIndex, lerpMin, lerpMax, time, index, givenCanvas ) => {
+    ( lerpIndex, lerpMin, lerpMax, time, index, givenCanvas) => {
+
       const opacitySpeed = options.get('opacity-speed');
       const opacityCount = options.get('opacity-group-count');
-      const hueSpeed = -time * options.get("hue-speed");
 
+      let opacityFactor = mappers.circularMap(
+        lerpIndex,
+        // angleMin,
+        lerpMax*4,
+        map(
+          sin(-time * opacitySpeed + lerpIndex * opacityCount ), -1, 1,
+          options.get("start-opacity-factor"),
+          options.get("end-opacity-factor")
+        ),
+        options.get("end-opacity-factor")
+      );
+
+      if (options.get('ping-pong-opacity')) {
+        opacityFactor = map(
+          map(sin(lerpIndex*opacityCount-time*opacitySpeed), -1, 1, -1, 1),
+          -1,
+          1,
+          // map(sin(lerpIndex), -1, 1, 1, 50),
+          map(cos(lerpIndex*opacityCount+time*opacitySpeed), -1, 1, 15, 1),
+          1
+        );
+      }
+    
       let linesCount = options.get("max-lines-count");
 
       if (options.get("change-lines-count")) {
         linesCount = map(cos(lerpIndex/2-time), -1, 1, 1, options.get("max-lines-count"), true);
       }
 
-      const c = map(sin(time+lerpIndex), -1, 1, -20, 20);
-
-      const lc = mappers.circularIndex(time + c, [2, 5, 2, 3, 2, 4, 1])/3
-      const lw = 1.5//mappers.circularIndex(time + c, [1.5, 2.5, 2, 1.5,])
-
       const lineMin = -PI;
-      const lineMax = PI // mappers.circularIndex(time/1.5 + lerpIndex/2, [2, 1, 3, 1, 2]);
-
-      linesCount = mappers.seq(
-        "linesCount",
-        time  /2 ,
-        [
-          1, 2, 2, 3, 3, 4, 4, 5
-        ],
-        0.0005
-      );
-
-      let lineStep = lineMax / linesCount;
-      // lineStep = lineMax / mappers.circularIndex(time, [2, 5, 3, 2, 4, 1]);
+      const lineMax = PI
 
       const ll = options.get('lines-length');
-      const s = mappers.circularMap(lerpIndex, lineMax, 0, ll)
-      const z = options.get('regular-lines-length') ? lw : lc;
+      const s = mappers.circularMap(lerpIndex, lineMax, -ll, ll)
+    
+      const lineStep = lineMax / l;
 
       for (let lineIndex = lineMin; lineIndex < lineMax; lineIndex += lineStep) {
+        const vector = converters.polar.vector( lineIndex, s * 1.5 );
+
         givenCanvas.push();
         givenCanvas.beginShape();
+        givenCanvas.strokeWeight(mappers.circularMap(lerpIndex, lineMax/6, 10, options.get('lines-weight')));
 
-        const vector = converters.polar.vector(
-          lineIndex,
-          s * z 
-        );
-
-        givenCanvas.strokeWeight(mappers.circularMap(lerpIndex, lineMax, 10, options.get('lines-weight')));
 
         const opacityFactor = map(
           map(sin(lerpIndex*opacityCount+time*opacitySpeed), -1, 1, -1, 1),
           -1,
           1,
-          map(cos(lineIndex+lerpIndex*opacityCount+time*opacitySpeed), -1, 1, 250, 1),
+          map(cos(lineIndex+lerpIndex*opacityCount+time*opacitySpeed), -1, 1, 50, 1),
           1
         );
-
-        // const colors = [
-        //   color(
-        //     map(sin(hueSpeed+lerpIndex*5), -1, 1, 0, 360) /
-        //       opacityFactor,
-        //     map(sin(hueSpeed-lerpIndex*5), -1, 1, 360, 0) /
-        //       opacityFactor,
-        //     map(sin(hueSpeed+lerpIndex*5), -1, 1, 360, 0) /
-        //       opacityFactor,
-        //     // map(lerpIndex, lerpMin, lerpMax, 0, 100)
-        //     mappers.circularMap(lerpIndex, lerpMax, 1, 255)
-        //   ),
-        //   color(
-        //     90 / opacityFactor,
-        //     map(sin(hueSpeed-lerpIndex*4), -1, 1, 128, 0) / opacityFactor,
-        //     360 / opacityFactor,
-        //     mappers.circularMap(lerpIndex, lerpMax, 1, 255)
-        //   ),
-        //   color(
-        //     360 / opacityFactor,
-        //     90 / opacityFactor,
-        //     192 / opacityFactor,
-        //     mappers.circularMap(lerpIndex, lerpMax, 1, 255)
-        //   ),
-        //   color(
-        //     map(cos(hueSpeed-lerpIndex*4), -1, 1, 360, 0)  / opacityFactor,
-        //     map(sin(hueSpeed-lerpIndex*4), -1, 1, 128, 0)  / opacityFactor,
-        //     90 / opacityFactor,
-        //     mappers.circularMap(lerpIndex, lerpMax, 1, 255)
-        //   ),
-        //   color(
-        //     255  / opacityFactor,
-        //     225  / opacityFactor,
-        //     0 / opacityFactor,
-        //     mappers.circularMap(lerpIndex, lerpMax, 1, 255)
-        //   ),
-        //   color(
-        //     360 / opacityFactor,
-        //     32 / opacityFactor,
-        //     64 / opacityFactor,
-        //     mappers.circularMap(lerpIndex, lerpMax, 1, 255)
-        //   )
-        // ];
-
-        // const switchSpeed = time*2// + abs(lineIndex);
-
-        // let cc = mappers.circularIndex(switchSpeed, colors)
-
-        // givenCanvas.stroke( cc );
+        
+        const hueSpeed = -time * options.get("hue-speed");
 
         if (options.get('hue-palette') === "rainbow") {
           givenCanvas.stroke( color(
@@ -401,16 +379,16 @@ sketch.draw((time) => {
             map(sin(hueSpeed+lerpIndex*5), -1, 1, 360, 0) /
               opacityFactor,
             // map(lerpIndex, lerpMin, lerpMax, 0, 100)
-            mappers.circularMap(lerpIndex, lerpMax, 1, 255)
+            //mappers.circularMap(lerpIndex, lerpMax/10, 1, 255)
           ) );
         }
         
-        if ( options.get('hue-palette') === "purple") {
+        if (options.get('hue-palette') === "purple") {
           givenCanvas.stroke( color(
             90 / opacityFactor,
             map(sin(hueSpeed-lerpIndex*4), -1, 1, 128, 0) / opacityFactor,
             360 / opacityFactor,
-            mappers.circularMap(lerpIndex, lerpMax, 1, 255)
+            //mappers.circularMap(lerpIndex, lerpMax, 1, 255)
           ) );
         }
         
@@ -420,6 +398,15 @@ sketch.draw((time) => {
             90 / opacityFactor,
             192 / opacityFactor,
             mappers.circularMap(lerpIndex, lerpMax, 1, 255)
+          ) );
+        }
+
+        if (options.get('hue-palette') === "red") {
+          givenCanvas.stroke( color(
+            360 / opacityFactor,
+            32 / opacityFactor,
+            64 / opacityFactor,
+            //mappers.circularMap(lerpIndex, lerpMax, 1, 255)
           ) );
         }
 
@@ -437,22 +424,13 @@ sketch.draw((time) => {
             255  / opacityFactor,
             225  / opacityFactor,
             0 / opacityFactor,
-            mappers.circularMap(lerpIndex, lerpMax, 1, 255)
+            //mappers.circularMap(lerpIndex, lerpMax, 1, 255)
           ) );
         }
 
-        if (options.get('hue-palette') === "red") {
-          givenCanvas.stroke( color(
-            360 / opacityFactor,
-            32 / opacityFactor,
-            64 / opacityFactor,
-            mappers.circularMap(lerpIndex, lerpMax, 1, 255)
-          ) );
-        }
-
-        givenCanvas.vertex(vector.x, vector.y);
-        givenCanvas.vertex(vector.x, vector.y)
-
+        givenCanvas.vertex(vector.y, vector.x);
+        givenCanvas.vertex(vector.y, vector.x);
+    
         givenCanvas.endShape();
         givenCanvas.pop()
       }

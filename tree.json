@@ -951,6 +951,34 @@
          },
          "path": "sketches/ribbons/ribbons-v11"
       },
+      "ribbons-v12": {
+         "meta": {
+            "name": "ribbons-v12",
+            "folder": "ribbons"
+         },
+         "path": "sketches/ribbons/ribbons-v12"
+      },
+      "ribbons-v13": {
+         "meta": {
+            "name": "ribbons-v13",
+            "folder": "ribbons"
+         },
+         "path": "sketches/ribbons/ribbons-v13"
+      },
+      "ribbons-v14": {
+         "meta": {
+            "name": "ribbons-v14",
+            "folder": "ribbons"
+         },
+         "path": "sketches/ribbons/ribbons-v14"
+      },
+      "ribbons-v15-gold": {
+         "meta": {
+            "name": "ribbons-v15-gold",
+            "folder": "ribbons"
+         },
+         "path": "sketches/ribbons/ribbons-v15-gold"
+      },
       "ribbons-v2-circle": {
          "meta": {
             "name": "ribbons-v2-circle",

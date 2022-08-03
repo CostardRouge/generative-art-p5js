@@ -1,4 +1,4 @@
-import { shapes, sketch, converters, canvas, events, colors, mappers, iterators, options, text } from './utils/index.js';
+import { shapes, sketch, converters, canvas, events, colors, mappers, iterators, options, easing } from './utils/index.js';
 
 options.add( [
   {
@@ -9,20 +9,6 @@ options.add( [
     max: 1200,
     defaultValue: 150,
     category: 'Shape'
-  },
-  {
-    id: "change-lines-count",
-    type: 'switch',
-    label: 'Change lines count over time',
-    defaultValue: false,
-    category: 'Lines'
-  },
-  {
-    id: "regular-lines-length",
-    type: 'switch',
-    label: 'Regular lines length',
-    defaultValue: true,
-    category: 'Lines'
   },
   {
     id: "max-lines-count",
@@ -52,13 +38,6 @@ options.add( [
     step: 10,
     defaultValue: 110,
     category: 'Lines'
-  },
-  {
-    id: "ping-pong-opacity",
-    type: 'switch',
-    label: 'Ping Pong opacity',
-    defaultValue: true,
-    category: 'Opacity'
   },
   {
     id: "opacity-speed",
@@ -235,7 +214,7 @@ const drawRadialPattern = (count = 7, time, color) => {
   const center = createVector( 0, 0 );
   const size = (width + height);
 
-  const p = 0.1//map(sin(time*2), -1, 1, 0.05, 0.9);
+  const p = 0.999//map(sin(time*2), -1, 1, 0.05, 0.9);
   const m = 0//map(sin(time), -1, 1, 1, 50);
 
   iterators.angle(0, TAU, TAU / count, angle => {
@@ -243,9 +222,9 @@ const drawRadialPattern = (count = 7, time, color) => {
       angle + time,
       // size * abs(sin(time + angle*5)),
 
-      //size * (sin(time + angle*5) + 2),// * cos(time),
-      size,// * (sin(time + angle) + 1.5),
-      size// * (cos(time - angle) + 2),
+      // size * (sin(time + angle*5) + 2) * cos(time),
+      size * (sin(time + angle) + 1.5),
+      // size * (cos(time - angle) + 2),
     );
 
     beginShape();
@@ -287,59 +266,51 @@ sketch.draw((time) => {
       givenCanvas.translate(width / 2, height / 2);
       givenCanvas.rotate(-time/2)
 
-      //givenCanvas.rotate(options.get('rotation-speed')+lerpIndex*5*options.get('rotation-count')*cos(time));
+      givenCanvas.rotate(lerpIndex+cos(time));
     },
     ( lerpIndex, lerpMin, lerpMax, time, index, givenCanvas ) => {
       const opacitySpeed = options.get('opacity-speed');
       const opacityCount = options.get('opacity-group-count');
       const hueSpeed = -time * options.get("hue-speed");
 
-      let linesCount = options.get("max-lines-count");
+      const lineMin = -PI
+      const lineMax = PI
 
-      if (options.get("change-lines-count")) {
-        linesCount = map(cos(lerpIndex/2-time), -1, 1, 1, options.get("max-lines-count"), true);
-      }
-
-      const c = map(sin(time+lerpIndex), -1, 1, -20, 20);
-
-      const lc = mappers.circularIndex(time + c, [2, 5, 2, 3, 2, 4, 1])/3
-      const lw = 1.5//mappers.circularIndex(time + c, [1.5, 2.5, 2, 1.5,])
-
-      const lineMin = -PI;
-      const lineMax = PI // mappers.circularIndex(time/1.5 + lerpIndex/2, [2, 1, 3, 1, 2]);
-
+      let linesCount = options.get("max-lines-count")
       linesCount = mappers.seq(
         "linesCount",
-        time  /2 ,
+        time/2,
         [
-          1, 2, 2, 3, 3, 4, 4, 5
+          1, 2, 3, 4
         ],
-        0.0005
+        0.001
       );
 
       let lineStep = lineMax / linesCount;
       // lineStep = lineMax / mappers.circularIndex(time, [2, 5, 3, 2, 4, 1]);
 
-      const ll = options.get('lines-length');
-      const s = mappers.circularMap(lerpIndex, lineMax, 0, ll)
-      const z = options.get('regular-lines-length') ? lw : lc;
+      // const i = map(lerpIndex, 0, lerpMax, 0, 1)
+      // const acc = easing.easeInOutElastic(i)
+
+      const weight = mappers.circularMap(lerpIndex, lineMax, 10, options.get('lines-weight'));
 
       for (let lineIndex = lineMin; lineIndex < lineMax; lineIndex += lineStep) {
         givenCanvas.push();
         givenCanvas.beginShape();
 
         const vector = converters.polar.vector(
-          lineIndex,
-          s * z 
+          lineIndex,//*abs(sin(0+time)),
+          options.get('lines-length')*abs(sin(time+lineIndex))
         );
 
-        givenCanvas.strokeWeight(mappers.circularMap(lerpIndex, lineMax, 10, options.get('lines-weight')));
+        givenCanvas.strokeWeight( weight );
+        // givenCanvas.strokeWeight( options.get('lines-weight') );
 
         const opacityFactor = map(
-          map(sin(lerpIndex*opacityCount+time*opacitySpeed), -1, 1, -1, 1),
+          sin(lerpIndex*opacityCount+time*opacitySpeed),
           -1,
           1,
-          map(cos(lineIndex+lerpIndex*opacityCount+time*opacitySpeed), -1, 1, 250, 1),
+          map(cos(lineIndex+lerpIndex*opacityCount+time*opacitySpeed), -1, 1, 25, 1),
           1
         );
 
@@ -449,6 +420,16 @@ sketch.draw((time) => {
             mappers.circularMap(lerpIndex, lerpMax, 1, 255)
           ) );
         }
+
+        givenCanvas.stroke( color(
+          map(sin(hueSpeed+lineIndex*5), -1, 1, 0, 360) /
+            opacityFactor,
+          map(sin(hueSpeed-lineIndex*5), -1, 1, 360, 0) /
+            opacityFactor,
+          map(sin(hueSpeed+lineIndex*5), -1, 1, 360, 0) /
+            opacityFactor,
+          // mappers.circularMap(lerpIndex, lerpMax, 1, 255)
+        ) );
 
         givenCanvas.vertex(vector.x, vector.y);
         givenCanvas.vertex(vector.x, vector.y)
