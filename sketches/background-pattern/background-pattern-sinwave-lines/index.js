@@ -79,54 +79,6 @@ options.add( [
 
 sketch.setup();
 
-const drawRadialPattern = (count = 7, time, _color) => {
-  noFill();
-  strokeWeight(options.get("background-lines-weight"));
-
-  const size = (width + height)/5;
-  const position = createVector( 0, 0 );
-  const p = options.get("background-lines-precision")
-  const hueSpeed = time * options.get("hue-speed");
-
-  iterators.angle(0, TAU, TAU / count, angle => {
-    const edge = converters.polar.vector(
-      angle,
-      size,
-      size
-    );
-
-    const opacityFactor = mappers.circularMap(
-      angle,
-      TAU,
-      map(
-        sin(-time * options.get("opacity-speed") + angle * options.get("opacity-group-count") ), -1, 1,
-        options.get("start-opacity-factor"),
-        options.get("end-opacity-factor")
-      ),
-      options.get("end-opacity-factor")
-    );
-
-    beginShape();
-
-    iterators.vector(edge, position, p, (vector, lerpIndex) => {
-      stroke( color(
-        map(sin(hueSpeed+angle+lerpIndex*5), -1, 1, 0, 360) / opacityFactor,
-        map(sin(hueSpeed-angle+lerpIndex*5), -1, 1, 360, 0) / opacityFactor,
-        map(sin(hueSpeed+angle+lerpIndex*5), -1, 1, 360, 0) / opacityFactor,
-      ) );
-
-      const pos = createVector(
-        vector.x,// * (sin(time*2 + angle + lerpIndex) + 1.5),
-        vector.y// * (cos(time - angle+ lerpIndex) + 1.5),
-      );
-
-      vertex( pos.x, pos.y );
-    })
-
-    endShape();
-  } )
-}
-
 sketch.draw(time => {
   background(0);
 
@@ -138,11 +90,9 @@ sketch.draw(time => {
   noFill()
 
   const columnSize = width / columns
-  const halfColumnSize = (columnSize  /2 )
+  const halfColumnSize = (columnSize /2 )
   const columnPadding = weight + halfColumnSize;
   const precision = 0.01;
-
-  const balls = 10;
 
   for (let i = 0; i < columns; i++) {
     const x = ( i * columnSize ) + halfColumnSize;
@@ -152,8 +102,8 @@ sketch.draw(time => {
     beginShape()
     iterators.vector(top, bottom, precision, ( position, lerpIndex ) => {
       const driftBound = (halfColumnSize + columnPadding);
-      const i = time + lerpIndex*8
-      const driftX = map( lerpIndex, 0, 1, -driftBound * sin(i), driftBound * cos(i));
+      const i = lerpIndex*8//+time
+      const driftX = map( lerpIndex, -1, 1, -driftBound * sin(i), driftBound * cos(i));
 
       vertex( position.x + driftX, position.y );
     });

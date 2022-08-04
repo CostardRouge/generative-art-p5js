@@ -237,12 +237,12 @@
          },
          "path": "sketches/background-pattern/background-pattern-v2-radial"
       },
-      "background-pattern-v3-radial-eyelashes copy": {
+      "background-pattern-v3-radial-eyelashes": {
          "meta": {
-            "name": "background-pattern-v3-radial-eyelashes copy",
+            "name": "background-pattern-v3-radial-eyelashes",
             "folder": "background-pattern"
          },
-         "path": "sketches/background-pattern/background-pattern-v3-radial-eyelashes copy"
+         "path": "sketches/background-pattern/background-pattern-v3-radial-eyelashes"
       },
       "background-pattern-v4-radial-purple": {
          "meta": {
@@ -250,6 +250,13 @@
             "folder": "background-pattern"
          },
          "path": "sketches/background-pattern/background-pattern-v4-radial-purple"
+      },
+      "background-pattern-v5-big-eyelashes": {
+         "meta": {
+            "name": "background-pattern-v5-big-eyelashes",
+            "folder": "background-pattern"
+         },
+         "path": "sketches/background-pattern/background-pattern-v5-big-eyelashes"
       }
    },
    "blob": {
