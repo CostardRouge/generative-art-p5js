@@ -72,14 +72,13 @@ sketch.setup();
 
 const drawRadialPattern = (count = 7, time, _color) => {
   noFill();
-  strokeWeight(2);
 
   const center = createVector( 0, 0 );
-  const size = (width + height)/4;
-  const p = 0.05
+  const size = (width + height)/6;
+  const p = 0.01
   const hueSpeed = time;
 
-  iterators.angle(0, TAU, TAU / count, angle => {
+  iterators.angle(0, TAU, TAU / 50, angle => {
     const edge = converters.polar.vector(
       angle,
       size,
@@ -102,15 +101,30 @@ const drawRadialPattern = (count = 7, time, _color) => {
     iterators.vector(edge, center, p, (vector, lerpIndex) => {
       stroke( color(
         map(sin(hueSpeed+angle+lerpIndex*5), -1, 1, 0, 360) / opacityFactor,
-        128 / opacityFactor,
-        360 / opacityFactor
+        map(cos(hueSpeed-angle+lerpIndex*5), -1, 1, 0, 360) / opacityFactor,
+        map(sin(hueSpeed+angle+lerpIndex*5), -1, 1, 360, 0) / opacityFactor
       ) );
 
-      const pos = createVector(
-        vector.x * (sin(time*2 + angle + lerpIndex) + 1.5),
-        vector.y * (cos(time - angle+ lerpIndex) + 1.5),
+      const cX = map(sin(time), -1, 1, 1, 3);
+      const cY = map(cos(time/2), -1, 1, 1, 3);
+
+      let pos = createVector(
+        vector.x * abs(sin(time+cX + angle + lerpIndex)),
+        // vector.y * tan(sin(time + angle + lerpIndex)),
+        vector.y * (cos(time-cY + angle + lerpIndex)),
       );
 
+      // pos = createVector(
+      //   vector.x,// * (sin(time*2 + angle + lerpIndex) + 1.5),
+      //   vector.y// * (cos(time - angle+ lerpIndex) + 1.5),
+      // );
+
+
+      strokeWeight(map(lerpIndex, 0, 1, 30, -30));
+      // strokeWeight(abs(map(sin(2*time+angle), -1, 1, 30, -30)));
+      point( pos.x, pos.y );
+
+      strokeWeight(3)
       vertex( pos.x, pos.y );
 
     })
@@ -125,7 +139,7 @@ const drawRadialPattern2 = (count = 7, time, _color) => {
   strokeWeight(options.get("background-lines-weight"));
 
   const center = createVector( 0, 0 );
-  const size = (width + height)/12;
+  const size = (width + height)/6;
 
   const p = options.get("background-lines-precision")
   const hueSpeed = time;
@@ -177,7 +191,7 @@ sketch.draw((time) => {
   background(0);
 
   translate(width / 2, height / 2);
-  rotate(-time/4)
+  // rotate(-time/4)
   drawRadialPattern(
     100,
     time

@@ -94,6 +94,6 @@ class Dot {
 
 sketch.draw( time => {
   background(0);
-  const micLevel = mic.getLevel();
+  const micLevel = mic.getLevel()*6;
   shapes.forEach((shape, index) => shape.draw(time, index, micLevel));
 });
