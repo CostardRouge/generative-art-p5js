@@ -119,10 +119,12 @@ const drawRadialPattern = (count = 7, time) => {
     beginShape();
 
     iterators.vector(edge, center, p, (vector, lerpIndex) => {
+      const hueIndex = angle+lerpIndex * map(sin(time), -1, 1, -5, 5);
+
       stroke( color(
-        map(sin(hueSpeed+angle+lerpIndex*5), -1, 1, 0, 360) / opacityFactor,
-        map(cos(hueSpeed+angle+lerpIndex*5), -1, 1, 0, 360) / opacityFactor,
-        map(sin(hueSpeed+angle+lerpIndex*5), -1, 1, 360, 0) / opacityFactor
+        map(sin(hueSpeed+hueIndex), -1, 1, 0, 360) / opacityFactor,
+        map(cos(hueSpeed+hueIndex), -1, 1, 0, 360) / opacityFactor,
+        map(sin(hueSpeed+hueIndex), -1, 1, 360, 0) / opacityFactor
       ) );
 
       const cX = map(sin(time), -1, 1, 1, 3);
@@ -138,6 +140,11 @@ const drawRadialPattern = (count = 7, time) => {
         vector.y * abs(cos(time + angle + lerpIndex)),
       );
 
+      pos = createVector(
+        vector.x * abs((sin(time - angle + lerpIndex))),
+        vector.y * abs(tan(cos(time - angle + lerpIndex))),
+      );
+
       // pos = createVector(
       //   vector.y * tan(sin(time + angle + lerpIndex)),
       //   vector.y * tan(cos(time + angle + lerpIndex)),
@@ -149,11 +156,15 @@ const drawRadialPattern = (count = 7, time) => {
       // );
 
 
-      strokeWeight(map(lerpIndex, 0, 1, 50, 0));
+      strokeWeight(map(lerpIndex, 0, 1, 70, 0));
+      // strokeWeight(map(lerpIndex, 0, 0.5, 70, 0));
+      // strokeWeight(map(lerpIndex, 0, map(sin(-time+angle+lerpIndex ), -1, 1, 0.1, 0.5), 70, 0));
+      // strokeWeight(map(lerpIndex, 0, 1, 70, 0));
       // strokeWeight(abs(map(sin(2*time+angle), -1, 1, 30, -30)));
       point( pos.x, pos.y );
 
       strokeWeight(3)
+      // stroke(128, 128, 255, 128)
       vertex( pos.x, pos.y );
 
     })
@@ -167,8 +178,8 @@ sketch.draw((time) => {
 
   pattern(
     options.get("background-lines-count"),
-    time/4,
-    color( 128, 128, 255, 40)
+    -time/4,
+    color( 128, 128, 255, 64)
   );
 
   translate(width / 2, height / 2);

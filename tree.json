@@ -257,6 +257,27 @@
             "folder": "background-pattern"
          },
          "path": "sketches/background-pattern/background-pattern-v5-big-eyelashes"
+      },
+      "background-pattern-v6-legs": {
+         "meta": {
+            "name": "background-pattern-v6-legs",
+            "folder": "background-pattern"
+         },
+         "path": "sketches/background-pattern/background-pattern-v6-legs"
+      },
+      "background-pattern-v7-butterfly": {
+         "meta": {
+            "name": "background-pattern-v7-butterfly",
+            "folder": "background-pattern"
+         },
+         "path": "sketches/background-pattern/background-pattern-v7-butterfly"
+      },
+      "background-pattern-v8-": {
+         "meta": {
+            "name": "background-pattern-v8-",
+            "folder": "background-pattern"
+         },
+         "path": "sketches/background-pattern/background-pattern-v8-"
       }
    },
    "blob": {
