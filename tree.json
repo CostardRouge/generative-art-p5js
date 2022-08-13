@@ -272,12 +272,19 @@
          },
          "path": "sketches/background-pattern/background-pattern-v7-butterfly"
       },
-      "background-pattern-v8-": {
+      "background-pattern-v8-kite": {
          "meta": {
-            "name": "background-pattern-v8-",
+            "name": "background-pattern-v8-kite",
             "folder": "background-pattern"
          },
-         "path": "sketches/background-pattern/background-pattern-v8-"
+         "path": "sketches/background-pattern/background-pattern-v8-kite"
+      },
+      "background-pattern-v9-bounce": {
+         "meta": {
+            "name": "background-pattern-v9-bounce",
+            "folder": "background-pattern"
+         },
+         "path": "sketches/background-pattern/background-pattern-v9-bounce"
       }
    },
    "blob": {

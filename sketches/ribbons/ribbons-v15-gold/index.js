@@ -32,7 +32,7 @@ options.add( [
     type: 'slider',
     label: 'Lines length',
     min: 1,
-    max: 200,
+    max: 500,
     defaultValue: 200,
     category: 'Lines'
   },
@@ -41,7 +41,7 @@ options.add( [
     type: 'slider',
     label: 'Lines weight',
     min: 1,
-    max: 300,
+    max: 500,
     step: 10,
     defaultValue: 150,
     category: 'Lines'
@@ -232,7 +232,7 @@ function drawer( lerper, positioner, shaper, time, index ) {
 
 const drawRadialPattern = (count = 7, time, color) => {
   push()
-  translate(width /2, height /2 )
+  // translate(width /2, height /2 )
 
   noFill();
   stroke(color);
@@ -242,7 +242,8 @@ const drawRadialPattern = (count = 7, time, color) => {
   const size = (width + height)/4;
 
   const p = options.get("background-lines-precision")//map(sin(time*2), -1, 1, 0.05, 0.9);
-  const m = 0//map(cos(time), -1, 1, 1, 100);
+  const m = 0//map(cos(time), -1, 1, -100, 100);
+  // const m = map(cos(time), -1, 1, 1, 100);
 
   iterators.angle(0, TAU, TAU / count, angle => {
     const edge = converters.polar.vector(
@@ -250,7 +251,8 @@ const drawRadialPattern = (count = 7, time, color) => {
       // size * abs(sin(time)),
       // size * abs(cos(time+angle)),
 
-      size * (abs(sin(time + angle*5) + l)+2 * abs(cos(time + angle))+2)/l,
+      size * (abs(sin(time + angle*5) + l)+2 * abs(cos(time + angle*8)+2))/l,
+      // size * (abs(sin(time + angle) + l) * abs(cos(time + angle)))/l,
       // size * (sin(time*2 - angle) + 1.5),
       // size * (cos(time*2 + angle*2) + 2),
     );
@@ -273,7 +275,7 @@ const drawRadialPattern = (count = 7, time, color) => {
   pop()
 }
 
-let l;
+let l
 
 sketch.draw((time) => {
   background(0);
@@ -282,19 +284,21 @@ sketch.draw((time) => {
     "l",
     time,
     [
-      1.5, 2.5, 3.5, 0.5
+      1.5, 1.5, 2, 2.5, 3, 0.5, 0.5, 0.5
     ],
-    0.1
+    0.05
   );
 
+  // l = 3
+
   pixilatedCanvas.filter(BLUR, options.get("background-pixelated-blur"));
-  pixilatedCanvas.background(0, 0, 0, 32);
+  pixilatedCanvas.background(0, 0, 0, 48);
   image(pixilatedCanvas, 0, 0 );
 
   drawRadialPattern(
     options.get("background-lines-count"),
     time,
-    color( 128, 128, 255, 64)
+    color( 128, 128, 255, 96)
   );
 
   drawer(
@@ -307,36 +311,37 @@ sketch.draw((time) => {
     },
     ( lerpIndex, lerpMin, lerpMax, lerpStep, time, index, givenCanvas ) => {
       givenCanvas.translate(width / 2, height / 2);
-      givenCanvas.rotate(lerpIndex*2*options.get('rotation-count'));
-      givenCanvas.rotate(time/2);
+      // givenCanvas.rotate(lerpIndex+options.get('rotation-count'));
+      givenCanvas.rotate(time+1*cos(time));
+      // givenCanvas.rotate(-time);
     },
     ( lerpIndex, lerpMin, lerpMax, time, index, givenCanvas) => {
 
       const opacitySpeed = options.get('opacity-speed');
       const opacityCount = options.get('opacity-group-count');
 
-      let opacityFactor = mappers.circularMap(
-        lerpIndex,
-        // angleMin,
-        lerpMax*4,
-        map(
-          sin(-time * opacitySpeed + lerpIndex * opacityCount ), -1, 1,
-          options.get("start-opacity-factor"),
-          options.get("end-opacity-factor")
-        ),
-        options.get("end-opacity-factor")
-      );
+      // let opacityFactor = mappers.circularMap(
+      //   lerpIndex,
+      //   // angleMin,
+      //   lerpMax*4,
+      //   map(
+      //     sin(-time * opacitySpeed + lerpIndex * opacityCount ), -1, 1,
+      //     options.get("start-opacity-factor"),
+      //     options.get("end-opacity-factor")
+      //   ),
+      //   options.get("end-opacity-factor")
+      // );
 
-      if (options.get('ping-pong-opacity')) {
-        opacityFactor = map(
-          map(sin(lerpIndex*opacityCount-time*opacitySpeed), -1, 1, -1, 1),
-          -1,
-          1,
-          // map(sin(lerpIndex), -1, 1, 1, 50),
-          map(cos(lerpIndex*opacityCount+time*opacitySpeed), -1, 1, 15, 1),
-          1
-        );
-      }
+      // if (options.get('ping-pong-opacity')) {
+      //   opacityFactor = map(
+      //     map(sin(lerpIndex*opacityCount-time*opacitySpeed), -1, 1, -1, 1),
+      //     -1,
+      //     1,
+      //     // map(sin(lerpIndex), -1, 1, 1, 50),
+      //     map(cos(lerpIndex*opacityCount+time*opacitySpeed), -1, 1, 15, 1),
+      //     1
+      //   );
+      // }
     
       let linesCount = options.get("max-lines-count");
 
@@ -353,30 +358,40 @@ sketch.draw((time) => {
       const lineStep = lineMax / l;
 
       for (let lineIndex = lineMin; lineIndex < lineMax; lineIndex += lineStep) {
-        const vector = converters.polar.vector( lineIndex, s * 1.5 );
+        const vector = converters.polar.vector( lineIndex, s * 1.55 );
+
+      // const strokeCoeff = mappers.seq(
+      //   "strokeCoeff",
+      //   time+(lineIndex+PI),
+      //   [
+      //   0.5, 0.75, 1, 1.25, 1.5, 1.75, 2
+      //   ],
+      //   1.1
+      // );
 
         givenCanvas.push();
         givenCanvas.beginShape();
         givenCanvas.strokeWeight(mappers.circularMap(lerpIndex, lineMax/6, 10, options.get('lines-weight')));
-
+        // givenCanvas.strokeWeight(mappers.circularMap(lerpIndex, lineMax/6, 10, options.get('lines-weight')*strokeCoeff));
 
         const opacityFactor = map(
-          map(sin(lerpIndex*opacityCount+time*opacitySpeed), -1, 1, -1, 1),
+          sin(lineIndex+lerpIndex*opacityCount+time*opacitySpeed),
           -1,
           1,
-          map(cos(lineIndex+lerpIndex*opacityCount+time*opacitySpeed), -1, 1, 50, 1),
+          map(cos(lineIndex+lerpIndex*opacityCount+time*opacitySpeed), -1, 1, 1, 10),
           1
         );
         
         const hueSpeed = -time * options.get("hue-speed");
+        const hueIndex = lineIndex;
 
         if (options.get('hue-palette') === "rainbow") {
           givenCanvas.stroke( color(
-            map(sin(hueSpeed+lerpIndex*5), -1, 1, 0, 360) /
+            map(sin(hueSpeed+hueIndex), -1, 1, 0, 360) /
               opacityFactor,
-            map(sin(hueSpeed-lerpIndex*5), -1, 1, 360, 0) /
+            map(sin(hueSpeed-hueIndex), -1, 1, 360, 0) /
               opacityFactor,
-            map(sin(hueSpeed+lerpIndex*5), -1, 1, 360, 0) /
+            map(sin(hueSpeed+hueIndex), -1, 1, 360, 0) /
               opacityFactor,
             // map(lerpIndex, lerpMin, lerpMax, 0, 100)
             //mappers.circularMap(lerpIndex, lerpMax/10, 1, 255)
