@@ -1,4 +1,4 @@
-import { shapes, sketch, converters, canvas, events, colors, mappers, iterators, options, text } from './utils/index.js';
+import { shapes, sketch, converters, canvas, events, colors, mappers, iterators, options, string } from './utils/index.js';
 
 options.add( [
   {
@@ -233,6 +233,12 @@ const drawRadialPattern = (count = 7, time) => {
       // strokeWeight(abs(map(lerpIndex, 0, 1, 10, 40*f)));
       // strokeWeight(abs(map(sin(5*time+angle/5*lerpIndex*20), -1, 1, 10, 40)));
       point( pos.x, pos.y );
+
+      // const margin = 400;
+      // point(
+      //   constrain(pos.x, - width/2 + margin, width/2 - margin),
+      //   constrain(pos.y, -height/2 + margin, height/2 - margin),
+      // );
 
       strokeWeight(3)
       // stroke(128, 128, 255, 128)

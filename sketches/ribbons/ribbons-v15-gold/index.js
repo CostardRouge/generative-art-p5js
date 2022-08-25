@@ -1,4 +1,4 @@
-import { shapes, sketch, converters, canvas, events, colors, mappers, iterators, options, text } from './utils/index.js';
+import { shapes, sketch, converters, canvas, events, animation, mappers, iterators, options, string } from './utils/index.js';
 
 options.add( [
   {
@@ -280,7 +280,7 @@ let l
 sketch.draw((time) => {
   background(0);
 
-  l = mappers.seq(
+  l = animation.sequence(
     "l",
     time,
     [
@@ -360,7 +360,7 @@ sketch.draw((time) => {
       for (let lineIndex = lineMin; lineIndex < lineMax; lineIndex += lineStep) {
         const vector = converters.polar.vector( lineIndex, s * 1.55 );
 
-      // const strokeCoeff = mappers.seq(
+      // const strokeCoeff = animation.sequence(
       //   "strokeCoeff",
       //   time+(lineIndex+PI),
       //   [

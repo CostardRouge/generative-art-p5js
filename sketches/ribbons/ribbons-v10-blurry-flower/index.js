@@ -1,4 +1,4 @@
-import { shapes, sketch, converters, canvas, events, colors, mappers, iterators, options, text } from './utils/index.js';
+import { shapes, sketch, converters, canvas, events, animation, mappers, iterators, options, string } from './utils/index.js';
 
 options.add( [
   {
@@ -338,7 +338,7 @@ sketch.draw((time) => {
       const lineMin = -PI;
       const lineMax = PI // mappers.circularIndex(time/1.5 + lerpIndex/2, [2, 1, 3, 1, 2]);
 
-      // linesCount = mappers.seq(
+      // linesCount = animation.sequence(
       //   "linesCount",
       //   time,
       //   [

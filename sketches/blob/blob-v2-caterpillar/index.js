@@ -1,4 +1,4 @@
-import { shapes, sketch, converters, canvas, events, colors, mappers, options, text } from './utils/index.js';
+import { shapes, sketch, converters, canvas, events, colors, mappers, options, string } from './utils/index.js';
 
 options.add( [
   {
@@ -141,11 +141,11 @@ function drawer( lerper, positioner, shaper, time, index ) {
     //     128,
     //     255
     //   );
-      // text.write(Math.ceil(x).toString(), 25+x, -height/2 + 18, 32 )
-      // text.write(Math.ceil(y).toString(), -20+width / 2, y+18, 32 )
+      // string.write(Math.ceil(x).toString(), 25+x, -height/2 + 18, 32 )
+      // string.write(Math.ceil(y).toString(), -20+width / 2, y+18, 32 )
 
-      // text.write(`start`, x, y )
-      // text.write(`${Math.ceil(x)} / ${Math.ceil(y)}`, x, y )
+      // string.write(`start`, x, y )
+      // string.write(`${Math.ceil(x)} / ${Math.ceil(y)}`, x, y )
     // }
 
 
@@ -157,10 +157,10 @@ function drawer( lerper, positioner, shaper, time, index ) {
     //     128,
     //     255
     //   );
-    //   // text.write(Math.ceil(x).toString(), 25+x, -height/2 + 18, 32 )
-    //   // text.write(Math.ceil(y).toString(), -20+width / 2, y+18, 32 )
+    //   // string.write(Math.ceil(x).toString(), 25+x, -height/2 + 18, 32 )
+    //   // string.write(Math.ceil(y).toString(), -20+width / 2, y+18, 32 )
 
-    //   text.write("end", x, y, 24 )
+    //   string.write("end", x, y, 24 )
     // }
 
     lerpIndex += lerpStep
@@ -199,7 +199,7 @@ let v = 1;
 sketch.draw((time) => {
   background(0);
 
-  // drawGrid(1, 1, time/4, color( 128, 128, 255));
+  drawGrid(1, 1, time/4, color( 128, 128, 255));
   drawGrid(3, 3, time, color( 255, 5) );
 
   translate(width / 2, height / 2);
@@ -255,13 +255,13 @@ sketch.draw((time) => {
         //stroke('blue')
         line(-width, 0, width, 0)
         line(0, -height, 0, height)
-        // text.write("end", 0, 0)
+        // string.write("end", 0, 0)
       }
       if (lerpIndex+lerpStep > lerpMax ) {
         //stroke('red')
         line(-width, 0, width, 0)
         line(0, -height, 0, height)
-        // text.write("start", 0, 0)
+        // string.write("start", 0, 0)
       }
 
       rotate(sin(lerpIndex*2-time)*options.get('rotation-speed')+lerpIndex*2*options.get('rotation-count'));

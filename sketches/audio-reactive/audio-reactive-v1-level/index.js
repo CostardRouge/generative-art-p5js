@@ -1,11 +1,7 @@
-import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
-
-let mic;
+import { audio, shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
 
 sketch.setup(() => {
-
-  mic = new p5.AudioIn();
-  mic.start();
+  audio.capture.setup();
 
   const xCount = 3;
   const yCount = 7;
@@ -14,9 +10,9 @@ sketch.setup(() => {
     for (let y = 1; y <= yCount; y++) {
       shapes.push(
         new Dot({
-          shadowsCount: 15,
+          shadowsCount: 5,
           weightRange: [150, 15],
-          opacityFactorRange: [7, 1],
+          opacityFactorRange: [5, 1],
           relativePosition: {
             x: x / (xCount + 1),
             y: y / (yCount + 1),
@@ -72,6 +68,7 @@ class Dot {
         weightRange[0],
         weightRange[1]
       ) * micLevel;
+
       const opacityFactor = map(
         shadowIndex,
         0,
@@ -94,6 +91,10 @@ class Dot {
 
 sketch.draw( time => {
   background(0);
-  const micLevel = mic.getLevel()*6;
-  shapes.forEach((shape, index) => shape.draw(time, index, micLevel));
+
+  shapes.forEach((shape, index) => shape.draw(
+    time,
+    index,
+    audio.capture.audioIn.getLevel()*5
+  ));
 });

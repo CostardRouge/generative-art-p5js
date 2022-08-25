@@ -1,4 +1,4 @@
-import { shapes, sketch, converters, canvas, events, colors, mappers, iterators, options, text } from './utils/index.js';
+import { shapes, sketch, converters, animation, mappers, iterators, options, string } from './utils/index.js';
 
 options.add( [
   {
@@ -88,7 +88,7 @@ const drawRadialPattern = (count = 7, time, _color) => {
   const p = options.get("background-lines-precision")
   const hueSpeed = time * options.get("hue-speed");
 
-  const c = mappers.seq("c", time/2, [30, 60, 120, 240], 0.05)
+  const c = animation.sequence("c", time/2, [30, 60, 120, 240], 0.05)
 
   iterators.angle(0, TAU, TAU / c, angle => {
     const edge = converters.polar.vector(
