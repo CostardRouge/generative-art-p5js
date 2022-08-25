@@ -256,13 +256,13 @@ sketch.draw((time) => {
       //   //stroke('blue')
       //   line(-width, 0, width, 0)
       //   line(0, -height, 0, height)
-      //   // text.write("end", 0, 0)
+      //   // string.write("end", 0, 0)
       // }
       // if (lerpIndex+lerpStep > lerpMax ) {
       //   //stroke('red')
       //   line(-width, 0, width, 0)
       //   line(0, -height, 0, height)
-      //   // text.write("start", 0, 0)
+      //   // string.write("start", 0, 0)
       // }
 
       if (shapeIndex > fixers?.["#8080ff"]?.index) {

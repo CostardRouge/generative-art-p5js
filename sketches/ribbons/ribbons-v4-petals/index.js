@@ -1,4 +1,4 @@
-import { shapes, sketch, converters, canvas, events, colors, mappers, options, text } from './utils/index.js';
+import { shapes, sketch, converters, canvas, events, colors, mappers, options, string } from './utils/index.js';
 
 options.add( [
   {
@@ -186,13 +186,13 @@ sketch.draw((time) => {
       //   // stroke('blue')
       //   line(-width, 0, width, 0)
       //   line(0, -height, 0, height)
-      //   text.write("end", 0, 0)
+      //   string.write("end", 0, 0)
       // }
       // if (lerpIndex+lerpStep > lerpMax ) {
       //   // stroke('red')
       //   line(-width, 0, width, 0)
       //   line(0, -height, 0, height)
-      //   text.write("start", 0, 0)
+      //   string.write("start", 0, 0)
       // }
 
       rotate(cos(lerpIndex*2-time*2)*options.get('rotation-speed')+options.get('rotation-count'));

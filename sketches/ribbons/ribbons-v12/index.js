@@ -1,4 +1,4 @@
-import { shapes, sketch, converters, canvas, events, colors, mappers, iterators, options, easing } from './utils/index.js';
+import { shapes, sketch, converters, canvas, animation, colors, mappers, iterators, options, easing } from './utils/index.js';
 
 options.add( [
   {
@@ -277,7 +277,7 @@ sketch.draw((time) => {
       const lineMax = PI
 
       let linesCount = options.get("max-lines-count")
-      linesCount = mappers.seq(
+      linesCount = animation.sequence(
         "linesCount",
         time/2,
         [

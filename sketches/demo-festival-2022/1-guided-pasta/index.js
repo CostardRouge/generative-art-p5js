@@ -1,4 +1,4 @@
-import { shapes, sketch, converters, canvas, events, colors, mappers, options, text } from './utils/index.js';
+import { shapes, sketch, converters, canvas, events, colors, mappers, options, string } from './utils/index.js';
 
 options.add( [
   {
@@ -274,7 +274,7 @@ sketch.draw((time) => {
         // stroke('red')
         line(-width, 0, width, 0)
         line(0, -height, 0, height)
-        // text.write(0, 0)
+        // string.write(0, 0)
       }
 
       rotate(time*options.get('rotation-speed')+lerpIndex*l*2*options.get('rotation-count'));

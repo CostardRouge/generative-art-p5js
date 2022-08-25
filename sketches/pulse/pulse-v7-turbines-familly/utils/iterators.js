@@ -21,8 +21,10 @@ const iterators = {
     });
   },
   angle: function (angleMin = 0, angleMax = TAU, angleStep = TAU / 12, handler) {
-    for (let angleIndex = angleMin; angleIndex < angleMax-angleStep; angleIndex += angleStep) {
-      handler(angleIndex);
+    let index = 0;
+    for (let angleIndex = angleMin; angleIndex <= angleMax; angleIndex += angleStep) {
+      handler(angleIndex, index);
+      index++;
     }
   }
 };

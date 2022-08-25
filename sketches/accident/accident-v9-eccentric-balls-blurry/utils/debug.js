@@ -49,7 +49,7 @@ const debug = {
 
       // debug.debugGraphics.clear();
 
-      // text.write(
+      // string.write(
       //   String(ceil(debug.lastFrameRate)),
       //   18,
       //   16,

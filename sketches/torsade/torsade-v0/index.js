@@ -7,10 +7,10 @@ const polarCoefficients = [
   [1, 1],
 ];
 
-import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+import { shapes, sketch, converters, animation, events, colors, mappers } from './utils/index.js';
 
 sketch.setup(() => {
-  const xCount = 3;
+  const xCount = 4;
   const yCount = 1;
   const size = (width + height) / 2 / (xCount + yCount) / 3.5;
 
@@ -75,25 +75,24 @@ class Spiral {
     let { position, size, start, end } = this;
 
     const hueCadence = index + time * 3;
-    const cadence = index / shapes.length + time;
-    const interpolation = 0.09;
-    const [x, y] = mappers.circularIndex(cadence, polarCoefficients);
+    // const cadence = index / shapes.length + time;
+    // const interpolation = 0.09;
+    // const [x, y] = mappers.circularIndex(cadence, polarCoefficients);
 
-    this.xPolarCoefficient = lerp(
-      this.xPolarCoefficient || 0,
-      x,
-      interpolation
-    );
-    this.yPolarCoefficient = lerp(
-      this.yPolarCoefficient || 0,
-      y,
-      interpolation
-    );
+    // this.xPolarCoefficient = lerp(
+    //   this.xPolarCoefficient || 0,
+    //   x,
+    //   interpolation
+    // );
+    // this.yPolarCoefficient = lerp(
+    //   this.yPolarCoefficient || 0,
+    //   y,
+    //   interpolation
+    // );
 
     // this.xPolarCoefficient = map(cos(time+index), -1, 1, -PI/2, PI);
     // this.yPolarCoefficient = map(sin(time), -1, 1, -PI, PI/2);
 
-    const { xPolarCoefficient, yPolarCoefficient } = this;
     const waveAmplitude = size;
 
     push();
@@ -102,12 +101,14 @@ class Spiral {
       position.y // * easeInOutBack(map(cos(time+index), -1, 1, 0.2, 1))
     );
 
-    // size = easeOutElastic(map(sin(time), -1, 1, 0, 1)) * size
-    // const lerpStep = 1/10;
-    const lerpStep = 1 / 300; //map(mouseY, height, 0, 1, 64, true);
+    this.xPolarCoefficient = animation.sequence("x", index+time/2, [1, 2, 4, 2, 3, 1], 0.009)
+    this.yPolarCoefficient = animation.sequence("y", index+time/3, [1, 3, 3, 4, 3, 1], 0.008)
+
+    const lerpStep = 1 / 600;
 
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
       const lerpPosition = p5.Vector.lerp(start, end, lerpIndex);
+      const { xPolarCoefficient, yPolarCoefficient } = this;
 
       push();
       translate(lerpPosition.x, lerpPosition.y);
@@ -148,13 +149,30 @@ class Spiral {
         converters.polar.get(cos, yOffset, angle, yPolarCoefficient)
       );
 
+      const opacityFactor = map(
+        lerpIndex,
+        0,
+        5,
+        map(
+          sin(-time * (index % 2 === 0 ? -1 : 1) * 2 + lerpIndex * 50),
+          -1,
+          1,
+          1,
+          7
+        ),
+        1
+      );
+
+      const w = map(sin(index+time+angle/30+lerpIndex*10), -1, 1, 25, 90);
+
       beginShape();
       strokeWeight(75);
+      strokeWeight(w);
 
       stroke(
-        map(sin(angle + hueCadence), -1, 1, 0, 360),
-        map(cos(angle + hueCadence), -1, 1, 0, 255),
-        map(sin(angle + hueCadence), -1, 1, 255, 0),
+        map(sin(angle + hueCadence), -1, 1, 0, 360) / opacityFactor,
+        map(cos(angle + hueCadence), -1, 1, 0, 255) / opacityFactor,
+        map(sin(angle + hueCadence), -1, 1, 255, 0) / opacityFactor,
         map(xPolarCoefficient + yPolarCoefficient, 0, 15, 0, 255)
       );
 

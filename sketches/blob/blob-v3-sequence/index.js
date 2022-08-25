@@ -1,4 +1,4 @@
-import { shapes, sketch, converters, canvas, events, colors, mappers, options } from './utils/index.js';
+import { shapes, sketch, converters, animation, mappers, options } from './utils/index.js';
 
 options.add( [
   {
@@ -147,7 +147,7 @@ class Spiral {
       // const y = sinmap(shadowIndex, 0, shadowsCount, -2.5, 2.5);
       const y = sin(time) * cos(time) * 2
 
-      this.position = mappers.seq(
+      this.position = animation.sequence(
         "position",
         shadowIndex+time/2,
         positions,
@@ -264,7 +264,7 @@ function drawGrid(xCount, yCount, time) {
 sketch.draw((time) => {
   background(0);
 
-  const w = mappers.seq(
+  const w = animation.sequence(
     "w",
     time/2,
     [
@@ -273,7 +273,7 @@ sketch.draw((time) => {
     0.05
   );
 
-  const h = mappers.seq(
+  const h = animation.sequence(
     "h",
     time/2,
     [

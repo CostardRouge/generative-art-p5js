@@ -1,4 +1,4 @@
-import { sketch, easing, mappers, text } from './utils/index.js';
+import { sketch, easing, mappers, string } from './utils/index.js';
 
 sketch.setup();
 
@@ -13,7 +13,7 @@ const rollingTime = constrain(time/2 % 1, 0, 1);
 const easingFunctions = Object.entries( easing );
 const [ easingFunctionName, easingFunction ] = mappers.circularIndex( time /2, easingFunctions);
 
-text.write(easingFunctionName, 100, 30)
+string.write(easingFunctionName, 100, 30)
 
 print({
   easingFunctionName
