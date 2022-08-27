@@ -208,6 +208,29 @@
          "path": "sketches/accident/accident-v9-eccentric-twist"
       }
    },
+   "audio-reactive": {
+      "audio-reactive-v1-level": {
+         "meta": {
+            "name": "audio-reactive-v1-level",
+            "folder": "audio-reactive"
+         },
+         "path": "sketches/audio-reactive/audio-reactive-v1-level"
+      },
+      "audio-reactive-v2-fft": {
+         "meta": {
+            "name": "audio-reactive-v2-fft",
+            "folder": "audio-reactive"
+         },
+         "path": "sketches/audio-reactive/audio-reactive-v2-fft"
+      },
+      "audio-reactive-v3-serpent": {
+         "meta": {
+            "name": "audio-reactive-v3-serpent",
+            "folder": "audio-reactive"
+         },
+         "path": "sketches/audio-reactive/audio-reactive-v3-serpent"
+      }
+   },
    "background-pattern": {
       "background-pattern-easing-lines": {
          "meta": {
@@ -229,6 +252,13 @@
             "folder": "background-pattern"
          },
          "path": "sketches/background-pattern/background-pattern-spring"
+      },
+      "background-pattern-v10-crazy": {
+         "meta": {
+            "name": "background-pattern-v10-crazy",
+            "folder": "background-pattern"
+         },
+         "path": "sketches/background-pattern/background-pattern-v10-crazy"
       },
       "background-pattern-v2-radial": {
          "meta": {
@@ -489,6 +519,48 @@
             "folder": "easing"
          },
          "path": "sketches/easing/easing-v1-all-functions"
+      },
+      "easing-v2-functions": {
+         "meta": {
+            "name": "easing-v2-functions",
+            "folder": "easing"
+         },
+         "path": "sketches/easing/easing-v2-functions"
+      },
+      "easing-v3-spider": {
+         "meta": {
+            "name": "easing-v3-spider",
+            "folder": "easing"
+         },
+         "path": "sketches/easing/easing-v3-spider"
+      },
+      "easing-v3-warp": {
+         "meta": {
+            "name": "easing-v3-warp",
+            "folder": "easing"
+         },
+         "path": "sketches/easing/easing-v3-warp"
+      },
+      "easing-v3-warp copy": {
+         "meta": {
+            "name": "easing-v3-warp copy",
+            "folder": "easing"
+         },
+         "path": "sketches/easing/easing-v3-warp copy"
+      },
+      "easing-v4-clock": {
+         "meta": {
+            "name": "easing-v4-clock",
+            "folder": "easing"
+         },
+         "path": "sketches/easing/easing-v4-clock"
+      },
+      "easing-v5-star": {
+         "meta": {
+            "name": "easing-v5-star",
+            "folder": "easing"
+         },
+         "path": "sketches/easing/easing-v5-star"
       }
    },
    "genuary2022": {
@@ -1092,15 +1164,6 @@
             "folder": "semaphore"
          },
          "path": "sketches/semaphore/semaphore-v1-lines"
-      }
-   },
-   "sound-reactive": {
-      "sound-reactive-v1": {
-         "meta": {
-            "name": "sound-reactive-v1",
-            "folder": "sound-reactive"
-         },
-         "path": "sketches/sound-reactive/sound-reactive-v1"
       }
    },
    "spirals": {
