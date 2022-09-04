@@ -91,7 +91,6 @@ sketch.draw(time => {
   stroke(255)
   noFill()
 
-
   const columnSize = width / columns
   const halfColumnSize = (columnSize /2 )
   const columnPadding = weight + halfColumnSize;

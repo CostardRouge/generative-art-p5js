@@ -243,6 +243,20 @@
             "folder": "audio-reactive"
          },
          "path": "sketches/audio-reactive/audio-reactive-v5-droplets"
+      },
+      "audio-reactive-v5-droplets copy": {
+         "meta": {
+            "name": "audio-reactive-v5-droplets copy",
+            "folder": "audio-reactive"
+         },
+         "path": "sketches/audio-reactive/audio-reactive-v5-droplets copy"
+      },
+      "audio-reactive-v6-beat-counter": {
+         "meta": {
+            "name": "audio-reactive-v6-beat-counter",
+            "folder": "audio-reactive"
+         },
+         "path": "sketches/audio-reactive/audio-reactive-v6-beat-counter"
       }
    },
    "background-pattern": {

@@ -7,6 +7,8 @@ const ranges = {
     amplifier: 0.5,
     raw: undefined,
     smooth: 0,
+    count: 0,
+    countDeltaTime: 0,
     corrected: undefined,
   },
   bass: {
@@ -15,6 +17,8 @@ const ranges = {
     amplifier: 0.5,
     raw: undefined,
     smooth: 0,
+    count: 0,
+    countDeltaTime: 0,
     corrected: undefined,
   },
   lowMid: {
@@ -23,6 +27,8 @@ const ranges = {
     amplifier: 0.5,
     raw: undefined,
     smooth: 0,
+    count: 0,
+    countDeltaTime: 0,
     corrected: undefined,
   },
   mid: {
@@ -31,6 +37,8 @@ const ranges = {
     amplifier: 1,
     raw: undefined,
     smooth: 0,
+    count: 0,
+    countDeltaTime: 0,
     corrected: undefined,
   },
   upperMid: {
@@ -39,6 +47,8 @@ const ranges = {
     amplifier: 1,
     raw: undefined,
     smooth: 0,
+    count: 0,
+    countDeltaTime: 0,
     corrected: undefined,
   },
   presence: {
@@ -47,6 +57,8 @@ const ranges = {
     amplifier: 1,
     raw: undefined,
     smooth: 0,
+    count: 0,
+    countDeltaTime: 0,
     corrected: undefined,
   },
   brilliance: {
@@ -55,6 +67,8 @@ const ranges = {
     amplifier: 1,
     raw: undefined,
     smooth: 0,
+    count: 0,
+    countDeltaTime: 0,
     corrected: undefined
   }
 };
@@ -108,10 +122,24 @@ const audio = {
       
           range.raw = audio.capture.fft.getEnergy( ...range.frequencies ) / 255;
           range.corrected = range.raw * range.amplifier;
+
+          // console.log({
+          //   amp: range.amplifier,
+          //   rangeName,
+          //   count: range.count,
+          //   index: rangeNames.indexOf( rangeName )
+          // });
       
           if ( range.raw >= range.threshold) {
             range.smooth = lerp( range.smooth, range.corrected, 0.67 );
             range.smooth = range.corrected;
+
+            const currentTime = millis();
+
+            if ( currentTime > ( range.countDeltaTime + 500) ) {
+              range.count = range.count + 1;
+              range.countDeltaTime = millis();
+            }
           }
       
           range.smooth = lerp( range.smooth, 0, 0.067 );

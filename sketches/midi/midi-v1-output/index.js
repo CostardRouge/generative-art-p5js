@@ -7,7 +7,7 @@ sketch.setup(() => {
   noStroke();
 
   const xCount = 1;
-  const yCount = 7;
+  const yCount = 14;
 
   for (let x = 1; x <= xCount; x++) {
     for (let y = 1; y <= yCount; y++) {
