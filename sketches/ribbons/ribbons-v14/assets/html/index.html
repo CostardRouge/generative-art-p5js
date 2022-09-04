@@ -34,7 +34,7 @@
       }
     
       // open graph images urls
-      const previewURL = gitHubPagesPathHack([...pathnameParts, "screenshot.jpeg"].join("/"));
+      const previewURL = gitHubPagesPathHack([...pathnameParts.splice(1), "screenshot.jpeg"].join("/"));
 
       document.querySelector("meta[name='twitter:image']").setAttribute("content", previewURL);
       document.querySelector("meta[property='og:image']").setAttribute("content", previewURL);
