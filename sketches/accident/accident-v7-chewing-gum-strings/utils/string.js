@@ -58,11 +58,11 @@ const string = {
 
 window.preload = () => {
   string.fonts.serif = loadFont(
-    gitHubPagesPathHack("/assets/fonts/libre-baskerville.ttf")
+    gitHubPagesPathHack("assets/fonts/libre-baskerville.ttf")
   );
   string.fonts.sans = loadFont(
-    // gitHubPagesPathHack("/assets/fonts/open-sans.ttf")
-    gitHubPagesPathHack("/assets/fonts/passion-one.ttf")
+    // gitHubPagesPathHack("assets/fonts/open-sans.ttf")
+    gitHubPagesPathHack("assets/fonts/passion-one.ttf")
   );
 }
 

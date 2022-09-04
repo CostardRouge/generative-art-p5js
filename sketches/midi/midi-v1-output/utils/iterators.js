@@ -22,7 +22,7 @@ const iterators = {
   },
   angle: function (angleMin = 0, angleMax = TAU, angleStep = TAU / 12, handler) {
     let index = 0;
-    for (let angleIndex = angleMin; angleIndex <= angleMax; angleIndex += angleStep) {
+    for (let angleIndex = angleMin; angleIndex < angleMax; angleIndex += angleStep) {
       handler(angleIndex, index);
       index++;
     }

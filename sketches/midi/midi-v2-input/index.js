@@ -1,7 +1,7 @@
 const midiInputDevices = [];
 const midiOutputDevices = [];
 
-import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+import { shapes, sketch, midi, canvas, events, colors, mappers } from './utils/index.js';
 
 sketch.setup(() => {
   const xCount = 3;
@@ -23,56 +23,37 @@ sketch.setup(() => {
     }
   }
 
-  WebMidi.enable()
-    .then(onEnabled)
-    .catch((err) => alert(err));
-
-  function onEnabled() {
-    if (WebMidi.inputs.length < 1) {
-      return console.log("No device detected.");
-    }
-
-    WebMidi.inputs.forEach((device, index) => {
-      midiInputDevices.push(device);
-      console.log(`INPUT: ${index}: ${device.name}`);
-    });
-
-    WebMidi.outputs.forEach((device, index) => {
-      midiOutputDevices.push(device);
-      console.log(`OUTPUT: ${index}: ${device.name}`);
-    });
-
+  midi.setup();
     // const myInput = WebMidi.getInputByName("IAC Driver Bus 1");
     // const myOutput = WebMidi.getOutputByName("IAC Driver Bus 1");
 
-    midiInputDevices.forEach( input => {
-      input.addListener("noteon", (e) => {
-        const assignedShapes = shapes.filter( shape => shape.note === e.note.identifier);
+  midiInputDevices.forEach( input => {
+    input.addListener("noteon", (e) => {
+      const assignedShapes = shapes.filter( shape => shape.note === e.note.identifier);
 
-        if ( assignedShapes.length !== 0 ) {
-          return assignedShapes[0].bounce();
-        }
+      if ( assignedShapes.length !== 0 ) {
+        return assignedShapes[0].bounce();
+      }
 
-        const unAssignedShapes = shapes.filter( shape => shape.note === undefined );
+      const unAssignedShapes = shapes.filter( shape => shape.note === undefined );
 
-        if ( unAssignedShapes.length !== 0 ) {
-          unAssignedShapes[0].note = e.note.identifier;
-          unAssignedShapes[0].bounce();
-        }
-      });
+      if ( unAssignedShapes.length !== 0 ) {
+        unAssignedShapes[0].note = e.note.identifier;
+        unAssignedShapes[0].bounce();
+      }
     });
+  });
 
-    events.register("mousePressed", function () {
-      shapes.forEach(shape => shape.bounce());
+  events.register("mousePressed", function () {
+    shapes.forEach(shape => shape.bounce());
 
-      playNote(
-        new Note("A4", {
-          duration: 100,
-          release: 0.1,
-        })
-      );
-    });
-  }
+    playNote(
+      new Note("A4", {
+        duration: 100,
+        release: 0.1,
+      })
+    );
+  });
 } )
 
 function playNote(note) {
@@ -170,4 +151,7 @@ function getRandNote() {
 sketch.draw( time => {
   background(0);
   shapes.forEach((shape, index) => shape.draw(time, index));
+
+
+  midi.monitor();
 });

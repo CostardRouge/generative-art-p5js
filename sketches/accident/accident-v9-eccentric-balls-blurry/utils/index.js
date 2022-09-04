@@ -1,3 +1,4 @@
+import midi from './midi.js';
 import time from './time.js';
 import audio from './audio.js';
 import debug from './debug.js';
@@ -16,26 +17,16 @@ import converters from './converters.js';
 
 const shapes = [];
 
-
-const midi = {
-  on: {
-    note: function() {
-
-    }
-  }
-};
-
-
 // midi.on("C3", console.log)
 // midi.map("C", 3, 5, 10, 9)
-
 
 // grid
 // shapes instances
 // canvases instances
-// relation coordinates
+// relative coordinates
 
 export {
+  midi,
   time,
   audio,
   debug,

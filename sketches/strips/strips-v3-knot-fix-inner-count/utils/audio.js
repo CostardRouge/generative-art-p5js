@@ -1,3 +1,5 @@
+import { events } from './index.js';
+
 const ranges = {
   subBass: {
     frequencies: [20, 60],
@@ -78,6 +80,8 @@ const audio = {
         AudioIn: audio.capture.audioIn,
         FFT: audio.capture.fft
       });
+
+      events.register("pre-draw", audio.capture.energy.compute );
     },
     energy: {
       byIndex: (index, attribute = "smooth") => (

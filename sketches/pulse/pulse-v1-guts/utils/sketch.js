@@ -51,10 +51,18 @@ const sketch = {
 };
 
 window.setup = () => {
+  events.handle("pre-setup");
+
   sketch.setup();
+
+  events.handle("post-setup");
 }
 window.draw = () => {
+  events.handle("pre-draw");
+
   sketch.draw();
+
+  events.handle("post-draw");
 }
 
 export default sketch;

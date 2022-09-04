@@ -3,7 +3,7 @@ const mappers = {
     return map(abs((index % length) - length / 2), 0, length / 2, max, min);
   },
   fn: function (value, min, max, start, end, fn = x => x) {
-    return map( fn(map(value, min, max, 0, 1)), 0, 1, start, end)
+    return map( fn(map(value, min, max, 0, 1)), 0, 1, start, end, true)
   },
   circularIndex: function (index, values) {
     const valuesIndex = abs(floor(index % values.length));
