@@ -1,4 +1,4 @@
-import { shapes, sketch, converters, canvas, events, colors, mappers, iterators, options, string, easing } from './utils/index.js';
+import { audio, sketch, converters, canvas, events, colors, mappers, iterators, options, string, easing } from './utils/index.js';
 
 options.add( [
   {
@@ -163,144 +163,12 @@ options.add( [
   },
 ] );
 
-let mic;
-let fft;
 
-const audioEnergy = {
-  bass: {
-    threshold: 0.88,
-    amplifier: 0.5,
-    raw: undefined,
-    smooth: 0,
-    corrected: undefined,
-  },
-  lowMid: {
-    threshold: 0.88,
-    amplifier: 0.5,
-    raw: undefined,
-    smooth: 0,
-    corrected: undefined,
-  },
-  mid: {
-    threshold: 0.7,
-    amplifier: 1,
-    raw: undefined,
-    smooth: 0,
-    corrected: undefined,
-  },
-  highMid: {
-    threshold: 0.47,
-    amplifier: 1,
-    raw: undefined,
-    smooth: 0,
-    corrected: undefined,
-  },
-  treble: {
-    threshold: 0.07,
-    amplifier: 1,
-    raw: undefined,
-    smooth: 0,
-    corrected: undefined
-  }
-}
+// sketch.setup(() => {
+//   audio.capture.setup();
+// });
 
-const bins = 2048;
-
-sketch.setup(() => {
-  mic = new p5.AudioIn();
-  fft = new p5.FFT(0.5, bins);
-
-  events.register( "mousePressed", function () {
-    userStartAudio();
-
-    if (mic?.enabled) {
-      return
-    }
-    
-    mic.start();
-    fft.setInput(mic);
-
-    console.log({
-      mic,
-      fft
-    });
-
-    // for (const rangeName in audioEnergy) {
-    //   const range = audioEnergy[rangeName];
-
-    //   range.peakDetect = new p5.PeakDetect(
-    //     fft[ rangeName][0],
-    //     fft[ rangeName][1]
-    //   );
-
-    //   range.peakDetect.onPeak( peak => {
-    //     console.log(`${rangeName}`, peak)
-
-    //     range.smooth = peak//lerp( range.smooth, peak, 0.67 );
-    //   });
-    // }
-  });
-});
-
-const computeAudioEnergy = () => {
-  if ( false === mic?.enabled ) {
-    return;
-  }
-
-  fft.analyze();
-
-  for (const rangeName in audioEnergy) {
-    const range = audioEnergy[rangeName];
-
-    range.amplifier = options.get(`audio-reactive-${rangeName}-amplifier`);
-    range.threshold = options.get(`audio-reactive-${rangeName}-threshold`);
-
-    range.raw = fft.getEnergy( rangeName ) / 255;
-    range.corrected = range.raw * range.amplifier;
-
-    if ( range.raw >= range.threshold) {
-      range.smooth = lerp( range.smooth, range.corrected, 0.67 );
-    }
-
-    range.smooth = lerp( range.smooth, 0, 0.067 );
-  }
-};
-
-const showAudioEnergy = ( spectrum = true, waveform = true ) => {
-  if ( false === mic?.enabled ) {
-    return
-  }
-
-  // if (true === waveform ) {
-  //   const wf = fft.waveform();
-  //   const w = width / bins;
-
-  //   stroke('blue')
-  //   fill('red')
-  //   for (let i = 0; i < wf.length; i++) {
-  //     const y = map(wf[ i ], -1, 1, height / 2, 0);
-
-  //     rect(i * w, height / 2 - y/2, w, y );
-  //   }
-  // }
-
-  if (true === spectrum ) {
-    const wf = fft.analyze();
-
-    // console.log(wf);
-
-    stroke('red')
-    fill('blue')
-    for (let i = 0; i < wf.length; i++) {
-      const h = map(wf[ i ], 0, 255, 0, height/4);
-      const x = map(i, 0, wf.length, 0, width);
-
-      // line(i, height, i, y );
-      // rect(i * w, y + height/2, w, height/2 -y );
-      rect(x, height, width / wf.length, -h);
-    }
-  }
-};
+sketch.setup( audio.capture.setup );
 
 const pattern = (count = 7, time, color) => {
   push()
@@ -343,7 +211,6 @@ const drawRadialPattern = (count = 7, time) => {
   const size = (width + height)/6.5;
   const p = 0.005
 
-  const ranges = Object.keys( audioEnergy );
   const easingFunctions = Object.entries( easing );
 
   iterators.angle(0, TAU, TAU / count, (angle, index) => {
@@ -353,10 +220,7 @@ const drawRadialPattern = (count = 7, time) => {
       size
     );
 
-    const shapeAudioRangeIndex = index % ranges.length// ceil(map( angle, 0, TAU, 0, ranges.length - 1));
-    const rangeName = ranges[ shapeAudioRangeIndex ];
-
-    const varyingEdgeAmount = map(audioEnergy[rangeName]?.smooth, 0, 1, 0, 0.8)
+    const varyingEdgeAmount = audio.capture.energy.byCircularIndex( index );
     const varyingEdge = p5.Vector.lerp(center, edge, 1-varyingEdgeAmount);
 
     const [ , easingFunction ] = mappers.circularIndex( time, easingFunctions);
@@ -414,7 +278,6 @@ const drawRadialPattern = (count = 7, time) => {
   } )
 }
 
-let c = 10;
 
 sketch.draw((time) => {
   background(0);
@@ -426,13 +289,14 @@ sketch.draw((time) => {
     color( 128, 128, 255, 64)
   );
 
-  // const [ start, end ] = fft.highMid;
+  let c;
+  const [ start, end ] = audio.capture.fft.highMid;
 
-  // if ( frameCount % 300 ) {
-  //   c = lerp( c, ceil(map(fft.getEnergy( start, end ), 0, 255, 1, 15)), 0.5)
-  // }
+  if ( frameCount % 300 ) {
+    c = lerp( c ?? 10, (map(audio.capture.fft.getEnergy( start, end ), 0, 255, 1, 15)), 0.5)
+  }
 
-  // c = lerp( c, 1, 0.05)
+  c = lerp( c, 1, 0.0005)
 
   translate(width / 2, height / 2);
   drawRadialPattern(
@@ -442,6 +306,6 @@ sketch.draw((time) => {
 
   pop();
 
-  computeAudioEnergy();
-  showAudioEnergy();
+  audio.capture.energy.compute();
+  audio.capture.energy.draw(true, false);
 });

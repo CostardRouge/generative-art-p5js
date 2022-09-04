@@ -92,7 +92,6 @@ sketch.setup( () => {
     canvas.main.height
   );
   pixilatedCanvas.pixelDensity(options.get("background-pixel-density"));
-  
 });
 
 const drawRadialPattern = (count = 7, time, givenCanvas) => {
@@ -153,13 +152,9 @@ const drawRadialPattern = (count = 7, time, givenCanvas) => {
       //   map(lerpIndex, 0, 1, 255, 0),
       // ) );
 
-      const c = map(audio.capture.energy.byCircularIndex( index ), 0, 1, 0, 50)
-
       givenCanvas.strokeWeight(
-        mappers.fn(lerpIndex, 0, 1, 60, 10, )
+        mappers.fn(lerpIndex, 0, 1, 60, 10 )
       );
-      // point( vector.x, vector.y );
-
 
       givenCanvas.point(
         constrain( vector.x, -width/2 + margin, width/2 - margin ),
@@ -222,8 +217,6 @@ const pattern = (count = 7, time, color) => {
 }
 
 sketch.draw((time) => {
-  audio.capture.energy.compute();
-
   background(0);
 
   // pattern(
