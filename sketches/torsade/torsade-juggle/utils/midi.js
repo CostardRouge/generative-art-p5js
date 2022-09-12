@@ -38,8 +38,8 @@ const midi = {
 
             midi.monitoring[ identifier ].history[ noteHistory.length -1 ] = identifier;
             midi.monitoring[ identifier ].on = true;
-            midi.monitoring[ identifier ].smooth = 1;
-      // midi.monitoring[identifier].smooth = lerp( midi.monitoring[identifier].smooth ?? 1, 1, 0.9 );
+            // midi.monitoring[ identifier ].smooth = 1;
+            midi.monitoring[identifier ].smooth = lerp( midi.monitoring[identifier].smooth ?? 1, 1, 0.067 );
 
 
             // console.log( "on", e.note.identifier )
@@ -55,8 +55,9 @@ const midi = {
             }
 
             midi.monitoring[ identifier ].on = false;
+            midi.monitoring[identifier ].smooth = lerp( midi.monitoring[identifier].smooth ?? 1, 0, 0.067 );
 
-            // console.log( "off", e.note.identifier )
+            console.log( "off", e.note.identifier )
           });
         });
     

@@ -693,6 +693,15 @@
          "path": "sketches/glowing-fish/glowing-fishes-v1"
       }
    },
+   "grid": {
+      "grid-v1-basic": {
+         "meta": {
+            "name": "grid-v1-basic",
+            "folder": "grid"
+         },
+         "path": "sketches/grid/grid-v1-basic"
+      }
+   },
    "midi": {
       "midi-v1-output": {
          "meta": {

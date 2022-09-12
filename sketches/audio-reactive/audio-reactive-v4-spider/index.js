@@ -1,4 +1,4 @@
-import { canvas, sketch, converters, audio, animation, string, mappers, iterators, options, easing } from './utils/index.js';
+import { events, sketch, converters, audio, animation, colors, midi, mappers, iterators, options, easing } from './utils/index.js';
 
 options.add( [
   {
@@ -78,83 +78,66 @@ options.add( [
       pixilatedCanvas.pixelDensity(value); 
     }
   },
+  {
+    id: "audio-reactive-midi",
+    type: 'switch',
+    label: 'Use MIDI',
+    defaultValue: false,
+    category: 'Audio reactive'
+  },
 ] );
 
-let name = ""
 let margin = 200
 let pixilatedCanvas;
 
-sketch.setup( () => {
-  audio.capture.setup();
-
-  pixilatedCanvas = createGraphics(
-    canvas.main.width,
-    canvas.main.height
-  );
-  pixilatedCanvas.pixelDensity(options.get("background-pixel-density"));
+events.register("post-setup", () => {
+  audio.capture.setup()
+  midi.setup()
 });
+sketch.setup();
 
-const drawRadialPattern = (count = 7, time, givenCanvas) => {
+const drawRadialPattern = (time, givenCanvas) => {
   givenCanvas.translate(width / 2, height / 2);
 
   const center = createVector( 0, 0 );
   const size = (width + height)/6.5;
-  const hueSpeed = time;
-  const functionChangeSpeed = time;
-  const easingFunctions = Object.entries( easing );
+  const hueSpeed = -time*5
 
-  // string.write("easing", 0, -size-64, {
-  //   // showBox: true,
-  //   center: true,
-  //   size: 255,
-  //   stroke: 255,
-  //   strokeWeight: 10,
-  //   fill: 0,
-  //   font: string.fonts.sans
-  // })
+  let count = 16//Object.keys( audio.capture.ranges ).length || 16;
 
-  iterators.angle(0, TAU, TAU / 16, (angle, index) => {
+  if (options.get("audio-reactive-midi")) {
+    count = Object.keys( midi.monitoring).length;
+  }
+
+  iterators.angle(0, TAU, TAU / count, (angle, index) => {
     const edge = converters.polar.vector(
       angle+time/3,//*cos(time/2)+sin(time/2),
       size,
       size
     );
 
-    name = "ease-----" //easingFunctionName;
+    let b = map(audio.capture.energy.byCircularIndex( index ), 0, 0.5, 0.5, audio.capture.energy.average()*2 )
 
-    const a = map(cos(-time*2+index), -1, 1, 0.5, 3)
-    const b = map(audio.capture.energy.byCircularIndex( index ), 0, 0.5, 0.5, 3)
-    const edgeLimit = map(sin(index), -1, 1, 1, a)
+    if (options.get("audio-reactive-midi")) {
+      b = map(midi.byCircularIndex( index, "smooth" ), 0, 1, 0.5, 1)
+    }
+
     const extendedEdge = p5.Vector.lerp(center, edge, b);
 
-    // const b = map(sin(time/2+index), -1, 1, 0.5, 1)
-    // const rr = p5.Vector.lerp(center, edge, b);
-
     iterators.vector(center, extendedEdge, 1 / 200, (vector, lerpIndex) => {
-      const [ easingFunctionName, easingFunction ] = mappers.circularIndex( functionChangeSpeed+angle/20-lerpIndex*2*cos(time), easingFunctions);
+      givenCanvas.stroke( colors.rainbow({
+        hueIndex: angle+lerpIndex*10,
+        hueOffset: hueSpeed,
+        opacityFactor: 1.5
+      }) );
 
-      const hueIndex = angle+lerpIndex*10;
-      const hueMaximum = 360;
-      const hueMinimum = 0;
+      givenCanvas.stroke( colors.darkBlueYellow({
+        hueIndex: angle+lerpIndex*10,
+        hueOffset: hueSpeed,
+        opacityFactor: 1.5
+      }) );
 
-      const opacityFactor = 1.5;
-      
-      givenCanvas.stroke( color(
-        map(sin(hueSpeed+hueIndex), -1, 1, hueMinimum, hueMaximum) / opacityFactor,
-        map(cos(hueSpeed-hueIndex), -1, 1, hueMinimum, hueMaximum) / opacityFactor,
-        map(sin(hueSpeed+hueIndex), -1, 1, hueMaximum, hueMinimum) / opacityFactor
-      ) );
-
-      // stroke( color(
-      //   mappers.fn(sin(hueSpeed+hueIndex), -1, 1, hueMinimum, hueMaximum, easingFunction) / opacityFactor,
-      //   mappers.fn(cos(hueSpeed-hueIndex), -1, 1, hueMinimum, hueMaximum, easingFunction) / opacityFactor,
-      //   mappers.fn(sin(hueSpeed+hueIndex), -1, 1, hueMaximum, hueMinimum, easingFunction) / opacityFactor,
-      //   map(lerpIndex, 0, 1, 255, 0),
-      // ) );
-
-      givenCanvas.strokeWeight(
-        mappers.fn(lerpIndex, 0, 1, 60, 10 )
-      );
+      givenCanvas.strokeWeight( mappers.fn(lerpIndex, 0, 1, 60, 10 ) );
 
       givenCanvas.point(
         constrain( vector.x, -width/2 + margin, width/2 - margin ),
@@ -162,16 +145,6 @@ const drawRadialPattern = (count = 7, time, givenCanvas) => {
       );
     })
   } )
-
-  // string.write(name, 0, size+64/2 , {
-  //   // showBox: true,
-  //   center: true,
-  //   size: 64,
-  //   stroke: 0,
-  //   strokeWeight: 10,
-  //   fill: 255,
-  //   // font: string.fonts.sans
-  // })
 }
 
 const pattern = (count = 7, time, color) => {
@@ -182,35 +155,22 @@ const pattern = (count = 7, time, color) => {
   stroke(color);
   strokeWeight(options.get("background-lines-weight"));
 
+  const margin2 = margin / 2;
   const center = createVector( 0, 0 );
   const size = (width + height);
 
-  const p = 0.01//options.get("background-lines-precision");
+  const p = options.get("background-lines-precision");
 
   iterators.angle(0, TAU, TAU / count, angle => {
-    const edge = converters.polar.vector( angle, size );
+    const edge = converters.polar.vector( angle-time/5, size );
 
     beginShape();
-
     iterators.vector(edge, center, p, (vector, lerpIndex) => {
-      
-
-      // if (
-      //   (vector.x > 0 && vector.x <= -width/2 + margin) &&
-      //   (vector.y > 0 && vector.y <= -height/2 + margin)
-      // ) {
-      //   vertex(
-      //     vector.x,
-      //     vector.y
-      //   );
-      // }
-
       vertex(
-        constrain( vector.x, -width/2, width/2 - margin ),
-        constrain( vector.y, -height/2 + margin, height/2 - margin )
+        constrain( vector.x, -width/2 + margin2, width/2 - margin2 ),
+        constrain( vector.y, -height/2 + margin2, height/2 - margin2 )
       );
     })
-
     endShape();
   } )
   pop()
@@ -219,11 +179,84 @@ const pattern = (count = 7, time, color) => {
 sketch.draw((time) => {
   background(0);
 
-  // pattern(
-  //   options.get("background-lines-count"),
-  //   time,
-  //   color( 128, 128, 255, 96)
-  // );
+  let bgc = map(sin(time/2), -1, 1, 40, 50, true)
+  bgc = options.get("background-lines-count")
 
-  drawRadialPattern( 70, time, window);
+  push()
+  pattern(
+    bgc,
+    time,
+    lerpColor(
+      color( 0 ),
+      color( 128, 128, 255, 96),
+      // audio.capture.energy.average(),
+      // map(
+      //   audio.capture.energy.average( ),
+      //   0, 0.9, 0.5, 1, true
+      // )
+      map(
+        audio.capture.energy.byIndex(4, "raw"),
+        0.5, 1, 0.1, 1, true
+      )
+      
+    )
+  );
+
+  // console.log(audio.capture.energy.byIndex(1, "raw"));
+
+  drawRadialPattern( time, window);
+  pop()
+
+  const start = createVector( margin, height-120)
+  const end = createVector( width-margin, height-120)
+  const squareSize = 50;
+  const pointColorOffset = -50;
+
+  const rangeNames = Object.keys( audio.capture.ranges );
+  
+  rangeNames.forEach( (rangeName, index) => {
+    const vector = p5.Vector.lerp(start, end, index / rangeNames.length );
+    const energy = audio.capture.energy.byIndex( index, "raw");
+
+    const cc = colors.darkBlueYellow({
+      hueIndex: map(index, 0, rangeNames.length-1, -PI/2, PI/2),
+      opacityFactor: map(energy, 0, 1, 2, 1, true)
+    })
+
+    // fill( cc );
+
+    noStroke()
+    noFill()
+    // strokeCap(SQUARE);
+    // stroke(color( 128, 128, 255, 96))
+    strokeWeight(0)
+    fill(cc)
+    rect( vector.x, vector.y, squareSize, squareSize)
+
+    // fill(color( cc.levels[0] + pointColorOffset, cc.levels[1] + pointColorOffset, cc.levels[2] + pointColorOffset))
+
+    const y = map(energy, 0, 1, squareSize, 0)
+
+    // circle(
+    //   vector.x + squareSize / 2,
+    //   vector.y + y,
+    //   squareSize-5
+    // )
+
+    strokeWeight(20)
+
+    stroke(color( cc.levels[0] + pointColorOffset, cc.levels[1] + pointColorOffset, cc.levels[2] + pointColorOffset))
+    point(
+      vector.x + squareSize / 2,
+      vector.y + y
+    )
+
+    // line(
+    //   vector.x,
+    //   vector.y + y,
+    //   vector.x + 50,
+    //   vector.y + y
+    // )
+  })
+
 });

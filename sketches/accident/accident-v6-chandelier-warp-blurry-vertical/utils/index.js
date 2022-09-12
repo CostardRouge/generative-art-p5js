@@ -1,4 +1,5 @@
 import midi from './midi.js';
+import grid from './grid.js';
 import time from './time.js';
 import audio from './audio.js';
 import debug from './debug.js';
@@ -20,13 +21,13 @@ const shapes = [];
 // midi.on("C3", console.log)
 // midi.map("C", 3, 5, 10, 9)
 
-// grid
 // shapes instances
 // canvases instances
 // relative coordinates
 
 export {
   midi,
+  grid,
   time,
   audio,
   debug,

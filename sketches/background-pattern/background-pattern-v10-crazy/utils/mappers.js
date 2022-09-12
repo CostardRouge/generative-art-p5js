@@ -6,8 +6,7 @@ const mappers = {
     return map( fn(map(value, min, max, 0, 1)), 0, 1, start, end, true)
   },
   circularIndex: function (index, values) {
-    const valuesIndex = round(abs(index) % values.length);
-    return values[valuesIndex];
+    return values[floor(abs(index)) % values.length];
   },
   circularValueOn: function (index, values, scale = values.length - 1) {
     return values[ceil(circularMap(index, scale, 0, values.length - 1))];

@@ -26,12 +26,7 @@
       document.title = pathnameParts[pathnameParts.length - 1];
 
       // open graph title
-      document.querySelector("meta[property='og:title']").setAttribute("content", document.title);
-
-       // hide ui in preview mode
-      if (location.search.includes("preview")) {
-        document.querySelector("body").classList.add("preview");
-      }
+      document.querySelector("meta[property='og:title']").setAttribute("content", document.title)
     
       // open graph images urls
       const previewURL = gitHubPagesPathHack([...pathnameParts.splice(1), "screenshot.jpeg"].join("/"));
@@ -61,6 +56,12 @@
     <div id="sketch-ui-drawer"></div>
     <span id="sketch-ui-icon"></span>
     <script defer type="module" src="index.js"></script>
+
+    <script>
+      // hide ui in preview mode
+      if (location.search.includes("preview")) {
+        document.querySelector("body").classList.add("preview");
+      }
     </script>
   </body>
 </html>

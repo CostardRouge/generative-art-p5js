@@ -53,7 +53,7 @@ const ranges = {
   },
   presence: {
     frequencies: [4000, 6000],
-    threshold: 0.0,
+    threshold: 0.05,
     amplifier: 1,
     raw: undefined,
     smooth: 0,
@@ -77,9 +77,10 @@ const rangeNames = Object.keys( ranges );
 
 const audio = {
   capture: {
+    ranges,
     audioIn: undefined,
     fft: undefined,
-    smoothness: 0.5,
+    smoothness: 0.67,
     bins: 2048,
     setup: (smoothness = audio.capture.smoothness, bins = audio.capture.bins) => {
       audio.capture.audioIn = new p5.AudioIn();
@@ -98,6 +99,11 @@ const audio = {
       events.register("pre-draw", audio.capture.energy.compute );
     },
     energy: {
+      average: (attribute = "raw") => {
+        return rangeNames.reduce( (average, rangeName, _, {length}) => {
+          return average + (ranges[rangeName][attribute] / length)
+        }, 0);
+      },
       byIndex: (index, attribute = "smooth") => (
         ranges[rangeNames[ index ]]?.[attribute] 
       ),
@@ -116,10 +122,7 @@ const audio = {
       
         for (const rangeName in ranges) {
           const range = ranges[rangeName];
-      
-          // range.amplifier = options.get(`audio-reactive-${rangeName}-amplifier`);
-          // range.threshold = options.get(`audio-reactive-${rangeName}-threshold`);
-      
+
           range.raw = audio.capture.fft.getEnergy( ...range.frequencies ) / 255;
           range.corrected = range.raw * range.amplifier;
 
@@ -130,17 +133,21 @@ const audio = {
           //   index: rangeNames.indexOf( rangeName )
           // });
       
-          if ( range.raw >= range.threshold) {
+          if ( range.corrected >= range.threshold ) {
             range.smooth = lerp( range.smooth, range.corrected, 0.67 );
-            range.smooth = range.corrected;
+            // range.smooth = range.corrected;
 
             const currentTime = millis();
 
             if ( currentTime > ( range.countDeltaTime + 500) ) {
-              range.count = range.count + 1;
+              range.count += 1;
               range.countDeltaTime = millis();
             }
           }
+
+          // if ( range.raw <= 0.2) {
+          //   range.smooth = lerp( range.smooth, 0, 0.67 );
+          // }
       
           range.smooth = lerp( range.smooth, 0, 0.067 );
         }
@@ -150,7 +157,7 @@ const audio = {
           return;
         }
       
-        if (true === waveform ) {
+        if ( true === waveform ) {
           const wf = audio.capture.fft.waveform();
           const w = width / audio.capture.bins;
       
