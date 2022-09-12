@@ -8,10 +8,10 @@ sketch.draw(time => {
   let x = map(mouseX, 0, width, 20, width -20);
   let y = height / 2;
 
-const rollingTime = constrain(time/2 % 1, 0, 1);
+const rollingTime = time/2 % 1
 
 const easingFunctions = Object.entries( easing );
-const [ easingFunctionName, easingFunction ] = mappers.circularIndex( time /2, easingFunctions);
+const [ easingFunctionName, easingFunction ] = mappers.circularIndex( time/2 , easingFunctions);
 
 string.write(easingFunctionName, 100, 30)
 
@@ -19,18 +19,14 @@ print({
   easingFunctionName
 })
 
-const e = easingFunction( rollingTime );
-
-const eToAngle = map(e, 0, 1, 0, TAU)
-
-console.log({rollingTime, e})
+const angle = easingFunction( rollingTime ) * TAU
 
   x = map(sin(time), -1, 1, 20, width - 20)
-  x = width * e
-  y = height * e
 
-  x = width/2 + width/4 * cos(eToAngle)
-  y = width/2 + width/4 * sin(eToAngle)
+
+
+  x = width/2 + width/4 * cos(angle)
+  y = width/2 + width/4 * sin(angle)
   //x = map(rollingTime, 0, 1, 20, width - 20)
   //print(x, e, width)
   //y = map(cos(time), -1, 1, 20, width - 20)

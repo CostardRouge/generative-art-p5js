@@ -1,4 +1,4 @@
-const { writeFileSync, promises } = require("fs");
+const { writeFileSync, statFileSync, promises } = require("fs");
 const { resolve } = require("path");
 const { readdir } = promises;
 
@@ -23,6 +23,8 @@ const output = process.argv[3];
     const parts = filePath.split("/");
     const name = parts[parts.length - 2];
     const folder = parts[parts.length - 3];
+
+    console.log(filePath);
 
     tree = {
       ...tree,

@@ -124,8 +124,8 @@ const drawRadialPattern = (count = 7, time, givenCanvas) => {
     // const rr = p5.Vector.lerp(center, edge, b);
 
     iterators.vector(center, extendedEdge, 1 / 200, (vector, lerpIndex) => {
-      const [ easingFunctionName, easingFunction ] = mappers.circularIndex( functionChangeSpeed+angle/20-lerpIndex*2*cos(time), easingFunctions);
-
+      const [ easingFunctionName, easingFunction ] = mappers.circularIndex( functionChangeSpeed+angle/20+lerpIndex*2*cos(time), easingFunctions);
+      
       const hueIndex = angle+lerpIndex*10;
       const hueMaximum = 360;
       const hueMinimum = 0;
@@ -178,15 +178,15 @@ const pattern = (count = 7, time, color) => {
   const center = animation.sequence(
     "bg-center-position",
     // time, 
-    audio.capture.energy.byIndex( 4, "count" ),
+    audio.capture.energy.byName( rangeName, "count" ),
     // 0,
     [
       createVector( -width / 4, -height / 4 ),
       createVector( width / 4, -height / 4 ),
-      createVector( 0, 0 ),
+      // createVector( 0, 0 ),
       createVector( width / 4, height / 4 ),
       createVector( -width / 4, height / 4 ),
-      createVector( 0, 0 )
+      // createVector( 0, 0 )
     ],
     0.67,
     p5.Vector.lerp
@@ -227,6 +227,8 @@ const pattern = (count = 7, time, color) => {
   pop()
 }
 
+const rangeName = "upperMid";
+
 sketch.draw((time) => {
   background(0);
 
@@ -234,7 +236,7 @@ sketch.draw((time) => {
     lerpColor(
       color(0),
       color(128),
-      audio.capture.energy.byCircularIndex( 4 )
+      audio.capture.energy.byName( rangeName )
       // audio.capture.energy.byIndex( 4, "count" )
     )
   );
@@ -247,7 +249,7 @@ sketch.draw((time) => {
     color( 128, 128, 255, 96)
   );
 
-  // drawRadialPattern( 70, time, window);
+  drawRadialPattern( 70, time, window);
 
-  console.log(">>", audio.capture.energy.byCircularIndex( 4, "count" ))
+  console.log(">>", audio.capture.energy.byName( rangeName , "count" ))
 });

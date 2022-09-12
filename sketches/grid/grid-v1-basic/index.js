@@ -1,4 +1,4 @@
-import { events, sketch, converters, audio, animation, colors, midi, mappers, iterators, options, easing } from './utils/index.js';
+import { events, sketch, converters, audio, grid, colors, midi, mappers, iterators, options, easing } from './utils/index.js';
 
 options.add( [
   {
@@ -96,6 +96,8 @@ events.register("post-setup", () => {
 });
 sketch.setup();
 
+let t = 0;
+
 const drawRadialPattern = (time, givenCanvas) => {
   givenCanvas.translate(width / 2, height / 2);
 
@@ -109,14 +111,16 @@ const drawRadialPattern = (time, givenCanvas) => {
     count = Object.keys( midi.monitoring).length;
   }
 
+  t += audio.capture.energy.average("smooth")/12; 
+
   iterators.angle(0, TAU, TAU / count, (angle, index) => {
     const edge = converters.polar.vector(
-      angle+time/3,//*cos(time/2)+sin(time/2),
+      angle+t,//*cos(time/2)+sin(time/2),
       size,
       size
     );
 
-    let b = map(audio.capture.energy.byCircularIndex( index ), 0, 0.5, 0.5, audio.capture.energy.average()*2 )
+    let b = map(audio.capture.energy.byCircularIndex( index ), 0, 1, 0.5, audio.capture.energy.average()*2 )
 
     if (options.get("audio-reactive-midi")) {
       b = map(midi.byCircularIndex( index, "smooth" ), 0, 1, 0.5, 1)
@@ -159,7 +163,8 @@ const pattern = (count = 7, time, color) => {
   const center = createVector( 0, 0 );
   const size = (width + height);
 
-  const p = options.get("background-lines-precision");
+  const p = options.get("background-lines-precision"); // 0.9-0.5-0.1
+
 
   iterators.angle(0, TAU, TAU / count, angle => {
     const edge = converters.polar.vector( angle-time/5, size );
@@ -179,13 +184,32 @@ const pattern = (count = 7, time, color) => {
 sketch.draw((time) => {
   background(0);
 
+
+  const gridOptions = {
+    startLeft: createVector( 0, 0 ),
+    startRight: createVector( width, 0 ),
+    endLeft: createVector( 0, height ),
+    endRight: createVector( width, height ),
+    rows: 5,
+    cols: 3
+  }
+
+  grid.draw(gridOptions, cellVector => {
+    strokeWeight(5);
+    stroke(255);
+    point( cellVector.x, cellVector.y );
+  })
+
+
+  return;
+
   let bgc = map(sin(time/2), -1, 1, 40, 50, true)
   bgc = options.get("background-lines-count")
 
   push()
   pattern(
     bgc,
-    time,
+    t,
     lerpColor(
       color( 0 ),
       color( 128, 128, 255, 96),
@@ -259,4 +283,5 @@ sketch.draw((time) => {
     // )
   })
 
+ 
 });
