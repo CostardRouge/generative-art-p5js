@@ -700,6 +700,13 @@
             "folder": "grid"
          },
          "path": "sketches/grid/grid-v1-basic"
+      },
+      "grid-v2-field": {
+         "meta": {
+            "name": "grid-v2-field",
+            "folder": "grid"
+         },
+         "path": "sketches/grid/grid-v2-field"
       }
    },
    "midi": {

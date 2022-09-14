@@ -119,7 +119,7 @@ const drawRadialPattern = (time, givenCanvas) => {
     let b = map(audio.capture.energy.byCircularIndex( index ), 0, 0.5, 0.5, audio.capture.energy.average()*2 )
 
     if (options.get("audio-reactive-midi")) {
-      b = map(midi.byCircularIndex( index, "smooth" ), 0, 1, 0.5, 1)
+      b = map(midi.byCircularIndex( index, "smooth" ), 0, 1, 0.3, 1)
     }
 
     const extendedEdge = p5.Vector.lerp(center, edge, b);

@@ -38,8 +38,8 @@ const midi = {
 
             midi.monitoring[ identifier ].history[ noteHistory.length -1 ] = identifier;
             midi.monitoring[ identifier ].on = true;
-            // midi.monitoring[ identifier ].smooth = 1;
-            midi.monitoring[identifier ].smooth = lerp( midi.monitoring[identifier].smooth ?? 1, 1, 0.067 );
+            midi.monitoring[ identifier ].smooth = 1;
+            // midi.monitoring[identifier ].smooth = lerp( midi.monitoring[identifier].smooth ?? 1, 1, 0.067 );
 
 
             // console.log( "on", e.note.identifier )
