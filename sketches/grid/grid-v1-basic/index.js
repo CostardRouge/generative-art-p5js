@@ -20,6 +20,13 @@ options.add( [
     category: 'Grid'
   },
   {
+    id: "grid-cell-centered",
+    type: 'switch',
+    label: 'Centered cell',
+    defaultValue: true,
+    category: 'Grid'
+  },
+  {
     id: "grid-multiply-over-time",
     type: 'switch',
     label: 'Multiply size over time',
@@ -71,7 +78,7 @@ sketch.draw((time) => {
     endRight: createVector( width, height ),
     rows,
     cols,
-    // centered: 0
+    centered: options.get("grid-cell-centered")
   }
 
   const z = frameCount/300//mappers.fn(sin(time), -1, 1, 3, 3.5)

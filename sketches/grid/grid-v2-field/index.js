@@ -1,4 +1,4 @@
-import { events, sketch, converters, audio, grid, colors, midi, mappers, iterators, options, easing } from './utils/index.js';
+import { events, sketch, converters, audio, grid, animation, colors, midi, mappers, iterators, options, easing } from './utils/index.js';
 
 options.add( [
   {
@@ -17,6 +17,13 @@ options.add( [
     min: 1,
     max: 40,
     defaultValue: 9,
+    category: 'Grid'
+  },
+  {
+    id: "grid-cell-centered",
+    type: 'switch',
+    label: 'Centered cell',
+    defaultValue: true,
     category: 'Grid'
   },
   {
@@ -44,57 +51,11 @@ options.add( [
     defaultValue: 4,
     category: 'Grid'
   },
-  {
-    id: "opacity-group-count",
-    type: 'slider',
-    label: 'Opacity group count',
-    min: 1,
-    max: 20,
-    defaultValue: 10,
-    category: 'Opacity'
-  },
-  {
-    id: "start-opacity-factor",
-    type: 'slider',
-    label: 'Start opacity (reduction factor)',
-    min: 1,
-    max: 50,
-    defaultValue: 3,
-    category: 'Opacity'
-  },
-  {
-    id: "end-opacity-factor",
-    type: 'slider',
-    label: 'End opacity (reduction factor)',
-    min: 1,
-    max: 50,
-    defaultValue: 1,
-    category: 'Opacity'
-  },
-
-  {
-    id: "background-lines-count",
-    type: 'slider',
-    min: 1,
-    max: 1000,
-    label: 'Lines count',
-    defaultValue: 70,
-    category: 'Background'
-  },
-  {
-    id: "background-lines-weight",
-    type: 'slider',
-    min: 1,
-    max: 25,
-    label: 'Lines weight',
-    defaultValue: 4,
-    category: 'Background'
-  },
 ] );
 
 sketch.setup();
 
-let min = 999, max =0;
+let min = Math.PI, max =Math.PI;
 
 sketch.draw((time) => {
   background(0);
@@ -117,22 +78,19 @@ sketch.draw((time) => {
     endRight: createVector( width, height ),
     rows,
     cols,
-    // centered: 0
+    centered: options.get("grid-cell-centered")
   }
-
   const z = frameCount/300//mappers.fn(sin(time), -1, 1, 3, 3.5)
   const scale = (width / cols);
 
   // noiseDetail(2, 4, 1);
-
+  // noiseSeed()
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
     const angle = noise(x/cols, y/rows+time/5, z) * (TAU*4);
     const vector = p5.Vector.fromAngle(angle);
-    let cellScale = map(sin(x/10+y/10+time), -1, 1, scale, scale*2 )
-
-    cellScale = map(angle, min, max, scale, scale*4, true  )
-    const weight = map(angle, min, max, 1, 20, true )
+    const cellScale = map(angle, min, max, scale, scale*4, true  )
+    const weight = 20//map(angle, min, max, 1, 20, true )
 
     min = Math.min(min, angle);
     max = Math.max(max, angle);
@@ -142,7 +100,10 @@ sketch.draw((time) => {
     stroke(colors.rainbow({
       hueOffset: 0,
       hueIndex: map(angle, min, TAU, -PI/2, PI/2 ),
-      opacityFactor: 1.5
+      opacityFactor: 1.5,
+      opacityFactor: map(angle, min, max, 2, 1 ),
+      // min: map(angle, min, max, 360, 0, true ),
+      // max: map(angle, min, max, 225, 360, true )
     }))
 
     push();
