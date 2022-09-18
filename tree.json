@@ -555,6 +555,13 @@
          },
          "path": "sketches/easing/easing-v2-functions"
       },
+      "easing-v2-functions copy": {
+         "meta": {
+            "name": "easing-v2-functions copy",
+            "folder": "easing"
+         },
+         "path": "sketches/easing/easing-v2-functions copy"
+      },
       "easing-v3-warp-a": {
          "meta": {
             "name": "easing-v3-warp-a",
@@ -700,6 +707,20 @@
             "folder": "grid"
          },
          "path": "sketches/grid/grid-v1-basic"
+      },
+      "grid-v1-basic-with-easing": {
+         "meta": {
+            "name": "grid-v1-basic-with-easing",
+            "folder": "grid"
+         },
+         "path": "sketches/grid/grid-v1-basic-with-easing"
+      },
+      "grid-v1-basic-with-holes": {
+         "meta": {
+            "name": "grid-v1-basic-with-holes",
+            "folder": "grid"
+         },
+         "path": "sketches/grid/grid-v1-basic-with-holes"
       },
       "grid-v2-field": {
          "meta": {

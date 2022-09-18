@@ -7,7 +7,7 @@ options.add( [
     label: 'Rows',
     min: 1,
     max: 40,
-    defaultValue: 16,
+    defaultValue: 40,
     category: 'Grid'
   },
   {
@@ -16,7 +16,7 @@ options.add( [
     label: 'Rows',
     min: 1,
     max: 40,
-    defaultValue: 9,
+    defaultValue: 40,
     category: 'Grid'
   },
   {
@@ -30,7 +30,7 @@ options.add( [
     id: "grid-multiply-over-time",
     type: 'switch',
     label: 'Multiply size over time',
-    defaultValue: true,
+    defaultValue: false,
     category: 'Grid'
   },
   {
@@ -87,30 +87,63 @@ sketch.draw((time) => {
   // noiseSeed()
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const angle = noise(x/cols, y/rows+time/5, z) * (TAU*4);
-    const vector = p5.Vector.fromAngle(angle);
-    const cellScale = map(angle, min, max, scale, scale*4, true  )
-    const weight = 20//map(angle, min, max, 1, 20, true )
+    const angle = noise(x/cols, y/rows+time/8, z) * (TAU*4);
+    // const vector = p5.Vector.fromAngle(angle);
+    const cellScale = map(angle, min, max, scale, scale*4, true )
+    const weight = 20
+    0//map(angle, min, max, 1, 20, true )
 
     min = Math.min(min, angle);
     max = Math.max(max, angle);
 
-    strokeWeight(weight);
-    stroke(255);
+  
+
+    push();
+    translate( cellVector.x, cellVector.y );
+    // point( 0, 0);
+
+    noFill()
+    strokeWeight(1)
+    stroke('red')
+    circle(0, 0, scale)
+
+    // push()
+
+    strokeWeight(10);
     stroke(colors.rainbow({
       hueOffset: 0,
       hueIndex: map(angle, min, TAU, -PI/2, PI/2 ),
       opacityFactor: 1.5,
-      opacityFactor: map(angle, min, max, 2, 1 ),
-      // min: map(angle, min, max, 360, 0, true ),
-      // max: map(angle, min, max, 225, 360, true )
+      opacityFactor: map(angle, min, max, 3, 1 )
     }))
 
-    push();
-    translate( cellVector.x, cellVector.y );
-    rotate(vector.heading())
-    point( 0, 0);
-    line( 0, 0, cellScale, 0);
+    // beginShape(LINES)
+    iterators.vector(
+      createVector(0, 0),
+      createVector(cellScale, 0),
+      1/2, (position, index) => {
+        translate(position.x, position.y)
+
+        const _angle = noise((position.x)/cols, (position.y)/rows+time/8, z) * (PI);
+        const vector = p5.Vector.fromAngle(_angle)//.limit(35)
+
+        rotate(vector.heading())
+
+        point(0, 0)
+
+
+        // vector.mult(createVector(0, 0), 1)
+
+        // point(position.x, position.y)
+
+        // vertex(0, 0)
+      }
+    )
+
+    // endShape(CLOSE)
+    // line( 0, 0, cellScale, 0);
+    // pop()
+
     pop();
   })
 
