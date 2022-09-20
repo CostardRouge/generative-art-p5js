@@ -83,7 +83,6 @@ options.add( [
 let vectors = []
 
 sketch.setup( () => {
-  // audio.capture.setup();
 
   vectors.push(
     createVector( width / 2, 200 ),
@@ -94,7 +93,6 @@ sketch.setup( () => {
 
 
 sketch.draw((time) => {
-  // audio.capture.energy.compute();
 
   background(0);
 

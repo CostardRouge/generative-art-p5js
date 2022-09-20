@@ -555,12 +555,12 @@
          },
          "path": "sketches/easing/easing-v2-functions"
       },
-      "easing-v2-functions copy": {
+      "easing-v2-functions-with-grid": {
          "meta": {
-            "name": "easing-v2-functions copy",
+            "name": "easing-v2-functions-with-grid",
             "folder": "easing"
          },
-         "path": "sketches/easing/easing-v2-functions copy"
+         "path": "sketches/easing/easing-v2-functions-with-grid"
       },
       "easing-v3-warp-a": {
          "meta": {
@@ -708,6 +708,13 @@
          },
          "path": "sketches/grid/grid-v1-basic"
       },
+      "grid-v1-basic-with-audio-reaction": {
+         "meta": {
+            "name": "grid-v1-basic-with-audio-reaction",
+            "folder": "grid"
+         },
+         "path": "sketches/grid/grid-v1-basic-with-audio-reaction"
+      },
       "grid-v1-basic-with-easing": {
          "meta": {
             "name": "grid-v1-basic-with-easing",
@@ -728,6 +735,13 @@
             "folder": "grid"
          },
          "path": "sketches/grid/grid-v2-field"
+      },
+      "grid-v2-field-with-dist-check": {
+         "meta": {
+            "name": "grid-v2-field-with-dist-check",
+            "folder": "grid"
+         },
+         "path": "sketches/grid/grid-v2-field-with-dist-check"
       }
    },
    "midi": {

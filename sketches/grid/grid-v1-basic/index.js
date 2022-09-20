@@ -98,7 +98,7 @@ sketch.draw((time) => {
       hueOffset: 0,
       hueIndex: map(angle, min, TAU, -PI/2, PI/2 ),
       opacityFactor: 1.5,
-      opacityFactor: map(angle, min, max, 3, 1 )
+      opacityFactor: map(angle, min, max, 3, 1 ),
     }))
 
     push();

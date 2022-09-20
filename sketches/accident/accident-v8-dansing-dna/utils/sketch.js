@@ -45,7 +45,9 @@ const sketch = {
       let t = time.seconds() * options.get("time-speed");
       //t = (frameCount-1)/options.get("framerate");
 
-      draw?.(t * options.get("time-speed") );
+      const center = createVector(width / 2, height / 2);
+
+      draw?.(t * options.get("time-speed"), center);
     };
   },
 };
