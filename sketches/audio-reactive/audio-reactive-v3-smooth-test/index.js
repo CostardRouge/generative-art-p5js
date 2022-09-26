@@ -306,6 +306,6 @@ sketch.draw((time) => {
 
   pop();
 
-  audio.capture.energy.compute();
+  audio.capture.energy.monitor();
   audio.capture.energy.draw(true, false);
 });

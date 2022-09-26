@@ -219,7 +219,7 @@ const drawRadialPattern = (count = 7, time, color) => {
 
   iterators.angle(0, TAU, TAU / count, angle => {
     const edge = converters.polar.vector(
-      angle + time,
+      angle + time/4,
       // size * abs(sin(time + angle*5)),
 
       // size * (sin(time + angle*5) + 2) * cos(time),
@@ -285,24 +285,30 @@ sketch.draw((time) => {
   const size = (width + height)/10;
   const p = 0.01;
 
-  const c = 44//map(sin(time), -1, 1, 10, 44)
+  const c = 20//map(sin(time), -1, 1, 10, 44)
+
+  const functionChangeSpeed = time;
+  const easingFunctions = Object.entries( easing );
 
   iterators.angle(0, TAU, TAU / c, angle => {
     const edge = converters.polar.vector(
-      angle + time/4,
+      angle - time/4,
       size
     );
 
     const movingPart = p5.Vector.lerp(
       edge,
       center,
-      // easing.easeInOutElastic(map(cos(time-angle), -1, 1, 0, 1)),
-      easing.easeInBounce(map(cos(time+angle), -1, 1, 0, 1)),
-      // map(cos(time+angle), -1, 1, 0, 0.5),
-      // constrain((sin(angle-time)), -0.5, 0.8)
+      // easing.easeInOutElastic(map(cos(time-angle), -1, 1, 0.2, 1)),
+      // easing.easeInBounce(map(sin(time+angle), -1, 1, 0, 1)),
+      map(cos(time+angle), -1, 1, 0.5, 1),
+      // constrain((sin(angle-time)), -0.5, 1)//3*cos(time)
+      // noise(angle, time)
     );
 
     iterators.vector(edge, movingPart, p, (vector, vectorIndex) => {
+      const [ easingFunctionName, easingFunction ] = mappers.circularIndex( functionChangeSpeed+angle/5, easingFunctions);
+
       const opacityFactor = mappers.circularMap(
         map(sin(-time+vectorIndex+angle), -1, 1, 0, 1),
         1,
@@ -320,7 +326,8 @@ sketch.draw((time) => {
         map(sin(hueSpeed+hueIndex), -1, 1, 360, 0) / opacityFactor,
       )
 
-      strokeWeight(40);
+      // strokeWeight(40);
+      strokeWeight(mappers.fn(vectorIndex, 0, 1, 70, 3, easingFunction));
       point( vector.x, vector.y );
     })
 

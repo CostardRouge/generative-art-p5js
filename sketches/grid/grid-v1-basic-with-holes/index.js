@@ -84,12 +84,17 @@ sketch.draw((time) => {
   const z = frameCount/300//mappers.fn(sin(time), -1, 1, 3, 3.5)
   const scale = (width / cols);
 
-  // noiseDetail(2, 1, 2) 
+  // noiseDetail(2, 4, 1);
+  noFill();
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const angle = noise(x/cols, y/rows+time/5, z) * (TAU*4);
+    push();
+    translate( cellVector.x, cellVector.y );
 
-    let weight = map(angle, min, TAU, 1, 20, true );
+    const angle = noise(x/cols, y/rows+time/5, z) * (TAU*4);
+    // const vector = p5.Vector.fromAngle(angle);
+
+    const weight = map(angle, min, TAU, 1, 20, true );
 
     min = Math.min(min, angle);
     max = Math.max(max, angle);
@@ -98,22 +103,30 @@ sketch.draw((time) => {
       hueOffset: 0,
       hueIndex: map(angle, min, TAU, -PI/2, PI/2 ),
       opacityFactor: 1.5,
-      opacityFactor: map(angle, min, max, 3, 1 ),
+      opacityFactor: map(angle, min, max, 3, 1 )
     }))
 
-    push();
-    translate( cellVector.x, cellVector.y );
-
-
-    strokeWeight(weight);
-
     translate(scale * sin(angle), scale * cos(angle) )
-    point( 0, 0);
 
+    if(angle > max/2) {
+      strokeWeight(weight);
+      point( 0, 0);
+    }
+    else {
+      stroke(colors.darkBlueYellow({
+        hueOffset: 0,
+        hueIndex: map(angle, min, TAU, -PI/2, PI/2 ),
+        // opacityFactor: 1.5,
+        opacityFactor: map(angle, min, max, 3, 1 )
+      }))
+
+      strokeWeight(1)
+      circle(0, 0, weight)
+    }
     pop();
   })
 
-  // console.log({
-  //   max, min
-  // });
+  console.log({
+    max, min
+  });
 });

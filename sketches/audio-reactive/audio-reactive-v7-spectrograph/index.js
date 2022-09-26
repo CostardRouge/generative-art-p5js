@@ -1,4 +1,4 @@
-import { events, sketch, converters, audio, grid, colors, midi, mappers, iterators, options, easing } from './utils/index.js';
+import { events, sketch, converters, animation, audio, grid, colors, midi, mappers, iterators, options, easing } from './utils/index.js';
 
 options.add( [
   {
@@ -6,16 +6,16 @@ options.add( [
     type: 'slider',
     label: 'Rows',
     min: 1,
-    max: 70,
+    max: 100,
     defaultValue: 40,
     category: 'Grid'
   },
   {
     id: "grid-cols",
     type: 'slider',
-    label: 'Rows',
+    label: 'Cols',
     min: 1,
-    max: 70,
+    max: 100,
     defaultValue: 40,
     category: 'Grid'
   },
@@ -53,14 +53,21 @@ options.add( [
   },
 ] );
 
+events.register("post-setup", () => {
+  audio.capture.setup(0, 64)
+  events.register("post-draw", audio.capture.energy.recordHistory );
+  // midi.setup()
+});
 sketch.setup();
 
 let min = Math.PI, max =0;
+let musicActivity = 0;
+let bassActivity = 0;
 
 sketch.draw((time) => {
   background(0);
 
-  const n = options.get("grid-multiply-over-time") ? mappers.fn(
+  let n = options.get("grid-multiply-over-time") ? mappers.fn(
     sin(time/2),
     -1,
     1,
@@ -68,6 +75,16 @@ sketch.draw((time) => {
     options.get("grid-multiply-over-time-max"),
     easing.easeInBounce
     ) : 1;
+
+  // nrj = audio.capture.energy.average()
+
+  // n = animation.sequence(
+  //   "grid-cell-n",
+  //   audio.capture.energy.byIndex( 1, "count"),
+  //   [ 0.75, 1, 1.25 ],
+  //   0.67
+  // )
+
   const rows = options.get("grid-rows")*n;
   const cols = options.get("grid-cols")*n;
 
@@ -81,39 +98,44 @@ sketch.draw((time) => {
     centered: options.get("grid-cell-centered")
   }
 
-  const z = frameCount/300//mappers.fn(sin(time), -1, 1, 3, 3.5)
   const scale = (width / cols);
 
-  // noiseDetail(2, 1, 2) 
+  noFill();
+
+  const audioEnergyAverage = audio.capture.energy.average("raw");
+  const bassAverage = audio.capture.energy.byIndex(2, "raw");
+
+  musicActivity += map(audioEnergyAverage, 0, 0.5, 0, 0.01, true);
+  bassActivity += map(bassAverage, 0, 1, 0, 0.01, true);
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const angle = noise(x/cols, y/rows+time/5, z) * (TAU*4);
-
-    let weight = map(angle, min, TAU, 1, 20, true );
-
-    min = Math.min(min, angle);
-    max = Math.max(max, angle);
-
-    stroke(colors.rainbow({
-      hueOffset: 0,
-      hueIndex: map(angle, min, TAU, -PI/2, PI/2 ),
-      opacityFactor: 1.5,
-      opacityFactor: map(angle, min, max, 3, 1 ),
-    }))
-
     push();
     translate( cellVector.x, cellVector.y );
 
+    const xx = floor(map(x, 0, cols - 1, 0, audio.capture.bins -1))
+    const yy = floor(map(y, 0, rows - 1, 0, 59))
+
+    const line = audio.capture.history?.spectrum[yy];
+    const lineAvg = (line?.reduce( (average, bin) => average + bin) / line?.length) / 255
+    const energy = map(line?.[xx], 0, 255, 0, 1)
+
+    const weight = map(energy, 0, 1, 1, scale );
+
+    min = Math.min(min, energy);
+    max = Math.max(max, energy);
+
+    stroke(colors.rainbow({
+      hueOffset: 0,
+      hueIndex: map(energy, 0, 1, -PI, PI ),
+      opacityFactor: 1.5,
+      opacityFactor: map(energy, 0, 1, 3, 1 )
+    }))
 
     strokeWeight(weight);
-
-    translate(scale * sin(angle), scale * cos(angle) )
     point( 0, 0);
 
     pop();
   })
 
-  // console.log({
-  //   max, min
-  // });
+  // audio.capture.energy.draw()
 });

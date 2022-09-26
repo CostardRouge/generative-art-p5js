@@ -1,4 +1,4 @@
-const { writeFileSync, statFileSync, promises } = require("fs");
+const { writeFileSync, statSync, promises } = require("fs");
 const { resolve } = require("path");
 const { readdir } = promises;
 
@@ -24,11 +24,13 @@ const output = process.argv[3];
     const name = parts[parts.length - 2];
     const folder = parts[parts.length - 3];
 
-    console.log(filePath);
+    // const folderPath = filePath.replace("/index.html", "");
+    // const { mtime } = statSync(folderPath);
 
     tree = {
       ...tree,
       [folder]: {
+        // _mtime: mtime,
         ...tree[folder],
         [name]: {
           meta: {
@@ -40,7 +42,7 @@ const output = process.argv[3];
       },
     };
   }
-  console.log(tree);
+  // console.log(tree);
 
   writeFileSync(output, JSON.stringify(tree, null, 3));
 })();

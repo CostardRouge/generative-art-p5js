@@ -227,7 +227,7 @@ const pattern = (count = 7, time, color) => {
   pop()
 }
 
-const rangeName = "upperMid";
+const rangeName = "bass";
 
 sketch.draw((time) => {
   background(0);

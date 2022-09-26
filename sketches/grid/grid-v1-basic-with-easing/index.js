@@ -84,12 +84,20 @@ sketch.draw((time) => {
   const z = frameCount/300//mappers.fn(sin(time), -1, 1, 3, 3.5)
   const scale = (width / cols);
 
-  // noiseDetail(2, 1, 2) 
+  noFill();
+
+  const easingFunctions = Object.entries( easing );
+
+  const i = map(mouseX, 0, width, 0, easingFunctions.length)
+  // console.log(i);
+
+  const [ , easingFunction ] = mappers.circularIndex( 24, easingFunctions);
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
     const angle = noise(x/cols, y/rows+time/5, z) * (TAU*4);
 
-    let weight = map(angle, min, TAU, 1, 20, true );
+    let weight = map(angle, min, TAU, 1, 10, true );
+    weight = mappers.fn(angle, min, TAU, 1, 10, easingFunction );
 
     min = Math.min(min, angle);
     max = Math.max(max, angle);
@@ -97,13 +105,14 @@ sketch.draw((time) => {
     stroke(colors.rainbow({
       hueOffset: 0,
       hueIndex: map(angle, min, TAU, -PI/2, PI/2 ),
+      // hueIndex: mappers.fn(angle, min, TAU, -PI/2, PI/2, easingFunction ),
       opacityFactor: 1.5,
-      opacityFactor: map(angle, min, max, 3, 1 ),
+      opacityFactor: map(angle, min, max, 3, 1 )
     }))
 
     push();
     translate( cellVector.x, cellVector.y );
-
+    // circle(0, 0, scale)
 
     strokeWeight(weight);
 
