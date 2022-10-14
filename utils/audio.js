@@ -1,27 +1,27 @@
 import { events } from './index.js';
 
-const MONITORING_BUFFER = 60;
+const HISTORY_BUFFER = 60;
 
 const ranges = {
   subBass: {
     frequencies: [20, 60],
-    threshold: 0.88,
+    threshold: 0.8,
     amplifier: 0.5,
     raw: undefined,
     smooth: 0,
     count: 0,
     countDeltaTime: 0,
-    corrected: undefined,
+    amplified: undefined,
   },
   bass: {
     frequencies: [60, 250],
-    threshold: 0.88,
+    threshold: 0.44,
     amplifier: 0.5,
     raw: undefined,
     smooth: 0,
     count: 0,
     countDeltaTime: 0,
-    corrected: undefined,
+    amplified: undefined,
   },
   lowMid: {
     frequencies: [250, 500],
@@ -31,7 +31,7 @@ const ranges = {
     smooth: 0,
     count: 0,
     countDeltaTime: 0,
-    corrected: undefined,
+    amplified: undefined,
   },
   mid: {
     frequencies: [500, 2000],
@@ -41,17 +41,17 @@ const ranges = {
     smooth: 0,
     count: 0,
     countDeltaTime: 0,
-    corrected: undefined,
+    amplified: undefined,
   },
   upperMid: {
     frequencies: [2000, 4000],
     threshold: 0.3,
-    amplifier: 1,
+    amplifier: 10,
     raw: undefined,
     smooth: 0,
     count: 0,
     countDeltaTime: 0,
-    corrected: undefined,
+    amplified: undefined,
   },
   presence: {
     frequencies: [4000, 6000],
@@ -61,7 +61,7 @@ const ranges = {
     smooth: 0,
     count: 0,
     countDeltaTime: 0,
-    corrected: undefined,
+    amplified: undefined,
   },
   brilliance: {
     frequencies: [6000, 20000],
@@ -71,7 +71,7 @@ const ranges = {
     smooth: 0,
     count: 0,
     countDeltaTime: 0,
-    corrected: undefined
+    amplified: undefined
   }
 };
 
@@ -88,6 +88,9 @@ const audio = {
     setup: (smoothness = audio.capture.smoothness, bins = audio.capture.bins) => {
       userStartAudio();
 
+      audio.capture.smoothness = smoothness ?? audio.capture.smoothness;
+      audio.capture.bins = bins ?? audio.capture.bins;
+
       audio.capture.audioIn = new p5.AudioIn();
       audio.capture.fft = new p5.FFT(smoothness, bins);
   
@@ -103,47 +106,66 @@ const audio = {
     },
     energy: {
       average: (attribute = "raw") => {
-        return rangeNames.reduce( (average, rangeName, _, {length}) => {
-          return average + (ranges[rangeName][attribute] / length)
-        }, 0);
+        const result = (
+          rangeNames.reduce( (average, rangeName, _, {length}) => {
+            return average + (ranges[rangeName][attribute] / length)
+          }, 0)
+        );
+
+        return isNaN(result) ? 0 : result;
       },
       byIndex: (index, attribute = "smooth") => (
-        ranges[rangeNames[ index ]]?.[attribute] 
+        ranges[rangeNames[ index ]]?.[attribute] ?? 0
       ),
       byCircularIndex: (index, attribute = "smooth") => (
-        ranges[rangeNames[ index % rangeNames.length ]]?.[attribute] 
+        ranges[rangeNames[ index % rangeNames.length ]]?.[attribute] ?? 0
       ),
       byName: (name, attribute = "smooth") => (
-        ranges[name]?.[attribute] 
+        ranges[name]?.[attribute] ?? 0
       ),
       recordHistory: () => {
+        if ( false === audio.capture.audioIn?.enabled ) {
+          return;
+        }
+
           if (undefined === audio.capture.history) {
-            audio.capture.history = rangeNames.reduce( (history, rangeName, _, {length}) => {
-              return {
-                ...history,
-                [rangeName]: new Array(MONITORING_BUFFER).fill(undefined)
-              }
-            }, {});
+            audio.capture.history = {
+              spectrum: new Array(HISTORY_BUFFER).fill(undefined),
+              waveform: new Array(HISTORY_BUFFER).fill(undefined),
+              ranges: (
+                rangeNames.reduce( (history, rangeName, _, {length}) => {
+                  return {
+                    ...history,
+                    [rangeName]: new Array(HISTORY_BUFFER).fill(undefined)
+                  }
+                }, {})
+              )
+            }
           }
 
-          // console.log(audio.capture.history);
-      
-          for (const rangeName in audio.capture.history) {
+          // HISTORY FOR SPECTRUM
+          audio.capture.history.spectrum.shift();
+          audio.capture.history.spectrum.push(audio.capture.fft.analyze());
+
+          // HISTORY FOR WAVEFORM
+          audio.capture.history.waveform.shift();
+          audio.capture.history.waveform.push(audio.capture.fft.waveform());
+
+          // HISTORY FOR RANGES
+          for (const rangeName in audio.capture.history.ranges) {
             const range = ranges[rangeName];
-            const rangeHistory = audio.capture.history[rangeName];
+            const rangeHistory = audio.capture.history.ranges[rangeName];
 
             if (undefined === rangeHistory) {
               return;
             }
 
-            audio.capture.history[rangeName][rangeHistory.length - 1 ] = {
+            audio.capture.history.ranges[rangeName].shift();
+            audio.capture.history.ranges[rangeName].push({
               raw: range.raw,
               smooth: range.smooth,
-              corrected: range.corrected,
-            };
-
-            audio.capture.history[rangeName].shift();
-            audio.capture.history[rangeName].push(undefined);
+              amplified: range.amplified,
+            });
           }
       },
       monitor: () => {
@@ -157,7 +179,7 @@ const audio = {
           const range = ranges[rangeName];
 
           range.raw = audio.capture.fft.getEnergy( ...range.frequencies ) / 255;
-          range.corrected = range.raw * range.amplifier;
+          range.amplified = range.raw * range.amplifier;
 
           // console.log({
           //   amp: range.amplifier,
@@ -165,24 +187,25 @@ const audio = {
           //   count: range.count,
           //   index: rangeNames.indexOf( rangeName )
           // });
-      
-          if ( range.corrected >= range.threshold ) {
-            range.smooth = lerp( range.smooth, range.corrected, 0.67 );
-            // range.smooth = range.corrected;
+
+          if ( range.raw >= range.threshold ) {
+            //range.smooth = lerp( range.smooth, range.amplified, 0.67 );
+            range.smooth = range.raw;
+            range.threshold = range.raw;
 
             const currentTime = millis();
 
             if ( currentTime > ( range.countDeltaTime + 500) ) {
               range.count += 1;
-              range.countDeltaTime = millis();
+                range.countDeltaTime = millis();
             }
           }
 
           // if ( range.raw <= 0.2) {
           //   range.smooth = lerp( range.smooth, 0, 0.67 );
           // }
-
           range.smooth = lerp( range.smooth, 0, 0.067 );
+          range.threshold = lerp( range.threshold, 0, 0.09 );
         }
       },
       draw: ( spectrum = true, waveform = true ) => {
@@ -193,13 +216,14 @@ const audio = {
         if ( true === waveform ) {
           const wf = audio.capture.fft.waveform();
           const w = width / audio.capture.bins;
+          const h = 50
 
           stroke('blue')
           fill('red')
           for (let i = 0; i < wf.length; i++) {
-            const y = map(wf[ i ], -1, 1, height / 2, 0);
+            const y = map(wf[ i ], -1, 1, h, 0);
 
-            rect(i * w, height / 2 - y/2, w, y );
+            rect(i * w, h - y/2, w, y );
           }
         }
 

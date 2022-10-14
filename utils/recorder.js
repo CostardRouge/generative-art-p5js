@@ -1,6 +1,7 @@
 import { canvas, sketch, options } from './index.js';
 
 const recorder = {
+  savedFramesCount: 0,
   recording: false,
   capturer: undefined,
   createRecorder: () => {
@@ -24,6 +25,8 @@ const recorder = {
     document.body.classList.add("recording");
 
     recorder.capturer.start();
+
+    recorder.savedFramesCount = 0;
   },
   stop: () => {
     recorder.recording = false;

@@ -6,38 +6,60 @@
 
 import iterators from './iterators.js';
 
+const cache = function(key, compute, enabled = true) {
+  cache.values = cache.values ?? {};
+
+  if ( enabled !== true || undefined === cache.values[ key ] ) {
+    return cache.values[ key ] = compute();
+  }
+
+  return cache.values[ key ];
+}
+
 const grid = {
   draw: ({startLeft, startRight, endLeft, endRight, rows, cols, centered = true }, handler) => {
-    const yUnit = 1 / rows;
-    const xUnit = 1 / cols;
+    const cachedGridVectors = cache(`${startLeft.x}-${startLeft.y}-${endLeft.x}-${endLeft.y}-${rows}-${cols}-${centered}`, () => {
+      const gridVectors = [];
+      
+      const yUnit = 1 / rows;
+      const xUnit = 1 / cols;
 
-    const yOffset = centered ? yUnit/2 : 0;
-    const xOffset = centered ? xUnit/2 : 0;
-    const yEnd = centered ? rows - 0.5 : rows;
+      const yOffset = centered ? yUnit/2 : 0;
+      const xOffset = centered ? xUnit/2 : 0;
+      const yEnd = centered ? rows - 0.5 : rows;
 
-    for (let y = 0; y < yEnd; y++) {
-      // const left = p5.Vector.lerp(startLeft, endLeft, (y * yUnit));
-      const leftWithOffset = p5.Vector.lerp(startLeft, endLeft, (y * yUnit) + yOffset);
+      for (let y = 0; y < yEnd; y++) {
+        // const left = p5.Vector.lerp(startLeft, endLeft, (y * yUnit));
+        const leftWithOffset = p5.Vector.lerp(startLeft, endLeft, (y * yUnit) + yOffset);
 
-      // const right = p5.Vector.lerp(startRight, endRight, (y * yUnit));
-      const rightWithOffset = p5.Vector.lerp(startRight, endRight, (y * yUnit) + yOffset);
+        // const right = p5.Vector.lerp(startRight, endRight, (y * yUnit));
+        const rightWithOffset = p5.Vector.lerp(startRight, endRight, (y * yUnit) + yOffset);
 
-      // stroke("red")
-      // strokeWeight(50)
-      // point(left.x, left.y)
-      // point(leftWithOffset.x, leftWithOffset.y)
-      // point(right.x, right.y)
-      // point(rightWithOffset.x, rightWithOffset.y)
-
-      for (let x = 0; x < cols; x++) {
-        const cellVector = p5.Vector.lerp(leftWithOffset, rightWithOffset, (x * xUnit) + xOffset);
-
-        // stroke("blue")
+        // stroke("red")
         // strokeWeight(50)
-        // point(cellVector.x, cellVector.y)
-        handler(cellVector, { x, y })
+        // point(left.x, left.y)
+        // point(leftWithOffset.x, leftWithOffset.y)
+        // point(right.x, right.y)
+        // point(rightWithOffset.x, rightWithOffset.y)
+
+        for (let x = 0; x < cols; x++) {
+          const cellVector = p5.Vector.lerp(leftWithOffset, rightWithOffset, (x * xUnit) + xOffset);
+
+          // stroke("blue")
+          // strokeWeight(50)
+          // point(cellVector.x, cellVector.y)
+          // handler(cellVector, { x, y })
+
+          gridVectors.push([ cellVector, x, y ])
+        }
       }
-    }
+
+      return gridVectors;
+    })
+
+    cachedGridVectors.forEach( ([ cellVector, x, y ] ) => {
+      handler(cellVector, { x, y })
+    })
   }
 };
 

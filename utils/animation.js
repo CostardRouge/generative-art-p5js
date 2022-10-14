@@ -8,7 +8,7 @@ const animation = {
     this.values = this.values ?? {};
 
     const newValue = mappers.circularIndex(speed, values);
-    const currentSavedValue = this.values[ key ] ?? newValue
+    const currentSavedValue = this.values[ key ] ? this.values[ key ] : newValue;
 
     return this.values[ key ] = lerpFn(currentSavedValue, newValue, amount);
   }
