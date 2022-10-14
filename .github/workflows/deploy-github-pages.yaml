@@ -16,6 +16,7 @@ jobs:
       - name: Install and Build 🔧
         run: |
           npm install
+          npm install --prefix ./node_modules/sketch-gallery
           npm run gallery:build
       - name: Deploy to GitHub pages🚀
         uses: JamesIves/github-pages-deploy-action@v4.3.3
