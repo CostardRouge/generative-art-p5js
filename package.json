@@ -2,6 +2,8 @@
     "name": "generative-art-p5js",
     "scripts": {
         "gallery:deploy": "sketch-gallery deploy generative-art-p5js tree.json assets libraries utils sketches",
+        "gallery:build": "sketch-gallery build generative-art-p5js tree.json assets libraries utils sketches",
+        "pregallery:build": "npm run build:tree",
         "pregallery:deploy": "npm run build:tree",
         "build:tree": "node ./scripts/build-tree.js sketches tree.json",
         "prebuild:previews": "npm run build:tree",

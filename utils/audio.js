@@ -5,7 +5,7 @@ const HISTORY_BUFFER = 60;
 const ranges = {
   subBass: {
     frequencies: [20, 60],
-    threshold: 0.44,
+    threshold: 0.8,
     amplifier: 0.5,
     raw: undefined,
     smooth: 0,
@@ -46,7 +46,7 @@ const ranges = {
   upperMid: {
     frequencies: [2000, 4000],
     threshold: 0.3,
-    amplifier: 1,
+    amplifier: 10,
     raw: undefined,
     smooth: 0,
     count: 0,
@@ -121,7 +121,7 @@ const audio = {
         ranges[rangeNames[ index % rangeNames.length ]]?.[attribute] ?? 0
       ),
       byName: (name, attribute = "smooth") => (
-        ranges[name]?.[attribute] ??0
+        ranges[name]?.[attribute] ?? 0
       ),
       recordHistory: () => {
         if ( false === audio.capture.audioIn?.enabled ) {
@@ -188,23 +188,24 @@ const audio = {
           //   index: rangeNames.indexOf( rangeName )
           // });
 
-          if ( range.amplified >= range.threshold ) {
+          if ( range.raw >= range.threshold ) {
             //range.smooth = lerp( range.smooth, range.amplified, 0.67 );
-            range.smooth = range.amplified;
+            range.smooth = range.raw;
+            range.threshold = range.raw;
 
             const currentTime = millis();
 
-            if ( currentTime > ( range.countDeltaTime + 50) ) {
+            if ( currentTime > ( range.countDeltaTime + 500) ) {
               range.count += 1;
-              range.countDeltaTime = millis();
+                range.countDeltaTime = millis();
             }
           }
 
           // if ( range.raw <= 0.2) {
           //   range.smooth = lerp( range.smooth, 0, 0.67 );
           // }
-
           range.smooth = lerp( range.smooth, 0, 0.067 );
+          range.threshold = lerp( range.threshold, 0, 0.09 );
         }
       },
       draw: ( spectrum = true, waveform = true ) => {

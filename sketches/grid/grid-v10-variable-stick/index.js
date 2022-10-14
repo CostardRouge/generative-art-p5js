@@ -1,4 +1,4 @@
-import { events, sketch, converters, animation, audio, grid, colors, midi, mappers, iterators, options, easing } from './utils/index.js';
+import { events, sketch, converters, audio, grid, animation, colors, midi, mappers, iterators, options, easing } from './utils/index.js';
 
 options.add( [
   {
@@ -6,7 +6,7 @@ options.add( [
     type: 'slider',
     label: 'Rows',
     min: 1,
-    max: 70,
+    max: 100,
     defaultValue: 40,
     category: 'Grid'
   },
@@ -15,7 +15,7 @@ options.add( [
     type: 'slider',
     label: 'Rows',
     min: 1,
-    max: 70,
+    max: 100,
     defaultValue: 40,
     category: 'Grid'
   },
@@ -53,19 +53,14 @@ options.add( [
   },
 ] );
 
-events.register("post-setup", () => {
-  audio.capture.setup()
-  //events.register("post-draw", audio.capture.energy.recordHistory );
-  // midi.setup()
-});
 sketch.setup();
 
-let min = Math.PI, max =0;
+let min = Math.PI, max = Math.PI;
 
-sketch.draw((time) => {
+sketch.draw((time, center) => {
   background(0);
 
-  let n = options.get("grid-multiply-over-time") ? mappers.fn(
+  const n = options.get("grid-multiply-over-time") ? mappers.fn(
     sin(time/2),
     -1,
     1,
@@ -73,16 +68,6 @@ sketch.draw((time) => {
     options.get("grid-multiply-over-time-max"),
     easing.easeInBounce
     ) : 1;
-
-  // nrj = audio.capture.energy.average()
-
-  n = animation.sequence(
-    "grid-cell-n",
-    audio.capture.energy.byName( "bass", "count"),
-    [ 0.75, 1, 1.25 ],
-    0.67
-  )
-
   const rows = options.get("grid-rows")*n;
   const cols = options.get("grid-cols")*n;
 
@@ -95,52 +80,56 @@ sketch.draw((time) => {
     cols,
     centered: options.get("grid-cell-centered")
   }
-
-  let z = frameCount/300
-
+  const z = frameCount/300//mappers.fn(sin(time), -1, 1, 3, 3.5)
   const scale = (width / cols);
 
-  // noiseDetail(2, 4, 1);
-  noFill();
+  // noiseDetail(2, 4);
+  // noiseSeed()
+
+  const cursor = createVector(mouseX, mouseY);
+
+  const easingFunctions = Object.entries(easing);
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    push();
-    translate( cellVector.x, cellVector.y );
-
-    const angle = noise(x/cols, y/rows+time/5, z) * (TAU*4);
-
-    // console.log(angle);
+    const angle = noise(x/cols, y/rows+time/8, z) * (TAU*4);
     // const vector = p5.Vector.fromAngle(angle);
-
-    const weight = map(angle, min, TAU, 1, 20, true );
+    const cellScale = map(angle, min, max, scale, scale*4, true )
 
     min = Math.min(min, angle);
     max = Math.max(max, angle);
 
+    push();
+    translate( cellVector.x, cellVector.y );
+    // point( 0, 0);
+
+    noFill()
+    // strokeWeight(1)
+    // stroke('red')
+    // circle(0, 0, scale)
+
+    // push()
+
+    // const closeToCursor = mappers.fn(cellVector.dist(cursor), 0, 250, 1, 0, easingFunctions[9][1]);
+
+    strokeWeight(15);
     stroke(colors.rainbow({
       hueOffset: 0,
-      hueIndex: map(angle, min, TAU, -PI/2, PI/2 ),
+      hueIndex: mappers.fn(angle, min, max, -PI/2, PI/2, easingFunctions[20][1] ),
       opacityFactor: 1.5,
-      opacityFactor: map(angle, min, max, 3, 1 )
+      // opacityFactor: map(angle, min, max, 3, 1 )
+      // opacityFactor: mappers.fn(cellVector.dist(cursor), 0, 250, 1, 10, easingFunctions[9][1])
     }))
 
-    translate(scale * sin(angle), scale * cos(angle) )
+    rotate(angle)
+    // line( 0, 0, closeToCursor*cellScale, 0);
 
-    if(angle > max/2) {
-      strokeWeight(weight);
-      point( 0, 0);
-    }
-    else {
-      stroke(colors.darkBlueYellow({
-        hueOffset: 0,
-        hueIndex: map(angle, min, TAU, -PI/2, PI/2 ),
-        // opacityFactor: 1.5,
-        opacityFactor: map(angle, min, max, 3, 1 )
-      }))
+    const length = map(sin(time+angle), -1, 1, 5, 50);
 
-      strokeWeight(2)
-      circle(0, 0, weight)
-    }
+    line( 0, 0, length, 0);
     pop();
   })
+
+  // console.log({
+  //   max, min
+  // });
 });

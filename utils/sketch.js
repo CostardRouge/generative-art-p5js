@@ -35,7 +35,9 @@ const sketch = {
 
       noStroke();
 
-      setup?.();
+      const center = createVector(width / 2, height / 2);
+
+      setup?.(center);
     };
   },
   draw: (draw) => {

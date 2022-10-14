@@ -178,22 +178,22 @@ const pattern = (count = 7, time, color) => {
   const center = animation.sequence(
     "bg-center-position",
     // time, 
-    audio.capture.energy.byName( rangeName, "count" ),
+    audio.capture.energy.byName( "bass", "count" ),
     // 0,
     [
       createVector( -width / 4, -height / 4 ),
       createVector( width / 4, -height / 4 ),
-      // createVector( 0, 0 ),
+      createVector( 0, 0 ),
       createVector( width / 4, height / 4 ),
       createVector( -width / 4, height / 4 ),
-      // createVector( 0, 0 )
+      createVector( 0, 0 )
     ],
     0.67,
     p5.Vector.lerp
   )
   const size = (width + height);
 
-  const p = 0.01//options.get("background-lines-precision");
+  const p = options.get("background-lines-precision");
 
   iterators.angle(0, TAU, TAU / count, angle => {
     const edge = converters.polar.vector( angle, size );
@@ -251,5 +251,5 @@ sketch.draw((time) => {
 
   drawRadialPattern( 70, time, window);
 
-  console.log(">>", audio.capture.energy.byName( rangeName , "count" ))
+  //console.log(">>", audio.capture.energy.byName( rangeName , "count" ))
 });

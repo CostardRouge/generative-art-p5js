@@ -89,23 +89,22 @@ sketch.draw((time) => {
   grid.draw(gridOptions, (cellVector, { x, y}) => {
     const angle = noise(x/cols, y/rows+time/8, z) * (TAU*4);
     // const vector = p5.Vector.fromAngle(angle);
-    const cellScale = map(angle, min, max, scale, scale*4, true )
+    const cellScale = map(angle, min, max, scale, scale*2, true )
     const weight = 20
     0//map(angle, min, max, 1, 20, true )
 
     min = Math.min(min, angle);
     max = Math.max(max, angle);
 
-  
 
     push();
     translate( cellVector.x, cellVector.y );
     // point( 0, 0);
 
     noFill()
-    strokeWeight(1)
-    stroke('red')
-    circle(0, 0, scale)
+    // strokeWeight(1)
+    // stroke('red')
+    // circle(0, 0, scale)
 
     // push()
 
@@ -118,30 +117,31 @@ sketch.draw((time) => {
     }))
 
     // beginShape(LINES)
-    iterators.vector(
-      createVector(0, 0),
-      createVector(cellScale, 0),
-      1/2, (position, index) => {
-        translate(position.x, position.y)
+    // iterators.vector(
+    //   createVector(0, 0),
+    //   createVector(cellScale, 0),
+    //   1/2, (position, index) => {
+    //     translate(position.x, position.y)
 
-        const _angle = noise((position.x)/cols, (position.y)/rows+time/8, z) * (PI);
-        const vector = p5.Vector.fromAngle(_angle)//.limit(35)
+    //     const _angle = noise((position.x)/cols, (position.y)/rows+time/8, z) * (PI);
+    //     const vector = p5.Vector.fromAngle(_angle)//.limit(35)
 
-        rotate(vector.heading())
+    //     rotate(vector.heading())
 
-        point(0, 0)
+    //     point(0, 0)
 
 
-        // vector.mult(createVector(0, 0), 1)
+    //     // vector.mult(createVector(0, 0), 1)
 
-        // point(position.x, position.y)
+    //     // point(position.x, position.y)
 
-        // vertex(0, 0)
-      }
-    )
+    //     // vertex(0, 0)
+    //   }
+    // )
 
     // endShape(CLOSE)
-    // line( 0, 0, cellScale, 0);
+    rotate(angle)
+    line( 0, 0, cellScale, 0);
     // pop()
 
     pop();
