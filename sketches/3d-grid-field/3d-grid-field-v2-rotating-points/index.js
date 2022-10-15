@@ -7,7 +7,7 @@ options.add( [
     label: 'Rows',
     min: 1,
     max: 500,
-    defaultValue: 40,
+    defaultValue: 200,
     category: 'Grid'
   },
   {
@@ -16,7 +16,7 @@ options.add( [
     label: 'Rows',
     min: 1,
     max: 500,
-    defaultValue: 40,
+    defaultValue: 200,
     category: 'Grid'
   },
   {
@@ -53,11 +53,28 @@ options.add( [
   },
 ] );
 
-sketch.setup();
+let direction = undefined;
 
-let min = Math.PI, max =0;
+sketch.setup((center) => {
+  direction = center;
+}, { type: 'webgl' });
 
-sketch.draw((time) => {
+function rotateVector(vector, center, angle) {
+  const cosine = Math.cos(angle);
+  const sine = Math.sin(angle);
+
+  return ([
+    (cosine * (vector.x - center.x)) + (sine * (vector.y - center.y)) + center.x,
+    (cosine * (vector.y - center.y)) - (sine * (vector.x - center.x)) + center.y
+  ]);
+}
+
+sketch.draw((time, center) => {
+  const mouseAngle = frameCount/100//map(mouseX, 0, width, -PI/2, PI/2)
+
+  direction.add(0, 0.05)
+
+  rotateX(radians(30))
   background(0);
 
   const n = options.get("grid-multiply-over-time") ? mappers.fn(
@@ -72,10 +89,10 @@ sketch.draw((time) => {
   const cols = options.get("grid-cols")*n;
 
   const gridOptions = {
-    startLeft: createVector( 0, 0 ),
-    startRight: createVector( width, 0 ),
-    endLeft: createVector( 0, height ),
-    endRight: createVector( width, height ),
+    startLeft: createVector( -width/2, -height/2 ),
+    startRight: createVector( width/2, -height/2 ),
+    endLeft: createVector( -width/2, height/2 ),
+    endRight: createVector( width/2, height/2 ),
     rows,
     cols,
     centered: options.get("grid-cell-centered")
@@ -83,51 +100,33 @@ sketch.draw((time) => {
 
   const scale = (width / cols);
 
-  // noiseDetail(8, 0.3)
+  noiseDetail(2, 0.1)
 
-  const zMax = scale * 5;
+  const zMax = scale * 10;
 
-  const colorFunction = mappers.circularIndex(time/2, [
-    colors.rainbow,
-    colors.purple
-  ])
+  noFill()
+  stroke(255)
+  strokeWeight(3/4)
 
-  const divider = 1//mappers.circularIndex(time*2, [ 1,0.5,2])
+  beginShape(POINTS)
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const angle = noise(x/cols-frameCount/300, y/rows+time/5, time/15) * (TAU*4);
-
-    min = Math.min(min, angle);
-    max = Math.max(max, angle);
+    const [ rotatedX, rotatedY ] = rotateVector(cellVector, center.div(2), mouseAngle);
+    const angle = noise(rotatedX/cols+direction.x, rotatedY/rows+direction.y) * TAU * 4
 
     const z = zMax * cos(angle);
 
-    let weight = map(angle, min, TAU, 1, 20, true );
-    weight = map(z, -zMax, zMax, 25, 50 );
-    // weight = map(sin(time+angle*5), -1, 1, scale/3, scale)
-
-    stroke(colorFunction({
-      hueOffset: 0,
-      hueIndex: map(z, -zMax, zMax, -PI, PI)*divider,
-      opacityFactor: map(z, -zMax, zMax, 3, 1),
-      // opacityFactor: map(sin(time+angle), -1, 1, 3, 1)
-    }))
-
-    // stroke(colors.rainbow({
+    // stroke(colors.purple({
     //   hueOffset: 0,
-    //   hueIndex: map(angle, min, TAU, -PI/2, PI/2 ),
-    //   opacityFactor: 1.5,
-    //   opacityFactor: map(angle, min, max, 3, 1 ),
+    //   hueIndex: map(z, -zMax, zMax, -PI, PI),
+    //   opacityFactor: map(sin(angle+time*5), -1, 1, 10, 1)
+    //   // opacityFactor: map(z, -zMax, zMax, 3, 1)
     // }))
 
-    push();
-    translate( cellVector.x, cellVector.y );
-
-    strokeWeight(weight);
-
-    translate(scale * sin(angle), scale * cos(angle)*2 )
-    point( 0, 0);
-
-    pop();
+    vertex( cellVector.x, cellVector.y, z );
   })
+
+  endShape()
+
+  orbitControl();
 });
