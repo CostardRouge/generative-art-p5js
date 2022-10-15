@@ -7,7 +7,7 @@ options.add( [
     label: 'Rows',
     min: 1,
     max: 500,
-    defaultValue: 40,
+    defaultValue: 260,
     category: 'Grid'
   },
   {
@@ -16,7 +16,7 @@ options.add( [
     label: 'Rows',
     min: 1,
     max: 500,
-    defaultValue: 40,
+    defaultValue: 16,
     category: 'Grid'
   },
   {
@@ -55,7 +55,9 @@ options.add( [
 
 sketch.setup();
 
-let min = Math.PI, max =0;
+events.register("post-setup", () => {
+  //audio.capture.setup(0.2, 2048)
+});
 
 sketch.draw((time) => {
   background(0);
@@ -82,50 +84,29 @@ sketch.draw((time) => {
   }
 
   const scale = (width / cols);
-
-  // noiseDetail(8, 0.3)
-
-  const zMax = scale * 5;
-
-  const colorFunction = mappers.circularIndex(time/2, [
-    colors.rainbow,
-    colors.purple
-  ])
-
-  const divider = 1//mappers.circularIndex(time*2, [ 1,0.5,2])
+  const zMax = scale * 15;
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const angle = noise(x/cols-frameCount/300, y/rows+time/5, time/15) * (TAU*4);
-
-    min = Math.min(min, angle);
-    max = Math.max(max, angle);
-
+    const xOff = x/cols;
+    const yOff = y/rows;
+    const angle = noise(xOff, yOff+time/8, time/10) * (TAU*4);
     const z = zMax * cos(angle);
 
-    let weight = map(angle, min, TAU, 1, 20, true );
-    weight = map(z, -zMax, zMax, 25, 50 );
-    // weight = map(sin(time+angle*5), -1, 1, scale/3, scale)
+    const weight = map(z, -zMax, zMax, 25, 50 );
+    const colorFunction = mappers.circularIndex(xOff+yOff+time, [colors.rainbow,colors.purple])
 
     stroke(colorFunction({
       hueOffset: 0,
-      hueIndex: map(z, -zMax, zMax, -PI, PI)*divider,
+      hueIndex: map(z, -zMax, zMax, -PI, PI)*2,
       opacityFactor: map(z, -zMax, zMax, 3, 1),
-      // opacityFactor: map(sin(time+angle), -1, 1, 3, 1)
+      // opacityFactor: map(sin(time+angle*2), -1, 1, 3, 1)
     }))
 
-    // stroke(colors.rainbow({
-    //   hueOffset: 0,
-    //   hueIndex: map(angle, min, TAU, -PI/2, PI/2 ),
-    //   opacityFactor: 1.5,
-    //   opacityFactor: map(angle, min, max, 3, 1 ),
-    // }))
-
     push();
+
     translate( cellVector.x, cellVector.y );
-
+    translate(scale * sin(angle), scale * cos(angle) )
     strokeWeight(weight);
-
-    translate(scale * sin(angle), scale * cos(angle)*2 )
     point( 0, 0);
 
     pop();

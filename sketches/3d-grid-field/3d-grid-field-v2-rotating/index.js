@@ -6,7 +6,7 @@ options.add( [
     type: 'slider',
     label: 'Rows',
     min: 1,
-    max: 150,
+    max: 500,
     defaultValue: 100,
     category: 'Grid'
   },
@@ -15,7 +15,7 @@ options.add( [
     type: 'slider',
     label: 'Rows',
     min: 1,
-    max: 150,
+    max: 500,
     defaultValue: 100,
     category: 'Grid'
   },
@@ -59,8 +59,6 @@ sketch.setup((center) => {
   direction = center;
 }, { type: 'webgl' });
 
-let min = Math.PI, max =0;
-
 function rotateVector(vector, center, angle) {
   const cosine = Math.cos(angle);
   const sine = Math.sin(angle);
@@ -72,17 +70,14 @@ function rotateVector(vector, center, angle) {
 }
 
 sketch.draw((time, center) => {
-  const mouseAngle = map(mouseX, 0, width, -PI/2, PI/2)
+  const mouseAngle = time/5//map(mouseX, 0, width, -PI/2, PI/2)
 
-  direction.add(0, 0.01)
+  direction.add(0, 0.05)
 
-  rotateX(degrees(-70))
-  // rotateZ(time)
-
-  translate(
-    -width /2,
-    -height / 2
-  )
+  // translate( center )
+  rotateX(radians(30))
+  rotateZ(map(sin(time), -1, 1, -PI, PI)/16)
+  rotateX(map(cos(time), -1, 1, -PI, PI)/16)
 
   background(0);
 
@@ -97,46 +92,49 @@ sketch.draw((time, center) => {
   const rows = options.get("grid-rows")*n;
   const cols = options.get("grid-cols")*n;
 
+  const W = ( width / 2 )// * 1.5;
+  const H = ( height / 2 ) * 1.8;
+
   const gridOptions = {
-    startLeft: createVector( 0, 0 ),
-    startRight: createVector( width, 0 ),
-    endLeft: createVector( 0, height ),
-    endRight: createVector( width, height ),
+    startLeft: createVector( -W, -H ),
+    startRight: createVector( W, -H ),
+    endLeft: createVector( -W, H ),
+    endRight: createVector( W, H ),
     rows,
     cols,
     centered: options.get("grid-cell-centered")
   }
 
-  const z = frameCount/300//mappers.fn(sin(time), -1, 1, 3, 3.5)
   const scale = (width / cols);
 
-  // noiseDetail(2, 1, 2) 
+  noiseDetail(6, 0.1)
+
+  const zMax = scale * 5;
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const [ rotatedX, rotatedY ] = rotateVector(cellVector, center, mouseAngle);
-
-    const angle = noise(rotatedX/cols+direction.x, rotatedY/rows+direction.y) * TAU * 4
-    // const angle = noise(x/cols+direction.x, y/rows+direction.y) * (TAU*4);
-
-    let weight = map(angle, min, TAU, 1, 20, true );
-
-    min = Math.min(min, angle);
-    max = Math.max(max, angle);
-    
-    stroke(colors.rainbow({
-      hueOffset: 0,
-      hueIndex: map(angle, 0, TAU, -PI/2, PI/2 ),
-      opacityFactor: 1.5,
-      // opacityFactor: map(energy, 0, 255, 3, 1 )
-    }))
+    const [ rotatedX, rotatedY ] = rotateVector(cellVector, center.div(2), mouseAngle);
+    const angle = noise(rotatedX/cols+direction.x, rotatedY/rows+direction.y, time/5) * TAU * 4
 
     push();
     translate( cellVector.x, cellVector.y );
 
-    strokeWeight(weight);
+    const z = zMax * cos(angle);
 
-    translate(scale * sin(angle), scale * cos(angle) , scale * cos(angle) * 5 )
+    stroke(colors.rainbow({
+      hueOffset: 0,
+      hueIndex: map(z, -zMax, zMax, -PI, PI),
+      opacityFactor: map(z, -zMax, zMax, 3, 1)
+    }))
+
+    // strokeWeight(weight);
+    strokeWeight(1);
+
+    translate(scale * sin(angle), scale * cos(angle), z )
     point( 0, 0);
+    // vertex( cellVector.x, cellVector.y, z );
+
+    // vertex( cellVector.x + scale, cellVector.y  );
+    // vertex( cellVector.x, cellVector.y + (height / rows), z );
 
     pop();
   })
