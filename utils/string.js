@@ -27,7 +27,6 @@ const string = {
     graphics.textSize(size);
     graphics.textFont?.(font);
 
-
     push()
     translate( x , y );
 

@@ -14,12 +14,19 @@
          },
          "path": "sketches/3d-grid-field/3d-grid-field-v2-rotating"
       },
-      "3d-grid-field-v2-rotating-points": {
+      "3d-grid-field-v3-rotating-points": {
          "meta": {
-            "name": "3d-grid-field-v2-rotating-points",
+            "name": "3d-grid-field-v3-rotating-points",
             "folder": "3d-grid-field"
          },
-         "path": "sketches/3d-grid-field/3d-grid-field-v2-rotating-points"
+         "path": "sketches/3d-grid-field/3d-grid-field-v3-rotating-points"
+      },
+      "3d-grid-field-v4-rotating-and-warping": {
+         "meta": {
+            "name": "3d-grid-field-v4-rotating-and-warping",
+            "folder": "3d-grid-field"
+         },
+         "path": "sketches/3d-grid-field/3d-grid-field-v4-rotating-and-warping"
       }
    },
    "3d-stuff": {
@@ -772,6 +779,13 @@
             "folder": "grid"
          },
          "path": "sketches/grid/grid-v12-noisy-strings"
+      },
+      "grid-v12-noisy-strings-camera": {
+         "meta": {
+            "name": "grid-v12-noisy-strings-camera",
+            "folder": "grid"
+         },
+         "path": "sketches/grid/grid-v12-noisy-strings-camera"
       },
       "grid-v2-basic-with-easing": {
          "meta": {
