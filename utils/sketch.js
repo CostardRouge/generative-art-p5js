@@ -2,6 +2,7 @@ import { canvas, events, time, debug, options } from './index.js';
 
 const sketch = {
   name: location.pathname.split("/").slice(1, -1).join("-"),
+  camera: undefined,
   setup: (
     setup,
     canvasOptions
@@ -21,6 +22,10 @@ const sketch = {
         height: canvasSize === 'fill' ? windowHeight : height,
         ...canvasOptions
       });
+
+      if ( 'webgl' === canvasOptions?.type ) {
+        sketch.camera = createCamera();
+      }
 
       frameRate(options.get("framerate"));
       options.get("smooth-pixel") ? smooth() : noSmooth();

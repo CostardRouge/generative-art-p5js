@@ -1,4 +1,4 @@
-import { time } from './index.js';
+import { time, string, sketch } from './index.js';
 import options from './options.js';
 
 const debug = {
@@ -13,7 +13,10 @@ const debug = {
     },
   },
   //debugGraphics: undefined,
-  debugDOMelement: undefined,
+  DOMElements: {
+    fpsCounter: undefined,
+    canvasOverlay: undefined
+  },
   // createDebugGraphics: () => {
   //   debug.debugGraphics = createGraphics(48, 32, P2D);
   // },
@@ -37,15 +40,15 @@ const debug = {
     });
 
     if (display === true) {
-      if (debug.debugDOMelement === undefined) {
+      if (debug.DOMElements.fpsCounter === undefined) {
         //debug.createDebugGraphics();
-        debug.debugDOMelement = createElement(
+        debug.DOMElements.fpsCounter = createElement(
           "fps-counter",
           String(ceil(debug.lastFrameRate))
         );
       }
 
-      debug.debugDOMelement.elt.innerHTML = String(ceil(debug.lastFrameRate));
+      debug.DOMElements.fpsCounter.elt.innerHTML = String(ceil(debug.lastFrameRate));
 
       // debug.debugGraphics.clear();
 
@@ -60,9 +63,9 @@ const debug = {
 
       // image(debug.debugGraphics, 0, 0);
     } else {
-      if (debug.debugDOMelement !== undefined) {
-        debug.debugDOMelement.elt.remove();
-        debug.debugDOMelement = undefined;
+      if (debug.DOMElements.fpsCounter !== undefined) {
+        debug.DOMElements.fpsCounter.elt.remove();
+        debug.DOMElements.fpsCounter = undefined;
       }
     }
   },
@@ -81,7 +84,37 @@ const debug = {
     stroke(255, 64);
     line(mouseX, 0, mouseX, height);
     line(0, mouseY, width, mouseY);
+  },
+  webgl: function() {
+    if (!sketch.camera) {
+      return;
+    }
+
+    if (debug.DOMElements.canvasOverlay === undefined) {
+      debug.DOMElements.canvasOverlay = document.createElement("canvas-overlay" );
+
+      document
+        .querySelector("main")
+        .appendChild( debug.DOMElements.canvasOverlay )
+    }
+
+    const camera = sketch.camera;
+  
+    debug.DOMElements.canvasOverlay.innerHTML = `camera
+      eyeX: ${camera.eyeX}<br>
+      eyeY: ${camera.eyeY}<br>
+      eyeZ: ${camera.eyeZ}<br><br>
+
+      centerX: ${camera.centerX}<br>
+      centerY: ${camera.centerY}<br>
+      centerZ: ${camera.centerZ}<br><br>
+
+      upX: ${camera.upX}<br>
+      upY: ${camera.upY}<br>
+      upZ: ${camera.upZ}<br><br>
+    `;
   }
+  
 };
 
 export default debug;

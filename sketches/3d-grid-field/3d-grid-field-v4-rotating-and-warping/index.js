@@ -77,7 +77,9 @@ sketch.draw((time, center) => {
   // translate( center )
   rotateX(radians(30))
   // rotateZ(map(sin(time), -1, 1, -PI, PI)/16)
-  // rotateX(map(cos(time), -1, 1, -PI, PI)/16)
+  rotateX(map(cos(time), -1, 1, -PI, PI)/16)
+
+  translate(0, 0, -500)
 
   background(0);
 
@@ -92,7 +94,7 @@ sketch.draw((time, center) => {
   const rows = options.get("grid-rows")*n;
   const cols = options.get("grid-cols")*n;
 
-  const W = ( width / 2 )// * 1.5;
+  const W = ( width / 2 ) * 1.5;
   const H = ( height / 2 ) * 1.5;
 
   const gridOptions = {
@@ -136,7 +138,7 @@ sketch.draw((time, center) => {
     //   opacityFactor: map(z, -zMax, zMax, 3, 1)
     // }))
 
-    const colorFunction = mappers.circularIndex(noise(yOff+time/5, xOff, -time/2)+time*2, [colors.rainbow,colors.purple])
+    const colorFunction = mappers.circularIndex(noise(yOff, xOff, time/2)+time/2, [colors.rainbow,colors.purple])
     // const colorFunction = mappers.circularIndex(xOff+yOff+time, [colors.rainbow,colors.purple])
 
     stroke(colorFunction({
@@ -148,7 +150,11 @@ sketch.draw((time, center) => {
 
     strokeWeight(3);
 
-    translate(scale * sin(angle), scale * cos(angle), z)
+    let zz = 0// mappers.fn(cellVector.dist(center), 0, 200, 200, 0, easing.easeOutQuart)
+    let yy = mappers.fn(y, 0, rows -1, 600, 0, easing.easeOutQuint) * sin(time)
+    // const zz = mappers.fn(sin(2*time+cellVector.dist(center)), -1, 1, 0, 100, Object.entries(easing)[1][1])
+
+    translate(scale * sin(angle), scale * cos(angle), z+ zz + yy )
     point( 0, 0);
 
     pop();

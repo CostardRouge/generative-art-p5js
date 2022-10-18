@@ -4,6 +4,10 @@ body {
   padding: 0;
 }
 
+main {
+  position: relative;
+}
+
 canvas {
   display: block;
 }
@@ -43,7 +47,7 @@ fps-counter {
   position: absolute;
   right: 0px;
   top: 0px;
-  color: rgb(255, 255, 255);
+  color: #ffffff;
   padding: 4px 6px;
   font-family: system-ui;
   text-shadow: 0 0 3px rgb(24 24 24);
@@ -63,4 +67,14 @@ body.recording fps-counter {
   0% {
     opacity: 0;
   }
+}
+
+canvas-overlay {
+  color: #ffffff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 4px 4px;
+  font-family: system-ui;
+  text-shadow: 0 0 3px rgb(24 24 24);
 }
