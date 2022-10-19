@@ -27,6 +27,13 @@
             "folder": "3d-grid-field"
          },
          "path": "sketches/3d-grid-field/3d-grid-field-v4-rotating-and-warping"
+      },
+      "3d-grid-field-v4-rotating-and-warping copy": {
+         "meta": {
+            "name": "3d-grid-field-v4-rotating-and-warping copy",
+            "folder": "3d-grid-field"
+         },
+         "path": "sketches/3d-grid-field/3d-grid-field-v4-rotating-and-warping copy"
       }
    },
    "3d-stuff": {
