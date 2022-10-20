@@ -1,4 +1,4 @@
-import { events, sketch, converters, audio, grid, colors, midi, mappers, iterators, options, easing, animation } from './utils/index.js';
+import { events, sketch, converters, audio, grid, animation, colors, midi, mappers, iterators, options, easing } from './utils/index.js';
 
 options.add( [
   {
@@ -6,8 +6,8 @@ options.add( [
     type: 'slider',
     label: 'Rows',
     min: 1,
-    max: 500,
-    defaultValue: 80,
+    max: 200,
+    defaultValue: 75,
     category: 'Grid'
   },
   {
@@ -15,8 +15,8 @@ options.add( [
     type: 'slider',
     label: 'Rows',
     min: 1,
-    max: 500,
-    defaultValue: 30,
+    max: 200,
+    defaultValue: 40,
     category: 'Grid'
   },
   {
@@ -32,7 +32,7 @@ options.add( [
     label: 'Noise detail lod',
     min: 0,
     max: 32,
-    defaultValue: 3,
+    defaultValue: 6,
     category: 'Noise'
   },
   {
@@ -42,14 +42,15 @@ options.add( [
     min: 0,
     max: 1,
     step: 0.05,
-    defaultValue: 0.45,
+    defaultValue: 0.6,
     category: 'Noise'
   },
 ] );
 
 sketch.setup();
 
-sketch.draw((time) => {
+
+sketch.draw((time,center) => {
   background(0);
 
   const rows = options.get("grid-rows");
@@ -64,47 +65,34 @@ sketch.draw((time) => {
     cols,
     centered: options.get("grid-cell-centered")
   }
-
-  const scale = ((width / cols) + (height / rows) ) /2 ;
+  const scale = (width / cols)//-2;
+  const zMax = scale * 10;
 
   noiseDetail(
     options.get("noise-detail-lod"),
     options.get("noise-detail-falloff"),
   );
 
-  const zMax = scale * 10;
-
-  const colorFunction = mappers.circularIndex(0, [
-    colors.rainbow,
-    colors.purple
-  ])
-
-  const colorPrecision = animation.sequence('color-precision', time/2, [ 0.1, 0.5, 1, 2])
-
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const angle = noise(x/cols-frameCount/300, y/rows+time/5, time/15) * (TAU*4);
-
-    const z = zMax * cos(angle);
-
-    let weight = map(angle, min, TAU, 1, 20, true );
-    weight = map(z, -zMax, zMax, 25, 50 );
-    // weight = map(sin(time+angle*5), -1, 1, scale/3, scale)
-
-    stroke(colorFunction({
-      hueOffset: 0,
-      hueIndex: map(z, -zMax, zMax, -PI, PI)*colorPrecision,
-      opacityFactor: map(z, -zMax, zMax, 3, 1),
-      // opacityFactor: map(sin(time+angle), -1, 1, 3, 1)
-    }))
-
     push();
     translate( cellVector.x, cellVector.y );
 
-    strokeWeight(scale);
+    const angle = noise(x/cols+time/4, y/rows+time/8, time/20) * (TAU*4);
+    const weight = scale//map(center.dist(cellVector), 0, width, 0, scale, true )
 
-    translate(scale * sin(angle), scale * cos(angle)*2 )
+    const distance = cellVector.dist(center);
+
+    const z = zMax * cos(angle)
+    const w = mappers.fn(sin(1*time+angle), -1, 1, -width/2, width/2, Object.entries(easing)[4][1] )
+
+    stroke( colors.rainbow({
+      hueOffset: time,
+      hueIndex: map(z, -zMax, zMax, -PI, PI )*2,
+      opacityFactor: mappers.fn(distance, 0, w, 10, 1, Object.entries(easing)[4][1] ),
+    }))
+
+    strokeWeight(weight);
     point( 0, 0);
-
     pop();
   })
 });
