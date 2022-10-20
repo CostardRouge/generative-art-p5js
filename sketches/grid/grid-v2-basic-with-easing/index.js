@@ -7,7 +7,7 @@ options.add( [
     label: 'Rows',
     min: 1,
     max: 200,
-    defaultValue: 40,
+    defaultValue: 80,
     category: 'Grid'
   },
   {
@@ -16,7 +16,7 @@ options.add( [
     label: 'Cols',
     min: 1,
     max: 200,
-    defaultValue: 40,
+    defaultValue: 50,
     category: 'Grid'
   },
   {
@@ -25,32 +25,7 @@ options.add( [
     label: 'Centered cell',
     defaultValue: true,
     category: 'Grid'
-  },
-  {
-    id: "grid-multiply-over-time",
-    type: 'switch',
-    label: 'Multiply size over time',
-    defaultValue: false,
-    category: 'Grid'
-  },
-  {
-    id: "grid-multiply-over-time-min",
-    label: 'Multiplier min',
-    type: 'slider',
-    min: 1,
-    max: 10,
-    defaultValue: 2,
-    category: 'Grid'
-  },
-  {
-    id: "grid-multiply-over-time-max",
-    label: 'Multiplier max',
-    type: 'slider',
-    min: 1,
-    max: 10,
-    defaultValue: 4,
-    category: 'Grid'
-  },
+  }
 ] );
 
 let min = Math.PI, max = 0;
@@ -65,16 +40,8 @@ sketch.draw((time) => {
   yOff = map(cos(time*2), -1, 1, 0, 1)/2
   zOff = map(cos(time/2), -1, 1, 0, 1)/2
 
-  const n = options.get("grid-multiply-over-time") ? mappers.fn(
-    sin(time/2),
-    -1,
-    1,
-    options.get("grid-multiply-over-time-min"),
-    options.get("grid-multiply-over-time-max"),
-    easing.easeInBounce
-    ) : 1;
-  const rows = options.get("grid-rows")*n;
-  const cols = options.get("grid-cols")*n;
+  const rows = options.get("grid-rows");
+  const cols = options.get("grid-cols");
 
   const gridOptions = {
     startLeft: createVector( 0, 0 ),

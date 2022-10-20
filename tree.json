@@ -794,6 +794,13 @@
          },
          "path": "sketches/grid/grid-v12-noisy-strings-camera"
       },
+      "grid-v13-field-on-fire": {
+         "meta": {
+            "name": "grid-v13-field-on-fire",
+            "folder": "grid"
+         },
+         "path": "sketches/grid/grid-v13-field-on-fire"
+      },
       "grid-v2-basic-with-easing": {
          "meta": {
             "name": "grid-v2-basic-with-easing",
