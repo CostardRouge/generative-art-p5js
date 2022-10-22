@@ -73,7 +73,7 @@ sketch.draw((time, center) => {
     centered: options.get("grid-cell-centered")
   }
 
-  const scale = (width / cols);
+  const scale = ( (width / cols) + (height / rows) ) / 2;
 
   noiseDetail(4, 0.1)
 
@@ -89,18 +89,18 @@ sketch.draw((time, center) => {
     translate( cellVector.x, cellVector.y );
 
     const z = zMax * cos(angle);
-    const easingFunction = mappers.circularIndex(noise(x/cols+time/8, y/rows)+time, easingFunctions)
-    // const colorFunction = mappers.circularIndex(xOff+yOff+time, [colors.rainbow,colors.purple])
+    const easingFunction = mappers.circularIndex(noise(x/cols+time/8, y/rows-time/5, time/10)+time*3, easingFunctions)
+    const colorFunction = colors.purple//mappers.circularIndex(xOff+yOff+time, [colors.rainbow,colors.purple])
 
-    stroke(colors.purple({
+    stroke(colorFunction({
       hueOffset: 0,
       hueIndex: mappers.fn(z, -zMax, zMax, -PI, PI, easingFunction[1]),
       opacityFactor: map(z, -zMax, zMax, 3, 1),
     }))
 
-    strokeWeight(3);
+    strokeWeight(scale);
 
-    let yy = mappers.fn(y, 0, rows -1, 0, 300, easing.easeOutQuint)
+    let yy = mappers.fn(y, 0, rows -1, 0, 300, easing.easeInQuint)
 
     translate(0, 0, z + yy )
     point( 0, 0);

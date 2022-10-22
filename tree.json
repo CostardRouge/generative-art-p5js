@@ -7,38 +7,38 @@
       "sketches": {
          "3d-grid-field-v1": {
             "meta": {
-               "_mtime": "2022-10-14T13:12:58.807Z",
+               "_mtime": "2022-10-22T21:53:46.884Z",
                "name": "3d-grid-field-v1"
             },
             "path": "sketches/3d-grid-field/3d-grid-field-v1"
          },
          "3d-grid-field-v2-rotating": {
             "meta": {
-               "_mtime": "2022-10-18T23:16:47.829Z",
+               "_mtime": "2022-10-22T21:53:57.299Z",
                "name": "3d-grid-field-v2-rotating"
             },
             "path": "sketches/3d-grid-field/3d-grid-field-v2-rotating"
          },
          "3d-grid-field-v3-rotating-points": {
             "meta": {
-               "_mtime": "2022-10-14T21:28:32.651Z",
+               "_mtime": "2022-10-22T21:56:53.345Z",
                "name": "3d-grid-field-v3-rotating-points"
             },
             "path": "sketches/3d-grid-field/3d-grid-field-v3-rotating-points"
          },
          "3d-grid-field-v4-rotating-and-warping": {
             "meta": {
-               "_mtime": "2022-10-18T22:05:31.525Z",
+               "_mtime": "2022-10-22T21:54:06.308Z",
                "name": "3d-grid-field-v4-rotating-and-warping"
             },
             "path": "sketches/3d-grid-field/3d-grid-field-v4-rotating-and-warping"
          },
-         "3d-grid-field-v4-rotating-and-warping copy": {
+         "3d-grid-field-v4-rotating-and-warping-2": {
             "meta": {
-               "_mtime": "2022-10-18T23:54:57.414Z",
-               "name": "3d-grid-field-v4-rotating-and-warping copy"
+               "_mtime": "2022-10-22T22:05:40.029Z",
+               "name": "3d-grid-field-v4-rotating-and-warping-2"
             },
-            "path": "sketches/3d-grid-field/3d-grid-field-v4-rotating-and-warping copy"
+            "path": "sketches/3d-grid-field/3d-grid-field-v4-rotating-and-warping-2"
          }
       }
    },
@@ -73,7 +73,7 @@
    },
    "_shaders": {
       "meta": {
-         "_mtime": "2022-10-21T23:30:40.984Z",
+         "_mtime": "2022-10-22T22:07:03.358Z",
          "name": "_shaders"
       },
       "sketches": {
@@ -341,21 +341,21 @@
          },
          "audio-reactive-v7-spectrograph": {
             "meta": {
-               "_mtime": "2022-10-02T17:03:22.902Z",
+               "_mtime": "2022-10-22T21:54:19.040Z",
                "name": "audio-reactive-v7-spectrograph"
             },
             "path": "sketches/audio-reactive/audio-reactive-v7-spectrograph"
          },
          "audio-reactive-v7-spectrograph copy": {
             "meta": {
-               "_mtime": "2022-09-24T22:06:51.613Z",
+               "_mtime": "2022-10-22T21:56:11.215Z",
                "name": "audio-reactive-v7-spectrograph copy"
             },
             "path": "sketches/audio-reactive/audio-reactive-v7-spectrograph copy"
          },
          "audio-reactive-v7-spectrograph-3d": {
             "meta": {
-               "_mtime": "2022-10-16T16:12:29.033Z",
+               "_mtime": "2022-10-22T21:54:29.554Z",
                "name": "audio-reactive-v7-spectrograph-3d"
             },
             "path": "sketches/audio-reactive/audio-reactive-v7-spectrograph-3d"
@@ -860,28 +860,28 @@
          },
          "grid-v10-variable-stick": {
             "meta": {
-               "_mtime": "2022-10-14T10:34:35.150Z",
+               "_mtime": "2022-10-22T21:56:01.017Z",
                "name": "grid-v10-variable-stick"
             },
             "path": "sketches/grid/grid-v10-variable-stick"
          },
          "grid-v11-with-rotation": {
             "meta": {
-               "_mtime": "2022-10-14T11:39:30.585Z",
+               "_mtime": "2022-10-22T21:54:41.704Z",
                "name": "grid-v11-with-rotation"
             },
             "path": "sketches/grid/grid-v11-with-rotation"
          },
          "grid-v12-noisy-strings": {
             "meta": {
-               "_mtime": "2022-10-16T10:04:02.497Z",
+               "_mtime": "2022-10-22T21:55:52.112Z",
                "name": "grid-v12-noisy-strings"
             },
             "path": "sketches/grid/grid-v12-noisy-strings"
          },
          "grid-v12-noisy-strings-camera": {
             "meta": {
-               "_mtime": "2022-10-16T16:15:30.451Z",
+               "_mtime": "2022-10-22T21:57:08.688Z",
                "name": "grid-v12-noisy-strings-camera"
             },
             "path": "sketches/grid/grid-v12-noisy-strings-camera"
@@ -909,21 +909,21 @@
          },
          "grid-v4-basic-with-audio-reaction": {
             "meta": {
-               "_mtime": "2022-09-27T16:04:08.239Z",
+               "_mtime": "2022-10-22T21:54:52.701Z",
                "name": "grid-v4-basic-with-audio-reaction"
             },
             "path": "sketches/grid/grid-v4-basic-with-audio-reaction"
          },
          "grid-v5-stick": {
             "meta": {
-               "_mtime": "2022-10-14T10:37:41.294Z",
+               "_mtime": "2022-10-22T21:55:41.780Z",
                "name": "grid-v5-stick"
             },
             "path": "sketches/grid/grid-v5-stick"
          },
          "grid-v6-field-with-dist-check": {
             "meta": {
-               "_mtime": "2022-10-20T12:22:08.297Z",
+               "_mtime": "2022-10-22T21:55:06.731Z",
                "name": "grid-v6-field-with-dist-check"
             },
             "path": "sketches/grid/grid-v6-field-with-dist-check"
@@ -937,14 +937,14 @@
          },
          "grid-v8-basic-with-easing-and-audio-reaction": {
             "meta": {
-               "_mtime": "2022-10-09T19:37:15.685Z",
+               "_mtime": "2022-10-22T21:56:38.212Z",
                "name": "grid-v8-basic-with-easing-and-audio-reaction"
             },
             "path": "sketches/grid/grid-v8-basic-with-easing-and-audio-reaction"
          },
          "grid-v9-basic-with-easing-changing-directions": {
             "meta": {
-               "_mtime": "2022-10-07T10:40:10.870Z",
+               "_mtime": "2022-10-22T21:55:15.696Z",
                "name": "grid-v9-basic-with-easing-changing-directions"
             },
             "path": "sketches/grid/grid-v9-basic-with-easing-changing-directions"

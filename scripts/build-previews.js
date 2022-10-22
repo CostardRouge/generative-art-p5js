@@ -1,6 +1,6 @@
 const { writeFileSync, readFileSync, existsSync } = require("fs");
 const core = require( 'puppeteer-core' );
-const chrome = require( 'chrome-aws-lambda' );
+//const chrome = require( 'chrome-aws-lambda' );
 
 const treePath = process.argv[2];
 const size = process.argv[3];
@@ -66,7 +66,7 @@ async function buildPreviews() {
   const treeFileContent = readFileSync(treePath, 'utf8');
   const tree = JSON.parse(treeFileContent);
 
-  for (const [ , sketches ] of Object.entries(tree)) {
+  for (const [ , {sketches} ] of Object.entries(tree)) {
     for (const [ sketchName, sketch ] of Object.entries(sketches)) {
       // if ( sketchName !== 'midi-v1-output') {
       //   break;
