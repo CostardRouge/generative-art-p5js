@@ -25,32 +25,7 @@ options.add( [
     label: 'Centered cell',
     defaultValue: true,
     category: 'Grid'
-  },
-  {
-    id: "grid-multiply-over-time",
-    type: 'switch',
-    label: 'Multiply size over time',
-    defaultValue: false,
-    category: 'Grid'
-  },
-  {
-    id: "grid-multiply-over-time-min",
-    label: 'Multiplier min',
-    type: 'slider',
-    min: 1,
-    max: 10,
-    defaultValue: 2,
-    category: 'Grid'
-  },
-  {
-    id: "grid-multiply-over-time-max",
-    label: 'Multiplier max',
-    type: 'slider',
-    min: 1,
-    max: 10,
-    defaultValue: 4,
-    category: 'Grid'
-  },
+  }
 ] );
 
 let direction = undefined;
@@ -80,19 +55,10 @@ sketch.draw((time, center) => {
 
   rotateX(radians(30))
   translate(0, -100, -1000)
-
   background(0);
 
-  const n = options.get("grid-multiply-over-time") ? mappers.fn(
-    sin(time/2),
-    -1,
-    1,
-    options.get("grid-multiply-over-time-min"),
-    options.get("grid-multiply-over-time-max"),
-    easing.easeInBounce
-    ) : 1;
-  const rows = options.get("grid-rows")*n;
-  const cols = options.get("grid-cols")*n;
+  const rows = options.get("grid-rows");
+  const cols = options.get("grid-cols");
 
   const W = ( width / 2 ) * 2.4;
   const H = ( height / 2 ) * 2;
@@ -107,7 +73,7 @@ sketch.draw((time, center) => {
     centered: options.get("grid-cell-centered")
   }
 
-  const scale = (width / cols);
+  const scale = ( (width / cols) + (height / rows) ) / 2;
 
   noiseDetail(4, 0.1)
 
@@ -123,21 +89,18 @@ sketch.draw((time, center) => {
     translate( cellVector.x, cellVector.y );
 
     const z = zMax * cos(angle);
+    const easingFunction = mappers.circularIndex(noise(x/cols+time/8, y/rows-time/5, time/10)+time*3, easingFunctions)
+    const colorFunction = colors.purple//mappers.circularIndex(xOff+yOff+time, [colors.rainbow,colors.purple])
 
-
-    const easingFunction = mappers.circularIndex(y/rows-time, easingFunctions)
-    // const colorFunction = mappers.circularIndex(xOff+yOff+time, [colors.rainbow,colors.purple])
-
-
-    stroke(colors.purple({
+    stroke(colorFunction({
       hueOffset: 0,
       hueIndex: mappers.fn(z, -zMax, zMax, -PI, PI, easingFunction[1]),
       opacityFactor: map(z, -zMax, zMax, 3, 1),
     }))
 
-    strokeWeight(3);
+    strokeWeight(scale);
 
-    let yy = mappers.fn(y, 0, rows -1, 0, 300, easing.easeOutQuint)// * sin(time)
+    let yy = mappers.fn(y, 0, rows -1, 0, 300, easing.easeInQuint)
 
     translate(0, 0, z + yy )
     point( 0, 0);
