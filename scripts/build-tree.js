@@ -8,7 +8,7 @@ async function* getFiles(dir) {
     const res = resolve(dir, dirent.name);
     if (dirent.isDirectory()) {
       yield* getFiles(res);
-    } else if (dirent.name.endsWith("index.html")) {
+    } else if (dirent.name.endsWith("index.js")) {
       yield res;
     }
   }
@@ -24,21 +24,29 @@ const output = process.argv[3];
     const name = parts[parts.length - 2];
     const folder = parts[parts.length - 3];
 
-    // const folderPath = filePath.replace("/index.html", "");
-    // const { mtime } = statSync(folderPath);
+    const { mtime: sketchModificationTime } = statSync(filePath);
+
+    const folderMeta = {
+      _mtime: tree?.[folder]?._mtime ?? statSync(filePath.replace("/index.js", ""))?.mtime,
+      name: folder,
+    };
 
     tree = {
       ...tree,
       [folder]: {
-        // _mtime: mtime,
         ...tree[folder],
-        [name]: {
-          meta: {
-            name,
-            folder,
+        meta: folderMeta,
+        sketches: {
+          ...tree[folder]?.sketches,
+          [name]: {
+            meta: {
+              _mtime: sketchModificationTime,
+              name,
+            },
+            path: `${input}/${folder}/${name}`,
           },
-          path: `${input}/${folder}/${name}`,
-        },
+        }
+        
       },
     };
   }

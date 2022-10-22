@@ -25,32 +25,7 @@ options.add( [
     label: 'Centered cell',
     defaultValue: true,
     category: 'Grid'
-  },
-  {
-    id: "grid-multiply-over-time",
-    type: 'switch',
-    label: 'Multiply size over time',
-    defaultValue: false,
-    category: 'Grid'
-  },
-  {
-    id: "grid-multiply-over-time-min",
-    label: 'Multiplier min',
-    type: 'slider',
-    min: 1,
-    max: 10,
-    defaultValue: 2,
-    category: 'Grid'
-  },
-  {
-    id: "grid-multiply-over-time-max",
-    label: 'Multiplier max',
-    type: 'slider',
-    min: 1,
-    max: 10,
-    defaultValue: 4,
-    category: 'Grid'
-  },
+  }
 ] );
 
 events.register("post-setup", () => {
@@ -103,15 +78,6 @@ sketch.draw((time, center) => {
   //   // -height / 2
   //   -height / 2
   // )
-  let n = options.get("grid-multiply-over-time") ? mappers.fn(
-    sin(time/2),
-    -1,
-    1,
-    options.get("grid-multiply-over-time-min"),
-    options.get("grid-multiply-over-time-max"),
-    easing.easeInBounce
-    ) : 1;
-
   // nrj = audio.capture.energy.average()
 
   // n = animation.sequence(
@@ -121,8 +87,8 @@ sketch.draw((time, center) => {
   //   0.67
   // )
 
-  const rows = options.get("grid-rows")*n;
-  const cols = options.get("grid-cols")*n;
+  const rows = options.get("grid-rows");
+  const cols = options.get("grid-cols");
 
   const gridOptions = {
     startLeft: createVector( 0, 0 ),

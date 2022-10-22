@@ -25,25 +25,7 @@ options.add( [
     label: 'Centered cell',
     defaultValue: true,
     category: 'Grid'
-  },
-  {
-    id: "grid-multiply-over-time-min",
-    label: 'Multiplier min',
-    type: 'slider',
-    min: 1,
-    max: 10,
-    defaultValue: 2,
-    category: 'Grid'
-  },
-  {
-    id: "grid-multiply-over-time-max",
-    label: 'Multiplier max',
-    type: 'slider',
-    min: 1,
-    max: 10,
-    defaultValue: 4,
-    category: 'Grid'
-  },
+  }
 ] );
 
 let cameraPosition = undefined;

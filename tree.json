@@ -1,1734 +1,1905 @@
 {
    "3d-grid-field": {
-      "3d-grid-field-v1": {
-         "meta": {
-            "name": "3d-grid-field-v1",
-            "folder": "3d-grid-field"
-         },
-         "path": "sketches/3d-grid-field/3d-grid-field-v1"
+      "meta": {
+         "_mtime": "2022-10-20T12:22:26.269Z",
+         "name": "3d-grid-field"
       },
-      "3d-grid-field-v2-rotating": {
-         "meta": {
-            "name": "3d-grid-field-v2-rotating",
-            "folder": "3d-grid-field"
+      "sketches": {
+         "3d-grid-field-v1": {
+            "meta": {
+               "_mtime": "2022-10-14T13:12:58.807Z",
+               "name": "3d-grid-field-v1"
+            },
+            "path": "sketches/3d-grid-field/3d-grid-field-v1"
          },
-         "path": "sketches/3d-grid-field/3d-grid-field-v2-rotating"
-      },
-      "3d-grid-field-v3-rotating-points": {
-         "meta": {
-            "name": "3d-grid-field-v3-rotating-points",
-            "folder": "3d-grid-field"
+         "3d-grid-field-v2-rotating": {
+            "meta": {
+               "_mtime": "2022-10-18T23:16:47.829Z",
+               "name": "3d-grid-field-v2-rotating"
+            },
+            "path": "sketches/3d-grid-field/3d-grid-field-v2-rotating"
          },
-         "path": "sketches/3d-grid-field/3d-grid-field-v3-rotating-points"
-      },
-      "3d-grid-field-v4-rotating-and-warping": {
-         "meta": {
-            "name": "3d-grid-field-v4-rotating-and-warping",
-            "folder": "3d-grid-field"
+         "3d-grid-field-v3-rotating-points": {
+            "meta": {
+               "_mtime": "2022-10-14T21:28:32.651Z",
+               "name": "3d-grid-field-v3-rotating-points"
+            },
+            "path": "sketches/3d-grid-field/3d-grid-field-v3-rotating-points"
          },
-         "path": "sketches/3d-grid-field/3d-grid-field-v4-rotating-and-warping"
-      },
-      "3d-grid-field-v4-rotating-and-warping copy": {
-         "meta": {
-            "name": "3d-grid-field-v4-rotating-and-warping copy",
-            "folder": "3d-grid-field"
+         "3d-grid-field-v4-rotating-and-warping": {
+            "meta": {
+               "_mtime": "2022-10-18T22:05:31.525Z",
+               "name": "3d-grid-field-v4-rotating-and-warping"
+            },
+            "path": "sketches/3d-grid-field/3d-grid-field-v4-rotating-and-warping"
          },
-         "path": "sketches/3d-grid-field/3d-grid-field-v4-rotating-and-warping copy"
+         "3d-grid-field-v4-rotating-and-warping copy": {
+            "meta": {
+               "_mtime": "2022-10-18T23:54:57.414Z",
+               "name": "3d-grid-field-v4-rotating-and-warping copy"
+            },
+            "path": "sketches/3d-grid-field/3d-grid-field-v4-rotating-and-warping copy"
+         }
       }
    },
    "3d-stuff": {
-      "ball": {
-         "meta": {
-            "name": "ball",
-            "folder": "3d-stuff"
-         },
-         "path": "sketches/3d-stuff/ball"
+      "meta": {
+         "_mtime": "2022-05-03T00:33:28.332Z",
+         "name": "3d-stuff"
       },
-      "hsb": {
-         "meta": {
-            "name": "hsb",
-            "folder": "3d-stuff"
+      "sketches": {
+         "ball": {
+            "meta": {
+               "_mtime": "2022-06-01T22:40:28.874Z",
+               "name": "ball"
+            },
+            "path": "sketches/3d-stuff/ball"
          },
-         "path": "sketches/3d-stuff/hsb"
+         "hsb": {
+            "meta": {
+               "_mtime": "2022-03-27T15:47:23.010Z",
+               "name": "hsb"
+            },
+            "path": "sketches/3d-stuff/hsb"
+         },
+         "lines": {
+            "meta": {
+               "_mtime": "2022-10-07T15:21:10.664Z",
+               "name": "lines"
+            },
+            "path": "sketches/3d-stuff/lines"
+         }
+      }
+   },
+   "_shaders": {
+      "meta": {
+         "_mtime": "2022-10-21T23:30:40.984Z",
+         "name": "_shaders"
       },
-      "lines": {
-         "meta": {
-            "name": "lines",
-            "folder": "3d-stuff"
-         },
-         "path": "sketches/3d-stuff/lines"
+      "sketches": {
+         "shaders-v1-test": {
+            "meta": {
+               "_mtime": "2022-10-22T13:27:08.729Z",
+               "name": "shaders-v1-test"
+            },
+            "path": "sketches/_shaders/shaders-v1-test"
+         }
       }
    },
    "abrupt": {
-      "abrupt-v1-pulse": {
-         "meta": {
-            "name": "abrupt-v1-pulse",
-            "folder": "abrupt"
-         },
-         "path": "sketches/abrupt/abrupt-v1-pulse"
+      "meta": {
+         "_mtime": "2022-04-26T00:07:46.043Z",
+         "name": "abrupt"
       },
-      "abrupt-v2-feather": {
-         "meta": {
-            "name": "abrupt-v2-feather",
-            "folder": "abrupt"
+      "sketches": {
+         "abrupt-v1-pulse": {
+            "meta": {
+               "_mtime": "2022-04-25T21:35:40.578Z",
+               "name": "abrupt-v1-pulse"
+            },
+            "path": "sketches/abrupt/abrupt-v1-pulse"
          },
-         "path": "sketches/abrupt/abrupt-v2-feather"
+         "abrupt-v2-feather": {
+            "meta": {
+               "_mtime": "2022-04-25T22:15:44.066Z",
+               "name": "abrupt-v2-feather"
+            },
+            "path": "sketches/abrupt/abrupt-v2-feather"
+         }
       }
    },
    "accident": {
-      "accident-v1-bubble": {
-         "meta": {
-            "name": "accident-v1-bubble",
-            "folder": "accident"
-         },
-         "path": "sketches/accident/accident-v1-bubble"
+      "meta": {
+         "_mtime": "2022-04-05T19:16:09.089Z",
+         "name": "accident"
       },
-      "accident-v2-rotating-bubble": {
-         "meta": {
-            "name": "accident-v2-rotating-bubble",
-            "folder": "accident"
+      "sketches": {
+         "accident-v1-bubble": {
+            "meta": {
+               "_mtime": "2022-03-18T18:03:22.163Z",
+               "name": "accident-v1-bubble"
+            },
+            "path": "sketches/accident/accident-v1-bubble"
          },
-         "path": "sketches/accident/accident-v2-rotating-bubble"
-      },
-      "accident-v3-lava-lamp": {
-         "meta": {
-            "name": "accident-v3-lava-lamp",
-            "folder": "accident"
+         "accident-v2-rotating-bubble": {
+            "meta": {
+               "_mtime": "2022-03-18T18:03:32.913Z",
+               "name": "accident-v2-rotating-bubble"
+            },
+            "path": "sketches/accident/accident-v2-rotating-bubble"
          },
-         "path": "sketches/accident/accident-v3-lava-lamp"
-      },
-      "accident-v4-crack-fire": {
-         "meta": {
-            "name": "accident-v4-crack-fire",
-            "folder": "accident"
+         "accident-v3-lava-lamp": {
+            "meta": {
+               "_mtime": "2022-03-18T18:03:37.728Z",
+               "name": "accident-v3-lava-lamp"
+            },
+            "path": "sketches/accident/accident-v3-lava-lamp"
          },
-         "path": "sketches/accident/accident-v4-crack-fire"
-      },
-      "accident-v4-cross-fire": {
-         "meta": {
-            "name": "accident-v4-cross-fire",
-            "folder": "accident"
+         "accident-v4-crack-fire": {
+            "meta": {
+               "_mtime": "2022-03-18T18:03:41.755Z",
+               "name": "accident-v4-crack-fire"
+            },
+            "path": "sketches/accident/accident-v4-crack-fire"
          },
-         "path": "sketches/accident/accident-v4-cross-fire"
-      },
-      "accident-v5-chandelier": {
-         "meta": {
-            "name": "accident-v5-chandelier",
-            "folder": "accident"
+         "accident-v4-cross-fire": {
+            "meta": {
+               "_mtime": "2022-03-18T18:03:45.139Z",
+               "name": "accident-v4-cross-fire"
+            },
+            "path": "sketches/accident/accident-v4-cross-fire"
          },
-         "path": "sketches/accident/accident-v5-chandelier"
-      },
-      "accident-v6-chandelier-warp": {
-         "meta": {
-            "name": "accident-v6-chandelier-warp",
-            "folder": "accident"
+         "accident-v5-chandelier": {
+            "meta": {
+               "_mtime": "2022-03-18T18:03:49.890Z",
+               "name": "accident-v5-chandelier"
+            },
+            "path": "sketches/accident/accident-v5-chandelier"
          },
-         "path": "sketches/accident/accident-v6-chandelier-warp"
-      },
-      "accident-v6-chandelier-warp-blurry-vertical": {
-         "meta": {
-            "name": "accident-v6-chandelier-warp-blurry-vertical",
-            "folder": "accident"
+         "accident-v6-chandelier-warp": {
+            "meta": {
+               "_mtime": "2022-03-18T18:05:25.068Z",
+               "name": "accident-v6-chandelier-warp"
+            },
+            "path": "sketches/accident/accident-v6-chandelier-warp"
          },
-         "path": "sketches/accident/accident-v6-chandelier-warp-blurry-vertical"
-      },
-      "accident-v6-chandelier-warps": {
-         "meta": {
-            "name": "accident-v6-chandelier-warps",
-            "folder": "accident"
+         "accident-v6-chandelier-warp-blurry-vertical": {
+            "meta": {
+               "_mtime": "2022-03-18T18:06:19.475Z",
+               "name": "accident-v6-chandelier-warp-blurry-vertical"
+            },
+            "path": "sketches/accident/accident-v6-chandelier-warp-blurry-vertical"
          },
-         "path": "sketches/accident/accident-v6-chandelier-warps"
-      },
-      "accident-v6-chandelier-warps-blurry": {
-         "meta": {
-            "name": "accident-v6-chandelier-warps-blurry",
-            "folder": "accident"
+         "accident-v6-chandelier-warps": {
+            "meta": {
+               "_mtime": "2022-03-18T18:03:58.994Z",
+               "name": "accident-v6-chandelier-warps"
+            },
+            "path": "sketches/accident/accident-v6-chandelier-warps"
          },
-         "path": "sketches/accident/accident-v6-chandelier-warps-blurry"
-      },
-      "accident-v6-chandelier-warps-gradient": {
-         "meta": {
-            "name": "accident-v6-chandelier-warps-gradient",
-            "folder": "accident"
+         "accident-v6-chandelier-warps-blurry": {
+            "meta": {
+               "_mtime": "2022-03-22T17:26:00.705Z",
+               "name": "accident-v6-chandelier-warps-blurry"
+            },
+            "path": "sketches/accident/accident-v6-chandelier-warps-blurry"
          },
-         "path": "sketches/accident/accident-v6-chandelier-warps-gradient"
-      },
-      "accident-v6-chanderlier-warps-red": {
-         "meta": {
-            "name": "accident-v6-chanderlier-warps-red",
-            "folder": "accident"
+         "accident-v6-chandelier-warps-gradient": {
+            "meta": {
+               "_mtime": "2022-03-18T18:04:05.553Z",
+               "name": "accident-v6-chandelier-warps-gradient"
+            },
+            "path": "sketches/accident/accident-v6-chandelier-warps-gradient"
          },
-         "path": "sketches/accident/accident-v6-chanderlier-warps-red"
-      },
-      "accident-v7-chewing-gum-strings": {
-         "meta": {
-            "name": "accident-v7-chewing-gum-strings",
-            "folder": "accident"
+         "accident-v6-chanderlier-warps-red": {
+            "meta": {
+               "_mtime": "2022-03-19T00:52:14.065Z",
+               "name": "accident-v6-chanderlier-warps-red"
+            },
+            "path": "sketches/accident/accident-v6-chanderlier-warps-red"
          },
-         "path": "sketches/accident/accident-v7-chewing-gum-strings"
-      },
-      "accident-v7-chewing-gum-strings-v2": {
-         "meta": {
-            "name": "accident-v7-chewing-gum-strings-v2",
-            "folder": "accident"
+         "accident-v7-chewing-gum-strings": {
+            "meta": {
+               "_mtime": "2022-03-18T18:04:12.563Z",
+               "name": "accident-v7-chewing-gum-strings"
+            },
+            "path": "sketches/accident/accident-v7-chewing-gum-strings"
          },
-         "path": "sketches/accident/accident-v7-chewing-gum-strings-v2"
-      },
-      "accident-v7-chewing-gum-strings-v3": {
-         "meta": {
-            "name": "accident-v7-chewing-gum-strings-v3",
-            "folder": "accident"
+         "accident-v7-chewing-gum-strings-v2": {
+            "meta": {
+               "_mtime": "2022-03-18T18:04:35.635Z",
+               "name": "accident-v7-chewing-gum-strings-v2"
+            },
+            "path": "sketches/accident/accident-v7-chewing-gum-strings-v2"
          },
-         "path": "sketches/accident/accident-v7-chewing-gum-strings-v3"
-      },
-      "accident-v8-circle": {
-         "meta": {
-            "name": "accident-v8-circle",
-            "folder": "accident"
+         "accident-v7-chewing-gum-strings-v3": {
+            "meta": {
+               "_mtime": "2022-03-18T18:04:38.332Z",
+               "name": "accident-v7-chewing-gum-strings-v3"
+            },
+            "path": "sketches/accident/accident-v7-chewing-gum-strings-v3"
          },
-         "path": "sketches/accident/accident-v8-circle"
-      },
-      "accident-v8-dansing-dna": {
-         "meta": {
-            "name": "accident-v8-dansing-dna",
-            "folder": "accident"
+         "accident-v8-circle": {
+            "meta": {
+               "_mtime": "2022-03-18T18:04:40.977Z",
+               "name": "accident-v8-circle"
+            },
+            "path": "sketches/accident/accident-v8-circle"
          },
-         "path": "sketches/accident/accident-v8-dansing-dna"
-      },
-      "accident-v9-eccentric-acid": {
-         "meta": {
-            "name": "accident-v9-eccentric-acid",
-            "folder": "accident"
+         "accident-v8-dansing-dna": {
+            "meta": {
+               "_mtime": "2022-03-18T18:04:43.072Z",
+               "name": "accident-v8-dansing-dna"
+            },
+            "path": "sketches/accident/accident-v8-dansing-dna"
          },
-         "path": "sketches/accident/accident-v9-eccentric-acid"
-      },
-      "accident-v9-eccentric-audio": {
-         "meta": {
-            "name": "accident-v9-eccentric-audio",
-            "folder": "accident"
+         "accident-v9-eccentric-acid": {
+            "meta": {
+               "_mtime": "2022-03-18T18:04:45.588Z",
+               "name": "accident-v9-eccentric-acid"
+            },
+            "path": "sketches/accident/accident-v9-eccentric-acid"
          },
-         "path": "sketches/accident/accident-v9-eccentric-audio"
-      },
-      "accident-v9-eccentric-balls-blurry": {
-         "meta": {
-            "name": "accident-v9-eccentric-balls-blurry",
-            "folder": "accident"
+         "accident-v9-eccentric-audio": {
+            "meta": {
+               "_mtime": "2022-03-18T18:04:48.212Z",
+               "name": "accident-v9-eccentric-audio"
+            },
+            "path": "sketches/accident/accident-v9-eccentric-audio"
          },
-         "path": "sketches/accident/accident-v9-eccentric-balls-blurry"
-      },
-      "accident-v9-eccentric-mirror": {
-         "meta": {
-            "name": "accident-v9-eccentric-mirror",
-            "folder": "accident"
+         "accident-v9-eccentric-balls-blurry": {
+            "meta": {
+               "_mtime": "2022-03-19T00:53:54.711Z",
+               "name": "accident-v9-eccentric-balls-blurry"
+            },
+            "path": "sketches/accident/accident-v9-eccentric-balls-blurry"
          },
-         "path": "sketches/accident/accident-v9-eccentric-mirror"
-      },
-      "accident-v9-eccentric-strip": {
-         "meta": {
-            "name": "accident-v9-eccentric-strip",
-            "folder": "accident"
+         "accident-v9-eccentric-mirror": {
+            "meta": {
+               "_mtime": "2022-03-18T18:04:53.342Z",
+               "name": "accident-v9-eccentric-mirror"
+            },
+            "path": "sketches/accident/accident-v9-eccentric-mirror"
          },
-         "path": "sketches/accident/accident-v9-eccentric-strip"
-      },
-      "accident-v9-eccentric-strip-blurry": {
-         "meta": {
-            "name": "accident-v9-eccentric-strip-blurry",
-            "folder": "accident"
+         "accident-v9-eccentric-strip": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "accident-v9-eccentric-strip"
+            },
+            "path": "sketches/accident/accident-v9-eccentric-strip"
          },
-         "path": "sketches/accident/accident-v9-eccentric-strip-blurry"
-      },
-      "accident-v9-eccentric-twist": {
-         "meta": {
-            "name": "accident-v9-eccentric-twist",
-            "folder": "accident"
+         "accident-v9-eccentric-strip-blurry": {
+            "meta": {
+               "_mtime": "2022-03-19T01:00:00.299Z",
+               "name": "accident-v9-eccentric-strip-blurry"
+            },
+            "path": "sketches/accident/accident-v9-eccentric-strip-blurry"
          },
-         "path": "sketches/accident/accident-v9-eccentric-twist"
+         "accident-v9-eccentric-twist": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "accident-v9-eccentric-twist"
+            },
+            "path": "sketches/accident/accident-v9-eccentric-twist"
+         }
       }
    },
    "audio-reactive": {
-      "audio-reactive-v1-level": {
-         "meta": {
-            "name": "audio-reactive-v1-level",
-            "folder": "audio-reactive"
-         },
-         "path": "sketches/audio-reactive/audio-reactive-v1-level"
+      "meta": {
+         "_mtime": "2022-10-14T13:06:49.847Z",
+         "name": "audio-reactive"
       },
-      "audio-reactive-v2-fft-debug": {
-         "meta": {
-            "name": "audio-reactive-v2-fft-debug",
-            "folder": "audio-reactive"
+      "sketches": {
+         "audio-reactive-v1-level": {
+            "meta": {
+               "_mtime": "2022-08-28T13:58:02.194Z",
+               "name": "audio-reactive-v1-level"
+            },
+            "path": "sketches/audio-reactive/audio-reactive-v1-level"
          },
-         "path": "sketches/audio-reactive/audio-reactive-v2-fft-debug"
-      },
-      "audio-reactive-v3-smooth-test": {
-         "meta": {
-            "name": "audio-reactive-v3-smooth-test",
-            "folder": "audio-reactive"
+         "audio-reactive-v2-fft-debug": {
+            "meta": {
+               "_mtime": "2022-09-18T22:43:25.822Z",
+               "name": "audio-reactive-v2-fft-debug"
+            },
+            "path": "sketches/audio-reactive/audio-reactive-v2-fft-debug"
          },
-         "path": "sketches/audio-reactive/audio-reactive-v3-smooth-test"
-      },
-      "audio-reactive-v4-spider": {
-         "meta": {
-            "name": "audio-reactive-v4-spider",
-            "folder": "audio-reactive"
+         "audio-reactive-v3-smooth-test": {
+            "meta": {
+               "_mtime": "2022-09-18T22:43:52.257Z",
+               "name": "audio-reactive-v3-smooth-test"
+            },
+            "path": "sketches/audio-reactive/audio-reactive-v3-smooth-test"
          },
-         "path": "sketches/audio-reactive/audio-reactive-v4-spider"
-      },
-      "audio-reactive-v5-droplets": {
-         "meta": {
-            "name": "audio-reactive-v5-droplets",
-            "folder": "audio-reactive"
+         "audio-reactive-v4-spider": {
+            "meta": {
+               "_mtime": "2022-09-14T19:32:09.358Z",
+               "name": "audio-reactive-v4-spider"
+            },
+            "path": "sketches/audio-reactive/audio-reactive-v4-spider"
          },
-         "path": "sketches/audio-reactive/audio-reactive-v5-droplets"
-      },
-      "audio-reactive-v5-droplets copy": {
-         "meta": {
-            "name": "audio-reactive-v5-droplets copy",
-            "folder": "audio-reactive"
+         "audio-reactive-v5-droplets": {
+            "meta": {
+               "_mtime": "2022-09-04T11:30:58.622Z",
+               "name": "audio-reactive-v5-droplets"
+            },
+            "path": "sketches/audio-reactive/audio-reactive-v5-droplets"
          },
-         "path": "sketches/audio-reactive/audio-reactive-v5-droplets copy"
-      },
-      "audio-reactive-v6-beat-counter": {
-         "meta": {
-            "name": "audio-reactive-v6-beat-counter",
-            "folder": "audio-reactive"
+         "audio-reactive-v5-droplets copy": {
+            "meta": {
+               "_mtime": "2022-09-04T16:52:43.988Z",
+               "name": "audio-reactive-v5-droplets copy"
+            },
+            "path": "sketches/audio-reactive/audio-reactive-v5-droplets copy"
          },
-         "path": "sketches/audio-reactive/audio-reactive-v6-beat-counter"
-      },
-      "audio-reactive-v7-spectrograph": {
-         "meta": {
-            "name": "audio-reactive-v7-spectrograph",
-            "folder": "audio-reactive"
+         "audio-reactive-v6-beat-counter": {
+            "meta": {
+               "_mtime": "2022-10-14T12:16:16.723Z",
+               "name": "audio-reactive-v6-beat-counter"
+            },
+            "path": "sketches/audio-reactive/audio-reactive-v6-beat-counter"
          },
-         "path": "sketches/audio-reactive/audio-reactive-v7-spectrograph"
-      },
-      "audio-reactive-v7-spectrograph copy": {
-         "meta": {
-            "name": "audio-reactive-v7-spectrograph copy",
-            "folder": "audio-reactive"
+         "audio-reactive-v7-spectrograph": {
+            "meta": {
+               "_mtime": "2022-10-02T17:03:22.902Z",
+               "name": "audio-reactive-v7-spectrograph"
+            },
+            "path": "sketches/audio-reactive/audio-reactive-v7-spectrograph"
          },
-         "path": "sketches/audio-reactive/audio-reactive-v7-spectrograph copy"
-      },
-      "audio-reactive-v7-spectrograph-3d": {
-         "meta": {
-            "name": "audio-reactive-v7-spectrograph-3d",
-            "folder": "audio-reactive"
+         "audio-reactive-v7-spectrograph copy": {
+            "meta": {
+               "_mtime": "2022-09-24T22:06:51.613Z",
+               "name": "audio-reactive-v7-spectrograph copy"
+            },
+            "path": "sketches/audio-reactive/audio-reactive-v7-spectrograph copy"
          },
-         "path": "sketches/audio-reactive/audio-reactive-v7-spectrograph-3d"
+         "audio-reactive-v7-spectrograph-3d": {
+            "meta": {
+               "_mtime": "2022-10-16T16:12:29.033Z",
+               "name": "audio-reactive-v7-spectrograph-3d"
+            },
+            "path": "sketches/audio-reactive/audio-reactive-v7-spectrograph-3d"
+         }
       }
    },
    "background-pattern": {
-      "background-pattern-easing-lines": {
-         "meta": {
-            "name": "background-pattern-easing-lines",
-            "folder": "background-pattern"
-         },
-         "path": "sketches/background-pattern/background-pattern-easing-lines"
+      "meta": {
+         "_mtime": "2022-08-12T19:56:51.913Z",
+         "name": "background-pattern"
       },
-      "background-pattern-sinwave-lines": {
-         "meta": {
-            "name": "background-pattern-sinwave-lines",
-            "folder": "background-pattern"
+      "sketches": {
+         "background-pattern-easing-lines": {
+            "meta": {
+               "_mtime": "2022-09-04T15:27:01.675Z",
+               "name": "background-pattern-easing-lines"
+            },
+            "path": "sketches/background-pattern/background-pattern-easing-lines"
          },
-         "path": "sketches/background-pattern/background-pattern-sinwave-lines"
-      },
-      "background-pattern-spring": {
-         "meta": {
-            "name": "background-pattern-spring",
-            "folder": "background-pattern"
+         "background-pattern-sinwave-lines": {
+            "meta": {
+               "_mtime": "2022-08-04T18:08:07.630Z",
+               "name": "background-pattern-sinwave-lines"
+            },
+            "path": "sketches/background-pattern/background-pattern-sinwave-lines"
          },
-         "path": "sketches/background-pattern/background-pattern-spring"
-      },
-      "background-pattern-v10-crazy": {
-         "meta": {
-            "name": "background-pattern-v10-crazy",
-            "folder": "background-pattern"
+         "background-pattern-spring": {
+            "meta": {
+               "_mtime": "2022-08-15T10:44:57.991Z",
+               "name": "background-pattern-spring"
+            },
+            "path": "sketches/background-pattern/background-pattern-spring"
          },
-         "path": "sketches/background-pattern/background-pattern-v10-crazy"
-      },
-      "background-pattern-v2-radial": {
-         "meta": {
-            "name": "background-pattern-v2-radial",
-            "folder": "background-pattern"
+         "background-pattern-v10-crazy": {
+            "meta": {
+               "_mtime": "2022-08-28T15:47:13.496Z",
+               "name": "background-pattern-v10-crazy"
+            },
+            "path": "sketches/background-pattern/background-pattern-v10-crazy"
          },
-         "path": "sketches/background-pattern/background-pattern-v2-radial"
-      },
-      "background-pattern-v3-radial-eyelashes": {
-         "meta": {
-            "name": "background-pattern-v3-radial-eyelashes",
-            "folder": "background-pattern"
+         "background-pattern-v2-radial": {
+            "meta": {
+               "_mtime": "2022-08-15T14:16:35.805Z",
+               "name": "background-pattern-v2-radial"
+            },
+            "path": "sketches/background-pattern/background-pattern-v2-radial"
          },
-         "path": "sketches/background-pattern/background-pattern-v3-radial-eyelashes"
-      },
-      "background-pattern-v4-radial-purple": {
-         "meta": {
-            "name": "background-pattern-v4-radial-purple",
-            "folder": "background-pattern"
+         "background-pattern-v3-radial-eyelashes": {
+            "meta": {
+               "_mtime": "2022-08-15T14:16:35.805Z",
+               "name": "background-pattern-v3-radial-eyelashes"
+            },
+            "path": "sketches/background-pattern/background-pattern-v3-radial-eyelashes"
          },
-         "path": "sketches/background-pattern/background-pattern-v4-radial-purple"
-      },
-      "background-pattern-v5-big-eyelashes": {
-         "meta": {
-            "name": "background-pattern-v5-big-eyelashes",
-            "folder": "background-pattern"
+         "background-pattern-v4-radial-purple": {
+            "meta": {
+               "_mtime": "2022-08-15T14:16:35.866Z",
+               "name": "background-pattern-v4-radial-purple"
+            },
+            "path": "sketches/background-pattern/background-pattern-v4-radial-purple"
          },
-         "path": "sketches/background-pattern/background-pattern-v5-big-eyelashes"
-      },
-      "background-pattern-v6-legs": {
-         "meta": {
-            "name": "background-pattern-v6-legs",
-            "folder": "background-pattern"
+         "background-pattern-v5-big-eyelashes": {
+            "meta": {
+               "_mtime": "2022-08-15T14:16:35.806Z",
+               "name": "background-pattern-v5-big-eyelashes"
+            },
+            "path": "sketches/background-pattern/background-pattern-v5-big-eyelashes"
          },
-         "path": "sketches/background-pattern/background-pattern-v6-legs"
-      },
-      "background-pattern-v7-butterfly": {
-         "meta": {
-            "name": "background-pattern-v7-butterfly",
-            "folder": "background-pattern"
+         "background-pattern-v6-legs": {
+            "meta": {
+               "_mtime": "2022-08-15T14:16:35.940Z",
+               "name": "background-pattern-v6-legs"
+            },
+            "path": "sketches/background-pattern/background-pattern-v6-legs"
          },
-         "path": "sketches/background-pattern/background-pattern-v7-butterfly"
-      },
-      "background-pattern-v8-kite": {
-         "meta": {
-            "name": "background-pattern-v8-kite",
-            "folder": "background-pattern"
+         "background-pattern-v7-butterfly": {
+            "meta": {
+               "_mtime": "2022-08-15T14:16:35.805Z",
+               "name": "background-pattern-v7-butterfly"
+            },
+            "path": "sketches/background-pattern/background-pattern-v7-butterfly"
          },
-         "path": "sketches/background-pattern/background-pattern-v8-kite"
-      },
-      "background-pattern-v9-bounce": {
-         "meta": {
-            "name": "background-pattern-v9-bounce",
-            "folder": "background-pattern"
+         "background-pattern-v8-kite": {
+            "meta": {
+               "_mtime": "2022-08-15T14:16:35.805Z",
+               "name": "background-pattern-v8-kite"
+            },
+            "path": "sketches/background-pattern/background-pattern-v8-kite"
          },
-         "path": "sketches/background-pattern/background-pattern-v9-bounce"
+         "background-pattern-v9-bounce": {
+            "meta": {
+               "_mtime": "2022-08-28T16:41:42.432Z",
+               "name": "background-pattern-v9-bounce"
+            },
+            "path": "sketches/background-pattern/background-pattern-v9-bounce"
+         }
       }
    },
    "blob": {
-      "blob-v1-jump": {
-         "meta": {
-            "name": "blob-v1-jump",
-            "folder": "blob"
-         },
-         "path": "sketches/blob/blob-v1-jump"
+      "meta": {
+         "_mtime": "2022-07-16T19:05:08.764Z",
+         "name": "blob"
       },
-      "blob-v2-caterpillar": {
-         "meta": {
-            "name": "blob-v2-caterpillar",
-            "folder": "blob"
+      "sketches": {
+         "blob-v1-jump": {
+            "meta": {
+               "_mtime": "2022-07-01T12:10:29.347Z",
+               "name": "blob-v1-jump"
+            },
+            "path": "sketches/blob/blob-v1-jump"
          },
-         "path": "sketches/blob/blob-v2-caterpillar"
-      },
-      "blob-v2-invisible-walls": {
-         "meta": {
-            "name": "blob-v2-invisible-walls",
-            "folder": "blob"
+         "blob-v2-caterpillar": {
+            "meta": {
+               "_mtime": "2022-08-19T10:08:40.445Z",
+               "name": "blob-v2-caterpillar"
+            },
+            "path": "sketches/blob/blob-v2-caterpillar"
          },
-         "path": "sketches/blob/blob-v2-invisible-walls"
-      },
-      "blob-v2a-caterpillar-abrupt-1": {
-         "meta": {
-            "name": "blob-v2a-caterpillar-abrupt-1",
-            "folder": "blob"
+         "blob-v2-invisible-walls": {
+            "meta": {
+               "_mtime": "2022-08-19T10:07:06.252Z",
+               "name": "blob-v2-invisible-walls"
+            },
+            "path": "sketches/blob/blob-v2-invisible-walls"
          },
-         "path": "sketches/blob/blob-v2a-caterpillar-abrupt-1"
-      },
-      "blob-v2a-caterpillar-abrupt-2": {
-         "meta": {
-            "name": "blob-v2a-caterpillar-abrupt-2",
-            "folder": "blob"
+         "blob-v2a-caterpillar-abrupt-1": {
+            "meta": {
+               "_mtime": "2022-08-19T10:07:06.269Z",
+               "name": "blob-v2a-caterpillar-abrupt-1"
+            },
+            "path": "sketches/blob/blob-v2a-caterpillar-abrupt-1"
          },
-         "path": "sketches/blob/blob-v2a-caterpillar-abrupt-2"
-      },
-      "blob-v3-sequence": {
-         "meta": {
-            "name": "blob-v3-sequence",
-            "folder": "blob"
+         "blob-v2a-caterpillar-abrupt-2": {
+            "meta": {
+               "_mtime": "2022-08-19T10:07:06.215Z",
+               "name": "blob-v2a-caterpillar-abrupt-2"
+            },
+            "path": "sketches/blob/blob-v2a-caterpillar-abrupt-2"
          },
-         "path": "sketches/blob/blob-v3-sequence"
+         "blob-v3-sequence": {
+            "meta": {
+               "_mtime": "2022-08-15T11:05:36.201Z",
+               "name": "blob-v3-sequence"
+            },
+            "path": "sketches/blob/blob-v3-sequence"
+         }
       }
    },
    "churros": {
-      "churros-v1-circle": {
-         "meta": {
-            "name": "churros-v1-circle",
-            "folder": "churros"
-         },
-         "path": "sketches/churros/churros-v1-circle"
+      "meta": {
+         "_mtime": "2022-05-15T15:11:37.051Z",
+         "name": "churros"
       },
-      "churros-v10-tracer": {
-         "meta": {
-            "name": "churros-v10-tracer",
-            "folder": "churros"
+      "sketches": {
+         "churros-v1-circle": {
+            "meta": {
+               "_mtime": "2022-05-27T22:31:29.254Z",
+               "name": "churros-v1-circle"
+            },
+            "path": "sketches/churros/churros-v1-circle"
          },
-         "path": "sketches/churros/churros-v10-tracer"
-      },
-      "churros-v11-perspective": {
-         "meta": {
-            "name": "churros-v11-perspective",
-            "folder": "churros"
+         "churros-v10-tracer": {
+            "meta": {
+               "_mtime": "2022-08-19T10:07:06.347Z",
+               "name": "churros-v10-tracer"
+            },
+            "path": "sketches/churros/churros-v10-tracer"
          },
-         "path": "sketches/churros/churros-v11-perspective"
-      },
-      "churros-v2-string": {
-         "meta": {
-            "name": "churros-v2-string",
-            "folder": "churros"
+         "churros-v11-perspective": {
+            "meta": {
+               "_mtime": "2022-05-11T02:38:35.940Z",
+               "name": "churros-v11-perspective"
+            },
+            "path": "sketches/churros/churros-v11-perspective"
          },
-         "path": "sketches/churros/churros-v2-string"
-      },
-      "churros-v3-loop": {
-         "meta": {
-            "name": "churros-v3-loop",
-            "folder": "churros"
+         "churros-v2-string": {
+            "meta": {
+               "_mtime": "2022-06-01T23:42:52.366Z",
+               "name": "churros-v2-string"
+            },
+            "path": "sketches/churros/churros-v2-string"
          },
-         "path": "sketches/churros/churros-v3-loop"
-      },
-      "churros-v4-line": {
-         "meta": {
-            "name": "churros-v4-line",
-            "folder": "churros"
+         "churros-v3-loop": {
+            "meta": {
+               "_mtime": "2022-04-18T18:22:11.208Z",
+               "name": "churros-v3-loop"
+            },
+            "path": "sketches/churros/churros-v3-loop"
          },
-         "path": "sketches/churros/churros-v4-line"
-      },
-      "churros-v5-serpent": {
-         "meta": {
-            "name": "churros-v5-serpent",
-            "folder": "churros"
+         "churros-v4-line": {
+            "meta": {
+               "_mtime": "2022-04-26T00:06:13.240Z",
+               "name": "churros-v4-line"
+            },
+            "path": "sketches/churros/churros-v4-line"
          },
-         "path": "sketches/churros/churros-v5-serpent"
-      },
-      "churros-v6-scarf": {
-         "meta": {
-            "name": "churros-v6-scarf",
-            "folder": "churros"
+         "churros-v5-serpent": {
+            "meta": {
+               "_mtime": "2022-04-26T23:58:25.733Z",
+               "name": "churros-v5-serpent"
+            },
+            "path": "sketches/churros/churros-v5-serpent"
          },
-         "path": "sketches/churros/churros-v6-scarf"
-      },
-      "churros-v7-pasta": {
-         "meta": {
-            "name": "churros-v7-pasta",
-            "folder": "churros"
+         "churros-v6-scarf": {
+            "meta": {
+               "_mtime": "2022-04-21T19:33:28.906Z",
+               "name": "churros-v6-scarf"
+            },
+            "path": "sketches/churros/churros-v6-scarf"
          },
-         "path": "sketches/churros/churros-v7-pasta"
-      },
-      "churros-v8-pasta-guided": {
-         "meta": {
-            "name": "churros-v8-pasta-guided",
-            "folder": "churros"
+         "churros-v7-pasta": {
+            "meta": {
+               "_mtime": "2022-05-27T22:33:34.948Z",
+               "name": "churros-v7-pasta"
+            },
+            "path": "sketches/churros/churros-v7-pasta"
          },
-         "path": "sketches/churros/churros-v8-pasta-guided"
-      },
-      "churros-v9-pasta-fixer": {
-         "meta": {
-            "name": "churros-v9-pasta-fixer",
-            "folder": "churros"
+         "churros-v8-pasta-guided": {
+            "meta": {
+               "_mtime": "2022-08-19T10:07:06.366Z",
+               "name": "churros-v8-pasta-guided"
+            },
+            "path": "sketches/churros/churros-v8-pasta-guided"
          },
-         "path": "sketches/churros/churros-v9-pasta-fixer"
-      },
-      "churros-v9-pasta-rgb-fixer": {
-         "meta": {
-            "name": "churros-v9-pasta-rgb-fixer",
-            "folder": "churros"
+         "churros-v9-pasta-fixer": {
+            "meta": {
+               "_mtime": "2022-05-27T22:37:08.581Z",
+               "name": "churros-v9-pasta-fixer"
+            },
+            "path": "sketches/churros/churros-v9-pasta-fixer"
          },
-         "path": "sketches/churros/churros-v9-pasta-rgb-fixer"
-      },
-      "churros-v9-pasta-scanner": {
-         "meta": {
-            "name": "churros-v9-pasta-scanner",
-            "folder": "churros"
+         "churros-v9-pasta-rgb-fixer": {
+            "meta": {
+               "_mtime": "2022-08-19T10:07:06.422Z",
+               "name": "churros-v9-pasta-rgb-fixer"
+            },
+            "path": "sketches/churros/churros-v9-pasta-rgb-fixer"
          },
-         "path": "sketches/churros/churros-v9-pasta-scanner"
+         "churros-v9-pasta-scanner": {
+            "meta": {
+               "_mtime": "2022-05-15T15:00:42.317Z",
+               "name": "churros-v9-pasta-scanner"
+            },
+            "path": "sketches/churros/churros-v9-pasta-scanner"
+         }
       }
    },
    "demo-festival-2022": {
-      "1-guided-pasta": {
-         "meta": {
-            "name": "1-guided-pasta",
-            "folder": "demo-festival-2022"
-         },
-         "path": "sketches/demo-festival-2022/1-guided-pasta"
+      "meta": {
+         "_mtime": "2022-07-15T02:01:42.779Z",
+         "name": "demo-festival-2022"
       },
-      "2-wormy-churros": {
-         "meta": {
-            "name": "2-wormy-churros",
-            "folder": "demo-festival-2022"
+      "sketches": {
+         "1-guided-pasta": {
+            "meta": {
+               "_mtime": "2022-08-19T10:07:06.139Z",
+               "name": "1-guided-pasta"
+            },
+            "path": "sketches/demo-festival-2022/1-guided-pasta"
          },
-         "path": "sketches/demo-festival-2022/2-wormy-churros"
-      },
-      "3-rainbow-to-purple": {
-         "meta": {
-            "name": "3-rainbow-to-purple",
-            "folder": "demo-festival-2022"
+         "2-wormy-churros": {
+            "meta": {
+               "_mtime": "2022-07-06T22:44:59.907Z",
+               "name": "2-wormy-churros"
+            },
+            "path": "sketches/demo-festival-2022/2-wormy-churros"
          },
-         "path": "sketches/demo-festival-2022/3-rainbow-to-purple"
-      },
-      "4-rainbowed-medusa": {
-         "meta": {
-            "name": "4-rainbowed-medusa",
-            "folder": "demo-festival-2022"
+         "3-rainbow-to-purple": {
+            "meta": {
+               "_mtime": "2022-08-19T10:07:06.197Z",
+               "name": "3-rainbow-to-purple"
+            },
+            "path": "sketches/demo-festival-2022/3-rainbow-to-purple"
          },
-         "path": "sketches/demo-festival-2022/4-rainbowed-medusa"
-      },
-      "5-fox-tail": {
-         "meta": {
-            "name": "5-fox-tail",
-            "folder": "demo-festival-2022"
+         "4-rainbowed-medusa": {
+            "meta": {
+               "_mtime": "2022-07-06T23:14:01.418Z",
+               "name": "4-rainbowed-medusa"
+            },
+            "path": "sketches/demo-festival-2022/4-rainbowed-medusa"
          },
-         "path": "sketches/demo-festival-2022/5-fox-tail"
-      },
-      "6-caterpillar": {
-         "meta": {
-            "name": "6-caterpillar",
-            "folder": "demo-festival-2022"
+         "5-fox-tail": {
+            "meta": {
+               "_mtime": "2022-08-19T10:07:06.195Z",
+               "name": "5-fox-tail"
+            },
+            "path": "sketches/demo-festival-2022/5-fox-tail"
          },
-         "path": "sketches/demo-festival-2022/6-caterpillar"
-      },
-      "7-rainbow-turbine": {
-         "meta": {
-            "name": "7-rainbow-turbine",
-            "folder": "demo-festival-2022"
+         "6-caterpillar": {
+            "meta": {
+               "_mtime": "2022-08-19T10:07:06.197Z",
+               "name": "6-caterpillar"
+            },
+            "path": "sketches/demo-festival-2022/6-caterpillar"
          },
-         "path": "sketches/demo-festival-2022/7-rainbow-turbine"
-      },
-      "8-rainbow-turbine-chain": {
-         "meta": {
-            "name": "8-rainbow-turbine-chain",
-            "folder": "demo-festival-2022"
+         "7-rainbow-turbine": {
+            "meta": {
+               "_mtime": "2022-07-10T22:25:20.561Z",
+               "name": "7-rainbow-turbine"
+            },
+            "path": "sketches/demo-festival-2022/7-rainbow-turbine"
          },
-         "path": "sketches/demo-festival-2022/8-rainbow-turbine-chain"
+         "8-rainbow-turbine-chain": {
+            "meta": {
+               "_mtime": "2022-07-29T15:39:15.452Z",
+               "name": "8-rainbow-turbine-chain"
+            },
+            "path": "sketches/demo-festival-2022/8-rainbow-turbine-chain"
+         }
       }
    },
    "easing": {
-      "easing-v1-all-functions": {
-         "meta": {
-            "name": "easing-v1-all-functions",
-            "folder": "easing"
-         },
-         "path": "sketches/easing/easing-v1-all-functions"
+      "meta": {
+         "_mtime": "2022-09-04T11:55:57.650Z",
+         "name": "easing"
       },
-      "easing-v2-functions": {
-         "meta": {
-            "name": "easing-v2-functions",
-            "folder": "easing"
+      "sketches": {
+         "easing-v1-all-functions": {
+            "meta": {
+               "_mtime": "2022-09-11T19:19:42.895Z",
+               "name": "easing-v1-all-functions"
+            },
+            "path": "sketches/easing/easing-v1-all-functions"
          },
-         "path": "sketches/easing/easing-v2-functions"
-      },
-      "easing-v2-functions-with-grid": {
-         "meta": {
-            "name": "easing-v2-functions-with-grid",
-            "folder": "easing"
+         "easing-v2-functions": {
+            "meta": {
+               "_mtime": "2022-08-29T13:42:30.259Z",
+               "name": "easing-v2-functions"
+            },
+            "path": "sketches/easing/easing-v2-functions"
          },
-         "path": "sketches/easing/easing-v2-functions-with-grid"
-      },
-      "easing-v3-warp-a": {
-         "meta": {
-            "name": "easing-v3-warp-a",
-            "folder": "easing"
+         "easing-v2-functions-with-grid": {
+            "meta": {
+               "_mtime": "2022-09-19T16:25:05.085Z",
+               "name": "easing-v2-functions-with-grid"
+            },
+            "path": "sketches/easing/easing-v2-functions-with-grid"
          },
-         "path": "sketches/easing/easing-v3-warp-a"
-      },
-      "easing-v3-warp-b": {
-         "meta": {
-            "name": "easing-v3-warp-b",
-            "folder": "easing"
+         "easing-v3-warp-a": {
+            "meta": {
+               "_mtime": "2022-08-20T11:55:40.396Z",
+               "name": "easing-v3-warp-a"
+            },
+            "path": "sketches/easing/easing-v3-warp-a"
          },
-         "path": "sketches/easing/easing-v3-warp-b"
-      },
-      "easing-v4-clock": {
-         "meta": {
-            "name": "easing-v4-clock",
-            "folder": "easing"
+         "easing-v3-warp-b": {
+            "meta": {
+               "_mtime": "2022-08-25T22:40:03.822Z",
+               "name": "easing-v3-warp-b"
+            },
+            "path": "sketches/easing/easing-v3-warp-b"
          },
-         "path": "sketches/easing/easing-v4-clock"
-      },
-      "easing-v5-star": {
-         "meta": {
-            "name": "easing-v5-star",
-            "folder": "easing"
+         "easing-v4-clock": {
+            "meta": {
+               "_mtime": "2022-08-20T11:55:40.325Z",
+               "name": "easing-v4-clock"
+            },
+            "path": "sketches/easing/easing-v4-clock"
          },
-         "path": "sketches/easing/easing-v5-star"
-      },
-      "easing-vx-ball": {
-         "meta": {
-            "name": "easing-vx-ball",
-            "folder": "easing"
+         "easing-v5-star": {
+            "meta": {
+               "_mtime": "2022-10-07T16:11:03.324Z",
+               "name": "easing-v5-star"
+            },
+            "path": "sketches/easing/easing-v5-star"
          },
-         "path": "sketches/easing/easing-vx-ball"
+         "easing-vx-ball": {
+            "meta": {
+               "_mtime": "2022-09-18T22:43:44.588Z",
+               "name": "easing-vx-ball"
+            },
+            "path": "sketches/easing/easing-vx-ball"
+         }
       }
    },
    "genuary2022": {
-      "genuary2022-day1": {
-         "meta": {
-            "name": "genuary2022-day1",
-            "folder": "genuary2022"
-         },
-         "path": "sketches/genuary2022/genuary2022-day1"
+      "meta": {
+         "_mtime": "2022-04-05T19:16:11.176Z",
+         "name": "genuary2022"
       },
-      "genuary2022-day13": {
-         "meta": {
-            "name": "genuary2022-day13",
-            "folder": "genuary2022"
+      "sketches": {
+         "genuary2022-day1": {
+            "meta": {
+               "_mtime": "2022-03-19T01:00:42.417Z",
+               "name": "genuary2022-day1"
+            },
+            "path": "sketches/genuary2022/genuary2022-day1"
          },
-         "path": "sketches/genuary2022/genuary2022-day13"
-      },
-      "genuary2022-day15": {
-         "meta": {
-            "name": "genuary2022-day15",
-            "folder": "genuary2022"
+         "genuary2022-day13": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.081Z",
+               "name": "genuary2022-day13"
+            },
+            "path": "sketches/genuary2022/genuary2022-day13"
          },
-         "path": "sketches/genuary2022/genuary2022-day15"
-      },
-      "genuary2022-day16": {
-         "meta": {
-            "name": "genuary2022-day16",
-            "folder": "genuary2022"
+         "genuary2022-day15": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.043Z",
+               "name": "genuary2022-day15"
+            },
+            "path": "sketches/genuary2022/genuary2022-day15"
          },
-         "path": "sketches/genuary2022/genuary2022-day16"
-      },
-      "genuary2022-day17": {
-         "meta": {
-            "name": "genuary2022-day17",
-            "folder": "genuary2022"
+         "genuary2022-day16": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "genuary2022-day16"
+            },
+            "path": "sketches/genuary2022/genuary2022-day16"
          },
-         "path": "sketches/genuary2022/genuary2022-day17"
-      },
-      "genuary2022-day2": {
-         "meta": {
-            "name": "genuary2022-day2",
-            "folder": "genuary2022"
+         "genuary2022-day17": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "genuary2022-day17"
+            },
+            "path": "sketches/genuary2022/genuary2022-day17"
          },
-         "path": "sketches/genuary2022/genuary2022-day2"
-      },
-      "genuary2022-day3": {
-         "meta": {
-            "name": "genuary2022-day3",
-            "folder": "genuary2022"
+         "genuary2022-day2": {
+            "meta": {
+               "_mtime": "2022-04-05T19:24:47.148Z",
+               "name": "genuary2022-day2"
+            },
+            "path": "sketches/genuary2022/genuary2022-day2"
          },
-         "path": "sketches/genuary2022/genuary2022-day3"
-      },
-      "genuary2022-day5": {
-         "meta": {
-            "name": "genuary2022-day5",
-            "folder": "genuary2022"
+         "genuary2022-day3": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "genuary2022-day3"
+            },
+            "path": "sketches/genuary2022/genuary2022-day3"
          },
-         "path": "sketches/genuary2022/genuary2022-day5"
-      },
-      "genuary2022-day8": {
-         "meta": {
-            "name": "genuary2022-day8",
-            "folder": "genuary2022"
+         "genuary2022-day5": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "genuary2022-day5"
+            },
+            "path": "sketches/genuary2022/genuary2022-day5"
          },
-         "path": "sketches/genuary2022/genuary2022-day8"
-      },
-      "genuary2022-day8-polar-worm": {
-         "meta": {
-            "name": "genuary2022-day8-polar-worm",
-            "folder": "genuary2022"
+         "genuary2022-day8": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "genuary2022-day8"
+            },
+            "path": "sketches/genuary2022/genuary2022-day8"
          },
-         "path": "sketches/genuary2022/genuary2022-day8-polar-worm"
-      },
-      "genuary2022-day8-silk": {
-         "meta": {
-            "name": "genuary2022-day8-silk",
-            "folder": "genuary2022"
+         "genuary2022-day8-polar-worm": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "genuary2022-day8-polar-worm"
+            },
+            "path": "sketches/genuary2022/genuary2022-day8-polar-worm"
          },
-         "path": "sketches/genuary2022/genuary2022-day8-silk"
-      },
-      "genuary2022-game": {
-         "meta": {
-            "name": "genuary2022-game",
-            "folder": "genuary2022"
+         "genuary2022-day8-silk": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "genuary2022-day8-silk"
+            },
+            "path": "sketches/genuary2022/genuary2022-day8-silk"
          },
-         "path": "sketches/genuary2022/genuary2022-game"
+         "genuary2022-game": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "genuary2022-game"
+            },
+            "path": "sketches/genuary2022/genuary2022-game"
+         }
       }
    },
    "glowing-fish": {
-      "glowing-fishes-v0": {
-         "meta": {
-            "name": "glowing-fishes-v0",
-            "folder": "glowing-fish"
-         },
-         "path": "sketches/glowing-fish/glowing-fishes-v0"
+      "meta": {
+         "_mtime": "2022-04-05T19:16:11.159Z",
+         "name": "glowing-fish"
       },
-      "glowing-fishes-v1": {
-         "meta": {
-            "name": "glowing-fishes-v1",
-            "folder": "glowing-fish"
+      "sketches": {
+         "glowing-fishes-v0": {
+            "meta": {
+               "_mtime": "2022-08-28T16:40:38.583Z",
+               "name": "glowing-fishes-v0"
+            },
+            "path": "sketches/glowing-fish/glowing-fishes-v0"
          },
-         "path": "sketches/glowing-fish/glowing-fishes-v1"
+         "glowing-fishes-v1": {
+            "meta": {
+               "_mtime": "2022-07-17T21:26:20.239Z",
+               "name": "glowing-fishes-v1"
+            },
+            "path": "sketches/glowing-fish/glowing-fishes-v1"
+         }
       }
    },
    "grid": {
-      "grid-v1-basic": {
-         "meta": {
-            "name": "grid-v1-basic",
-            "folder": "grid"
-         },
-         "path": "sketches/grid/grid-v1-basic"
+      "meta": {
+         "_mtime": "2022-10-14T13:06:54.154Z",
+         "name": "grid"
       },
-      "grid-v10-variable-stick": {
-         "meta": {
-            "name": "grid-v10-variable-stick",
-            "folder": "grid"
+      "sketches": {
+         "grid-v1-basic": {
+            "meta": {
+               "_mtime": "2022-10-20T11:14:52.464Z",
+               "name": "grid-v1-basic"
+            },
+            "path": "sketches/grid/grid-v1-basic"
          },
-         "path": "sketches/grid/grid-v10-variable-stick"
-      },
-      "grid-v11-with-rotation": {
-         "meta": {
-            "name": "grid-v11-with-rotation",
-            "folder": "grid"
+         "grid-v10-variable-stick": {
+            "meta": {
+               "_mtime": "2022-10-14T10:34:35.150Z",
+               "name": "grid-v10-variable-stick"
+            },
+            "path": "sketches/grid/grid-v10-variable-stick"
          },
-         "path": "sketches/grid/grid-v11-with-rotation"
-      },
-      "grid-v12-noisy-strings": {
-         "meta": {
-            "name": "grid-v12-noisy-strings",
-            "folder": "grid"
+         "grid-v11-with-rotation": {
+            "meta": {
+               "_mtime": "2022-10-14T11:39:30.585Z",
+               "name": "grid-v11-with-rotation"
+            },
+            "path": "sketches/grid/grid-v11-with-rotation"
          },
-         "path": "sketches/grid/grid-v12-noisy-strings"
-      },
-      "grid-v12-noisy-strings-camera": {
-         "meta": {
-            "name": "grid-v12-noisy-strings-camera",
-            "folder": "grid"
+         "grid-v12-noisy-strings": {
+            "meta": {
+               "_mtime": "2022-10-16T10:04:02.497Z",
+               "name": "grid-v12-noisy-strings"
+            },
+            "path": "sketches/grid/grid-v12-noisy-strings"
          },
-         "path": "sketches/grid/grid-v12-noisy-strings-camera"
-      },
-      "grid-v13-field-on-fire": {
-         "meta": {
-            "name": "grid-v13-field-on-fire",
-            "folder": "grid"
+         "grid-v12-noisy-strings-camera": {
+            "meta": {
+               "_mtime": "2022-10-16T16:15:30.451Z",
+               "name": "grid-v12-noisy-strings-camera"
+            },
+            "path": "sketches/grid/grid-v12-noisy-strings-camera"
          },
-         "path": "sketches/grid/grid-v13-field-on-fire"
-      },
-      "grid-v2-basic-with-easing": {
-         "meta": {
-            "name": "grid-v2-basic-with-easing",
-            "folder": "grid"
+         "grid-v13-field-on-fire": {
+            "meta": {
+               "_mtime": "2022-10-21T23:30:58.277Z",
+               "name": "grid-v13-field-on-fire"
+            },
+            "path": "sketches/grid/grid-v13-field-on-fire"
          },
-         "path": "sketches/grid/grid-v2-basic-with-easing"
-      },
-      "grid-v3-basic-with-holes": {
-         "meta": {
-            "name": "grid-v3-basic-with-holes",
-            "folder": "grid"
+         "grid-v2-basic-with-easing": {
+            "meta": {
+               "_mtime": "2022-10-20T11:07:13.184Z",
+               "name": "grid-v2-basic-with-easing"
+            },
+            "path": "sketches/grid/grid-v2-basic-with-easing"
          },
-         "path": "sketches/grid/grid-v3-basic-with-holes"
-      },
-      "grid-v4-basic-with-audio-reaction": {
-         "meta": {
-            "name": "grid-v4-basic-with-audio-reaction",
-            "folder": "grid"
+         "grid-v3-basic-with-holes": {
+            "meta": {
+               "_mtime": "2022-10-20T11:07:36.541Z",
+               "name": "grid-v3-basic-with-holes"
+            },
+            "path": "sketches/grid/grid-v3-basic-with-holes"
          },
-         "path": "sketches/grid/grid-v4-basic-with-audio-reaction"
-      },
-      "grid-v5-stick": {
-         "meta": {
-            "name": "grid-v5-stick",
-            "folder": "grid"
+         "grid-v4-basic-with-audio-reaction": {
+            "meta": {
+               "_mtime": "2022-09-27T16:04:08.239Z",
+               "name": "grid-v4-basic-with-audio-reaction"
+            },
+            "path": "sketches/grid/grid-v4-basic-with-audio-reaction"
          },
-         "path": "sketches/grid/grid-v5-stick"
-      },
-      "grid-v6-field-with-dist-check": {
-         "meta": {
-            "name": "grid-v6-field-with-dist-check",
-            "folder": "grid"
+         "grid-v5-stick": {
+            "meta": {
+               "_mtime": "2022-10-14T10:37:41.294Z",
+               "name": "grid-v5-stick"
+            },
+            "path": "sketches/grid/grid-v5-stick"
          },
-         "path": "sketches/grid/grid-v6-field-with-dist-check"
-      },
-      "grid-v7-field-with-dist-check-and-audio-reaction": {
-         "meta": {
-            "name": "grid-v7-field-with-dist-check-and-audio-reaction",
-            "folder": "grid"
+         "grid-v6-field-with-dist-check": {
+            "meta": {
+               "_mtime": "2022-10-20T12:22:08.297Z",
+               "name": "grid-v6-field-with-dist-check"
+            },
+            "path": "sketches/grid/grid-v6-field-with-dist-check"
          },
-         "path": "sketches/grid/grid-v7-field-with-dist-check-and-audio-reaction"
-      },
-      "grid-v8-basic-with-easing-and-audio-reaction": {
-         "meta": {
-            "name": "grid-v8-basic-with-easing-and-audio-reaction",
-            "folder": "grid"
+         "grid-v7-field-with-dist-check-and-audio-reaction": {
+            "meta": {
+               "_mtime": "2022-10-20T11:45:05.372Z",
+               "name": "grid-v7-field-with-dist-check-and-audio-reaction"
+            },
+            "path": "sketches/grid/grid-v7-field-with-dist-check-and-audio-reaction"
          },
-         "path": "sketches/grid/grid-v8-basic-with-easing-and-audio-reaction"
-      },
-      "grid-v9-basic-with-easing-changing-directions": {
-         "meta": {
-            "name": "grid-v9-basic-with-easing-changing-directions",
-            "folder": "grid"
+         "grid-v8-basic-with-easing-and-audio-reaction": {
+            "meta": {
+               "_mtime": "2022-10-09T19:37:15.685Z",
+               "name": "grid-v8-basic-with-easing-and-audio-reaction"
+            },
+            "path": "sketches/grid/grid-v8-basic-with-easing-and-audio-reaction"
          },
-         "path": "sketches/grid/grid-v9-basic-with-easing-changing-directions"
+         "grid-v9-basic-with-easing-changing-directions": {
+            "meta": {
+               "_mtime": "2022-10-07T10:40:10.870Z",
+               "name": "grid-v9-basic-with-easing-changing-directions"
+            },
+            "path": "sketches/grid/grid-v9-basic-with-easing-changing-directions"
+         }
       }
    },
    "midi": {
-      "midi-v1-output": {
-         "meta": {
-            "name": "midi-v1-output",
-            "folder": "midi"
-         },
-         "path": "sketches/midi/midi-v1-output"
+      "meta": {
+         "_mtime": "2022-04-05T19:16:11.136Z",
+         "name": "midi"
       },
-      "midi-v2-input": {
-         "meta": {
-            "name": "midi-v2-input",
-            "folder": "midi"
+      "sketches": {
+         "midi-v1-output": {
+            "meta": {
+               "_mtime": "2022-09-04T17:08:49.415Z",
+               "name": "midi-v1-output"
+            },
+            "path": "sketches/midi/midi-v1-output"
          },
-         "path": "sketches/midi/midi-v2-input"
-      },
-      "midi-v3-input-pills": {
-         "meta": {
-            "name": "midi-v3-input-pills",
-            "folder": "midi"
+         "midi-v2-input": {
+            "meta": {
+               "_mtime": "2022-08-29T15:22:53.702Z",
+               "name": "midi-v2-input"
+            },
+            "path": "sketches/midi/midi-v2-input"
          },
-         "path": "sketches/midi/midi-v3-input-pills"
-      },
-      "midi-v4-blurry": {
-         "meta": {
-            "name": "midi-v4-blurry",
-            "folder": "midi"
+         "midi-v3-input-pills": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "midi-v3-input-pills"
+            },
+            "path": "sketches/midi/midi-v3-input-pills"
          },
-         "path": "sketches/midi/midi-v4-blurry"
-      },
-      "midi-v6-visualizer-strips": {
-         "meta": {
-            "name": "midi-v6-visualizer-strips",
-            "folder": "midi"
+         "midi-v4-blurry": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.081Z",
+               "name": "midi-v4-blurry"
+            },
+            "path": "sketches/midi/midi-v4-blurry"
          },
-         "path": "sketches/midi/midi-v6-visualizer-strips"
+         "midi-v6-visualizer-strips": {
+            "meta": {
+               "_mtime": "2022-09-04T17:07:22.578Z",
+               "name": "midi-v6-visualizer-strips"
+            },
+            "path": "sketches/midi/midi-v6-visualizer-strips"
+         }
       }
    },
    "motion-blur": {
-      "motion-blur-v1": {
-         "meta": {
-            "name": "motion-blur-v1",
-            "folder": "motion-blur"
-         },
-         "path": "sketches/motion-blur/motion-blur-v1"
+      "meta": {
+         "_mtime": "2022-06-06T01:55:15.289Z",
+         "name": "motion-blur"
       },
-      "motion-blur-v2-alpha-echo": {
-         "meta": {
-            "name": "motion-blur-v2-alpha-echo",
-            "folder": "motion-blur"
+      "sketches": {
+         "motion-blur-v1": {
+            "meta": {
+               "_mtime": "2022-05-31T20:21:54.244Z",
+               "name": "motion-blur-v1"
+            },
+            "path": "sketches/motion-blur/motion-blur-v1"
          },
-         "path": "sketches/motion-blur/motion-blur-v2-alpha-echo"
+         "motion-blur-v2-alpha-echo": {
+            "meta": {
+               "_mtime": "2022-08-19T10:07:39.460Z",
+               "name": "motion-blur-v2-alpha-echo"
+            },
+            "path": "sketches/motion-blur/motion-blur-v2-alpha-echo"
+         }
       }
    },
    "neon": {
-      "neon-v0-legacy": {
-         "meta": {
-            "name": "neon-v0-legacy",
-            "folder": "neon"
-         },
-         "path": "sketches/neon/neon-v0-legacy"
+      "meta": {
+         "_mtime": "2022-04-05T19:16:11.176Z",
+         "name": "neon"
       },
-      "neon-v1-graffiti": {
-         "meta": {
-            "name": "neon-v1-graffiti",
-            "folder": "neon"
+      "sketches": {
+         "neon-v0-legacy": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "neon-v0-legacy"
+            },
+            "path": "sketches/neon/neon-v0-legacy"
          },
-         "path": "sketches/neon/neon-v1-graffiti"
-      },
-      "neon-v2-polar": {
-         "meta": {
-            "name": "neon-v2-polar",
-            "folder": "neon"
+         "neon-v1-graffiti": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "neon-v1-graffiti"
+            },
+            "path": "sketches/neon/neon-v1-graffiti"
          },
-         "path": "sketches/neon/neon-v2-polar"
-      },
-      "neon-v3-can": {
-         "meta": {
-            "name": "neon-v3-can",
-            "folder": "neon"
+         "neon-v2-polar": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "neon-v2-polar"
+            },
+            "path": "sketches/neon/neon-v2-polar"
          },
-         "path": "sketches/neon/neon-v3-can"
-      },
-      "neon-v4-dots": {
-         "meta": {
-            "name": "neon-v4-dots",
-            "folder": "neon"
+         "neon-v3-can": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "neon-v3-can"
+            },
+            "path": "sketches/neon/neon-v3-can"
          },
-         "path": "sketches/neon/neon-v4-dots"
-      },
-      "neon-v5-atoms": {
-         "meta": {
-            "name": "neon-v5-atoms",
-            "folder": "neon"
+         "neon-v4-dots": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "neon-v4-dots"
+            },
+            "path": "sketches/neon/neon-v4-dots"
          },
-         "path": "sketches/neon/neon-v5-atoms"
-      },
-      "neon-v6-sticks-offset": {
-         "meta": {
-            "name": "neon-v6-sticks-offset",
-            "folder": "neon"
+         "neon-v5-atoms": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "neon-v5-atoms"
+            },
+            "path": "sketches/neon/neon-v5-atoms"
          },
-         "path": "sketches/neon/neon-v6-sticks-offset"
+         "neon-v6-sticks-offset": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.081Z",
+               "name": "neon-v6-sticks-offset"
+            },
+            "path": "sketches/neon/neon-v6-sticks-offset"
+         }
       }
    },
    "orbit": {
-      "orbit-v1-geeko": {
-         "meta": {
-            "name": "orbit-v1-geeko",
-            "folder": "orbit"
-         },
-         "path": "sketches/orbit/orbit-v1-geeko"
+      "meta": {
+         "_mtime": "2022-04-05T19:16:11.140Z",
+         "name": "orbit"
       },
-      "orbit-v2-molecule": {
-         "meta": {
-            "name": "orbit-v2-molecule",
-            "folder": "orbit"
+      "sketches": {
+         "orbit-v1-geeko": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.426Z",
+               "name": "orbit-v1-geeko"
+            },
+            "path": "sketches/orbit/orbit-v1-geeko"
          },
-         "path": "sketches/orbit/orbit-v2-molecule"
-      },
-      "orbit-v3-disk": {
-         "meta": {
-            "name": "orbit-v3-disk",
-            "folder": "orbit"
+         "orbit-v2-molecule": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.426Z",
+               "name": "orbit-v2-molecule"
+            },
+            "path": "sketches/orbit/orbit-v2-molecule"
          },
-         "path": "sketches/orbit/orbit-v3-disk"
-      },
-      "orbit-v4-chewing-gum": {
-         "meta": {
-            "name": "orbit-v4-chewing-gum",
-            "folder": "orbit"
+         "orbit-v3-disk": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.482Z",
+               "name": "orbit-v3-disk"
+            },
+            "path": "sketches/orbit/orbit-v3-disk"
          },
-         "path": "sketches/orbit/orbit-v4-chewing-gum"
-      },
-      "orbit-v5-chakra": {
-         "meta": {
-            "name": "orbit-v5-chakra",
-            "folder": "orbit"
+         "orbit-v4-chewing-gum": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.426Z",
+               "name": "orbit-v4-chewing-gum"
+            },
+            "path": "sketches/orbit/orbit-v4-chewing-gum"
          },
-         "path": "sketches/orbit/orbit-v5-chakra"
+         "orbit-v5-chakra": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "orbit-v5-chakra"
+            },
+            "path": "sketches/orbit/orbit-v5-chakra"
+         }
       }
    },
    "pen": {
-      "pen-v1-draw-in-a-grid": {
-         "meta": {
-            "name": "pen-v1-draw-in-a-grid",
-            "folder": "pen"
-         },
-         "path": "sketches/pen/pen-v1-draw-in-a-grid"
+      "meta": {
+         "_mtime": "2022-05-15T23:26:58.867Z",
+         "name": "pen"
       },
-      "pen-v1-draw-in-a-grid copy": {
-         "meta": {
-            "name": "pen-v1-draw-in-a-grid copy",
-            "folder": "pen"
+      "sketches": {
+         "pen-v1-draw-in-a-grid": {
+            "meta": {
+               "_mtime": "2022-07-29T13:27:00.634Z",
+               "name": "pen-v1-draw-in-a-grid"
+            },
+            "path": "sketches/pen/pen-v1-draw-in-a-grid"
          },
-         "path": "sketches/pen/pen-v1-draw-in-a-grid copy"
-      },
-      "pen-vectors-test": {
-         "meta": {
-            "name": "pen-vectors-test",
-            "folder": "pen"
+         "pen-v1-draw-in-a-grid copy": {
+            "meta": {
+               "_mtime": "2022-04-02T16:40:53.640Z",
+               "name": "pen-v1-draw-in-a-grid copy"
+            },
+            "path": "sketches/pen/pen-v1-draw-in-a-grid copy"
          },
-         "path": "sketches/pen/pen-vectors-test"
+         "pen-vectors-test": {
+            "meta": {
+               "_mtime": "2022-05-15T23:10:21.691Z",
+               "name": "pen-vectors-test"
+            },
+            "path": "sketches/pen/pen-vectors-test"
+         }
       }
    },
    "polar-strip": {
-      "polar-strip-v0": {
-         "meta": {
-            "name": "polar-strip-v0",
-            "folder": "polar-strip"
-         },
-         "path": "sketches/polar-strip/polar-strip-v0"
+      "meta": {
+         "_mtime": "2022-04-05T19:16:11.171Z",
+         "name": "polar-strip"
       },
-      "polar-strip-v0 copy": {
-         "meta": {
-            "name": "polar-strip-v0 copy",
-            "folder": "polar-strip"
+      "sketches": {
+         "polar-strip-v0": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "polar-strip-v0"
+            },
+            "path": "sketches/polar-strip/polar-strip-v0"
          },
-         "path": "sketches/polar-strip/polar-strip-v0 copy"
-      },
-      "polar-strip-v1": {
-         "meta": {
-            "name": "polar-strip-v1",
-            "folder": "polar-strip"
+         "polar-strip-v0 copy": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "polar-strip-v0 copy"
+            },
+            "path": "sketches/polar-strip/polar-strip-v0 copy"
          },
-         "path": "sketches/polar-strip/polar-strip-v1"
-      },
-      "polar-strip-v1-lights": {
-         "meta": {
-            "name": "polar-strip-v1-lights",
-            "folder": "polar-strip"
+         "polar-strip-v1": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "polar-strip-v1"
+            },
+            "path": "sketches/polar-strip/polar-strip-v1"
          },
-         "path": "sketches/polar-strip/polar-strip-v1-lights"
-      },
-      "polar-strip-v2-lights-mouse": {
-         "meta": {
-            "name": "polar-strip-v2-lights-mouse",
-            "folder": "polar-strip"
+         "polar-strip-v1-lights": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "polar-strip-v1-lights"
+            },
+            "path": "sketches/polar-strip/polar-strip-v1-lights"
          },
-         "path": "sketches/polar-strip/polar-strip-v2-lights-mouse"
+         "polar-strip-v2-lights-mouse": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.081Z",
+               "name": "polar-strip-v2-lights-mouse"
+            },
+            "path": "sketches/polar-strip/polar-strip-v2-lights-mouse"
+         }
       }
    },
    "pulse": {
-      "pulse-v1-guts": {
-         "meta": {
-            "name": "pulse-v1-guts",
-            "folder": "pulse"
-         },
-         "path": "sketches/pulse/pulse-v1-guts"
+      "meta": {
+         "_mtime": "2022-04-05T19:16:11.126Z",
+         "name": "pulse"
       },
-      "pulse-v2-kraken": {
-         "meta": {
-            "name": "pulse-v2-kraken",
-            "folder": "pulse"
+      "sketches": {
+         "pulse-v1-guts": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.081Z",
+               "name": "pulse-v1-guts"
+            },
+            "path": "sketches/pulse/pulse-v1-guts"
          },
-         "path": "sketches/pulse/pulse-v2-kraken"
-      },
-      "pulse-v3-asterix": {
-         "meta": {
-            "name": "pulse-v3-asterix",
-            "folder": "pulse"
+         "pulse-v2-kraken": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.081Z",
+               "name": "pulse-v2-kraken"
+            },
+            "path": "sketches/pulse/pulse-v2-kraken"
          },
-         "path": "sketches/pulse/pulse-v3-asterix"
-      },
-      "pulse-v4-trinity": {
-         "meta": {
-            "name": "pulse-v4-trinity",
-            "folder": "pulse"
+         "pulse-v3-asterix": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "pulse-v3-asterix"
+            },
+            "path": "sketches/pulse/pulse-v3-asterix"
          },
-         "path": "sketches/pulse/pulse-v4-trinity"
-      },
-      "pulse-v5-flower": {
-         "meta": {
-            "name": "pulse-v5-flower",
-            "folder": "pulse"
+         "pulse-v4-trinity": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.081Z",
+               "name": "pulse-v4-trinity"
+            },
+            "path": "sketches/pulse/pulse-v4-trinity"
          },
-         "path": "sketches/pulse/pulse-v5-flower"
-      },
-      "pulse-v6-sonar": {
-         "meta": {
-            "name": "pulse-v6-sonar",
-            "folder": "pulse"
+         "pulse-v5-flower": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "pulse-v5-flower"
+            },
+            "path": "sketches/pulse/pulse-v5-flower"
          },
-         "path": "sketches/pulse/pulse-v6-sonar"
-      },
-      "pulse-v7-scan": {
-         "meta": {
-            "name": "pulse-v7-scan",
-            "folder": "pulse"
+         "pulse-v6-sonar": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "pulse-v6-sonar"
+            },
+            "path": "sketches/pulse/pulse-v6-sonar"
          },
-         "path": "sketches/pulse/pulse-v7-scan"
-      },
-      "pulse-v7-scan-asterix": {
-         "meta": {
-            "name": "pulse-v7-scan-asterix",
-            "folder": "pulse"
+         "pulse-v7-scan": {
+            "meta": {
+               "_mtime": "2022-03-26T21:45:34.683Z",
+               "name": "pulse-v7-scan"
+            },
+            "path": "sketches/pulse/pulse-v7-scan"
          },
-         "path": "sketches/pulse/pulse-v7-scan-asterix"
-      },
-      "pulse-v7-scan-bar": {
-         "meta": {
-            "name": "pulse-v7-scan-bar",
-            "folder": "pulse"
+         "pulse-v7-scan-asterix": {
+            "meta": {
+               "_mtime": "2022-03-26T23:21:44.486Z",
+               "name": "pulse-v7-scan-asterix"
+            },
+            "path": "sketches/pulse/pulse-v7-scan-asterix"
          },
-         "path": "sketches/pulse/pulse-v7-scan-bar"
-      },
-      "pulse-v7-scan-churros": {
-         "meta": {
-            "name": "pulse-v7-scan-churros",
-            "folder": "pulse"
+         "pulse-v7-scan-bar": {
+            "meta": {
+               "_mtime": "2022-03-25T15:50:23.044Z",
+               "name": "pulse-v7-scan-bar"
+            },
+            "path": "sketches/pulse/pulse-v7-scan-bar"
          },
-         "path": "sketches/pulse/pulse-v7-scan-churros"
-      },
-      "pulse-v7-scan-folding": {
-         "meta": {
-            "name": "pulse-v7-scan-folding",
-            "folder": "pulse"
+         "pulse-v7-scan-churros": {
+            "meta": {
+               "_mtime": "2022-03-28T19:39:50.672Z",
+               "name": "pulse-v7-scan-churros"
+            },
+            "path": "sketches/pulse/pulse-v7-scan-churros"
          },
-         "path": "sketches/pulse/pulse-v7-scan-folding"
-      },
-      "pulse-v7-scan-up-down": {
-         "meta": {
-            "name": "pulse-v7-scan-up-down",
-            "folder": "pulse"
+         "pulse-v7-scan-folding": {
+            "meta": {
+               "_mtime": "2022-03-27T15:09:58.016Z",
+               "name": "pulse-v7-scan-folding"
+            },
+            "path": "sketches/pulse/pulse-v7-scan-folding"
          },
-         "path": "sketches/pulse/pulse-v7-scan-up-down"
-      },
-      "pulse-v7-torsade": {
-         "meta": {
-            "name": "pulse-v7-torsade",
-            "folder": "pulse"
+         "pulse-v7-scan-up-down": {
+            "meta": {
+               "_mtime": "2022-04-05T16:26:03.441Z",
+               "name": "pulse-v7-scan-up-down"
+            },
+            "path": "sketches/pulse/pulse-v7-scan-up-down"
          },
-         "path": "sketches/pulse/pulse-v7-torsade"
-      },
-      "pulse-v7-turbine": {
-         "meta": {
-            "name": "pulse-v7-turbine",
-            "folder": "pulse"
+         "pulse-v7-torsade": {
+            "meta": {
+               "_mtime": "2022-03-28T19:39:31.194Z",
+               "name": "pulse-v7-torsade"
+            },
+            "path": "sketches/pulse/pulse-v7-torsade"
          },
-         "path": "sketches/pulse/pulse-v7-turbine"
-      },
-      "pulse-v7-turbine-butterfly": {
-         "meta": {
-            "name": "pulse-v7-turbine-butterfly",
-            "folder": "pulse"
+         "pulse-v7-turbine": {
+            "meta": {
+               "_mtime": "2022-03-31T17:52:10.958Z",
+               "name": "pulse-v7-turbine"
+            },
+            "path": "sketches/pulse/pulse-v7-turbine"
          },
-         "path": "sketches/pulse/pulse-v7-turbine-butterfly"
-      },
-      "pulse-v7-turbine-eccentric": {
-         "meta": {
-            "name": "pulse-v7-turbine-eccentric",
-            "folder": "pulse"
+         "pulse-v7-turbine-butterfly": {
+            "meta": {
+               "_mtime": "2022-03-31T19:08:20.602Z",
+               "name": "pulse-v7-turbine-butterfly"
+            },
+            "path": "sketches/pulse/pulse-v7-turbine-butterfly"
          },
-         "path": "sketches/pulse/pulse-v7-turbine-eccentric"
-      },
-      "pulse-v7-turbine-eccentric-squid": {
-         "meta": {
-            "name": "pulse-v7-turbine-eccentric-squid",
-            "folder": "pulse"
+         "pulse-v7-turbine-eccentric": {
+            "meta": {
+               "_mtime": "2022-03-31T18:59:07.579Z",
+               "name": "pulse-v7-turbine-eccentric"
+            },
+            "path": "sketches/pulse/pulse-v7-turbine-eccentric"
          },
-         "path": "sketches/pulse/pulse-v7-turbine-eccentric-squid"
-      },
-      "pulse-v7-turbine-flower": {
-         "meta": {
-            "name": "pulse-v7-turbine-flower",
-            "folder": "pulse"
+         "pulse-v7-turbine-eccentric-squid": {
+            "meta": {
+               "_mtime": "2022-05-03T19:49:30.399Z",
+               "name": "pulse-v7-turbine-eccentric-squid"
+            },
+            "path": "sketches/pulse/pulse-v7-turbine-eccentric-squid"
          },
-         "path": "sketches/pulse/pulse-v7-turbine-flower"
-      },
-      "pulse-v7-turbine-grid": {
-         "meta": {
-            "name": "pulse-v7-turbine-grid",
-            "folder": "pulse"
+         "pulse-v7-turbine-flower": {
+            "meta": {
+               "_mtime": "2022-04-05T19:01:02.592Z",
+               "name": "pulse-v7-turbine-flower"
+            },
+            "path": "sketches/pulse/pulse-v7-turbine-flower"
          },
-         "path": "sketches/pulse/pulse-v7-turbine-grid"
-      },
-      "pulse-v7-turbines-familly": {
-         "meta": {
-            "name": "pulse-v7-turbines-familly",
-            "folder": "pulse"
+         "pulse-v7-turbine-grid": {
+            "meta": {
+               "_mtime": "2022-03-28T20:16:13.808Z",
+               "name": "pulse-v7-turbine-grid"
+            },
+            "path": "sketches/pulse/pulse-v7-turbine-grid"
          },
-         "path": "sketches/pulse/pulse-v7-turbines-familly"
-      },
-      "pulse-v8-mirror": {
-         "meta": {
-            "name": "pulse-v8-mirror",
-            "folder": "pulse"
+         "pulse-v7-turbines-familly": {
+            "meta": {
+               "_mtime": "2022-04-05T19:05:39.202Z",
+               "name": "pulse-v7-turbines-familly"
+            },
+            "path": "sketches/pulse/pulse-v7-turbines-familly"
          },
-         "path": "sketches/pulse/pulse-v8-mirror"
-      },
-      "pulse-v8-quadra": {
-         "meta": {
-            "name": "pulse-v8-quadra",
-            "folder": "pulse"
+         "pulse-v8-mirror": {
+            "meta": {
+               "_mtime": "2022-03-28T20:57:16.179Z",
+               "name": "pulse-v8-mirror"
+            },
+            "path": "sketches/pulse/pulse-v8-mirror"
          },
-         "path": "sketches/pulse/pulse-v8-quadra"
-      },
-      "pulse-v9-curtain": {
-         "meta": {
-            "name": "pulse-v9-curtain",
-            "folder": "pulse"
+         "pulse-v8-quadra": {
+            "meta": {
+               "_mtime": "2022-03-28T20:26:23.883Z",
+               "name": "pulse-v8-quadra"
+            },
+            "path": "sketches/pulse/pulse-v8-quadra"
          },
-         "path": "sketches/pulse/pulse-v9-curtain"
+         "pulse-v9-curtain": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.081Z",
+               "name": "pulse-v9-curtain"
+            },
+            "path": "sketches/pulse/pulse-v9-curtain"
+         }
       }
    },
    "ribbons": {
-      "ribbons-v1-invisible-walls-purple": {
-         "meta": {
-            "name": "ribbons-v1-invisible-walls-purple",
-            "folder": "ribbons"
-         },
-         "path": "sketches/ribbons/ribbons-v1-invisible-walls-purple"
+      "meta": {
+         "_mtime": "2022-07-30T19:38:35.819Z",
+         "name": "ribbons"
       },
-      "ribbons-v1-invisible-walls-rainbow": {
-         "meta": {
-            "name": "ribbons-v1-invisible-walls-rainbow",
-            "folder": "ribbons"
+      "sketches": {
+         "ribbons-v1-invisible-walls-purple": {
+            "meta": {
+               "_mtime": "2022-08-19T10:07:39.536Z",
+               "name": "ribbons-v1-invisible-walls-purple"
+            },
+            "path": "sketches/ribbons/ribbons-v1-invisible-walls-purple"
          },
-         "path": "sketches/ribbons/ribbons-v1-invisible-walls-rainbow"
-      },
-      "ribbons-v10-blurry-flower": {
-         "meta": {
-            "name": "ribbons-v10-blurry-flower",
-            "folder": "ribbons"
+         "ribbons-v1-invisible-walls-rainbow": {
+            "meta": {
+               "_mtime": "2022-08-19T10:07:39.534Z",
+               "name": "ribbons-v1-invisible-walls-rainbow"
+            },
+            "path": "sketches/ribbons/ribbons-v1-invisible-walls-rainbow"
          },
-         "path": "sketches/ribbons/ribbons-v10-blurry-flower"
-      },
-      "ribbons-v11": {
-         "meta": {
-            "name": "ribbons-v11",
-            "folder": "ribbons"
+         "ribbons-v10-blurry-flower": {
+            "meta": {
+               "_mtime": "2022-08-15T14:16:35.943Z",
+               "name": "ribbons-v10-blurry-flower"
+            },
+            "path": "sketches/ribbons/ribbons-v10-blurry-flower"
          },
-         "path": "sketches/ribbons/ribbons-v11"
-      },
-      "ribbons-v12": {
-         "meta": {
-            "name": "ribbons-v12",
-            "folder": "ribbons"
+         "ribbons-v11": {
+            "meta": {
+               "_mtime": "2022-08-15T14:16:35.943Z",
+               "name": "ribbons-v11"
+            },
+            "path": "sketches/ribbons/ribbons-v11"
          },
-         "path": "sketches/ribbons/ribbons-v12"
-      },
-      "ribbons-v13": {
-         "meta": {
-            "name": "ribbons-v13",
-            "folder": "ribbons"
+         "ribbons-v12": {
+            "meta": {
+               "_mtime": "2022-08-15T11:08:27.702Z",
+               "name": "ribbons-v12"
+            },
+            "path": "sketches/ribbons/ribbons-v12"
          },
-         "path": "sketches/ribbons/ribbons-v13"
-      },
-      "ribbons-v14": {
-         "meta": {
-            "name": "ribbons-v14",
-            "folder": "ribbons"
+         "ribbons-v13": {
+            "meta": {
+               "_mtime": "2022-09-17T13:05:19.330Z",
+               "name": "ribbons-v13"
+            },
+            "path": "sketches/ribbons/ribbons-v13"
          },
-         "path": "sketches/ribbons/ribbons-v14"
-      },
-      "ribbons-v15-gold": {
-         "meta": {
-            "name": "ribbons-v15-gold",
-            "folder": "ribbons"
+         "ribbons-v14": {
+            "meta": {
+               "_mtime": "2022-08-15T14:16:35.943Z",
+               "name": "ribbons-v14"
+            },
+            "path": "sketches/ribbons/ribbons-v14"
          },
-         "path": "sketches/ribbons/ribbons-v15-gold"
-      },
-      "ribbons-v2-circle": {
-         "meta": {
-            "name": "ribbons-v2-circle",
-            "folder": "ribbons"
+         "ribbons-v15-gold": {
+            "meta": {
+               "_mtime": "2022-08-20T16:26:36.002Z",
+               "name": "ribbons-v15-gold"
+            },
+            "path": "sketches/ribbons/ribbons-v15-gold"
          },
-         "path": "sketches/ribbons/ribbons-v2-circle"
-      },
-      "ribbons-v3-caterpillar-circle": {
-         "meta": {
-            "name": "ribbons-v3-caterpillar-circle",
-            "folder": "ribbons"
+         "ribbons-v2-circle": {
+            "meta": {
+               "_mtime": "2022-08-19T10:07:39.536Z",
+               "name": "ribbons-v2-circle"
+            },
+            "path": "sketches/ribbons/ribbons-v2-circle"
          },
-         "path": "sketches/ribbons/ribbons-v3-caterpillar-circle"
-      },
-      "ribbons-v3-caterpillar-up-down": {
-         "meta": {
-            "name": "ribbons-v3-caterpillar-up-down",
-            "folder": "ribbons"
+         "ribbons-v3-caterpillar-circle": {
+            "meta": {
+               "_mtime": "2022-08-19T10:07:06.308Z",
+               "name": "ribbons-v3-caterpillar-circle"
+            },
+            "path": "sketches/ribbons/ribbons-v3-caterpillar-circle"
          },
-         "path": "sketches/ribbons/ribbons-v3-caterpillar-up-down"
-      },
-      "ribbons-v4-petals": {
-         "meta": {
-            "name": "ribbons-v4-petals",
-            "folder": "ribbons"
+         "ribbons-v3-caterpillar-up-down": {
+            "meta": {
+               "_mtime": "2022-08-19T10:07:06.366Z",
+               "name": "ribbons-v3-caterpillar-up-down"
+            },
+            "path": "sketches/ribbons/ribbons-v3-caterpillar-up-down"
          },
-         "path": "sketches/ribbons/ribbons-v4-petals"
-      },
-      "ribbons-v5-flower": {
-         "meta": {
-            "name": "ribbons-v5-flower",
-            "folder": "ribbons"
+         "ribbons-v4-petals": {
+            "meta": {
+               "_mtime": "2022-08-19T10:07:06.366Z",
+               "name": "ribbons-v4-petals"
+            },
+            "path": "sketches/ribbons/ribbons-v4-petals"
          },
-         "path": "sketches/ribbons/ribbons-v5-flower"
-      },
-      "ribbons-v6-flower-dotted": {
-         "meta": {
-            "name": "ribbons-v6-flower-dotted",
-            "folder": "ribbons"
+         "ribbons-v5-flower": {
+            "meta": {
+               "_mtime": "2022-08-15T14:16:35.943Z",
+               "name": "ribbons-v5-flower"
+            },
+            "path": "sketches/ribbons/ribbons-v5-flower"
          },
-         "path": "sketches/ribbons/ribbons-v6-flower-dotted"
-      },
-      "ribbons-v7-travelling-flower-abrubt": {
-         "meta": {
-            "name": "ribbons-v7-travelling-flower-abrubt",
-            "folder": "ribbons"
+         "ribbons-v6-flower-dotted": {
+            "meta": {
+               "_mtime": "2022-08-19T10:07:06.403Z",
+               "name": "ribbons-v6-flower-dotted"
+            },
+            "path": "sketches/ribbons/ribbons-v6-flower-dotted"
          },
-         "path": "sketches/ribbons/ribbons-v7-travelling-flower-abrubt"
-      },
-      "ribbons-v8-globule": {
-         "meta": {
-            "name": "ribbons-v8-globule",
-            "folder": "ribbons"
+         "ribbons-v7-travelling-flower-abrubt": {
+            "meta": {
+               "_mtime": "2022-08-19T10:07:06.327Z",
+               "name": "ribbons-v7-travelling-flower-abrubt"
+            },
+            "path": "sketches/ribbons/ribbons-v7-travelling-flower-abrubt"
          },
-         "path": "sketches/ribbons/ribbons-v8-globule"
-      },
-      "ribbons-v9-atom": {
-         "meta": {
-            "name": "ribbons-v9-atom",
-            "folder": "ribbons"
+         "ribbons-v8-globule": {
+            "meta": {
+               "_mtime": "2022-08-15T14:16:35.943Z",
+               "name": "ribbons-v8-globule"
+            },
+            "path": "sketches/ribbons/ribbons-v8-globule"
          },
-         "path": "sketches/ribbons/ribbons-v9-atom"
+         "ribbons-v9-atom": {
+            "meta": {
+               "_mtime": "2022-08-19T10:07:06.345Z",
+               "name": "ribbons-v9-atom"
+            },
+            "path": "sketches/ribbons/ribbons-v9-atom"
+         }
       }
    },
    "semaphore": {
-      "semaphore-v0-dots": {
-         "meta": {
-            "name": "semaphore-v0-dots",
-            "folder": "semaphore"
-         },
-         "path": "sketches/semaphore/semaphore-v0-dots"
+      "meta": {
+         "_mtime": "2022-04-05T19:16:11.117Z",
+         "name": "semaphore"
       },
-      "semaphore-v1-lines": {
-         "meta": {
-            "name": "semaphore-v1-lines",
-            "folder": "semaphore"
+      "sketches": {
+         "semaphore-v0-dots": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.081Z",
+               "name": "semaphore-v0-dots"
+            },
+            "path": "sketches/semaphore/semaphore-v0-dots"
          },
-         "path": "sketches/semaphore/semaphore-v1-lines"
+         "semaphore-v1-lines": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.042Z",
+               "name": "semaphore-v1-lines"
+            },
+            "path": "sketches/semaphore/semaphore-v1-lines"
+         }
       }
    },
    "spirals": {
-      "spiral-v1-plots": {
-         "meta": {
-            "name": "spiral-v1-plots",
-            "folder": "spirals"
-         },
-         "path": "sketches/spirals/spiral-v1-plots"
+      "meta": {
+         "_mtime": "2022-04-05T19:16:16.218Z",
+         "name": "spirals"
       },
-      "spiral-v2-worms": {
-         "meta": {
-            "name": "spiral-v2-worms",
-            "folder": "spirals"
+      "sketches": {
+         "spiral-v1-plots": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.081Z",
+               "name": "spiral-v1-plots"
+            },
+            "path": "sketches/spirals/spiral-v1-plots"
          },
-         "path": "sketches/spirals/spiral-v2-worms"
-      },
-      "spiral-v3-easing-field": {
-         "meta": {
-            "name": "spiral-v3-easing-field",
-            "folder": "spirals"
+         "spiral-v2-worms": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.081Z",
+               "name": "spiral-v2-worms"
+            },
+            "path": "sketches/spirals/spiral-v2-worms"
          },
-         "path": "sketches/spirals/spiral-v3-easing-field"
-      },
-      "spiral-v4-springs": {
-         "meta": {
-            "name": "spiral-v4-springs",
-            "folder": "spirals"
+         "spiral-v3-easing-field": {
+            "meta": {
+               "_mtime": "2022-06-01T23:37:38.025Z",
+               "name": "spiral-v3-easing-field"
+            },
+            "path": "sketches/spirals/spiral-v3-easing-field"
          },
-         "path": "sketches/spirals/spiral-v4-springs"
-      },
-      "spiral-v5-lolipop": {
-         "meta": {
-            "name": "spiral-v5-lolipop",
-            "folder": "spirals"
+         "spiral-v4-springs": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.081Z",
+               "name": "spiral-v4-springs"
+            },
+            "path": "sketches/spirals/spiral-v4-springs"
          },
-         "path": "sketches/spirals/spiral-v5-lolipop"
-      },
-      "spiral-v6-tornado": {
-         "meta": {
-            "name": "spiral-v6-tornado",
-            "folder": "spirals"
+         "spiral-v5-lolipop": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.081Z",
+               "name": "spiral-v5-lolipop"
+            },
+            "path": "sketches/spirals/spiral-v5-lolipop"
          },
-         "path": "sketches/spirals/spiral-v6-tornado"
-      },
-      "spiral-v7-petals": {
-         "meta": {
-            "name": "spiral-v7-petals",
-            "folder": "spirals"
+         "spiral-v6-tornado": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.081Z",
+               "name": "spiral-v6-tornado"
+            },
+            "path": "sketches/spirals/spiral-v6-tornado"
          },
-         "path": "sketches/spirals/spiral-v7-petals"
-      },
-      "spiral-v8-sticks": {
-         "meta": {
-            "name": "spiral-v8-sticks",
-            "folder": "spirals"
+         "spiral-v7-petals": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.081Z",
+               "name": "spiral-v7-petals"
+            },
+            "path": "sketches/spirals/spiral-v7-petals"
          },
-         "path": "sketches/spirals/spiral-v8-sticks"
-      },
-      "spiral-v9-donut": {
-         "meta": {
-            "name": "spiral-v9-donut",
-            "folder": "spirals"
+         "spiral-v8-sticks": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.081Z",
+               "name": "spiral-v8-sticks"
+            },
+            "path": "sketches/spirals/spiral-v8-sticks"
          },
-         "path": "sketches/spirals/spiral-v9-donut"
+         "spiral-v9-donut": {
+            "meta": {
+               "_mtime": "2022-08-13T14:57:25.836Z",
+               "name": "spiral-v9-donut"
+            },
+            "path": "sketches/spirals/spiral-v9-donut"
+         }
       }
    },
    "strips": {
-      "rainbow-orbit": {
-         "meta": {
-            "name": "rainbow-orbit",
-            "folder": "strips"
-         },
-         "path": "sketches/strips/rainbow-orbit"
+      "meta": {
+         "_mtime": "2022-04-05T19:16:11.291Z",
+         "name": "strips"
       },
-      "strips-v1-up-and-down": {
-         "meta": {
-            "name": "strips-v1-up-and-down",
-            "folder": "strips"
+      "sketches": {
+         "rainbow-orbit": {
+            "meta": {
+               "_mtime": "2022-03-19T19:08:37.508Z",
+               "name": "rainbow-orbit"
+            },
+            "path": "sketches/strips/rainbow-orbit"
          },
-         "path": "sketches/strips/strips-v1-up-and-down"
-      },
-      "strips-v2-worms": {
-         "meta": {
-            "name": "strips-v2-worms",
-            "folder": "strips"
+         "strips-v1-up-and-down": {
+            "meta": {
+               "_mtime": "2022-03-26T21:24:32.589Z",
+               "name": "strips-v1-up-and-down"
+            },
+            "path": "sketches/strips/strips-v1-up-and-down"
          },
-         "path": "sketches/strips/strips-v2-worms"
-      },
-      "strips-v3-half-curve-fix-inner-count": {
-         "meta": {
-            "name": "strips-v3-half-curve-fix-inner-count",
-            "folder": "strips"
+         "strips-v2-worms": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "strips-v2-worms"
+            },
+            "path": "sketches/strips/strips-v2-worms"
          },
-         "path": "sketches/strips/strips-v3-half-curve-fix-inner-count"
-      },
-      "strips-v3-half-curve-fix-inner-count-2": {
-         "meta": {
-            "name": "strips-v3-half-curve-fix-inner-count-2",
-            "folder": "strips"
+         "strips-v3-half-curve-fix-inner-count": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "strips-v3-half-curve-fix-inner-count"
+            },
+            "path": "sketches/strips/strips-v3-half-curve-fix-inner-count"
          },
-         "path": "sketches/strips/strips-v3-half-curve-fix-inner-count-2"
-      },
-      "strips-v3-half-play-fix-inner-count": {
-         "meta": {
-            "name": "strips-v3-half-play-fix-inner-count",
-            "folder": "strips"
+         "strips-v3-half-curve-fix-inner-count-2": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "strips-v3-half-curve-fix-inner-count-2"
+            },
+            "path": "sketches/strips/strips-v3-half-curve-fix-inner-count-2"
          },
-         "path": "sketches/strips/strips-v3-half-play-fix-inner-count"
-      },
-      "strips-v3-half-play-variable-inner-count": {
-         "meta": {
-            "name": "strips-v3-half-play-variable-inner-count",
-            "folder": "strips"
+         "strips-v3-half-play-fix-inner-count": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "strips-v3-half-play-fix-inner-count"
+            },
+            "path": "sketches/strips/strips-v3-half-play-fix-inner-count"
          },
-         "path": "sketches/strips/strips-v3-half-play-variable-inner-count"
-      },
-      "strips-v3-knot-fix-inner-count": {
-         "meta": {
-            "name": "strips-v3-knot-fix-inner-count",
-            "folder": "strips"
+         "strips-v3-half-play-variable-inner-count": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "strips-v3-half-play-variable-inner-count"
+            },
+            "path": "sketches/strips/strips-v3-half-play-variable-inner-count"
          },
-         "path": "sketches/strips/strips-v3-knot-fix-inner-count"
-      },
-      "strips-v3-play-fix-inner-count": {
-         "meta": {
-            "name": "strips-v3-play-fix-inner-count",
-            "folder": "strips"
+         "strips-v3-knot-fix-inner-count": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "strips-v3-knot-fix-inner-count"
+            },
+            "path": "sketches/strips/strips-v3-knot-fix-inner-count"
          },
-         "path": "sketches/strips/strips-v3-play-fix-inner-count"
-      },
-      "strips-v3-play-fix-inner-count-high-opacity-factor": {
-         "meta": {
-            "name": "strips-v3-play-fix-inner-count-high-opacity-factor",
-            "folder": "strips"
+         "strips-v3-play-fix-inner-count": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "strips-v3-play-fix-inner-count"
+            },
+            "path": "sketches/strips/strips-v3-play-fix-inner-count"
          },
-         "path": "sketches/strips/strips-v3-play-fix-inner-count-high-opacity-factor"
-      },
-      "strips-v3-play-variable-inner-count": {
-         "meta": {
-            "name": "strips-v3-play-variable-inner-count",
-            "folder": "strips"
+         "strips-v3-play-fix-inner-count-high-opacity-factor": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "strips-v3-play-fix-inner-count-high-opacity-factor"
+            },
+            "path": "sketches/strips/strips-v3-play-fix-inner-count-high-opacity-factor"
          },
-         "path": "sketches/strips/strips-v3-play-variable-inner-count"
-      },
-      "strips-v4-square-cords": {
-         "meta": {
-            "name": "strips-v4-square-cords",
-            "folder": "strips"
+         "strips-v3-play-variable-inner-count": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.081Z",
+               "name": "strips-v3-play-variable-inner-count"
+            },
+            "path": "sketches/strips/strips-v3-play-variable-inner-count"
          },
-         "path": "sketches/strips/strips-v4-square-cords"
-      },
-      "strips-v5-perpetual-lines": {
-         "meta": {
-            "name": "strips-v5-perpetual-lines",
-            "folder": "strips"
+         "strips-v4-square-cords": {
+            "meta": {
+               "_mtime": "2022-04-04T22:59:53.479Z",
+               "name": "strips-v4-square-cords"
+            },
+            "path": "sketches/strips/strips-v4-square-cords"
          },
-         "path": "sketches/strips/strips-v5-perpetual-lines"
-      },
-      "strips-v6-white-lines": {
-         "meta": {
-            "name": "strips-v6-white-lines",
-            "folder": "strips"
+         "strips-v5-perpetual-lines": {
+            "meta": {
+               "_mtime": "2022-03-20T16:12:58.245Z",
+               "name": "strips-v5-perpetual-lines"
+            },
+            "path": "sketches/strips/strips-v5-perpetual-lines"
          },
-         "path": "sketches/strips/strips-v6-white-lines"
-      },
-      "test": {
-         "meta": {
-            "name": "test",
-            "folder": "strips"
+         "strips-v6-white-lines": {
+            "meta": {
+               "_mtime": "2022-03-20T03:31:37.023Z",
+               "name": "strips-v6-white-lines"
+            },
+            "path": "sketches/strips/strips-v6-white-lines"
          },
-         "path": "sketches/strips/test"
-      },
-      "ukraine": {
-         "meta": {
-            "name": "ukraine",
-            "folder": "strips"
+         "test": {
+            "meta": {
+               "_mtime": "2022-03-19T01:05:11.446Z",
+               "name": "test"
+            },
+            "path": "sketches/strips/test"
          },
-         "path": "sketches/strips/ukraine"
+         "ukraine": {
+            "meta": {
+               "_mtime": "2022-03-20T02:44:51.227Z",
+               "name": "ukraine"
+            },
+            "path": "sketches/strips/ukraine"
+         }
       }
    },
    "torsade": {
-      "torsade-juggle": {
-         "meta": {
-            "name": "torsade-juggle",
-            "folder": "torsade"
-         },
-         "path": "sketches/torsade/torsade-juggle"
+      "meta": {
+         "_mtime": "2022-04-05T19:16:11.156Z",
+         "name": "torsade"
       },
-      "torsade-v0": {
-         "meta": {
-            "name": "torsade-v0",
-            "folder": "torsade"
+      "sketches": {
+         "torsade-juggle": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "torsade-juggle"
+            },
+            "path": "sketches/torsade/torsade-juggle"
          },
-         "path": "sketches/torsade/torsade-v0"
-      },
-      "torsade-v1-unmelted": {
-         "meta": {
-            "name": "torsade-v1-unmelted",
-            "folder": "torsade"
+         "torsade-v0": {
+            "meta": {
+               "_mtime": "2022-08-19T11:13:34.419Z",
+               "name": "torsade-v0"
+            },
+            "path": "sketches/torsade/torsade-v0"
          },
-         "path": "sketches/torsade/torsade-v1-unmelted"
-      },
-      "torsade-v10-rabbit-hole": {
-         "meta": {
-            "name": "torsade-v10-rabbit-hole",
-            "folder": "torsade"
+         "torsade-v1-unmelted": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.081Z",
+               "name": "torsade-v1-unmelted"
+            },
+            "path": "sketches/torsade/torsade-v1-unmelted"
          },
-         "path": "sketches/torsade/torsade-v10-rabbit-hole"
-      },
-      "torsade-v11-infinite": {
-         "meta": {
-            "name": "torsade-v11-infinite",
-            "folder": "torsade"
+         "torsade-v10-rabbit-hole": {
+            "meta": {
+               "_mtime": "2022-05-15T14:52:05.825Z",
+               "name": "torsade-v10-rabbit-hole"
+            },
+            "path": "sketches/torsade/torsade-v10-rabbit-hole"
          },
-         "path": "sketches/torsade/torsade-v11-infinite"
-      },
-      "torsade-v12-gradient-worms": {
-         "meta": {
-            "name": "torsade-v12-gradient-worms",
-            "folder": "torsade"
+         "torsade-v11-infinite": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "torsade-v11-infinite"
+            },
+            "path": "sketches/torsade/torsade-v11-infinite"
          },
-         "path": "sketches/torsade/torsade-v12-gradient-worms"
-      },
-      "torsade-v13-medusa": {
-         "meta": {
-            "name": "torsade-v13-medusa",
-            "folder": "torsade"
+         "torsade-v12-gradient-worms": {
+            "meta": {
+               "_mtime": "2022-03-19T01:09:15.612Z",
+               "name": "torsade-v12-gradient-worms"
+            },
+            "path": "sketches/torsade/torsade-v12-gradient-worms"
          },
-         "path": "sketches/torsade/torsade-v13-medusa"
-      },
-      "torsade-v2-chain": {
-         "meta": {
-            "name": "torsade-v2-chain",
-            "folder": "torsade"
+         "torsade-v13-medusa": {
+            "meta": {
+               "_mtime": "2022-05-11T19:05:08.610Z",
+               "name": "torsade-v13-medusa"
+            },
+            "path": "sketches/torsade/torsade-v13-medusa"
          },
-         "path": "sketches/torsade/torsade-v2-chain"
-      },
-      "torsade-v3-leaping-over": {
-         "meta": {
-            "name": "torsade-v3-leaping-over",
-            "folder": "torsade"
+         "torsade-v2-chain": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "torsade-v2-chain"
+            },
+            "path": "sketches/torsade/torsade-v2-chain"
          },
-         "path": "sketches/torsade/torsade-v3-leaping-over"
-      },
-      "torsade-v4-calm": {
-         "meta": {
-            "name": "torsade-v4-calm",
-            "folder": "torsade"
+         "torsade-v3-leaping-over": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "torsade-v3-leaping-over"
+            },
+            "path": "sketches/torsade/torsade-v3-leaping-over"
          },
-         "path": "sketches/torsade/torsade-v4-calm"
-      },
-      "torsade-v5-flag": {
-         "meta": {
-            "name": "torsade-v5-flag",
-            "folder": "torsade"
+         "torsade-v4-calm": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "torsade-v4-calm"
+            },
+            "path": "sketches/torsade/torsade-v4-calm"
          },
-         "path": "sketches/torsade/torsade-v5-flag"
-      },
-      "torsade-v6-horn": {
-         "meta": {
-            "name": "torsade-v6-horn",
-            "folder": "torsade"
+         "torsade-v5-flag": {
+            "meta": {
+               "_mtime": "2022-04-10T08:12:45.586Z",
+               "name": "torsade-v5-flag"
+            },
+            "path": "sketches/torsade/torsade-v5-flag"
          },
-         "path": "sketches/torsade/torsade-v6-horn"
-      },
-      "torsade-v7-melted": {
-         "meta": {
-            "name": "torsade-v7-melted",
-            "folder": "torsade"
+         "torsade-v6-horn": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "torsade-v6-horn"
+            },
+            "path": "sketches/torsade/torsade-v6-horn"
          },
-         "path": "sketches/torsade/torsade-v7-melted"
-      },
-      "torsade-v8-chain": {
-         "meta": {
-            "name": "torsade-v8-chain",
-            "folder": "torsade"
+         "torsade-v7-melted": {
+            "meta": {
+               "_mtime": "2022-03-18T18:05:19.199Z",
+               "name": "torsade-v7-melted"
+            },
+            "path": "sketches/torsade/torsade-v7-melted"
          },
-         "path": "sketches/torsade/torsade-v8-chain"
-      },
-      "torsade-v9-dna-spiral": {
-         "meta": {
-            "name": "torsade-v9-dna-spiral",
-            "folder": "torsade"
+         "torsade-v8-chain": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "torsade-v8-chain"
+            },
+            "path": "sketches/torsade/torsade-v8-chain"
          },
-         "path": "sketches/torsade/torsade-v9-dna-spiral"
+         "torsade-v9-dna-spiral": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "torsade-v9-dna-spiral"
+            },
+            "path": "sketches/torsade/torsade-v9-dna-spiral"
+         }
       }
    },
    "worms": {
-      "worms-v0-alga": {
-         "meta": {
-            "name": "worms-v0-alga",
-            "folder": "worms"
-         },
-         "path": "sketches/worms/worms-v0-alga"
+      "meta": {
+         "_mtime": "2022-04-05T19:16:11.157Z",
+         "name": "worms"
       },
-      "worms-v1-rainbow": {
-         "meta": {
-            "name": "worms-v1-rainbow",
-            "folder": "worms"
+      "sketches": {
+         "worms-v0-alga": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "worms-v0-alga"
+            },
+            "path": "sketches/worms/worms-v0-alga"
          },
-         "path": "sketches/worms/worms-v1-rainbow"
-      },
-      "worms-v10-starry-eating": {
-         "meta": {
-            "name": "worms-v10-starry-eating",
-            "folder": "worms"
+         "worms-v1-rainbow": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.426Z",
+               "name": "worms-v1-rainbow"
+            },
+            "path": "sketches/worms/worms-v1-rainbow"
          },
-         "path": "sketches/worms/worms-v10-starry-eating"
-      },
-      "worms-v2-wavy": {
-         "meta": {
-            "name": "worms-v2-wavy",
-            "folder": "worms"
+         "worms-v10-starry-eating": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.426Z",
+               "name": "worms-v10-starry-eating"
+            },
+            "path": "sketches/worms/worms-v10-starry-eating"
          },
-         "path": "sketches/worms/worms-v2-wavy"
-      },
-      "worms-v4-starry": {
-         "meta": {
-            "name": "worms-v4-starry",
-            "folder": "worms"
+         "worms-v2-wavy": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.426Z",
+               "name": "worms-v2-wavy"
+            },
+            "path": "sketches/worms/worms-v2-wavy"
          },
-         "path": "sketches/worms/worms-v4-starry"
-      },
-      "worms-v5-radial": {
-         "meta": {
-            "name": "worms-v5-radial",
-            "folder": "worms"
+         "worms-v4-starry": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.445Z",
+               "name": "worms-v4-starry"
+            },
+            "path": "sketches/worms/worms-v4-starry"
          },
-         "path": "sketches/worms/worms-v5-radial"
-      },
-      "worms-v6-tentacule": {
-         "meta": {
-            "name": "worms-v6-tentacule",
-            "folder": "worms"
+         "worms-v5-radial": {
+            "meta": {
+               "_mtime": "2022-03-19T01:10:12.049Z",
+               "name": "worms-v5-radial"
+            },
+            "path": "sketches/worms/worms-v5-radial"
          },
-         "path": "sketches/worms/worms-v6-tentacule"
-      },
-      "worms-v6-tentacule-aperturing": {
-         "meta": {
-            "name": "worms-v6-tentacule-aperturing",
-            "folder": "worms"
+         "worms-v6-tentacule": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.425Z",
+               "name": "worms-v6-tentacule"
+            },
+            "path": "sketches/worms/worms-v6-tentacule"
          },
-         "path": "sketches/worms/worms-v6-tentacule-aperturing"
-      },
-      "worms-v6-tentacule-dancing": {
-         "meta": {
-            "name": "worms-v6-tentacule-dancing",
-            "folder": "worms"
+         "worms-v6-tentacule-aperturing": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.426Z",
+               "name": "worms-v6-tentacule-aperturing"
+            },
+            "path": "sketches/worms/worms-v6-tentacule-aperturing"
          },
-         "path": "sketches/worms/worms-v6-tentacule-dancing"
-      },
-      "worms-v7-doodle": {
-         "meta": {
-            "name": "worms-v7-doodle",
-            "folder": "worms"
+         "worms-v6-tentacule-dancing": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.426Z",
+               "name": "worms-v6-tentacule-dancing"
+            },
+            "path": "sketches/worms/worms-v6-tentacule-dancing"
          },
-         "path": "sketches/worms/worms-v7-doodle"
-      },
-      "worms-v8-starry-blooming": {
-         "meta": {
-            "name": "worms-v8-starry-blooming",
-            "folder": "worms"
+         "worms-v7-doodle": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.426Z",
+               "name": "worms-v7-doodle"
+            },
+            "path": "sketches/worms/worms-v7-doodle"
          },
-         "path": "sketches/worms/worms-v8-starry-blooming"
-      },
-      "worms-v9-starry-dancing": {
-         "meta": {
-            "name": "worms-v9-starry-dancing",
-            "folder": "worms"
+         "worms-v8-starry-blooming": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.499Z",
+               "name": "worms-v8-starry-blooming"
+            },
+            "path": "sketches/worms/worms-v8-starry-blooming"
          },
-         "path": "sketches/worms/worms-v9-starry-dancing"
+         "worms-v9-starry-dancing": {
+            "meta": {
+               "_mtime": "2022-03-19T01:08:48.426Z",
+               "name": "worms-v9-starry-dancing"
+            },
+            "path": "sketches/worms/worms-v9-starry-dancing"
+         }
       }
    }
 }
