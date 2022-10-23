@@ -1,6 +1,7 @@
 import midi from './midi.js';
 import grid from './grid.js';
 import time from './time.js';
+import cache from './cache.js';
 import audio from './audio.js';
 import debug from './debug.js';
 import string from './string.js';
@@ -29,6 +30,7 @@ export {
   midi,
   grid,
   time,
+  cache,
   audio,
   debug,
   string,

@@ -113,8 +113,4 @@ sketch.draw((time) => {
 
     pop();
   })
-
-  console.log({
-    max, min
-  });
 });

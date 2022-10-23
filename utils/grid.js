@@ -1,24 +1,8 @@
-// topLeft, topRight
-// bottomLeft, bottomRight
-// gap, cellHeight, cellWidth
-// getRowsCount, rows
-// getColumnCount, columns
-
-import iterators from './iterators.js';
-
-const cache = function(key, compute, enabled = true) {
-  cache.values = cache.values ?? {};
-
-  if ( enabled !== true || undefined === cache.values[ key ] ) {
-    return cache.values[ key ] = compute();
-  }
-
-  return cache.values[ key ];
-}
+import { cache } from './index.js'
 
 const grid = {
   draw: ({startLeft, startRight, endLeft, endRight, rows, cols, centered = true }, handler) => {
-    const cachedGridVectors = cache(`${startLeft.x}-${startLeft.y}-${endLeft.x}-${endLeft.y}-${rows}-${cols}-${centered}`, () => {
+    const cachedGridVectors = cache.store(`${startLeft.x}-${startLeft.y}-${endLeft.x}-${endLeft.y}-${rows}-${cols}-${centered}`, () => {
       const gridVectors = [];
       
       const yUnit = 1 / rows;
