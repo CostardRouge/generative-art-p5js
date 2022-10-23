@@ -1,4 +1,4 @@
-import { events, sketch, converters, animation, audio, grid, colors, midi, mappers, iterators, options, easing } from './utils/index.js';
+import { events, sketch, cache, converters, animation, audio, grid, colors, midi, mappers, iterators, options, easing } from './utils/index.js';
 
 options.add( [
   {
@@ -52,16 +52,6 @@ function rotateVector(vector, center, angle) {
     (cosine * (vector.x - center.x)) + (sine * (vector.y - center.y)) + center.x,
     (cosine * (vector.y - center.y)) - (sine * (vector.x - center.x)) + center.y
   ]);
-}
-
-const cache = function(key, compute, enabled = true) {
-  cache.values = cache.values ?? {};
-
-  if ( enabled !== true || undefined === cache.values[ key ] ) {
-    return cache.values[ key ] = compute();
-  }
-
-  return cache.values[ key ];
 }
 
 sketch.draw((time, center) => {
@@ -120,15 +110,15 @@ sketch.draw((time, center) => {
   //   0.01 * sin(time)
   // )
 
-  direction.add( 0, -0.05 )
+  // direction.add( 0, -0.05 )
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
     const [ rotatedX, rotatedY ] = rotateVector(cellVector, center, mouseAngle);
-
-    const noiseValue =noise(rotatedX/cols, rotatedY/rows)// cache(`noise`, () => noise(rotatedX/cols + direction.x, rotatedY/rows + direction.y));
+//
+    const noiseValue =cache.store(`noise-${rotatedX}-${rotatedY}`, () => noise(rotatedX/cols, rotatedY/rows));
     const angle = noiseValue * TAU * 4
 
-    const cachedColor = cache(angle.toPrecision(3), () => (
+    const cachedColor = cache.store(angle.toPrecision(3), () => (
       colors.rainbow({
         hueOffset: 0,
         hueIndex: map(angle, 0, TAU, -PI/2, PI/2 ),

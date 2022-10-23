@@ -42,8 +42,6 @@ String.prototype.hashCode = function() {
   return hash;
 }
 
-const cache = {};
-
 sketch.draw((time,center) => {
   background(0);
 
