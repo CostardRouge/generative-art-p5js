@@ -1,41 +1,41 @@
 {
    "3d-grid-field": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.380Z",
+         "_mtime": "2022-10-30T09:57:04.739Z",
          "name": "3d-grid-field"
       },
       "sketches": {
          "3d-grid-field-v1": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.376Z",
+               "_mtime": "2022-10-30T09:57:04.739Z",
                "name": "3d-grid-field-v1"
             },
             "path": "sketches/3d-grid-field/3d-grid-field-v1"
          },
          "3d-grid-field-v2-rotating": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.376Z",
+               "_mtime": "2022-10-30T09:57:04.739Z",
                "name": "3d-grid-field-v2-rotating"
             },
             "path": "sketches/3d-grid-field/3d-grid-field-v2-rotating"
          },
          "3d-grid-field-v3-rotating-points": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.380Z",
+               "_mtime": "2022-10-30T09:57:04.739Z",
                "name": "3d-grid-field-v3-rotating-points"
             },
             "path": "sketches/3d-grid-field/3d-grid-field-v3-rotating-points"
          },
          "3d-grid-field-v4-rotating-and-warping": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.380Z",
+               "_mtime": "2022-10-30T09:57:04.739Z",
                "name": "3d-grid-field-v4-rotating-and-warping"
             },
             "path": "sketches/3d-grid-field/3d-grid-field-v4-rotating-and-warping"
          },
          "3d-grid-field-v4-rotating-and-warping-2": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.380Z",
+               "_mtime": "2022-10-30T09:57:04.739Z",
                "name": "3d-grid-field-v4-rotating-and-warping-2"
             },
             "path": "sketches/3d-grid-field/3d-grid-field-v4-rotating-and-warping-2"
@@ -44,27 +44,27 @@
    },
    "3d-stuff": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.380Z",
+         "_mtime": "2022-10-30T09:57:04.743Z",
          "name": "3d-stuff"
       },
       "sketches": {
          "ball": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.380Z",
+               "_mtime": "2022-10-30T09:57:04.739Z",
                "name": "ball"
             },
             "path": "sketches/3d-stuff/ball"
          },
          "hsb": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.380Z",
+               "_mtime": "2022-10-30T09:57:04.739Z",
                "name": "hsb"
             },
             "path": "sketches/3d-stuff/hsb"
          },
          "lines": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.380Z",
+               "_mtime": "2022-10-30T09:57:04.743Z",
                "name": "lines"
             },
             "path": "sketches/3d-stuff/lines"
@@ -73,13 +73,13 @@
    },
    "_shaders": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.380Z",
+         "_mtime": "2022-10-30T09:57:04.743Z",
          "name": "_shaders"
       },
       "sketches": {
          "shaders-v1-test": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.380Z",
+               "_mtime": "2022-10-30T09:57:04.743Z",
                "name": "shaders-v1-test"
             },
             "path": "sketches/_shaders/shaders-v1-test"
@@ -88,20 +88,20 @@
    },
    "abrupt": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.380Z",
+         "_mtime": "2022-10-30T09:57:04.743Z",
          "name": "abrupt"
       },
       "sketches": {
          "abrupt-v1-pulse": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.380Z",
+               "_mtime": "2022-10-30T09:57:04.743Z",
                "name": "abrupt-v1-pulse"
             },
             "path": "sketches/abrupt/abrupt-v1-pulse"
          },
          "abrupt-v2-feather": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.380Z",
+               "_mtime": "2022-10-30T09:57:04.743Z",
                "name": "abrupt-v2-feather"
             },
             "path": "sketches/abrupt/abrupt-v2-feather"
@@ -110,174 +110,174 @@
    },
    "accident": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.384Z",
+         "_mtime": "2022-10-30T09:57:04.747Z",
          "name": "accident"
       },
       "sketches": {
          "accident-v1-bubble": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.380Z",
+               "_mtime": "2022-10-30T09:57:04.743Z",
                "name": "accident-v1-bubble"
             },
             "path": "sketches/accident/accident-v1-bubble"
          },
          "accident-v2-rotating-bubble": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.380Z",
+               "_mtime": "2022-10-30T09:57:04.743Z",
                "name": "accident-v2-rotating-bubble"
             },
             "path": "sketches/accident/accident-v2-rotating-bubble"
          },
          "accident-v3-lava-lamp": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.380Z",
+               "_mtime": "2022-10-30T09:57:04.743Z",
                "name": "accident-v3-lava-lamp"
             },
             "path": "sketches/accident/accident-v3-lava-lamp"
          },
          "accident-v4-crack-fire": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.380Z",
+               "_mtime": "2022-10-30T09:57:04.743Z",
                "name": "accident-v4-crack-fire"
             },
             "path": "sketches/accident/accident-v4-crack-fire"
          },
          "accident-v4-cross-fire": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.380Z",
+               "_mtime": "2022-10-30T09:57:04.743Z",
                "name": "accident-v4-cross-fire"
             },
             "path": "sketches/accident/accident-v4-cross-fire"
          },
          "accident-v5-chandelier": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.384Z",
+               "_mtime": "2022-10-30T09:57:04.743Z",
                "name": "accident-v5-chandelier"
             },
             "path": "sketches/accident/accident-v5-chandelier"
          },
          "accident-v6-chandelier-warp": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.384Z",
+               "_mtime": "2022-10-30T09:57:04.743Z",
                "name": "accident-v6-chandelier-warp"
             },
             "path": "sketches/accident/accident-v6-chandelier-warp"
          },
          "accident-v6-chandelier-warp-blurry-vertical": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.384Z",
+               "_mtime": "2022-10-30T09:57:04.743Z",
                "name": "accident-v6-chandelier-warp-blurry-vertical"
             },
             "path": "sketches/accident/accident-v6-chandelier-warp-blurry-vertical"
          },
          "accident-v6-chandelier-warps": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.384Z",
+               "_mtime": "2022-10-30T09:57:04.747Z",
                "name": "accident-v6-chandelier-warps"
             },
             "path": "sketches/accident/accident-v6-chandelier-warps"
          },
          "accident-v6-chandelier-warps-blurry": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.384Z",
+               "_mtime": "2022-10-30T09:57:04.743Z",
                "name": "accident-v6-chandelier-warps-blurry"
             },
             "path": "sketches/accident/accident-v6-chandelier-warps-blurry"
          },
          "accident-v6-chandelier-warps-gradient": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.384Z",
+               "_mtime": "2022-10-30T09:57:04.743Z",
                "name": "accident-v6-chandelier-warps-gradient"
             },
             "path": "sketches/accident/accident-v6-chandelier-warps-gradient"
          },
          "accident-v6-chanderlier-warps-red": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.384Z",
+               "_mtime": "2022-10-30T09:57:04.747Z",
                "name": "accident-v6-chanderlier-warps-red"
             },
             "path": "sketches/accident/accident-v6-chanderlier-warps-red"
          },
          "accident-v7-chewing-gum-strings": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.384Z",
+               "_mtime": "2022-10-30T09:57:04.747Z",
                "name": "accident-v7-chewing-gum-strings"
             },
             "path": "sketches/accident/accident-v7-chewing-gum-strings"
          },
          "accident-v7-chewing-gum-strings-v2": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.384Z",
+               "_mtime": "2022-10-30T09:57:04.747Z",
                "name": "accident-v7-chewing-gum-strings-v2"
             },
             "path": "sketches/accident/accident-v7-chewing-gum-strings-v2"
          },
          "accident-v7-chewing-gum-strings-v3": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.384Z",
+               "_mtime": "2022-10-30T09:57:04.747Z",
                "name": "accident-v7-chewing-gum-strings-v3"
             },
             "path": "sketches/accident/accident-v7-chewing-gum-strings-v3"
          },
          "accident-v8-circle": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.384Z",
+               "_mtime": "2022-10-30T09:57:04.747Z",
                "name": "accident-v8-circle"
             },
             "path": "sketches/accident/accident-v8-circle"
          },
          "accident-v8-dansing-dna": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.384Z",
+               "_mtime": "2022-10-30T09:57:04.747Z",
                "name": "accident-v8-dansing-dna"
             },
             "path": "sketches/accident/accident-v8-dansing-dna"
          },
          "accident-v9-eccentric-acid": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.384Z",
+               "_mtime": "2022-10-30T09:57:04.747Z",
                "name": "accident-v9-eccentric-acid"
             },
             "path": "sketches/accident/accident-v9-eccentric-acid"
          },
          "accident-v9-eccentric-audio": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.384Z",
+               "_mtime": "2022-10-30T09:57:04.747Z",
                "name": "accident-v9-eccentric-audio"
             },
             "path": "sketches/accident/accident-v9-eccentric-audio"
          },
          "accident-v9-eccentric-balls-blurry": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.384Z",
+               "_mtime": "2022-10-30T09:57:04.747Z",
                "name": "accident-v9-eccentric-balls-blurry"
             },
             "path": "sketches/accident/accident-v9-eccentric-balls-blurry"
          },
          "accident-v9-eccentric-mirror": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.384Z",
+               "_mtime": "2022-10-30T09:57:04.747Z",
                "name": "accident-v9-eccentric-mirror"
             },
             "path": "sketches/accident/accident-v9-eccentric-mirror"
          },
          "accident-v9-eccentric-strip": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.384Z",
+               "_mtime": "2022-10-30T09:57:04.747Z",
                "name": "accident-v9-eccentric-strip"
             },
             "path": "sketches/accident/accident-v9-eccentric-strip"
          },
          "accident-v9-eccentric-strip-blurry": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.384Z",
+               "_mtime": "2022-10-30T09:57:04.747Z",
                "name": "accident-v9-eccentric-strip-blurry"
             },
             "path": "sketches/accident/accident-v9-eccentric-strip-blurry"
          },
          "accident-v9-eccentric-twist": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.384Z",
+               "_mtime": "2022-10-30T09:57:04.747Z",
                "name": "accident-v9-eccentric-twist"
             },
             "path": "sketches/accident/accident-v9-eccentric-twist"
@@ -286,76 +286,76 @@
    },
    "audio-reactive": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.388Z",
+         "_mtime": "2022-10-30T09:57:04.751Z",
          "name": "audio-reactive"
       },
       "sketches": {
          "audio-reactive-v1-level": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.384Z",
+               "_mtime": "2022-10-30T09:57:04.747Z",
                "name": "audio-reactive-v1-level"
             },
             "path": "sketches/audio-reactive/audio-reactive-v1-level"
          },
          "audio-reactive-v2-fft-debug": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.388Z",
+               "_mtime": "2022-10-30T09:57:04.747Z",
                "name": "audio-reactive-v2-fft-debug"
             },
             "path": "sketches/audio-reactive/audio-reactive-v2-fft-debug"
          },
          "audio-reactive-v3-smooth-test": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.388Z",
+               "_mtime": "2022-10-30T09:57:04.747Z",
                "name": "audio-reactive-v3-smooth-test"
             },
             "path": "sketches/audio-reactive/audio-reactive-v3-smooth-test"
          },
          "audio-reactive-v4-spider": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.388Z",
+               "_mtime": "2022-10-30T09:57:04.747Z",
                "name": "audio-reactive-v4-spider"
             },
             "path": "sketches/audio-reactive/audio-reactive-v4-spider"
          },
          "audio-reactive-v5-droplets": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.388Z",
+               "_mtime": "2022-10-30T09:57:04.751Z",
                "name": "audio-reactive-v5-droplets"
             },
             "path": "sketches/audio-reactive/audio-reactive-v5-droplets"
          },
          "audio-reactive-v5-droplets copy": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.388Z",
+               "_mtime": "2022-10-30T09:57:04.747Z",
                "name": "audio-reactive-v5-droplets copy"
             },
             "path": "sketches/audio-reactive/audio-reactive-v5-droplets copy"
          },
          "audio-reactive-v6-beat-counter": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.388Z",
+               "_mtime": "2022-10-30T09:57:04.751Z",
                "name": "audio-reactive-v6-beat-counter"
             },
             "path": "sketches/audio-reactive/audio-reactive-v6-beat-counter"
          },
          "audio-reactive-v7-spectrograph": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.388Z",
+               "_mtime": "2022-10-30T09:57:04.751Z",
                "name": "audio-reactive-v7-spectrograph"
             },
             "path": "sketches/audio-reactive/audio-reactive-v7-spectrograph"
          },
          "audio-reactive-v7-spectrograph copy": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.388Z",
+               "_mtime": "2022-10-30T09:57:04.751Z",
                "name": "audio-reactive-v7-spectrograph copy"
             },
             "path": "sketches/audio-reactive/audio-reactive-v7-spectrograph copy"
          },
          "audio-reactive-v7-spectrograph-3d": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.388Z",
+               "_mtime": "2022-10-30T09:57:04.751Z",
                "name": "audio-reactive-v7-spectrograph-3d"
             },
             "path": "sketches/audio-reactive/audio-reactive-v7-spectrograph-3d"
@@ -364,90 +364,90 @@
    },
    "background-pattern": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.392Z",
+         "_mtime": "2022-10-30T09:57:04.755Z",
          "name": "background-pattern"
       },
       "sketches": {
          "background-pattern-easing-lines": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.388Z",
+               "_mtime": "2022-10-30T09:57:04.751Z",
                "name": "background-pattern-easing-lines"
             },
             "path": "sketches/background-pattern/background-pattern-easing-lines"
          },
          "background-pattern-sinwave-lines": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.388Z",
+               "_mtime": "2022-10-30T09:57:04.751Z",
                "name": "background-pattern-sinwave-lines"
             },
             "path": "sketches/background-pattern/background-pattern-sinwave-lines"
          },
          "background-pattern-spring": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.388Z",
+               "_mtime": "2022-10-30T09:57:04.751Z",
                "name": "background-pattern-spring"
             },
             "path": "sketches/background-pattern/background-pattern-spring"
          },
          "background-pattern-v10-crazy": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.388Z",
+               "_mtime": "2022-10-30T09:57:04.751Z",
                "name": "background-pattern-v10-crazy"
             },
             "path": "sketches/background-pattern/background-pattern-v10-crazy"
          },
          "background-pattern-v2-radial": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.388Z",
+               "_mtime": "2022-10-30T09:57:04.751Z",
                "name": "background-pattern-v2-radial"
             },
             "path": "sketches/background-pattern/background-pattern-v2-radial"
          },
          "background-pattern-v3-radial-eyelashes": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.392Z",
+               "_mtime": "2022-10-30T09:57:04.751Z",
                "name": "background-pattern-v3-radial-eyelashes"
             },
             "path": "sketches/background-pattern/background-pattern-v3-radial-eyelashes"
          },
          "background-pattern-v4-radial-purple": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.392Z",
+               "_mtime": "2022-10-30T09:57:04.751Z",
                "name": "background-pattern-v4-radial-purple"
             },
             "path": "sketches/background-pattern/background-pattern-v4-radial-purple"
          },
          "background-pattern-v5-big-eyelashes": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.392Z",
+               "_mtime": "2022-10-30T09:57:04.755Z",
                "name": "background-pattern-v5-big-eyelashes"
             },
             "path": "sketches/background-pattern/background-pattern-v5-big-eyelashes"
          },
          "background-pattern-v6-legs": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.392Z",
+               "_mtime": "2022-10-30T09:57:04.755Z",
                "name": "background-pattern-v6-legs"
             },
             "path": "sketches/background-pattern/background-pattern-v6-legs"
          },
          "background-pattern-v7-butterfly": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.392Z",
+               "_mtime": "2022-10-30T09:57:04.755Z",
                "name": "background-pattern-v7-butterfly"
             },
             "path": "sketches/background-pattern/background-pattern-v7-butterfly"
          },
          "background-pattern-v8-kite": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.392Z",
+               "_mtime": "2022-10-30T09:57:04.755Z",
                "name": "background-pattern-v8-kite"
             },
             "path": "sketches/background-pattern/background-pattern-v8-kite"
          },
          "background-pattern-v9-bounce": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.392Z",
+               "_mtime": "2022-10-30T09:57:04.755Z",
                "name": "background-pattern-v9-bounce"
             },
             "path": "sketches/background-pattern/background-pattern-v9-bounce"
@@ -456,48 +456,48 @@
    },
    "blob": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.396Z",
+         "_mtime": "2022-10-30T09:57:04.759Z",
          "name": "blob"
       },
       "sketches": {
          "blob-v1-jump": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.392Z",
+               "_mtime": "2022-10-30T09:57:04.755Z",
                "name": "blob-v1-jump"
             },
             "path": "sketches/blob/blob-v1-jump"
          },
          "blob-v2-caterpillar": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.392Z",
+               "_mtime": "2022-10-30T09:57:04.755Z",
                "name": "blob-v2-caterpillar"
             },
             "path": "sketches/blob/blob-v2-caterpillar"
          },
          "blob-v2-invisible-walls": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.392Z",
+               "_mtime": "2022-10-30T09:57:04.755Z",
                "name": "blob-v2-invisible-walls"
             },
             "path": "sketches/blob/blob-v2-invisible-walls"
          },
          "blob-v2a-caterpillar-abrupt-1": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.392Z",
+               "_mtime": "2022-10-30T09:57:04.755Z",
                "name": "blob-v2a-caterpillar-abrupt-1"
             },
             "path": "sketches/blob/blob-v2a-caterpillar-abrupt-1"
          },
          "blob-v2a-caterpillar-abrupt-2": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.392Z",
+               "_mtime": "2022-10-30T09:57:04.755Z",
                "name": "blob-v2a-caterpillar-abrupt-2"
             },
             "path": "sketches/blob/blob-v2a-caterpillar-abrupt-2"
          },
          "blob-v3-sequence": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.396Z",
+               "_mtime": "2022-10-30T09:57:04.759Z",
                "name": "blob-v3-sequence"
             },
             "path": "sketches/blob/blob-v3-sequence"
@@ -506,97 +506,97 @@
    },
    "churros": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.396Z",
+         "_mtime": "2022-10-30T09:57:04.759Z",
          "name": "churros"
       },
       "sketches": {
          "churros-v1-circle": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.396Z",
+               "_mtime": "2022-10-30T09:57:04.759Z",
                "name": "churros-v1-circle"
             },
             "path": "sketches/churros/churros-v1-circle"
          },
          "churros-v10-tracer": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.396Z",
+               "_mtime": "2022-10-30T09:57:04.759Z",
                "name": "churros-v10-tracer"
             },
             "path": "sketches/churros/churros-v10-tracer"
          },
          "churros-v11-perspective": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.396Z",
+               "_mtime": "2022-10-30T09:57:04.759Z",
                "name": "churros-v11-perspective"
             },
             "path": "sketches/churros/churros-v11-perspective"
          },
          "churros-v2-string": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.396Z",
+               "_mtime": "2022-10-30T09:57:04.759Z",
                "name": "churros-v2-string"
             },
             "path": "sketches/churros/churros-v2-string"
          },
          "churros-v3-loop": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.396Z",
+               "_mtime": "2022-10-30T09:57:04.759Z",
                "name": "churros-v3-loop"
             },
             "path": "sketches/churros/churros-v3-loop"
          },
          "churros-v4-line": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.396Z",
+               "_mtime": "2022-10-30T09:57:04.759Z",
                "name": "churros-v4-line"
             },
             "path": "sketches/churros/churros-v4-line"
          },
          "churros-v5-serpent": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.396Z",
+               "_mtime": "2022-10-30T09:57:04.759Z",
                "name": "churros-v5-serpent"
             },
             "path": "sketches/churros/churros-v5-serpent"
          },
          "churros-v6-scarf": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.396Z",
+               "_mtime": "2022-10-30T09:57:04.759Z",
                "name": "churros-v6-scarf"
             },
             "path": "sketches/churros/churros-v6-scarf"
          },
          "churros-v7-pasta": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.396Z",
+               "_mtime": "2022-10-30T09:57:04.759Z",
                "name": "churros-v7-pasta"
             },
             "path": "sketches/churros/churros-v7-pasta"
          },
          "churros-v8-pasta-guided": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.396Z",
+               "_mtime": "2022-10-30T09:57:04.759Z",
                "name": "churros-v8-pasta-guided"
             },
             "path": "sketches/churros/churros-v8-pasta-guided"
          },
          "churros-v9-pasta-fixer": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.396Z",
+               "_mtime": "2022-10-30T09:57:04.759Z",
                "name": "churros-v9-pasta-fixer"
             },
             "path": "sketches/churros/churros-v9-pasta-fixer"
          },
          "churros-v9-pasta-rgb-fixer": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.396Z",
+               "_mtime": "2022-10-30T09:57:04.759Z",
                "name": "churros-v9-pasta-rgb-fixer"
             },
             "path": "sketches/churros/churros-v9-pasta-rgb-fixer"
          },
          "churros-v9-pasta-scanner": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.396Z",
+               "_mtime": "2022-10-30T09:57:04.759Z",
                "name": "churros-v9-pasta-scanner"
             },
             "path": "sketches/churros/churros-v9-pasta-scanner"
@@ -605,62 +605,62 @@
    },
    "demo-festival-2022": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.400Z",
+         "_mtime": "2022-10-30T09:57:04.763Z",
          "name": "demo-festival-2022"
       },
       "sketches": {
          "1-guided-pasta": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.396Z",
+               "_mtime": "2022-10-30T09:57:04.759Z",
                "name": "1-guided-pasta"
             },
             "path": "sketches/demo-festival-2022/1-guided-pasta"
          },
          "2-wormy-churros": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.396Z",
+               "_mtime": "2022-10-30T09:57:04.759Z",
                "name": "2-wormy-churros"
             },
             "path": "sketches/demo-festival-2022/2-wormy-churros"
          },
          "3-rainbow-to-purple": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.396Z",
+               "_mtime": "2022-10-30T09:57:04.759Z",
                "name": "3-rainbow-to-purple"
             },
             "path": "sketches/demo-festival-2022/3-rainbow-to-purple"
          },
          "4-rainbowed-medusa": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.400Z",
+               "_mtime": "2022-10-30T09:57:04.763Z",
                "name": "4-rainbowed-medusa"
             },
             "path": "sketches/demo-festival-2022/4-rainbowed-medusa"
          },
          "5-fox-tail": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.400Z",
+               "_mtime": "2022-10-30T09:57:04.763Z",
                "name": "5-fox-tail"
             },
             "path": "sketches/demo-festival-2022/5-fox-tail"
          },
          "6-caterpillar": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.400Z",
+               "_mtime": "2022-10-30T09:57:04.763Z",
                "name": "6-caterpillar"
             },
             "path": "sketches/demo-festival-2022/6-caterpillar"
          },
          "7-rainbow-turbine": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.400Z",
+               "_mtime": "2022-10-30T09:57:04.763Z",
                "name": "7-rainbow-turbine"
             },
             "path": "sketches/demo-festival-2022/7-rainbow-turbine"
          },
          "8-rainbow-turbine-chain": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.400Z",
+               "_mtime": "2022-10-30T09:57:04.763Z",
                "name": "8-rainbow-turbine-chain"
             },
             "path": "sketches/demo-festival-2022/8-rainbow-turbine-chain"
@@ -669,62 +669,62 @@
    },
    "easing": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.400Z",
+         "_mtime": "2022-10-30T09:57:04.763Z",
          "name": "easing"
       },
       "sketches": {
          "easing-v1-all-functions": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.400Z",
+               "_mtime": "2022-10-30T09:57:04.763Z",
                "name": "easing-v1-all-functions"
             },
             "path": "sketches/easing/easing-v1-all-functions"
          },
          "easing-v2-functions": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.400Z",
+               "_mtime": "2022-10-30T09:57:04.763Z",
                "name": "easing-v2-functions"
             },
             "path": "sketches/easing/easing-v2-functions"
          },
          "easing-v2-functions-with-grid": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.400Z",
+               "_mtime": "2022-10-30T09:57:04.763Z",
                "name": "easing-v2-functions-with-grid"
             },
             "path": "sketches/easing/easing-v2-functions-with-grid"
          },
          "easing-v3-warp-a": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.400Z",
+               "_mtime": "2022-10-30T09:57:04.763Z",
                "name": "easing-v3-warp-a"
             },
             "path": "sketches/easing/easing-v3-warp-a"
          },
          "easing-v3-warp-b": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.400Z",
+               "_mtime": "2022-10-30T09:57:04.763Z",
                "name": "easing-v3-warp-b"
             },
             "path": "sketches/easing/easing-v3-warp-b"
          },
          "easing-v4-clock": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.400Z",
+               "_mtime": "2022-10-30T09:57:04.763Z",
                "name": "easing-v4-clock"
             },
             "path": "sketches/easing/easing-v4-clock"
          },
          "easing-v5-star": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.400Z",
+               "_mtime": "2022-10-30T09:57:04.763Z",
                "name": "easing-v5-star"
             },
             "path": "sketches/easing/easing-v5-star"
          },
          "easing-vx-ball": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.400Z",
+               "_mtime": "2022-10-30T09:57:04.763Z",
                "name": "easing-vx-ball"
             },
             "path": "sketches/easing/easing-vx-ball"
@@ -733,90 +733,90 @@
    },
    "genuary2022": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.404Z",
+         "_mtime": "2022-10-30T09:57:04.767Z",
          "name": "genuary2022"
       },
       "sketches": {
          "genuary2022-day1": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.400Z",
+               "_mtime": "2022-10-30T09:57:04.763Z",
                "name": "genuary2022-day1"
             },
             "path": "sketches/genuary2022/genuary2022-day1"
          },
          "genuary2022-day13": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.400Z",
+               "_mtime": "2022-10-30T09:57:04.767Z",
                "name": "genuary2022-day13"
             },
             "path": "sketches/genuary2022/genuary2022-day13"
          },
          "genuary2022-day15": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.400Z",
+               "_mtime": "2022-10-30T09:57:04.767Z",
                "name": "genuary2022-day15"
             },
             "path": "sketches/genuary2022/genuary2022-day15"
          },
          "genuary2022-day16": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.404Z",
+               "_mtime": "2022-10-30T09:57:04.767Z",
                "name": "genuary2022-day16"
             },
             "path": "sketches/genuary2022/genuary2022-day16"
          },
          "genuary2022-day17": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.404Z",
+               "_mtime": "2022-10-30T09:57:04.767Z",
                "name": "genuary2022-day17"
             },
             "path": "sketches/genuary2022/genuary2022-day17"
          },
          "genuary2022-day2": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.404Z",
+               "_mtime": "2022-10-30T09:57:04.767Z",
                "name": "genuary2022-day2"
             },
             "path": "sketches/genuary2022/genuary2022-day2"
          },
          "genuary2022-day3": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.404Z",
+               "_mtime": "2022-10-30T09:57:04.767Z",
                "name": "genuary2022-day3"
             },
             "path": "sketches/genuary2022/genuary2022-day3"
          },
          "genuary2022-day5": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.404Z",
+               "_mtime": "2022-10-30T09:57:04.767Z",
                "name": "genuary2022-day5"
             },
             "path": "sketches/genuary2022/genuary2022-day5"
          },
          "genuary2022-day8": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.404Z",
+               "_mtime": "2022-10-30T09:57:04.767Z",
                "name": "genuary2022-day8"
             },
             "path": "sketches/genuary2022/genuary2022-day8"
          },
          "genuary2022-day8-polar-worm": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.404Z",
+               "_mtime": "2022-10-30T09:57:04.767Z",
                "name": "genuary2022-day8-polar-worm"
             },
             "path": "sketches/genuary2022/genuary2022-day8-polar-worm"
          },
          "genuary2022-day8-silk": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.404Z",
+               "_mtime": "2022-10-30T09:57:04.767Z",
                "name": "genuary2022-day8-silk"
             },
             "path": "sketches/genuary2022/genuary2022-day8-silk"
          },
          "genuary2022-game": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.404Z",
+               "_mtime": "2022-10-30T09:57:04.767Z",
                "name": "genuary2022-game"
             },
             "path": "sketches/genuary2022/genuary2022-game"
@@ -825,20 +825,20 @@
    },
    "glowing-fish": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.404Z",
+         "_mtime": "2022-10-30T09:57:04.767Z",
          "name": "glowing-fish"
       },
       "sketches": {
          "glowing-fishes-v0": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.404Z",
+               "_mtime": "2022-10-30T09:57:04.767Z",
                "name": "glowing-fishes-v0"
             },
             "path": "sketches/glowing-fish/glowing-fishes-v0"
          },
          "glowing-fishes-v1": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.404Z",
+               "_mtime": "2022-10-30T09:57:04.767Z",
                "name": "glowing-fishes-v1"
             },
             "path": "sketches/glowing-fish/glowing-fishes-v1"
@@ -847,104 +847,104 @@
    },
    "grid": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.412Z",
+         "_mtime": "2022-10-30T09:57:04.775Z",
          "name": "grid"
       },
       "sketches": {
          "grid-v1-basic": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.404Z",
+               "_mtime": "2022-10-30T09:57:04.767Z",
                "name": "grid-v1-basic"
             },
             "path": "sketches/grid/grid-v1-basic"
          },
          "grid-v10-variable-stick": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.404Z",
+               "_mtime": "2022-10-30T09:57:04.767Z",
                "name": "grid-v10-variable-stick"
             },
             "path": "sketches/grid/grid-v10-variable-stick"
          },
          "grid-v11-with-rotation": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.404Z",
+               "_mtime": "2022-10-30T09:57:04.767Z",
                "name": "grid-v11-with-rotation"
             },
             "path": "sketches/grid/grid-v11-with-rotation"
          },
          "grid-v12-noisy-strings": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.408Z",
+               "_mtime": "2022-10-30T09:57:04.771Z",
                "name": "grid-v12-noisy-strings"
             },
             "path": "sketches/grid/grid-v12-noisy-strings"
          },
          "grid-v12-noisy-strings-camera": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.408Z",
+               "_mtime": "2022-10-30T09:57:04.771Z",
                "name": "grid-v12-noisy-strings-camera"
             },
             "path": "sketches/grid/grid-v12-noisy-strings-camera"
          },
          "grid-v13-field-on-fire": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.408Z",
+               "_mtime": "2022-10-30T09:57:04.771Z",
                "name": "grid-v13-field-on-fire"
             },
             "path": "sketches/grid/grid-v13-field-on-fire"
          },
          "grid-v2-basic-with-easing": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.408Z",
+               "_mtime": "2022-10-30T09:57:04.771Z",
                "name": "grid-v2-basic-with-easing"
             },
             "path": "sketches/grid/grid-v2-basic-with-easing"
          },
          "grid-v3-basic-with-holes": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.408Z",
+               "_mtime": "2022-10-30T09:57:04.771Z",
                "name": "grid-v3-basic-with-holes"
             },
             "path": "sketches/grid/grid-v3-basic-with-holes"
          },
          "grid-v4-basic-with-audio-reaction": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.408Z",
+               "_mtime": "2022-10-30T09:57:04.771Z",
                "name": "grid-v4-basic-with-audio-reaction"
             },
             "path": "sketches/grid/grid-v4-basic-with-audio-reaction"
          },
          "grid-v5-stick": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.408Z",
+               "_mtime": "2022-10-30T09:57:04.771Z",
                "name": "grid-v5-stick"
             },
             "path": "sketches/grid/grid-v5-stick"
          },
          "grid-v6-field-with-dist-check": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.408Z",
+               "_mtime": "2022-10-30T09:57:04.771Z",
                "name": "grid-v6-field-with-dist-check"
             },
             "path": "sketches/grid/grid-v6-field-with-dist-check"
          },
          "grid-v7-field-with-dist-check-and-audio-reaction": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.408Z",
+               "_mtime": "2022-10-30T09:57:04.775Z",
                "name": "grid-v7-field-with-dist-check-and-audio-reaction"
             },
             "path": "sketches/grid/grid-v7-field-with-dist-check-and-audio-reaction"
          },
          "grid-v8-basic-with-easing-and-audio-reaction": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.408Z",
+               "_mtime": "2022-10-30T09:57:04.775Z",
                "name": "grid-v8-basic-with-easing-and-audio-reaction"
             },
             "path": "sketches/grid/grid-v8-basic-with-easing-and-audio-reaction"
          },
          "grid-v9-basic-with-easing-changing-directions": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.408Z",
+               "_mtime": "2022-10-30T09:57:04.775Z",
                "name": "grid-v9-basic-with-easing-changing-directions"
             },
             "path": "sketches/grid/grid-v9-basic-with-easing-changing-directions"
@@ -953,41 +953,41 @@
    },
    "midi": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.412Z",
+         "_mtime": "2022-10-30T09:57:04.775Z",
          "name": "midi"
       },
       "sketches": {
          "midi-v1-output": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.412Z",
+               "_mtime": "2022-10-30T09:57:04.775Z",
                "name": "midi-v1-output"
             },
             "path": "sketches/midi/midi-v1-output"
          },
          "midi-v2-input": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.412Z",
+               "_mtime": "2022-10-30T09:57:04.775Z",
                "name": "midi-v2-input"
             },
             "path": "sketches/midi/midi-v2-input"
          },
          "midi-v3-input-pills": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.412Z",
+               "_mtime": "2022-10-30T09:57:04.775Z",
                "name": "midi-v3-input-pills"
             },
             "path": "sketches/midi/midi-v3-input-pills"
          },
          "midi-v4-blurry": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.412Z",
+               "_mtime": "2022-10-30T09:57:04.775Z",
                "name": "midi-v4-blurry"
             },
             "path": "sketches/midi/midi-v4-blurry"
          },
          "midi-v6-visualizer-strips": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.412Z",
+               "_mtime": "2022-10-30T09:57:04.775Z",
                "name": "midi-v6-visualizer-strips"
             },
             "path": "sketches/midi/midi-v6-visualizer-strips"
@@ -996,20 +996,20 @@
    },
    "motion-blur": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.412Z",
+         "_mtime": "2022-10-30T09:57:04.775Z",
          "name": "motion-blur"
       },
       "sketches": {
          "motion-blur-v1": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.412Z",
+               "_mtime": "2022-10-30T09:57:04.775Z",
                "name": "motion-blur-v1"
             },
             "path": "sketches/motion-blur/motion-blur-v1"
          },
          "motion-blur-v2-alpha-echo": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.412Z",
+               "_mtime": "2022-10-30T09:57:04.775Z",
                "name": "motion-blur-v2-alpha-echo"
             },
             "path": "sketches/motion-blur/motion-blur-v2-alpha-echo"
@@ -1018,55 +1018,55 @@
    },
    "neon": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.412Z",
+         "_mtime": "2022-10-30T09:57:04.779Z",
          "name": "neon"
       },
       "sketches": {
          "neon-v0-legacy": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.412Z",
+               "_mtime": "2022-10-30T09:57:04.775Z",
                "name": "neon-v0-legacy"
             },
             "path": "sketches/neon/neon-v0-legacy"
          },
          "neon-v1-graffiti": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.412Z",
+               "_mtime": "2022-10-30T09:57:04.775Z",
                "name": "neon-v1-graffiti"
             },
             "path": "sketches/neon/neon-v1-graffiti"
          },
          "neon-v2-polar": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.412Z",
+               "_mtime": "2022-10-30T09:57:04.775Z",
                "name": "neon-v2-polar"
             },
             "path": "sketches/neon/neon-v2-polar"
          },
          "neon-v3-can": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.412Z",
+               "_mtime": "2022-10-30T09:57:04.775Z",
                "name": "neon-v3-can"
             },
             "path": "sketches/neon/neon-v3-can"
          },
          "neon-v4-dots": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.412Z",
+               "_mtime": "2022-10-30T09:57:04.779Z",
                "name": "neon-v4-dots"
             },
             "path": "sketches/neon/neon-v4-dots"
          },
          "neon-v5-atoms": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.412Z",
+               "_mtime": "2022-10-30T09:57:04.779Z",
                "name": "neon-v5-atoms"
             },
             "path": "sketches/neon/neon-v5-atoms"
          },
          "neon-v6-sticks-offset": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.412Z",
+               "_mtime": "2022-10-30T09:57:04.779Z",
                "name": "neon-v6-sticks-offset"
             },
             "path": "sketches/neon/neon-v6-sticks-offset"
@@ -1075,41 +1075,41 @@
    },
    "orbit": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.416Z",
+         "_mtime": "2022-10-30T09:57:04.779Z",
          "name": "orbit"
       },
       "sketches": {
          "orbit-v1-geeko": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.412Z",
+               "_mtime": "2022-10-30T09:57:04.779Z",
                "name": "orbit-v1-geeko"
             },
             "path": "sketches/orbit/orbit-v1-geeko"
          },
          "orbit-v2-molecule": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.412Z",
+               "_mtime": "2022-10-30T09:57:04.779Z",
                "name": "orbit-v2-molecule"
             },
             "path": "sketches/orbit/orbit-v2-molecule"
          },
          "orbit-v3-disk": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.416Z",
+               "_mtime": "2022-10-30T09:57:04.779Z",
                "name": "orbit-v3-disk"
             },
             "path": "sketches/orbit/orbit-v3-disk"
          },
          "orbit-v4-chewing-gum": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.416Z",
+               "_mtime": "2022-10-30T09:57:04.779Z",
                "name": "orbit-v4-chewing-gum"
             },
             "path": "sketches/orbit/orbit-v4-chewing-gum"
          },
          "orbit-v5-chakra": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.416Z",
+               "_mtime": "2022-10-30T09:57:04.779Z",
                "name": "orbit-v5-chakra"
             },
             "path": "sketches/orbit/orbit-v5-chakra"
@@ -1118,27 +1118,27 @@
    },
    "pen": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.416Z",
+         "_mtime": "2022-10-30T09:57:04.779Z",
          "name": "pen"
       },
       "sketches": {
          "pen-v1-draw-in-a-grid": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.416Z",
+               "_mtime": "2022-10-30T09:57:04.779Z",
                "name": "pen-v1-draw-in-a-grid"
             },
             "path": "sketches/pen/pen-v1-draw-in-a-grid"
          },
          "pen-v1-draw-in-a-grid copy": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.416Z",
+               "_mtime": "2022-10-30T09:57:04.779Z",
                "name": "pen-v1-draw-in-a-grid copy"
             },
             "path": "sketches/pen/pen-v1-draw-in-a-grid copy"
          },
          "pen-vectors-test": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.416Z",
+               "_mtime": "2022-10-30T09:57:04.779Z",
                "name": "pen-vectors-test"
             },
             "path": "sketches/pen/pen-vectors-test"
@@ -1147,41 +1147,41 @@
    },
    "polar-strip": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.416Z",
+         "_mtime": "2022-10-30T09:57:04.779Z",
          "name": "polar-strip"
       },
       "sketches": {
          "polar-strip-v0": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.416Z",
+               "_mtime": "2022-10-30T09:57:04.779Z",
                "name": "polar-strip-v0"
             },
             "path": "sketches/polar-strip/polar-strip-v0"
          },
          "polar-strip-v0 copy": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.416Z",
+               "_mtime": "2022-10-30T09:57:04.779Z",
                "name": "polar-strip-v0 copy"
             },
             "path": "sketches/polar-strip/polar-strip-v0 copy"
          },
          "polar-strip-v1": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.416Z",
+               "_mtime": "2022-10-30T09:57:04.779Z",
                "name": "polar-strip-v1"
             },
             "path": "sketches/polar-strip/polar-strip-v1"
          },
          "polar-strip-v1-lights": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.416Z",
+               "_mtime": "2022-10-30T09:57:04.779Z",
                "name": "polar-strip-v1-lights"
             },
             "path": "sketches/polar-strip/polar-strip-v1-lights"
          },
          "polar-strip-v2-lights-mouse": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.416Z",
+               "_mtime": "2022-10-30T09:57:04.779Z",
                "name": "polar-strip-v2-lights-mouse"
             },
             "path": "sketches/polar-strip/polar-strip-v2-lights-mouse"
@@ -1190,167 +1190,167 @@
    },
    "pulse": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.420Z",
+         "_mtime": "2022-10-30T09:57:04.787Z",
          "name": "pulse"
       },
       "sketches": {
          "pulse-v1-guts": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.416Z",
+               "_mtime": "2022-10-30T09:57:04.779Z",
                "name": "pulse-v1-guts"
             },
             "path": "sketches/pulse/pulse-v1-guts"
          },
          "pulse-v2-kraken": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.416Z",
+               "_mtime": "2022-10-30T09:57:04.783Z",
                "name": "pulse-v2-kraken"
             },
             "path": "sketches/pulse/pulse-v2-kraken"
          },
          "pulse-v3-asterix": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.416Z",
+               "_mtime": "2022-10-30T09:57:04.783Z",
                "name": "pulse-v3-asterix"
             },
             "path": "sketches/pulse/pulse-v3-asterix"
          },
          "pulse-v4-trinity": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.416Z",
+               "_mtime": "2022-10-30T09:57:04.783Z",
                "name": "pulse-v4-trinity"
             },
             "path": "sketches/pulse/pulse-v4-trinity"
          },
          "pulse-v5-flower": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.416Z",
+               "_mtime": "2022-10-30T09:57:04.783Z",
                "name": "pulse-v5-flower"
             },
             "path": "sketches/pulse/pulse-v5-flower"
          },
          "pulse-v6-sonar": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.416Z",
+               "_mtime": "2022-10-30T09:57:04.783Z",
                "name": "pulse-v6-sonar"
             },
             "path": "sketches/pulse/pulse-v6-sonar"
          },
          "pulse-v7-scan": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.420Z",
+               "_mtime": "2022-10-30T09:57:04.783Z",
                "name": "pulse-v7-scan"
             },
             "path": "sketches/pulse/pulse-v7-scan"
          },
          "pulse-v7-scan-asterix": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.416Z",
+               "_mtime": "2022-10-30T09:57:04.783Z",
                "name": "pulse-v7-scan-asterix"
             },
             "path": "sketches/pulse/pulse-v7-scan-asterix"
          },
          "pulse-v7-scan-bar": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.416Z",
+               "_mtime": "2022-10-30T09:57:04.783Z",
                "name": "pulse-v7-scan-bar"
             },
             "path": "sketches/pulse/pulse-v7-scan-bar"
          },
          "pulse-v7-scan-churros": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.416Z",
+               "_mtime": "2022-10-30T09:57:04.783Z",
                "name": "pulse-v7-scan-churros"
             },
             "path": "sketches/pulse/pulse-v7-scan-churros"
          },
          "pulse-v7-scan-folding": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.420Z",
+               "_mtime": "2022-10-30T09:57:04.783Z",
                "name": "pulse-v7-scan-folding"
             },
             "path": "sketches/pulse/pulse-v7-scan-folding"
          },
          "pulse-v7-scan-up-down": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.420Z",
+               "_mtime": "2022-10-30T09:57:04.783Z",
                "name": "pulse-v7-scan-up-down"
             },
             "path": "sketches/pulse/pulse-v7-scan-up-down"
          },
          "pulse-v7-torsade": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.420Z",
+               "_mtime": "2022-10-30T09:57:04.783Z",
                "name": "pulse-v7-torsade"
             },
             "path": "sketches/pulse/pulse-v7-torsade"
          },
          "pulse-v7-turbine": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.420Z",
+               "_mtime": "2022-10-30T09:57:04.783Z",
                "name": "pulse-v7-turbine"
             },
             "path": "sketches/pulse/pulse-v7-turbine"
          },
          "pulse-v7-turbine-butterfly": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.420Z",
+               "_mtime": "2022-10-30T09:57:04.783Z",
                "name": "pulse-v7-turbine-butterfly"
             },
             "path": "sketches/pulse/pulse-v7-turbine-butterfly"
          },
          "pulse-v7-turbine-eccentric": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.420Z",
+               "_mtime": "2022-10-30T09:57:04.783Z",
                "name": "pulse-v7-turbine-eccentric"
             },
             "path": "sketches/pulse/pulse-v7-turbine-eccentric"
          },
          "pulse-v7-turbine-eccentric-squid": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.420Z",
+               "_mtime": "2022-10-30T09:57:04.783Z",
                "name": "pulse-v7-turbine-eccentric-squid"
             },
             "path": "sketches/pulse/pulse-v7-turbine-eccentric-squid"
          },
          "pulse-v7-turbine-flower": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.420Z",
+               "_mtime": "2022-10-30T09:57:04.783Z",
                "name": "pulse-v7-turbine-flower"
             },
             "path": "sketches/pulse/pulse-v7-turbine-flower"
          },
          "pulse-v7-turbine-grid": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.420Z",
+               "_mtime": "2022-10-30T09:57:04.783Z",
                "name": "pulse-v7-turbine-grid"
             },
             "path": "sketches/pulse/pulse-v7-turbine-grid"
          },
          "pulse-v7-turbines-familly": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.420Z",
+               "_mtime": "2022-10-30T09:57:04.787Z",
                "name": "pulse-v7-turbines-familly"
             },
             "path": "sketches/pulse/pulse-v7-turbines-familly"
          },
          "pulse-v8-mirror": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.420Z",
+               "_mtime": "2022-10-30T09:57:04.787Z",
                "name": "pulse-v8-mirror"
             },
             "path": "sketches/pulse/pulse-v8-mirror"
          },
          "pulse-v8-quadra": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.420Z",
+               "_mtime": "2022-10-30T09:57:04.787Z",
                "name": "pulse-v8-quadra"
             },
             "path": "sketches/pulse/pulse-v8-quadra"
          },
          "pulse-v9-curtain": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.420Z",
+               "_mtime": "2022-10-30T09:57:04.787Z",
                "name": "pulse-v9-curtain"
             },
             "path": "sketches/pulse/pulse-v9-curtain"
@@ -1359,125 +1359,125 @@
    },
    "ribbons": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.424Z",
+         "_mtime": "2022-10-30T09:57:04.791Z",
          "name": "ribbons"
       },
       "sketches": {
          "ribbons-v1-invisible-walls-purple": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.420Z",
+               "_mtime": "2022-10-30T09:57:04.787Z",
                "name": "ribbons-v1-invisible-walls-purple"
             },
             "path": "sketches/ribbons/ribbons-v1-invisible-walls-purple"
          },
          "ribbons-v1-invisible-walls-rainbow": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.420Z",
+               "_mtime": "2022-10-30T09:57:04.787Z",
                "name": "ribbons-v1-invisible-walls-rainbow"
             },
             "path": "sketches/ribbons/ribbons-v1-invisible-walls-rainbow"
          },
          "ribbons-v10-blurry-flower": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.420Z",
+               "_mtime": "2022-10-30T09:57:04.787Z",
                "name": "ribbons-v10-blurry-flower"
             },
             "path": "sketches/ribbons/ribbons-v10-blurry-flower"
          },
          "ribbons-v11": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.424Z",
+               "_mtime": "2022-10-30T09:57:04.787Z",
                "name": "ribbons-v11"
             },
             "path": "sketches/ribbons/ribbons-v11"
          },
          "ribbons-v12": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.424Z",
+               "_mtime": "2022-10-30T09:57:04.787Z",
                "name": "ribbons-v12"
             },
             "path": "sketches/ribbons/ribbons-v12"
          },
          "ribbons-v13": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.424Z",
+               "_mtime": "2022-10-30T09:57:04.787Z",
                "name": "ribbons-v13"
             },
             "path": "sketches/ribbons/ribbons-v13"
          },
          "ribbons-v14": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.424Z",
+               "_mtime": "2022-10-30T09:57:04.787Z",
                "name": "ribbons-v14"
             },
             "path": "sketches/ribbons/ribbons-v14"
          },
          "ribbons-v15-gold": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.424Z",
+               "_mtime": "2022-10-30T09:57:04.787Z",
                "name": "ribbons-v15-gold"
             },
             "path": "sketches/ribbons/ribbons-v15-gold"
          },
          "ribbons-v2-circle": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.424Z",
+               "_mtime": "2022-10-30T09:57:04.787Z",
                "name": "ribbons-v2-circle"
             },
             "path": "sketches/ribbons/ribbons-v2-circle"
          },
          "ribbons-v3-caterpillar-circle": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.424Z",
+               "_mtime": "2022-10-30T09:57:04.791Z",
                "name": "ribbons-v3-caterpillar-circle"
             },
             "path": "sketches/ribbons/ribbons-v3-caterpillar-circle"
          },
          "ribbons-v3-caterpillar-up-down": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.424Z",
+               "_mtime": "2022-10-30T09:57:04.791Z",
                "name": "ribbons-v3-caterpillar-up-down"
             },
             "path": "sketches/ribbons/ribbons-v3-caterpillar-up-down"
          },
          "ribbons-v4-petals": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.424Z",
+               "_mtime": "2022-10-30T09:57:04.791Z",
                "name": "ribbons-v4-petals"
             },
             "path": "sketches/ribbons/ribbons-v4-petals"
          },
          "ribbons-v5-flower": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.424Z",
+               "_mtime": "2022-10-30T09:57:04.791Z",
                "name": "ribbons-v5-flower"
             },
             "path": "sketches/ribbons/ribbons-v5-flower"
          },
          "ribbons-v6-flower-dotted": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.424Z",
+               "_mtime": "2022-10-30T09:57:04.791Z",
                "name": "ribbons-v6-flower-dotted"
             },
             "path": "sketches/ribbons/ribbons-v6-flower-dotted"
          },
          "ribbons-v7-travelling-flower-abrubt": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.424Z",
+               "_mtime": "2022-10-30T09:57:04.791Z",
                "name": "ribbons-v7-travelling-flower-abrubt"
             },
             "path": "sketches/ribbons/ribbons-v7-travelling-flower-abrubt"
          },
          "ribbons-v8-globule": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.424Z",
+               "_mtime": "2022-10-30T09:57:04.791Z",
                "name": "ribbons-v8-globule"
             },
             "path": "sketches/ribbons/ribbons-v8-globule"
          },
          "ribbons-v9-atom": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.424Z",
+               "_mtime": "2022-10-30T09:57:04.791Z",
                "name": "ribbons-v9-atom"
             },
             "path": "sketches/ribbons/ribbons-v9-atom"
@@ -1486,20 +1486,20 @@
    },
    "semaphore": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.424Z",
+         "_mtime": "2022-10-30T09:57:04.791Z",
          "name": "semaphore"
       },
       "sketches": {
          "semaphore-v0-dots": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.424Z",
+               "_mtime": "2022-10-30T09:57:04.791Z",
                "name": "semaphore-v0-dots"
             },
             "path": "sketches/semaphore/semaphore-v0-dots"
          },
          "semaphore-v1-lines": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.424Z",
+               "_mtime": "2022-10-30T09:57:04.791Z",
                "name": "semaphore-v1-lines"
             },
             "path": "sketches/semaphore/semaphore-v1-lines"
@@ -1508,69 +1508,69 @@
    },
    "spirals": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.428Z",
+         "_mtime": "2022-10-30T09:57:04.795Z",
          "name": "spirals"
       },
       "sketches": {
          "spiral-v1-plots": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.428Z",
+               "_mtime": "2022-10-30T09:57:04.791Z",
                "name": "spiral-v1-plots"
             },
             "path": "sketches/spirals/spiral-v1-plots"
          },
          "spiral-v2-worms": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.428Z",
+               "_mtime": "2022-10-30T09:57:04.791Z",
                "name": "spiral-v2-worms"
             },
             "path": "sketches/spirals/spiral-v2-worms"
          },
          "spiral-v3-easing-field": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.428Z",
+               "_mtime": "2022-10-30T09:57:04.791Z",
                "name": "spiral-v3-easing-field"
             },
             "path": "sketches/spirals/spiral-v3-easing-field"
          },
          "spiral-v4-springs": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.428Z",
+               "_mtime": "2022-10-30T09:57:04.791Z",
                "name": "spiral-v4-springs"
             },
             "path": "sketches/spirals/spiral-v4-springs"
          },
          "spiral-v5-lolipop": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.428Z",
+               "_mtime": "2022-10-30T09:57:04.795Z",
                "name": "spiral-v5-lolipop"
             },
             "path": "sketches/spirals/spiral-v5-lolipop"
          },
          "spiral-v6-tornado": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.428Z",
+               "_mtime": "2022-10-30T09:57:04.795Z",
                "name": "spiral-v6-tornado"
             },
             "path": "sketches/spirals/spiral-v6-tornado"
          },
          "spiral-v7-petals": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.428Z",
+               "_mtime": "2022-10-30T09:57:04.795Z",
                "name": "spiral-v7-petals"
             },
             "path": "sketches/spirals/spiral-v7-petals"
          },
          "spiral-v8-sticks": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.428Z",
+               "_mtime": "2022-10-30T09:57:04.795Z",
                "name": "spiral-v8-sticks"
             },
             "path": "sketches/spirals/spiral-v8-sticks"
          },
          "spiral-v9-donut": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.428Z",
+               "_mtime": "2022-10-30T09:57:04.795Z",
                "name": "spiral-v9-donut"
             },
             "path": "sketches/spirals/spiral-v9-donut"
@@ -1579,118 +1579,118 @@
    },
    "strips": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.432Z",
+         "_mtime": "2022-10-30T09:57:04.799Z",
          "name": "strips"
       },
       "sketches": {
          "rainbow-orbit": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.428Z",
+               "_mtime": "2022-10-30T09:57:04.795Z",
                "name": "rainbow-orbit"
             },
             "path": "sketches/strips/rainbow-orbit"
          },
          "strips-v1-up-and-down": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.428Z",
+               "_mtime": "2022-10-30T09:57:04.795Z",
                "name": "strips-v1-up-and-down"
             },
             "path": "sketches/strips/strips-v1-up-and-down"
          },
          "strips-v2-worms": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.428Z",
+               "_mtime": "2022-10-30T09:57:04.795Z",
                "name": "strips-v2-worms"
             },
             "path": "sketches/strips/strips-v2-worms"
          },
          "strips-v3-half-curve-fix-inner-count": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.428Z",
+               "_mtime": "2022-10-30T09:57:04.795Z",
                "name": "strips-v3-half-curve-fix-inner-count"
             },
             "path": "sketches/strips/strips-v3-half-curve-fix-inner-count"
          },
          "strips-v3-half-curve-fix-inner-count-2": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.428Z",
+               "_mtime": "2022-10-30T09:57:04.795Z",
                "name": "strips-v3-half-curve-fix-inner-count-2"
             },
             "path": "sketches/strips/strips-v3-half-curve-fix-inner-count-2"
          },
          "strips-v3-half-play-fix-inner-count": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.428Z",
+               "_mtime": "2022-10-30T09:57:04.795Z",
                "name": "strips-v3-half-play-fix-inner-count"
             },
             "path": "sketches/strips/strips-v3-half-play-fix-inner-count"
          },
          "strips-v3-half-play-variable-inner-count": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.428Z",
+               "_mtime": "2022-10-30T09:57:04.795Z",
                "name": "strips-v3-half-play-variable-inner-count"
             },
             "path": "sketches/strips/strips-v3-half-play-variable-inner-count"
          },
          "strips-v3-knot-fix-inner-count": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.428Z",
+               "_mtime": "2022-10-30T09:57:04.795Z",
                "name": "strips-v3-knot-fix-inner-count"
             },
             "path": "sketches/strips/strips-v3-knot-fix-inner-count"
          },
          "strips-v3-play-fix-inner-count": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.428Z",
+               "_mtime": "2022-10-30T09:57:04.795Z",
                "name": "strips-v3-play-fix-inner-count"
             },
             "path": "sketches/strips/strips-v3-play-fix-inner-count"
          },
          "strips-v3-play-fix-inner-count-high-opacity-factor": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.428Z",
+               "_mtime": "2022-10-30T09:57:04.795Z",
                "name": "strips-v3-play-fix-inner-count-high-opacity-factor"
             },
             "path": "sketches/strips/strips-v3-play-fix-inner-count-high-opacity-factor"
          },
          "strips-v3-play-variable-inner-count": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.428Z",
+               "_mtime": "2022-10-30T09:57:04.795Z",
                "name": "strips-v3-play-variable-inner-count"
             },
             "path": "sketches/strips/strips-v3-play-variable-inner-count"
          },
          "strips-v4-square-cords": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.428Z",
+               "_mtime": "2022-10-30T09:57:04.795Z",
                "name": "strips-v4-square-cords"
             },
             "path": "sketches/strips/strips-v4-square-cords"
          },
          "strips-v5-perpetual-lines": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.428Z",
+               "_mtime": "2022-10-30T09:57:04.795Z",
                "name": "strips-v5-perpetual-lines"
             },
             "path": "sketches/strips/strips-v5-perpetual-lines"
          },
          "strips-v6-white-lines": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.432Z",
+               "_mtime": "2022-10-30T09:57:04.795Z",
                "name": "strips-v6-white-lines"
             },
             "path": "sketches/strips/strips-v6-white-lines"
          },
          "test": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.432Z",
+               "_mtime": "2022-10-30T09:57:04.799Z",
                "name": "test"
             },
             "path": "sketches/strips/test"
          },
          "ukraine": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.432Z",
+               "_mtime": "2022-10-30T09:57:04.799Z",
                "name": "ukraine"
             },
             "path": "sketches/strips/ukraine"
@@ -1699,111 +1699,111 @@
    },
    "torsade": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.432Z",
+         "_mtime": "2022-10-30T09:57:04.803Z",
          "name": "torsade"
       },
       "sketches": {
          "torsade-juggle": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.432Z",
+               "_mtime": "2022-10-30T09:57:04.799Z",
                "name": "torsade-juggle"
             },
             "path": "sketches/torsade/torsade-juggle"
          },
          "torsade-v0": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.432Z",
+               "_mtime": "2022-10-30T09:57:04.799Z",
                "name": "torsade-v0"
             },
             "path": "sketches/torsade/torsade-v0"
          },
          "torsade-v1-unmelted": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.432Z",
+               "_mtime": "2022-10-30T09:57:04.799Z",
                "name": "torsade-v1-unmelted"
             },
             "path": "sketches/torsade/torsade-v1-unmelted"
          },
          "torsade-v10-rabbit-hole": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.432Z",
+               "_mtime": "2022-10-30T09:57:04.799Z",
                "name": "torsade-v10-rabbit-hole"
             },
             "path": "sketches/torsade/torsade-v10-rabbit-hole"
          },
          "torsade-v11-infinite": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.432Z",
+               "_mtime": "2022-10-30T09:57:04.799Z",
                "name": "torsade-v11-infinite"
             },
             "path": "sketches/torsade/torsade-v11-infinite"
          },
          "torsade-v12-gradient-worms": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.432Z",
+               "_mtime": "2022-10-30T09:57:04.799Z",
                "name": "torsade-v12-gradient-worms"
             },
             "path": "sketches/torsade/torsade-v12-gradient-worms"
          },
          "torsade-v13-medusa": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.432Z",
+               "_mtime": "2022-10-30T09:57:04.799Z",
                "name": "torsade-v13-medusa"
             },
             "path": "sketches/torsade/torsade-v13-medusa"
          },
          "torsade-v2-chain": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.432Z",
+               "_mtime": "2022-10-30T09:57:04.799Z",
                "name": "torsade-v2-chain"
             },
             "path": "sketches/torsade/torsade-v2-chain"
          },
          "torsade-v3-leaping-over": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.432Z",
+               "_mtime": "2022-10-30T09:57:04.799Z",
                "name": "torsade-v3-leaping-over"
             },
             "path": "sketches/torsade/torsade-v3-leaping-over"
          },
          "torsade-v4-calm": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.432Z",
+               "_mtime": "2022-10-30T09:57:04.799Z",
                "name": "torsade-v4-calm"
             },
             "path": "sketches/torsade/torsade-v4-calm"
          },
          "torsade-v5-flag": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.432Z",
+               "_mtime": "2022-10-30T09:57:04.799Z",
                "name": "torsade-v5-flag"
             },
             "path": "sketches/torsade/torsade-v5-flag"
          },
          "torsade-v6-horn": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.432Z",
+               "_mtime": "2022-10-30T09:57:04.799Z",
                "name": "torsade-v6-horn"
             },
             "path": "sketches/torsade/torsade-v6-horn"
          },
          "torsade-v7-melted": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.432Z",
+               "_mtime": "2022-10-30T09:57:04.799Z",
                "name": "torsade-v7-melted"
             },
             "path": "sketches/torsade/torsade-v7-melted"
          },
          "torsade-v8-chain": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.432Z",
+               "_mtime": "2022-10-30T09:57:04.799Z",
                "name": "torsade-v8-chain"
             },
             "path": "sketches/torsade/torsade-v8-chain"
          },
          "torsade-v9-dna-spiral": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.432Z",
+               "_mtime": "2022-10-30T09:57:04.803Z",
                "name": "torsade-v9-dna-spiral"
             },
             "path": "sketches/torsade/torsade-v9-dna-spiral"
@@ -1812,90 +1812,90 @@
    },
    "worms": {
       "meta": {
-         "_mtime": "2022-10-23T03:00:13.436Z",
+         "_mtime": "2022-10-30T09:57:04.803Z",
          "name": "worms"
       },
       "sketches": {
          "worms-v0-alga": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.432Z",
+               "_mtime": "2022-10-30T09:57:04.803Z",
                "name": "worms-v0-alga"
             },
             "path": "sketches/worms/worms-v0-alga"
          },
          "worms-v1-rainbow": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.436Z",
+               "_mtime": "2022-10-30T09:57:04.803Z",
                "name": "worms-v1-rainbow"
             },
             "path": "sketches/worms/worms-v1-rainbow"
          },
          "worms-v10-starry-eating": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.436Z",
+               "_mtime": "2022-10-30T09:57:04.803Z",
                "name": "worms-v10-starry-eating"
             },
             "path": "sketches/worms/worms-v10-starry-eating"
          },
          "worms-v2-wavy": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.436Z",
+               "_mtime": "2022-10-30T09:57:04.803Z",
                "name": "worms-v2-wavy"
             },
             "path": "sketches/worms/worms-v2-wavy"
          },
          "worms-v4-starry": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.436Z",
+               "_mtime": "2022-10-30T09:57:04.803Z",
                "name": "worms-v4-starry"
             },
             "path": "sketches/worms/worms-v4-starry"
          },
          "worms-v5-radial": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.436Z",
+               "_mtime": "2022-10-30T09:57:04.803Z",
                "name": "worms-v5-radial"
             },
             "path": "sketches/worms/worms-v5-radial"
          },
          "worms-v6-tentacule": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.436Z",
+               "_mtime": "2022-10-30T09:57:04.803Z",
                "name": "worms-v6-tentacule"
             },
             "path": "sketches/worms/worms-v6-tentacule"
          },
          "worms-v6-tentacule-aperturing": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.436Z",
+               "_mtime": "2022-10-30T09:57:04.803Z",
                "name": "worms-v6-tentacule-aperturing"
             },
             "path": "sketches/worms/worms-v6-tentacule-aperturing"
          },
          "worms-v6-tentacule-dancing": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.436Z",
+               "_mtime": "2022-10-30T09:57:04.803Z",
                "name": "worms-v6-tentacule-dancing"
             },
             "path": "sketches/worms/worms-v6-tentacule-dancing"
          },
          "worms-v7-doodle": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.436Z",
+               "_mtime": "2022-10-30T09:57:04.803Z",
                "name": "worms-v7-doodle"
             },
             "path": "sketches/worms/worms-v7-doodle"
          },
          "worms-v8-starry-blooming": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.436Z",
+               "_mtime": "2022-10-30T09:57:04.803Z",
                "name": "worms-v8-starry-blooming"
             },
             "path": "sketches/worms/worms-v8-starry-blooming"
          },
          "worms-v9-starry-dancing": {
             "meta": {
-               "_mtime": "2022-10-23T03:00:13.436Z",
+               "_mtime": "2022-10-30T09:57:04.803Z",
                "name": "worms-v9-starry-dancing"
             },
             "path": "sketches/worms/worms-v9-starry-dancing"
