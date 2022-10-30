@@ -1,20 +1,20 @@
 let pixilatedCanvas = null;
 
-import { shapes, sketch, canvas, events } from './utils/index.js';
+import { shapes, sketch, events } from './utils/index.js';
 
 sketch.setup(() => {
   noStroke();
 
   pixilatedCanvas = createGraphics(
-    canvas.main.width,
-    canvas.main.height
+    sketch?.engine?.canvas?.width,
+    sketch?.engine?.canvas?.height
   );
   pixilatedCanvas.pixelDensity(0.1);
   pixilatedCanvas.noStroke();
 
   events.register("windowResized", () => {
-    pixilatedCanvas.width = canvas.main.width;
-    pixilatedCanvas.height = canvas.main.height;
+    pixilatedCanvas.width = sketch?.engine?.canvas?.width;
+    pixilatedCanvas.height = sketch?.engine?.canvas?.height;
     pixilatedCanvas.pixelDensity(0.035);
   });
 

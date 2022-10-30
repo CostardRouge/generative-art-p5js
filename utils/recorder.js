@@ -1,4 +1,4 @@
-import { canvas, sketch, options, debug } from './index.js';
+import { sketch, options, debug } from './index.js';
 
 const recorder = {
   savedFramesCount: 0,
@@ -48,11 +48,13 @@ const recorder = {
       return;
     }
 
-    if (undefined === canvas.main) {
+    const canvasElement = sketch?.engine?.getCanvasElement();
+
+    if (undefined === canvasElement) {
       return;
     }
 
-    recorder.capturer.capture(canvas.main.elt);
+    recorder.capturer.capture(canvasElement);
     recorder.savedFramesCount++;
   },
 };

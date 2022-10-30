@@ -1,77 +1,57 @@
-import { canvas, events, time, debug, options } from './index.js';
+import { events, time, debug, options } from './index.js';
+import { p5js, threejs } from './engine/index.js';
+
+const engines = {
+  p5js,
+  threejs
+};
 
 const sketch = {
   name: location.pathname.split("/").slice(1, -1).join("-"),
-  camera: undefined,
+  engine: undefined,
   setup: (
-    setup,
-    canvasOptions
+    setupEngineFunction,
+    sketchOptions = { engine: "p5js"}
   ) => {
-    sketch.setup = () => {
-      options.init();
+    // options system
+    options.init( );
 
-      const canvasSize = (
-        (new URLSearchParams(document.location.search)).get('size')     ??
-        options.get("canvas-size")                                      ??
-        `${canvas.configuration.width}x${canvas.configuration.height}`
-      );
-      const [width, height] = canvasSize.split('x').map(Number);
+    // canvas size
+    const [canvasWidth, canvasHeight] = sketch.getDefaultCanvasSize();
 
-      canvas.create({
-        width: canvasSize === 'fill' ? windowWidth : width,
-        height: canvasSize === 'fill' ? windowHeight : height,
-        ...canvasOptions
-      });
+    // engine system
+    const { engine = "p5js", ...engineOptions } = sketchOptions;
 
-      if ( 'webgl' === canvasOptions?.type ) {
-        sketch.camera = createCamera();
-      }
+    sketch.engine = engines[ engine ].init( {
+      size: {
+        width: canvasWidth,
+        height: canvasHeight
+      },
+      ...engineOptions
+    }, setupEngineFunction );
 
-      frameRate(options.get("framerate"));
-      options.get("smooth-pixel") ? smooth() : noSmooth();
-      
-      events.toggleNoLoopOnSingleClick();
-      events.toggleCanvasRecordingOnKey();
-      events.pauseOnSpaceKeyPressed();
-      events.toggleFPSCounterOnKeyPressed();
-      events.extendCanvasOnFullScreen();
-      events.extendCanvasOnResize();
-      events.toggleFullScreenOnDoubleClick();
-
-      noStroke();
-
-      const center = createVector(width / 2, height / 2);
-
-      setup?.(center);
-    };
+    // sketch events
+    events.toggleNoLoopOnSingleClick();
+    events.toggleCanvasRecordingOnKey();
+    events.pauseOnSpaceKeyPressed();
+    events.toggleFPSCounterOnKeyPressed();
+    events.toggleFullScreenOnDoubleClick();
+    events.extendCanvasOnResize();
   },
-  draw: (draw) => {
-    sketch.draw = () => {
-      debug.fps();
-      
-      let t = time.seconds() * options.get("time-speed");
-      //t = (frameCount-1)/options.get("framerate");
+  getDefaultCanvasSize: (value) =>{
+    const canvasSize = (
+      value                                                           ??
+      (new URLSearchParams(document.location.search)).get('size')     ??
+      options.get("canvas-size")
+    );
 
-      const center = createVector(width / 2, height / 2);
-
-      draw?.(t * options.get("time-speed"), center);
-    };
+    return canvasSize.split('x').map(Number);
+  },
+  draw: (drawFunction) => {
+    events.register("pre-draw", debug.fps);
+    events.register("draw", drawFunction);
   },
 };
 
-window.setup = () => {
-  events.handle("pre-setup");
-
-  sketch.setup();
-
-  events.handle("post-setup");
-}
-window.draw = () => {
-  events.handle("pre-draw");
-
-  sketch.draw();
-
-  events.handle("post-draw");
-}
 
 export default sketch;

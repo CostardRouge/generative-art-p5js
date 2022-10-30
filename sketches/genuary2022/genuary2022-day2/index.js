@@ -1,7 +1,7 @@
 let target = null;
 let capture = null;
 
-import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+import { shapes, sketch, converters, events, colors, mappers } from './utils/index.js';
 
 sketch.setup(() => {
   // noStroke();

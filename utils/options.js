@@ -1,6 +1,6 @@
 import SketchUI from '../libraries/sketch-ui.es.js';
 
-import { canvas, recorder, debug, sketch } from './index.js';
+import { recorder, debug, sketch, events } from './index.js';
 
 const getDefaultOptions = () => {
   // const { type } = screen.orientation;
@@ -13,10 +13,10 @@ const getDefaultOptions = () => {
   }
 
   const defaultOptions = [];
-  const defaultPixelDensity = isMobile ? 1 : pixelDensity();
   const defaultFramerate = 60;
   const defaultTimeSpeed = 1;
-  const defaultCanvasSize = isMobile ? 'fill' :`${canvas.configuration.width}x${canvas.configuration.height}`;
+  const defaultPixelDensity = isMobile ? 1 : 2//events.handle("engine-pixel-density-get")?.[0]
+  const defaultCanvasSize = isMobile ? 'fill' :`768x1366`;
 
   defaultOptions.push( ...[
     {
@@ -45,13 +45,6 @@ const getDefaultOptions = () => {
       type: 'switch',
       label: 'Press F to toggle FPS counter',
       defaultValue: true,
-      category: 'Events'
-    },
-    {
-      id: 'extend-canvas-on-full-screen',
-      type: 'switch',
-      label: 'Extend canvas on full screen',
-      defaultValue: false,
       category: 'Events'
     },
     {
@@ -86,7 +79,8 @@ const getDefaultOptions = () => {
       defaultValue: defaultPixelDensity,
       category: 'Debug',
       onChange: (value) => {
-        pixelDensity(value);
+        events.handle("engine-pixel-density-change", value)
+        //pixelDensity(value);
       }
     },
     {
@@ -95,7 +89,7 @@ const getDefaultOptions = () => {
       label: 'Smooth pixel',
       defaultValue: true,
       category: 'Debug',
-      onChange: checked => checked ? smooth() : noSmooth()
+      onChange: checked => events.handle("engine-smooth-pixel-change", checked)
     },
     {
       id: 'framerate',
@@ -110,7 +104,7 @@ const getDefaultOptions = () => {
         { value: 100, label: '100 fps' },
       ],
       category: 'Debug',
-      onChange: frameRate
+      onChange: value => events.handle("engine-framerate-change", value)
     },
     {
       id: 'time-speed',
@@ -131,7 +125,7 @@ const getDefaultOptions = () => {
       type: 'button',
       text: 'Toggle fullscreen',
       icon: 'ScreenShare',
-      onClick: () => canvas.fullscreen(),
+      onClick: () => events.handle("engine-fullscreen-toggle"),
       category: 'Canvas'
     }
   ] );
@@ -143,14 +137,9 @@ const getDefaultOptions = () => {
     label: 'Canvas size',
     defaultValue: defaultCanvasSize,
     onChange: value => {
-      let [width, height] = value.split('x').map(Number);
-      
-      if (value === 'fill') {
-        width = windowWidth;
-        height = windowHeight;
-      }
+      const [canvasWidth, canvasHeight] = sketch.getDefaultCanvasSize(value);
 
-      canvas.resize(width, height);
+      events.handle("engine-resize-canvas", canvasWidth, canvasHeight);
     },
     options: [
       {
@@ -174,7 +163,7 @@ const getDefaultOptions = () => {
         group: 'Square'
       },
       {
-        label: `Default ${canvas.configuration.width} x ${canvas.configuration.height}`,
+        label: `Default 768 x 1366`,
         value: defaultCanvasSize,
         group: 'Portrait'
       },
@@ -225,21 +214,21 @@ const getDefaultOptions = () => {
       type: 'button',
       text: 'Pause',
       icon: 'PlayerPause',
-      onClick: () => noLoop(),
+      onClick: () => events.handle("engine-pause"),
       category: 'Canvas'
     },
     {
       type: 'button',
       text: 'Resume',
       icon: 'PlayerPlay',
-      onClick: () => loop(),
+      onClick: () => events.handle("engine-resume"),
       category: 'Canvas'
     },
     {
       type: 'button',
       text: 'Draw next frame',
       icon: 'PlayerTrackNext',
-      onClick: () => redraw(),
+      onClick: () => events.handle("engine-redraw"),
       category: 'Canvas'
     },
     {
@@ -306,7 +295,7 @@ const getDefaultOptions = () => {
       type: 'button',
       text: 'Save .png',
       icon: 'DeviceFloppy',
-      onClick: () => canvas.save(),
+      onClick: () => events.handle("engine-canvas-save", sketch.name, "png"),
       category: 'Canvas'
     }
   ] );

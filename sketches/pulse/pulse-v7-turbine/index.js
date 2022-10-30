@@ -1,4 +1,4 @@
-import { shapes, sketch, converters, canvas, events, colors, mappers, options } from './utils/index.js';
+import { shapes, sketch, converters, events, colors, mappers, options } from './utils/index.js';
 
 options.add( [
   // {

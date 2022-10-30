@@ -3,7 +3,11 @@ const cache = {
   store: function(key, compute, enabled = true) {
     //cache.values = cache.values ?? {};
   
-    if ( enabled !== true || undefined === cache.values[ key ] ) {
+    if ( enabled !== true ) {
+      return compute();
+    }
+
+    if ( undefined === cache.values[ key ] ) {
       return cache.values[ key ] = compute();
     }
   

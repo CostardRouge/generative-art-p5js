@@ -21,6 +21,34 @@
         return path;
       }
 
+      const loadScript = (src, async = true, type = 'text/javascript') => {
+        return new Promise((resolve, reject) => {
+          try {
+            const scriptElement = document.createElement('script')
+            const container = document.head || document.body
+
+            scriptElement.type = type;
+            scriptElement.async = async;
+            scriptElement.src = src;
+
+            scriptElement.addEventListener('load', () => {
+              resolve({ status: true })
+            })
+
+            scriptElement.addEventListener('error', () => {
+              reject({
+                status: false,
+                message: `Failed to load the script ${src}`
+              })
+            })
+
+            container.appendChild(scriptElement)
+          } catch (err) {
+            reject(err)
+          }
+        })
+      }
+
       // title
       const pathnameParts = location.pathname.split("/").slice(1, -1);
       document.title = pathnameParts[pathnameParts.length - 1];
@@ -46,8 +74,6 @@
       gtag('config', 'G-PMQPYZEY5F');
     </script>
 
-    <script src="libraries/p5.min.js"></script>
-    <script src="libraries/p5.sound.min.js"></script>
     <script src="libraries/CCapture.all.min.js"></script>
     <script src="libraries/webmidi.iife.js"></script>
   </head>

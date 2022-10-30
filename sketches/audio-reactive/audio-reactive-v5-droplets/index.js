@@ -1,4 +1,4 @@
-import { canvas, sketch, converters, audio, midi, events, animation, string, mappers, iterators, options, easing } from './utils/index.js';
+import { sketch, converters, audio, midi, events, animation, string, mappers, iterators, options, easing } from './utils/index.js';
 
 options.add( [
   {
@@ -86,13 +86,13 @@ let pixilatedCanvas;
 
 events.register("pre-setup", () => {
   audio.capture.setup();
-  midi.setup();
+  // midi.setup();
 })
 
 sketch.setup( () => {
   pixilatedCanvas = createGraphics(
-    canvas.main.width,
-    canvas.main.height
+    sketch?.engine?.canvas?.width,
+    sketch?.engine?.canvas?.height
   );
   pixilatedCanvas.pixelDensity(options.get("background-pixel-density"));
 });

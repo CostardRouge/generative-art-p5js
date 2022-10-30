@@ -85,8 +85,8 @@ const audio = {
     history: undefined,
     smoothness: 0.67,
     bins: 2048,
-    setup: (smoothness = audio.capture.smoothness, bins = audio.capture.bins) => {
-      userStartAudio();
+    setup: async (smoothness = audio.capture.smoothness, bins = audio.capture.bins) => {
+      userStartAudio()
 
       audio.capture.smoothness = smoothness ?? audio.capture.smoothness;
       audio.capture.bins = bins ?? audio.capture.bins;
