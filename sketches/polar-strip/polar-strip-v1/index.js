@@ -7,7 +7,7 @@ const polarCoefficients = [
   [6, 3],
 ];
 
-import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+import { shapes, sketch, converters, events, colors, mappers } from './utils/index.js';
 
 sketch.setup(() => {
   const xCount = 1;

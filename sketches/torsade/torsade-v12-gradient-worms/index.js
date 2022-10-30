@@ -1,4 +1,4 @@
-import { shapes, sketch, converters, canvas, events, colors, mappers, time as gt } from './utils/index.js';
+import { shapes, sketch, converters, events, colors, mappers, time as gt } from './utils/index.js';
 
 sketch.setup(() => {
   const xCount = 1;

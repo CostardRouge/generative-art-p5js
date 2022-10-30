@@ -1,4 +1,4 @@
-import { audio, shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+import { audio, shapes, sketch, converters, events, colors, mappers } from './utils/index.js';
 
 sketch.setup(() => {
   audio.capture.setup();

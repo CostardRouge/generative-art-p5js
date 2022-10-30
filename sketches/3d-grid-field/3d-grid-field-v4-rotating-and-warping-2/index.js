@@ -30,10 +30,9 @@ options.add( [
 
 let direction = undefined;
 
-p5.disableFriendlyErrors = true;
-
 sketch.setup((center) => {
   direction = center;
+  p5.disableFriendlyErrors = true;
 }, { type: 'webgl' });
 
 const easingFunctions = Object.entries(easing)

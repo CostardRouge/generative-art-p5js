@@ -1,4 +1,4 @@
-import { shapes, sketch, converters, canvas, events } from './utils/index.js';
+import { shapes, sketch, converters, events } from './utils/index.js';
 
 sketch.setup(() => {
   noStroke();

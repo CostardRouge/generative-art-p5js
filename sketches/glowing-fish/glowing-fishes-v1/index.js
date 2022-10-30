@@ -1,11 +1,11 @@
 let pixilatedCanvas;
 
-import { shapes, sketch, converters, canvas, events, colors, mappers } from './utils/index.js';
+import { shapes, sketch, converters, events, colors, mappers } from './utils/index.js';
 
 sketch.setup(() => {
   pixilatedCanvas = createGraphics(
-    canvas.main.width,
-    canvas.main.height
+    sketch?.engine?.canvas?.width,
+    sketch?.engine?.canvas?.height
   );
   pixilatedCanvas.pixelDensity(0.1);
 
@@ -13,8 +13,8 @@ sketch.setup(() => {
   //noStroke();
 
   events.register("windowResized", () => {
-    pixilatedCanvas.width = canvas.main.width;
-    pixilatedCanvas.height = canvas.main.height;
+    pixilatedCanvas.width = sketch?.engine?.canvas?.width;
+    pixilatedCanvas.height = sketch?.engine?.canvas?.height;
     pixilatedCanvas.pixelDensity(0.05);
   });
 

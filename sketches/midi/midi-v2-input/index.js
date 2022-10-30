@@ -1,7 +1,7 @@
 const midiInputDevices = [];
 const midiOutputDevices = [];
 
-import { shapes, sketch, midi, canvas, events, colors, mappers } from './utils/index.js';
+import { shapes, sketch, midi, events, colors, mappers } from './utils/index.js';
 
 sketch.setup(() => {
   const xCount = 3;

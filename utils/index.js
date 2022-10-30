@@ -7,7 +7,6 @@ import debug from './debug.js';
 import string from './string.js';
 import easing from './easing.js';
 import sketch from './sketch.js';
-import canvas from './canvas.js';
 import colors from './colors.js';
 import events from './events.js';
 import mappers from './mappers.js';
@@ -37,7 +36,6 @@ export {
   easing,
   sketch,
   colors,
-  canvas,
   shapes,
   events,
   mappers,

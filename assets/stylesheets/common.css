@@ -39,6 +39,7 @@ body.recording::before {
   position: absolute;
   top: 6px;
   right: 6px;
+  z-index: 10;
 
   animation: pulse 1s infinite;
 }
@@ -55,6 +56,16 @@ fps-counter {
 
 body.recording fps-counter {
   right: 24px;
+}
+
+recorder-saved-frames {
+  position: absolute;
+  top: 26px;
+  right: 30px;
+
+  color: #ffffff;
+  font-family: system-ui;
+  text-shadow: 0 0 3px rgb(24 24 24);
 }
 
 #sketch-ui-drawer {

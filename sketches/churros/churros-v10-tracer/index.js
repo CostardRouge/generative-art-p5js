@@ -1,4 +1,4 @@
-import { shapes, sketch, converters, canvas, events, colors, mappers, options, string } from './utils/index.js';
+import { shapes, sketch, converters, events, colors, mappers, options, string } from './utils/index.js';
 
 options.add( [
   {
@@ -118,7 +118,7 @@ options.add( [
   }
 ] );
 
-sketch.setup(() => {});
+sketch.setup();
 
 function drawer( lerper, positioner, shaper, time, index ) {
   const [lerpMin, lerpMax, lerpStep] = lerper(time, index);
@@ -196,7 +196,7 @@ function drawGrid(xCount, yCount, time) {
   }
 }
 
-sketch.draw((time) => {
+sketch.draw((time, center) => {
   // const time = t// * 0.75;
   background(0);
 
@@ -204,7 +204,7 @@ sketch.draw((time) => {
   drawGrid(3, 3, time );
   //drawGrid(0, 0, time );
 
-  translate(width / 2, height / 2);
+  translate(center);
   rotate(-time)
 
   drawer(

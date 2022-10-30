@@ -1,4 +1,4 @@
-import { audio, sketch, converters, canvas, events, colors, mappers, iterators, options, string, easing } from './utils/index.js';
+import { audio, sketch, converters, events, colors, mappers, iterators, options, string, easing } from './utils/index.js';
 
 options.add( [
   {

@@ -1,4 +1,4 @@
-import { shapes, sketch, converters, canvas, events, animation, mappers, iterators, options, string } from './utils/index.js';
+import { shapes, sketch, converters, events, animation, mappers, iterators, options, string } from './utils/index.js';
 
 options.add( [
   {
@@ -203,8 +203,8 @@ let pixilatedCanvas;
 
 sketch.setup( () => {
   pixilatedCanvas = createGraphics(
-    canvas.main.width,
-    canvas.main.height
+    sketch?.engine?.canvas?.width,
+    sketch?.engine?.canvas?.height
   );
   pixilatedCanvas.pixelDensity(options.get("background-pixel-density"));
 });
