@@ -16,6 +16,7 @@ const p5js = {
         return p5js;
     },
     getCanvasElement: () => p5js.canvas.elt,
+    getFrameCount: () => frameCount,
     loadScripts: async () => {
         await loadScript("libraries/p5.min.js")
         await loadScript("libraries/p5.sound.min.js")

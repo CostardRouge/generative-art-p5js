@@ -95,21 +95,17 @@ class Spiral {
 
         beginShape();
         strokeWeight(weight);
-        // stroke(
-        //   colors.rainbow(hueCadence + shadowIndex + l, opacityFactor)
-        // );
 
-        stroke(
-          color(
-            map(sin(hueCadence + shadowIndex + l), -1, 1, 0, 360) /
-              opacityFactor,
-            map(cos(hueCadence - shadowIndex + l), -1, 1, 360, 0) /
-              opacityFactor,
-            map(sin(hueCadence + shadowIndex + l), -1, 1, 360, 0) /
-              opacityFactor
-          )
-        );
-        // stroke(colors.rainbow(2.1, opacityFactor));
+        stroke(colors.rainbow({
+          hueOffset: hueCadence,
+          hueIndex: shadowIndex,
+          opacityFactor
+        }));
+
+        // stroke(colors.rainbow({
+        //   hueIndex: 2.1,
+        //   opacityFactor
+        // }));
         // print(hueCadence + angle);
 
         point(vector.x, vector.y);

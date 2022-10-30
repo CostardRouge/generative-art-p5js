@@ -47,37 +47,37 @@ class Spiral {
 
     const lerpStep = 1 / 300;
 
-    // const dark = 3;
-    // const light = 1;
+    const dark = 10;
+    const light = 1;
     const size = _size*2
 
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
       const angle = map(lerpIndex, 0, 1/75, -PI, PI);
       const t = map(sin(time - lerpIndex / 3 + index / 2), -1, 1, -4, 4);
-      const waveIndex = angle + t/2;
+      const waveIndex = angle + t/1.5;
 
-      // const opacityFactor = map(
-      //   lerpIndex,
-      //   0,
-      //   1,
-      //   map(
-      //     sin(lerpIndex + time * 5 + index / 2),
-      //     -1,
-      //     1,
-      //     dark,
-      //     dark/2
-      //   ),
-      //   light
-      // );
+      const opacityFactor = map(
+        lerpIndex,
+        0,
+        1,
+        map(
+          sin(lerpIndex + time * 5 + index / 2),
+          -1,
+          1,
+          dark,
+          dark/2
+        ),
+        light
+      );
 
       const eclipse = map(sin(time*2 + index), -1, 1, 15, 50)
 
       fill(
-        colors.rainbow(
-          lerpIndex + angle - time + index / 2,
-          map(lerpIndex, 0, 1, 1, eclipse),
-          // opacityFactor
-        )
+        colors.rainbow( {
+          hueIndex: lerpIndex + angle - time + index / 2,
+          // hueIndex: map(lerpIndex, 0, 1, 1, eclipse),
+          opacityFactor
+        } )
       )
 
       const xOffset = map(sin(waveIndex), -1, 1, -size, size);

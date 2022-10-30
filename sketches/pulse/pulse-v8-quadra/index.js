@@ -22,25 +22,6 @@ sketch.setup(() => {
   }
 })
 
-function easeInElastic(x) {
-  const c4 = (2 * Math.PI) / 3;
-
-  return x === 0
-    ? 0
-    : x === 1
-    ? 1
-    : -pow(2, 10 * x - 10) * sin((x * 10 - 10.75) * c4);
-}
-
-function easeInOutBack(x) {
-  const c1 = 1.70158;
-  const c2 = c1 * 1.525;
-
-  return x < 0.5
-    ? (pow(2 * x, 2) * ((c2 + 1) * 2 * x - c2)) / 2
-    : (pow(2 * x - 2, 2) * ((c2 + 1) * (x * 2 - 2) + c2) + 2) / 2;
-}
-
 class Spiral {
   constructor(options) {
     Object.assign(this, options);
@@ -64,7 +45,7 @@ class Spiral {
     push();
     translate(position.x, position.y);
 
-    const shadowsCount = 70;
+    const shadowsCount = 20;
     const shadowIndexStep = 0.07;
 
     for (
@@ -120,12 +101,18 @@ class Spiral {
 
         beginShape();
         strokeWeight(weight);
+        // stroke(
+        //   colors.rainbow({
+        //     hueIndex: hueCadence + shadowIndex*2 + angle,
+        //     opacityFactor: opacityFactor / 2
+        //   }),
+        // );
+
         stroke(
-          colors.rainbow(
-            hueCadence + shadowIndex*2 + angle,
-            opacityFactor / 2
-          )
-          // colors.rainbow(hueCadence + angle, opacityFactor / 2)
+          colors.rainbow({
+            hueIndex: hueCadence + angle,
+            opacityFactor: opacityFactor / 2
+          }),
         );
 
         vertex(vector.x, vector.y);

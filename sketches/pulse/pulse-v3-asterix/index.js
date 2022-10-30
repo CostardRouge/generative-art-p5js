@@ -45,8 +45,8 @@ class Spiral {
     push();
     translate(position.x, position.y);
 
-    const shadowsCount = 40;
-    const shadowIndexStep = 0.03;
+    const shadowsCount = 20;
+    const shadowIndexStep = 0.05;
 
     for (
       let shadowIndex = 0;
@@ -86,7 +86,10 @@ class Spiral {
         beginShape();
         strokeWeight(weight);
         stroke(
-          colors.rainbow(hueCadence + angle, opacityFactor),
+          colors.rainbow({
+            hueIndex: hueCadence + angle,
+            opacityFactor
+          }),
         );
 
         vertex(vector.x, vector.y);
