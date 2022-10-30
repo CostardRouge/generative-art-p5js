@@ -1,4 +1,4 @@
-import { canvas, sketch, options } from './index.js';
+import { canvas, sketch, options, debug } from './index.js';
 
 const recorder = {
   savedFramesCount: 0,
@@ -38,6 +38,8 @@ const recorder = {
   render: () => {
     requestAnimationFrame(recorder.render);
 
+    debug.createElement( "body", "recorder-saved-frames", () => recorder.savedFramesCount, !recorder.recording)
+
     if (undefined === recorder.capturer) {
       return;
     }
@@ -51,6 +53,7 @@ const recorder = {
     }
 
     recorder.capturer.capture(canvas.main.elt);
+    recorder.savedFramesCount++;
   },
 };
 
