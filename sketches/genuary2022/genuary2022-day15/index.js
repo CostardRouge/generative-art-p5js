@@ -103,10 +103,16 @@ class Spiral {
       );
 
       strokeWeight(weight);
-      // stroke(colors.rainbow(hueCadence + shadowIndex/16, opacityFactor));
+      // stroke(colors.rainbow({
+      //   hueIndex: hueCadence + shadowIndex/16,
+      //   opacityFactor
+      // }));
       // stroke(color(64 / opacityFactor));
 
-      stroke(colors.rainbow(2, opacityFactor));
+      stroke(colors.rainbow({
+        hueIndex: 2,
+        opacityFactor
+      }));
       point(vector.x, vector.y);
 
       // fill(colors.rainbow(2.1, opacityFactor));

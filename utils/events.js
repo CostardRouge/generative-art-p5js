@@ -57,7 +57,7 @@ const events = {
     });
   },
   toggleFullScreenOnDoubleClick: function () {
-    events.register("engine-double-clicked", () => {
+    events.register("engine-canvas-double-clicked", () => {
       if (true !== options.get("toggle-full-screen-on-double-click")) {
         return;
       }

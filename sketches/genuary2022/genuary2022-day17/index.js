@@ -96,7 +96,10 @@ class Spiral {
         beginShape();
         strokeWeight(weight);
         stroke(
-          colors.rainbow(hueCadence + angle, opacityFactor),
+          colors.rainbow({
+            hueIndex: hueCadence + angle,
+            opacityFactor
+          }),
         );
 
         vertex(vector.x, vector.y);

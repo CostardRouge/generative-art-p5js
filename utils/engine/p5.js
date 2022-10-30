@@ -16,6 +16,7 @@ const p5js = {
         return p5js;
     },
     getCanvasElement: () => p5js.canvas.elt,
+    getFrameCount: () => frameCount,
     loadScripts: async () => {
         await loadScript("libraries/p5.min.js")
         await loadScript("libraries/p5.sound.min.js")
@@ -49,9 +50,9 @@ const p5js = {
         window.mouseReleased = () => {
             events.handle("engine-mouse-released");
         }
-        // window.doubleClicked = () => {
-        //     events.handle("engine-double-click");
-        // }
+        window.doubleClicked = () => {
+            events.handle("engine-window-double-click");
+        }
         window.windowResized = () => {
             events.handle("engine-window-resized");
         }
@@ -59,7 +60,7 @@ const p5js = {
     setup: (sketchOptions, setupEngineFunction) => {
         events.register("pre-setup", () => {
             // canvas creation
-            const { type = "p2d", size: {  width, height, ratio } } = sketchOptions;
+            const { type = "p2d", size: { width, height, ratio } } = sketchOptions;
 
             p5js.canvas = createCanvas(width, ratio ? width / ratio : height, type);
 
@@ -77,7 +78,7 @@ const p5js = {
             } );
 
             p5js.canvas.doubleClicked( () => {
-                events.handle("engine-double-clicked");
+                events.handle("engine-canvas-double-clicked");
             } );
         })
 
@@ -98,7 +99,6 @@ const p5js = {
             }
         },
         "engine-get-key-typed": () => key,
-        "engine-pixel-density-get": () => pixelDensity(),
         "engine-toggle-fullscreen": () => fullscreen(!fullscreen()),
         "engine-fill-screen": () => p5js.canvas.resize(windowWidth, windowHeight),
         "engine-resize-canvas": ( canvasWidth, canvasHeight ) => resizeCanvas(canvasWidth, canvasHeight),

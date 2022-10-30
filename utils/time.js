@@ -1,9 +1,11 @@
+import { sketch } from './index.js';
+
 const time = {
   seconds: function () {
-    return frameCount / 60;
+    return sketch?.engine?.getFrameCount() / 60;
   },
   every: function (second, callback) {
-    return frameCount % second === 0 && callback();
+    return sketch?.engine?.getFrameCount() % second === 0 && callback();
   },
 };
 
