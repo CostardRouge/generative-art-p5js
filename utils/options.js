@@ -15,7 +15,7 @@ const getDefaultOptions = () => {
   const defaultOptions = [];
   const defaultFramerate = 60;
   const defaultTimeSpeed = 1;
-  const defaultPixelDensity = isMobile ? 1 : 2//events.handle("engine-pixel-density-get")?.[0]
+  const defaultPixelDensity = isMobile ? 1 : window.devicePixelRatio
   const defaultCanvasSize = isMobile ? 'fill' :`768x1366`;
 
   defaultOptions.push( ...[
