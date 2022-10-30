@@ -36,6 +36,13 @@ const threejs = {
         threejs.renderer.setPixelRatio( window.devicePixelRatio );
         threejs.renderer.setSize( width, ratio ? width / ratio : height );
 
+        threejs.uniforms.u_time = { type: "f", value: 1.0 };
+        threejs.uniforms.u_resolution = { type: "v2", value: new THREE.Vector2() };
+        threejs.uniforms.u_mouse = { type: "v2", value: new THREE.Vector2() };
+
+        threejs.uniforms.u_resolution.value.x = threejs.renderer.domElement.width;
+        threejs.uniforms.u_resolution.value.y = threejs.renderer.domElement.height;
+
         threejs.container.appendChild( threejs.renderer.domElement );
         document.body.appendChild( threejs.container );
 
