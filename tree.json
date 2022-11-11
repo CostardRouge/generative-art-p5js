@@ -73,13 +73,13 @@
    },
    "_shaders-three-js": {
       "meta": {
-         "_mtime": "2022-10-30T23:30:43.286Z",
+         "_mtime": "2022-10-30T23:31:44.639Z",
          "name": "_shaders-three-js"
       },
       "sketches": {
          "shaders-v1-test": {
             "meta": {
-               "_mtime": "2022-10-30T21:32:12.743Z",
+               "_mtime": "2022-11-01T11:26:08.135Z",
                "name": "shaders-v1-test"
             },
             "path": "sketches/_shaders-three-js/shaders-v1-test"
@@ -845,112 +845,6 @@
          }
       }
    },
-   "grid": {
-      "meta": {
-         "_mtime": "2022-10-14T13:06:54.154Z",
-         "name": "grid"
-      },
-      "sketches": {
-         "grid-v1-basic": {
-            "meta": {
-               "_mtime": "2022-10-20T11:14:52.464Z",
-               "name": "grid-v1-basic"
-            },
-            "path": "sketches/grid/grid-v1-basic"
-         },
-         "grid-v10-variable-stick": {
-            "meta": {
-               "_mtime": "2022-10-22T21:56:01.017Z",
-               "name": "grid-v10-variable-stick"
-            },
-            "path": "sketches/grid/grid-v10-variable-stick"
-         },
-         "grid-v11-with-rotation": {
-            "meta": {
-               "_mtime": "2022-10-23T01:52:46.431Z",
-               "name": "grid-v11-with-rotation"
-            },
-            "path": "sketches/grid/grid-v11-with-rotation"
-         },
-         "grid-v12-noisy-strings": {
-            "meta": {
-               "_mtime": "2022-10-22T21:55:52.112Z",
-               "name": "grid-v12-noisy-strings"
-            },
-            "path": "sketches/grid/grid-v12-noisy-strings"
-         },
-         "grid-v12-noisy-strings-camera": {
-            "meta": {
-               "_mtime": "2022-10-22T21:57:08.688Z",
-               "name": "grid-v12-noisy-strings-camera"
-            },
-            "path": "sketches/grid/grid-v12-noisy-strings-camera"
-         },
-         "grid-v13-field-on-fire": {
-            "meta": {
-               "_mtime": "2022-10-23T01:54:06.502Z",
-               "name": "grid-v13-field-on-fire"
-            },
-            "path": "sketches/grid/grid-v13-field-on-fire"
-         },
-         "grid-v2-basic-with-easing": {
-            "meta": {
-               "_mtime": "2022-10-20T11:07:13.184Z",
-               "name": "grid-v2-basic-with-easing"
-            },
-            "path": "sketches/grid/grid-v2-basic-with-easing"
-         },
-         "grid-v3-basic-with-holes": {
-            "meta": {
-               "_mtime": "2022-10-23T01:35:31.070Z",
-               "name": "grid-v3-basic-with-holes"
-            },
-            "path": "sketches/grid/grid-v3-basic-with-holes"
-         },
-         "grid-v4-basic-with-audio-reaction": {
-            "meta": {
-               "_mtime": "2022-10-22T21:54:52.701Z",
-               "name": "grid-v4-basic-with-audio-reaction"
-            },
-            "path": "sketches/grid/grid-v4-basic-with-audio-reaction"
-         },
-         "grid-v5-stick": {
-            "meta": {
-               "_mtime": "2022-10-23T01:35:35.005Z",
-               "name": "grid-v5-stick"
-            },
-            "path": "sketches/grid/grid-v5-stick"
-         },
-         "grid-v6-field-with-dist-check": {
-            "meta": {
-               "_mtime": "2022-10-23T01:27:55.574Z",
-               "name": "grid-v6-field-with-dist-check"
-            },
-            "path": "sketches/grid/grid-v6-field-with-dist-check"
-         },
-         "grid-v7-field-with-dist-check-and-audio-reaction": {
-            "meta": {
-               "_mtime": "2022-10-20T11:45:05.372Z",
-               "name": "grid-v7-field-with-dist-check-and-audio-reaction"
-            },
-            "path": "sketches/grid/grid-v7-field-with-dist-check-and-audio-reaction"
-         },
-         "grid-v8-basic-with-easing-and-audio-reaction": {
-            "meta": {
-               "_mtime": "2022-10-22T21:56:38.212Z",
-               "name": "grid-v8-basic-with-easing-and-audio-reaction"
-            },
-            "path": "sketches/grid/grid-v8-basic-with-easing-and-audio-reaction"
-         },
-         "grid-v9-basic-with-easing-changing-directions": {
-            "meta": {
-               "_mtime": "2022-10-22T21:55:15.696Z",
-               "name": "grid-v9-basic-with-easing-changing-directions"
-            },
-            "path": "sketches/grid/grid-v9-basic-with-easing-changing-directions"
-         }
-      }
-   },
    "midi": {
       "meta": {
          "_mtime": "2022-04-05T19:16:11.136Z",
@@ -1073,6 +967,134 @@
          }
       }
    },
+   "noise-grid": {
+      "meta": {
+         "_mtime": "2022-10-14T13:06:54.154Z",
+         "name": "noise-grid"
+      },
+      "sketches": {
+         "noise-grid-v1-basic": {
+            "meta": {
+               "_mtime": "2022-11-09T19:45:46.332Z",
+               "name": "noise-grid-v1-basic"
+            },
+            "path": "sketches/noise-grid/noise-grid-v1-basic"
+         },
+         "noise-grid-v10-variable-stick": {
+            "meta": {
+               "_mtime": "2022-10-22T21:56:01.017Z",
+               "name": "noise-grid-v10-variable-stick"
+            },
+            "path": "sketches/noise-grid/noise-grid-v10-variable-stick"
+         },
+         "noise-grid-v11-with-rotation": {
+            "meta": {
+               "_mtime": "2022-10-23T01:52:46.431Z",
+               "name": "noise-grid-v11-with-rotation"
+            },
+            "path": "sketches/noise-grid/noise-grid-v11-with-rotation"
+         },
+         "noise-grid-v12-field-on-fire": {
+            "meta": {
+               "_mtime": "2022-11-09T19:55:19.833Z",
+               "name": "noise-grid-v12-field-on-fire"
+            },
+            "path": "sketches/noise-grid/noise-grid-v12-field-on-fire"
+         },
+         "noise-grid-v2-basic-with-easing": {
+            "meta": {
+               "_mtime": "2022-10-20T11:07:13.184Z",
+               "name": "noise-grid-v2-basic-with-easing"
+            },
+            "path": "sketches/noise-grid/noise-grid-v2-basic-with-easing"
+         },
+         "noise-grid-v3-basic-with-holes": {
+            "meta": {
+               "_mtime": "2022-10-23T01:35:31.070Z",
+               "name": "noise-grid-v3-basic-with-holes"
+            },
+            "path": "sketches/noise-grid/noise-grid-v3-basic-with-holes"
+         },
+         "noise-grid-v4-basic-with-audio-reaction": {
+            "meta": {
+               "_mtime": "2022-11-09T20:28:24.068Z",
+               "name": "noise-grid-v4-basic-with-audio-reaction"
+            },
+            "path": "sketches/noise-grid/noise-grid-v4-basic-with-audio-reaction"
+         },
+         "noise-grid-v5-stick": {
+            "meta": {
+               "_mtime": "2022-10-23T01:35:35.005Z",
+               "name": "noise-grid-v5-stick"
+            },
+            "path": "sketches/noise-grid/noise-grid-v5-stick"
+         },
+         "noise-grid-v6-field-with-dist-check": {
+            "meta": {
+               "_mtime": "2022-10-23T01:27:55.574Z",
+               "name": "noise-grid-v6-field-with-dist-check"
+            },
+            "path": "sketches/noise-grid/noise-grid-v6-field-with-dist-check"
+         },
+         "noise-grid-v7-field-with-dist-check-and-audio-reaction": {
+            "meta": {
+               "_mtime": "2022-10-20T11:45:05.372Z",
+               "name": "noise-grid-v7-field-with-dist-check-and-audio-reaction"
+            },
+            "path": "sketches/noise-grid/noise-grid-v7-field-with-dist-check-and-audio-reaction"
+         },
+         "noise-grid-v8-basic-with-easing-and-audio-reaction": {
+            "meta": {
+               "_mtime": "2022-10-22T21:56:38.212Z",
+               "name": "noise-grid-v8-basic-with-easing-and-audio-reaction"
+            },
+            "path": "sketches/noise-grid/noise-grid-v8-basic-with-easing-and-audio-reaction"
+         },
+         "noise-grid-v9-basic-with-easing-changing-directions": {
+            "meta": {
+               "_mtime": "2022-10-22T21:55:15.696Z",
+               "name": "noise-grid-v9-basic-with-easing-changing-directions"
+            },
+            "path": "sketches/noise-grid/noise-grid-v9-basic-with-easing-changing-directions"
+         }
+      }
+   },
+   "noise-strips": {
+      "meta": {
+         "_mtime": "2022-11-09T20:57:17.082Z",
+         "name": "noise-strips"
+      },
+      "sketches": {
+         "noise-strips-v1": {
+            "meta": {
+               "_mtime": "2022-11-09T19:46:14.090Z",
+               "name": "noise-strips-v1"
+            },
+            "path": "sketches/noise-strips/noise-strips-v1"
+         },
+         "noise-strips-v2-with-camera": {
+            "meta": {
+               "_mtime": "2022-11-09T19:46:14.093Z",
+               "name": "noise-strips-v2-with-camera"
+            },
+            "path": "sketches/noise-strips/noise-strips-v2-with-camera"
+         },
+         "noise-strips-v3": {
+            "meta": {
+               "_mtime": "2022-11-09T20:57:49.117Z",
+               "name": "noise-strips-v3"
+            },
+            "path": "sketches/noise-strips/noise-strips-v3"
+         },
+         "noise-strips-v4-lava": {
+            "meta": {
+               "_mtime": "2022-11-09T21:18:07.573Z",
+               "name": "noise-strips-v4-lava"
+            },
+            "path": "sketches/noise-strips/noise-strips-v4-lava"
+         }
+      }
+   },
    "orbit": {
       "meta": {
          "_mtime": "2022-04-05T19:16:11.140Z",
@@ -1147,7 +1169,7 @@
    },
    "polar-strip": {
       "meta": {
-         "_mtime": "2022-04-05T19:16:11.171Z",
+         "_mtime": "2022-04-05T19:16:11.139Z",
          "name": "polar-strip"
       },
       "sketches": {
@@ -1157,13 +1179,6 @@
                "name": "polar-strip-v0"
             },
             "path": "sketches/polar-strip/polar-strip-v0"
-         },
-         "polar-strip-v0 copy": {
-            "meta": {
-               "_mtime": "2022-10-30T14:58:07.700Z",
-               "name": "polar-strip-v0 copy"
-            },
-            "path": "sketches/polar-strip/polar-strip-v0 copy"
          },
          "polar-strip-v1": {
             "meta": {
@@ -1185,6 +1200,13 @@
                "name": "polar-strip-v2-lights-mouse"
             },
             "path": "sketches/polar-strip/polar-strip-v2-lights-mouse"
+         },
+         "polar-strip-v3-easing-star": {
+            "meta": {
+               "_mtime": "2022-11-09T19:49:24.668Z",
+               "name": "polar-strip-v3-easing-star"
+            },
+            "path": "sketches/polar-strip/polar-strip-v3-easing-star"
          }
       }
    },
