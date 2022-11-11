@@ -8,7 +8,7 @@ const threejs = {
     scene: undefined,
     clock: undefined,
     running: false,
-    init: async(sketchOptions, setupEngineFunction) => {
+    init: async (sketchOptions, setupEngineFunction) => {
         // scripts
         window.THREE = await import('../../libraries/three.module.js')
 
@@ -37,11 +37,11 @@ const threejs = {
         threejs.renderer.setSize( width, ratio ? width / ratio : height );
 
         threejs.uniforms.u_time = { type: "f", value: 1.0 };
-        threejs.uniforms.u_resolution = { type: "v2", value: new THREE.Vector2() };
+        threejs.uniforms.u_resolution = { type: "v2", value: new THREE.Vector2(
+            threejs.renderer.domElement.width,
+            threejs.renderer.domElement.height
+        ) };
         threejs.uniforms.u_mouse = { type: "v2", value: new THREE.Vector2() };
-
-        threejs.uniforms.u_resolution.value.x = threejs.renderer.domElement.width;
-        threejs.uniforms.u_resolution.value.y = threejs.renderer.domElement.height;
 
         threejs.container.appendChild( threejs.renderer.domElement );
         document.body.appendChild( threejs.container );
@@ -59,6 +59,9 @@ const threejs = {
             events.handle("engine-mouse-moved", event)
         }, false );
 
+        window.addEventListener( 'keydown', event => {
+            //const keyCode = event.which;
+        }, false );
     },
     animate: () => {
         if ( !threejs.running ) {
@@ -67,24 +70,26 @@ const threejs = {
 
         requestAnimationFrame( threejs.animate );
 
-        events.handle("engine-render");
+        events.handle("pre-draw");
+        events.handle("draw", threejs);
+        events.handle("post-draw");
     },
     render: () => {
         threejs.uniforms.u_time.value += threejs.clock.getDelta();
         threejs.renderer.render( threejs.scene, threejs.camera );
     },
     eventHandlers: {
-        // "engine-toggle-loop": function() {
-        //     this.stop = this.stop ?? false;
-        //     this.stop = !this.stop;
+        "engine-toggle-loop": function() {
+            this.stop = this.stop ?? false;
+            this.stop = !this.stop;
         
-        //     if (this.stop) {
-        //         noLoop();
-        //     } else {
-        //         loop();
-        //     }
-        // },
-        // "engine-get-key-typed": () => key,
+            if (threejs.running) {
+                events.handle("engine-pause");
+            } else {
+                events.handle("engine-resume");
+            }
+        },
+        "engine-get-key-typed": () => key,
         // "engine-toggle-fullscreen": () => fullscreen(!fullscreen()),
         "engine-fill-screen": () => {
             threejs.renderer.setSize( window.innerWidth, window.innerHeight );
@@ -109,8 +114,7 @@ const threejs = {
         "engine-redraw": () => {
             events.handle("engine-render");
         },
-        "engine-render": () => {
-            //debug.fps();
+        "draw": () => {
             threejs.render();
         },
         // "engine-canvas-save": (name, type) => saveCanvas( p5js.canvas, name, type ),

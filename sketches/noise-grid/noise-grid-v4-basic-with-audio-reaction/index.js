@@ -42,7 +42,7 @@ sketch.draw((time) => {
 
   // nrj = audio.capture.energy.average()
 
-  n = animation.sequence(
+  let n = animation.sequence(
     "grid-cell-n",
     audio.capture.energy.byName( "lowMid", "count"),
     [ 0.75, 1, 1.25 ],
