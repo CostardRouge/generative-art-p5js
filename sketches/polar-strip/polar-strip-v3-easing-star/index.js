@@ -111,5 +111,5 @@ class Spiral {
 
 sketch.draw( time => {
   background(0);
-  shapes.forEach((shape, index) => shape.draw(time, index));
+  shapes.forEach((shape, index) => shape.draw(time, index, 1/6));
 });

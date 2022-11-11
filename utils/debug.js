@@ -2,9 +2,11 @@ import { time, string, sketch } from './index.js';
 import options from './options.js';
 
 const debug = {
+  frameRate: 0,
+  frameRateCount: 0,
+  countDeltaTime: 0,
   options: {
     fps: {
-      frequency: 15,
       log: false,
       display: true
     },
@@ -47,19 +49,28 @@ const debug = {
   fps: () => {
     debug.options.fps.display = options.get( 'show-fps');
 
-    const { fps: { frequency, log, display } } = debug.options;
+    const { fps: { log, display } } = debug.options;
 
-    debug.lastFrameRate = debug.lastFrameRate === undefined ? 0 : debug.lastFrameRate;
+    debug.createElement( "body", "fps-counter", () => Math.ceil(debug.frameRate), !display);
 
-    time.every(frequency, () => {
-      debug.lastFrameRate = frameRate();
+    if ( !display ) {
+      return;
+    }
+
+    const currentTime = new Date();
+
+    if ( ( currentTime - debug.countDeltaTime ) > 1000 ) {
+      debug.frameRate = debug.frameRateCount;
+      debug.frameRateCount = 0;
+      debug.countDeltaTime = new Date();
 
       if (log === true) {
-        console.log(frameRate());
+        console.log(debug.frameRate);
       }
-    });
-
-    debug.createElement( "body", "fps-counter", () => ceil(debug.lastFrameRate), !display)
+    }
+    else {
+      debug.frameRateCount += 1;
+    }
   },
   print: function (what, printOptions = {}) {
     const { frequency } = { ...debug.options.print, ...printOptions };
