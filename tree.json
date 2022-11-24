@@ -1061,7 +1061,7 @@
    },
    "noise-strips": {
       "meta": {
-         "_mtime": "2022-11-09T20:57:17.082Z",
+         "_mtime": "2022-11-11T12:06:46.523Z",
          "name": "noise-strips"
       },
       "sketches": {
@@ -1088,7 +1088,7 @@
          },
          "noise-strips-v4-lava": {
             "meta": {
-               "_mtime": "2022-11-09T21:18:07.573Z",
+               "_mtime": "2022-11-11T12:31:18.217Z",
                "name": "noise-strips-v4-lava"
             },
             "path": "sketches/noise-strips/noise-strips-v4-lava"
@@ -1097,13 +1097,20 @@
    },
    "orbit": {
       "meta": {
-         "_mtime": "2022-04-05T19:16:11.140Z",
+         "_mtime": "2022-11-24T17:46:01.963Z",
          "name": "orbit"
       },
       "sketches": {
+         "noise-background": {
+            "meta": {
+               "_mtime": "2022-11-23T17:35:59.666Z",
+               "name": "noise-background"
+            },
+            "path": "sketches/orbit/noise-background"
+         },
          "orbit-v1-geeko": {
             "meta": {
-               "_mtime": "2022-10-30T14:58:08.611Z",
+               "_mtime": "2022-11-13T15:54:41.693Z",
                "name": "orbit-v1-geeko"
             },
             "path": "sketches/orbit/orbit-v1-geeko"
@@ -1135,6 +1142,27 @@
                "name": "orbit-v5-chakra"
             },
             "path": "sketches/orbit/orbit-v5-chakra"
+         },
+         "orbit-v6-polar-cross": {
+            "meta": {
+               "_mtime": "2022-11-13T15:53:13.340Z",
+               "name": "orbit-v6-polar-cross"
+            },
+            "path": "sketches/orbit/orbit-v6-polar-cross"
+         },
+         "orbit-v7": {
+            "meta": {
+               "_mtime": "2022-11-24T17:45:14.460Z",
+               "name": "orbit-v7"
+            },
+            "path": "sketches/orbit/orbit-v7"
+         },
+         "orbit-v8-flowers": {
+            "meta": {
+               "_mtime": "2022-11-24T19:46:11.189Z",
+               "name": "orbit-v8-flowers"
+            },
+            "path": "sketches/orbit/orbit-v8-flowers"
          }
       }
    },
