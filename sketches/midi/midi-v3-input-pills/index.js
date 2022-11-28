@@ -64,7 +64,7 @@ sketch.setup(() => {
       });
     });
 
-    events.register("mousePressed", function () {
+    events.register("engine-mouse-pressed", function () {
       shapes.forEach(shape => shape.bounce());
 
       playNote(

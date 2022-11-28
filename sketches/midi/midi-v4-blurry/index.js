@@ -59,7 +59,7 @@ sketch.setup(() => {
     // const myInput = WebMidi.getInputByName("IAC Driver Bus 1");
     // const myOutput = WebMidi.getOutputByName("IAC Driver Bus 1");
 
-    events.register("mousePressed", function () {
+    events.register("engine-mouse-pressed", function () {
       shapes.forEach((shape, index) => shape.play());
 
       playNote(

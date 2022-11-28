@@ -32,7 +32,7 @@ options.add( [
 let clickCount = 0;
 
 sketch.setup(() => {
-  events.register("mousePressed", () => {
+  events.register("engine-mouse-pressed", () => {
     console.log(clickCount++);
   });
 });

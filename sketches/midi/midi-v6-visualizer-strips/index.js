@@ -49,7 +49,7 @@ sketch.setup(() => {
       });
     });
 
-    events.register("mousePressed", function () {
+    events.register("engine-mouse-pressed", function () {
       const note = "A4"
 
       shapes.forEach(shape => shape.play(note));
