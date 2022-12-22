@@ -89,15 +89,15 @@ sketch.draw( (time, center) => {
   let start = animation.sequence( "start", time/2, [
     createVector( boundary, boundary ),
     createVector( width-boundary, boundary ),
-    createVector( width/2, height/4 ),
+    // createVector( width/2, height/4 ),
     ],
     0.1,
     p5.Vector.lerp
-    )
+  )
   let end = animation.sequence( "end", time/2, [
       createVector( width-boundary, height-boundary ),
       createVector( boundary, height- boundary ),
-      createVector( width/2, height- boundary )
+      // createVector( width/2, height- boundary )
     ], 
     0.1,
     p5.Vector.lerp
@@ -105,11 +105,11 @@ sketch.draw( (time, center) => {
 
   const speed = time;
 
-  iterators.vector(start, end, 1 / 512 , ( vector, lerpIndex) => {
+  iterators.vector(start, end, 1 / 256 , ( vector, lerpIndex) => {
     const easingFunction = mappers.circularIndex(speed+lerpIndex, easingFunctions)[1]
 
     const sides = 1//animation.sequence("amt", speed+lerpIndex, [ 2, 3, 4, 5, 4, 3 ]);
-    const times = 1//mappers.circularIndex(speed+lerpIndex, [ 1, 3, 5 ]);
+    const times = 1;
     const borderWidth = mappers.fn(sides, 2, 5, 70, 20);
     const maxSize = mappers.fn(sides, 2, 5, 150, 250);
     const sizeRatio = mappers.fn(lerpIndex, 0, 1, -PI, PI, easingFunction)*times;
@@ -123,13 +123,13 @@ sketch.draw( (time, center) => {
     })
 
     push()
-    translate(vector)
-    rotate(-speed/2)
-    //rotate(mappers.fn(lerpIndex, 0, 1, 0, PI*3))
-    //rotate(mappers.fn(lerpIndex, 0, 1, 0, PI))
+    // translate(vector)
+    // rotate(-speed/2)
+    // rotate(mappers.fn(lerpIndex, 0, 1, 0, PI*2))
+    // rotate(mappers.fn(sin(lerpIndex+time), -1, 1, 0, PI*2))
 
     cross({
-      // position: vector,
+      position: vector,
       sides,
       borderColor: coco,
       borderWidth,
