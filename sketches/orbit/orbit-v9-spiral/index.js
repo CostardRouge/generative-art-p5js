@@ -70,7 +70,7 @@ function drawBackgroundPattern(time, cols = 30, rows = 50) {
     const xOff = x/cols;
     const yOff = y/rows;
 
-    const innerAngle = mappers.circularIndex(time+x+y, [ PI, PI/2]);
+    const innerAngle = mappers.circularIndex(time+xOff+yOff, [ PI, PI/2]);
 
     cross({
       position: cellVector,
@@ -81,7 +81,7 @@ function drawBackgroundPattern(time, cols = 30, rows = 50) {
         opacityFactor: 3.5
       }),
       borderWidth: 3,
-      size: 15,
+      size: 20,
       depth: 3,
       angle: innerAngle,
       recursive: true
