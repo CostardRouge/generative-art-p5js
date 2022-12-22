@@ -83,6 +83,7 @@ const audio = {
     audioIn: undefined,
     fft: undefined,
     history: undefined,
+    historyBufferSize: HISTORY_BUFFER,
     smoothness: 0.67,
     bins: 2048,
     setup: async (smoothness = audio.capture.smoothness, bins = audio.capture.bins) => {
@@ -122,7 +123,20 @@ const audio = {
       ),
       byName: (name, attribute = "smooth") => (
         ranges[name]?.[attribute] ?? 0
-      ),
+        ),
+        getSpectrumHistoryFromVector: (xNormalized, yNormalized, attribute = "smooth") => {
+          const binIndex = floor((audio.capture.bins -1) * xNormalized)
+          const historyBufferIndex = floor((audio.capture.historyBufferSize-1) * yNormalized)
+      
+          const line = audio.capture.history?.spectrum[historyBufferIndex];
+  
+          return line?.[binIndex]
+        },
+        getRangeHistoryFromVector: (normalizedIndex, rangeName, attribute = "smooth") => {
+          const historyBufferIndex = floor((audio.capture.historyBufferSize-1) * normalizedIndex)
+      
+          return audio.capture.history?.ranges[rangeName]?.[historyBufferIndex]?.[attribute]
+        },
       recordHistory: () => {
         if ( false === audio.capture.audioIn?.enabled ) {
           return;
@@ -130,13 +144,13 @@ const audio = {
 
           if (undefined === audio.capture.history) {
             audio.capture.history = {
-              spectrum: new Array(HISTORY_BUFFER).fill(undefined),
-              waveform: new Array(HISTORY_BUFFER).fill(undefined),
+              spectrum: new Array(audio.capture.historyBufferSize).fill(undefined),
+              waveform: new Array(audio.capture.historyBufferSize).fill(undefined),
               ranges: (
                 rangeNames.reduce( (history, rangeName, _, {length}) => {
                   return {
                     ...history,
-                    [rangeName]: new Array(HISTORY_BUFFER).fill(undefined)
+                    [rangeName]: new Array(audio.capture.historyBufferSize).fill(undefined)
                   }
                 }, {})
               )
@@ -197,7 +211,7 @@ const audio = {
 
             if ( currentTime > ( range.countDeltaTime + 500) ) {
               range.count += 1;
-                range.countDeltaTime = millis();
+              range.countDeltaTime = millis();
             }
           }
 
@@ -245,5 +259,7 @@ const audio = {
     }
   }
 };
+
+window.audio = audio
 
 export default audio;

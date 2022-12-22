@@ -13,7 +13,6 @@ function cross(options) {
     backgroundColor = color(0),
     size,
     recursive = false,
-    angle = 0,
     depth = 3
   } = options;
 
@@ -21,13 +20,9 @@ function cross(options) {
 
   push();
   translate(position)
-  rotate(angle)
   beginShape()
 
-  const isBorderColorFunction = typeof borderColor === 'function';
-
-  !isBorderColorFunction && stroke(borderColor)
-  
+  stroke(borderColor)
   strokeWeight(borderWidth)
   fill(backgroundColor)
 
@@ -37,8 +32,6 @@ function cross(options) {
       const angle = TAU / sides * i;
       const _size = size / (sides)
 
-      isBorderColorFunction && stroke(borderColor(i))
-    
       cross({
         ...options,
         position: createVector( size * cos(angle), size * sin(angle) ),
@@ -70,21 +63,16 @@ function drawBackgroundPattern(time, cols = 30, rows = 50) {
     const xOff = x/cols;
     const yOff = y/rows;
 
-    const innerAngle = mappers.circularIndex(time+x+y, [ PI, PI/2]);
-
     cross({
       position: cellVector,
-      sides: mappers.circularIndex(time/2+noise(yOff + time, xOff), [ 0, 2, 4]),
+      sides: mappers.circularIndex(time/2+noise(yOff + time, xOff), [ 0, 1, 2, 4]),
       borderColor: colors.purple({
         hueOffset: time+noise(yOff + time, xOff + time),
-        hueIndex: map(x, 0, cols-1, -PI, PI),
+        hueIndex: map(x, 0, cols-1, -PI, PI)*2,
         opacityFactor: 3.5
       }),
       borderWidth: 3,
-      size: 15,
-      depth: 3,
-      angle: innerAngle,
-      recursive: true
+      size: 10
     })
   })
 }
@@ -92,22 +80,26 @@ function drawBackgroundPattern(time, cols = 30, rows = 50) {
 sketch.draw( (time, center) => {
   background(0);
 
-  drawBackgroundPattern(time, 7, 12);
+  drawBackgroundPattern(time, 20, 25);
 
-  const boundary = 150;
+  const boundary = 250;
+  // const start = createVector( width/2, boundary );
+  // const end = createVector( width/2, height - boundary );
 
-  let start = animation.sequence( "start", time/2, [
+  const switchAngleSpeed = time/3;
+
+  let start = animation.sequence( "start", switchAngleSpeed, [
     createVector( boundary, boundary ),
-      createVector( width-boundary, boundary ),
-      createVector( width/2, boundary ),
+    createVector( width/2, height/4 ),
+    createVector( width-boundary, boundary ),
     ],
     0.1,
     p5.Vector.lerp
-  )
-  let end = animation.sequence( "end", time/2, [
+    )
+  let end = animation.sequence( "end", switchAngleSpeed, [
       createVector( width-boundary, height-boundary ),
+      createVector( width/2, height- boundary ),
       createVector( boundary, height- boundary ),
-      createVector( width/2, height- boundary )
     ], 
     0.1,
     p5.Vector.lerp
@@ -115,34 +107,36 @@ sketch.draw( (time, center) => {
 
   const speed = time;
 
-  iterators.vector(start, end, 1 / 128, ( vector, lerpIndex) => {
-    const easingFunction = mappers.circularIndex(speed+lerpIndex, easingFunctions)[1]
+  iterators.vector(start, end, 1 / 384 , ( vector, lerpIndex) => {
+    // const easingFunction = mappers.circularIndex(speed+lerpIndex, easingFunctions)[1]
 
-    let sides = animation.sequence("amt", speed+lerpIndex, [ 2, 3, 4, 5, 4, 3 ]);
-    //sides = mappers.fn(sin(time+lerpIndex), -1, 1, 2, 5, easingFunction)
+    const sides = 1//animation.sequence("amt", speed+lerpIndex, [ 2, 3, 4, 5, 4, 3 ]);
+    // const times = mappers.circularIndex(speed, [ 1, 3, 5 ]);
+    const times = animation.sequence("times", speed/3, [ 1, 3, 5 ], 0.0001);
+    const borderWidth = mappers.fn(sides, 2, 5, 70, 20);
+    const maxSize = mappers.fn(sides, 2, 5, 150, 250);
+    const sizeRatio = mappers.fn(lerpIndex, 0, 1, -PI, PI)*times;
+    let crossSize = mappers.fn(cos(sizeRatio), -1, 1, maxSize, 1 )
+    crossSize = mappers.fn(cos(sizeRatio), -1, 1, 1, maxSize)//*sin(lerpIndex+time)
 
-    const borderWidth = mappers.fn(sides, 2, 6, 70, 20);
-    const maxSize = mappers.fn(sides, 2, 6, 150, 250);
-    const sizeRatio = mappers.fn(lerpIndex, 0, 1, -PI, PI)*-1;
-    const crossSize = mappers.fn(cos(sizeRatio), -1, 1, 1, maxSize )
-
-    const times = mappers.circularIndex(speed+lerpIndex, [ 0, 1, 3, 5 ]);
+    const coco = colors.rainbow({
+      hueOffset: speed,
+      hueIndex: mappers.fn(lerpIndex, 0, 1, -PI, PI)*4,
+      opacityFactor: mappers.fn(cos(sizeRatio+time), -1, 1, 5, 1)
+    })
 
     push()
     translate(vector)
-    rotate(-speed)
-    rotate(mappers.fn(lerpIndex, 0, 1, 0, PI*3))
+    rotate(-speed/2)
+    // rotate(mappers.fn(lerpIndex, 0, 1, 0, PI*2))
+    rotate(mappers.fn(sin(lerpIndex+time), -1, 1, 0, PI*2))
+
+    //rotate(mappers.fn(lerpIndex, 0, 1, 0, PI))
 
     cross({
       // position: vector,
       sides,
-      borderColor: index => (
-        colors.rainbow({
-          hueOffset: speed,
-          hueIndex: mappers.fn(lerpIndex, 0, 1, -PI, PI)*4,
-          opacityFactor: mappers.fn(cos(sizeRatio+time*2), -1, 1, 5, 1)
-        })
-      ),
+      borderColor: coco,
       borderWidth,
       size: crossSize,
       depth: 1,
