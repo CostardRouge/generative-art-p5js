@@ -1,9 +1,43 @@
 import mappers from './mappers.js';
 
 const animation = {
-  ease: function (value, min, max, start, end, fn = x => x) {
-    return map( fn(map(value, min, max, 0, 1)), 0, 1, start, end)
+  animate: (fn, duration, onProgress, onComplete) => {
+    const start = performance.now();
+
+    const animate = time => {
+      const timeFraction = (time - start) / duration;
+      const timeProgression = timeFraction > 1 ? 1 : timeFraction;
+  
+      onProgress(fn(timeProgression));
+  
+      if (timeProgression < 1) {
+        requestAnimationFrame(animate);
+      }
+      else {
+        onComplete()
+      }
+    }
+  
+    requestAnimationFrame(animate);
   },
+  ease: (from, to, timeFraction, easingFn = x => x, lerpFn = lerp ) => {
+    return lerpFn( from, to, easingFn(timeFraction) );
+  },
+  followVectors: (vectors, currentTime, duration, easingFn = x => x, lerpFn = lerp ) => {
+    return animation.ease(
+      mappers.circularIndex((currentTime/duration), vectors),
+      mappers.circularIndex((currentTime/duration)+1, vectors),
+      (currentTime) % duration,
+      easingFn,
+      lerpFn
+    );
+  },
+  makeEaseInOut: (inFn, outFn = inFn) => ( timeFraction => {
+    if (timeFraction < .5)
+      return inFn(2 * timeFraction) / 2;
+    else
+      return (2 - outFn(2 * (1 - timeFraction))) / 2;
+  } ),  
   sequence: function(key, speed, values, amount = 0.07, lerpFn = lerp) {
     this.values = this.values ?? {};
 

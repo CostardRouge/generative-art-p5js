@@ -83,15 +83,19 @@ options.add( [
 let vectors = []
 
 sketch.setup( () => {
-
   vectors.push(
     createVector( width / 2, 200 ),
-    createVector( width / 2, height / 2 ),
-    createVector( width / 2, height - 200 )
+    createVector( width / 2-200, height / 2 ),
+    createVector( width / 2, height - 200 ),
+    createVector( width / 2+200, height / 2 ),
   )
 });
 
-sketch.draw((time) => {
+const bouncyEaseInOutElastic = animation.makeEaseInOut(easing.easeInOutElastic)
+
+const easingFunctions = Object.entries( easing );
+
+sketch.draw((time, center) => {
   background(0);
 
   strokeWeight(2);
@@ -102,26 +106,14 @@ sketch.draw((time) => {
     circle( vector.x, vector.y, 50);
   });
 
-  let moving = animation.sequence(
-    "moving",
-    time/2,
-    vectors,
-    0.05,
-    // p5.Vector.lerp,
-    (current, next, _amt) => {
-      return p5.Vector.lerp(
-        current,
-        next,
-        easing.easeInOutElastic(time % 1.1)
-      )
-    }
-  )
+  const easingFunction = easing.easeInOutElastic//mappers.circularIndex(time, easingFunctions)
 
-  moving = p5.Vector.lerp(
-    vectors[0],
-    vectors[1],
-    easing.easeInOutElastic(time/2 % 1.1)
-    // map(mouseY, 0, height, 0, 1, true)
+  const moving = animation.followVectors(
+    vectors,
+    time,
+    1,
+    easingFunction[1],
+    p5.Vector.lerp
   )
 
   fill('red');

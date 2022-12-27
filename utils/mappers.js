@@ -1,6 +1,6 @@
 const mappers = {
-  circularMap: function (index, length, min, max) {
-    return map(abs((index % length) - length / 2), 0, length / 2, max, min);
+  circularMap: function (index, length, min, max, fn) {
+    return mappers.fn(abs((index % length) - length / 2), 0, length / 2, max, min, fn);
   },
   fn: function (value, min, max, start, end, fn = x => x) {
     return map( fn(map(value, min, max, 0, 1)), 0, 1, start, end, true)

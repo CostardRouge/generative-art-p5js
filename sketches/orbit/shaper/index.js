@@ -4,7 +4,35 @@ sketch.setup( );
 
 const easingFunctions = Object.entries(easing)
 
-function cross(options) {
+function algo(options) {
+  const {
+    recursive = 0,
+    count = 1,
+    drawer = console.log
+  } = options;
+
+  for (let drawCount = 0; drawCount < count; drawCount++) {
+    if (recursive && maximumDepth === false) {
+      const angle = TAU / sides * i;
+      const _size = size / (sides)
+ 
+      shaper({
+        ...options,
+        position: createVector( size * cos(angle), size * sin(angle) ),
+        size: _size,
+        depth: depth -1,
+        ...prepareRecursionOptions?.(i, depth)
+      })
+    }
+    else {
+      onShapeDraw?.(i)
+      rotate(step);
+      line( -size, 0, size, 0 );
+    }
+  }
+}
+
+function shaper(options) {
   const {
     position = createVector(0, 0),
     sides = 2,
@@ -22,7 +50,6 @@ function cross(options) {
 
   push();
   translate(position)
-
   stroke(borderColor)
   strokeWeight(borderWidth)
   fill(backgroundColor)
@@ -33,7 +60,7 @@ function cross(options) {
       const angle = TAU / sides * i;
       const _size = size / (sides)
 
-      cross({
+      shaper({
         ...options,
         position: createVector( size * cos(angle), size * sin(angle) ),
         size: _size,
@@ -65,7 +92,7 @@ function drawBackgroundPattern(time, cols = 30, rows = 50) {
     const xOff = x/cols;
     const yOff = y/rows;
 
-    cross({
+    shaper({
       position: cellVector,
       sides: mappers.circularIndex(time/2+noise(yOff + time, xOff), [ 0, 1, 2, 4]),
       borderColor: colors.purple({
@@ -130,12 +157,12 @@ sketch.draw( (time, center) => {
 
     push()
     translate(vector)
-    // rotate(-speed)
+    rotate(-speed)
 
     // rotate(mappers.fn(lerpIndex, 0, 1, 0, PI*3))
     // rotate(mappers.fn(lerpIndex, 0, 1, 0, PI))
 
-    cross({
+    shaper({
       // position: vector,
       sides,
       borderColor: coco,
