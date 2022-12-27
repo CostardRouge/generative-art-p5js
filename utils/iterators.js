@@ -3,7 +3,12 @@ const iterators = {
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
       const position = p5.Vector.lerp(start, end, lerpIndex);
   
-      handler(position, lerpIndex);
+      handler(
+        position,
+        lerpIndex,
+        lerpIndex === 0,
+        lerpIndex + lerpStep > 1
+        );
     };
   },
   vectors: function (vectors, handler, lerpStep = 0.1) {

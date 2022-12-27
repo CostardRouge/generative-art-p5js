@@ -23,7 +23,10 @@ function cross(options) {
   push();
   translate(position)
 
-  stroke(borderColor)
+  const isBorderColorFunction = typeof borderColor === 'function';
+
+  !isBorderColorFunction && stroke(borderColor)
+  
   strokeWeight(borderWidth)
   fill(backgroundColor)
 
@@ -33,6 +36,8 @@ function cross(options) {
       const angle = TAU / sides * i;
       const _size = size / (sides)
 
+      isBorderColorFunction && stroke(borderColor(i))
+    
       cross({
         ...options,
         position: createVector( size * cos(angle), size * sin(angle) ),
@@ -65,17 +70,20 @@ function drawBackgroundPattern(time, cols = 30, rows = 50) {
     const xOff = x/cols;
     const yOff = y/rows;
 
+    const innerAngle = mappers.circularIndex(time+xOff+yOff, [ PI, PI/2]);
+
     cross({
       position: cellVector,
-      sides: mappers.circularIndex(time/2+noise(yOff + time, xOff), [ 0, 1, 2, 4]),
+      sides: mappers.circularIndex(time/2+noise(yOff + time, xOff), [ 0, 2, 4]),
       borderColor: colors.purple({
         hueOffset: time+noise(yOff + time, xOff + time),
         hueIndex: map(x, 0, cols-1, -PI, PI),
         opacityFactor: 3.5
       }),
       borderWidth: 3,
-      size: 15,
-      depth: 1,
+      size: 20,
+      depth: 3,
+      angle: innerAngle,
       recursive: true
     })
   })
@@ -87,18 +95,15 @@ sketch.draw( (time, center) => {
   drawBackgroundPattern(time, 7, 12);
 
   const boundary = 150;
-  // const start = createVector( width/2, boundary );
-  // const end = createVector( width/2, height - boundary );
-
 
   let start = animation.sequence( "start", time/2, [
     createVector( boundary, boundary ),
-    createVector( width-boundary, boundary ),
-    createVector( width/2, height/4 ),
+      createVector( width-boundary, boundary ),
+      createVector( width/2, boundary ),
     ],
     0.1,
     p5.Vector.lerp
-    )
+  )
   let end = animation.sequence( "end", time/2, [
       createVector( width-boundary, height-boundary ),
       createVector( boundary, height- boundary ),
@@ -113,20 +118,15 @@ sketch.draw( (time, center) => {
   iterators.vector(start, end, 1 / 256, ( vector, lerpIndex) => {
     const easingFunction = mappers.circularIndex(speed+lerpIndex, easingFunctions)[1]
 
-    let sides = 4//animation.sequence("amt", speed+lerpIndex, [ 2, 3, 4, 5, 4, 3 ]);
+    let sides = animation.sequence("amt", speed+lerpIndex, [ 2, 3, 4, 5, 4, 3 ]);
     //sides = mappers.fn(sin(time+lerpIndex), -1, 1, 2, 5, easingFunction)
 
     const borderWidth = mappers.fn(sides, 2, 6, 70, 20);
     const maxSize = mappers.fn(sides, 2, 6, 150, 250);
-    const sizeRatio = mappers.fn(lerpIndex, 0, 1, -PI, PI);
-    let crossSize = mappers.fn(cos(sizeRatio), -1, 1, maxSize, 1 )
-    crossSize = mappers.fn(cos(sizeRatio), -1, 1, 1, maxSize, )
+    const sizeRatio = mappers.fn(lerpIndex, 0, 1, -PI, PI)*-1;
+    const crossSize = mappers.fn(cos(sizeRatio), -1, 1, 1, maxSize )
 
-    const coco = colors.rainbow({
-      hueOffset: speed,
-      hueIndex: mappers.fn(lerpIndex, 0, 1, -PI, PI)*4,
-      opacityFactor: mappers.fn(cos(sizeRatio+time), -1, 1, 5, 1)
-    })
+    const times = mappers.circularIndex(speed+lerpIndex, [ 0, 1, 3, 5 ]);
 
     push()
     translate(vector)
@@ -138,7 +138,13 @@ sketch.draw( (time, center) => {
     cross({
       // position: vector,
       sides,
-      borderColor: coco,
+      borderColor: index => (
+        colors.rainbow({
+          hueOffset: speed,
+          hueIndex: mappers.fn(lerpIndex, 0, 1, -PI, PI)*4,
+          opacityFactor: mappers.fn(cos(sizeRatio+time*2), -1, 1, 5, 1)
+        })
+      ),
       borderWidth,
       size: crossSize,
       depth: 1,

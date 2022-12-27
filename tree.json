@@ -341,7 +341,7 @@
          },
          "audio-reactive-v7-spectrograph": {
             "meta": {
-               "_mtime": "2022-10-22T21:54:19.040Z",
+               "_mtime": "2022-12-22T14:35:16.022Z",
                "name": "audio-reactive-v7-spectrograph"
             },
             "path": "sketches/audio-reactive/audio-reactive-v7-spectrograph"
@@ -1097,7 +1097,7 @@
    },
    "orbit": {
       "meta": {
-         "_mtime": "2022-11-26T21:54:20.132Z",
+         "_mtime": "2022-12-20T23:23:52.237Z",
          "name": "orbit"
       },
       "sketches": {
@@ -1166,21 +1166,49 @@
          },
          "orbit-v9": {
             "meta": {
-               "_mtime": "2022-11-27T17:46:38.181Z",
+               "_mtime": "2022-11-28T17:12:49.061Z",
                "name": "orbit-v9"
             },
             "path": "sketches/orbit/orbit-v9"
          },
+         "orbit-v9-flaps": {
+            "meta": {
+               "_mtime": "2022-12-22T04:05:02.694Z",
+               "name": "orbit-v9-flaps"
+            },
+            "path": "sketches/orbit/orbit-v9-flaps"
+         },
+         "orbit-v9-flaps-variable-count": {
+            "meta": {
+               "_mtime": "2022-12-22T19:35:32.763Z",
+               "name": "orbit-v9-flaps-variable-count"
+            },
+            "path": "sketches/orbit/orbit-v9-flaps-variable-count"
+         },
+         "orbit-v9-perlin-arrow": {
+            "meta": {
+               "_mtime": "2022-12-22T14:10:53.498Z",
+               "name": "orbit-v9-perlin-arrow"
+            },
+            "path": "sketches/orbit/orbit-v9-perlin-arrow"
+         },
+         "orbit-v9-polar-arrow": {
+            "meta": {
+               "_mtime": "2022-12-22T19:07:14.613Z",
+               "name": "orbit-v9-polar-arrow"
+            },
+            "path": "sketches/orbit/orbit-v9-polar-arrow"
+         },
          "orbit-v9-spiral": {
             "meta": {
-               "_mtime": "2022-11-27T16:44:56.320Z",
+               "_mtime": "2022-12-22T19:54:05.478Z",
                "name": "orbit-v9-spiral"
             },
             "path": "sketches/orbit/orbit-v9-spiral"
          },
          "orbit-v9-visible-easing-curves": {
             "meta": {
-               "_mtime": "2022-11-26T21:54:20.131Z",
+               "_mtime": "2022-12-22T14:13:25.760Z",
                "name": "orbit-v9-visible-easing-curves"
             },
             "path": "sketches/orbit/orbit-v9-visible-easing-curves"

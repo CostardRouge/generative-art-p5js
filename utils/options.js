@@ -305,21 +305,35 @@ const getDefaultOptions = () => {
 
 const options = {
   sketchUI: undefined,
-  registeredOptions: [],
-  add: _options => (
-    options.registeredOptions = [
-      ...options.registeredOptions,
+  addedOptions: {},
+  add: (_options, synchronize = false) => {
+    options.addedOptions = {
+      ...options.addedOptions,
       ..._options
-    ]
-  ),
+    };
+
+    synchronize && options.synchronize();
+
+    console.log(
+      options.addedOptions
+    )
+
+    return options.addedOptions;
+  },
+  synchronize: option => {
+    //options.addedOptions.push( option );
+    options.sketchUI?.setOption(option)
+  },
   init: () => {
+    const initialOptions = options.add({
+      ...options.addedOptions,
+      ...getDefaultOptions()
+  });
+
     options.sketchUI = new SketchUI( {
       open: false,
       name: sketch.name,
-      options: [
-        ...options.registeredOptions,
-        ...getDefaultOptions()
-      ],
+      options: initialOptions,
       elements: {
         drawer: 'div#sketch-ui-drawer',
         icon: 'div#sketch-ui-icon'
@@ -327,8 +341,9 @@ const options = {
       logger: console.log
     });
 
-    return options.sketchUI
+    return options.sketchUI;
   },
+
   get: id => options.sketchUI.getValue(id),
   set: (id, value) => options.sketchUI.setValue(id, value)
 };
