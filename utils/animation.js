@@ -20,18 +20,13 @@ const animation = {
   
     requestAnimationFrame(animate);
   },
-  ease: (from, to, timeFraction, easingFn = x => x, lerpFn = lerp ) => {
-    return lerpFn( from, to, easingFn(timeFraction) );
-  },
-  followVectors: (vectors, currentTime, duration, easingFn = x => x, lerpFn = lerp ) => {
-    return animation.ease(
-      mappers.circularIndex((currentTime/duration), vectors),
-      mappers.circularIndex((currentTime/duration)+1, vectors),
-      (currentTime) % duration,
-      easingFn,
-      lerpFn
-    );
-  },
+  ease: (values, currentTime, duration, easingFn = x => x, lerpFn = lerp ) => (
+    lerpFn(
+      mappers.circularIndex((currentTime), values),
+      mappers.circularIndex((currentTime)+1, values),
+      easingFn( (currentTime) % duration )
+    )
+  ),
   makeEaseInOut: (inFn, outFn = inFn) => ( timeFraction => {
     if (timeFraction < .5)
       return inFn(2 * timeFraction) / 2;

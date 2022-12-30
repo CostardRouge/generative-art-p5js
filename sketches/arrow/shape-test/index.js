@@ -1,6 +1,7 @@
 import { shapes, sketch, iterators, converters, events, colors, mappers, easing, animation, grid } from './utils/index.js';
 
-sketch.setup( undefined, { type: 'webgl' });
+// sketch.setup( undefined, { type: 'webgl' });
+sketch.setup( );
 
 const dot = (position, color, size) => {
   strokeWeight(size)
@@ -56,24 +57,8 @@ const test = (time) => {
   endShape()
 }
 
-sketch.draw( (time, center) => {
-  background(0);
-
-  stroke(128, 128, 255);
-  noFill()
-  // fill(128, 128, 255);
-  strokeWeight(10)
-
-  //return test(time);
-  // translate(center);
-
-  const size = 200;
-  const step = 16;
+function flower(size, step) {
   const incrementStep = TAU / step;
-
-  rotateY(time)
-  rotateX(time)
-  rotateZ(time)
 
   beginShape()
   for (let angle = 0; angle < TAU; angle += incrementStep) {
@@ -115,15 +100,32 @@ sketch.draw( (time, center) => {
 
     // ark(angle, angle+incrementStep, middlePosition, innerSize, 36 )
 
-    vertex(
-      position.x,
-      position.y,
-    )
+    // vertex(
+    //   position.x,
+    //   position.y,
+    // )
   }
 
   // strokeWeight(10)
   // stroke(128, 128, 255);
   // fill(128, 128, 255);
 
-  // endShape(CLOSE)
+  endShape()
+}
+
+sketch.draw( (time, center) => {
+  background(0);
+
+  stroke(128, 128, 255);
+  noFill()
+  // fill(128, 128, 255);
+  strokeWeight(10)
+
+    // rotateY(time)
+  // rotateX(time)
+  // rotateZ(time)
+
+  // return test(time);
+  translate(center);
+  flower(200, 16)
 });
