@@ -4,5 +4,6 @@
         "vite"
     ],
     "liveServer.settings.NoBrowser": true,
-    "liveServer.settings.AdvanceCustomBrowserCmdLine": ""
+    "liveServer.settings.AdvanceCustomBrowserCmdLine": "",
+    "livePreview.defaultPreviewPath": "/Users/steeve/Documents/GitHub/generative-art-p5js/sketches/flowers/orbit-v9-flaps-variable-count/index.html"
 }
