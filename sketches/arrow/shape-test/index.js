@@ -1,7 +1,7 @@
 import { shapes, sketch, iterators, converters, events, colors, mappers, easing, animation, grid } from './utils/index.js';
 
-// sketch.setup( undefined, { type: 'webgl' });
-sketch.setup( );
+sketch.setup( undefined, { type: 'webgl' });
+// sketch.setup( );
 
 const dot = (position, color, size) => {
   strokeWeight(size)
@@ -126,6 +126,7 @@ sketch.draw( (time, center) => {
   // rotateZ(time)
 
   // return test(time);
-  translate(center);
+  // translate(center);
+  smooth() 
   flower(200, 16)
 });

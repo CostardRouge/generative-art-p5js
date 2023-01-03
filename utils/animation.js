@@ -20,10 +20,18 @@ const animation = {
   
     requestAnimationFrame(animate);
   },
-  ease: (values, currentTime, duration, easingFn = x => x, lerpFn = lerp ) => (
+  ease: ({
+    values,
+    currentTime,
+    duration,
+    easingFn = x => x,
+    lerpFn = lerp,
+    startIndex = currentTime,
+    endIndex = currentTime + 1 
+  }) => (
     lerpFn(
-      mappers.circularIndex((currentTime), values),
-      mappers.circularIndex((currentTime)+1, values),
+      mappers.circularIndex(startIndex, values),
+      mappers.circularIndex(endIndex, values),
       easingFn( (currentTime) % duration )
     )
   ),

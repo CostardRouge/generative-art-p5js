@@ -157,13 +157,11 @@ const drawRadialPattern = (count = 7, time) => {
       point( vector.x, vector.y );
     })
   } )
-
- 
 }
 
-sketch.draw((time) => {
+sketch.draw((time, center) => {
   background(0);
-  // debug.lines()
+  //debug.lines()
 
   translate(width / 2, height / 2);
   drawRadialPattern( 22, time );

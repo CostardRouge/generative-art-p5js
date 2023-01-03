@@ -1,6 +1,6 @@
 import SketchUI from '../libraries/sketch-ui.es.js';
 
-import { recorder, debug, sketch, events } from './index.js';
+import { recorder, debug, sketch, events, cache } from './index.js';
 
 const getDefaultOptions = () => {
   // const { type } = screen.orientation;
@@ -305,30 +305,28 @@ const getDefaultOptions = () => {
 
 const options = {
   sketchUI: undefined,
-  addedOptions: {},
-  add: (_options, synchronize = false) => {
-    options.addedOptions = {
-      ...options.addedOptions,
-      ..._options
-    };
-
-    synchronize && options.synchronize();
-
-    console.log(
-      options.addedOptions
-    )
+  addedOptions: [],
+  add: (_options) => {
+    for (const option of _options) {
+      options.create(option)
+    }
 
     return options.addedOptions;
   },
-  synchronize: option => {
-    //options.addedOptions.push( option );
-    options.sketchUI?.setOption(option)
+  create: (option, synchronize = false) => {
+    const existingOptionIds = options.addedOptions.map( ({id}) => id);
+
+    if (existingOptionIds.indexOf(option.id) !== -1) {
+      return options.get(option.id)
+    }
+
+    options.addedOptions.push(option)
+    options.sketchUI?.synchronize(options.addedOptions)
+
+    return options.get(option.id)
   },
   init: () => {
-    const initialOptions = options.add({
-      ...options.addedOptions,
-      ...getDefaultOptions()
-  });
+    const initialOptions = options.add(getDefaultOptions());
 
     options.sketchUI = new SketchUI( {
       open: false,
@@ -344,8 +342,8 @@ const options = {
     return options.sketchUI;
   },
 
-  get: id => options.sketchUI.getValue(id),
-  set: (id, value) => options.sketchUI.setValue(id, value)
+  get: id => options.sketchUI?.getValue(id),
+  set: (id, value) => options.sketchUI?.setValue(id, value)
 };
 
 export default options;
