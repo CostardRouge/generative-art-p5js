@@ -1,3 +1,5 @@
+import events from './events.js';
+
 const string = {
   fonts: {
     serif: undefined,
@@ -21,14 +23,14 @@ const string = {
       center = false,
     } = options;
 
+    push()
+    translate( x, y );
+
     graphics.fill(fill);
     graphics.stroke(stroke);
     graphics.strokeWeight(strokeWeight);
     graphics.textSize(size);
     graphics.textFont?.(font);
-
-    push()
-    translate( x , y );
 
     const box = font.textBounds(str, 0, 0, size);
     const asc =  int(textAscent() * 0.8);
@@ -53,9 +55,10 @@ const string = {
 
     pop()
   },
+  
 };
 
-window.preload = () => {
+events.register("engine-window-preload", () => {
   string.fonts.serif = loadFont(
     gitHubPagesPathHack("assets/fonts/libre-baskerville.ttf")
   );
@@ -63,6 +66,6 @@ window.preload = () => {
     // gitHubPagesPathHack("assets/fonts/open-sans.ttf")
     gitHubPagesPathHack("assets/fonts/passion-one.ttf")
   );
-}
+});
 
 export default string;

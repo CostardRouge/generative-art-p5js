@@ -56,6 +56,9 @@ const p5js = {
         window.windowResized = () => {
             events.handle("engine-window-resized");
         }
+        window.preload = () => {
+            events.handle("engine-window-preload");
+        }
     },
     setup: (sketchOptions, setupEngineFunction) => {
         events.register("pre-setup", () => {

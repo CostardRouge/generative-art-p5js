@@ -38,15 +38,15 @@ options.add( [
     category: 'Opacity'
   },
 
-  {
-    id: "background-lines-count",
-    type: 'slider',
-    min: 1,
-    max: 1000,
-    label: 'Lines count',
-    defaultValue: 70,
-    category: 'Background'
-  },
+  // {
+  //   id: "background-lines-count",
+  //   type: 'slider',
+  //   min: 1,
+  //   max: 1000,
+  //   label: 'Lines count',
+  //   defaultValue: 70,
+  //   category: 'Background'
+  // },
   {
     id: "background-lines-weight",
     type: 'slider',
@@ -95,7 +95,7 @@ const drawRadialPattern = (count = 7, time) => {
 
   const center = createVector( 0, 0 );
   const size = (width + height)/6;
-  const p = 0.005
+  const p = 0.025
   const hueSpeed = time;
 
   iterators.angle(0, TAU, TAU / 40, angle => {
@@ -173,16 +173,31 @@ const drawRadialPattern = (count = 7, time) => {
   } )
 }
 
-sketch.draw((time) => {
+sketch.draw((time, center) => {
   background(0);
 
+  // pattern(
+  //   options.get("background-lines-count"),
+  //   -time/4,
+  //   color( 128, 128, 255, 64)
+  // );
+
+
   pattern(
-    options.get("background-lines-count"),
+    options.create({
+      id: "background-lines-count",
+      type: 'slider',
+      min: 1,
+      max: 1000,
+      label: 'Lines count',
+      defaultValue: 70,
+      category: 'Background'
+    }, true),
     -time/4,
     color( 128, 128, 255, 64)
   );
 
-  translate(width / 2, height / 2);
+  translate(center);
   drawRadialPattern(
     100,
     time
