@@ -12,7 +12,6 @@ sketch.setup( () => {
 });
 
 // const bouncyEaseInOutElastic = animation.makeEaseInOut(easing.easeInOutElastic)
-
 // const easingFunctions = Object.entries( easing );
 
 sketch.draw((time, center) => {
@@ -28,13 +27,14 @@ sketch.draw((time, center) => {
 
   //const easingFunction = mappers.circularIndex(time, easingFunctions)[1]
 
-  const moving = animation.ease(
-    vectors,
-    time,
-    1,
-    easing.easeInOutElastic,
-    p5.Vector.lerp
-  )
+  const moving = animation.ease({
+    values: vectors,
+    currentTime: time,
+    duration: 1,
+    easingFn: easing.easeInOutExpo,
+    // easingFn: easing.easeInOutElastic,
+    lerpFn: p5.Vector.lerp,
+  })
 
   fill('red');
   noStroke();

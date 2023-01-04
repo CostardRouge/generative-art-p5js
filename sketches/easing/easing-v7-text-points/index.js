@@ -1,8 +1,8 @@
 import { sketch, string, mappers, easing, animation, colors, cache } from './utils/index.js';
 
-sketch.setup( undefined, { type: 'webgl', size: {
-  width: 1280, height: 960
-} });
+sketch.setup( undefined, { type: 'webgl',
+  // size: { width: 1280, height: 960}
+});
 
 const easingFunctions = Object.entries(easing)
 
@@ -31,47 +31,10 @@ function flower(size, step) {
   }
 }
 
-function drawBackgroundPattern(time, cols = 30, rows = 50) {
-  const gridOptions = {
-    startLeft: createVector( 0, 0 ),
-    startRight: createVector( width, 0 ),
-    endLeft: createVector( 0, height ),
-    endRight: createVector( width, height ),
-    rows,
-    cols,
-    centered: true
-  }
-
-  grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const xOff = x/cols;
-    const yOff = y/rows;
-    const innerAngle = mappers.circularIndex(time+xOff+yOff, [-PI/4, PI/2]);
-
-    cross({
-      position: cellVector,
-      sides: 4,//mappers.circularIndex(time/2+noise(yOff + time, xOff), [ 2, 4]),
-      borderColor: colors.purple({
-        hueOffset: time+noise(yOff + time, xOff + time),
-        hueIndex: map(x, 0, cols-1, -PI, PI),
-        opacityFactor: 3.5
-      }),
-      borderWidth: 3,
-      size: 20,
-      depth: 2,
-      angle: innerAngle,
-      recursive: true,
-      draw: (i, step, { size}) => {
-        rotate(step);
-        line( -size, 0, size, 0 );
-      }
-    })
-  })
-}
-
 sketch.draw( (time, center) => {
   background(0);
   // translate(center);
-2.0
+
   const speed = time//2;
   const duration = 1;
   const word = (new URLSearchParams(document.location.search)).get('text') ?? "123456789"
@@ -145,7 +108,7 @@ sketch.draw( (time, center) => {
 
     push()
     translate(x, y)
-    //rotate(-time+progression*30*sin(time));
+    //rotate(-time+progression*10*sin(time));
     rotate(-time+progression*50);
     flower(25, 3)
     pop()
