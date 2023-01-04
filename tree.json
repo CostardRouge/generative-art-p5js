@@ -284,6 +284,49 @@
          }
       }
    },
+   "arrow": {
+      "meta": {
+         "_mtime": "2023-01-01T03:14:58.879Z",
+         "name": "arrow"
+      },
+      "sketches": {
+         "arrow-v1-perlin": {
+            "meta": {
+               "_mtime": "2022-12-27T23:02:01.072Z",
+               "name": "arrow-v1-perlin"
+            },
+            "path": "sketches/arrow/arrow-v1-perlin"
+         },
+         "arrow-v2-polar": {
+            "meta": {
+               "_mtime": "2022-12-27T22:59:33.164Z",
+               "name": "arrow-v2-polar"
+            },
+            "path": "sketches/arrow/arrow-v2-polar"
+         },
+         "grid-2023": {
+            "meta": {
+               "_mtime": "2022-12-31T16:35:44.839Z",
+               "name": "grid-2023"
+            },
+            "path": "sketches/arrow/grid-2023"
+         },
+         "shape-test": {
+            "meta": {
+               "_mtime": "2022-12-31T16:05:37.753Z",
+               "name": "shape-test"
+            },
+            "path": "sketches/arrow/shape-test"
+         },
+         "shaper": {
+            "meta": {
+               "_mtime": "2022-12-27T22:59:33.168Z",
+               "name": "shaper"
+            },
+            "path": "sketches/arrow/shaper"
+         }
+      }
+   },
    "audio-reactive": {
       "meta": {
          "_mtime": "2022-10-14T13:06:49.847Z",
@@ -440,7 +483,7 @@
          },
          "background-pattern-v8-kite": {
             "meta": {
-               "_mtime": "2022-10-30T14:58:07.695Z",
+               "_mtime": "2023-01-01T14:59:06.941Z",
                "name": "background-pattern-v8-kite"
             },
             "path": "sketches/background-pattern/background-pattern-v8-kite"
@@ -669,10 +712,17 @@
    },
    "easing": {
       "meta": {
-         "_mtime": "2022-09-04T11:55:57.650Z",
+         "_mtime": "2023-01-04T20:39:28.377Z",
          "name": "easing"
       },
       "sketches": {
+         "animate": {
+            "meta": {
+               "_mtime": "2022-12-27T22:39:57.644Z",
+               "name": "animate"
+            },
+            "path": "sketches/easing/animate"
+         },
          "easing-v1-all-functions": {
             "meta": {
                "_mtime": "2022-09-11T19:19:42.895Z",
@@ -680,19 +730,19 @@
             },
             "path": "sketches/easing/easing-v1-all-functions"
          },
-         "easing-v2-functions": {
+         "easing-v2-flower": {
             "meta": {
                "_mtime": "2022-08-29T13:42:30.259Z",
-               "name": "easing-v2-functions"
+               "name": "easing-v2-flower"
             },
-            "path": "sketches/easing/easing-v2-functions"
+            "path": "sketches/easing/easing-v2-flower"
          },
-         "easing-v2-functions-with-grid": {
+         "easing-v2-spikes-with-grid": {
             "meta": {
                "_mtime": "2022-09-19T16:25:05.085Z",
-               "name": "easing-v2-functions-with-grid"
+               "name": "easing-v2-spikes-with-grid"
             },
-            "path": "sketches/easing/easing-v2-functions-with-grid"
+            "path": "sketches/easing/easing-v2-spikes-with-grid"
          },
          "easing-v3-warp-a": {
             "meta": {
@@ -710,24 +760,81 @@
          },
          "easing-v4-clock": {
             "meta": {
-               "_mtime": "2022-08-20T11:55:40.325Z",
+               "_mtime": "2023-01-01T13:29:12.010Z",
                "name": "easing-v4-clock"
             },
             "path": "sketches/easing/easing-v4-clock"
          },
          "easing-v5-star": {
             "meta": {
-               "_mtime": "2022-10-07T16:11:03.324Z",
+               "_mtime": "2023-01-01T12:56:02.735Z",
                "name": "easing-v5-star"
             },
             "path": "sketches/easing/easing-v5-star"
          },
-         "easing-vx-ball": {
+         "easing-v6-moving-ball": {
             "meta": {
-               "_mtime": "2022-10-30T14:58:50.171Z",
-               "name": "easing-vx-ball"
+               "_mtime": "2023-01-03T00:15:25.372Z",
+               "name": "easing-v6-moving-ball"
             },
-            "path": "sketches/easing/easing-vx-ball"
+            "path": "sketches/easing/easing-v6-moving-ball"
+         },
+         "easing-v7-text-points": {
+            "meta": {
+               "_mtime": "2023-01-04T20:39:28.378Z",
+               "name": "easing-v7-text-points"
+            },
+            "path": "sketches/easing/easing-v7-text-points"
+         }
+      }
+   },
+   "flowers": {
+      "meta": {
+         "_mtime": "2022-12-27T22:59:33.167Z",
+         "name": "flowers"
+      },
+      "sketches": {
+         "flowers-v0-turbine": {
+            "meta": {
+               "_mtime": "2022-12-27T22:56:35.829Z",
+               "name": "flowers-v0-turbine"
+            },
+            "path": "sketches/flowers/flowers-v0-turbine"
+         },
+         "flowers-v1-recursive": {
+            "meta": {
+               "_mtime": "2022-12-27T22:51:26.017Z",
+               "name": "flowers-v1-recursive"
+            },
+            "path": "sketches/flowers/flowers-v1-recursive"
+         },
+         "flowers-v2-triple": {
+            "meta": {
+               "_mtime": "2022-12-27T22:51:26.019Z",
+               "name": "flowers-v2-triple"
+            },
+            "path": "sketches/flowers/flowers-v2-triple"
+         },
+         "flowers-v3-petals-flapping": {
+            "meta": {
+               "_mtime": "2022-12-27T22:51:26.024Z",
+               "name": "flowers-v3-petals-flapping"
+            },
+            "path": "sketches/flowers/flowers-v3-petals-flapping"
+         },
+         "flowers-v4-easing-curves": {
+            "meta": {
+               "_mtime": "2022-12-27T22:51:26.034Z",
+               "name": "flowers-v4-easing-curves"
+            },
+            "path": "sketches/flowers/flowers-v4-easing-curves"
+         },
+         "flowers-v5-spiral": {
+            "meta": {
+               "_mtime": "2022-12-28T19:37:37.771Z",
+               "name": "flowers-v5-spiral"
+            },
+            "path": "sketches/flowers/flowers-v5-spiral"
          }
       }
    },
@@ -820,6 +927,28 @@
                "name": "genuary2022-game"
             },
             "path": "sketches/genuary2022/genuary2022-game"
+         }
+      }
+   },
+   "genuary2023": {
+      "meta": {
+         "_mtime": "2023-01-04T21:17:33.424Z",
+         "name": "genuary2023"
+      },
+      "sketches": {
+         "genuary2023-day1-infinite-loop": {
+            "meta": {
+               "_mtime": "2023-01-03T18:44:26.989Z",
+               "name": "genuary2023-day1-infinite-loop"
+            },
+            "path": "sketches/genuary2023/genuary2023-day1-infinite-loop"
+         },
+         "genuary2023-day2-10-minutes": {
+            "meta": {
+               "_mtime": "2023-01-04T23:03:41.022Z",
+               "name": "genuary2023-day2-10-minutes"
+            },
+            "path": "sketches/genuary2023/genuary2023-day2-10-minutes"
          }
       }
    },
@@ -1097,7 +1226,7 @@
    },
    "orbit": {
       "meta": {
-         "_mtime": "2022-12-20T23:23:52.237Z",
+         "_mtime": "2022-11-24T17:45:56.703Z",
          "name": "orbit"
       },
       "sketches": {
@@ -1149,69 +1278,6 @@
                "name": "orbit-v6-polar-cross"
             },
             "path": "sketches/orbit/orbit-v6-polar-cross"
-         },
-         "orbit-v7": {
-            "meta": {
-               "_mtime": "2022-11-24T17:45:14.460Z",
-               "name": "orbit-v7"
-            },
-            "path": "sketches/orbit/orbit-v7"
-         },
-         "orbit-v8-flowers": {
-            "meta": {
-               "_mtime": "2022-11-24T19:46:11.189Z",
-               "name": "orbit-v8-flowers"
-            },
-            "path": "sketches/orbit/orbit-v8-flowers"
-         },
-         "orbit-v9": {
-            "meta": {
-               "_mtime": "2022-11-28T17:12:49.061Z",
-               "name": "orbit-v9"
-            },
-            "path": "sketches/orbit/orbit-v9"
-         },
-         "orbit-v9-flaps": {
-            "meta": {
-               "_mtime": "2022-12-22T04:05:02.694Z",
-               "name": "orbit-v9-flaps"
-            },
-            "path": "sketches/orbit/orbit-v9-flaps"
-         },
-         "orbit-v9-flaps-variable-count": {
-            "meta": {
-               "_mtime": "2022-12-22T19:35:32.763Z",
-               "name": "orbit-v9-flaps-variable-count"
-            },
-            "path": "sketches/orbit/orbit-v9-flaps-variable-count"
-         },
-         "orbit-v9-perlin-arrow": {
-            "meta": {
-               "_mtime": "2022-12-22T14:10:53.498Z",
-               "name": "orbit-v9-perlin-arrow"
-            },
-            "path": "sketches/orbit/orbit-v9-perlin-arrow"
-         },
-         "orbit-v9-polar-arrow": {
-            "meta": {
-               "_mtime": "2022-12-22T19:07:14.613Z",
-               "name": "orbit-v9-polar-arrow"
-            },
-            "path": "sketches/orbit/orbit-v9-polar-arrow"
-         },
-         "orbit-v9-spiral": {
-            "meta": {
-               "_mtime": "2022-12-22T19:54:05.478Z",
-               "name": "orbit-v9-spiral"
-            },
-            "path": "sketches/orbit/orbit-v9-spiral"
-         },
-         "orbit-v9-visible-easing-curves": {
-            "meta": {
-               "_mtime": "2022-12-22T14:13:25.760Z",
-               "name": "orbit-v9-visible-easing-curves"
-            },
-            "path": "sketches/orbit/orbit-v9-visible-easing-curves"
          }
       }
    },

@@ -12,6 +12,9 @@ const cache = {
     }
   
     return cache.values[ key ];
+  },
+  get: function(key) {
+    return cache.values?.[ key ];
   }
 }
 
