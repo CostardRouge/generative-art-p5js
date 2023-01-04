@@ -3,7 +3,6 @@ import { sketch, string, mappers, easing, animation, colors, cache } from './uti
 sketch.setup( undefined, { type: 'webgl', size: {
   width: 1280, height: 960
 } });
-// sketch.setup( );
 
 const easingFunctions = Object.entries(easing)
 
@@ -75,13 +74,14 @@ sketch.draw( (time, center) => {
 2.0
   const speed = time//2;
   const duration = 1;
-  const word = "123456789"//["1 - un", "2 - deux", "3 - trois"];//["22", "2-", "2 3"]//
+  const word = (new URLSearchParams(document.location.search)).get('text') ?? "123456789"
+  //["1 - un", "2 - deux", "3 - trois"];//["22", "2-", "2 3"]//
   const size = 900;
   const font = string.fonts.serif;
   const currentLetter = mappers.circularIndex(speed, word)
   const nextLetter = mappers.circularIndex(speed+1  , word)
 
-  const sampleFactor = 0.5
+  const sampleFactor = (new URLSearchParams(document.location.search)).get('sample-factor') ?? 0.5
   const simplifyThreshold = 0
   const cacheTextPoints = true;
 
