@@ -27,9 +27,14 @@ const colors = {
       max / opacityFactor,
     )
   ),
-  white: ({hueOffset = 0, hueIndex, opacityFactor = 1, min = 0, max = 360}) => (
+  purpleSimple: ({hueOffset = 0, hueIndex, opacityFactor = 1, min = 0, max = 360}) => (
     color(
       128, 128, 255
+    )
+  ),
+  black: ({hueOffset = 0, hueIndex, opacityFactor = 1, min = 0, max = 360}) => (
+    color(
+      4, 2, 8
     )
   )
 };
