@@ -25,15 +25,15 @@ const paths = [];
 let currentPathIndex = 0;
 
 sketch.setup(() => {
-  events.register("mouseDragged", function () {
+  events.register("engine-mouse-dragged", function () {
     addVector(mouseX, mouseY);
   });
 
-  events.register("mouseReleased", function () {
+  events.register("engine-mouse-released", function () {
     currentPathIndex = paths.length;
   });
 
-  events.register("doubleClicked", function () {
+  events.register("engine-canvas-double-clicked", function () {
     paths.pop();
   });
 });
@@ -129,7 +129,7 @@ function drawPaths(time) {
 
       vertex(vector.x, vector.y, vector.z);
       vertex(nextVector.x, nextVector.y, nextVector.z);
-      // circle(vector.x, vector.y, vector.z);
+      circle(vector.x, vector.y, vector.z);
     }, 0.05);
 
     endShape()
@@ -148,5 +148,5 @@ sketch.draw(time => {
   background(0);
   drawGrid();
   drawPaths(time);
-  //drawMouseLines();
+  drawMouseLines();
 });

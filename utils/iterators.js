@@ -8,7 +8,7 @@ const iterators = {
         lerpIndex,
         lerpIndex === 0,
         lerpIndex + lerpStep > 1
-        );
+      );
     };
   },
   vectors: function (vectors, handler, lerpStep = 0.1) {

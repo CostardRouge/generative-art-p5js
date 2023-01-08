@@ -72,15 +72,15 @@ const paths = [];
 let currentPathIndex = 0;
 
 sketch.setup(() => {
-  events.register("mouseDragged", function () {
+  events.register("engine-mouse-dragged", function () {
     addVector(mouseX, mouseY);
   });
 
-  events.register("mouseReleased", function () {
+  events.register("engine-mouse-released", function () {
     currentPathIndex = paths.length;
   });
 
-  events.register("doubleClicked", function () {
+  events.register("engine-canvas-double-clicked", function () {
     paths.pop();
     currentPathIndex = paths.length;
   });
@@ -214,10 +214,8 @@ function addVector(x, y) {
   paths[currentPathIndex] = currentSegment;
 }
 
-function drawGrid(){
+function drawGrid(xCount, yCount){
   let drawn = false;
-  const xCount = options.get("x-count");
-  const yCount = options.get("y-count");
 
   const xSize = width / xCount;
   const ySize = height / yCount;
@@ -326,7 +324,8 @@ function drawPath(path, time, id) {
 
 sketch.draw((time) => {
   background(0);
-  drawGrid();
+
+  drawGrid(options.get("x-count"), options.get("y-count"));
   drawPaths(time);
   drawChurros(time);
 });

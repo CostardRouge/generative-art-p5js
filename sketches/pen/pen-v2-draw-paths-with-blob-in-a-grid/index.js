@@ -88,15 +88,15 @@ sketch.setup(() => {
     }
   }
 
-  events.register("mouseDragged", function () {
+  events.register("engine-mouse-dragged", function () {
     addVector(mouseX, mouseY);
   });
 
-  events.register("mouseReleased", function () {
+  events.register("engine-mouse-released", function () {
     currentPathIndex = paths.length;
   });
 
-  events.register("doubleClicked", function () {
+  events.register("engine-canvas-double-clicked", function () {
     paths.pop();
   });
 });
