@@ -14,6 +14,6 @@
         "puppeteer-core": "^10.4.0"
     },
     "dependencies": {
-        "sketch-gallery": "github:CostardRouge/sketch-gallery#0.0.7b"
+        "sketch-gallery": "github:CostardRouge/sketch-gallery#0.0.8"
     }
 }
