@@ -64,25 +64,67 @@
          },
          "lines": {
             "meta": {
-               "_mtime": "2022-10-07T15:21:10.664Z",
+               "_mtime": "2023-01-09T13:33:22.809Z",
                "name": "lines"
             },
             "path": "sketches/3d-stuff/lines"
          }
       }
    },
-   "_shaders-three-js": {
+   "_tests": {
       "meta": {
-         "_mtime": "2022-10-30T23:31:44.639Z",
-         "name": "_shaders-three-js"
+         "_mtime": "2023-01-04T23:32:19.138Z",
+         "name": "_tests"
       },
       "sketches": {
-         "shaders-v1-test": {
+         "animate": {
+            "meta": {
+               "_mtime": "2022-12-27T22:39:57.644Z",
+               "name": "animate"
+            },
+            "path": "sketches/_tests/animate"
+         },
+         "animated-pipes": {
+            "meta": {
+               "_mtime": "2023-01-08T03:58:33.413Z",
+               "name": "animated-pipes"
+            },
+            "path": "sketches/_tests/animated-pipes"
+         },
+         "grid-2023": {
+            "meta": {
+               "_mtime": "2023-01-04T23:26:26.871Z",
+               "name": "grid-2023"
+            },
+            "path": "sketches/_tests/grid-2023"
+         },
+         "pen-vectors-test": {
+            "meta": {
+               "_mtime": "2023-01-08T03:09:24.802Z",
+               "name": "pen-vectors-test"
+            },
+            "path": "sketches/_tests/pen-vectors-test"
+         },
+         "shaders": {
             "meta": {
                "_mtime": "2022-11-01T11:26:08.135Z",
-               "name": "shaders-v1-test"
+               "name": "shaders"
             },
-            "path": "sketches/_shaders-three-js/shaders-v1-test"
+            "path": "sketches/_tests/shaders"
+         },
+         "shape-test": {
+            "meta": {
+               "_mtime": "2023-01-04T23:26:26.873Z",
+               "name": "shape-test"
+            },
+            "path": "sketches/_tests/shape-test"
+         },
+         "shaper": {
+            "meta": {
+               "_mtime": "2023-01-04T23:26:26.875Z",
+               "name": "shaper"
+            },
+            "path": "sketches/_tests/shaper"
          }
       }
    },
@@ -695,13 +737,6 @@
          "name": "easing"
       },
       "sketches": {
-         "animate": {
-            "meta": {
-               "_mtime": "2022-12-27T22:39:57.644Z",
-               "name": "animate"
-            },
-            "path": "sketches/easing/animate"
-         },
          "easing-v1-all-functions": {
             "meta": {
                "_mtime": "2022-09-11T19:19:42.895Z",
@@ -915,13 +950,6 @@
          "name": "genuary2023"
       },
       "sketches": {
-         "_animated-pipes": {
-            "meta": {
-               "_mtime": "2023-01-08T03:58:33.413Z",
-               "name": "_animated-pipes"
-            },
-            "path": "sketches/genuary2023/_animated-pipes"
-         },
          "genuary2023-day1-infinite-loop": {
             "meta": {
                "_mtime": "2023-01-03T18:44:26.989Z",
@@ -1283,7 +1311,7 @@
    },
    "pen": {
       "meta": {
-         "_mtime": "2022-05-15T23:26:58.867Z",
+         "_mtime": "2022-04-05T19:12:51.052Z",
          "name": "pen"
       },
       "sketches": {
@@ -1300,13 +1328,6 @@
                "name": "pen-v2-draw-paths-with-blob-in-a-grid"
             },
             "path": "sketches/pen/pen-v2-draw-paths-with-blob-in-a-grid"
-         },
-         "pen-vectors-test": {
-            "meta": {
-               "_mtime": "2023-01-08T03:09:24.802Z",
-               "name": "pen-vectors-test"
-            },
-            "path": "sketches/pen/pen-vectors-test"
          }
       }
    },
@@ -1972,35 +1993,6 @@
                "name": "torsade-v9-dna-spiral"
             },
             "path": "sketches/torsade/torsade-v9-dna-spiral"
-         }
-      }
-   },
-   "video-grid": {
-      "meta": {
-         "_mtime": "2023-01-04T23:32:19.138Z",
-         "name": "video-grid"
-      },
-      "sketches": {
-         "grid-2023": {
-            "meta": {
-               "_mtime": "2023-01-04T23:26:26.871Z",
-               "name": "grid-2023"
-            },
-            "path": "sketches/video-grid/grid-2023"
-         },
-         "shape-test": {
-            "meta": {
-               "_mtime": "2023-01-04T23:26:26.873Z",
-               "name": "shape-test"
-            },
-            "path": "sketches/video-grid/shape-test"
-         },
-         "shaper": {
-            "meta": {
-               "_mtime": "2023-01-04T23:26:26.875Z",
-               "name": "shaper"
-            },
-            "path": "sketches/video-grid/shaper"
          }
       }
    },

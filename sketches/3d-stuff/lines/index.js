@@ -1,4 +1,4 @@
-import { shapes, sketch, converters, iterators, events, time, mappers, options } from './utils/index.js';
+import { shapes, sketch, converters, iterators, events, easing, time, mappers, options } from './utils/index.js';
 
 options.add( [
   {
@@ -60,7 +60,7 @@ function wave(start, end, period, amplitude, fn = sin, speed = 1, phase) {
   strokeWeight(5);
   iterators.vector(start, end, 0.01, ( position, index ) => {
     const i = map( index, 0, 1, -PI/2, PI/2 )*period
-    const z = position.z + map(sin(i+t), -1, 1, -amplitude, amplitude);
+    const z = position.z + mappers.fn(sin(i+t), -1, 1, -amplitude, amplitude, fn);
 
     // translate(position.x, position.y, z);
     // translate(position.y, z, position.x);
@@ -92,13 +92,15 @@ function gridWave(period = 3, amplitude = 10) {
   for (let x = offsetX; x <= xCount - offsetX; x++) {
     for (let y = offsetY; y <= yCount - offsetY; y++) {
 
+      const fn = easing.easeInExpo;
+
       stroke('blue')
       wave(
         createVector(0, y * ySize),
         createVector(width, y * ySize),
         period,
         amplitude,
-        cos,
+        fn,
         y % 2 == 0 ? 0 : 0, 
         y % 2 == 0 ? -PI/2 : PI/2,
       )
@@ -109,15 +111,15 @@ function gridWave(period = 3, amplitude = 10) {
         createVector(x * xSize, height),
         period,
         amplitude,
-        sin,
+        fn,
         x % 2 == 0 ? 0 : 0, 
         x % 2 == 0 ? PI/2 : -PI/2,
       )
 
       // stroke('red')
       stroke(255);
-      line(0, y * ySize, width, y * ySize);
-      line(x * xSize, 0, x * xSize, height);
+      //line(0, y * ySize, width, y * ySize);
+      //line(x * xSize, 0, x * xSize, height);
     }
   }
 }

@@ -3,8 +3,6 @@
     "scripts": {
         "gallery:deploy": "sketch-gallery deploy generative-art-p5js tree.json assets libraries utils sketches",
         "gallery:build": "sketch-gallery build generative-art-p5js tree.json assets libraries utils sketches",
-        "pregallery:build": "npm run build:tree",
-        "pregallery:deploy": "npm run build:tree",
         "build:tree": "node ./scripts/build-tree.js sketches tree.json",
         "prebuild:previews": "npm run build:tree",
         "build:previews": "node ./scripts/build-previews.js tree.json 512x512 jpeg"
@@ -14,6 +12,6 @@
         "puppeteer-core": "^10.4.0"
     },
     "dependencies": {
-        "sketch-gallery": "github:CostardRouge/sketch-gallery#0.0.8"
+        "sketch-gallery": "github:CostardRouge/sketch-gallery#0.0.9"
     }
 }
