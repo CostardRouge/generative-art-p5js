@@ -155,13 +155,13 @@ sketch.draw( (time, center) => {
 
   const speed = time//2;
   const duration = 1;
-  const word = "*"//"÷æ«$©®…ø†¥ø&%+#$@!*";
+  const word = "*+"//"÷æ«$©®…ø†¥ø&%+#$@!*";
   const size = 950;
   const font = string.fonts.serif;
   const currentLetter = mappers.circularIndex(speed, word)
   const nextLetter = mappers.circularIndex(speed+1, word)
 
-  const sampleFactor = 0.5//0.5//mappers.circularIndex(time, [0.5, 0.1, 0.25]);
+  const sampleFactor = 0.5//mappers.circularIndex(time, [0.5, 0.1, 0.25]);
   const simplifyThreshold = 0//mappers.circularIndex(time*5, [0.001, 0]);
 
   const currentLetterPoints = getTextPoints({
@@ -181,6 +181,9 @@ sketch.draw( (time, center) => {
     sampleFactor,
     simplifyThreshold
   })
+
+  stroke(0, 0, 255)
+  strokeWeight(2)
 
   for (let i = 0; i < currentLetterPoints.length; i++) {
     const progression = map(i, 0, currentLetterPoints.length-1, 0, 1);
@@ -204,21 +207,23 @@ sketch.draw( (time, center) => {
      //colors.black
     ]);
 
-    fill(colorFunction({
+    noFill()
+    stroke(colorFunction({
       hueOffset: time,
       hueIndex: mappers.fn(progression, 0, 1, -PI, PI),
       opacityFactor: 1.5,//mappers.fn(alpha, 0, 255, 3, 1)
       opacityFactor: map(sin(progression*100+time*5), -1, 1, 3, 1)
     }))
     
-    // const amt = mappers.circularIndex(time/2+progression, [,, 2, 3, 5, 7]);
-    const amt = mappers.circularIndex(time/2+progression, [,7,]);
+    let amt = mappers.circularIndex(time/2+progression, [, 2, 3, 5, 7]);
+    amt = mappers.circularIndex(time/2+progression, [,7]);
     const size = 40//mappers.circularIndex(time/4+progression, [20, 30]);
 
     push()
     translate(x*2, y*2)
     rotate(-time+progression*amt);
-    flower(size, amt, 1)
+    //rotate(progression*PI*amt);
+    flower(size, amt)
     pop()
   }
 

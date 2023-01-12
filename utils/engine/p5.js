@@ -69,6 +69,7 @@ const p5js = {
 
             if ( 'webgl' === type ) {
                 p5js.camera = createCamera();
+                setCamera(p5js.camera )
             }
 
             // applying options
