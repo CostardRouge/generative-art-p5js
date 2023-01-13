@@ -90,7 +90,11 @@ const debug = {
   },
   webgl: function() {
     const createContent = () => {
-      const camera = sketch.camera;
+      const camera = sketch?.engine?.camera;
+
+      if (!camera) {
+        return
+      }
 
       return `camera
         eyeX: ${camera.eyeX}<br>
@@ -107,7 +111,7 @@ const debug = {
       `;
     }
 
-    debug.createElement( "main", "canvas-overlay", createContent, !sketch.camera)
+    debug.createElement( "main", "canvas-overlay", createContent, sketch?.engine?.camera)
   }
 };
 

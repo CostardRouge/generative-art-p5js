@@ -71,63 +71,6 @@
          }
       }
    },
-   "_tests": {
-      "meta": {
-         "_mtime": "2023-01-04T23:32:19.138Z",
-         "name": "_tests"
-      },
-      "sketches": {
-         "animate": {
-            "meta": {
-               "_mtime": "2022-12-27T22:39:57.644Z",
-               "name": "animate"
-            },
-            "path": "sketches/_tests/animate"
-         },
-         "animated-pipes": {
-            "meta": {
-               "_mtime": "2023-01-08T03:58:33.413Z",
-               "name": "animated-pipes"
-            },
-            "path": "sketches/_tests/animated-pipes"
-         },
-         "grid-2023": {
-            "meta": {
-               "_mtime": "2023-01-04T23:26:26.871Z",
-               "name": "grid-2023"
-            },
-            "path": "sketches/_tests/grid-2023"
-         },
-         "pen-vectors-test": {
-            "meta": {
-               "_mtime": "2023-01-08T03:09:24.802Z",
-               "name": "pen-vectors-test"
-            },
-            "path": "sketches/_tests/pen-vectors-test"
-         },
-         "shaders": {
-            "meta": {
-               "_mtime": "2022-11-01T11:26:08.135Z",
-               "name": "shaders"
-            },
-            "path": "sketches/_tests/shaders"
-         },
-         "shape-test": {
-            "meta": {
-               "_mtime": "2023-01-04T23:26:26.873Z",
-               "name": "shape-test"
-            },
-            "path": "sketches/_tests/shape-test"
-         },
-         "shaper": {
-            "meta": {
-               "_mtime": "2023-01-04T23:26:26.875Z",
-               "name": "shaper"
-            },
-            "path": "sketches/_tests/shaper"
-         }
-      }
-   },
    "abrupt": {
       "meta": {
          "_mtime": "2022-04-26T00:07:46.043Z",
@@ -341,7 +284,7 @@
          },
          "arrow-v2-polar": {
             "meta": {
-               "_mtime": "2022-12-27T22:59:33.164Z",
+               "_mtime": "2023-01-09T13:54:24.790Z",
                "name": "arrow-v2-polar"
             },
             "path": "sketches/arrow/arrow-v2-polar"
@@ -946,7 +889,7 @@
    },
    "genuary2023": {
       "meta": {
-         "_mtime": "2023-01-08T19:18:51.653Z",
+         "_mtime": "2023-01-13T17:01:35.564Z",
          "name": "genuary2023"
       },
       "sketches": {
@@ -971,12 +914,54 @@
             },
             "path": "sketches/genuary2023/genuary2023-day3-glitch-art"
          },
+         "genuary2023-day4-debug-view": {
+            "meta": {
+               "_mtime": "2023-01-10T23:33:41.369Z",
+               "name": "genuary2023-day4-debug-view"
+            },
+            "path": "sketches/genuary2023/genuary2023-day4-debug-view"
+         },
          "genuary2023-day4-intersections": {
             "meta": {
                "_mtime": "2023-01-08T18:55:35.202Z",
                "name": "genuary2023-day4-intersections"
             },
             "path": "sketches/genuary2023/genuary2023-day4-intersections"
+         },
+         "genuary2023-day5-debug-view": {
+            "meta": {
+               "_mtime": "2023-01-10T23:41:22.191Z",
+               "name": "genuary2023-day5-debug-view"
+            },
+            "path": "sketches/genuary2023/genuary2023-day5-debug-view"
+         },
+         "genuary2023-day6-steal-like-an-arstist": {
+            "meta": {
+               "_mtime": "2023-01-13T16:20:56.963Z",
+               "name": "genuary2023-day6-steal-like-an-arstist"
+            },
+            "path": "sketches/genuary2023/genuary2023-day6-steal-like-an-arstist"
+         },
+         "genuary2023-day6-steal-like-an-arstist-a": {
+            "meta": {
+               "_mtime": "2023-01-13T14:57:59.307Z",
+               "name": "genuary2023-day6-steal-like-an-arstist-a"
+            },
+            "path": "sketches/genuary2023/genuary2023-day6-steal-like-an-arstist-a"
+         },
+         "genuary2023-day6-steal-like-an-arstist-b": {
+            "meta": {
+               "_mtime": "2023-01-11T00:00:53.823Z",
+               "name": "genuary2023-day6-steal-like-an-arstist-b"
+            },
+            "path": "sketches/genuary2023/genuary2023-day6-steal-like-an-arstist-b"
+         },
+         "genuary2023-day6-text-on-grid-points": {
+            "meta": {
+               "_mtime": "2023-01-12T21:09:50.332Z",
+               "name": "genuary2023-day6-text-on-grid-points"
+            },
+            "path": "sketches/genuary2023/genuary2023-day6-text-on-grid-points"
          }
       }
    },
@@ -1880,6 +1865,63 @@
                "name": "ukraine"
             },
             "path": "sketches/strips/ukraine"
+         }
+      }
+   },
+   "tests": {
+      "meta": {
+         "_mtime": "2023-01-04T23:32:19.138Z",
+         "name": "tests"
+      },
+      "sketches": {
+         "animate": {
+            "meta": {
+               "_mtime": "2022-12-27T22:39:57.644Z",
+               "name": "animate"
+            },
+            "path": "sketches/tests/animate"
+         },
+         "animated-text-points": {
+            "meta": {
+               "_mtime": "2023-01-09T14:09:19.379Z",
+               "name": "animated-text-points"
+            },
+            "path": "sketches/tests/animated-text-points"
+         },
+         "grid-2023": {
+            "meta": {
+               "_mtime": "2023-01-04T23:26:26.871Z",
+               "name": "grid-2023"
+            },
+            "path": "sketches/tests/grid-2023"
+         },
+         "pen-vectors-test": {
+            "meta": {
+               "_mtime": "2023-01-08T03:09:24.802Z",
+               "name": "pen-vectors-test"
+            },
+            "path": "sketches/tests/pen-vectors-test"
+         },
+         "shaders": {
+            "meta": {
+               "_mtime": "2022-11-01T11:26:08.135Z",
+               "name": "shaders"
+            },
+            "path": "sketches/tests/shaders"
+         },
+         "shape-test": {
+            "meta": {
+               "_mtime": "2023-01-04T23:26:26.873Z",
+               "name": "shape-test"
+            },
+            "path": "sketches/tests/shape-test"
+         },
+         "shaper": {
+            "meta": {
+               "_mtime": "2023-01-04T23:26:26.875Z",
+               "name": "shaper"
+            },
+            "path": "sketches/tests/shaper"
          }
       }
    },

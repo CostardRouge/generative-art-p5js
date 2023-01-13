@@ -36,7 +36,7 @@ const colors = {
     color(
       4, 2, 8
     )
-  )
+  ),
 };
 
 export default colors;

@@ -122,7 +122,7 @@ sketch.draw( (time, center) => {
 
     angle = map(sin(time/1.25+lerpIndex), -1, 1, -PI, PI);
 
-    const colorFunction = isLast ? colors.white : colors.rainbow;
+    const colorFunction = isLast ? colors.purpleSimple : colors.rainbow;
 
     const coco = colorFunction({
       hueOffset: 0,

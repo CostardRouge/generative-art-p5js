@@ -1,4 +1,4 @@
-import { events, time, debug, options } from './index.js';
+import { events, debug, options } from './index.js';
 import { p5js, threejs } from './engine/index.js';
 
 const engines = {
