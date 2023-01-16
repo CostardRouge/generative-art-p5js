@@ -15,6 +15,9 @@ const cache = {
   },
   get: function(key) {
     return cache.values?.[ key ];
+  },
+  dump: () => {
+    
   }
 }
 

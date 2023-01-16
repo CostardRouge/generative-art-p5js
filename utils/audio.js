@@ -98,10 +98,10 @@ const audio = {
       audio.capture.audioIn.start();
       audio.capture.fft.setInput(audio.capture.audioIn);
   
-      console.log({
-        AudioIn: audio.capture.audioIn,
-        FFT: audio.capture.fft
-      });
+      // console.log({
+      //   AudioIn: audio.capture.audioIn,
+      //   FFT: audio.capture.fft
+      // });
 
       events.register("pre-draw", audio.capture.energy.monitor );
     },
@@ -142,45 +142,45 @@ const audio = {
           return;
         }
 
-          if (undefined === audio.capture.history) {
-            audio.capture.history = {
-              spectrum: new Array(audio.capture.historyBufferSize).fill(undefined),
-              waveform: new Array(audio.capture.historyBufferSize).fill(undefined),
-              ranges: (
-                rangeNames.reduce( (history, rangeName, _, {length}) => {
-                  return {
-                    ...history,
-                    [rangeName]: new Array(audio.capture.historyBufferSize).fill(undefined)
-                  }
-                }, {})
-              )
-            }
+        if (undefined === audio.capture.history) {
+          audio.capture.history = {
+            spectrum: new Array(audio.capture.historyBufferSize).fill(undefined),
+            waveform: new Array(audio.capture.historyBufferSize).fill(undefined),
+            ranges: (
+              rangeNames.reduce( (history, rangeName, _, {length}) => {
+                return {
+                  ...history,
+                  [rangeName]: new Array(audio.capture.historyBufferSize).fill(undefined)
+                }
+              }, {})
+            )
+          }
+        }
+
+        // HISTORY FOR SPECTRUM
+        audio.capture.history.spectrum.shift();
+        audio.capture.history.spectrum.push(audio.capture.fft.analyze());
+
+        // HISTORY FOR WAVEFORM
+        audio.capture.history.waveform.shift();
+        audio.capture.history.waveform.push(audio.capture.fft.waveform());
+
+        // HISTORY FOR RANGES
+        for (const rangeName in audio.capture.history.ranges) {
+          const range = ranges[rangeName];
+          const rangeHistory = audio.capture.history.ranges[rangeName];
+
+          if (undefined === rangeHistory) {
+            return;
           }
 
-          // HISTORY FOR SPECTRUM
-          audio.capture.history.spectrum.shift();
-          audio.capture.history.spectrum.push(audio.capture.fft.analyze());
-
-          // HISTORY FOR WAVEFORM
-          audio.capture.history.waveform.shift();
-          audio.capture.history.waveform.push(audio.capture.fft.waveform());
-
-          // HISTORY FOR RANGES
-          for (const rangeName in audio.capture.history.ranges) {
-            const range = ranges[rangeName];
-            const rangeHistory = audio.capture.history.ranges[rangeName];
-
-            if (undefined === rangeHistory) {
-              return;
-            }
-
-            audio.capture.history.ranges[rangeName].shift();
-            audio.capture.history.ranges[rangeName].push({
-              raw: range.raw,
-              smooth: range.smooth,
-              amplified: range.amplified,
-            });
-          }
+          audio.capture.history.ranges[rangeName].shift();
+          audio.capture.history.ranges[rangeName].push({
+            raw: range.raw,
+            smooth: range.smooth,
+            amplified: range.amplified,
+          });
+        }
       },
       monitor: () => {
         if ( false === audio.capture.audioIn?.enabled ) {
