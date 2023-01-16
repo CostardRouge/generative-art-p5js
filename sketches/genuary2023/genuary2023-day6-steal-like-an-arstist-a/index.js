@@ -144,7 +144,7 @@ sketch.draw( (time, center) => {
     pop()
   }
 
-  debug.webgl()
+  //debug.webgl()
 
   orbitControl()
 });
