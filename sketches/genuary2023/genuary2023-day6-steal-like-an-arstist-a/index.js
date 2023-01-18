@@ -48,7 +48,7 @@ sketch.draw( (time, center) => {
   const currentTextPoints = cache.get( `${currentLetter}-text-points`);
 
   const h = height/4;
-  const d = 30//map(sin(time), -1, 1, 20, 50);
+  const d = 20//map(sin(time), -1, 1, 20, 50);
   const r = 600;
 
   strokeWeight(2)
@@ -74,7 +74,7 @@ sketch.draw( (time, center) => {
     rr = map(sin(cc+time), -1, 1, r, -r)
     // rr = map(sin(cc+time+z*50), -1, 1, r, -r)
 
-    const step = 180//map(z, 0, d-1, 45, 180)
+    const step = 90//map(z, 0, d-1, 45, 180)
 
     for (let a = 0; a < TAU; a += TAU / step) {
       //const easingFunction = mappers.circularIndex(-time+z/100, easingFunctions)[1]
@@ -118,7 +118,7 @@ sketch.draw( (time, center) => {
         
         if (alpha) {
           currentColor.setAlpha(alpha)
-          currentPosition.add(0, 500)
+          currentPosition.add(0, 100)
         }
       }
 

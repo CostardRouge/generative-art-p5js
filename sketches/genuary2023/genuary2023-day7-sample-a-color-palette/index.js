@@ -2,20 +2,13 @@ import { audio, debug, sketch, events, mappers, easing, animation, colors, cache
 
 sketch.setup( undefined, { type: 'webgl'});
 
-const easingFunctions = Object.entries(easing)
-
 events.register("engine-window-preload", () => {
-  // cache.store("image", () => loadImage( "the-fountain.jpg" ))
-  //cache.store("image", () => loadImage( "ok.jpg" ))
   cache.store("image", () => loadImage( "homogenic.webp" ))
-  // cache.store("image", () => loadImage( "post.jpg" ))
-  //cache.store("image", () => loadImage( "duvet.png" ))
 });
 
 events.register("post-setup", () => {
   audio.capture.setup(0.9, 8192)
   events.register("post-draw", audio.capture.energy.recordHistory );
-  // midi.setup()
 });
 
 function chunk(array, chunkSize) {
@@ -79,7 +72,7 @@ sketch.draw( (time, center) => {
   // rotateY(mediumActivity)
   // rotateX(audioActivity)
 
-  const cc = 10//~~map(bassAverage, 0, 1, 2, 30)
+  const cc = 20//~~map(bassAverage, 0, 1, 2, 30)
   // const cc = ~~map(sin(time+audioEnergyAverage), -1, 1, 4, 30)
 
   const cols = cc;
@@ -122,6 +115,7 @@ sketch.draw( (time, center) => {
       }
     })
   }
+
   ambientLight(128)
   directionalLight(128, 128, 128, -1, -1, -1);
 
@@ -129,8 +123,6 @@ sketch.draw( (time, center) => {
     const { color, position, x, y } = dominantColors[key]
     const nextX = x//~~map(sin(time-x/cols), -1, 1, 0, cols);
     const nextY = y//~~map(sin(time/8+y/rows), -1, 1, 0, rows);
-
-    //console.log(x, y);
 
     const {color: nextColor } = dominantColors[ `${nextX}-${nextY}` ];
 
@@ -160,5 +152,5 @@ sketch.draw( (time, center) => {
     box(size, size, z+100*bassAverage)
     pop()
   }
-  orbitControl()
+  //orbitControl()
 });

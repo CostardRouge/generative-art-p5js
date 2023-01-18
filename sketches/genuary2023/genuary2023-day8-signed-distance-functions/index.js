@@ -1,164 +1,330 @@
-import { audio, debug, sketch, events, mappers, easing, animation, colors, cache, grid } from './utils/index.js';
+import { events, sketch, cache, converters, animation, audio, grid, colors, midi, mappers, iterators, options, easing } from './utils/index.js';
+
+options.add( [
+  {
+    id: "grid-rows",
+    type: 'slider',
+    label: 'Rows',
+    min: 1,
+    max: 200,
+    defaultValue: 40,
+    category: 'Grid'
+  },
+  {
+    id: "grid-cols",
+    type: 'slider',
+    label: 'Cols',
+    min: 1,
+    max: 200,
+    defaultValue: 40,
+    category: 'Grid'
+  },
+  {
+    id: "grid-cell-centered",
+    type: 'switch',
+    label: 'Centered cell',
+    defaultValue: true,
+    category: 'Grid'
+  }
+] );
+
+// events.register("post-setup", () => {
+//   audio.capture.setup(0, 512)
+//   events.register("post-draw", audio.capture.energy.recordHistory );
+//   midi.setup()
+// });
 
 sketch.setup( undefined, { type: 'webgl'});
 
-const easingFunctions = Object.entries(easing)
+function rotateVector(vector, center, angle) {
+  const cosine = Math.cos(angle);
+  const sine = Math.sin(angle);
 
-events.register("engine-window-preload", () => {
-  // cache.store("image", () => loadImage( "the-fountain.jpg" ))
-  //cache.store("image", () => loadImage( "ok.jpg" ))
-  cache.store("image", () => loadImage( "homogenic.webp" ))
-  // cache.store("image", () => loadImage( "post.jpg" ))
-  //cache.store("image", () => loadImage( "duvet.png" ))
-});
-
-events.register("post-setup", () => {
-  audio.capture.setup(0.9, 8192)
-  events.register("post-draw", audio.capture.energy.recordHistory );
-  // midi.setup()
-});
-
-function chunk(array, chunkSize) {
-  const chunkedArray = [];
-
-  for (let i = 0; i < array.length; i += chunkSize) {
-    chunkedArray.push(array.slice(i, i + chunkSize));
-  }
-
-  return chunkedArray;
+  return ([
+    (cosine * (vector.x - center.x)) + (sine * (vector.y - center.y)) + center.x,
+    (cosine * (vector.y - center.y)) - (sine * (vector.x - center.x)) + center.y
+  ]);
 }
 
-export const getDominantColorFromPixels = ( pixels, precision = 28 ) => {
-  const chunkedPixels = chunk( pixels, 4 );
+function getAlphaFromMask({ position, maskPoints, maskId, distance = 0.025, alphaRange = [0, 255]}) {
+  const { x, y } = position;
 
-  const filteredPixels = chunkedPixels.filter( ( _, index ) => (
-      index % precision === 0
-  ) );
+  const alpha = cache.store(`${x}-${y}-${maskId}-alpha`, () => {
+    const [ minAlpha, maxAlpha ] = alphaRange;
 
-  return filteredPixels.reduce( ( accumulator, [ r, g, b, a ] ) => {
-      const pixelColor = color(  r, g, b, a );
-
-      if ( null === accumulator ) {
-        return pixelColor;
+    return maskPoints.reduce( ( result, pointPosition ) => {
+      if (255 <= result) {
+        return result;
       }
 
-      return lerpColor( accumulator, pixelColor, 0.5 )
-  }, null );
-};
+      return Math.max(
+        result,
+        ~~map(pointPosition.dist(position), 0, distance, maxAlpha, minAlpha, true)
+      );
+    }, 0);
+  });
 
-const dominantColors = {}
+  return alpha;
+}
 
-let audioActivity = 0
-let bassActivity = 0
-let mediumActivity = 0
-
-sketch.draw( (time, center) => {
+sketch.draw((time, center) => {
   background(0);
 
-  background(
-    lerpColor(
-      color(0),
-      color(32,32,64,1),
-      //color(96,0,32,1),
-      audio.capture.energy.byIndex( 0 )
-      // audio.capture.energy.byIndex( 4, "count" )
-    )
-  );
-
-  translate(0, 0, -600)
-  rotateX(PI/6)
-
-  const audioAverage = audio.capture.energy.average("smooth");
-  const bassAverage = audio.capture.energy.byIndex(1, "raw");
-  const mediumAverage = audio.capture.energy.byIndex(1, "smooth");
-
-  bassActivity += map(bassAverage, 0, 1, 0, 0.03, true);
-  audioActivity += map(audioAverage, 0, 1, 0, 0.03, true);
-  mediumActivity += mediumAverage*0.03
-
-  // rotateY(mediumActivity)
-  // rotateX(audioActivity)
-
-  const cc = 10//~~map(bassAverage, 0, 1, 2, 30)
-  // const cc = ~~map(sin(time+audioEnergyAverage), -1, 1, 4, 30)
-
-  const cols = cc;
-  const rows = cc*height/width;
+  const cols = options.get("grid-cols");
+  const rows = cols*height/width;
   const size = width/cols
+  const hSize = size/2;
 
-  if (Object.values(dominantColors).length === 0) {
-    const img = cache.get("image");
+  const gridOptions = {
+    startLeft: createVector( -width/2, -height/2 ),
+    startRight: createVector( width/2, -height/2 ),
+    endLeft: createVector( -width/2, height/2 ),
+    endRight: createVector( width/2, height/2 ),
+    rows,
+    cols,
+    // startLeft: createVector( 0, 0 ),
+    // startRight: createVector( width, 0 ),
+    // endLeft: createVector( 0, height ),
+    // endRight: createVector( width, height ),
+    // rows,
+    // cols,
+    centered: options.get("grid-cell-centered")
+  }
 
-    const gridOptions = {
-      startLeft: createVector( -width/2, -height/2 ),
-      startRight: createVector( width/2, -height/2 ),
-      endLeft: createVector( -width/2, height/2 ),
-      endRight: createVector( width/2, height/2 ),
-      rows,
-      cols,
-      centered: true
-    }
+  const values = [ 
+    createVector(1, 3),
+    // createVector(3, 6),
+    // createVector(3, 2),
+    // createVector(2, 4),
+    // createVector(5, 4),
+  ]
 
-    grid.draw(gridOptions, (cellVector, { x, y}) => {
-      const dominantColor = cache.store(`image-pixels-${x}-${y}-${rows}-${cols}`, () => {
-        const { width: imageWidth, height: imageHeight } = img;
-  
-        const subWidth = imageWidth / cols;
-        const subHeight = imageHeight / rows;
-        const subX = x/cols * imageWidth;
-        const subY = y/rows * imageHeight;
-        const subImage = img.get( subX, subY, subWidth, subHeight );
-  
-        subImage.loadPixels()
-  
-        return getDominantColorFromPixels( subImage.pixels );
-      });
-  
-      dominantColors[`${x}-${y}`] = {
-        position: cellVector,
-        color: dominantColor,
-        x,
-        y
+  const d = width / 4;
+  const samplingCount = 60;
+
+  // const generatedAnimatedMaskPoints = cache.store("generated-animated-mask-points", () => {
+  //   const result = [ ]
+  //   const totalDuration = values.length;
+  //   const totalMaskPoints = totalDuration * samplingCount;
+
+  //   for (let i = 0; i < totalMaskPoints; i += 1) {
+  //     const points = [];
+
+  //     const { x, y } = animation.ease({
+  //       values,
+  //       currentTime: map(i, 0, totalMaskPoints, 0, totalDuration, true),
+  //       duration: 1,
+  //       easingFn: easing.easeInOutExpo,
+  //       lerpFn: p5.Vector.lerp,
+  //     })
+
+  //     for (let a = 0; a < TAU; a += TAU / 120) {
+  //       points.push(
+  //         createVector(
+  //           sin(a*x) * d,
+  //           cos(a*y) * d,
+  //         )
+  //       )
+  //     }
+
+  //     result.push({
+  //       id: `points-group-id-${i}`,
+  //       points
+  //     });
+  //   }
+
+  //   return result;
+  // })
+
+  // const generatedAnimatedMaskPoints = cache.store("generated-animated-mask-points", () => {
+  //   const input = [2, 3, 4, 5]
+
+  //   const result = [ ]
+  //   const totalDuration = input.length;
+  //   const totalMaskPoints = totalDuration * samplingCount;
+
+  //   for (let i = 0; i < totalMaskPoints; i += 1) {
+  //     const points = [];
+  //     const inputIndex = map(i, 0, totalMaskPoints, 0, totalDuration, true);
+
+  //     const f = animation.ease({
+  //       values: input,
+  //       currentTime: inputIndex,
+  //       duration: 1,
+  //       easingFn: easing.easeInOutExpo,
+  //       // lerpFn: p5.Vector.lerp,
+  //     })
+
+  //     const r = map(inputIndex, 0, totalDuration, width / 6, width / 3)
+
+  //     for (let a = 0; a < TAU; a += TAU / 360) {
+  //       points.push(
+  //         createVector(
+  //           sin(a*f) * r,
+  //           cos(a) * r,
+  //         )
+  //       )
+  //     }
+
+  //     result.push({
+  //       id: `points-group-id-${i}`,
+  //       points
+  //     });
+  //   }
+
+  //   return result;
+  // })
+
+  const generatedAnimatedMaskPoints = cache.store("generated-animated-mask-points", () => {
+    const input = Array(10).fill(undefined).map( _ => {
+      const size = random(50, 150);
+      const W = width/2 - size
+      const H = height/2 - size
+
+      return {
+        position: createVector(
+          random(-W, W),
+          random(-H, H),
+        ),
+        speed: createVector(
+          random(-10, 10),
+          random(-10, 10),
+        ),
+        size
       }
     })
-  }
-  ambientLight(128)
-  directionalLight(128, 128, 128, -1, -1, -1);
 
-  for ( const key in dominantColors ) {
-    const { color, position, x, y } = dominantColors[key]
-    const nextX = x//~~map(sin(time-x/cols), -1, 1, 0, cols);
-    const nextY = y//~~map(sin(time/8+y/rows), -1, 1, 0, rows);
+    const result = [ ]
+    const totalDuration = input.length;
+    const totalMaskPoints = totalDuration * samplingCount;
 
-    //console.log(x, y);
+    for (let i = 0; i < totalMaskPoints; i += 1) {
+      const points = [];
 
-    const {color: nextColor } = dominantColors[ `${nextX}-${nextY}` ];
+      for (const dot of input) {
+        const { position, size, speed: { x: vX, y: vY} } = dot;
 
-    if (noise(x, y, audioActivity) > audioAverage) {
-      //continue
+        const steps = map(size, 50, 150, 40, 60)
+        for (let a = 0; a < TAU; a += TAU / steps) {
+          const p = position.copy();
+
+          p.add(
+            sin(a) * size,
+            cos(a) * size
+          )
+
+          
+
+          // if (p.y > height/2) {
+          //   p.y = -height/2
+          // }
+          // if (p.y < -height/2) {
+          //   p.y = height/2
+          // }
+
+          // if (p.x > width/2) {
+          //   p.x = -width/2
+          // }
+          // if (p.x < -width/2) {
+          //   p.x = width/2
+          // }
+
+          // if (p.y > height/2) {
+          //   p.y = -height/2
+          // }
+          // if (p.y < -height/2) {
+          //   p.y = height/2
+          // }
+          points.push( p )
+        }
+
+        position.add(vX, vY)
+
+        const nextX = position.x + vX + size
+        const nextY = position.y + vY + size
+
+        if (nextX >= width/2 || nextX <= -width/2) {
+          dot.speed.x *= -1
+        }
+
+        if (nextY >= height/2 || nextY <= -height/2) {
+          dot.speed.y *= -1
+        }
+      }
+
+      result.push({
+        id: `points-group-id-${i}`,
+        points
+      });
     }
 
-    const { levels: [ r, g, b ] } = nextColor;
+    return result;
+  })
 
-    const xx = ~~(x/cols*audio.capture.bins)
-    const yy = ~~(y/rows*audio.capture.historyBufferSize)
-    const audioHistoryLine = audio.capture.history?.spectrum[yy];
-    const energy = audioHistoryLine?.[xx]
 
-    const n = noise(x/cols, y/rows+energy/255)
-    const z = energy/255 * 500 * bassAverage//map((((r+g+b)/3)/255), 1, 0, 0, 1)
+  // console.log(generatedAnimatedMaskPoints);
 
-    push()
-    // fill(nextColor);
-    ambientMaterial(nextColor);
+  const { id, points  } = mappers.circularIndex(time*60, generatedAnimatedMaskPoints);
 
-    // rotateY(audioActivity+x/cols)
-    translate(position.x, position.y, z/2)
+  // for (const vector of points) {
+  //   stroke("red")
 
-    //rotateZ(time+x/cols)
+  //   point(
+  //     vector.x,
+  //     vector.y
+  //   )
+  // }
 
-    box(size, size, z+100*bassAverage)
-    pop()
-  }
+  // return
+
+  grid.draw(gridOptions, (currentPosition, { x, y}) => {
+    const alpha = getAlphaFromMask({
+      maskId: id,
+      maskPoints: points,
+      position: currentPosition,
+      distance: size*4,
+    })
+
+    //currentPosition.add(0, 0, map(alpha, 0, 255, 1, 100))
+
+    
+    if (alpha) {
+
+      const currentColor = colors.rainbow({
+        hueOffset: 0,
+        hueIndex: mappers.fn(alpha, 0, 255, -PI/2, PI/2)*2,
+        opacityFactor: map(alpha, 0, 255, 5, 1.5)
+      })
+
+      //currentColor.setAlpha(alpha)
+
+
+
+      fill(currentColor)
+      noStroke()
+
+      push();
+      translate( currentPosition.x, currentPosition.y, currentPosition.z );
+
+      //strokeWeight(size);
+      strokeWeight(10);
+      stroke(currentColor)
+      point( 0, 0, currentPosition.z);
+
+      // rect(-hSize, -hSize, size)
+
+
+      pop();
+    }
+    else {
+      stroke(32, 32, 64)
+      point( currentPosition.x, currentPosition.y)
+    }
+
+    
+    
+    
+  })
+
   orbitControl()
 });
