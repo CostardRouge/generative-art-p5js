@@ -42,7 +42,7 @@ const grid = {
     })
 
     cachedGridVectors.forEach( ([ cellVector, x, y ] ) => {
-      handler(cellVector, { x, y })
+      handler(cellVector.copy(), { x, y })
     })
   }
 };

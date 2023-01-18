@@ -889,7 +889,7 @@
    },
    "genuary2023": {
       "meta": {
-         "_mtime": "2023-01-13T17:01:35.564Z",
+         "_mtime": "2023-01-18T02:01:01.572Z",
          "name": "genuary2023"
       },
       "sketches": {
@@ -902,7 +902,7 @@
          },
          "genuary2023-day2-10-minutes": {
             "meta": {
-               "_mtime": "2023-01-05T17:04:22.624Z",
+               "_mtime": "2023-01-14T18:20:34.509Z",
                "name": "genuary2023-day2-10-minutes"
             },
             "path": "sketches/genuary2023/genuary2023-day2-10-minutes"
@@ -937,14 +937,14 @@
          },
          "genuary2023-day6-steal-like-an-arstist": {
             "meta": {
-               "_mtime": "2023-01-13T16:20:56.963Z",
+               "_mtime": "2023-01-15T17:02:53.395Z",
                "name": "genuary2023-day6-steal-like-an-arstist"
             },
             "path": "sketches/genuary2023/genuary2023-day6-steal-like-an-arstist"
          },
          "genuary2023-day6-steal-like-an-arstist-a": {
             "meta": {
-               "_mtime": "2023-01-13T14:57:59.307Z",
+               "_mtime": "2023-01-17T22:10:16.420Z",
                "name": "genuary2023-day6-steal-like-an-arstist-a"
             },
             "path": "sketches/genuary2023/genuary2023-day6-steal-like-an-arstist-a"
@@ -956,12 +956,26 @@
             },
             "path": "sketches/genuary2023/genuary2023-day6-steal-like-an-arstist-b"
          },
-         "genuary2023-day6-text-on-grid-points": {
+         "genuary2023-day6-steal-like-an-arstist-c": {
             "meta": {
-               "_mtime": "2023-01-12T21:09:50.332Z",
-               "name": "genuary2023-day6-text-on-grid-points"
+               "_mtime": "2023-01-15T17:36:18.312Z",
+               "name": "genuary2023-day6-steal-like-an-arstist-c"
             },
-            "path": "sketches/genuary2023/genuary2023-day6-text-on-grid-points"
+            "path": "sketches/genuary2023/genuary2023-day6-steal-like-an-arstist-c"
+         },
+         "genuary2023-day7-sample-a-color-palette": {
+            "meta": {
+               "_mtime": "2023-01-17T21:14:24.951Z",
+               "name": "genuary2023-day7-sample-a-color-palette"
+            },
+            "path": "sketches/genuary2023/genuary2023-day7-sample-a-color-palette"
+         },
+         "genuary2023-day8-signed-distance-functions": {
+            "meta": {
+               "_mtime": "2023-01-18T02:01:08.033Z",
+               "name": "genuary2023-day8-signed-distance-functions"
+            },
+            "path": "sketches/genuary2023/genuary2023-day8-signed-distance-functions"
          }
       }
    },
@@ -1214,26 +1228,19 @@
             },
             "path": "sketches/noise-strips/noise-strips-v1"
          },
-         "noise-strips-v2-with-camera": {
-            "meta": {
-               "_mtime": "2022-11-09T19:46:14.093Z",
-               "name": "noise-strips-v2-with-camera"
-            },
-            "path": "sketches/noise-strips/noise-strips-v2-with-camera"
-         },
-         "noise-strips-v3": {
+         "noise-strips-v2": {
             "meta": {
                "_mtime": "2022-11-09T20:57:49.117Z",
-               "name": "noise-strips-v3"
+               "name": "noise-strips-v2"
             },
-            "path": "sketches/noise-strips/noise-strips-v3"
+            "path": "sketches/noise-strips/noise-strips-v2"
          },
-         "noise-strips-v4-lava": {
+         "noise-strips-v3-lava": {
             "meta": {
                "_mtime": "2022-11-11T12:31:18.217Z",
-               "name": "noise-strips-v4-lava"
+               "name": "noise-strips-v3-lava"
             },
-            "path": "sketches/noise-strips/noise-strips-v4-lava"
+            "path": "sketches/noise-strips/noise-strips-v3-lava"
          }
       }
    },
@@ -1870,23 +1877,23 @@
    },
    "tests": {
       "meta": {
-         "_mtime": "2023-01-04T23:32:19.138Z",
+         "_mtime": "2022-10-30T23:31:44.639Z",
          "name": "tests"
       },
       "sketches": {
-         "animate": {
-            "meta": {
-               "_mtime": "2022-12-27T22:39:57.644Z",
-               "name": "animate"
-            },
-            "path": "sketches/tests/animate"
-         },
          "animated-text-points": {
             "meta": {
                "_mtime": "2023-01-09T14:09:19.379Z",
                "name": "animated-text-points"
             },
             "path": "sketches/tests/animated-text-points"
+         },
+         "flower-shape": {
+            "meta": {
+               "_mtime": "2023-01-04T23:26:26.873Z",
+               "name": "flower-shape"
+            },
+            "path": "sketches/tests/flower-shape"
          },
          "grid-2023": {
             "meta": {
@@ -1902,26 +1909,26 @@
             },
             "path": "sketches/tests/pen-vectors-test"
          },
-         "shaders": {
-            "meta": {
-               "_mtime": "2022-11-01T11:26:08.135Z",
-               "name": "shaders"
-            },
-            "path": "sketches/tests/shaders"
-         },
-         "shape-test": {
-            "meta": {
-               "_mtime": "2023-01-04T23:26:26.873Z",
-               "name": "shape-test"
-            },
-            "path": "sketches/tests/shape-test"
-         },
-         "shaper": {
+         "recursive-shape": {
             "meta": {
                "_mtime": "2023-01-04T23:26:26.875Z",
-               "name": "shaper"
+               "name": "recursive-shape"
             },
-            "path": "sketches/tests/shaper"
+            "path": "sketches/tests/recursive-shape"
+         },
+         "text-points-on-grid-cells": {
+            "meta": {
+               "_mtime": "2023-01-17T21:51:56.800Z",
+               "name": "text-points-on-grid-cells"
+            },
+            "path": "sketches/tests/text-points-on-grid-cells"
+         },
+         "three-js-and-shaders": {
+            "meta": {
+               "_mtime": "2022-11-01T11:26:08.135Z",
+               "name": "three-js-and-shaders"
+            },
+            "path": "sketches/tests/three-js-and-shaders"
          }
       }
    },
