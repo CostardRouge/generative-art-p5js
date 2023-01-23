@@ -32,6 +32,11 @@ const colors = {
       128, 128, 255
     )
   ),
+  green: ({hueOffset = 0, hueIndex, opacityFactor = 1, min = 0, max = 360}) => (
+    color(
+      92, 255, 128
+    )
+  ),
   black: ({hueOffset = 0, hueIndex, opacityFactor = 1, min = 0, max = 360}) => (
     color(
       4, 2, 8

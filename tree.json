@@ -788,7 +788,7 @@
          },
          "flowers-v5-spiral": {
             "meta": {
-               "_mtime": "2022-12-28T19:37:37.771Z",
+               "_mtime": "2023-01-21T03:07:00.825Z",
                "name": "flowers-v5-spiral"
             },
             "path": "sketches/flowers/flowers-v5-spiral"
@@ -889,7 +889,7 @@
    },
    "genuary2023": {
       "meta": {
-         "_mtime": "2023-01-18T02:01:01.572Z",
+         "_mtime": "2023-01-21T03:07:16.583Z",
          "name": "genuary2023"
       },
       "sketches": {
@@ -958,7 +958,7 @@
          },
          "genuary2023-day6-steal-like-an-arstist-c": {
             "meta": {
-               "_mtime": "2023-01-15T17:36:18.312Z",
+               "_mtime": "2023-01-19T20:16:34.012Z",
                "name": "genuary2023-day6-steal-like-an-arstist-c"
             },
             "path": "sketches/genuary2023/genuary2023-day6-steal-like-an-arstist-c"
@@ -972,10 +972,17 @@
          },
          "genuary2023-day8-signed-distance-functions": {
             "meta": {
-               "_mtime": "2023-01-18T02:01:08.033Z",
+               "_mtime": "2023-01-21T02:34:40.645Z",
                "name": "genuary2023-day8-signed-distance-functions"
             },
             "path": "sketches/genuary2023/genuary2023-day8-signed-distance-functions"
+         },
+         "genuary2023-day9-plants": {
+            "meta": {
+               "_mtime": "2023-01-21T18:32:17.000Z",
+               "name": "genuary2023-day9-plants"
+            },
+            "path": "sketches/genuary2023/genuary2023-day9-plants"
          }
       }
    },

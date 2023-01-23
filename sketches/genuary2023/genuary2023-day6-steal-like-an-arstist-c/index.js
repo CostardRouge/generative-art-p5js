@@ -41,7 +41,7 @@ sketch.draw( (time, center) => {
   const d = mappers.fn(sin(time), -1, 1, 20,40, easing.easeInOutExpo);
   const r = 600;
 
-  const X = mappers.circularIndex(clickCount, [0, -PI/4.5, PI])
+  const X = mappers.circularIndex(clickCount+time/2, [0, -PI/4.5, PI])
 
 
   // translate(0, 0, mappers.fn(sin(time), -1, 1, 500, 0, easing.easeInOutExpo))
