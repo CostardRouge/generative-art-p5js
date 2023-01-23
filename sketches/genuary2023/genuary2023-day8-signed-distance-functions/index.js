@@ -28,52 +28,107 @@ options.add( [
   }
 ] );
 
-// events.register("post-setup", () => {
-//   audio.capture.setup(0, 512)
-//   events.register("post-draw", audio.capture.energy.recordHistory );
-//   midi.setup()
-// });
-
 sketch.setup( undefined, { type: 'webgl'});
 
-function rotateVector(vector, center, angle) {
-  const cosine = Math.cos(angle);
-  const sine = Math.sin(angle);
+function distSquared({x: x1, y: y1}, {x: x2, y: y2}) {
+  let dx = x2 - x1;
+  let dy = y2 - y1;
+  return dx * dx + dy * dy;
 
-  return ([
-    (cosine * (vector.x - center.x)) + (sine * (vector.y - center.y)) + center.x,
-    (cosine * (vector.y - center.y)) - (sine * (vector.x - center.x)) + center.y
-  ]);
+  // return sq(x1 - x2) + sq(y1 - y2);
 }
 
-function getAlphaFromMask({ position, maskPoints, maskId, distance = 0.025, alphaRange = [0, 255]}) {
-  const { x, y } = position;
+function signedDistanceLine(x, y, x1, y1, x2, y2) {
+  let A = x - x1;
+  let B = y - y1;
+  let C = x2 - x1;
+  let D = y2 - y1;
+  let dot = A * C + B * D;
+  let len_sq = C * C + D * D;
+  let param = -1;
+  if (len_sq != 0) //in case of 0 length line
+      param = dot / len_sq;
+  let xx, yy;
+  if (param < 0) {
+      xx = x1;
+      yy = y1;
+  }
+  else if (param > 1) {
+      xx = x2;
+      yy = y2;
+  }
+  else {
+      xx = x1 + param * C;
+      yy = y1 + param * D;
+  }
+  let dx = x - xx;
+  let dy = y - yy;
+  return Math.sqrt(dx * dx + dy * dy);
+}
 
-  const alpha = cache.store(`${x}-${y}-${maskId}-alpha`, () => {
-    const [ minAlpha, maxAlpha ] = alphaRange;
+function signedDistanceCircle({x, y}, {x: cx, y: cy}, radius) {
+  const dx = x - cx;
+  const dy = y - cy;
+  const d = Math.sqrt(dx*dx + dy*dy);
+  
+  return d - radius;
+}
 
-    return maskPoints.reduce( ( result, pointPosition ) => {
-      if (255 <= result) {
-        return result;
+function signedDistanceVectors(x, y, vectors) {
+  let minDist = Infinity;
+  let minDistSign = 1;
+  for (let i = 0; i < vectors.length; i++) {
+      let v1 = vectors[i];
+      let v2 = vectors[(i + 1) % vectors.length];
+      let dist = pointToSegmentDistance(x, y, v1.x, v1.y, v2.x, v2.y);
+      if (dist < minDist) {
+          minDist = dist;
+          let v = sub(v2, v1);
+          minDistSign = (v.x * (y - v1.y) - v.y * (x - v1.x)) > 0 ? 1 : -1;
       }
+  }
+  return minDist * minDistSign;
+}
 
-      return Math.max(
-        result,
-        ~~map(pointPosition.dist(position), 0, distance, maxAlpha, minAlpha, true)
-      );
-    }, 0);
-  });
+function getDistanceFromVectors({
+  position,
+  vectors,
+  distanceFn = (currentVector, vector, [ from, to, min, max ]) => (
+    ~~mappers.fn(currentVector.dist(vector), from, to, max, min, easeDistanceFn)
+  ),
+  distanceRange = [0, 1, 0, 1],
+  easeDistanceFn
+}) {
+  // const [ from, to, min, max ] = distanceRange;
 
-  return alpha;
+  return vectors.reduce( ( result, vector ) => {
+    if (max <= result) {
+      return result;
+    }
+
+    return Math.max(
+      result,
+      distanceFn(position, vector, distanceRange)
+    );
+  }, 0);
 }
 
 sketch.draw((time, center) => {
   background(0);
 
+  rotateY(mappers.fn(sin(time), -1, 1, -PI, PI, easing.easeInOutExpo)/6)
+  rotateX(mappers.fn(cos(time), -1, 1, -PI, PI, easing.easeInOutQuart)/6)
+
+
+  const W = width/2;
+  const H = height/2;
+
   const cols = options.get("grid-cols");
   const rows = cols*height/width;
   const size = width/cols
   const hSize = size/2;
+
+  randomSeed(56)
 
   const gridOptions = {
     startLeft: createVector( -width/2, -height/2 ),
@@ -82,248 +137,127 @@ sketch.draw((time, center) => {
     endRight: createVector( width/2, height/2 ),
     rows,
     cols,
-    // startLeft: createVector( 0, 0 ),
-    // startRight: createVector( width, 0 ),
-    // endLeft: createVector( 0, height ),
-    // endRight: createVector( width, height ),
-    // rows,
-    // cols,
     centered: options.get("grid-cell-centered")
   }
 
-  const values = [ 
-    createVector(1, 3),
-    // createVector(3, 6),
-    // createVector(3, 2),
-    // createVector(2, 4),
-    // createVector(5, 4),
-  ]
-
-  const d = width / 4;
-  const samplingCount = 60;
-
-  // const generatedAnimatedMaskPoints = cache.store("generated-animated-mask-points", () => {
-  //   const result = [ ]
-  //   const totalDuration = values.length;
-  //   const totalMaskPoints = totalDuration * samplingCount;
-
-  //   for (let i = 0; i < totalMaskPoints; i += 1) {
-  //     const points = [];
-
-  //     const { x, y } = animation.ease({
-  //       values,
-  //       currentTime: map(i, 0, totalMaskPoints, 0, totalDuration, true),
-  //       duration: 1,
-  //       easingFn: easing.easeInOutExpo,
-  //       lerpFn: p5.Vector.lerp,
-  //     })
-
-  //     for (let a = 0; a < TAU; a += TAU / 120) {
-  //       points.push(
-  //         createVector(
-  //           sin(a*x) * d,
-  //           cos(a*y) * d,
-  //         )
-  //       )
-  //     }
-
-  //     result.push({
-  //       id: `points-group-id-${i}`,
-  //       points
-  //     });
-  //   }
-
-  //   return result;
-  // })
-
-  // const generatedAnimatedMaskPoints = cache.store("generated-animated-mask-points", () => {
-  //   const input = [2, 3, 4, 5]
-
-  //   const result = [ ]
-  //   const totalDuration = input.length;
-  //   const totalMaskPoints = totalDuration * samplingCount;
-
-  //   for (let i = 0; i < totalMaskPoints; i += 1) {
-  //     const points = [];
-  //     const inputIndex = map(i, 0, totalMaskPoints, 0, totalDuration, true);
-
-  //     const f = animation.ease({
-  //       values: input,
-  //       currentTime: inputIndex,
-  //       duration: 1,
-  //       easingFn: easing.easeInOutExpo,
-  //       // lerpFn: p5.Vector.lerp,
-  //     })
-
-  //     const r = map(inputIndex, 0, totalDuration, width / 6, width / 3)
-
-  //     for (let a = 0; a < TAU; a += TAU / 360) {
-  //       points.push(
-  //         createVector(
-  //           sin(a*f) * r,
-  //           cos(a) * r,
-  //         )
-  //       )
-  //     }
-
-  //     result.push({
-  //       id: `points-group-id-${i}`,
-  //       points
-  //     });
-  //   }
-
-  //   return result;
-  // })
-
-  const generatedAnimatedMaskPoints = cache.store("generated-animated-mask-points", () => {
-    const input = Array(10).fill(undefined).map( _ => {
+  const shapes = cache.store("shapes", () => {
+    const shapes = Array(10).fill().map( _ => {
       const size = random(50, 150);
-      const W = width/2 - size
-      const H = height/2 - size
 
       return {
         position: createVector(
-          random(-W, W),
-          random(-H, H),
+          random(-W + size, W - size),
+          random(-H + size, H - size),
         ),
         speed: createVector(
-          random(-10, 10),
-          random(-10, 10),
+          random(-5, 5),
+          random(-7, 7),
         ),
-        size
+        size,
+        // vectors: []
       }
     })
 
-    const result = [ ]
-    const totalDuration = input.length;
-    const totalMaskPoints = totalDuration * samplingCount;
+    // for (const shape of shapes) {
+    //   const { position, size, vectors } = shape;
 
-    for (let i = 0; i < totalMaskPoints; i += 1) {
-      const points = [];
+    //   const steps = ~~map(size, 50, 150, 20, 60)
 
-      for (const dot of input) {
-        const { position, size, speed: { x: vX, y: vY} } = dot;
+    //   for (let a = 0; a < TAU; a += TAU / steps) {
+    //     const vector = position.copy();
 
-        const steps = map(size, 50, 150, 40, 60)
-        for (let a = 0; a < TAU; a += TAU / steps) {
-          const p = position.copy();
+    //     vector.add(
+    //       sin(a) * size,
+    //       cos(a) * size
+    //     );
 
-          p.add(
-            sin(a) * size,
-            cos(a) * size
-          )
+    //     vectors.push( vector )
+    //   }
+    // }
 
-          
-
-          // if (p.y > height/2) {
-          //   p.y = -height/2
-          // }
-          // if (p.y < -height/2) {
-          //   p.y = height/2
-          // }
-
-          // if (p.x > width/2) {
-          //   p.x = -width/2
-          // }
-          // if (p.x < -width/2) {
-          //   p.x = width/2
-          // }
-
-          // if (p.y > height/2) {
-          //   p.y = -height/2
-          // }
-          // if (p.y < -height/2) {
-          //   p.y = height/2
-          // }
-          points.push( p )
-        }
-
-        position.add(vX, vY)
-
-        const nextX = position.x + vX + size
-        const nextY = position.y + vY + size
-
-        if (nextX >= width/2 || nextX <= -width/2) {
-          dot.speed.x *= -1
-        }
-
-        if (nextY >= height/2 || nextY <= -height/2) {
-          dot.speed.y *= -1
-        }
-      }
-
-      result.push({
-        id: `points-group-id-${i}`,
-        points
-      });
-    }
-
-    return result;
+    return shapes;
   })
 
+  for (const shape of shapes) {
+    const { position, size, speed: { x: vX, y: vY}, vectors } = shape;
 
-  // console.log(generatedAnimatedMaskPoints);
+    const nextX = position.x + vX + (size * Math.sign(vX))
+    const nextY = position.y + vY + (size * Math.sign(vY))
 
-  const { id, points  } = mappers.circularIndex(time*60, generatedAnimatedMaskPoints);
+    if (nextX > W || nextX < -W) {
+      shape.speed.x *= -1
+    }
 
-  // for (const vector of points) {
-  //   stroke("red")
+    if (nextY > H || nextY < -H) {
+      shape.speed.y *= -1
+    }
 
+    // vectors.forEach(vector => vector.add(vX, vY))
+    position.add(vX, vY)
+
+    //shape.size = 100 * abs(sin(time))
+  }
+
+  // const points = shapes.reduce( (accumulator, { position }) => ([
+  //   ...accumulator,
+  //   position
+  // ]), [])
+
+  // stroke("red")
+  // points.forEach(vector => {
   //   point(
   //     vector.x,
   //     vector.y
   //   )
-  // }
-
-  // return
+  // })
 
   grid.draw(gridOptions, (currentPosition, { x, y}) => {
-    const alpha = getAlphaFromMask({
-      maskId: id,
-      maskPoints: points,
-      position: currentPosition,
-      distance: size*4,
-    })
-
-    //currentPosition.add(0, 0, map(alpha, 0, 255, 1, 100))
+    // const distance = getDistanceFromVectors({
+    //   vectors: shapes,
+    //   position: currentPosition,
+    //   distanceRange: [0, size, 0, 255],
+    //   distanceFn: (currentVector, { position, size}, [ from, _to, min, max ]) => (
+    //     mappers.fn(abs(signedDistanceCircle(currentVector, position, size)), from, size, max, min)
+    //   ),
+    //   // easeDistanceFn: easing.easeInBack,
+    // })
 
     
-    if (alpha) {
 
+    const distance = shapes.reduce( (accumulator, { position, size }) => (
+      Math.max(
+        accumulator,
+        // mappers.fn(abs(signedDistanceLine(
+        //   currentPosition.x, currentPosition.y,
+        //   0, -W,
+        //   0, W
+        //   )), 0, size, 255, 0),
+        mappers.fn(abs(signedDistanceCircle(currentPosition, position, size)), 0, size, 255, 0)
+      )
+    ), 0)
+    
+    if (distance) {
       const currentColor = colors.rainbow({
-        hueOffset: 0,
-        hueIndex: mappers.fn(alpha, 0, 255, -PI/2, PI/2)*2,
-        opacityFactor: map(alpha, 0, 255, 5, 1.5)
+        hueOffset: noise(x/cols, y/rows)*2,
+        hueIndex: mappers.fn(distance, 0, 255, -PI, PI),
+        opacityFactor: map(distance, 0, 255, 5, 1.5)
       })
 
-      //currentColor.setAlpha(alpha)
+      // currentColor.setAlpha(alpha)
+      const z = mappers.fn(distance, 0, 255, 1, 50, easing.easeInOutQuad)
 
-
-
-      fill(currentColor)
-      noStroke()
-
-      push();
-      translate( currentPosition.x, currentPosition.y, currentPosition.z );
-
-      //strokeWeight(size);
-      strokeWeight(10);
+      strokeWeight(size/1.5);
       stroke(currentColor)
-      point( 0, 0, currentPosition.z);
-
-      // rect(-hSize, -hSize, size)
-
-
-      pop();
+      point( currentPosition.x, currentPosition.y, z);
     }
     else {
-      stroke(32, 32, 64)
-      point( currentPosition.x, currentPosition.y)
-    }
+      const showBackgroundDot = mappers.circularIndex(time/2+noise(x/cols, y/rows), [true, false])
 
-    
-    
-    
+      if (showBackgroundDot)  {
+        stroke(32, 32, 64)
+        point( currentPosition.x, currentPosition.y)
+      }
+    }
   })
 
   orbitControl()

@@ -2,8 +2,6 @@ import { shapes, sketch, iterators, converters, events, colors, mappers, easing,
 
 sketch.setup( );
 
-const easingFunctions = Object.entries(easing)
-
 function cross(options) {
   const {
     position = createVector(0, 0),
@@ -122,11 +120,7 @@ sketch.draw( (time, center) => {
   drawBackgroundPattern(time, 7, 12);
 
   const boundary = 150;
-
   const speed = time;
-
-  // const easingFunction = mappers.circularIndex(time, easingFunctions)[1]
-  // const easingFunction2 = mappers.circularIndex(time, easingFunctions)[1]
 
   let start = animation.sequence( "start", speed/2, [
     createVector( boundary, boundary ),
@@ -145,31 +139,31 @@ sketch.draw( (time, center) => {
     p5.Vector.lerp
   )
 
-  start = animation.ease([
+  start = animation.ease({
+    values: [
       createVector( boundary, boundary ),
       createVector( width-boundary, boundary ),
       createVector( width/2, boundary ),
     ],
-    time/4,
-    1,
-    easing.easeOutBounce,
-    p5.Vector.lerp
-  )
+    currentTime: time/4,
+    duration: 1,
+    easingFn: easing.easeOutBounce,
+    lerpFn: p5.Vector.lerp,
+  })
 
-  end = animation.ease([
+  end = animation.ease({
+    values: [
       createVector( width-boundary, height-boundary ),
       createVector( boundary, height- boundary ),
       createVector( width/2, height- boundary )
     ],
-    time/4,
-    1,
-    easing.easeOutBounce,
-    p5.Vector.lerp
-  )
+    currentTime: time/4,
+    duration: 1,
+    easingFn: easing.easeOutBounce,
+    lerpFn: p5.Vector.lerp,
+  })
 
   iterators.vector(start, end, 1 / 192 , ( vector, lerpIndex) => {
-    const easingFunction = mappers.circularIndex(speed+lerpIndex, easingFunctions)[1]
-
     const sides = 3//animation.sequence("sides", speed+lerpIndex, [ 2, 1, 3, 4, 2,, 1,  3 ]);
     const sizeRatio = mappers.fn(lerpIndex, 0, 1, -PI, PI);
     const crossSize = mappers.fn(cos(sizeRatio), -1, 1, 1, 220 )
@@ -181,7 +175,7 @@ sketch.draw( (time, center) => {
     cross({
       sides,
       borderColor: index => {
-        const colorFunction = mappers.circularIndex(speed+lerpIndex+index/50, [colors.rainbow,colors.white ])
+        const colorFunction = mappers.circularIndex(speed+lerpIndex+index/50, [colors.rainbow, colors.purpleSimple, colors.purple ])
 
         return colorFunction({
           hueOffset: speed,
@@ -200,7 +194,12 @@ sketch.draw( (time, center) => {
         rotate(mappers.fn(lerpIndex, 0, 1, 0, PI))
         rotate(-time+lerpIndex*10);
 
-        let amt = animation.ease([ 2, 4, 6], time/5+index, 1, easing.easeInOutElastic)
+        const amt = animation.ease({
+          values: [ 2, 4, 6 ],
+          currentTime: time/5+index,
+          duration: 1,
+          easingFn: easing.easeInOutElastic,
+        })
 
         flower(size, amt )
       }
