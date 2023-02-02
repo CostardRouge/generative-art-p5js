@@ -92,7 +92,7 @@ const threejs = {
         "engine-get-key-typed": () => key,
         // "engine-toggle-fullscreen": () => fullscreen(!fullscreen()),
         "engine-fill-screen": () => {
-            threejs.renderer.setSize( window.innerWidth, window.innerHeight );
+            events.handle("engine-resize-canvas", window.innerWidth, window.innerHeight );
         },
         "engine-resize-canvas": ( canvasWidth, canvasHeight ) => {
             threejs.renderer.setSize( canvasWidth, canvasHeight );

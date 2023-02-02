@@ -1,4 +1,4 @@
-import { events, sketch, converters, audio, grid, animation, colors, midi, mappers, iterators, options, easing, cache } from './utils/index.js';
+import { events, sketch, converters, grid, animation, colors, midi, mappers, iterators, options, easing, cache } from './utils/index.js';
 
 options.add( [
   {
@@ -13,7 +13,7 @@ options.add( [
   {
     id: "grid-cols",
     type: 'slider',
-    label: 'Rows',
+    label: 'Cols',
     min: 1,
     max: 200,
     defaultValue: 40,
@@ -50,11 +50,11 @@ options.add( [
 sketch.setup();
 
 function hl(y) {
-  line(0, y, width, y)
+  this.line(0, y, width, y)
 }
 
 function vl(x) {
-  line(x, 0, x, height)
+  this.line(x, 0, x, height)
 }
 
 function cross({ x, y }, size) {
@@ -65,23 +65,46 @@ function cross({ x, y }, size) {
   line(x - size/2, y, x + size/2, y)
 }
 
-function cacheGraphics(key, render, w = width, h = height) {
-  return cache.store(key, () => {
-    const newGraphicsBuffer = createGraphics(w, h);
+const buffers = {};
 
-    render.bind(newGraphicsBuffer)
+function cachedGraphics(key, cacheKey, render, w = width, h = height) {
+  const existingBuffer = buffers[key];
 
-    render(newGraphicsBuffer);
+  if (!existingBuffer) {
+    buffers[key] = {
+      buffer: createGraphics(w, h)
+    }
+  }
 
-    return newGraphicsBuffer;
-  })
+  const { buffer } = buffers[key];
+
+  if (buffer.cacheKey !== cacheKey ) {
+    buffer.cacheKey = cacheKey;
+
+    buffer.clear();
+    buffer.resizeCanvas(w, h)
+    
+    render(buffer)
+  }
+
+  image(buffer, 0, 0)
 }
 
-sketch.draw((time,center) => {
-  background(255);
+let colorsSwitch = 1;
 
-  const rows = options.get("grid-rows");
+events.register("engine-canvas-mouse-pressed", () => colorsSwitch++ );
+
+sketch.draw((time,center) => {
+  const dark = [ 255, 0, 64]
+  const light = [ 0, 255, 192]
+  const [ primary, secondary, intermediary ] = mappers.circularIndex(colorsSwitch, [dark, light])
+
+  background(secondary);
+
   const cols = options.get("grid-cols");
+  const rows = cols*height/width;
+  // const rows = options.get("grid-rows");
+  // const cols = options.get("grid-cols");
 
   const gridOptions = {
     startLeft: createVector( 0, 0 ),
@@ -99,27 +122,39 @@ sketch.draw((time,center) => {
     options.get("noise-detail-falloff"),
   );
 
-  stroke(192)
-  strokeWeight(1)
-  grid.draw({
-    ...gridOptions,
-    rows: 1,
-  }, (cellVector, { x, y}) => {
-    vl(cellVector.x)
+  const commonCacheKey = `${cols}-${rows}-${intermediary}`;
+
+  cachedGraphics(`vl`, commonCacheKey, buffer => {
+    buffer.stroke(intermediary)
+    buffer.strokeWeight(1)
+
+    grid.draw({
+      ...gridOptions,
+      rows: 1,
+    }, ({ x }, { x: xx }) => {
+      if ( xx < 1 ) return;
+
+      vl.call(buffer, x)
+    })
   })
 
-  
+  cachedGraphics(`hl`, commonCacheKey, buffer => {
+    buffer.stroke(intermediary)
+    buffer.strokeWeight(1)
 
-  image(cacheGraphics("hl", (buffer) => {
+    console.log("dd");
+
     grid.draw({
       ...gridOptions,
       cols: 1,
-    }, (cellVector, { x, y}) => {
-      hl(cellVector.y)
-    })
-  }))
+    }, ({ y }, { y: yy }) => {
+      if ( yy < 1 ) return;
 
-  stroke(0)
+      hl.call(buffer, y)
+    })
+  })
+
+  stroke(primary)
   strokeWeight(2)
   grid.draw({
     ...gridOptions,
@@ -127,8 +162,8 @@ sketch.draw((time,center) => {
   }, (cellVector, { x, y}) => {
     if ( x < 1 || x > cols - 1 ) return;
     if ( y < 1 || y > rows - 1 ) return;
-    if ( noise(cellVector.x+cos(time), cellVector.y+sin(time), time/20) > 0.5 ) return;
+    if ( noise(cellVector.x+cos(time/20), cellVector.y+sin(time/20), time/20) > 0.5 ) return;
 
-    cross(cellVector, scale /3)
+    cross(cellVector, scale /2)
   })
 });
