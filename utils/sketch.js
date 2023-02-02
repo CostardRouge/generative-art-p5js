@@ -38,12 +38,16 @@ const sketch = {
     events.toggleFullScreenOnDoubleClick();
     events.extendCanvasOnResize();
   },
-  getDefaultCanvasSize: (value) =>{
+  getDefaultCanvasSize: (value) => {
     const canvasSize = (
       value                                                           ??
       (new URLSearchParams(document.location.search)).get('size')     ??
       options.get("canvas-size")
     );
+
+    if ('fill' === canvasSize) {
+      return [window.innerWidth, window.innerHeight ];
+    }
 
     return canvasSize.split('x').map(Number);
   },

@@ -139,7 +139,7 @@ const getDefaultOptions = () => {
     onChange: value => {
       const [canvasWidth, canvasHeight] = sketch.getDefaultCanvasSize(value);
 
-      events.handle("engine-resize-canvas", canvasWidth, canvasHeight);
+      events.handle( "engine-resize-canvas", canvasWidth, canvasHeight );
     },
     options: [
       {
@@ -333,8 +333,7 @@ const options = {
       name: sketch.name,
       options: initialOptions,
       elements: {
-        drawer: 'div#sketch-ui-drawer',
-        icon: 'div#sketch-ui-icon'
+        drawer: 'div#sketch-ui-drawer'
       },
       logger: console.log
     });

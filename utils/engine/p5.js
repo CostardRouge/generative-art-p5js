@@ -84,6 +84,10 @@ const p5js = {
             p5js.canvas.doubleClicked( () => {
                 events.handle("engine-canvas-double-clicked");
             } );
+
+            p5js.canvas.mousePressed( () => {
+                events.handle("engine-canvas-mouse-pressed");
+            } );
         })
 
         events.register("setup", () => {
@@ -104,8 +108,8 @@ const p5js = {
         },
         "engine-get-key-typed": () => key,
         "engine-toggle-fullscreen": () => fullscreen(!fullscreen()),
-        "engine-fill-screen": () => p5js.canvas.resize(windowWidth, windowHeight),
-        "engine-resize-canvas": ( canvasWidth, canvasHeight ) => resizeCanvas(canvasWidth, canvasHeight),
+        "engine-fill-screen": () => events.handle("engine-resize-canvas", windowWidth, windowHeight),
+        "engine-resize-canvas": ( canvasWidth, canvasHeight ) => p5js.canvas.resize(canvasWidth, canvasHeight),
         "engine-fullscreen-toggle": ( ) => fullscreen(!fullscreen()),
         "engine-pause": () => noLoop(),
         "engine-resume": () => loop(),
