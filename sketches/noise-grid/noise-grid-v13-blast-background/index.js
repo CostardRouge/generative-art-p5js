@@ -162,8 +162,10 @@ sketch.draw((time,center) => {
   }, (cellVector, { x, y}) => {
     if ( x < 1 || x > cols - 1 ) return;
     if ( y < 1 || y > rows - 1 ) return;
-    if ( noise(cellVector.x+cos(time/20), cellVector.y+sin(time/20), time/20) > 0.5 ) return;
+    const n = noise(cellVector.x+cos(time/20), cellVector.y+sin(time/20), time/20);
+    if ( n > 0.5 ) return;
 
     cross(cellVector, scale /2)
+    // cross(cellVector, map(n, 0, 1, scale/6, scale))
   })
 });
