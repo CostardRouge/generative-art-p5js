@@ -103,6 +103,7 @@ sketch.draw((time, center) => {
     //   opacityFactor: map(z, -zMax, zMax, 3, 1)
     // }))
 
+    
     const colorFunction = mappers.circularIndex(noise(yOff+time/5, xOff, -time/2)+time*2, [colors.rainbow,colors.purple])
     // const colorFunction = mappers.circularIndex(xOff+yOff+time, [colors.rainbow,colors.purple])
 
