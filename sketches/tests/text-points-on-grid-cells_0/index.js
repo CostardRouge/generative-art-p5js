@@ -1,6 +1,7 @@
 import { sketch, string, mappers, easing, animation, colors, cache, grid } from './utils/index.js';
 
 sketch.setup( undefined, { type: 'webgl'});
+// sketch.setup();
 
 function hl(y) {
   line(0, y, width, y)
@@ -8,31 +9,6 @@ function hl(y) {
 
 function vl(x) {
   line(x, 0, x, height)
-}
-
-function flower(size, step, keepSize) {
-  const incrementStep = TAU / step;
-
-  for (let angle = 0; angle <= TAU; angle += incrementStep) {
-    const position = createVector(
-      size * sin(angle),
-      size * cos(angle)
-    )
-  
-    const nextPosition = createVector(
-      size * sin(angle+incrementStep),
-      size * cos(angle+incrementStep)
-    )
-
-    const middlePosition = createVector(
-      size * sin(angle+incrementStep/2),
-      size * cos(angle+incrementStep/2)
-    )
-
-    const innerSize = keepSize ? size : position.dist(nextPosition)
-
-    circle(middlePosition.x, middlePosition.y, innerSize)
-  }
 }
 
 function getTextPoints({ text, size, font, position, sampleFactor, simplifyThreshold }) {
@@ -56,7 +32,7 @@ function getTextPoints({ text, size, font, position, sampleFactor, simplifyThres
 
       return testPointVector;
     })
-  }, 0);
+  });
 }
 
 function drawGrid(xCount, yCount){
@@ -78,13 +54,25 @@ function drawGrid(xCount, yCount){
   }
 }
 
-function drawPoints(points) {
+function drawPoints(points, begin, end = CLOSE) {
+  // points.forEach( ({x, y}) => {
+  //   point(x, y)
+  // })
+
+  beginShape(begin)
   points.forEach( ({x, y}) => {
-    point(x, y)
+    vertex(x, y)
   })
+  endShape(end)
 }
 
 function lerpPoints(from, to, amount, fn) {
+  // return to.map( (point, index) => {
+  //   const targetIndex = ~~map(index, 0, to.length-1, 0, from.length-1, true);
+
+  //   return p5.Vector.lerp( to[index], from[targetIndex], amount )
+  // })
+
   return from.map( (point, index) => {
 
     //const fromIndex = map(index, 0, 1, 0, from.length-1);
@@ -109,107 +97,68 @@ function lerpPoints(from, to, amount, fn) {
 
 sketch.draw( (time) => {
   background(0);
+  noFill()
 
-  translate(0, 0, -1500)
+  // translate(0, 0, -250)
+  // translate(0, height /2)
   // rotateY(time*2)
-  //rotateY(time)
+  // rotateX(time)
 
-  //drawGrid(2, 1)
+  // drawGrid(2, 1)
 
-  const speed = time*2;
-  const word = "*text-points-on-grid-cells"
+  const speed = 0//time;
+  const word = "abc"
   const size = 1000;
   const font = string.fonts.serif;
-  const currentLetter = mappers.circularIndex(speed, word)
 
-  const sampleFactor = 0.05;
+  const sampleFactor = 0.2;
   const simplifyThreshold = 0;
 
-  const p1 = createVector(-width, 0)
-
   const points = getTextPoints({
-    text: "a",
-    position: p1,
+    text: mappers.circularIndex(speed, word),
+    position: createVector(0, 0),
     size,
     font,
     sampleFactor,
     simplifyThreshold
   })
-
-  const p2 = createVector(width, 0)
 
   const points2 = getTextPoints({
-    text: "z",
-    position: p2,
+    text: mappers.circularIndex(speed+1, word),
+    position: createVector(0, 0),
     size,
     font,
     sampleFactor,
     simplifyThreshold
   })
 
-  // stroke(255)
-  // drawPoints(points)
+  strokeWeight(3)
 
-  strokeWeight(1/1.5)
+  const distance = 500;
+  const from = createVector(0, 0, distance/2)
+  const to = createVector(0, 0, -distance/2)
+  const count = 60;
 
-  for (let i = 0; i < 1; i += 0.01) {
-    const n = map(i, 0, 1, -PI/2, PI/2)
-    const u = mappers.fn(cos(n+time), -1, 1, 0, 1, easing.easeInSine)
-
-    push()
-    //rotateY(map(i, 0, 1, PI, -PI))
-    //rotateX(map(i, 0, 1, PI, -PI))
-
-    //rotateZ(map(i, 0, 1, -PI, PI))
-    translate(0, 0, u * 1500)
-
+  for (let n = 0; n < count; n += 1) {
+    const amount = n / count;
+    const position = p5.Vector.lerp( from, to, amount );
+    
     stroke(colors.rainbow({
-      hueOffset: time,
-      hueIndex: map(i, 0, 1, -PI, PI)*2,
-      //opacityFactor: map(z, -scale * 5, scale * 5, down, up)
+      hueOffset: -time,
+      hueIndex: amount*20,// +map(amount, 0, 1, -PI, PI),
+      //opacityFactor: map(n, 0, count, 1, 5)
     }))
 
-    drawPoints(lerpPoints(points, points2, i))
+    push()
+    translate(position)
+
+    drawPoints(
+      lerpPoints(points, points2, amount ),
+      POINTS
+    )
+
     pop()
   }
 
-  // stroke(255)
-  // drawPoints(points2)
-
-  const cols = 30
-  const rows = 50;
-
-  const gridOptions = {
-    startLeft: createVector( -width/2, -height/2 ),
-    startRight: createVector( width/2, -height/2 ),
-    endLeft: createVector( -width/2, height/2 ),
-    endRight: createVector( width/2, height/2 ),
-    rows,
-    cols,
-    centered: true
-  }
-  
-  // grid.draw(gridOptions, (cellVector, { x, y }) => {
-  //   const alpha = cache.store(`${x}-${y}-${currentLetter}-alpha`, () => {
-  //     return points.reduce( ( result, point ) => {
-  //       if (255 <= result) {
-  //         return result;
-  //       }
-
-  //       return Math.max(
-  //         result,
-  //         ~~map(point.dist(cellVector), 0, 40, 255, 0, true)
-  //       );
-  //     }, 0);
-  //   });
-
-  //   if (!alpha) {
-  //     return;
-  //   }
-
-  //   fill(128, 128, 255, alpha)
-  //   circle(cellVector.x, cellVector.y, 20)
-  // })
-
-orbitControl();
+  orbitControl();
 });
