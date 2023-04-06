@@ -3,9 +3,9 @@ const cos_sin = (value, amount) => map(amount, 0, 1, cos(value), sin(value))
 const colors = {
   test: ({hueOffset = 0, hueIndex, opacityFactor = 1, min = 0, max = 360, easingFunction}) => (
     color(
-      map(sin(PI * hueIndex, hueOffset), -1, 1, min, max) / opacityFactor,
-      map(cos(PI * (hueIndex + 1/3), hueOffset), -1, 1, min, max) / opacityFactor,
-      map(cos(PI * (hueIndex + 2/3), hueOffset), -1, 1, min, max) / opacityFactor,
+      map(sin(PI * hueIndex+hueOffset, hueOffset), -1, 1, min, max) / opacityFactor,
+      map(cos(PI * (hueIndex + 1/3+hueOffset), hueOffset), -1, 1, min, max) / opacityFactor,
+      map(cos(PI * (hueIndex + 2/3+hueOffset), hueOffset), -1, 1, min, max) / opacityFactor,
     )
   ),
   rainbowCrazy: ({hueOffset = 0, hueIndex, opacityFactor = 1, min = 0, max = 360, easingFunction}) => (

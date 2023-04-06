@@ -13,6 +13,9 @@ const cache = {
   
     return cache.values[ key ];
   },
+  key: function () {
+    return [].slice.apply(arguments).join("-")
+  },
   get: function(key) {
     return cache.values?.[ key ];
   },
