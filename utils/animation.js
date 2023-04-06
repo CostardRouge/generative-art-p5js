@@ -27,7 +27,7 @@ const animation = {
     easingFn = x => x,
     lerpFn = lerp,
     startIndex = currentTime,
-    endIndex = currentTime + 1 
+    endIndex = currentTime + 1
   }) => (
     lerpFn(
       mappers.circularIndex(startIndex, values),

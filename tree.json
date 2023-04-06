@@ -269,6 +269,98 @@
          }
       }
    },
+   "animated-text-points": {
+      "meta": {
+         "_mtime": "2023-04-05T18:23:57.838Z",
+         "name": "animated-text-points"
+      },
+      "sketches": {
+         "animated-text-points-v0-flower": {
+            "meta": {
+               "_mtime": "2023-04-01T11:42:34.019Z",
+               "name": "animated-text-points-v0-flower"
+            },
+            "path": "sketches/animated-text-points/animated-text-points-v0-flower"
+         },
+         "animated-text-points-v1-grid": {
+            "meta": {
+               "_mtime": "2023-03-24T15:47:56.659Z",
+               "name": "animated-text-points-v1-grid"
+            },
+            "path": "sketches/animated-text-points/animated-text-points-v1-grid"
+         },
+         "animated-text-points-v10-asterisk": {
+            "meta": {
+               "_mtime": "2023-04-03T19:07:58.264Z",
+               "name": "animated-text-points-v10-asterisk"
+            },
+            "path": "sketches/animated-text-points/animated-text-points-v10-asterisk"
+         },
+         "animated-text-points-v11": {
+            "meta": {
+               "_mtime": "2023-04-06T02:11:51.756Z",
+               "name": "animated-text-points-v11"
+            },
+            "path": "sketches/animated-text-points/animated-text-points-v11"
+         },
+         "animated-text-points-v2-dotted": {
+            "meta": {
+               "_mtime": "2023-03-24T15:47:56.661Z",
+               "name": "animated-text-points-v2-dotted"
+            },
+            "path": "sketches/animated-text-points/animated-text-points-v2-dotted"
+         },
+         "animated-text-points-v3-glitch": {
+            "meta": {
+               "_mtime": "2023-03-24T15:47:56.663Z",
+               "name": "animated-text-points-v3-glitch"
+            },
+            "path": "sketches/animated-text-points/animated-text-points-v3-glitch"
+         },
+         "animated-text-points-v4-wavy-a": {
+            "meta": {
+               "_mtime": "2023-03-24T15:47:56.665Z",
+               "name": "animated-text-points-v4-wavy-a"
+            },
+            "path": "sketches/animated-text-points/animated-text-points-v4-wavy-a"
+         },
+         "animated-text-points-v5-wavy-b": {
+            "meta": {
+               "_mtime": "2023-03-24T15:47:56.667Z",
+               "name": "animated-text-points-v5-wavy-b"
+            },
+            "path": "sketches/animated-text-points/animated-text-points-v5-wavy-b"
+         },
+         "animated-text-points-v6-black": {
+            "meta": {
+               "_mtime": "2023-03-25T02:09:34.239Z",
+               "name": "animated-text-points-v6-black"
+            },
+            "path": "sketches/animated-text-points/animated-text-points-v6-black"
+         },
+         "animated-text-points-v7-normal": {
+            "meta": {
+               "_mtime": "2023-03-24T15:51:35.499Z",
+               "name": "animated-text-points-v7-normal"
+            },
+            "path": "sketches/animated-text-points/animated-text-points-v7-normal"
+         },
+         "animated-text-points-v9-warping": {
+            "meta": {
+               "_mtime": "2023-03-26T20:08:04.079Z",
+               "name": "animated-text-points-v9-warping"
+            },
+            "path": "sketches/animated-text-points/animated-text-points-v9-warping"
+         },
+         "animated-text-points-v9-warping copy": {
+            "meta": {
+               "_mtime": "2023-04-05T19:12:14.137Z",
+               "name": "animated-text-points-v9-warping copy"
+            },
+            "path": "sketches/animated-text-points/animated-text-points-v9-warping copy"
+         }
+      }
+   },
    "arrow": {
       "meta": {
          "_mtime": "2022-12-27T22:59:33.165Z",
@@ -951,7 +1043,7 @@
          },
          "genuary2023-day6-steal-like-an-arstist-a": {
             "meta": {
-               "_mtime": "2023-01-17T22:10:16.420Z",
+               "_mtime": "2023-03-25T12:24:10.604Z",
                "name": "genuary2023-day6-steal-like-an-arstist-a"
             },
             "path": "sketches/genuary2023/genuary2023-day6-steal-like-an-arstist-a"
@@ -1902,12 +1994,12 @@
          "name": "tests"
       },
       "sketches": {
-         "animated-text-points": {
+         "cylinder": {
             "meta": {
-               "_mtime": "2023-01-09T14:09:19.379Z",
-               "name": "animated-text-points"
+               "_mtime": "2023-03-27T23:26:36.468Z",
+               "name": "cylinder"
             },
-            "path": "sketches/tests/animated-text-points"
+            "path": "sketches/tests/cylinder"
          },
          "flower-shape": {
             "meta": {
@@ -1937,40 +2029,12 @@
             },
             "path": "sketches/tests/recursive-shape"
          },
-         "text-points-on-grid-cells_-1": {
+         "splines": {
             "meta": {
-               "_mtime": "2023-01-17T21:51:56.800Z",
-               "name": "text-points-on-grid-cells_-1"
+               "_mtime": "2023-03-29T05:10:23.864Z",
+               "name": "splines"
             },
-            "path": "sketches/tests/text-points-on-grid-cells_-1"
-         },
-         "text-points-on-grid-cells_0": {
-            "meta": {
-               "_mtime": "2023-03-15T23:08:55.169Z",
-               "name": "text-points-on-grid-cells_0"
-            },
-            "path": "sketches/tests/text-points-on-grid-cells_0"
-         },
-         "text-points-on-grid-cells_1": {
-            "meta": {
-               "_mtime": "2023-03-15T22:41:26.227Z",
-               "name": "text-points-on-grid-cells_1"
-            },
-            "path": "sketches/tests/text-points-on-grid-cells_1"
-         },
-         "text-points-on-grid-cells_2": {
-            "meta": {
-               "_mtime": "2023-03-16T18:23:47.558Z",
-               "name": "text-points-on-grid-cells_2"
-            },
-            "path": "sketches/tests/text-points-on-grid-cells_2"
-         },
-         "text-points-on-grid-cells_3": {
-            "meta": {
-               "_mtime": "2023-03-15T22:23:26.932Z",
-               "name": "text-points-on-grid-cells_3"
-            },
-            "path": "sketches/tests/text-points-on-grid-cells_3"
+            "path": "sketches/tests/splines"
          },
          "three-js-and-shaders": {
             "meta": {

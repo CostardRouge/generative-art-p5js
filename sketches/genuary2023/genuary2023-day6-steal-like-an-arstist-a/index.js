@@ -157,7 +157,6 @@ function getAlphaFromMask({ position, maskPoints, maskId, distance = 0.025, alph
 
     return maskPoints.reduce( ( result, pointPosition ) => {
       if (255 <= result) {
-        console.log("pass here", result);
         return result;
       }
 
