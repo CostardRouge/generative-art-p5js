@@ -1,37 +1,6 @@
 import { sketch, string, mappers, easing, events, colors, cache, grid } from './utils/index.js';
 
-// sketch.setup( undefined);
 sketch.setup( undefined, { type: 'webgl'});
-
-events.register("engine-window-preload", () => {
-  cache.store("image", () => loadImage( "img.png" ))
-});
-
-function shuriken(size, step, keepSize) {
-  const incrementStep = TAU / (step * 2);
-
-  beginShape();
-
-  let coin = 0;
-
-  for (let angle = 0; angle <= TAU; angle += incrementStep) {
-    const s = mappers.circularIndex(coin, [size, size/2])
-    const position = createVector(
-      s * sin(angle),
-      s * cos(angle)
-    )
-
-    vertex(
-      position.x,
-      position.y
-    )
-
-    coin = coin === 1 ? 0 : 1;
-  }
-
-  endShape();
-
-}
 
 function flower(size, step, keepSize, fn) {
   const incrementStep = TAU / step;
@@ -188,7 +157,7 @@ sketch.draw( (time, center) => {
   const duration = 1;
   const word = "*"//"÷æ«$©®…ø†¥ø&%+#$@!*";
   const size = 1000;
-  const font = string.fonts.serif;
+  const font = string.fonts.sans;
   const currentLetter = mappers.circularIndex(speed, word)
   const nextLetter = mappers.circularIndex(speed+1, word)
 
@@ -235,15 +204,14 @@ sketch.draw( (time, center) => {
     const { x, y } = currentLetterPoints[i]
 
     let colorFunction = mappers.circularIndex(time/4+progression, [
-      colors.rainbow,
-      // colors.test
+      //colors.rainbow,
+      colors.test
     ]);
 
     if (i == currentLetterPoints.length-1) {
       //colorFunction = colors.rainbow;
     }
 
-    
     //let amt = mappers.circularIndex(time/2+progression, [, 2, 3, 5, 7]);
     //amt = mappers.circularIndex(time/6+progression, [,5]);
 
@@ -252,33 +220,29 @@ sketch.draw( (time, center) => {
       x*2,
       y*2
     )
-    //rotate(-time+progression);
-    rotate(time+progression*TAU*5);
+    rotate(-time+progression);
+    //rotate(time+progression*TAU*5);
+  
+    const size = mappers.circularIndex(time/4+progression, [0, 50]);
+    const keepSize = false//mappers.circularIndex(time/4+progression, [true, false]);
 
-
-    //const img = cache.get("image")
-    //image(img, 0, 0, size, size )
-
-    const size = mappers.circularIndex(time/4+progression, [30, 50]);
-    const keepSize = mappers.circularIndex(time/4+progression, [true, false]);
-
-    flower(size, 5, keepSize, (index) => {
-      stroke(colorFunction({
-        hueOffset: time,
-        hueIndex: mappers.fn(progression, 0, 1, -PI, PI, easing.easeInCubic)*5,
-        //hueIndex: mappers.fn(index, 0, TAU, -PI, PI),
-        // opacityFactor: map(sin(-progression*50+time*2), -1, 1, 3, 1),
-        opacityFactor: mappers.fn(
-          sin(index/30+progression*50+time*4),
-          -1,
-          1,
-          mappers.fn(cos(progression*50+time*2), -1, 1, 5, 1, easing.easeInCubic),
-          1,
-          easing.easeInSine
-        ),
-      }))
+    stroke(colorFunction({
+      //hueOffset: time,
+      hueIndex: mappers.fn(progression, 0, 1, -PI, PI, easing.easeInCubic),
+      //hueIndex: mappers.fn(index, 0, TAU, -PI, PI),
+      // opacityFactor: map(sin(-progression*50+time*2), -1, 1, 3, 1),
+      opacityFactor: mappers.fn(
+        sin(progression*50+time*4),
+        -1,
+        1,
+        mappers.fn(cos(progression*50+time*2), -1, 1, 5, 1, easing.easeInCubic),
+        1,
+        easing.easeInSine
+      ),
+    }))
+    flower(size, 3, keepSize, (index) => {
+      
     })
-    //huriken(size, 7)
     pop()
   }
 
