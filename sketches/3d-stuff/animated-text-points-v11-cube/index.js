@@ -46,13 +46,25 @@ function vl(x) {
 sketch.draw( (time, center) => {
   background(0);
 
-  const planesCount = 10;
+  const planesCount = 5;
   const gap = 100;
   const depth = planesCount
 
-  // rotateX(time)
-  // rotateY(time)
-  // rotateZ(time)
+  //rotateX(time)
+  //rotateY(time)
+  //rotateZ(time)
+
+  const hueSpeed = {
+    x: 0,
+    y: 0,
+    //z: -time/2,
+  }
+
+  const noiseSpeed = {
+    x: 0,
+    y: 0,
+    z: -time/2,
+  }
 
   push()
     rectMode(CENTER);
@@ -63,14 +75,22 @@ sketch.draw( (time, center) => {
       translate(0, 0, -gap)
       stroke(255)
 
-      drawGrid(10, 10, (x, y, w, h) => {
+      drawGrid(12, 12, (x, y, w, h) => {
         push()
         translate(x, y, gap/2-gap)
 
-        const d = noise(x, y, z/100)
-        const hue = noise(x/width, y/height, z/depth-time/2)
+        const d = noise(
+          x+noiseSpeed.x,
+          y+noiseSpeed.y,
+          z/100+noiseSpeed.z
+        )
+        const hue = noise(
+          x/width+hueSpeed.x,
+          y/height+hueSpeed.y,
+          z/depth+hueSpeed.z
+        )
   
-        if (d > 0) {
+        if (d > 0.5) {
           const coco = colors.rainbow({
             hueOffset: 0,
             hueIndex: map(hue, 0, 1, -PI, PI)*2,
