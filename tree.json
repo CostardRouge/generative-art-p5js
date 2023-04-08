@@ -48,6 +48,13 @@
          "name": "3d-stuff"
       },
       "sketches": {
+         "animated-text-points-v11-cube": {
+            "meta": {
+               "_mtime": "2023-04-06T02:11:51.756Z",
+               "name": "animated-text-points-v11-cube"
+            },
+            "path": "sketches/3d-stuff/animated-text-points-v11-cube"
+         },
          "ball": {
             "meta": {
                "_mtime": "2022-06-01T22:40:28.874Z",
@@ -271,7 +278,7 @@
    },
    "animated-text-points": {
       "meta": {
-         "_mtime": "2023-04-05T18:23:57.838Z",
+         "_mtime": "2023-03-27T22:02:30.319Z",
          "name": "animated-text-points"
       },
       "sketches": {
@@ -291,17 +298,24 @@
          },
          "animated-text-points-v10-asterisk": {
             "meta": {
-               "_mtime": "2023-04-03T19:07:58.264Z",
+               "_mtime": "2023-04-08T08:42:22.312Z",
                "name": "animated-text-points-v10-asterisk"
             },
             "path": "sketches/animated-text-points/animated-text-points-v10-asterisk"
          },
-         "animated-text-points-v11": {
+         "animated-text-points-v12-counter": {
             "meta": {
-               "_mtime": "2023-04-06T02:11:51.756Z",
-               "name": "animated-text-points-v11"
+               "_mtime": "2023-04-08T08:37:07.293Z",
+               "name": "animated-text-points-v12-counter"
             },
-            "path": "sketches/animated-text-points/animated-text-points-v11"
+            "path": "sketches/animated-text-points/animated-text-points-v12-counter"
+         },
+         "animated-text-points-v12-more-warping": {
+            "meta": {
+               "_mtime": "2023-04-05T19:12:14.137Z",
+               "name": "animated-text-points-v12-more-warping"
+            },
+            "path": "sketches/animated-text-points/animated-text-points-v12-more-warping"
          },
          "animated-text-points-v2-dotted": {
             "meta": {
@@ -338,12 +352,12 @@
             },
             "path": "sketches/animated-text-points/animated-text-points-v6-black"
          },
-         "animated-text-points-v7-normal": {
+         "animated-text-points-v7-normal-material": {
             "meta": {
                "_mtime": "2023-03-24T15:51:35.499Z",
-               "name": "animated-text-points-v7-normal"
+               "name": "animated-text-points-v7-normal-material"
             },
-            "path": "sketches/animated-text-points/animated-text-points-v7-normal"
+            "path": "sketches/animated-text-points/animated-text-points-v7-normal-material"
          },
          "animated-text-points-v9-warping": {
             "meta": {
@@ -351,13 +365,6 @@
                "name": "animated-text-points-v9-warping"
             },
             "path": "sketches/animated-text-points/animated-text-points-v9-warping"
-         },
-         "animated-text-points-v9-warping copy": {
-            "meta": {
-               "_mtime": "2023-04-05T19:12:14.137Z",
-               "name": "animated-text-points-v9-warping copy"
-            },
-            "path": "sketches/animated-text-points/animated-text-points-v9-warping copy"
          }
       }
    },
