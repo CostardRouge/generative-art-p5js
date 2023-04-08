@@ -50,9 +50,9 @@ sketch.draw( (time, center) => {
   const gap = 100;
   const depth = planesCount
 
-  rotateX(time)
-  rotateY(time)
-  rotateZ(time)
+  // rotateX(time)
+  // rotateY(time)
+  // rotateZ(time)
 
   push()
     rectMode(CENTER);
