@@ -32,7 +32,7 @@ const animation = {
     lerpFn(
       mappers.circularIndex(startIndex, values),
       mappers.circularIndex(endIndex, values),
-      easingFn( (currentTime) % duration )
+      easingFn( (currentTime*duration) % duration )
     )
   ),
   makeEaseInOut: (inFn, outFn = inFn) => ( timeFraction => {
