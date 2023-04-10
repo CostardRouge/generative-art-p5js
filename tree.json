@@ -1,4 +1,33 @@
 {
+   "36days-of-type-2023": {
+      "meta": {
+         "_mtime": "2023-04-10T06:03:05.739Z",
+         "name": "36days-of-type-2023"
+      },
+      "sketches": {
+         "36days-of-type-2023-a-aA": {
+            "meta": {
+               "_mtime": "2023-04-10T17:32:23.149Z",
+               "name": "36days-of-type-2023-a-aA"
+            },
+            "path": "sketches/36days-of-type-2023/36days-of-type-2023-a-aA"
+         },
+         "36days-of-type-2023-a-grid": {
+            "meta": {
+               "_mtime": "2023-04-10T09:56:23.238Z",
+               "name": "36days-of-type-2023-a-grid"
+            },
+            "path": "sketches/36days-of-type-2023/36days-of-type-2023-a-grid"
+         },
+         "36days-of-type-2023-a-vl": {
+            "meta": {
+               "_mtime": "2023-04-10T06:58:37.105Z",
+               "name": "36days-of-type-2023-a-vl"
+            },
+            "path": "sketches/36days-of-type-2023/36days-of-type-2023-a-vl"
+         }
+      }
+   },
    "3d-grid-field": {
       "meta": {
          "_mtime": "2023-04-08T10:27:41.526Z",
@@ -48,19 +77,19 @@
          "name": "3d-stuff"
       },
       "sketches": {
-         "animated-text-points-v11-cube": {
-            "meta": {
-               "_mtime": "2023-04-08T10:44:29.020Z",
-               "name": "animated-text-points-v11-cube"
-            },
-            "path": "sketches/3d-stuff/animated-text-points-v11-cube"
-         },
          "ball": {
             "meta": {
                "_mtime": "2022-06-01T22:40:28.874Z",
                "name": "ball"
             },
             "path": "sketches/3d-stuff/ball"
+         },
+         "cube": {
+            "meta": {
+               "_mtime": "2023-04-08T10:44:29.020Z",
+               "name": "cube"
+            },
+            "path": "sketches/3d-stuff/cube"
          },
          "hsb": {
             "meta": {
@@ -2024,7 +2053,7 @@
          },
          "noisy-dominant-colors": {
             "meta": {
-               "_mtime": "2023-04-08T14:50:00.412Z",
+               "_mtime": "2023-04-09T01:51:11.180Z",
                "name": "noisy-dominant-colors"
             },
             "path": "sketches/tests/noisy-dominant-colors"

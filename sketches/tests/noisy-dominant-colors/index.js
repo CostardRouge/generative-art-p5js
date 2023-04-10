@@ -102,7 +102,7 @@ const borderSize = 2;
 sketch.draw( (time, center) => {
   background(0);
 
-  const cols = 10;
+  const cols =10;
   //const rows = 10;
   const rows = cols*height/width;
 
@@ -119,12 +119,28 @@ sketch.draw( (time, center) => {
   const W = width / cols;
   const H = height / rows;
 
+  noStroke()
   strokeWeight(borderSize)
 
   const img = cache.get("image");
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const n = noise(x/cols, y/rows + time)*4;
+    let n = noise(x/cols, y/rows + time)*4;
+    n = ~~map(
+      cellVector.dist(center),
+      0,
+      map(sin(time*2), -1, 1, 0, width),
+      8,
+      1
+    );
+
+    // n = ~~map(
+    //   cellVector.dist(center),
+    //   0,
+    //   4*frameCount%width,
+    //   4,
+    //   1
+    // );
 
     drawGridCell(
       cellVector.x-W/2,
@@ -138,7 +154,7 @@ sketch.draw( (time, center) => {
 
         const { levels: [r, g, b, a ] } = dominantColor
 
-        stroke(dominantColor)
+        // stroke(dominantColor)
         fill(r, g, b, 230)
         rect(x, y, w, h )
 
