@@ -4,6 +4,8 @@ const string = {
   fonts: {
     serif: undefined,
     sans: undefined,
+    tilt: undefined,
+    openSans: undefined,
   },
   write: function (
     str,
@@ -63,8 +65,13 @@ events.register("engine-window-preload", () => {
     gitHubPagesPathHack("assets/fonts/libre-baskerville.ttf")
   );
   string.fonts.sans = loadFont(
-    // gitHubPagesPathHack("assets/fonts/open-sans.ttf")
     gitHubPagesPathHack("assets/fonts/passion-one.ttf")
+  );
+  string.fonts.openSans = loadFont(
+    gitHubPagesPathHack("assets/fonts/open-sans.ttf")
+  );
+  string.fonts.tilt = loadFont(
+    gitHubPagesPathHack("assets/fonts/tilt-prism.ttf")
   );
 });
 
