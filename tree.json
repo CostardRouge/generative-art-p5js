@@ -1,7 +1,7 @@
 {
    "36days-of-type-2023": {
       "meta": {
-         "_mtime": "2023-04-13T15:33:34.925Z",
+         "_mtime": "2023-04-15T17:17:20.130Z",
          "name": "36days-of-type-2023"
       },
       "sketches": {
@@ -42,10 +42,24 @@
          },
          "36days-of-type-2023-d": {
             "meta": {
-               "_mtime": "2023-04-13T16:43:12.946Z",
+               "_mtime": "2023-04-14T17:42:09.301Z",
                "name": "36days-of-type-2023-d"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-d"
+         },
+         "36days-of-type-2023-e": {
+            "meta": {
+               "_mtime": "2023-04-15T17:16:36.293Z",
+               "name": "36days-of-type-2023-e"
+            },
+            "path": "sketches/36days-of-type-2023/36days-of-type-2023-e"
+         },
+         "36days-of-type-2023-f": {
+            "meta": {
+               "_mtime": "2023-04-15T18:49:13.863Z",
+               "name": "36days-of-type-2023-f"
+            },
+            "path": "sketches/36days-of-type-2023/36days-of-type-2023-f"
          }
       }
    },

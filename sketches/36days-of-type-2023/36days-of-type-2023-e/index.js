@@ -1,18 +1,6 @@
 import { sketch, string, mappers, easing, animation, colors, cache, grid } from './utils/index.js';
 
-const easingFunctions = Object.entries( easing );
-
 sketch.setup( undefined, { type: 'webgl'});
-// sketch.setup( undefined );
-// sketch.setup();
-
-function hl(y) {
-  line(0, y, width, y)
-}
-
-function vl(x) {
-  line(x, 0, x, height)
-}
 
 function getTextPoints({ text, size, font, position, sampleFactor, simplifyThreshold }) {
   const fontFamily = font.font?.names?.fontFamily?.en;
@@ -42,11 +30,11 @@ function getTextPoints({ text, size, font, position, sampleFactor, simplifyThres
 }
 
 function lerpPoints(from, to, amount, fn) {
-  return to.map( (point, index) => {
-    const targetIndex = ~~map(index, 0, to.length-1, 0, from.length-1, true);
+  // return to.map( (point, index) => {
+  //   const targetIndex = ~~map(index, 0, to.length-1, 0, from.length-1, true);
 
-    return p5.Vector.lerp( to[index], from[targetIndex], amount )
-  })
+  //   return p5.Vector.lerp( to[index], from[targetIndex], amount )
+  // })
 
   return from.map( (point, index) => {
     const fromIndex = map(index, 0, 1, 0, from.length-1);
@@ -92,7 +80,7 @@ function drawGrid(cols, time) {
   strokeWeight(2)
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const n = noise(x/cols+time, y/rows, time)*4;
+    const n = noise(x/cols+time, y/rows, time)*2;
 
     drawGridCell(
       cellVector.x-W/2,
@@ -102,8 +90,10 @@ function drawGrid(cols, time) {
       ~~n,
       ~~n,
       ( x, y, w, h ) => {
+        stroke(16, 16, 64)
         rect(x, y, w, h )
-        cross(x, y, 30)
+        stroke(16, 16, 255)
+        cross(x, y, 15)
       }
     )
   })
@@ -114,32 +104,30 @@ sketch.draw( (time, center) => {
 
   push()
   translate(0, 0, 0)
-  stroke(16, 16, 64)
   drawGrid(4, time)
   pop()
 
-  // rotateY(mappers.fn(sin(time*5), -1, 1, -PI, PI, easing.easeInSine)/18)
-  // rotateY(mappers.fn(sin(time*5), -1, 1, -PI, PI)/18)
-  // rotateX(mappers.fn(cos(time), -1, 1, -PI, PI)/9)
+  rotateX(mappers.fn(cos(time), -1, 1, -PI, PI, easing.easeInOutQuart)/18)
+  // rotateY(mappers.fn(cos(time), -1, 1, -PI, PI)/18)
 
-  const size = 500;
-  const scale = 2.25;
+  const size = (width)/2;
+  const scale = 2.0;
 
-  const sampleFactor = 0.05;
+  const sampleFactor = 0.08;
   const simplifyThreshold = 0;
   const letterPosition = createVector(0, 0)
 
   const currentLetterPoints = getTextPoints({
-    text: "d",
+    text: "E",
     position: letterPosition,
-    size,
+    size: size * 0.8,
     font: string.fonts.serif,
     sampleFactor,
     simplifyThreshold
   })
 
   const nextLetterPoints = getTextPoints({
-    text: "D",
+    text: "e",
     position: letterPosition,
     size,
     font: string.fonts.serif,
@@ -147,11 +135,13 @@ sketch.draw( (time, center) => {
     simplifyThreshold
   })
 
-  const depthSteps = 50;
+  const depthSteps = 10;
   const depthStart = 0;
   const depthEnd = 500;
 
   noFill()
+  stroke(255);
+
   for (let z = 0; z < depthSteps; z++) {
     push()
 
@@ -161,42 +151,73 @@ sketch.draw( (time, center) => {
       lerp( depthStart, depthEnd, z/depthSteps )
     )
   
-    const points = lerpPoints(currentLetterPoints, nextLetterPoints, z/depthSteps )
+    const p = animation.ease({
+      values: [ 0, 0, 0, 1, 1, 1 ],
+      currentTime: time/2+z/depthSteps/4,
+      duration: 1,
+      easingFn: easing.easeInOutExpo,
+      // easingFn: easing.easeInOutQuart,
+      // easingFn: easing.easeInOutElastic,
+    })
+    const points = lerpPoints(currentLetterPoints, nextLetterPoints, p )
 
     points.forEach( ({x, y}) => {
-      const hue = noise(
-        x/100,
-        y/100,
-        z/depthSteps-time/2
-      )
-      
-      const opacityFactor = mappers.fn(sin(z/(depthSteps/3)+time*3), -1, 1, 20, 1, easing.easeInQuint);
+      const xSign = sin(time);
+      const ySign = cos(time);
+      const hueOpacitySpeed = time*4;
+      const hueOpacityDirection = (xSign*(x/50)+ySign*(y/15));
 
-      if (opacityFactor > 15) {
-        return
-      }
+      const hue = noise(
+        x/50,
+        y/75,
+        z/depthSteps+time/2
+      )
+
+      const darkness = map(z, 0, depthSteps, 50, 3)
 
       stroke(colors.rainbow({
-        hueOffset: 0,
-        hueIndex: mappers.fn(hue, 0, 1, -PI, PI)*4,
-        opacityFactor
+        hueOffset: hueOpacitySpeed,
+        hueIndex: map(hue, 0, 1, -PI, PI)*2,
+        opacityFactor: map(
+          sin(
+            hueOpacityDirection+hueOpacitySpeed+z/15
+          ),
+          -1,
+          1,
+          darkness,
+          1
+        ),
       }))
 
       push()
+
+      // const angleX = animation.ease({
+      //   values: [ PI*2, 0 ],
+      //   currentTime: time/2+y/1500,
+      //   duration: 1,
+      //   easingFn: easing.easeInOutExpo,
+      //   easingFn: easing.easeInOutQuart
+      // })
+      const angleY = animation.ease({
+        values: [ 0, PI*2, 0 ],
+        currentTime: time/2+y/1500,
+        duration: 1,
+        easingFn: easing.easeInOutExpo,
+        easingFn: easing.easeInOutQuart
+      })
+      // rotateX(angleX)
+      rotateY(angleY)
+
       translate(
-        x * scale,
-        y * scale
+        x * scale * mappers.fn(z, 0, depthSteps, 0.8, 1, easing.easeInQuart),
+        y * scale * mappers.fn(z, 0, depthSteps, 0.8, 1, easing.easeOutQuart)
       )
 
-      sphere(4, 4)
+      sphere(
+        mappers.fn(z, 0, depthSteps, 5, 10, easing.easeInQuart),
+      )
 
       pop()
-
-
-    // point(
-    //   x * scale,
-    //   y * scale
-    // )
     })
 
     pop()
