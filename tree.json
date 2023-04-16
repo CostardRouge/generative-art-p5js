@@ -1,7 +1,7 @@
 {
    "36days-of-type-2023": {
       "meta": {
-         "_mtime": "2023-04-15T17:17:20.130Z",
+         "_mtime": "2023-04-16T17:59:58.937Z",
          "name": "36days-of-type-2023"
       },
       "sketches": {
@@ -60,6 +60,13 @@
                "name": "36days-of-type-2023-f"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-f"
+         },
+         "36days-of-type-2023-g": {
+            "meta": {
+               "_mtime": "2023-04-16T21:51:23.337Z",
+               "name": "36days-of-type-2023-g"
+            },
+            "path": "sketches/36days-of-type-2023/36days-of-type-2023-g"
          }
       }
    },
