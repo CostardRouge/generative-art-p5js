@@ -4,8 +4,16 @@ sketch.setup( undefined, { type: 'webgl'});
 
 function getTextPoints({ text, size, font, position, sampleFactor, simplifyThreshold }) {
   const fontFamily = font.font?.names?.fontFamily?.en;
-  const textPointsCacheKey = cache.key("text-points", fontFamily, ...arguments)
+  const textPointsCacheKey = cache.key(
+    "text-points",
+    fontFamily,
+    text,
+    size,
+    sampleFactor,
+    simplifyThreshold
+  )
 
+  // console.log(...arguments);
   return cache.store( textPointsCacheKey, () => {
     const textPoints = font.textToPoints(text, position.x, position.y, size, {
       sampleFactor, simplifyThreshold
@@ -19,13 +27,21 @@ function getTextPoints({ text, size, font, position, sampleFactor, simplifyThres
     const yMax = textPoints.reduce((a, {y}) => Math.max(a, y), -Infinity);
     const yCenter = (yMax/2)+(yMin/2)
 
-    return textPoints.map( ({x, y}) => {
-      const testPointVector = createVector(x, y);
-
-      testPointVector.add((position.x-xCenter),(position.y-yCenter))
-
-      return testPointVector;
-    })
+    return ([
+      textPoints.map( ({x, y}) => {
+        const testPointVector = createVector(x, y);
+  
+        testPointVector.add((position.x-xCenter),(position.y-yCenter))
+  
+        return testPointVector;
+      }),
+      [
+        xMin-xCenter,
+        yMin-yCenter,
+        xMax-xMin,
+        yMax-yMin,
+      ]
+    ])
   });
 }
 
@@ -170,79 +186,110 @@ sketch.draw( (time, center) => {
   background(0);
 
   push()
-  translate(0, 0, 0)
   drawGrid(10, time/2)
   pop()
 
   push()
 
-  const size = (width)/3;
-  const sampleFactor = 0.1;
+  const xSign = sin(time);
+  const ySign = cos(-time);
+
+  rotateY(mappers.fn(sin(xSign+time), -1, 1, -PI, PI, easing.easeInOutQuart)/24)
+  rotateX(mappers.fn(cos(ySign+time), -1, 1, -PI, PI, easing.easeInOutQuart)/24)
+
+  const size = (width)/15;
+  const sampleFactor = 1/5;
   const simplifyThreshold = 0;
 
-  // const currentLetterPoints = getTextPoints({
-  //   text: "j",
-  //   position: createVector(0, 0),
-  //   size,
-  //   font: string.fonts.sans,
-  //   sampleFactor,
-  //   simplifyThreshold
-  // })
+  const depthSteps = 10;
+  const depthStart = createVector(0, 0, 350);
+  const depthEnd = createVector(0, 0, 150);
 
-  // const nextLetterPoints = getTextPoints({
-  //   text: "J",
-  //   position: createVector(0, 0),
-  //   size,
-  //   font: string.fonts.sans,
-  //   sampleFactor,
-  //   simplifyThreshold
-  // })
-
-  strokeWeight(2)
-  noStroke()
-
-  const depthSteps = 5;
-  const depthStart = createVector(0, 0, 0);
-
-  const hueOpacitySpeed = time*2;
 
   const c = 5;
 
+  const tt = 1.5 * cos(time)
+
   for (let t = 0; t < c; t++) {
-    const d = map(sin(time+t/c), -1, 1, 0, 500)
-    const depthEnd = createVector(0, 0, d);
+
+    translate(0, 0, 50 * Math.pow(tt, t))
 
     for (let z = 0; z < depthSteps; z++) {
+      // const d = map(sin(time+z/10), -1, 1, 100, 500)
+      // const depthEnd = createVector(0, 0, d);
 
       push()
-      translate(p5.Vector.lerp( depthStart, depthEnd, z/depthSteps))
+      translate(p5.Vector.lerp( depthEnd, depthStart, z/depthSteps))
       // translate(p5.Vector.lerp( depthStart, depthEnd, d))
 
-      const p = animation.ease({
-        values: [ 0, 1 ],
-        currentTime: 0,//time/2+z/depthSteps/4,
-        duration: 1,
-        easingFn: easing.easeInOutExpo,
-        // easingFn: easing.easeInOutQuart,
-        //easingFn: easing.easeInOutElastic,
-      })
+      // const p = animation.ease({
+      //   values: [ 0, 1 ],
+      //   currentTime: 0,//time/2+z/depthSteps/4,
+      //   duration: 1,
+      //   easingFn: easing.easeInOutExpo,
+      //   // easingFn: easing.easeInOutQuart,
+      //   //easingFn: easing.easeInOutElastic,
+      // })
 
       // const points = lerpPoints(currentLetterPoints, nextLetterPoints, p )
-
       // const size = mappers.fn( t, 0, c, 0, 500, easing.easeInSine)
 
-      const points = getTextPoints({
-        text: "J",
+      const letter = mappers.circularIndex( time+z/50+t/c, ["j", "J"])
+
+      const [ points, [x, y, w, h] ] = getTextPoints({
+        text: letter,
         position: createVector(0, 0),
-        size: size,// * ((t/c) * 2),
-        font: string.fonts.sans,
-        sampleFactor,
+        size,//: size * Math.pow(2, t),
+        font: string.fonts.martian,
+        sampleFactor: sampleFactor * Math.pow(1.5, t),
         simplifyThreshold
       })
 
-      const darkness = map(z, 0, depthSteps, 10, 3)
+      // rect(
+      //   x * Math.pow(2, t),
+      //   y * Math.pow(2, t),
+      //   w * Math.pow(2, t),
+      //   h * Math.pow(2, t)
+      // )
+      const r = 2
 
+      // beginShape(POINTS)
+      // points.forEach( ({x, y}, index) => {
+      //   vertex(
+      //     x * Math.pow(r, t),
+      //     y * Math.pow(r, t)
+      //   )
+      // })
+      // stroke(255)
+
+
+      //   const hue = noise(
+      //     t/c,
+      //     z/depthSteps
+      //   )
+
+      // stroke( colors.rainbow({
+      //   hueOffset: hueOpacitySpeed,
+      //   hueIndex: map(hue, 0, 1, -PI, PI)*2,
+      //   opacityFactor: map(
+      //     sin(
+      //       hueOpacitySpeed+t/c
+      //     ),
+      //     -1,
+      //     1,
+      //     darkness,
+      //     1
+      //   ),
+      // }))
+      // endShape()
+
+      push()
       points.forEach( ({x, y}, index) => {
+        // translate(
+        //   x,// *, Math.pow(r, t),
+        //   y// * Math.pow(r, t)
+        // )
+
         const xSign = sin(time);
         const ySign = cos(-time);
         const hueOpacityDirection = (xSign*(x/50)+ySign*(y/15));
@@ -252,14 +299,17 @@ sketch.draw( (time, center) => {
           y/100,
           z/depthSteps//+time/2
         )
+        
+        const hueOpacitySpeed = time*3;
+        const darkness = map(z, 0, depthSteps, 7, 3)
 
         stroke( colors.rainbow({
-          hueOffset: hueOpacitySpeed,
-          hueIndex: map(hue, 0, 1, -PI, PI)*2,
+          // hueOffset: hueOpacityDirection/2*t,//+hueOpacitySpeed,//+t/c+z/50,
+          hueIndex: map(hue, 0, 1, -PI, PI)*4,
           opacityFactor: map(
             sin(
-              // hueOpacityDirection+hueOpacitySpeed+z/15
-              hueOpacitySpeed+index/10+z/10
+              hueOpacityDirection+hueOpacitySpeed+z/15
+              // hueOpacitySpeed+index/10+z/10+t/10
             ),
             -1,
             1,
@@ -268,19 +318,59 @@ sketch.draw( (time, center) => {
           ),
         }))
 
-        push()
-
-        translate(
-          x * mappers.fn( t, 0, c, 5, 1, easing.easeInSine),
-          y * mappers.fn( t, 0, c, 5, 1, easing.easeInSine)/1.5,
+        point(
+          x * Math.pow(r, t),
+          y * Math.pow(r, t)
         )
 
-        sphere(
-          mappers.fn(z, 0, depthSteps, 1, 5, easing.easeInQuart),
-        )
+        // point(x, y)
 
-        pop()
+        // sphere(
+        //   mappers.fn(z, 0, depthSteps, 1, 5, easing.easeInQuart),
+        // )
       })
+      pop()
+
+
+      // points.forEach( ({x, y}, index) => {
+      //   const xSign = sin(time);
+      //   const ySign = cos(-time);
+      //   const hueOpacityDirection = (xSign*(x/50)+ySign*(y/15));
+
+      //   const hue = noise(
+      //     x/150,
+      //     y/100,
+      //     z/depthSteps//+time/2
+      //   )
+
+      //   stroke( colors.rainbow({
+      //     hueOffset: hueOpacitySpeed,
+      //     hueIndex: map(hue, 0, 1, -PI, PI)*2,
+      //     opacityFactor: map(
+      //       sin(
+      //         // hueOpacityDirection+hueOpacitySpeed+z/15
+      //         hueOpacitySpeed+index/10+z/10+t/10
+      //       ),
+      //       -1,
+      //       1,
+      //       darkness,
+      //       1
+      //     ),
+      //   }))
+
+      //   push()
+
+      //   translate(
+      //     x * mappers.fn( t, 0, c, 1, 5, easing.easeInExpo),
+      //     y * mappers.fn( t, 0, c, 1, 5, easing.easeInExpo)/1.5,
+      //   )
+
+      //   sphere(
+      //     mappers.fn(z, 0, depthSteps, 1, 5, easing.easeInQuart),
+      //   )
+
+      //   pop()
+      // })
 
       pop()
     }

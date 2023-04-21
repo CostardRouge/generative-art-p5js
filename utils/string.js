@@ -5,6 +5,8 @@ const string = {
     serif: undefined,
     sans: undefined,
     tilt: undefined,
+    martian: undefined,
+    multicoloure: undefined,
     openSans: undefined,
   },
   write: function (
@@ -72,6 +74,12 @@ events.register("engine-window-preload", () => {
   );
   string.fonts.tilt = loadFont(
     gitHubPagesPathHack("assets/fonts/tilt-prism.ttf")
+  );
+  string.fonts.multicoloure = loadFont(
+    gitHubPagesPathHack("assets/fonts/multicoloure.ttf")
+  );
+  string.fonts.martian = loadFont(
+    gitHubPagesPathHack("assets/fonts/martian.ttf")
   );
 });
 
