@@ -124,7 +124,7 @@ sketch.draw( (time, center) => {
   // rotateY(mappers.fn(cos(time), -1, 1, -PI, PI, easing.easeInOutQuart)/9)
   rotateX(mappers.fn(cos(time), -1, 1, -PI, PI, easing.easeInOutQuart)/9)
 
-  const size = 500;
+  const size = width/2;
   const scale = 2.25;
   const font = string.fonts.serif;
 

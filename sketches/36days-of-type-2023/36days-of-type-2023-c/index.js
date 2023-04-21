@@ -1,18 +1,6 @@
 import { sketch, string, mappers, easing, animation, colors, cache, grid } from './utils/index.js';
 
-const easingFunctions = Object.entries( easing );
-
 sketch.setup( undefined, { type: 'webgl'});
-// sketch.setup( undefined );
-// sketch.setup();
-
-function hl(y) {
-  line(0, y, width, y)
-}
-
-function vl(x) {
-  line(x, 0, x, height)
-}
 
 function getTextPoints({ text, size, font, position, sampleFactor, simplifyThreshold }) {
   const fontFamily = font.font?.names?.fontFamily?.en;
@@ -40,21 +28,6 @@ function getTextPoints({ text, size, font, position, sampleFactor, simplifyThres
     })
   });
 }
-
-// function lerpPoints(from, to, amount, fn) {
-//   return to.map( (point, index) => {
-//     const targetIndex = ~~map(index, 0, to.length-1, 0, from.length-1, true);
-
-//     return p5.Vector.lerp( to[index], from[targetIndex], amount )
-//   })
-
-//   return from.map( (point, index) => {
-//     const fromIndex = map(index, 0, 1, 0, from.length-1);
-//     const targetIndex = ~~map(index, 0, from.length-1, 0, to.length-1, true);
-
-//     return p5.Vector.lerp( from[index], to[targetIndex], amount )
-//   })
-// }
 
 function drawGridCell(_x, _y, w, h, cols, rows, drawer) {
   const xSize = w / cols;
@@ -120,7 +93,7 @@ sketch.draw( (time, center) => {
   rotateX(mappers.fn(cos(time), -1, 1, -PI, PI, easing.easeInSine)/24)
   rotateY(mappers.fn(sin(time*2), -1, 1, -PI, PI, easing.easeInOutSine)/18)
 
-  const size = 500;
+  const size = width/2;
   const scale = 2.25;
   const font = string.fonts.tilt;
 

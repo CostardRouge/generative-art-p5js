@@ -135,9 +135,9 @@ sketch.draw( (time, center) => {
     simplifyThreshold
   })
 
-  const depthSteps = 10;
+  const depthSteps = 50;
   const depthStart = 0;
-  const depthEnd = 500;
+  const depthEnd = 100;
 
   noFill()
   stroke(255);

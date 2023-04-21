@@ -84,8 +84,8 @@ function drawGrid(cols, time) {
   noFill()
   strokeWeight(2)
 
-  const xSign = sin(-time);
-  const ySign = cos(time);
+  const xSign = sin(-time/2);
+  const ySign = cos(time/2);
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
     const n = noise(xSign*x/cols+time, ySign*y/rows)*2;
@@ -100,7 +100,8 @@ function drawGrid(cols, time) {
       ( x, y, w, h ) => {
         stroke(16, 16, 64)
         rect(x, y, w, h )
-        stroke(16, 16, 128)
+
+        stroke(128, 16, 16)
 
         const n = noise(x/w, y/h, time);
 
@@ -110,7 +111,8 @@ function drawGrid(cols, time) {
           rect(x-7.5, y-7.5, 15)
         }
         else {
-          ikks(x, y, 15)
+          // ikks(x, y, 15)
+          cross(x, y, 15)
         }
 
       }
@@ -135,7 +137,7 @@ sketch.draw( (time, center) => {
   const letterPosition = createVector(0, 0)
 
   const currentLetterPoints = getTextPoints({
-    text: "i",
+    text: "j",
     position: letterPosition,
     size,
     font: string.fonts.serif,
@@ -144,7 +146,7 @@ sketch.draw( (time, center) => {
   })
 
   const nextLetterPoints = getTextPoints({
-    text: "I",
+    text: "J",
     position: letterPosition,
     size,
     font: string.fonts.serif,
@@ -159,7 +161,7 @@ sketch.draw( (time, center) => {
 
   strokeWeight(2)
   
-  const letterScale = mappers.circularIndex(time, [1, 1/2, 2.5]);
+  const letterScale = (width/(scale*size))//1//mappers.circularIndex(time, [1, 1/1.8]);
   const cols = width / (size * letterScale);
   const rows = ~~cols*height/width;
 
@@ -182,13 +184,14 @@ sketch.draw( (time, center) => {
 
     const p = animation.ease({
       values: [ 0, 1 ],
-      currentTime: time+n,
+      currentTime: time,
       duration: 1,
       easingFn: easing.easeInOutExpo
     })
 
     const points = lerpPoints(currentLetterPoints, nextLetterPoints, p )
 
+    noFill()
     beginShape(POINTS)
     points.forEach( ({x, y}) => {
       vertex(x * letterScale, y * letterScale)
