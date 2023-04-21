@@ -157,13 +157,13 @@ sketch.draw( (time, center) => {
 
   noStroke()
 
-  const depthSteps = 50;
+  const depthSteps = 20;
   // const depthStart = createVector(0, 0, 0);
   // const depthEnd = createVector(0, 0, 500);
 
   const WL = 150
   const HL = 250
-  const DL = 500
+  const DL = 50
 
   const n = map(sin(time), -1, 1, 10, 32)
 

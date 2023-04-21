@@ -149,9 +149,9 @@ sketch.draw( (time, center) => {
 
   noStroke()
 
-  const depthSteps = 50;
+  const depthSteps = 20;
   const depthStart = createVector(0, 0, 0);
-  const depthEnd = createVector(0, 0, 500);
+  const depthEnd = createVector(0, 0, 350);
 
   for (let z = 0; z < depthSteps; z++) {
     push()

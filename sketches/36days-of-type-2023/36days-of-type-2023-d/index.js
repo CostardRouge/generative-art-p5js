@@ -119,10 +119,10 @@ sketch.draw( (time, center) => {
   pop()
 
   // rotateY(mappers.fn(sin(time*5), -1, 1, -PI, PI, easing.easeInSine)/18)
-  // rotateY(mappers.fn(sin(time*5), -1, 1, -PI, PI)/18)
-  // rotateX(mappers.fn(cos(time), -1, 1, -PI, PI)/9)
+  rotateY(mappers.fn(sin(time*5), -1, 1, -PI, PI)/18)
+  rotateX(mappers.fn(cos(time), -1, 1, -PI, PI)/9)
 
-  const size = 500;
+  const size = width/2;
   const scale = 2.25;
 
   const sampleFactor = 0.05;
@@ -149,7 +149,7 @@ sketch.draw( (time, center) => {
 
   const depthSteps = 50;
   const depthStart = 0;
-  const depthEnd = 500;
+  const depthEnd = 250;
 
   noFill()
   for (let z = 0; z < depthSteps; z++) {
@@ -170,7 +170,7 @@ sketch.draw( (time, center) => {
         z/depthSteps-time/2
       )
       
-      const opacityFactor = mappers.fn(sin(z/(depthSteps/3)+time*3), -1, 1, 20, 1, easing.easeInQuint);
+      const opacityFactor = mappers.fn(sin(z/(depthSteps)+time*2), -1, 1, 20, 1, easing.easeInQuint);
 
       if (opacityFactor > 15) {
         return
@@ -191,12 +191,6 @@ sketch.draw( (time, center) => {
       sphere(4, 4)
 
       pop()
-
-
-    // point(
-    //   x * scale,
-    //   y * scale
-    // )
     })
 
     pop()

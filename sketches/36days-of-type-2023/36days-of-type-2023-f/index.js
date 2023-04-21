@@ -116,7 +116,7 @@ sketch.draw( (time, center) => {
 
   // rotateY(PI/6)
 
-  const size = 500//(width)/2;
+  const size = (width)/2;
   const scale = 2;
 
   const sampleFactor = 0.2;
@@ -146,6 +146,8 @@ sketch.draw( (time, center) => {
   const depthSteps = 20;
   const depthStart = createVector(0, 0, 0);
 
+  const D = 500;
+
   for (let z = 0; z < depthSteps; z++) {
     push()
 
@@ -159,18 +161,18 @@ sketch.draw( (time, center) => {
       values: [
         // createVector(0, 0, 500),
         // createVector(0, 0, 500),
-        createVector(0, 0, 100), // milieu
+        createVector(0, 0, D/5), // milieu
 
-        createVector(0, 0, 500), // milieu
-        createVector(50, 0, 500), // millieu droite
-        createVector(50, 50, 500), // bas droite
-        createVector(50, 50, 100), // bas droite
+        createVector(0, 0, D), // milieu
+        createVector(50, 0, D), // millieu droite
+        createVector(50, 50, D), // bas droite
+        createVector(50, 50, D/5), // bas droite
 
-        createVector(-50, 50, 500), // bas gauche
-        createVector(50, 0, 500), // millieu droite
-        createVector(-50, 50, 500), // haut droite
-        createVector(0, 50, 500), // haut millieu,
-        createVector(50, 50, 500), // haut millieu
+        createVector(-50, 50, D), // bas gauche
+        createVector(50, 0, D), // millieu droite
+        createVector(-50, 50, D), // haut droite
+        createVector(0, 50, D), // haut millieu,
+        createVector(50, 50, D), // haut millieu
         // createVector(50, 50, 500),
         // createVector(50, 50, 500)
       ],

@@ -121,7 +121,7 @@ sketch.draw( (time, center) => {
 
   // rotateY(PI/6)
 
-  const size = 500//(width)/2;
+  const size = (width)/2;
   const scale = 2;
 
   const sampleFactor = 0.1;

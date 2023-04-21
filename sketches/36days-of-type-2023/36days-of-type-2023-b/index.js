@@ -1,18 +1,6 @@
 import { sketch, string, mappers, easing, animation, colors, cache, grid } from './utils/index.js';
 
-const easingFunctions = Object.entries( easing );
-
 sketch.setup( undefined, { type: 'webgl'});
-// sketch.setup( undefined );
-// sketch.setup();
-
-function hl(y) {
-  line(0, y, width, y)
-}
-
-function vl(x) {
-  line(x, 0, x, height)
-}
 
 function getTextPoints({ text, size, font, position, sampleFactor, simplifyThreshold }) {
   const fontFamily = font.font?.names?.fontFamily?.en;
@@ -41,21 +29,6 @@ function getTextPoints({ text, size, font, position, sampleFactor, simplifyThres
   });
 }
 
-function lerpPoints(from, to, amount, fn) {
-  return to.map( (point, index) => {
-    const targetIndex = ~~map(index, 0, to.length-1, 0, from.length-1, true);
-
-    return p5.Vector.lerp( to[index], from[targetIndex], amount )
-  })
-
-  return from.map( (point, index) => {
-    const fromIndex = map(index, 0, 1, 0, from.length-1);
-    const targetIndex = ~~map(index, 0, from.length-1, 0, to.length-1, true);
-
-    return p5.Vector.lerp( from[index], to[targetIndex], amount )
-  })
-}
-
 function drawGridCell(_x, _y, w, h, cols, rows, drawer) {
   const xSize = w / cols;
   const ySize = h / rows;
@@ -67,18 +40,7 @@ function drawGridCell(_x, _y, w, h, cols, rows, drawer) {
   }
 }
 
-// function drawGrid(xCount, yCount, offset = 1) {
 function drawGrid(cols, time) {
-  //   const xSize = width / xCount;
-  // const ySize = height / yCount;
-
-  // for (let x = offset; x <= xCount - offset; x++) {
-  //   for (let y = offset; y <= yCount - offset; y++) {
-  //     hl(y * ySize)
-  //     vl(x * xSize)
-  //   }
-  // }
-
   const rows = cols*height/width;
 
   const gridOptions = {
@@ -128,11 +90,11 @@ sketch.draw( (time, center) => {
   rotateX(mappers.fn(cos(time), -1, 1, -PI, PI, easing.easeInSine)/24)
   rotateY(mappers.fn(sin(time*2), -1, 1, -PI, PI, easing.easeInOutSine)/18)
 
-  const size = 500;
+  const size = width/2;
   const scale = 2.25;
   const font = string.fonts.sans;
 
-  const sampleFactor = 0.25;
+  const sampleFactor = 0.1;
   const simplifyThreshold = 0;
   const letterPosition = createVector(0, 0)
 
@@ -157,7 +119,7 @@ sketch.draw( (time, center) => {
   const primary = currentLetterPoints.length > nextLetterPoints.length ? currentLetterPoints : nextLetterPoints;
   const secondary = currentLetterPoints.length > nextLetterPoints.length ? nextLetterPoints : currentLetterPoints;
   
-  const depthSteps = 30;
+  const depthSteps = 20;
   const depthStart = 0;
   const depthEnd = 350;
 
@@ -177,88 +139,28 @@ sketch.draw( (time, center) => {
 
       const { x, y } = animation.ease({
         values: [ primary[i], secondary[targetIndex] ],
-        currentTime: 0,//time/4+z/300,
-        // currentTime: (z/depth)/10,
+        currentTime: time/4+z/300,
+        currentTime: (z/depthSteps)/10,
         duration: 1,
         easingFn: easing.easeInOutExpo,
-        // easingFn: easing.easeOutElastic,
         lerpFn: p5.Vector.lerp,
       })
 
-      let [ , easingFunction ] = mappers.circularIndex(
-        // time*2,
-        // time+map(sin(time), -1, 1, 1, 8),
-        // time/2+z/200+progression,
-        time/2+z/50,
-        // 0,
-        easingFunctions
-      );
-
-      // easingFunction = animation.ease({
-      //   values: easingFunctions,
-      //   currentTime: time,
-      //   duration: 1,
-      //   easingFn: easing.easeInOutExpo,
-      //   // easingFn: easing.easeOutElastic,
-      //   lerpFn: p5.Vector.lerp,
-      // })
-  
       stroke(colors.rainbow({
         // hueOffset: time,
         hueIndex: mappers.fn(progression, 0, 1, -PI, PI)*2,
-        // hueOffset: progression+time,
-        // hueIndex: mappers.fn(z, 0, depthSteps, -PI, PI),
-        // opacityFactor: 1.5,//mappers.fn(alpha, 0, 255, 3, 1)
         opacityFactor: map(sin(progression*100+time*4), -1, 1, 4, 1),
         opacityFactor: mappers.fn(sin(z/5+progression*30+time*6), -1, 1, 6, 1, easing.easeOutSine)
       }))
       push()
-      // translate(
-      //   x*scale*map(z, 0, depthSteps, 0, 1),
-      //   y*scale*map(z, 0, depthSteps, 0, 1),
-      // )
 
       translate(
-        x*scale*map(z, 0, depthSteps, 1.2, 0.4),
-        y*scale*map(z, 0, depthSteps, 1.2, 0.4),
+        x*scale*mappers.fn(z, 0, depthSteps, 1.2, 0.5, easing.easeInOutQuart),
+        y*scale*mappers.fn(z, 0, depthSteps, 1.2, 0.5, easing.easeInOutQuart),
       )
 
-      // translate(
-      //   x*scale*map(z, 0, depthSteps, 0.5, 1),
-      //   y*scale*map(z, 0, depthSteps, 0.5, 1),
-      // )
-
-      // const fn = easing.easeInOutSine
-
-      let v = animation.ease({
-        values: [ 1.2, 0.5 ],
-        currentTime: time+progression/5,
-        duration: 1,
-        easingFn: easing.easeInOutExpo,
-        // easingFn: easing.easeOutElastic,
-        // lerpFn: p5.Vector.lerp,
-      })
-
-      // translate(
-      //   x*scale*mappers.fn(z, 0, depthSteps, 1.2, 0.5, easingFunction),
-      //   y*scale*mappers.fn(z, 0, depthSteps, 1.2, 0.5, easingFunction),
-      // )
-
-      translate(
-        x*scale*v,
-        y*scale*v,
-      )
-      // translate(
-      //   x*scale,
-      //   y*scale,
-      // )
       point(0, 0)
       pop()
-
-      // vertex(
-      //   x*scale*map(z, 0, depth, 1, 0),
-      //   y*scale*map(z, 0, depth, 1, 0),
-      // )
     }
     pop()
   }
