@@ -136,52 +136,6 @@ function drawGrid(cols, time) {
   })
 }
 
-function gridd(time) {
-  const letterScale = (width/(scale*size))//1//mappers.circularIndex(time, [1, 1/1.8]);
-  const cols = width / (size * letterScale);
-  const rows = ~~cols*height/width;
-
-  const gridOptions = {
-    startLeft: createVector( -width/2, -height/2 ),
-    startRight: createVector( width/2, -height/2 ),
-    endLeft: createVector( -width/2, height/2 ),
-    endRight: createVector( width/2, height/2 ),
-    rows,
-    cols: ~~cols,
-    centered: true
-  }
-
-  stroke(255)
-  grid.draw(gridOptions, (cellVector, { x, y }) => {
-    push()
-    translate(cellVector)
-
-    const n = noise(x/cols, y/rows-time/100);
-
-    const p = animation.ease({
-      values: [ 0, 1 ],
-      currentTime: time,
-      duration: 1,
-      easingFn: easing.easeInOutExpo
-    })
-
-    const points = lerpPoints(currentLetterPoints, nextLetterPoints, p )
-
-    noFill()
-    beginShape(POINTS)
-    points.forEach( ({x, y}) => {
-      vertex(x * letterScale, y * letterScale)
-    })
-    endShape()
-
-    pop()
-  })
-
-  pop()
-
-  return
-}
-
 sketch.draw( (time, center) => {
   background(0);
 
