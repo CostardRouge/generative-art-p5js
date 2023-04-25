@@ -1,7 +1,7 @@
 {
    "36days-of-type-2023": {
       "meta": {
-         "_mtime": "2023-04-23T21:14:54.151Z",
+         "_mtime": "2023-04-24T23:50:21.476Z",
          "name": "36days-of-type-2023"
       },
       "sketches": {
@@ -84,7 +84,7 @@
          },
          "36days-of-type-2023-j": {
             "meta": {
-               "_mtime": "2023-04-23T16:33:28.317Z",
+               "_mtime": "2023-04-24T22:01:42.837Z",
                "name": "36days-of-type-2023-j"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-j"
@@ -109,6 +109,27 @@
                "name": "36days-of-type-2023-l"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-l"
+         },
+         "36days-of-type-2023-m-alpha-mask": {
+            "meta": {
+               "_mtime": "2023-04-24T22:06:48.558Z",
+               "name": "36days-of-type-2023-m-alpha-mask"
+            },
+            "path": "sketches/36days-of-type-2023/36days-of-type-2023-m-alpha-mask"
+         },
+         "36days-of-type-2023-m-optimized": {
+            "meta": {
+               "_mtime": "2023-04-25T02:18:31.630Z",
+               "name": "36days-of-type-2023-m-optimized"
+            },
+            "path": "sketches/36days-of-type-2023/36days-of-type-2023-m-optimized"
+         },
+         "36days-of-type-2023-m-spinner": {
+            "meta": {
+               "_mtime": "2023-04-24T23:50:21.476Z",
+               "name": "36days-of-type-2023-m-spinner"
+            },
+            "path": "sketches/36days-of-type-2023/36days-of-type-2023-m-spinner"
          }
       }
    },
@@ -148,7 +169,7 @@
          },
          "3d-grid-field-v4-rotating-and-warping-2": {
             "meta": {
-               "_mtime": "2022-10-30T14:31:47.440Z",
+               "_mtime": "2023-04-24T21:37:04.861Z",
                "name": "3d-grid-field-v4-rotating-and-warping-2"
             },
             "path": "sketches/3d-grid-field/3d-grid-field-v4-rotating-and-warping-2"
@@ -1163,7 +1184,7 @@
          },
          "genuary2023-day6-steal-like-an-arstist-a": {
             "meta": {
-               "_mtime": "2023-03-25T12:24:10.604Z",
+               "_mtime": "2023-04-23T23:08:05.889Z",
                "name": "genuary2023-day6-steal-like-an-arstist-a"
             },
             "path": "sketches/genuary2023/genuary2023-day6-steal-like-an-arstist-a"
