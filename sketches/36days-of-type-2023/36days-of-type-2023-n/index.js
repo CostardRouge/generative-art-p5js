@@ -100,7 +100,7 @@ function drawGrid(cols, time) {
   const H = height*2 / rows;
 
   noFill()
-  strokeWeight(2)
+  strokeWeight(3)
 
   const xSign = sin(-time/2);
   const ySign = cos(time/2);
@@ -249,9 +249,9 @@ sketch.draw( (time, center) => {
   const simplifyThreshold = 0;
 
   push()
-  strokeWeight(3)
+  strokeWeight(2)
 
-  const cols = 200;
+  const cols = 150;
   const rows = cols*height/width;
 
   const gridOptions = {
@@ -277,7 +277,7 @@ sketch.draw( (time, center) => {
     text: "n",
     position: createVector(0, 0),
     size,
-    font: string.fonts.martian,
+    font: string.fonts.serif,
     sampleFactor,
     simplifyThreshold
   })
@@ -309,7 +309,7 @@ sketch.draw( (time, center) => {
       easingFn: easing.easeInOutExpo,
     })
 
-    const depth = mappers.fn(easedAlpha, 0, 255, 0, 100, easingFunction)
+    const depth = mappers.fn(easedAlpha, 0, 250, 0, 100, easingFunction)
 
     if ( depth <= 1 ) {
       continue
