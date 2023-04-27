@@ -19,7 +19,7 @@ jobs:
           npm install --prefix ./node_modules/sketch-gallery
           npm run gallery:build
       - name: Deploy to GitHub pages🚀
-        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           branch: gh-pages
           folder: node_modules/sketch-gallery/dist
