@@ -87,17 +87,17 @@ function drawGrid(cols, time) {
   const rows = cols*height/width;
 
   const gridOptions = {
-    startLeft: createVector( -width, -height ),
-    startRight: createVector( width, -height ),
-    endLeft: createVector( -width, height ),
-    endRight: createVector( width, height),
+    startLeft: createVector( -width/2, -height/2 ),
+    startRight: createVector( width/2, -height /2),
+    endLeft: createVector( -width/2, height/2 ),
+    endRight: createVector( width/2, height/2),
     rows,
     cols,
     centered: true
   }
 
-  const W = width*2 / cols;
-  const H = height*2 / rows;
+  const W = width / cols;
+  const H = height/ rows;
 
   noFill()
   strokeWeight(3)
@@ -105,44 +105,40 @@ function drawGrid(cols, time) {
   const xSign = sin(-time/2);
   const ySign = cos(time/2);
 
-  const n = mappers.circularIndex( time*4, [1, 2, 3, 2])
-
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    // const n = noise(xSign*x/cols+time, ySign*y/rows)*2;
+    const n = noise(xSign*x/cols+time, ySign*y/rows)*2;
 
     drawGridCell(
       cellVector.x-W/2,
       cellVector.y-H/2,
       W,
       H,
-      n,
-      n,
+      ~~n,
+      ~~n,
       ( x, y, w, h ) => {
-        // stroke(16, 16, 64)
+        stroke(16, 16, 32)
         // rect(x, y, w, h )
-
-        stroke(64, 16, 16)
-        circle(x, y, 15)
+        circle(x, y, w)
 
 
-        // const n = noise(x/w, y/h, time);
+        const n = noise(x/w, y/h, time);
 
-        // if (n > 0.5) {
-        //   // fill(0)
-        //   // circle(x, y, 15)
-        //   //rect(x-7.5, y-7.5, 15)
-        // }
-        // else {
-        //   // ikks(x, y, 15)
-        //   cross(x, y, 15)
-        // }
+        if (n > 0.5) {
+          // fill(0)
+          // circle(x, y, 15)
+          //rect(x-7.5, y-7.5, 15)
+        }
+        else {
+          // 
+          // cross(x, y, 15)
+          stroke(128, 16, 16)
+          ikks(x, y, 15)
+        }
 
       }
     )
   })
 }
-
-const alphaPoints = {}
 
 function getAlphaFromMask({ position, maskPoints, maskId, distance = 0.025, alphaRange = [0, 255]}) {
   const { x, y } = position;
@@ -175,25 +171,38 @@ function getAlphaFromMask({ position, maskPoints, maskId, distance = 0.025, alph
   return alpha;
 }
 
-function createGridAlphaPoints(gridOptions, maskPoints, cacheKey) {
-  return cache.store( `alpha-points-${cacheKey}`, () => {
-    grid.draw(gridOptions, position => {
-      const alpha = getAlphaFromMask({
-        position,
-        maskPoints,
-        maskId: cacheKey
-      })
-  
-      if ( alpha ) {
-        const pointKey = `${position.x}@${position.y}`;
-        const point = alphaPoints[ pointKey ] ?? {}
+let dir = 0;
 
-        point[ cacheKey ] = alpha;
-        alphaPoints[ pointKey ] = point
+function createGridAlphaPoints(gridOptions, maskPointsArray) {
+  return cache.store( `alpha-points`, () => {
+    const alphaPoints = [];
+
+    grid.draw(gridOptions, position => {
+      const alphaPoint = {};
+
+      for ( const cacheKey in maskPointsArray ) {
+        const maskPoints = maskPointsArray[ cacheKey ]
+
+        const alpha = getAlphaFromMask({
+          position,
+          maskPoints,
+          maskId: cacheKey
+        })
+    
+        if ( alpha ) {
+          alphaPoint[ cacheKey ] = alpha;
+        }
+      }
+
+      if ( Object.keys( alphaPoint ).length > 0 ) {
+        alphaPoints.push( {
+          ...alphaPoint,
+          position
+        } );
       }
     });
 
-    return null;
+    return alphaPoints;
   });
 }
 
@@ -234,13 +243,13 @@ function drawGrid1(xCount, yCount, time) {
 sketch.draw( (time, center) => {
   background(0);
 
-  const s = mappers.fn(cos(time/2), -1, 1, 1, 2, easing.easeInOutExpo)
+  const s = mappers.fn(cos(time*2.2), -1, 1, 1, 2, easing.easeInOutExpo)
   const xx = mappers.fn(s, 1, 2, 100, 15, easing.easeInOutCubic)
   const yy = mappers.fn(s, 1, 2, 15, 150,  easing.easeInOutQuad)
 
   push()
-  rotate(time/4)
-  drawGrid(6*s, time/2)
+  //rotate(time/4)
+  drawGrid(3*s, time/2)
   pop()
 
   // push()
@@ -255,7 +264,7 @@ sketch.draw( (time, center) => {
   push()
   strokeWeight(2)
 
-  const cols = 150//*2;
+  const cols = 150;
   const rows = cols*height/width;
 
   const gridOptions = {
@@ -269,19 +278,19 @@ sketch.draw( (time, center) => {
   }
 
   const [ firstLetterPoints,, firstLetterPointsCacheKey ] = getTextPoints({
-    text: "O",
+    text: "P",
     position: createVector(0, 0),
     size,
-    font: string.fonts.tilt,
+    font: string.fonts.serif,
     sampleFactor,
     simplifyThreshold
   })
 
   const [ nextLetterPoints,, nextLetterPointsCacheKey ] = getTextPoints({
-    text: "o",
+    text: "p",
     position: createVector(0, 0),
     size,
-    font: string.fonts.martian,
+    font: string.fonts.openSans,
     sampleFactor,
     simplifyThreshold
   })
@@ -295,19 +304,22 @@ sketch.draw( (time, center) => {
 
   push()
 
-  // const n = map(sin(time), -1, 1, 2, 4)
   // rotateY(mappers.fn(sin(time), -1, 1, -PI, PI, easing.easeInOutQuart)/12)
-  // rotateX(mappers.fn(cos(time), -1, 1, -PI, PI, easing.easeInOutQuart)/8)
+  // rotateX(mappers.fn(cos(time+index), -1, 1, -PI, PI, easing.easeInOutQuart)/50)
 
-  createGridAlphaPoints(gridOptions, firstLetterPoints, "a")
-  createGridAlphaPoints(gridOptions, nextLetterPoints, "b")
+  dir += mappers.fn(s, 1, 2, -1, 1, easing.easeInOutCubic)/50
 
-  for ( const key in alphaPoints ) {
-    const a = alphaPoints[ key ][ "a" ] || 0;
-    const b = alphaPoints[ key ][ "b" ] || 0;
+  const alphaPoints = createGridAlphaPoints( gridOptions, {
+    a:  firstLetterPoints,
+    b:  nextLetterPoints
+  })
 
+  for ( const [ index, { a, b, position } ] of alphaPoints.entries() ) {
     const easedAlpha = animation.ease({
-      values: [ b, a ],
+      values: [
+        a || 0,
+        b || 0
+      ],
       currentTime: s-1,
       duration: 1,
       easingFn: easing.easeInOutExpo,
@@ -318,15 +330,13 @@ sketch.draw( (time, center) => {
     if ( depth <= 1 ) {
       continue
     }
-
-    const position = createVector( ...key.split("@") )
   
-    const angle = noise(position.x/cols, position.y/rows, ) * TAU;
+    const angle = noise(position.x/cols, position.y/rows) * TAU;
     const [ rotatedX, rotatedY ] = rotateVector(
       position,
-      center.div(1),
-      -time/2
-      +angle
+      center.div(2),
+      dir
+      +angle/2
     );
 
     const hue = noise(
@@ -343,6 +353,7 @@ sketch.draw( (time, center) => {
         sin(
           time
           +depth/15
+          // +index/100
         ),
         -1,
         1,
@@ -360,11 +371,12 @@ sketch.draw( (time, center) => {
     
     const zz = map(sin(
       time*5
-      +depth/200
+      // +index/500
+      // +depth/200
       // +position.x/xx
-      +position.y/yy
-      // +rotatedY/rows*8
-      // +rotatedX/cols*8
+      //+position.y/yy
+      +rotatedY/rows*8
+      +rotatedX/cols*8
     ), -1, 1, -m, m)
 
     point(
