@@ -100,7 +100,7 @@ function drawGrid(cols, time) {
   const H = height*2 / rows;
 
   noFill()
-  strokeWeight(3)
+  // strokeWeight(3)
 
   const xSign = sin(-time/2);
   const ySign = cos(time/2);
@@ -120,22 +120,22 @@ function drawGrid(cols, time) {
       ( x, y, w, h ) => {
         // stroke(16, 16, 64)
         // rect(x, y, w, h )
+        const n = noise(x/w, y/h, time);
 
-        stroke(64, 16, 16)
+        if (n > 0.5) {
+          // fill(0)
+          // circle(x, y, 15)
+          //rect(x-7.5, y-7.5, 15)
+          stroke(128, 16, 16)
+        }
+        else {
+          // ikks(x, y, 15)
+          // cross(x, y, 15)
+          stroke(16, 16, 128)
+        }
+
         circle(x, y, 15)
 
-
-        // const n = noise(x/w, y/h, time);
-
-        // if (n > 0.5) {
-        //   // fill(0)
-        //   // circle(x, y, 15)
-        //   //rect(x-7.5, y-7.5, 15)
-        // }
-        // else {
-        //   // ikks(x, y, 15)
-        //   cross(x, y, 15)
-        // }
 
       }
     )
@@ -235,7 +235,7 @@ sketch.draw( (time, center) => {
   background(0);
 
   const s = mappers.fn(cos(time/2), -1, 1, 1, 2, easing.easeInOutExpo)
-  const xx = mappers.fn(s, 1, 2, 100, 15, easing.easeInOutCubic)
+  const xx = mappers.fn(s, 1, 2, 15, 150, easing.easeInOutCubic)
   const yy = mappers.fn(s, 1, 2, 15, 150,  easing.easeInOutQuad)
 
   push()
@@ -253,7 +253,6 @@ sketch.draw( (time, center) => {
   const simplifyThreshold = 0;
 
   push()
-  strokeWeight(2)
 
   const cols = 150//*2;
   const rows = cols*height/width;
@@ -286,14 +285,7 @@ sketch.draw( (time, center) => {
     simplifyThreshold
   })
 
-  const i = (mouseX/width) * easingFunctions.length;
-  let [easingFunctionName, easingFunction] = mappers.circularIndex(~~i, easingFunctions)
-
-  easingFunction = easing.easeOutCubic
-  easingFunction = easing.easeOutQuad
-  debug.print( easingFunctionName )
-
-  push()
+  // strokeWeight(4)
 
   // const n = map(sin(time), -1, 1, 2, 4)
   // rotateY(mappers.fn(sin(time), -1, 1, -PI, PI, easing.easeInOutQuart)/12)
@@ -313,7 +305,7 @@ sketch.draw( (time, center) => {
       easingFn: easing.easeInOutExpo,
     })
 
-    const depth = mappers.fn(easedAlpha, 0, 250, 0, 100, easingFunction)
+    const depth = mappers.fn(easedAlpha, 0, 250, 0, 100, easing.easeOutQuad)
 
     if ( depth <= 1 ) {
       continue
@@ -352,7 +344,7 @@ sketch.draw( (time, center) => {
     })
 
     // tint.setAlpha(map(depth, 0, 50, 0, 360))
-    // tint.setAlpha(easedAlpha)
+    tint.setAlpha(easedAlpha)
 
     stroke( tint )
 
@@ -360,9 +352,10 @@ sketch.draw( (time, center) => {
     
     const zz = map(sin(
       time*5
-      +depth/200
+      // +depth/200
       // +position.x/xx
-      +position.y/yy
+      +map(s, 2, 1, position.x/15, 0)
+      +map(s, 1, 2, position.y/15, 0)
       // +rotatedY/rows*8
       // +rotatedX/cols*8
     ), -1, 1, -m, m)
