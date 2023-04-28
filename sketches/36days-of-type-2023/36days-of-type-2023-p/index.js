@@ -244,8 +244,8 @@ sketch.draw( (time, center) => {
   background(0);
 
   const s = mappers.fn(cos(time*2.2), -1, 1, 1, 2, easing.easeInOutExpo)
-  const xx = mappers.fn(s, 1, 2, 100, 15, easing.easeInOutCubic)
-  const yy = mappers.fn(s, 1, 2, 15, 150,  easing.easeInOutQuad)
+  // const xx = mappers.fn(s, 1, 2, 100, 15, easing.easeInOutCubic)
+  // const yy = mappers.fn(s, 1, 2, 15, 150,  easing.easeInOutQuad)
 
   push()
   //rotate(time/4)
@@ -261,10 +261,7 @@ sketch.draw( (time, center) => {
   const sampleFactor = 1/10;
   const simplifyThreshold = 0;
 
-  push()
-  strokeWeight(2)
-
-  const cols = 150;
+  const cols = 150//*2;
   const rows = cols*height/width;
 
   const gridOptions = {
@@ -278,15 +275,6 @@ sketch.draw( (time, center) => {
   }
 
   const [ firstLetterPoints,, firstLetterPointsCacheKey ] = getTextPoints({
-    text: "P",
-    position: createVector(0, 0),
-    size,
-    font: string.fonts.serif,
-    sampleFactor,
-    simplifyThreshold
-  })
-
-  const [ nextLetterPoints,, nextLetterPointsCacheKey ] = getTextPoints({
     text: "p",
     position: createVector(0, 0),
     size,
@@ -295,19 +283,19 @@ sketch.draw( (time, center) => {
     simplifyThreshold
   })
 
-  const i = (mouseX/width) * easingFunctions.length;
-  let [easingFunctionName, easingFunction] = mappers.circularIndex(~~i, easingFunctions)
-
-  easingFunction = easing.easeOutCubic
-  easingFunction = easing.easeOutQuad
-  debug.print( easingFunctionName )
-
-  push()
+  const [ nextLetterPoints,, nextLetterPointsCacheKey ] = getTextPoints({
+    text: "P",
+    position: createVector(0, 0),
+    size,
+    font: string.fonts.serif,
+    sampleFactor,
+    simplifyThreshold
+  })
 
   // rotateY(mappers.fn(sin(time), -1, 1, -PI, PI, easing.easeInOutQuart)/12)
   // rotateX(mappers.fn(cos(time+index), -1, 1, -PI, PI, easing.easeInOutQuart)/50)
 
-  dir += mappers.fn(s, 1, 2, -1, 1, easing.easeInOutCubic)/50
+  dir += mappers.fn(s, 1, 2, -1, 1, easing.easeInOutQuart)/50
 
   const alphaPoints = createGridAlphaPoints( gridOptions, {
     a:  firstLetterPoints,
@@ -325,7 +313,7 @@ sketch.draw( (time, center) => {
       easingFn: easing.easeInOutExpo,
     })
 
-    const depth = mappers.fn(easedAlpha, 0, 250, 0, 100, easingFunction)
+    const depth = mappers.fn(easedAlpha, 0, 250, 0, 100, easing.easeOutQuad)
 
     if ( depth <= 1 ) {
       continue
@@ -342,9 +330,9 @@ sketch.draw( (time, center) => {
     const hue = noise(
       // position.x/cols,
       // position.y/rows,
-      rotatedY/rows/2,
-      rotatedX/cols/2
-      // +depth/150//+time/2
+      rotatedY/rows,
+      rotatedX/cols
+      +depth/150//+time/2
     )
     const tint = colors.rainbow({
       // hueOffset: time,
@@ -352,22 +340,24 @@ sketch.draw( (time, center) => {
       opacityFactor: map(
         sin(
           time
+          +easedAlpha/2
           +depth/15
-          // +index/100
+          //+rotatedX/cols
+          //+index/100
         ),
         -1,
         1,
-        3,
+        5,
         1
       ),
     })
 
     // tint.setAlpha(map(depth, 0, 50, 0, 360))
-    // tint.setAlpha(easedAlpha)
+    tint.setAlpha(easedAlpha)
 
     stroke( tint )
 
-    const m = 100
+    const m = 150
     
     const zz = map(sin(
       time*5
