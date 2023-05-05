@@ -135,39 +135,6 @@ function drawer( lerper, positioner, shaper, time, index ) {
     positioner(lerpIndex, lerpMin, lerpMax, lerpStep, time, index);
     shaper(lerpIndex, lerpMin, lerpMax, time, index);
     pop();
-
-    // const x = converters.polar.get(sin, width/3, lerpIndex+time, 1);
-    // const y = converters.polar.get(cos, width/3, lerpIndex+time, 1);
-
-    // if (lerpIndex+lerpStep > lerpMax ) {
-    //   rotate(time)
-    //   strokeWeight(4)
-    //   stroke(
-    //     128,
-    //     128,
-    //     255
-    //   );
-    //   string.write(Math.ceil(x).toString(), 25+x, -height/2 + 18, 32 )
-    //   string.write(Math.ceil(y).toString(), -20+width / 2, y+18, 32 )
-
-    //   string.write(`start`, x, y )
-    //   string.write(`${Math.ceil(x)} / ${Math.ceil(y)}`, x, y )
-    // }
-
-
-    // if (lerpIndex == lerpMin) {
-    //   rotate(time)
-    //   strokeWeight(4)
-    //   stroke(
-    //     128,
-    //     128,
-    //     255
-    //   );
-    //   // string.write(Math.ceil(x).toString(), 25+x, -height/2 + 18, 32 )
-    //   // string.write(Math.ceil(y).toString(), -20+width / 2, y+18, 32 )
-
-    //   string.write("end", x, y, 24 )
-    // }
   }
 }
 
@@ -176,14 +143,6 @@ function drawGrid(xCount, yCount, time, color) {
   const ySize = height / yCount;
 
   strokeWeight(3)
-
-  // stroke(
-  //   128,
-  //   128,
-  //   255,
-  //   // map(sin(time), -1, 1, 0, 100)
-  // );
-
   stroke( color );
 
   const offset = 0;
@@ -267,7 +226,6 @@ sketch.draw((time) => {
       for (let lineIndex = lineMin; lineIndex < lineMax; lineIndex += lineStep) {
         const vector = converters.polar.vector(
           lineIndex,
-           //s * 1.5,
           s * z
         );
 
@@ -285,8 +243,6 @@ sketch.draw((time) => {
             opacityFactor,
           map(sin(hueSpeed+lerpIndex*5), -1, 1, 360, 0) /
             opacityFactor,
-          // map(lerpIndex, lerpMin, lerpMax, 0, 100)
-          // mappers.circularMap(lerpIndex, lerpMax, 1, 255)
         ) );
 
 
@@ -337,9 +293,7 @@ sketch.draw((time) => {
           map(sin(lerpIndex*opacityCount-time*opacitySpeed), -1, 1, -1, 1),
           -1,
           1,
-          // map(sin(lerpIndex), -1, 1, 1, 50),
           map(cos(lerpIndex*opacityCount+time*opacitySpeed), -1, 1, 1, 150),
-          // 10,
           1
         );
       }
@@ -364,7 +318,6 @@ sketch.draw((time) => {
       for (let lineIndex = lineMin; lineIndex < lineMax; lineIndex += lineStep) {
         const vector = converters.polar.vector(
           lineIndex,
-           //s * 1.5,
           s * z
         );
 
@@ -382,8 +335,6 @@ sketch.draw((time) => {
             opacityFactor,
           map(sin(hueSpeed+lerpIndex*5), -1, 1, 360, 0) /
             opacityFactor,
-          // map(lerpIndex, lerpMin, lerpMax, 0, 100)
-          // mappers.circularMap(lerpIndex, lerpMax, 1, 255)
         ) );
 
 
