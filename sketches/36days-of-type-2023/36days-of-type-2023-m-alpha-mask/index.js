@@ -4,8 +4,6 @@ sketch.setup( undefined, { type: 'webgl'});
 
 const easingFunctions = Object.entries( easing );
 
-
-
 // events.register("post-setup", () => {
 //   audio.capture.setup()
 //   // midi.setup()

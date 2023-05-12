@@ -1,15 +1,6 @@
 import { sketch, string, mappers, easing, animation, colors, cache, grid } from './utils/index.js';
 
 sketch.setup( undefined, { type: 'webgl'});
-// sketch.setup();
-
-function hl(y) {
-  line(0, y, width, y)
-}
-
-function vl(x) {
-  line(x, 0, x, height)
-}
 
 function getTextPoints({ text, size, font, position, sampleFactor, simplifyThreshold }) {
   const fontFamily = font.font?.names?.fontFamily?.en;
@@ -53,25 +44,6 @@ function getTextPoints({ text, size, font, position, sampleFactor, simplifyThres
   });
 }
 
-function drawGrid(xCount, yCount){
-  const xSize = width / xCount;
-  const ySize = height / yCount;
-
-  rectMode(CENTER);
-  strokeWeight(1)
-  stroke(255)
-  fill(255)
-
-  const offset = 0;
-
-  for (let x = offset; x <= xCount - offset; x++) {
-    for (let y = offset; y <= yCount - offset; y++) {
-      hl(y * ySize)
-      vl(x * xSize)
-    }
-  }
-}
-
 function drawPoints(points, begin, end = CLOSE) {
   beginShape(begin)
   points.forEach( ({x, y}) => {
@@ -97,29 +69,25 @@ function lerpPoints(from, to, amount, fn) {
 sketch.draw( (time) => {
   background(0);
   noFill()
-  // rotateX(time)
-  rotateY(time)
-  // rotateZ(time)
 
-  const speed = time*3;
-  const word = "abcefghijklmnopqrstuvwxyz"
+  const word = "vV"
   const size = (width+height)/3;
   const font = string.fonts.serif;
 
-  const sampleFactor = 0.1;
+  const sampleFactor = 0.5;
   const simplifyThreshold = 0;
 
-  const [points] = getTextPoints({
-    text: mappers.circularIndex(speed, word),
+  const [firstLetterPoints] = getTextPoints({
+    text: mappers.circularIndex(0, word),
     position: createVector(0, 0),
-    size,
+    size: size*0.75,
     font,
     sampleFactor,
     simplifyThreshold
   })
 
-  const [points2] = getTextPoints({
-    text: mappers.circularIndex(speed+1, word),
+  const [nextLetterPoints] = getTextPoints({
+    text: mappers.circularIndex(1, word),
     position: createVector(0, 0),
     size,
     font,
@@ -129,27 +97,91 @@ sketch.draw( (time) => {
 
   strokeWeight(4)
 
-  const distance = 500//map(b, 0, 1, 1, 500)//500;
+  const distance = width/2
   const from = createVector(0, 0, distance/2)
   const to = createVector(0, 0, -distance/2)
-  const count = 50//map(b, 0, 1, 1, 30)//30;
+  const count = 75
+
+  push()
+  rotateY(time/4)
+  //rotateZ(time/4)
+  stroke(16, 16, 64)
+  sphere(size*5, 4)
+  pop()
+
+  push()
+  rotateY(-time/4)
+  //rotateZ(-time/4)
+  stroke(64, 16, 16)
+  sphere(size*5, 4)
+  pop()
+
+  rotateY(time)
+  // rotateZ(time/2)
+  // rotateZ(mappers.fn(cos(time), -1, 1, -PI, PI)/9)
 
   for (let n = 0; n < count; n += 1) {
     const progression = n / count;
     const position = p5.Vector.lerp( from, to, progression );
-    
-    stroke(colors.rainbow({
-      hueOffset: -time,
-      hueIndex: map(progression, 0, 1, -PI, PI),
-      //opacityFactor: map(n, 0, count, 1, 5)
-    }))
 
     push()
+    const angle = time/2+((n/count)*abs(sin(time)));
+
+    rotateY(angle)
     translate(position)
 
+    // const points = lerpPoints(firstLetterPoints, nextLetterPoints, progression )
+
+    // points.forEach( ({x, y}, index) => {
+    //   const xSign = sin(time);
+    //   const ySign = cos(-time);
+
+    //   const hue = noise(
+    //     x/(width),
+    //     y/(height),
+    //     progression+time/2
+    //   )
+      
+    //   // const hueOpacitySpeed = -time*6;
+    //   const darkness = map(progression, 0, 1, 20, 3)
+
+    //   stroke( colors.rainbow({
+    //     hueOffset: time,
+    //     hueIndex: map(hue, 0, 1, -PI, PI)*4,
+    //     // hueIndex: map(progression, 0, 1, -PI, PI)*4,
+    //     opacityFactor: map(
+    //       // sin(
+    //       //   //(xSign*(x/(width/4))+ySign*(y/(height/40)))
+    //       //   +hueOpacitySpeed
+    //       //   +progression
+    //       // ),
+    //       sin(3.1*time+progression*5),
+    //       -1,
+    //       1,
+    //       darkness,
+    //       1
+    //     ),
+    //   }))
+
+    //   //point( x, y  )
+    // })
+
+    const hue = noise(progression+time )
+
+    stroke(colors.rainbow({
+      hueIndex: map(hue, 0, 1, -PI, PI)*6,
+      opacityFactor: map(
+        sin(3.1*time+progression*5),
+        -1,
+        1,
+        map(progression, 0, 1, 50, 3),
+        1
+        )
+    }))
+
     drawPoints(
-      lerpPoints(points, points2, progression ),
-      // POINTS
+      lerpPoints(firstLetterPoints, nextLetterPoints, progression ),
+      POINTS
     )
 
     pop()
