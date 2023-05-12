@@ -87,7 +87,6 @@ const pattern = (count = 7, time, color) => {
     endShape();
   } )
   pop()
-
 }
 
 const drawRadialPattern = (count = 7, time) => {
