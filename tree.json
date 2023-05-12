@@ -1,13 +1,20 @@
 {
    "36days-of-type-2023": {
       "meta": {
-         "_mtime": "2023-04-28T23:26:31.275Z",
+         "_mtime": "2023-05-10T23:41:49.537Z",
          "name": "36days-of-type-2023"
       },
       "sketches": {
+         "36days-of-type-2023-0": {
+            "meta": {
+               "_mtime": "2023-05-12T23:07:42.418Z",
+               "name": "36days-of-type-2023-0"
+            },
+            "path": "sketches/36days-of-type-2023/36days-of-type-2023-0"
+         },
          "36days-of-type-2023-a": {
             "meta": {
-               "_mtime": "2023-04-20T18:08:01.781Z",
+               "_mtime": "2023-05-06T15:22:59.396Z",
                "name": "36days-of-type-2023-a"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-a"
@@ -112,7 +119,7 @@
          },
          "36days-of-type-2023-m-alpha-mask": {
             "meta": {
-               "_mtime": "2023-04-24T22:06:48.558Z",
+               "_mtime": "2023-05-06T14:43:23.660Z",
                "name": "36days-of-type-2023-m-alpha-mask"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-m-alpha-mask"
@@ -147,17 +154,87 @@
          },
          "36days-of-type-2023-p": {
             "meta": {
-               "_mtime": "2023-04-27T18:42:40.476Z",
+               "_mtime": "2023-05-10T01:53:34.742Z",
                "name": "36days-of-type-2023-p"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-p"
          },
          "36days-of-type-2023-q": {
             "meta": {
-               "_mtime": "2023-04-28T23:23:06.928Z",
+               "_mtime": "2023-04-28T23:53:03.869Z",
                "name": "36days-of-type-2023-q"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-q"
+         },
+         "36days-of-type-2023-r": {
+            "meta": {
+               "_mtime": "2023-04-29T05:33:44.626Z",
+               "name": "36days-of-type-2023-r"
+            },
+            "path": "sketches/36days-of-type-2023/36days-of-type-2023-r"
+         },
+         "36days-of-type-2023-s": {
+            "meta": {
+               "_mtime": "2023-04-29T05:36:58.783Z",
+               "name": "36days-of-type-2023-s"
+            },
+            "path": "sketches/36days-of-type-2023/36days-of-type-2023-s"
+         },
+         "36days-of-type-2023-t": {
+            "meta": {
+               "_mtime": "2023-04-30T13:30:58.674Z",
+               "name": "36days-of-type-2023-t"
+            },
+            "path": "sketches/36days-of-type-2023/36days-of-type-2023-t"
+         },
+         "36days-of-type-2023-u": {
+            "meta": {
+               "_mtime": "2023-04-30T14:30:19.097Z",
+               "name": "36days-of-type-2023-u"
+            },
+            "path": "sketches/36days-of-type-2023/36days-of-type-2023-u"
+         },
+         "36days-of-type-2023-v": {
+            "meta": {
+               "_mtime": "2023-05-07T17:19:25.543Z",
+               "name": "36days-of-type-2023-v"
+            },
+            "path": "sketches/36days-of-type-2023/36days-of-type-2023-v"
+         },
+         "36days-of-type-2023-w": {
+            "meta": {
+               "_mtime": "2023-05-08T11:51:39.107Z",
+               "name": "36days-of-type-2023-w"
+            },
+            "path": "sketches/36days-of-type-2023/36days-of-type-2023-w"
+         },
+         "36days-of-type-2023-x": {
+            "meta": {
+               "_mtime": "2023-05-08T13:23:36.430Z",
+               "name": "36days-of-type-2023-x"
+            },
+            "path": "sketches/36days-of-type-2023/36days-of-type-2023-x"
+         },
+         "36days-of-type-2023-y": {
+            "meta": {
+               "_mtime": "2023-05-08T15:37:24.982Z",
+               "name": "36days-of-type-2023-y"
+            },
+            "path": "sketches/36days-of-type-2023/36days-of-type-2023-y"
+         },
+         "36days-of-type-2023-z": {
+            "meta": {
+               "_mtime": "2023-05-10T22:13:54.587Z",
+               "name": "36days-of-type-2023-z"
+            },
+            "path": "sketches/36days-of-type-2023/36days-of-type-2023-z"
+         },
+         "36days-of-type-2023-∞": {
+            "meta": {
+               "_mtime": "2023-05-12T00:22:21.242Z",
+               "name": "36days-of-type-2023-∞"
+            },
+            "path": "sketches/36days-of-type-2023/36days-of-type-2023-∞"
          }
       }
    },
@@ -474,14 +551,14 @@
          },
          "animated-text-points-v12-more-warping": {
             "meta": {
-               "_mtime": "2023-04-05T19:12:14.137Z",
+               "_mtime": "2023-05-10T01:59:08.630Z",
                "name": "animated-text-points-v12-more-warping"
             },
             "path": "sketches/animated-text-points/animated-text-points-v12-more-warping"
          },
          "animated-text-points-v2-dotted": {
             "meta": {
-               "_mtime": "2023-04-21T20:53:50.069Z",
+               "_mtime": "2023-05-08T16:05:20.131Z",
                "name": "animated-text-points-v2-dotted"
             },
             "path": "sketches/animated-text-points/animated-text-points-v2-dotted"
@@ -701,7 +778,7 @@
          },
          "background-pattern-v7-butterfly": {
             "meta": {
-               "_mtime": "2022-10-30T14:58:07.695Z",
+               "_mtime": "2023-05-10T19:28:20.845Z",
                "name": "background-pattern-v7-butterfly"
             },
             "path": "sketches/background-pattern/background-pattern-v7-butterfly"
