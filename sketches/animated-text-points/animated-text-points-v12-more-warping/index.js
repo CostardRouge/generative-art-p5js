@@ -159,7 +159,7 @@ sketch.draw( (time) => {
       -d/2
     )
 
-    //rotateZ(mappers.fn(sin(t+y/rows), -1, 1, -PI, PI, easing.easeInOutExpo))
+    // rotateZ(mappers.fn(sin(t+y/rows), -1, 1, -PI, PI, easing.easeInOutExpo))
 
     // rotateX(map(sin(2*time-y/10), -1, 1, -PI, PI)/4)
     // rotateY(map(cos(time+x/10), -1, 1, -PI, PI)/4)
