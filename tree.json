@@ -19,6 +19,34 @@
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-1"
          },
+         "36days-of-type-2023-2": {
+            "meta": {
+               "_mtime": "2023-05-18T12:51:54.646Z",
+               "name": "36days-of-type-2023-2"
+            },
+            "path": "sketches/36days-of-type-2023/36days-of-type-2023-2"
+         },
+         "36days-of-type-2023-3": {
+            "meta": {
+               "_mtime": "2023-05-18T15:33:36.716Z",
+               "name": "36days-of-type-2023-3"
+            },
+            "path": "sketches/36days-of-type-2023/36days-of-type-2023-3"
+         },
+         "36days-of-type-2023-4": {
+            "meta": {
+               "_mtime": "2023-05-20T16:55:16.482Z",
+               "name": "36days-of-type-2023-4"
+            },
+            "path": "sketches/36days-of-type-2023/36days-of-type-2023-4"
+         },
+         "36days-of-type-2023-5": {
+            "meta": {
+               "_mtime": "2023-05-20T18:19:36.498Z",
+               "name": "36days-of-type-2023-5"
+            },
+            "path": "sketches/36days-of-type-2023/36days-of-type-2023-5"
+         },
          "36days-of-type-2023-a": {
             "meta": {
                "_mtime": "2023-05-06T15:22:59.396Z",
@@ -2295,6 +2323,13 @@
                "name": "splines"
             },
             "path": "sketches/tests/splines"
+         },
+         "splines copy": {
+            "meta": {
+               "_mtime": "2023-05-13T22:31:02.863Z",
+               "name": "splines copy"
+            },
+            "path": "sketches/tests/splines copy"
          },
          "three-js-and-shaders": {
             "meta": {
