@@ -45,65 +45,51 @@ function getTextPoints({ text, size, font, position, sampleFactor, simplifyThres
   });
 }
 
-function getAlphaFromMask({ position, maskPoints, maskId, distance = 0.025, alphaRange = [0, 255]}) {
-  const { x, y } = position;
-
+function getAlphaFromMask({ position: { x, y }, maskPoints, distance = 0.015}) {
   const normalizedPosition = createVector(
     map(x, -width/2, width/2, 0, 1),
     map(y, -height/2, height/2, 0, 1)
   );
 
-  const alpha = cache.store(`${x}-${y}-${maskId}-alpha`, () => {
-    const [ minAlpha, maxAlpha ] = alphaRange;
+  return maskPoints.reduce( ( result, pointPosition ) => {
+    if (true === result) {
+      return result;
+    }
 
-    return maskPoints.reduce( ( result, pointPosition ) => {
-      if (255 <= result) {
-        return result;
-      }
+    const normalizedPointPosition = createVector(
+      map(pointPosition.x, -width /2, width/2, 0, 1),
+      map(pointPosition.y, -height /2, height/2, 0, 1)
+    );
 
-      const normalizedPointPosition = createVector(
-        map(pointPosition.x, -width /2, width/2, 0, 1),
-        map(pointPosition.y, -height /2, height/2, 0, 1)
-      );
+    const d = normalizedPointPosition.dist(normalizedPosition);
 
-      return Math.max(
-        result,
-        ~~map(normalizedPointPosition.dist(normalizedPosition), 0, distance, maxAlpha, minAlpha, true)
-      );
-    }, 0);
-  });
-
-  return alpha;
+    return Math.max(
+      result,
+      d > 0 && d < distance
+    );
+  }, 0);
 }
 
 function createGridAlphaPoints(gridOptions, textPointsMatrix) {
-  return cache.store( `alpha-points`, () => {
+  return cache.store( `alpha-points-matrix`, () => {
     const alphaPoints = [];
 
     grid.draw(gridOptions, position => {
       const alphaLayers = [];
 
-      for ( const [ points, , cacheKey ] of textPointsMatrix ) {
+      for ( const [ points ] of textPointsMatrix ) {
         const alpha = getAlphaFromMask({
           position,
-          maskPoints: points,
-          maskId: cacheKey
+          maskPoints: points
         })
     
-        if ( alpha ) {
-          alphaLayers.push( alpha );
-        }
+        alphaLayers.push( alpha );
       }
 
-      if ( alphaLayers.length > 0 ) {
-        const randomPosition = p5.Vector.random3D().mult((width+height)/2)
-
-        alphaPoints.push( {
-          position,
-          randomPosition,
-          layers: alphaLayers
-        } );
-      }
+      alphaPoints.push( {
+        position,
+        layers: alphaLayers
+      } );
     });
 
     return alphaPoints;
@@ -117,7 +103,7 @@ sketch.draw( (time, center) => {
   const sampleFactor = 1/10;
   const simplifyThreshold = 0;
 
-  const cols = 50//*2;
+  const cols = 65;
   const rows = cols*height/width;
   const cellSize = width/cols;
 
@@ -132,17 +118,17 @@ sketch.draw( (time, center) => {
   }
 
   const fonts = [
-    // string.fonts.martian,
+    string.fonts.martian,
     // string.fonts.tilt,
-    // string.fonts.multicoloure,
-    // string.fonts.openSans,
-    // string.fonts.sans,
+    string.fonts.multicoloure,
+    string.fonts.openSans,
+    string.fonts.sans,
     string.fonts.serif
   ]
 
   const textPointsMatrix = fonts.map( font => (
     getTextPoints({
-      text: "7",
+      text: "8",
       position: createVector(0, 0),
       size,
       font,
@@ -156,6 +142,9 @@ sketch.draw( (time, center) => {
     textPointsMatrix
   )
 
+  const rotationMax = PI*2
+  const generalAnimationTime = time/2
+
   const {
     x: rX,
     y: rY,
@@ -163,39 +152,50 @@ sketch.draw( (time, center) => {
   } = animation.ease({
     values: [
       createVector(), 
-      createVector(0, PI*4),
-      createVector(PI*4,PI*4),
-      createVector(0, PI*4),
+      createVector(0, rotationMax),
+      createVector(rotationMax, rotationMax),
+      createVector(rotationMax),
     ],
-    currentTime: time/2,
+    currentTime: generalAnimationTime,
     duration: 1,
     lerpFn: p5.Vector.lerp,
-    easingFn: easing.easeInOutExpo
+    easingFn: easing.easeInOutExpo,
+    // easingFn: easing.easeInOutElastic,
+    // easingFn: easing.easeInOutCirc,
   })
 
   rotateX(rX)
   rotateY(rY)
 
-  alphaPoints.forEach( ( { layers, position, randomPosition }, index ) => {
-    const switchIndex = time+(
+  // const finalPoints = alphaPoints
+
+  alphaPoints.forEach( ( { layers, position }, index ) => {
+    const layer = mappers.circularIndex(
+      generalAnimationTime+1/2,
+      layers
+    )
+    // const layer = animation.ease({
+    //   values: layers,
+    //   currentTime: generalAnimationTime+1/2,
+    //   duration: 1,
+    //   easingFn: easing.easeInOutExpo
+    // })
+
+    if (!layer) {
+      return;
+    }
+
+    const switchIndex = generalAnimationTime*2+(
       +index/alphaPoints.length/5
-      +position.x/cols/50
-      +position.y/rows/50
+      +position.x/cols/100
+      +position.y/rows/100
     )
 
-    const movingPosition = animation.ease({
-      values: [ position, randomPosition ],
-      currentTime: switchIndex,
-      duration: 1,
-      lerpFn: p5.Vector.lerp,
-      easingFn: easing.easeInOutExpo,
-    });
-
     const hue = noise(
-      position.x/cols/3 + (
+      position.x/cols + (
         +map(sin(time), -1, 1, 0, 1)
       ),
-      position.y/rows/3 + (
+      position.y/rows + (
         +map(cos(time), -1, 1, 0, 1)
       )
     )
@@ -212,21 +212,9 @@ sketch.draw( (time, center) => {
 
     const w = cellSize//-2
     const h = cellSize//-2
-    const d = cellSize*10
+    const d = cellSize*20
 
-    translate(
-      movingPosition.x + (
-        1//50 * sin(time*2+movingPosition.x/cols+index/alphaPoints.length)
-      ),
-      movingPosition.y + (
-        1//50 * cos(time+movingPosition.y/rows+index/alphaPoints.length)
-      ),
-      movingPosition.z
-      // -d + (
-      //   0
-      //   //-300
-      // )
-    )
+    translate( position )
 
     const fillAlpha = animation.ease({
       values: [ 240, 0 ],
