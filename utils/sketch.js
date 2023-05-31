@@ -11,7 +11,7 @@ const sketch = {
   engine: undefined,
   setup: (
     setupEngineFunction,
-    sketchOptions = { engine: "p5js"}
+    sketchOptions = { engine: "p5js" }
   ) => {
     // options system
     options.init( );
