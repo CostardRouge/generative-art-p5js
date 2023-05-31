@@ -1,6 +1,6 @@
 import { events } from './index.js';
 
-const HISTORY_BUFFER = 60;
+const HISTORY_BUFFER = 20;
 
 const ranges = {
   subBass: {
