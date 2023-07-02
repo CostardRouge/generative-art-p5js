@@ -3,6 +3,8 @@ const midiOutputDevices = [];
 
 import { shapes, sketch, converters, events, colors, mappers } from './utils/index.js';
 
+events.register( "post-setup", midi.setup );
+
 sketch.setup(() => {
   shapes.push(
     new Strip({

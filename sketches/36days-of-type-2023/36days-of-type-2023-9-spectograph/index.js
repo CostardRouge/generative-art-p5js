@@ -125,34 +125,9 @@ function drawGridCell(_x, _y, w, h, cols, rows, drawer) {
 sketch.draw( (time, center) => {
   background(0);
 
-  const cols = 10;
+  const cols = 30;
   const rows = cols*height/width;
   const cellSize = width/cols;
-
-  // rotateX(PI/4)
-
-  // stroke(255)
-  // strokeWeight(1)
-
-  // const cubes = cache.store("cubes", () => {
-  //   return [
-  //     new Cube({
-  //       position: createVector(0, 0),
-  //       size: cellSize,
-  //       cols, rows
-  //     })
-  //   ]
-  // });
-
-  // push()
-  // translate(-center.x, -center.y)
-  // drawGrid(cols, rows, -time)
-  // pop()
-
-  // cubes.forEach( cube => cube.update(time) );
-  // cubes.forEach( cube => cube.draw() );
-  
-  // return orbitControl();
 
   const size = (width);
   const sampleFactor = 1/10;
@@ -193,43 +168,7 @@ sketch.draw( (time, center) => {
     textPointsMatrix
   )
 
-  const rotationMax = PI*2
   const generalAnimationTime = time/2
-
-  const {
-    x: rX,
-    y: rY,
-    //z: rZ
-  } = animation.ease({
-    values: [
-      createVector(), 
-      createVector(0, rotationMax),
-      createVector(rotationMax, rotationMax),
-      createVector(rotationMax),
-    ],
-    currentTime: generalAnimationTime,
-    duration: 1,
-    lerpFn: p5.Vector.lerp,
-    easingFn: easing.easeInOutExpo,
-    // easingFn: easing.easeInOutElastic,
-    // easingFn: easing.easeInOutCirc,
-  })
-
-  // rotateX(rX)
-  // rotateY(rY)
-
-
-  // rotateY(
-  //   animation.ease({
-  //     values: [ 0, PI*2 ],
-  //     currentTime: generalAnimationTime,
-  //     duration: 1,
-  //     // lerpFn: p5.Vector.lerp,
-  //     easingFn: easing.easeInOutElastic,
-  //   })
-  // )
-
-  // const finalPoints = alphaPoints
 
   alphaPoints.forEach( ( { layers, position, xy: { x, y } }, index ) => {
     
@@ -317,14 +256,14 @@ sketch.draw( (time, center) => {
 
     n = mappers.circularIndex(
       (
-        generalAnimationTime*2+(
+        generalAnimationTime*3+(
           0
           +index/alphaPoints.length/5
-          // // +position.x/cols/20
-          // +position.y/rows/20
+          + position.x/cols/20
+          + position.y/rows/20
         )
       ),
-      [ 1, 2, 4 ]
+      [ 1, 2, 4, 3 ]
     )
 
     let d = cellSize//*n
@@ -374,7 +313,7 @@ sketch.draw( (time, center) => {
   // console.log(x, cols,  x/cols, audio.capture.bins-1, xx);
   // console.log(y, rows,  y/rows, audio.capture.historyBufferSize-1, yy);
 
-  d = (line?.[xx]) //*cellSize
+  d = (line?.[xx]) *cellSize
 
   // console.log(audio.capture.historyBufferSize);
 
@@ -396,7 +335,7 @@ sketch.draw( (time, center) => {
   //   [ 1.5, 2, 4, 8 ].reverse()
   // );
 
-  n = 2
+  // n = 2
 
   const gap = 1.5
   animation.ease({

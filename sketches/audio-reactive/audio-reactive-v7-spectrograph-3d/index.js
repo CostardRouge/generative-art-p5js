@@ -80,10 +80,6 @@ sketch.draw((time, center) => {
   }
 
   const cellSize = ((width+height) / (cols+rows));
-  const cellHeight = (height) / (rows);
-  const cellWidth = ((width) / (cols));
-
-
   const audioEnergyAverage = audio.capture.energy.average("raw");
   const bassAverage = audio.capture.energy.byIndex(2, "raw");
 
@@ -102,29 +98,18 @@ sketch.draw((time, center) => {
   grid.draw(gridOptions, (cellVector, { x, y}) => {
     push();
 
-    const xx = floor(map(x, 0, cols - 1, 0, audio.capture.bins -1))
-    const yy = floor(map(y, 0, rows - 1, 0, 59))
-    const line = audio.capture.history?.spectrum[yy];
-    //const lineAvg = (line?.reduce( (average, bin) => average + bin) / line?.length) / 255
-    const energy = line?.[xx]//map(line?.[xx], 0, 255, 0, 1)
-
-
-
-    const weight = map(energy, 0, 255, 1, cellSize );
-
-    min = Math.min(min, energy);
-    max = Math.max(max, energy);
+    const energy = audio.capture.energy.map(x / (cols - 1), y / (rows - 1));
 
     fill(colors.rainbow({
       hueOffset: 0,
-      hueIndex: map(energy, 0, 255, -PI/2, PI/2 ),
+      hueIndex: map(energy, 0, 1, -PI/2, PI/2 ),
       opacityFactor: 1.5,
       //opacityFactor: map(energy, 0, 255, 3, 1 )
     }))
 
     // box( cellVector.x, cellVector.y, map(energy, 0, 255, 0, 150) )
 
-    const h = map(energy, 0, 255, 0, 250);
+    const h = map(energy, 0, 1, 0, 250);
     translate( cellVector.x, cellVector.y, -h/2)
 
     // normalMaterial(0);
@@ -139,5 +124,5 @@ sketch.draw((time, center) => {
 
   orbitControl()
 
-  //audio.capture.energy.draw()
+  // audio.capture.energy.draw()
 });
