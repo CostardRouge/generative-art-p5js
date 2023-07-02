@@ -14,13 +14,6 @@
     <meta property="og:image" content="/screenshot.jpeg" />
 
     <script>
-      function gitHubPagesPathHack(path) {
-        // if (window.location.href.startsWith('https://costardrouge.github.io/')) {
-        //   return `https://costardrouge.github.io/generative-art-p5js/${path}`
-        // }
-        return path;
-      }
-
       const loadScript = (src, async = true, type = 'text/javascript') => {
         return new Promise((resolve, reject) => {
           try {
@@ -57,17 +50,17 @@
       document.querySelector("meta[property='og:title']").setAttribute("content", document.title)
     
       // open graph images urls
-      const previewURL = gitHubPagesPathHack([...pathnameParts.splice(1), "screenshot.jpeg"].join("/"));
+      const previewURL =  location.hostname + location.pathname + "screenshot.jpeg"
 
       document.querySelector("meta[name='twitter:image']").setAttribute("content", previewURL);
       document.querySelector("meta[property='og:image']").setAttribute("content", previewURL);
 
       // common.css path fix
-      document.querySelector("head > link[rel=stylesheet]").href = gitHubPagesPathHack("assets/stylesheets/common.css");
+      document.querySelector("head > link[rel=stylesheet]").href = "assets/stylesheets/common.css";
     </script>
 
-    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-PMQPYZEY5F"></script>
-    <script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PMQPYZEY5F"></script>
+    <script async>
       window.dataLayer = window.dataLayer || [];
       function gtag() { dataLayer.push(arguments); }
       gtag('js', new Date());
@@ -75,7 +68,6 @@
     </script>
 
     <script src="libraries/CCapture.all.min.js"></script>
-    <script src="libraries/webmidi.iife.js"></script>
   </head>
 
   <body>
