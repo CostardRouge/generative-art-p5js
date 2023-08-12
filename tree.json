@@ -75,23 +75,9 @@
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-9"
          },
-         "36days-of-type-2023-9-cube": {
-            "meta": {
-               "_mtime": "2023-05-29T16:20:04.969Z",
-               "name": "36days-of-type-2023-9-cube"
-            },
-            "path": "sketches/36days-of-type-2023/36days-of-type-2023-9-cube"
-         },
-         "36days-of-type-2023-9-spectograph": {
-            "meta": {
-               "_mtime": "2023-05-30T13:27:32.647Z",
-               "name": "36days-of-type-2023-9-spectograph"
-            },
-            "path": "sketches/36days-of-type-2023/36days-of-type-2023-9-spectograph"
-         },
          "36days-of-type-2023-a": {
             "meta": {
-               "_mtime": "2023-05-06T15:22:59.396Z",
+               "_mtime": "2023-07-10T12:27:17.937Z",
                "name": "36days-of-type-2023-a"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-a"
@@ -196,7 +182,7 @@
          },
          "36days-of-type-2023-m-alpha-mask": {
             "meta": {
-               "_mtime": "2023-05-06T14:43:23.660Z",
+               "_mtime": "2023-06-11T08:54:31.103Z",
                "name": "36days-of-type-2023-m-alpha-mask"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-m-alpha-mask"
@@ -373,10 +359,17 @@
          },
          "cube": {
             "meta": {
-               "_mtime": "2023-04-08T10:44:29.020Z",
+               "_mtime": "2023-06-03T00:45:27.524Z",
                "name": "cube"
             },
             "path": "sketches/3d-stuff/cube"
+         },
+         "cubes": {
+            "meta": {
+               "_mtime": "2023-07-15T18:24:18.231Z",
+               "name": "cubes"
+            },
+            "path": "sketches/3d-stuff/cubes"
          },
          "hsb": {
             "meta": {
@@ -699,7 +692,7 @@
          },
          "arrow-v2-polar": {
             "meta": {
-               "_mtime": "2023-01-09T13:54:24.790Z",
+               "_mtime": "2023-06-17T13:56:39.174Z",
                "name": "arrow-v2-polar"
             },
             "path": "sketches/arrow/arrow-v2-polar"
@@ -728,7 +721,7 @@
          },
          "audio-reactive-v3-smooth-test": {
             "meta": {
-               "_mtime": "2022-10-30T14:58:07.694Z",
+               "_mtime": "2023-06-17T13:36:39.118Z",
                "name": "audio-reactive-v3-smooth-test"
             },
             "path": "sketches/audio-reactive/audio-reactive-v3-smooth-test"
@@ -747,13 +740,6 @@
             },
             "path": "sketches/audio-reactive/audio-reactive-v5-droplets"
          },
-         "audio-reactive-v5-droplets copy": {
-            "meta": {
-               "_mtime": "2022-10-30T14:58:50.090Z",
-               "name": "audio-reactive-v5-droplets copy"
-            },
-            "path": "sketches/audio-reactive/audio-reactive-v5-droplets copy"
-         },
          "audio-reactive-v6-beat-counter": {
             "meta": {
                "_mtime": "2022-10-30T14:58:50.171Z",
@@ -763,21 +749,14 @@
          },
          "audio-reactive-v7-spectrograph": {
             "meta": {
-               "_mtime": "2022-12-22T14:35:16.022Z",
+               "_mtime": "2023-06-17T14:12:53.936Z",
                "name": "audio-reactive-v7-spectrograph"
             },
             "path": "sketches/audio-reactive/audio-reactive-v7-spectrograph"
          },
-         "audio-reactive-v7-spectrograph copy": {
-            "meta": {
-               "_mtime": "2022-10-22T21:56:11.215Z",
-               "name": "audio-reactive-v7-spectrograph copy"
-            },
-            "path": "sketches/audio-reactive/audio-reactive-v7-spectrograph copy"
-         },
          "audio-reactive-v7-spectrograph-3d": {
             "meta": {
-               "_mtime": "2022-10-22T21:54:29.554Z",
+               "_mtime": "2023-06-28T15:51:22.121Z",
                "name": "audio-reactive-v7-spectrograph-3d"
             },
             "path": "sketches/audio-reactive/audio-reactive-v7-spectrograph-3d"
@@ -923,6 +902,70 @@
                "name": "blob-v3-sequence"
             },
             "path": "sketches/blob/blob-v3-sequence"
+         }
+      }
+   },
+   "chromatic-rorschach": {
+      "meta": {
+         "_mtime": "2023-07-31T12:36:26.614Z",
+         "name": "chromatic-rorschach"
+      },
+      "sketches": {
+         "chromatic-rorschach-1": {
+            "meta": {
+               "_mtime": "2023-07-01T08:48:12.946Z",
+               "name": "chromatic-rorschach-1"
+            },
+            "path": "sketches/chromatic-rorschach/chromatic-rorschach-1"
+         },
+         "chromatic-rorschach-2": {
+            "meta": {
+               "_mtime": "2023-07-01T08:46:21.411Z",
+               "name": "chromatic-rorschach-2"
+            },
+            "path": "sketches/chromatic-rorschach/chromatic-rorschach-2"
+         },
+         "chromatic-rorschach-3-audio-reactive": {
+            "meta": {
+               "_mtime": "2023-07-12T22:09:48.248Z",
+               "name": "chromatic-rorschach-3-audio-reactive"
+            },
+            "path": "sketches/chromatic-rorschach/chromatic-rorschach-3-audio-reactive"
+         },
+         "chromatic-rorschach-3-audio-reactive-pipe-spectrograph": {
+            "meta": {
+               "_mtime": "2023-07-17T18:02:15.296Z",
+               "name": "chromatic-rorschach-3-audio-reactive-pipe-spectrograph"
+            },
+            "path": "sketches/chromatic-rorschach/chromatic-rorschach-3-audio-reactive-pipe-spectrograph"
+         },
+         "chromatic-rorschach-3-audio-reactive-spectrograph-0": {
+            "meta": {
+               "_mtime": "2023-07-18T12:37:43.357Z",
+               "name": "chromatic-rorschach-3-audio-reactive-spectrograph-0"
+            },
+            "path": "sketches/chromatic-rorschach/chromatic-rorschach-3-audio-reactive-spectrograph-0"
+         },
+         "chromatic-rorschach-3-audio-reactive-spectrograph-1": {
+            "meta": {
+               "_mtime": "2023-07-27T16:43:18.541Z",
+               "name": "chromatic-rorschach-3-audio-reactive-spectrograph-1"
+            },
+            "path": "sketches/chromatic-rorschach/chromatic-rorschach-3-audio-reactive-spectrograph-1"
+         },
+         "chromatic-rorschach-3-audio-reactive-spectrograph-2": {
+            "meta": {
+               "_mtime": "2023-07-19T21:43:43.486Z",
+               "name": "chromatic-rorschach-3-audio-reactive-spectrograph-2"
+            },
+            "path": "sketches/chromatic-rorschach/chromatic-rorschach-3-audio-reactive-spectrograph-2"
+         },
+         "chromatic-rorschach-3-audio-reactive-spectrograph-3": {
+            "meta": {
+               "_mtime": "2023-07-27T13:15:00.259Z",
+               "name": "chromatic-rorschach-3-audio-reactive-spectrograph-3"
+            },
+            "path": "sketches/chromatic-rorschach/chromatic-rorschach-3-audio-reactive-spectrograph-3"
          }
       }
    },
@@ -1203,7 +1246,7 @@
          },
          "flowers-v5-spiral": {
             "meta": {
-               "_mtime": "2023-01-21T03:07:00.825Z",
+               "_mtime": "2023-07-10T13:12:43.380Z",
                "name": "flowers-v5-spiral"
             },
             "path": "sketches/flowers/flowers-v5-spiral"
@@ -1432,13 +1475,20 @@
    },
    "midi": {
       "meta": {
-         "_mtime": "2023-04-08T10:27:41.226Z",
+         "_mtime": "2023-07-31T12:36:29.355Z",
          "name": "midi"
       },
       "sketches": {
+         "chromatic-rorschach-4-midi": {
+            "meta": {
+               "_mtime": "2023-07-27T16:48:29.746Z",
+               "name": "chromatic-rorschach-4-midi"
+            },
+            "path": "sketches/midi/chromatic-rorschach-4-midi"
+         },
          "midi-v1-output": {
             "meta": {
-               "_mtime": "2022-11-27T17:05:03.899Z",
+               "_mtime": "2023-07-08T00:01:58.257Z",
                "name": "midi-v1-output"
             },
             "path": "sketches/midi/midi-v1-output"
@@ -1452,7 +1502,7 @@
          },
          "midi-v3-input-pills": {
             "meta": {
-               "_mtime": "2022-11-27T17:05:01.169Z",
+               "_mtime": "2023-07-25T15:13:11.890Z",
                "name": "midi-v3-input-pills"
             },
             "path": "sketches/midi/midi-v3-input-pills"
@@ -1466,10 +1516,17 @@
          },
          "midi-v6-visualizer-strips": {
             "meta": {
-               "_mtime": "2022-11-27T17:04:57.536Z",
+               "_mtime": "2023-07-01T09:08:35.029Z",
                "name": "midi-v6-visualizer-strips"
             },
             "path": "sketches/midi/midi-v6-visualizer-strips"
+         },
+         "midi-v7-display-identifier": {
+            "meta": {
+               "_mtime": "2023-07-27T12:34:18.760Z",
+               "name": "midi-v7-display-identifier"
+            },
+            "path": "sketches/midi/midi-v7-display-identifier"
          }
       }
    },
@@ -2120,6 +2177,56 @@
          }
       }
    },
+   "sketches-in-berlin": {
+      "meta": {
+         "_mtime": "2023-08-12T10:48:06.786Z",
+         "name": "sketches-in-berlin"
+      },
+      "sketches": {
+         "sketches-in-berlin-v1": {
+            "meta": {
+               "_mtime": "2023-07-31T12:31:46.551Z",
+               "name": "sketches-in-berlin-v1"
+            },
+            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v1"
+         },
+         "sketches-in-berlin-v2": {
+            "meta": {
+               "_mtime": "2023-07-31T13:01:12.349Z",
+               "name": "sketches-in-berlin-v2"
+            },
+            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v2"
+         },
+         "sketches-in-berlin-v3": {
+            "meta": {
+               "_mtime": "2023-08-08T09:32:46.418Z",
+               "name": "sketches-in-berlin-v3"
+            },
+            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v3"
+         },
+         "sketches-in-berlin-v4": {
+            "meta": {
+               "_mtime": "2023-08-11T12:56:22.390Z",
+               "name": "sketches-in-berlin-v4"
+            },
+            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v4"
+         },
+         "sketches-in-berlin-v6": {
+            "meta": {
+               "_mtime": "2023-08-12T10:20:25.918Z",
+               "name": "sketches-in-berlin-v6"
+            },
+            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v6"
+         },
+         "sketches-in-berlin-v7": {
+            "meta": {
+               "_mtime": "2023-08-12T10:43:06.990Z",
+               "name": "sketches-in-berlin-v7"
+            },
+            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v7"
+         }
+      }
+   },
    "spirals": {
       "meta": {
          "_mtime": "2023-04-08T10:27:41.446Z",
@@ -2337,6 +2444,13 @@
                "name": "grid-2023"
             },
             "path": "sketches/tests/grid-2023"
+         },
+         "grid-36daysoftype-10": {
+            "meta": {
+               "_mtime": "2023-06-11T09:18:12.240Z",
+               "name": "grid-36daysoftype-10"
+            },
+            "path": "sketches/tests/grid-36daysoftype-10"
          },
          "noisy-dominant-colors": {
             "meta": {

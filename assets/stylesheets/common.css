@@ -29,6 +29,10 @@ body.preview #sketch-ui-drawer {
   display: none;
 }
 
+body.preview {
+  cursor: none;
+}
+
 body.recording::before {
   content: "";
   display: block;

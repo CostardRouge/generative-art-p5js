@@ -1,6 +1,5 @@
 import {
   sketch,
-  audio,
   options,
   iterators,
   converters,

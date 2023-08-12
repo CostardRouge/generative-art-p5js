@@ -1,22 +1,19 @@
-// const midiInputDevices = [];
-// const midiOutputDevices = [];
-
 import { shapes, sketch, midi, events, colors, mappers } from './utils/index.js';
 
 events.register( "post-setup", midi.setup );
 
 sketch.setup(() => {
   rectMode(CENTER);
-  
+
   const xCount = 1;
-  const yCount = 7;
+  const yCount = 10;
 
   for (let x = 1; x <= xCount; x++) {
     for (let y = 1; y <= yCount; y++) {
       shapes.push(
         new Dot({
-          shadowsCount: 5,
-          weightRange: [150, 15],
+          shadowsCount: 10,
+          weightRange: [250, 15],
           opacityFactorRange: [7, 1],
           relativePosition: {
             x: x / (xCount + 1),
@@ -27,55 +24,30 @@ sketch.setup(() => {
     }
   }
 
-  // WebMidi.enable()
-  //   .then(onEnabled)
-  //   .catch((err) => alert(err));
-
-  // function onEnabled() {
-  //   if (WebMidi.inputs.length < 1) {
-  //     return console.log("No device detected.");
-  //   }
-
-  //   WebMidi.inputs.forEach((device, index) => {
-  //     midiInputDevices.push(device);
-  //     console.log(`INPUT: ${index}: ${device.name}`);
-  //   });
-
-  //   WebMidi.outputs.forEach((device, index) => {
-  //     midiOutputDevices.push(device);
-  //     console.log(`OUTPUT: ${index}: ${device.name}`);
-  //   });
-
-  //   // const myInput = WebMidi.getInputByName("IAC Driver Bus 1");
-  //   // const myOutput = WebMidi.getOutputByName("IAC Driver Bus 1");
-
-  //   midiInputDevices.forEach( input => {
-  //     input.addListener("noteon", (e) => {
-  //       const assignedShapes = shapes.filter( shape => shape.note === e.note.identifier);
-
-  //       if ( assignedShapes.length !== 0 ) {
-  //         return assignedShapes[0].bounce();
-  //       }
-
-  //       const unAssignedShapes = shapes.filter( shape => shape.note === undefined );
-
-  //       if ( unAssignedShapes.length !== 0 ) {
-  //         unAssignedShapes[0].note = e.note.identifier;
-  //         unAssignedShapes[0].bounce();
-  //       }
-  //     });
-  //   });
-
     events.register("engine-mouse-pressed", function () {
       shapes.forEach(shape => shape.bounce());
     });
 
-    midi.on( "A", console.log )
-    midi.off( "A", console.log )
+    midi.on( {
+      //identifier: "A6"
+    }, note => {
+      const assignedShapes = shapes.filter( shape => shape.note === note.identifier);
 
-  // }
+      if ( assignedShapes.length !== 0 ) {
+        return assignedShapes[0].bounce( note.attack );
+      }
+
+      const unAssignedShapes = shapes.filter( shape => shape.note === undefined );
+
+      if ( unAssignedShapes.length !== 0 ) {
+        unAssignedShapes[0].note = note.identifier;
+        unAssignedShapes[0].bounce( note.attack  );
+      }
+    } )
+
+    midi.on( 0, console.log )
+    midi.off( 0, console.log )
 } );
-
 
 class Dot {
   constructor(options) {
@@ -97,11 +69,10 @@ class Dot {
   }
 
   draw(time, index) {
-    const { note, position, shadowsCount, weightRange, opacityFactorRange } =
-      this;
+    const { note, position, shadowsCount, weightRange, opacityFactorRange } = this;
 
     if (undefined === note) {
-    // return
+      return
     }
 
     const hueIndex = map(
@@ -153,8 +124,8 @@ class Dot {
     this.weightRange[1] = lerp(this.weightRange[1], this.initial, 0.07);
   }
 
-  bounce() {
-    this.weightRange[1] = this.weightRange[0] / 1.5;
+  bounce( attack ) {
+    this.weightRange[1] = this.weightRange[0] * attack
   }
 }
 

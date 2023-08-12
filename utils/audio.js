@@ -1,6 +1,6 @@
 import { events } from "./index.js";
 
-const HISTORY_BUFFER = 20;
+const HISTORY_BUFFER = 32;
 
 const ranges = {
   subBass: {
@@ -77,6 +77,8 @@ const ranges = {
 
 const rangeNames = Object.keys(ranges);
 
+// let i = 0;
+
 const audio = {
   capture: {
     ranges,
@@ -97,6 +99,7 @@ const audio = {
 
       audio.capture.audioIn = new p5.AudioIn();
       audio.capture.fft = new p5.FFT(smoothness, bins);
+      audio.capture.fft = new p5.FFT(smoothness, bins);
 
       audio.capture.audioIn.start();
       audio.capture.fft.setInput(audio.capture.audioIn);
@@ -110,18 +113,21 @@ const audio = {
     },
     energy: {
       // spectrum mapping
-      map: (xNormalized, yNormalized, normalize = true) => {
+      map: function* (xNormalized, yNormalized, normalize = true) {
         const historyBufferIndex = ~~(
           (audio.capture.historyBufferSize - 1) *
           yNormalized
         );
 
         const bins = audio.capture.history?.spectrum?.[historyBufferIndex];
-        const binIndex = ~~((audio.capture.bins - 1) * xNormalized);
+        const binIndex = ~~((audio.capture.bins -1) * xNormalized);
         const energy = bins?.[binIndex];
 
         if (normalize) {
-          return energy / 255;
+          yield energy / 255;
+          yield binIndex / audio.capture.bins;
+          yield historyBufferIndex / audio.capture.historyBufferSize;
+          // return energy / 255;
         }
 
         return energy;
@@ -182,6 +188,14 @@ const audio = {
         // HISTORY FOR SPECTRUM
         audio.capture.history.spectrum.shift();
         audio.capture.history.spectrum.push(audio.capture.fft.analyze());
+        // audio.capture.history.spectrum[ ~~(i % audio.capture.historyBufferSize) ] = audio.capture.fft.analyze();
+        // i += 1;
+
+        // if (audio.capture.history.spectrum.length > audio.capture.historyBufferSize) {
+        //   // audio.capture.history.spectrum = []
+        // audio.capture.history.spectrum.shift();
+
+        // }
 
         // HISTORY FOR WAVEFORM
         audio.capture.history.waveform.shift();
@@ -190,18 +204,15 @@ const audio = {
         // HISTORY FOR RANGES
         for (const rangeName in audio.capture.history.ranges) {
           const range = ranges[rangeName];
-          const rangeHistory = audio.capture.history.ranges[rangeName];
 
-          if (undefined === rangeHistory) {
-            return;
-          }
+          const formattedRangeData = {
+            raw: range?.raw,
+            smooth: range?.smooth,
+            amplified: range?.amplified,
+          };
 
-          audio.capture.history.ranges[rangeName].shift();
-          audio.capture.history.ranges[rangeName].push({
-            raw: range.raw,
-            smooth: range.smooth,
-            amplified: range.amplified,
-          });
+          audio.capture.history?.ranges[rangeName]?.shift();
+          audio.capture.history?.ranges[rangeName]?.push(formattedRangeData);
         }
       },
       monitor: () => {
@@ -217,6 +228,28 @@ const audio = {
           range.raw = audio.capture.fft.getEnergy(...range.frequencies) / 255;
           range.amplified = range.raw * range.amplifier;
 
+          if (undefined === range?.peakDetect) {
+            const [ from, to ] = range.frequencies;
+
+            range.peakDetect = new p5.PeakDetect(from, to, range.threshold)
+            // range.onSetDetect = new p5.OnsetDetect(from, to, 1, (arg) => {
+            //   // events.handle(`audio.capture.${rangeName}`, range);
+            //   // events.handle(`audio.capture.${rangeName}`, range);
+
+            //   console.log(rangeName, arg);
+            //   range.count += 1;
+
+            //   audio.ranges[ rangeName ].count += 1
+
+            // })
+          }
+
+          range?.peakDetect.update(audio.capture.fft);
+
+          if (range?.peakDetect.isDetected) {
+            range.count += 1;
+          }
+
           // console.log({
           //   amp: range.amplifier,
           //   rangeName,
@@ -224,24 +257,24 @@ const audio = {
           //   index: rangeNames.indexOf( rangeName )
           // });
 
-          if (range.raw >= range.threshold) {
-            //range.smooth = lerp( range.smooth, range.amplified, 0.67 );
-            range.smooth = range.raw;
-            range.threshold = range.raw;
+          // if (range.raw >= range.threshold) {
+          //   //range.smooth = lerp( range.smooth, range.amplified, 0.67 );
+          //   range.smooth = range.raw;
+          //   range.threshold = range.raw;
 
-            const currentTime = millis();
+          //   const currentTime = millis();
 
-            if (currentTime > range.countDeltaTime + 500) {
-              range.count += 1;
-              range.countDeltaTime = millis();
-            }
-          }
+          //   if (currentTime > range.countDeltaTime + 500) {
+          //     range.count += 1;
+          //     range.countDeltaTime = millis();
+          //   }
+          // }
 
           // if ( range.raw <= 0.2) {
           //   range.smooth = lerp( range.smooth, 0, 0.67 );
           // }
           range.smooth = lerp(range.smooth, 0, 0.067);
-          range.threshold = lerp(range.threshold, 0, 0.09);
+          // range.threshold = lerp(range.threshold, 0, 0.09);
         }
       },
       draw: (spectrum = true, waveform = true) => {

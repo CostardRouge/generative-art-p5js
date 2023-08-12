@@ -1,7 +1,6 @@
-const midiInputDevices = [];
-const midiOutputDevices = [];
+import { shapes, sketch, midi, converters, events, colors, mappers } from './utils/index.js';
 
-import { shapes, sketch, converters, events, colors, mappers } from './utils/index.js';
+events.register( "post-setup", midi.setup );
 
 sketch.setup(() => {
   noStroke();
@@ -25,39 +24,17 @@ sketch.setup(() => {
     }
   }
 
-  WebMidi.enable()
-    .then(onEnabled)
-    .catch((err) => alert(err));
+  events.register("engine-mouse-pressed", function () {
+    shapes.forEach((shape, index) => shape.play());
 
-  function onEnabled() {
-    if (WebMidi.inputs.length < 1) {
-      return console.log("No device detected.");
-    }
+    playNote(
+      new Note("A4", {
+        duration: 100,
+        release: 0.1,
+      })
+    );
+  });
 
-    WebMidi.inputs.forEach((device, index) => {
-      midiInputDevices.push(device);
-      console.log(`INPUT: ${index}: ${device.name}`);
-    });
-
-    WebMidi.outputs.forEach((device, index) => {
-      midiOutputDevices.push(device);
-      console.log(`OUTPUT: ${index}: ${device.name}`);
-    });
-
-    // const myInput = WebMidi.getInputByName("IAC Driver Bus 1");
-    // const myOutput = WebMidi.getOutputByName("IAC Driver Bus 1");
-
-    events.register("engine-mouse-pressed", function () {
-      shapes.forEach((shape, index) => shape.play());
-
-      playNote(
-        new Note("A4", {
-          duration: 100,
-          release: 0.1,
-        })
-      );
-    });
-  }
 } );
 
 function playNote(note) {

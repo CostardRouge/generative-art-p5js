@@ -1,6 +1,12 @@
 import { shapes, sketch, iterators, converters, events, colors, mappers, easing, animation, grid } from './utils/index.js';
 
-sketch.setup( );
+const scale = 2;
+
+sketch.setup( undefined, {
+  size: {
+      width: 850*scale, height: 1300*scale }
+  }
+);
 
 function cross(options) {
   const {
@@ -116,8 +122,9 @@ function drawBackgroundPattern(time, cols = 30, rows = 50) {
 }
 
 sketch.draw( (time, center) => {
-  background(0);
-  drawBackgroundPattern(time, 7, 12);
+  // background(0);
+  background(255);
+  //drawBackgroundPattern(time, 7, 12);
 
   const boundary = 150;
   const speed = time;
@@ -163,10 +170,10 @@ sketch.draw( (time, center) => {
     lerpFn: p5.Vector.lerp,
   })
 
-  iterators.vector(start, end, 1 / 192 , ( vector, lerpIndex) => {
-    const sides = 3//animation.sequence("sides", speed+lerpIndex, [ 2, 1, 3, 4, 2,, 1,  3 ]);
-    const sizeRatio = mappers.fn(lerpIndex, 0, 1, -PI, PI);
-    const crossSize = mappers.fn(cos(sizeRatio), -1, 1, 1, 220 )
+  iterators.vector(start, end, 1 / 250 , ( vector, lerpIndex) => {
+    const sides = 3//animation.sequence("sides", speed+lerpIndex, [ 2, 1, 3, 4, 28,, 1,  3 ]);
+    const sizeRatio = mappers.fn(lerpIndex, 0, 1, PI, -PI, easing.easeInOutExpo);
+    const crossSize = mappers.fn(cos(sizeRatio), -1, 1, 1, 250*scale )
 
     push()
     translate(vector)
@@ -183,25 +190,27 @@ sketch.draw( (time, center) => {
           opacityFactor: mappers.fn(cos(sizeRatio), -1, 1, 3, 1)
         })
       },
+      borderColor: "black",
+      backgroundColor: "white",
       size: crossSize,
       depth: 1,
       recursive: 1,
       prepareRecursionOptions: (index) => ({
-        borderWidth: 2,
+        borderWidth: 4,
         sides: 1,
       }),
       draw: (index, step, {size}) => {
         rotate(mappers.fn(lerpIndex, 0, 1, 0, PI))
         rotate(-time+lerpIndex*10);
 
-        const amt = animation.ease({
-          values: [ 2, 4, 6 ],
-          currentTime: time/5+index,
-          duration: 1,
-          easingFn: easing.easeInOutElastic,
-        })
+        // const amt = animation.ease({
+        //   values: [ 2, 4, 6 ],
+        //   currentTime: time/5+index,
+        //   duration: 1,
+        //   easingFn: easing.easeInOutElastic,
+        // })
 
-        flower(size, amt )
+        flower(size, 5 )
       }
     })
     pop()

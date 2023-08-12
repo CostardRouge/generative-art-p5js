@@ -1,11 +1,18 @@
 import { events } from './index.js';
+// import * as $C from 'https://cdn.jsdelivr.net/npm/js-combinatorics@2.1.1/combinatorics.min.js';
 
 const MONITORING_BUFFER = 60;
 
 const midi = {
-  inputs: {},
-  outputs: {},
+  // inputs: {},
+  // outputs: {},
   monitoring: { },
+  get inputs() {
+    return WebMidi.inputs;
+  },
+  get outputs() {
+    return WebMidi.inputs;
+  },
   byCircularIndex: (index, attribute = "on") => {
     const noteIdentifiers = Object.keys( midi.monitoring );
 
@@ -13,11 +20,16 @@ const midi = {
   },
   loadScripts: async () => {
     await loadScript("libraries/webmidi.iife.js");
+    // await loadScript("libraries/js-combinatoricsjs.js");
+
+    window.$C = await import('../../libraries/js-combinatoricsjs.js')
+
   },
   setup: async () => {
     await midi.loadScripts()
 
-    WebMidi.enable()
+    WebMidi
+      .enable()
       .then( () => {
         if (WebMidi.inputs.length < 1) {
           return console.log("No device detected.");
@@ -26,20 +38,16 @@ const midi = {
         WebMidi.inputs.forEach((input, index) => {
           const { id } = input;
 
-          midi.inputs[ id ] = input;
-
+          // midi.inputs[ id ] = input;
           console.log(`< INPUT: ${index}: ${input.name} (${id})`);
         })
 
         WebMidi.outputs.forEach((output, index) => {
           const { id } = output;
 
-          midi.outputs[ id ] = output;
-
+          // midi.outputs[ id ] = output;
           console.log(`> OUTPUT: ${index}: ${output.name} (${id})`);
         })
-    
-        // WebMidi.inputs.forEach((input, index) => {
 
         //   midi.inputs.push(input);
 
@@ -86,6 +94,7 @@ const midi = {
         // });
       })
       .then( midi.attachListenersToInputs )
+      // .then( midi.attachListenersToOutputs )
       .catch( console.error );
 
     events.register( "pre-draw", midi.monitor );
@@ -100,15 +109,23 @@ const midi = {
       // })
     });
   },
-  on: (note, handler, device = "all") => {
-    events.register( `midi-on-${note}-${device}`, handler );
+  registerListener: (midiNoteDetail, handler, type) => {
+    const noteDetailEventKey = [
+      midiNoteDetail.identifier ?? 'any-note',
+      midiNoteDetail.input ?? 'any-input'
+    ].join("-")
+
+    // console.log(`midi-${type}-${noteDetailEventKey}`);
+
+    return events.register( `midi-${type}-${noteDetailEventKey}`, handler );
   },
-  off: (note, handler, device = "all") => {
-    events.register( `midi-off-${note}-${device}`, handler );
+  on: (midiNoteDetail, handler) => {
+    return midi.registerListener(midiNoteDetail, handler, "on")
+  },
+  off: (midiNoteDetail, handler) => {
+    return midi.registerListener(midiNoteDetail, handler, "off")
   },
   monitor: () => {
-    // console.log(midi.monitoring);
-
     for (const identifier in midi.monitoring) {
       midi.monitoring[identifier].history.shift();
       midi.monitoring[identifier].history.push(0);
@@ -126,31 +143,36 @@ const midi = {
       identifier,
       name,
       octave,
-      attack,
+      attack: attack / 127,
       release
     })
 
-    const eventHandler = ( note, type, id) => {
+    const eventHandler = ( note, type, input) => {
       const { identifier, name } = note;
 
-      // All
-      events.handle( `midi-${type}-${identifier}-all`,  note) // A6 -  all
-      events.handle( `midi-${type}-${name}-all`, note ) // A - all
+      const eventKeys = new $C.CartesianProduct(
+        [type],
+        [identifier, name, 'any-note'],
+        [input, 'any-input'],
+      );
 
-      // Specific input
-      events.handle( `midi-${type}-${identifier}-${id}`,  note) // A6 - specific device id
-      events.handle( `midi-${type}-${name}-${id}`, note ) // A - specific device id
+      [...eventKeys].forEach( eventKey => {
+        // console.log(`midi-${eventKey.join("-")}`);
+        events.handle( `midi-${eventKey.join("-")}`, note)
+      })
     }
+
+    console.log(midi.inputs);
 
     for (const id in midi.inputs) {
       const input = midi.inputs[ id ];
 
       input.addListener("noteon", event => {
-        eventHandler( getNoteDetails(event.note), "on", id)
+        eventHandler( getNoteDetails(event.note), "on", id);
       });
 
       input.addListener("noteoff", event => {
-        eventHandler( getNoteDetails(event.note), "off", id)
+        eventHandler( getNoteDetails(event.note), "off", id);
       });
     }
   },
