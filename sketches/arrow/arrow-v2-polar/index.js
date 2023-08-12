@@ -1,4 +1,4 @@
-import { debug, options, sketch, iterators, colors, mappers, grid, events, audio, easing } from './utils/index.js';
+import { options, sketch, iterators, colors, mappers, grid, easing } from './utils/index.js';
 
 options.add( [
   {
@@ -21,11 +21,6 @@ options.add( [
     category: 'Noise'
   },
 ] );
-
-events.register("post-setup", () => {
-  // audio.capture.setup()
-  // events.register("post-draw", audio.capture.energy.recordHistory );
-});
 
 sketch.setup( );
 
@@ -110,13 +105,6 @@ sketch.draw( (time, center) => {
   const lerpStep = 1 / vectorsCount;
 
   iterators.vector(start, end, lerpStep, ( vector, lerpIndex, isFirst, isLast) => {
-    const energy = audio.capture.energy.getSpectrumHistoryFromVector(0.5, lerpIndex)
-    const rangeHistory = audio.capture.energy.getRangeHistoryFromVector(lerpIndex, "mid", "raw" )
-    
-    // nrj = rangeHistory
-
-    // const influence = map(rangeHistory, 0, 1, 10, 10)
-
     let angle = noise(lerpIndex+time/3)*TAU;
     // angle = map(sin(time/2+lerpIndex+cos(angle-time/2)), -1, 1, -PI, PI);
 

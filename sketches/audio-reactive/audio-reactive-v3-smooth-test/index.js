@@ -163,12 +163,10 @@ options.add( [
   },
 ] );
 
-
-// sketch.setup(() => {
-//   audio.capture.setup();
-// });
-
-sketch.setup( audio.capture.setup );
+events.register("post-setup", () => {
+  audio.capture.setup()
+});
+sketch.setup()
 
 const pattern = (count = 7, time, color) => {
   push()

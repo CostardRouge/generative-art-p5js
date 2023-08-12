@@ -59,28 +59,15 @@ const string = {
 
     pop()
   },
-  
 };
 
 events.register("engine-window-preload", () => {
-  string.fonts.serif = loadFont(
-    gitHubPagesPathHack("assets/fonts/libre-baskerville.ttf")
-  );
-  string.fonts.sans = loadFont(
-    gitHubPagesPathHack("assets/fonts/passion-one.ttf")
-  );
-  string.fonts.openSans = loadFont(
-    gitHubPagesPathHack("assets/fonts/open-sans.ttf")
-  );
-  string.fonts.tilt = loadFont(
-    gitHubPagesPathHack("assets/fonts/tilt-prism.ttf")
-  );
-  string.fonts.multicoloure = loadFont(
-    gitHubPagesPathHack("assets/fonts/multicoloure.ttf")
-  );
-  string.fonts.martian = loadFont(
-    gitHubPagesPathHack("assets/fonts/martian.ttf")
-  );
+  string.fonts.serif = loadFont("assets/fonts/libre-baskerville.ttf");
+  string.fonts.sans = loadFont("assets/fonts/passion-one.ttf");
+  string.fonts.openSans = loadFont("assets/fonts/open-sans.ttf");
+  string.fonts.tilt = loadFont("assets/fonts/tilt-prism.ttf");
+  string.fonts.multicoloure = loadFont("assets/fonts/multicoloure.ttf");
+  string.fonts.martian = loadFont("assets/fonts/martian.ttf");
 });
 
 export default string;

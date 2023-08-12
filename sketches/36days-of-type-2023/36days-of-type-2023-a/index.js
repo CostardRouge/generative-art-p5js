@@ -116,17 +116,20 @@ function drawGrid(cols, time) {
 sketch.draw( (time, center) => {
   background(0);
 
-  push()
-  stroke(64, 64, 128)
-  drawGrid(3, time)
-  pop()
+
+  // push()
+  // stroke(64, 64, 128)
+  // drawGrid(8, 0)
+  // pop()
+
+
 
   // rotateY(mappers.fn(cos(time), -1, 1, -PI, PI, easing.easeInOutQuart)/9)
   rotateX(mappers.fn(cos(time), -1, 1, -PI, PI, easing.easeInOutQuart)/9)
 
   const size = width/2;
   const scale = 2.25;
-  const font = string.fonts.serif;
+  const font = string.fonts.sans;
 
   const sampleFactor = 0.15;
   const simplifyThreshold = 0;
@@ -142,7 +145,7 @@ sketch.draw( (time, center) => {
   })
 
   const nextLetterPoints = getTextPoints({
-    text: "A",
+    text: "b",
     position: letterPosition,
     size,
     font,
@@ -203,6 +206,9 @@ sketch.draw( (time, center) => {
       pop()
     }
   }
+
+  orbitControl();
+
 
   return 
   

@@ -1,72 +1,100 @@
 import { events } from './index.js';
+// import * as $C from 'https://cdn.jsdelivr.net/npm/js-combinatorics@2.1.1/combinatorics.min.js';
 
 const MONITORING_BUFFER = 60;
 
 const midi = {
-  inputs: [],
-  outputs: [],
+  // inputs: {},
+  // outputs: {},
   monitoring: { },
+  get inputs() {
+    return WebMidi.inputs;
+  },
+  get outputs() {
+    return WebMidi.inputs;
+  },
   byCircularIndex: (index, attribute = "on") => {
     const noteIdentifiers = Object.keys( midi.monitoring );
 
     return midi.monitoring[noteIdentifiers[ index % noteIdentifiers.length ]]?.[attribute];
   },
-  setup: () => {
-    WebMidi.enable()
+  loadScripts: async () => {
+    await loadScript("libraries/webmidi.iife.js");
+    // await loadScript("libraries/js-combinatoricsjs.js");
+
+    window.$C = await import('../../libraries/js-combinatoricsjs.js')
+
+  },
+  setup: async () => {
+    await midi.loadScripts()
+
+    WebMidi
+      .enable()
       .then( () => {
         if (WebMidi.inputs.length < 1) {
           return console.log("No device detected.");
         }
-    
+
         WebMidi.inputs.forEach((input, index) => {
-          console.log(`INPUT: ${index}: ${input.name}`);
+          const { id } = input;
 
-          midi.inputs.push(input);
+          // midi.inputs[ id ] = input;
+          console.log(`< INPUT: ${index}: ${input.name} (${id})`);
+        })
 
-          input.addListener("noteon", (e) => {
-            const { identifier }  = e.note;
+        WebMidi.outputs.forEach((output, index) => {
+          const { id } = output;
 
-            if ( undefined === midi.monitoring[ identifier ] ) {
-              midi.monitoring[ identifier ] = {
-                history: new Array(MONITORING_BUFFER).fill(0)
-              }
-            }
+          // midi.outputs[ id ] = output;
+          console.log(`> OUTPUT: ${index}: ${output.name} (${id})`);
+        })
 
-            const noteHistory = midi.monitoring[ identifier ].history;
+        //   midi.inputs.push(input);
 
-            // console.log(midi.monitoring[ identifier ]);
+        //   input.addListener("noteon", (e) => {
 
-            midi.monitoring[ identifier ].history[ noteHistory.length -1 ] = identifier;
-            midi.monitoring[ identifier ].on = true;
-            midi.monitoring[ identifier ].smooth = 1;
-            // midi.monitoring[identifier ].smooth = lerp( midi.monitoring[identifier].smooth ?? 1, 1, 0.067 );
+        //     const { identifier, name, octave }  = e.note;
+
+        //     console.log({ identifier, name, octave }, e);
 
 
-            // console.log( "on", e.note.identifier )
-          });
+        //     if ( undefined === midi.monitoring[ identifier ] ) {
+        //       midi.monitoring[ identifier ] = {
+        //         history: new Array(MONITORING_BUFFER).fill(0)
+        //       }
+        //     }
 
-          input.addListener("noteoff", (e) => {
-            const { identifier }  = e.note;
+        //     const noteHistory = midi.monitoring[ identifier ].history;
 
-            if ( undefined === midi.monitoring[ identifier ] ) {
-              midi.monitoring[ identifier ] = {
-                history: new Array(MONITORING_BUFFER).fill(0)
-              };
-            }
+        //     // console.log(midi.monitoring[ identifier ]);
 
-            midi.monitoring[ identifier ].on = false;
-            midi.monitoring[identifier ].smooth = lerp( midi.monitoring[identifier].smooth ?? 1, 0, 0.067 );
+        //     midi.monitoring[ identifier ].history[ noteHistory.length -1 ] = identifier;
+        //     midi.monitoring[ identifier ].on = true;
+        //     midi.monitoring[ identifier ].smooth = 1;
+        //     // midi.monitoring[identifier ].smooth = lerp( midi.monitoring[identifier].smooth ?? 1, 1, 0.067 );
 
-            console.log( "off", e.note.identifier )
-          });
-        });
-    
-        WebMidi.outputs.forEach((device, index) => {
-          console.log(`OUTPUT: ${index}: ${device.name}`);
 
-          midi.outputs.push(device);         
-        });
+        //     // console.log( "on", e.note.identifier )
+        //   });
+
+        //   input.addListener("noteoff", (e) => {
+        //     const { identifier }  = e.note;
+
+        //     if ( undefined === midi.monitoring[ identifier ] ) {
+        //       midi.monitoring[ identifier ] = {
+        //         history: new Array(MONITORING_BUFFER).fill(0)
+        //       };
+        //     }
+
+        //     midi.monitoring[ identifier ].on = false;
+        //     midi.monitoring[identifier ].smooth = lerp( midi.monitoring[identifier].smooth ?? 1, 0, 0.067 );
+
+        //     console.log( "off", e.note.identifier )
+        //   });
+        // });
       })
+      .then( midi.attachListenersToInputs )
+      // .then( midi.attachListenersToOutputs )
       .catch( console.error );
 
     events.register( "pre-draw", midi.monitor );
@@ -81,16 +109,73 @@ const midi = {
       // })
     });
   },
-  monitor: () => {
-    // console.log(midi.monitoring);
+  registerListener: (midiNoteDetail, handler, type) => {
+    const noteDetailEventKey = [
+      midiNoteDetail.identifier ?? 'any-note',
+      midiNoteDetail.input ?? 'any-input'
+    ].join("-")
 
+    // console.log(`midi-${type}-${noteDetailEventKey}`);
+
+    return events.register( `midi-${type}-${noteDetailEventKey}`, handler );
+  },
+  on: (midiNoteDetail, handler) => {
+    return midi.registerListener(midiNoteDetail, handler, "on")
+  },
+  off: (midiNoteDetail, handler) => {
+    return midi.registerListener(midiNoteDetail, handler, "off")
+  },
+  monitor: () => {
     for (const identifier in midi.monitoring) {
       midi.monitoring[identifier].history.shift();
       midi.monitoring[identifier].history.push(0);
       midi.monitoring[identifier].smooth = lerp( midi.monitoring[identifier].smooth, 0, 0.05 );
     }
   },
-  //release, and attack ?
+  attachListenersToInputs: () => {
+    const getNoteDetails = ({
+      identifier,
+      name,
+      octave,
+      rawAttack: attack,
+      _release: release
+    }) => ({
+      identifier,
+      name,
+      octave,
+      attack: attack / 127,
+      release
+    })
+
+    const eventHandler = ( note, type, input) => {
+      const { identifier, name } = note;
+
+      const eventKeys = new $C.CartesianProduct(
+        [type],
+        [identifier, name, 'any-note'],
+        [input, 'any-input'],
+      );
+
+      [...eventKeys].forEach( eventKey => {
+        // console.log(`midi-${eventKey.join("-")}`);
+        events.handle( `midi-${eventKey.join("-")}`, note)
+      })
+    }
+
+    console.log(midi.inputs);
+
+    for (const id in midi.inputs) {
+      const input = midi.inputs[ id ];
+
+      input.addListener("noteon", event => {
+        eventHandler( getNoteDetails(event.note), "on", id);
+      });
+
+      input.addListener("noteoff", event => {
+        eventHandler( getNoteDetails(event.note), "off", id);
+      });
+    }
+  },
 };
 
 export default midi;

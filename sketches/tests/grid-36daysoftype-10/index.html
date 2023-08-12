@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no" />
+  </head>
+
+  <body>
+    <style>
+      body, html {
+        /* background: rgb(128, 128, 255); */
+        /* background: black; */
+        /* padding: 0; */
+      }
+
+      div {
+        width: 1080px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+      }
+
+      video {
+        /* outline: 1px solid rgb(128, 128, 255); */
+        object-fit: cover;
+        object-align: center center;
+        max-height: 225px;
+        max-height: 450px;
+      }
+  </style>
+    <script>
+      const videoElements = [];
+
+      function createVideoElement(src) {
+        const video = document.createElement('video');
+        video.style.width = '100%';
+
+        video.src = src;
+        video.controls = false;
+        video.loop = true;
+
+        return video;
+      }
+
+      function createVideoGrid() {
+        const container = document.createElement('div');
+        Array(36).fill().forEach( (_, index) => {
+          if ( !(index > 26 && index < 36) ) return
+          const videoElement = createVideoElement(`${index}.mp4`);
+          container.appendChild(videoElement);
+          videoElements.push(videoElement)
+        });
+        return container;
+      }
+
+      let playing = false;
+
+      document.addEventListener("click", () => {
+        const videoAction = playing ? "pause" : "play"
+
+        console.log({
+          videoAction
+        });
+
+        videoElements.forEach( node => node?.[videoAction]() )
+        playing = !playing
+      })
+
+      const videoGrid = createVideoGrid();
+      document.body.appendChild(videoGrid);
+
+    </script>
+  </body>
+</html>
