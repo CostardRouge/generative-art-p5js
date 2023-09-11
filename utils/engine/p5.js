@@ -3,6 +3,9 @@ import { events, options, time } from "../index.js";
 const p5js = {
   camera: undefined,
   canvas: undefined,
+  favoriteColors: {
+    purple: undefined
+  },
   init: (sketchOptions, setupEngineFunction) => {
     // scripts
     p5js.loadScripts();
@@ -31,7 +34,7 @@ const p5js = {
       const _time = time.seconds() * options.get("time-speed");
 
       events.handle("pre-draw");
-      events.handle("draw", _time, p5js.getCanvasCenter());
+      events.handle("draw", _time, p5js.getCanvasCenter(), p5js.favoriteColors.purple );
       events.handle("post-draw");
     };
     window.keyTyped = () => {
@@ -61,6 +64,9 @@ const p5js = {
   },
   setup: (sketchOptions, setupEngineFunction) => {
     events.register("pre-setup", () => {
+       // init favorite colors
+      p5js.favoriteColors.purple = color(128, 128, 255)
+
       // canvas creation
       const {
         type = "p2d",

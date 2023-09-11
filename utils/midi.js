@@ -1,5 +1,5 @@
 import { events } from './index.js';
-// import * as $C from 'https://cdn.jsdelivr.net/npm/js-combinatorics@2.1.1/combinatorics.min.js';
+import * as $C from 'https://cdn.jsdelivr.net/npm/js-combinatorics@2.1.1/combinatorics.min.js';
 
 const MONITORING_BUFFER = 60;
 
@@ -11,7 +11,7 @@ const midi = {
     return WebMidi.inputs;
   },
   get outputs() {
-    return WebMidi.inputs;
+    return WebMidi.outputs;
   },
   byCircularIndex: (index, attribute = "on") => {
     const noteIdentifiers = Object.keys( midi.monitoring );
@@ -20,10 +20,9 @@ const midi = {
   },
   loadScripts: async () => {
     await loadScript("libraries/webmidi.iife.js");
-    // await loadScript("libraries/js-combinatoricsjs.js");
+    // await loadScript("libraries/js-combinatorics.js");
 
-    window.$C = await import('../../libraries/js-combinatoricsjs.js')
-
+    // window.$C = await import('libraries/js-combinatorics.js')
   },
   setup: async () => {
     await midi.loadScripts()
@@ -99,14 +98,25 @@ const midi = {
 
     events.register( "pre-draw", midi.monitor );
   },
-  play: note => {
-    midi.outputs.forEach( device => {
-      device.playNote(note);
+  play: (identifier, options = {}) => {
+    midi.outputs.forEach( output => {
+      const note = new Note(identifier ?? "A4", {
+        // duration: 100,
+        // release: 0.1,
+        ...options
+      })
 
-      // new Note("A4", {
-      //   duration: 100,
-      //   release: 0.1,
+      output.playNote(note);
+    });
+  },
+  stop: (identifier, options = {}) => {
+    midi.outputs.forEach( output => {
+      // const note = new Note(identifier ?? "A4", {
+      //   ...options
       // })
+
+      // output.playNote(note);
+      output.sendAllSoundOff();
     });
   },
   registerListener: (midiNoteDetail, handler, type) => {

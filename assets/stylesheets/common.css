@@ -12,6 +12,10 @@ canvas {
   display: block;
 }
 
+video {
+  border: 1px solid black;
+}
+
 /* canvas:hover {
   outline: 1px rgb(255 255 255 / 20%) dashed;
 } */
