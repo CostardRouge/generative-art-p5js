@@ -49,31 +49,46 @@ function cross( { x, y, z }, size) {
   line(x + size/2, y -size/2, z, x - size/2, y +size/2, z )
 }
 
-function drawProgression(progression, start, end) {
+function drawProgression(progression, start, end, steps = 0) {
   push()
   stroke(128, 128, 255)
-  strokeWeight(5)
-  cross(start, 20)
-  cross(end, 20)
+  strokeWeight(15)
+  // cross(start, 20)
+  // cross(end, 20)
+
+  // push()
+  // translate(start)
+  // point(0, 0)
+  // pop()
+
+  // push()
+  // translate(end)
+  // point(0, 0)
+  // pop()
+
+  // point(end.x, end.y, end.z)
 
   const currentProgression = p5.Vector.lerp( start, end, progression )
 
   strokeWeight(3.5)
   line(start.x, start.y, start.z, currentProgression.x, currentProgression.y, currentProgression.z)
-  pop()
-}
 
-function createTextPointsList(textsList) {
-  return textsList.map( text => (
-    getTextPoints({
-      text,
-      position: letterPosition,
-      size,
-      font,
-      sampleFactor,
-      simplifyThreshold
-    })
-  ))
+  for (let i = 0; i <= steps; i++) {
+    const currentStepPosition = p5.Vector.lerp( start, end, i/steps );
+
+    if (i === 0 || i === ~~(steps/2) || i === steps) {
+      strokeWeight(15)
+    }
+    else {
+      strokeWeight(8.5)
+    }
+
+    push()
+    translate(currentStepPosition)
+    point(0, 0)
+    pop()
+  }
+  pop()
 }
 
 sketch.draw( (time, center) => {
@@ -81,16 +96,105 @@ sketch.draw( (time, center) => {
 
   const W = width/2;
   const H = height/2
+  const D = (H*2+W*2)/2
 
-  const xProgression = mappers.fn(sin(time), -1, 1, 0, 1, easing.easeInOutExpo);
-  const yProgression = mappers.fn(cos(time), -1, 1, 0, 1, easing.easeInOutExpo);
-  // const zProgression = mappers.fn(sin(time+time), -1, 1, 0, 1, easing.easeInOutExpo);
+  const easingFunction = easing.easeInOutCubic;
+
+  const xProgression = mappers.fn(sin(time), -1, 1, 0, 1, easingFunction);
+  const yProgression = mappers.fn(cos(time), -1, 1, 0, 1, easingFunction);
+  const zProgression = mappers.fn(sin(time+time), -1, 1, 0, 1, easingFunction);
 
   const margin = 100;
+  // X
+  drawProgression(xProgression, createVector(-W+margin, H-margin), createVector(W-margin, H-margin), 10 )
+  drawProgression(xProgression, createVector(-W+margin, -H+margin), createVector(W-margin, -H+margin), 10 )
+  drawProgression(xProgression, createVector(-W+margin, H-margin, -D), createVector(W-margin, H-margin, -D), 10 )
+  drawProgression(xProgression, createVector(-W+margin, -H+margin, -D), createVector(W-margin, -H+margin, -D), 10 )
+  // Y
+  drawProgression(yProgression, createVector(-W+margin, H-margin), createVector(-W+margin, -H+margin), 10 )
+  drawProgression(yProgression, createVector(+W-margin, H-margin), createVector(+W-margin, -H+margin), 10 )
+  drawProgression(yProgression, createVector(-W+margin, H-margin, -D), createVector(-W+margin, -H+margin, -D), 10 )
+  drawProgression(yProgression, createVector(+W-margin, H-margin, -D), createVector(+W-margin, -H+margin, -D), 10 )
+  // Z
+  drawProgression(zProgression, createVector(-W+margin, H-margin), createVector(-W+margin, H-margin, -D), 10 )
+  drawProgression(zProgression, createVector(W-margin, H-margin), createVector(W-margin, H-margin, -D), 10 )
+  drawProgression(zProgression, createVector(-W+margin, -H+margin), createVector(-W+margin, -H+margin, -D), 10 )
+  drawProgression(zProgression, createVector(W-margin, -H+margin), createVector(W-margin, -H+margin, -D), 10 )
 
-  drawProgression(xProgression, createVector(-W+margin, H-margin), createVector(W-margin, H-margin) )
-  drawProgression(yProgression, createVector(-W+margin, H-margin), createVector(-W+margin, -H+margin) )
-  // drawProgression(zProgression, createVector(-W+margin, H-margin), createVector(-W+margin, H-margin, -H) )
+  const x = map(xProgression, 0, 1, -W, W)
+  const y = map(yProgression, 0, 1, H, -H)
+  const z = map(zProgression, 0, 1, 0, -D)
+
+  push()
+  const sphereSize = 150;
+  const spherePositionMargin = sphereSize// + margin;
+  const spherePosition = createVector(
+    map(xProgression, 0, 1, -W+spherePositionMargin, +W-spherePositionMargin),
+    map(yProgression, 0, 1, +H-spherePositionMargin, -H+spherePositionMargin),
+    map(zProgression, 0, 1, -spherePositionMargin, -D+spherePositionMargin),
+  )
+
+  noFill()
+  strokeWeight(2)
+  stroke(128, 128, 255)
+  translate(
+    spherePosition.x,
+    spherePosition.y,
+    spherePosition.z
+  )
+  sphere(100)
+  pop()
+
+  strokeWeight(3)
+  stroke(128, 128, 255)
+  line(-W+sphereSize/2, spherePosition.y, spherePosition.z, W-sphereSize/2, spherePosition.y, spherePosition.z) // x
+  line(spherePosition.x, H-sphereSize/2, spherePosition.z, spherePosition.x, -H+sphereSize/2, spherePosition.z) // y
+  line(spherePosition.x, spherePosition.y, -sphereSize/2, spherePosition.x, spherePosition.y, -D+sphereSize/2) // z
+
+
+  push()
+  stroke(128, 128, 255)
+  strokeWeight(10)
+  translate(W-sphereSize/2, spherePosition.y, spherePosition.z)
+  point(0, 0)
+  pop()
+  push()
+  stroke(128, 128, 255)
+  strokeWeight(10)
+  translate(-W+sphereSize/2, spherePosition.y, spherePosition.z)
+  point(0, 0)
+  pop()
+
+
+  push()
+  stroke(128, 128, 255)
+  strokeWeight(10)
+  translate(spherePosition.x, H-sphereSize/2, spherePosition.z)
+  point(0, 0)
+  pop()
+  push()
+  stroke(128, 128, 255)
+  strokeWeight(10)
+  translate(spherePosition.x, -H+sphereSize/2, spherePosition.z)
+  point(0, 0)
+  pop()
+
+
+  push()
+  stroke(128, 128, 255)
+  strokeWeight(10)
+  translate(spherePosition.x, spherePosition.y, -sphereSize/2)
+  point(0, 0)
+  pop()
+  push()
+  stroke(128, 128, 255)
+  strokeWeight(10)
+  translate(spherePosition.x, spherePosition.y, -D+sphereSize/2)
+  point(0, 0)
+  pop()
+
+  orbitControl();
+  return;
 
   const size = width/2;
   const font = string.fonts.serif;
@@ -111,7 +215,7 @@ sketch.draw( (time, center) => {
       })
     )),
     currentTime: yProgression,
-    duration: 1/27,
+    duration: 1,
     lerpFn: lerpPoints
   })
 

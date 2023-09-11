@@ -10,6 +10,10 @@ sketch.setup(() => {
     midi.on( { }, note => {
       lastPressedNote = note
       pressedNoteCount++
+
+
+      scaleFinal = map(note.attack, 0, 1, 1, 0)
+      attackFinal = note.attack
       // lastPressedIdentifiers.push(note.identifier)
   
     } );
@@ -121,6 +125,8 @@ function drawGrid(cols, time) {
 
 let rxFinal = 0
 let ryFinal = 0
+let scaleFinal = 0
+let attackFinal = 0
 
 
 const notes = "abcdefg";
@@ -149,13 +155,76 @@ function drawNoteAttack() {
 
 }
 
+function drawProgression(progression, start, end, steps = 0) {
+  push()
+  stroke(128, 128, 255)
+  strokeWeight(15)
+  // cross(start, 20)
+  // cross(end, 20)
+
+  // push()
+  // translate(start)
+  // point(0, 0)
+  // pop()
+
+  // push()
+  // translate(end)
+  // point(0, 0)
+  // pop()
+
+  // point(end.x, end.y, end.z)
+
+  const currentProgression = p5.Vector.lerp( start, end, progression )
+
+  strokeWeight(3.5)
+  line(start.x, start.y, start.z, currentProgression.x, currentProgression.y, currentProgression.z)
+
+  for (let i = 0; i <= steps; i++) {
+    const currentStepPosition = p5.Vector.lerp( start, end, i/steps );
+
+    if (i === 0 || i === ~~(steps/2) || i === steps) {
+      strokeWeight(15)
+    }
+    else {
+      strokeWeight(8.5)
+    }
+
+    push()
+    translate(currentStepPosition)
+    point(0, 0)
+    pop()
+  }
+  pop()
+}
+
 sketch.draw( (time, center) => {
   background(0);
+  // background();
 
   // push()
   // stroke(64, 64, 128)
   // drawGrid(8, 0)
   // pop()
+
+  const W = width/2;
+  const H = height/2
+  const margin = 100;
+
+  scaleFinal = lerp(scaleFinal, 1, 0.07)
+  attackFinal = lerp(attackFinal, 0, 0.07)
+
+
+
+  // const attack = scaleFinal//mappers.fn(lastPressedNote?.attack, 0, 1, 1, 3);
+  const attack = mappers.fn(lastPressedNote?.attack, 0, 1, 0, 1); // attackFinal
+
+
+  drawProgression(scaleFinal, createVector(-W+margin, H-margin), createVector(W-margin, H-margin), 10 )
+  drawProgression(attack, createVector(-W+margin, -H+margin), createVector(W-margin, -H+margin), 10 )
+
+
+
+
 
   const {
     x: rX,
@@ -194,37 +263,39 @@ sketch.draw( (time, center) => {
   // const x = map(notes.indexOf(note[0]), 0, notes.length-1, -width/2, width/2)
   // line( x, -height/2, x, height/2)
 
-  console.log(lastPressedNote);
+  // console.log(lastPressedNote);
 
   // const y = map(Number(note[1]), 1, 7, -height/2, height/2)  
   // line( -width/2, y, width/2, y)
 
   // pop()
 
-  rxFinal = lerp(rX, rxFinal, 0.67)
-  ryFinal = lerp(rY, ryFinal, 0.67)
+  // rxFinal = lerp(rX, rxFinal, 0.67)
+  // ryFinal = lerp(rY, ryFinal, 0.67)
 
   // rotateX(rX)
   // rotateY(rY)
 
-  rotateX(rxFinal/2)
-  rotateY(ryFinal/2)
+  // rotateX(rxFinal/2)
+  // rotateY(ryFinal/2)
 
   // rotateY(mappers.fn(cos(time), -1, 1, -PI, PI, easing.easeInOutQuart)/9)
   // rotateX(mappers.fn(cos(time), -1, 1, -PI, PI, easing.easeInOutQuart)/9)
 
-  const size = width/2;
-  const scale = 1.75;
+  const size = width/3;
   const font = string.fonts.sans;
 
-  const sampleFactor = 0.15;
+  const sampleFactor = 0.25;
   const simplifyThreshold = 0;
   const letterPosition = createVector(0, 0)
+
+  const textFn = lastPressedNote?.attack < 0.5 ? "toLowerCase" : "toUpperCase"
 
   const currentLetterPoints = getTextPoints({
     // text: "f#",
     // text: lastPressedIdentifiers[0],
     text: lastPressedNote?.identifier ?? "*",
+    text: (lastPressedNote?.identifier ?? "*")?.[textFn](),
     // text: lastPressedIdentifiers[ lastPressedIdentifiers.length - 2 ],
     position: letterPosition,
     size,
@@ -233,7 +304,7 @@ sketch.draw( (time, center) => {
     simplifyThreshold
   })
 
-  // console.log(lastPressedIdentifier);
+  console.log(lastPressedNote);
 
   // const nextLetterPoints = getTextPoints({
   //   text: "b3",
@@ -252,10 +323,18 @@ sketch.draw( (time, center) => {
   
   const depth = 10;
 
+  // scaleFinal = lerp(mappers.fn(lastPressedNote?.attack ?? 1, 0, 1, 1, 3), scaleFinal, 0.7)
+
+  const scale = scaleFinal//mappers.fn(lastPressedNote?.attack, 0, 1, 1, 3);
+
+
+  // const scale = 2;
+
+
   for (let z = 0; z < depth; z++) {
     translate( 0, 0, map(z, 0, depth, 0, -50) )
 
-    strokeWeight( map(z, 0, depth, 5, 1) )
+    strokeWeight( map(z, 0, depth, 10, 1) )
 
 
     for (let i = 0; i < primary.length; i++) {
@@ -284,7 +363,6 @@ sketch.draw( (time, center) => {
       // ]);
 
       const op1 = map(sin(progression*100+time*4-z*0.3), -1, 1, 5, 1);
-
     
       stroke(colorFunction({
         //hueOffset: time+progression*4+z/depth,
@@ -298,18 +376,36 @@ sketch.draw( (time, center) => {
         // opacityFactor: map(sin(progression*100+time*4), -1, 1, 3, 1),
         // opacityFactor: map(sin(z*50+progression*5+time*4), -1, 1, 10, 1)
       }))
-      push()
+      // push()
       // translate(
       //   x*scale*map(z, 0, depth, 0, 1),
       //   y*scale*map(z, 0, depth, 0, 1),
       //   // map(z, 0, depth, 0, -100)
       // )
-      translate(
-        x*scale,
-        y*scale,
-      )
-      point(0, 0)
-      pop()
+      // translate(
+      //   x*scale,
+      //   y*scale,
+      // )
+
+      const xx = (
+        x*scale
+        +x*Math.pow(1.1, z)
+        // +x*map(z, 0, 1, 1, 0.1)
+      );
+      const yy = (
+        y*scale
+        // +y*map(z, 0, 1, 1, 0.1)
+
+        +y*Math.pow(1.1, z)
+      );
+
+      // point(
+      //   constrain(xx, -W, W),
+      //   constrain(yy, -H, H),
+      // )
+
+      point(xx, yy)
+      // pop()
     }
   }
 

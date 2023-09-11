@@ -27,8 +27,7 @@ const string = {
       center = false,
     } = options;
 
-    push()
-    translate( x, y );
+    const position = createVector( x, y )
 
     graphics.fill(fill);
     graphics.stroke(stroke);
@@ -41,23 +40,34 @@ const string = {
     const desc = int(textDescent() * 0.8);
 
     if ( center ) {
-      translate( -box.w / 2, (asc + desc)/4 );
+      // translate( -box.w / 2, (asc + desc)/4 );
+      position.add( -box.w / 2, (asc + desc)/4 );
     }
 
     if ( showLines ) {
-      line(-width / 2, y - asc, width / 2, y - asc);
-      line(-width / 2, y + desc, width / 2, y + desc);
-      line(-width / 2, y, width, y); // baseline
+      push()
+      // translate(position.x, position.y)
+      line(-width / 2, position.y - asc, width / 2, position.y - asc);
+      line(-width / 2, position.y + desc, width / 2, position.y + desc);
+      line(-width / 2, position.y, width, position.y); // baseline
+      pop()
     }
 
     if ( showBox ) {
+      push()
+      translate(position.x, position.y)
+      graphics.stroke(255)
+      graphics.strokeWeight(1)
+      graphics.noFill()
       // rect( 0, 0, box.w, -box.h )
       rect( box.x, box.y, box.w, box.h )
+
+      pop()
     }
 
-    graphics.text(str, 0, 0);
+    // rect( box.x, box.y, box.w, box.h )
 
-    pop()
+    graphics.text(str, position.x, position.y);
   },
 };
 

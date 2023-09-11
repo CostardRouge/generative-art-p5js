@@ -1068,6 +1068,28 @@
          }
       }
    },
+   "danse-motion-bachata": {
+      "meta": {
+         "_mtime": "2023-09-07T15:28:49.084Z",
+         "name": "danse-motion-bachata"
+      },
+      "sketches": {
+         "danse-motion-bachata-v1": {
+            "meta": {
+               "_mtime": "2023-09-08T00:11:23.351Z",
+               "name": "danse-motion-bachata-v1"
+            },
+            "path": "sketches/danse-motion-bachata/danse-motion-bachata-v1"
+         },
+         "danse-motion-bachata-v2-steps": {
+            "meta": {
+               "_mtime": "2023-09-08T02:23:14.132Z",
+               "name": "danse-motion-bachata-v2-steps"
+            },
+            "path": "sketches/danse-motion-bachata/danse-motion-bachata-v2-steps"
+         }
+      }
+   },
    "demo-festival-2022": {
       "meta": {
          "_mtime": "2023-04-08T10:27:41.508Z",
@@ -1473,6 +1495,21 @@
          }
       }
    },
+   "media-pipe": {
+      "meta": {
+         "_mtime": "2023-09-08T22:27:02.866Z",
+         "name": "media-pipe"
+      },
+      "sketches": {
+         "media-pipe-v1": {
+            "meta": {
+               "_mtime": "2023-09-09T08:47:45.284Z",
+               "name": "media-pipe-v1"
+            },
+            "path": "sketches/media-pipe/media-pipe-v1"
+         }
+      }
+   },
    "midi": {
       "meta": {
          "_mtime": "2023-07-31T12:36:29.355Z",
@@ -1523,7 +1560,7 @@
          },
          "midi-v7-display-identifier": {
             "meta": {
-               "_mtime": "2023-07-27T12:34:18.760Z",
+               "_mtime": "2023-08-18T15:16:16.188Z",
                "name": "midi-v7-display-identifier"
             },
             "path": "sketches/midi/midi-v7-display-identifier"
@@ -2179,51 +2216,86 @@
    },
    "sketches-in-berlin": {
       "meta": {
-         "_mtime": "2023-08-12T10:48:06.786Z",
+         "_mtime": "2023-08-25T14:07:29.718Z",
          "name": "sketches-in-berlin"
       },
       "sketches": {
-         "sketches-in-berlin-v1": {
+         "sketches-in-berlin-v1-easing-jumping-star-trail": {
             "meta": {
                "_mtime": "2023-07-31T12:31:46.551Z",
-               "name": "sketches-in-berlin-v1"
+               "name": "sketches-in-berlin-v1-easing-jumping-star-trail"
             },
-            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v1"
+            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v1-easing-jumping-star-trail"
          },
-         "sketches-in-berlin-v2": {
+         "sketches-in-berlin-v10-debug": {
+            "meta": {
+               "_mtime": "2023-08-22T16:03:59.256Z",
+               "name": "sketches-in-berlin-v10-debug"
+            },
+            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v10-debug"
+         },
+         "sketches-in-berlin-v2-jumping-star-trail": {
             "meta": {
                "_mtime": "2023-07-31T13:01:12.349Z",
-               "name": "sketches-in-berlin-v2"
+               "name": "sketches-in-berlin-v2-jumping-star-trail"
             },
-            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v2"
+            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v2-jumping-star-trail"
          },
-         "sketches-in-berlin-v3": {
+         "sketches-in-berlin-v3-moving-star-trail": {
             "meta": {
                "_mtime": "2023-08-08T09:32:46.418Z",
-               "name": "sketches-in-berlin-v3"
+               "name": "sketches-in-berlin-v3-moving-star-trail"
             },
-            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v3"
+            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v3-moving-star-trail"
          },
-         "sketches-in-berlin-v4": {
+         "sketches-in-berlin-v4-rainbow-cyclone": {
             "meta": {
                "_mtime": "2023-08-11T12:56:22.390Z",
-               "name": "sketches-in-berlin-v4"
+               "name": "sketches-in-berlin-v4-rainbow-cyclone"
             },
-            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v4"
+            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v4-rainbow-cyclone"
          },
-         "sketches-in-berlin-v6": {
+         "sketches-in-berlin-v5-asterix": {
+            "meta": {
+               "_mtime": "2023-08-13T13:39:36.350Z",
+               "name": "sketches-in-berlin-v5-asterix"
+            },
+            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v5-asterix"
+         },
+         "sketches-in-berlin-v6-a-z-Z-A": {
             "meta": {
                "_mtime": "2023-08-12T10:20:25.918Z",
-               "name": "sketches-in-berlin-v6"
+               "name": "sketches-in-berlin-v6-a-z-Z-A"
             },
-            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v6"
+            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v6-a-z-Z-A"
          },
-         "sketches-in-berlin-v7": {
+         "sketches-in-berlin-v7-xyz": {
             "meta": {
-               "_mtime": "2023-08-12T10:43:06.990Z",
-               "name": "sketches-in-berlin-v7"
+               "_mtime": "2023-08-18T13:05:15.322Z",
+               "name": "sketches-in-berlin-v7-xyz"
             },
-            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v7"
+            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v7-xyz"
+         },
+         "sketches-in-berlin-v8-numbers": {
+            "meta": {
+               "_mtime": "2023-09-11T10:21:33.283Z",
+               "name": "sketches-in-berlin-v8-numbers"
+            },
+            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v8-numbers"
+         },
+         "sketches-in-berlin-v9-alphabet": {
+            "meta": {
+               "_mtime": "2023-09-11T10:28:39.223Z",
+               "name": "sketches-in-berlin-v9-alphabet"
+            },
+            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v9-alphabet"
+         },
+         "sketches-in-berlin-v9-la-si-do-re-mi": {
+            "meta": {
+               "_mtime": "2023-09-11T10:39:03.044Z",
+               "name": "sketches-in-berlin-v9-la-si-do-re-mi"
+            },
+            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v9-la-si-do-re-mi"
          }
       }
    },
