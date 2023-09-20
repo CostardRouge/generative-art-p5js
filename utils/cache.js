@@ -8,10 +8,10 @@ const cache = {
     }
 
     if ( undefined === cache.values[ key ] ) {
-      return cache.values[ key ] = compute();
+      return cache.set( key, compute() );
     }
   
-    return cache.values[ key ];
+    return cache.get(key);
   },
   key: function () {
     return [].slice.apply(arguments).join("-")
@@ -19,8 +19,8 @@ const cache = {
   get: function(key) {
     return cache.values?.[ key ];
   },
-  dump: () => {
-    
+  set: (key, value) => {
+    return cache.values[ key ] = value;
   }
 }
 

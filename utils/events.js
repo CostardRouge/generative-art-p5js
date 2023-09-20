@@ -12,7 +12,7 @@ const events = {
 
     for (const eventId in events.registeredEvents[eventName]) {
       const eventHandler = events.registeredEvents[eventName][eventId];
-      const result = eventHandler.call(eventHandler, ...args);
+      const result = eventHandler?.call(eventHandler, ...args);
 
       results.push( result );
     }

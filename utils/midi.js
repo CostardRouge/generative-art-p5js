@@ -101,8 +101,8 @@ const midi = {
   play: (identifier, options = {}) => {
     midi.outputs.forEach( output => {
       const note = new Note(identifier ?? "A4", {
-        // duration: 100,
-        // release: 0.1,
+        duration: 350,
+        release: 1,
         ...options
       })
 

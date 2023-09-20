@@ -1,5 +1,5 @@
 import { sketch, events, string, mappers, easing, animation, colors, cache } from './utils/index.js';
-import { FaceLandmarker, HandLandmarker, FilesetResolver, DrawingUtils } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3";
+import { FaceLandmarker, HandLandmarker, FilesetResolver, DrawingUtils } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.0";
 
 const mediaPipe = {
   landmarkers: {
@@ -17,12 +17,16 @@ const mediaPipe = {
 sketch.setup(async () => {
   await createLandmarkers();
 
-  createWebcamVideoElement();
+  mediaPipe.video = createCapture(VIDEO);
+  mediaPipe.video.size(width, height);
+  mediaPipe.video.elt.addEventListener("loadeddata", predictWebcam);
+  // mediaPipe.video.hide();]
+
 }, { type: "webgl" } );
 
 async function createLandmarkers() {
   const filesetResolver = await FilesetResolver.forVisionTasks(
-    "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3/wasm"
+    "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.0/wasm"
   );
 
   mediaPipe.landmarkers.face = await FaceLandmarker.createFromOptions(filesetResolver, {
@@ -31,73 +35,62 @@ async function createLandmarkers() {
       delegate: "GPU"
     },
     outputFaceBlendshapes: true,
-    runningMode: "CPU",
+    runningMode: "VIDEO",
     numFaces: 1
   });
+
+  await mediaPipe.landmarkers.face.setOptions({ runningMode: "VIDEO" });
 
   mediaPipe.landmarkers.hand = await HandLandmarker.createFromOptions(filesetResolver, {
     baseOptions: {
       modelAssetPath: `https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task`,
-      delegate: "CPU"
+      delegate: "GPU"
     },
     runningMode: "VIDEO",
     numHands: 2
   });
-}
 
-function createWebcamVideoElement() {
-  if (!!navigator.mediaDevices?.getUserMedia === false) {
-    return;
-  }
-
-  // if (!mediaPipe.landmarkers.face) {
-  //   console.log("Wait! faceLandmarker not loaded yet.");
-  //   return;
-  // }
-
-  // if (!mediaPipe.landmarkers.hand) {
-  //   console.log("Wait! handLandmarker not loaded yet.");
-  //   return;
-  // }
-
-  mediaPipe.video = document.createElement("video");
-  mediaPipe.video.autoplay = true;
-  mediaPipe.video.playsinline = true;
-
-  document.body.appendChild(mediaPipe.video);
-
-  navigator.mediaDevices.getUserMedia({ video: true }).then( stream => {
-    mediaPipe.video.srcObject = stream;
-    mediaPipe.video.addEventListener("loadeddata", predictWebcam);
-  });
+  await mediaPipe.landmarkers.hand.setOptions({ runningMode: "VIDEO" });
 }
 
 async function predictWebcam() {
-  console.log("predictWebcam", mediaPipe.video?.currentTime);
-
   if (isLooping() === false) {
     return
   }
 
-  if (mediaPipe.lastVideoTime > mediaPipe.video?.currentTime) {
+  if (mediaPipe.lastVideoTime > mediaPipe.video.elt?.currentTime) {
     return;
   }
 
   const startTimeMs = performance.now();
 
   if (mediaPipe.landmarkers.face) {
-    await mediaPipe.landmarkers.face.setOptions({ runningMode: "VIDEO" });
-    mediaPipe.results.face = await mediaPipe.landmarkers.face.detectForVideo(mediaPipe.video, startTimeMs);
+    mediaPipe.results.face = await mediaPipe.landmarkers.face.detectForVideo(mediaPipe.video.elt, startTimeMs);
   }
 
   if (mediaPipe.landmarkers.hand) {
-    await mediaPipe.landmarkers.hand.setOptions({ runningMode: "VIDEO" });
-    mediaPipe.results.hand = await mediaPipe.landmarkers.hand.detectForVideo(mediaPipe.video, startTimeMs);
+    // await mediaPipe.landmarkers.hand.setOptions({ runningMode: "VIDEO" });
+    mediaPipe.results.hand = await mediaPipe.landmarkers.hand.detectForVideo(mediaPipe.video.elt, startTimeMs);
   }
 
   mediaPipe.lastVideoTime = mediaPipe.video?.currentTime;
 
   window.requestAnimationFrame( predictWebcam );
+}
+
+function drawHand( handLandmarks ) {
+  const W = width;
+  const H = height;
+
+  push()
+  translate(-W/2, -H/2)
+
+  handLandmarks.forEach( ( {x, y, z}) => {
+    strokeWeight(map(z, 0, 1, 1, 100))
+    point( x * W, y * H )
+  })
+
+  pop()
 }
 
 sketch.draw( (time, center, favoriteColor) => {
@@ -111,7 +104,11 @@ sketch.draw( (time, center, favoriteColor) => {
   const hasHand = mediaPipe.results.hand?.landmarks?.length >= 1;
 
   if (hasHand) {
-    circle(W-50, center.y, 50)
+    // circle(W-50, center.y, 50)
+
+    mediaPipe.results.hand.landmarks.forEach( drawHand )
+
+    // drawHand( mediaPipe.results.hand[0] )
   }
 
   if (hasFace) {
