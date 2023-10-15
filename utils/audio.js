@@ -1,6 +1,6 @@
-import { events } from "./index.js";
+import { events, mappers } from "./index.js";
 
-const HISTORY_BUFFER = 32;
+const HISTORY_BUFFER = 60;
 
 const ranges = {
   subBass: {
@@ -113,7 +113,7 @@ const audio = {
     },
     energy: {
       // spectrum mapping
-      map: function* (xNormalized, yNormalized, normalize = true) {
+      map: function(xNormalized, yNormalized, normalize = true) {
         const historyBufferIndex = ~~(
           (audio.capture.historyBufferSize - 1) *
           yNormalized
@@ -121,16 +121,29 @@ const audio = {
 
         const bins = audio.capture.history?.spectrum?.[historyBufferIndex];
         const binIndex = ~~((audio.capture.bins -1) * xNormalized);
-        const energy = bins?.[binIndex];
+        const energy = bins?.[binIndex] ?? 0;
 
         if (normalize) {
-          yield energy / 255;
-          yield binIndex / audio.capture.bins;
-          yield historyBufferIndex / audio.capture.historyBufferSize;
+          // yield energy / 255;
+          // yield binIndex / audio.capture.bins;
+          // yield historyBufferIndex / audio.capture.historyBufferSize;
           // return energy / 255;
+          return mappers.valuer(`audio-map-${historyBufferIndex}-${binIndex}`, energy / 255)
         }
 
-        return energy;
+        return mappers.valuer(`audio-map-${historyBufferIndex}-${binIndex}`, energy ?? 0);
+        // return energy;
+      },
+      mapLevel: function(yNormalized) {
+        const historyLevelIndex = ~~(
+          (audio.capture.historyBufferSize) *
+          yNormalized
+        );
+
+        // return audio.capture.history?.level?.[historyLevelIndex];
+        const level = audio.capture.history?.level?.[historyLevelIndex];
+
+        return mappers.valuer(`audio-map-level-${historyLevelIndex}`, level ?? 0);
       },
       average: (attribute = "raw") => {
         const result = rangeNames.reduce(
@@ -168,6 +181,9 @@ const audio = {
 
         if (undefined === audio.capture.history) {
           audio.capture.history = {
+            level: new Array(audio.capture.historyBufferSize).fill(
+              undefined
+            ),
             spectrum: new Array(audio.capture.historyBufferSize).fill(
               undefined
             ),
@@ -184,6 +200,10 @@ const audio = {
             }, {}),
           };
         }
+
+        // HISTORY FOR LEVEL
+        audio.capture.history.level.shift();
+        audio.capture.history.level.push(audio.capture.audioIn.getLevel());
 
         // HISTORY FOR SPECTRUM
         audio.capture.history.spectrum.shift();
