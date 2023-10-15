@@ -2,76 +2,6 @@ import { sketch, string, mappers, easing, animation, colors, cache } from './uti
 
 sketch.setup(undefined, { type: "webgl" } );
 
-function getTextPoints({ text, size, font, position, sampleFactor, simplifyThreshold }) {
-  const fontFamily = font.font?.names?.fontFamily?.en;
-  const textPointsCacheKey = cache.key(text, fontFamily, "text-points", sampleFactor)
-
-  return cache.store( textPointsCacheKey, () => {
-    const textPoints = font.textToPoints(text, position.x, position.y, size, {
-      sampleFactor, simplifyThreshold
-    });
-
-    const xMin = textPoints.reduce((a, {x}) => Math.min(a, x), Infinity);
-    const xMax = textPoints.reduce((a, {x}) => Math.max(a, x), -Infinity);
-    const xCenter = (xMax/2)+(xMin/2)
-
-    const yMin = textPoints.reduce((a, {y}) => Math.min(a, y), Infinity);
-    const yMax = textPoints.reduce((a, {y}) => Math.max(a, y), -Infinity);
-    const yCenter = (yMax/2)+(yMin/2)
-
-    return textPoints.map( ({x, y}) => {
-      const testPointVector = createVector(x, y);
-
-      testPointVector.add((position.x-xCenter),(position.y-yCenter))
-
-      return testPointVector;
-    })
-  });
-}
-
-function lerpPoints(from, to, amount, fn) {
-  // const result = [];
-  // const maxLength = Math.max(from.length, to.length);
-
-  // for (let i = 0; i < maxLength; i++) {
-  //   const lerpedVector = p5.Vector.lerp(
-  //     from[i % from.length],
-  //     to[i % to.length],
-  //     amount
-  //   );
-
-  //   result.push(lerpedVector);
-  // }
-
-  // return result;
-
-  const result = {};
-  const maxLength = Math.max(from.length, to.length);
-
-  for (let i = 0; i < maxLength; i++) {
-    const lerpedVector = p5.Vector.lerp(
-      from[i % from.length],
-      to[i % to.length],
-      amount
-    );
-
-    result[`${lerpedVector.x}${lerpedVector.y}`] = lerpedVector;
-  }
-
-  return Object.values(result);
-
-  // return from.map( (point, index) => {
-  //   const targetIndex = ~~map(index, 0, from.length-1, 0, to.length-1, true);
-
-  //   return p5.Vector.lerp( from[index], to[targetIndex], amount )
-  // })
-}
-
-function cross( { x, y, z }, size) {
-  line(x - size/2, y -size/2, z, x + size/2, y +size/2, z)
-  line(x + size/2, y -size/2, z, x - size/2, y +size/2, z )
-}
-
 function drawProgression(progression, start, end, steps = 0) {
   push()
   stroke(128, 128, 255)
@@ -210,7 +140,7 @@ sketch.draw( (time, center) => {
 
   const points = animation.ease({
     values: "0123456789".split("").map( text => (
-      getTextPoints({
+      string.getTextPoints({
         text,
         position: textPosition,
         size,
@@ -220,7 +150,7 @@ sketch.draw( (time, center) => {
       })
     )),
     duration: 1,
-    lerpFn: lerpPoints,
+    lerpFn: mappers.lerpPoints,
     currentTime: time,
     easingFn: easing.easeInOutExpo
   })

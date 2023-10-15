@@ -1,59 +1,9 @@
 import { midi, events, sketch, string, mappers, easing, animation, colors, cache } from './utils/index.js';
 
-// let slider;
-
-import "https://unpkg.com/ml5@latest/dist/ml5.min.js"
-
-const nn = []
-
-let handpose;
-let video;
-let predictions = [];
-
 sketch.setup( () => {
-
-  video = createCapture(VIDEO);
-  video.size(width, height);
-
-  // handpose = ml5.handpose(video, {
-  //   flipHorizontal: false, // boolean value for if the video should be flipped, defaults to false
-  //   maxContinuousChecks: Infinity, // How many frames to go without running the bounding box detector. Defaults to infinity, but try a lower value if the detector is consistently producing bad predictions.
-  //   detectionConfidence: 0.8, // Threshold for discarding a prediction. Defaults to 0.8.
-  //   scoreThreshold: 0.75, // A threshold for removing multiple (likely duplicate) detections based on a "non-maximum suppression" algorithm. Defaults to 0.75
-  //   iouThreshold: 0.3, // A float representing the threshold for deciding whether boxes overlap too much in non-maximum suppression. Must be between [0, 1]. Defaults to 0.3.
-  // }, () => console.log("Model ready!"));
-
-  // // This sets up an event that fills the global variable "predictions"
-  // // with an array every time new hand poses are detected
-  // handpose.on("predict", results => {
-  //   predictions = results;
-  // });
-
-  // Hide the video element, and just show the canvas
-  video.hide();
-
-  // slider = createSlider(0, 1, 0.5, 0.01);
-
-  // midi.on( { }, note => {
-    
-  //   nn.push(note.identifier)
-
-  //   console.log(nn);
-  // } );
-
 }, { type: "webgl" } );
 
 events.register( "post-setup", midi.setup );
-
-const ease = ( key, value, rate = 0.7 ) => {
-
-  const previous = cache.store( `ease-${key}`, () => value );
-  const next = lerp(previous, value, rate);
-
-  cache.set( `ease-${key}`, next );
-  
-  return next
-}
 
 function getTextPoints({ text, size, font, position, sampleFactor, simplifyThreshold }) {
   const fontFamily = font.font?.names?.fontFamily?.en;
@@ -83,21 +33,6 @@ function getTextPoints({ text, size, font, position, sampleFactor, simplifyThres
 }
 
 function lerpPoints(from, to, amount, fn) {
-  // const result = [];
-  // const maxLength = Math.max(from.length, to.length);
-
-  // for (let i = 0; i < maxLength; i++) {
-  //   const lerpedVector = p5.Vector.lerp(
-  //     from[i % from.length],
-  //     to[i % to.length],
-  //     amount
-  //   );
-
-  //   result.push(lerpedVector);
-  // }
-
-  // return result;
-
   const result = {};
   const maxLength = Math.max(from.length, to.length);
 
@@ -112,12 +47,6 @@ function lerpPoints(from, to, amount, fn) {
   }
 
   return Object.values(result);
-
-  // return from.map( (point, index) => {
-  //   const targetIndex = ~~map(index, 0, from.length-1, 0, to.length-1, true);
-
-  //   return p5.Vector.lerp( from[index], to[targetIndex], amount )
-  // })
 }
 
 function drawSlider(progression, start, end, steps = 26, stepDrawer, progressionDrawer) {
@@ -150,78 +79,7 @@ const rightHandNotes = [
 
 const leftHandNotes = [
   /*'A3', 'G#3', 'G3', 'F#3', 'F3', 'E3', 'D#3', 'D3', 'C#3', 'C3', 'B2', 'A#2', */'A2', 'G#2', 'G2', 'F#2', 'F2', 'E2', 'D#2', 'D2', 'C#2', 'C2', 'B1', 'A#1', 'A1'
-]//.reverse();
-
-function drawHand( hand ) {
-  const { boundingBox: rightBoundingBox, annotations } = firstHand
-
-  point(rightBoundingBox.topLeft[0], rightBoundingBox.topLeft[1] )
-  point(rightBoundingBox.bottomRight[0], rightBoundingBox.bottomRight[1] )
-
-  line(
-    rightBoundingBox.topLeft[0],
-    rightBoundingBox.topLeft[1],
-    rightBoundingBox.topLeft[0],
-    rightBoundingBox.bottomRight[1]
-  )
-
-  line(
-    rightBoundingBox.bottomRight[0],
-    rightBoundingBox.topLeft[1],
-    rightBoundingBox.bottomRight[0],
-    rightBoundingBox.bottomRight[1]
-  )
-
-  line(
-    rightBoundingBox.topLeft[0],
-    rightBoundingBox.topLeft[1],
-    rightBoundingBox.bottomRight[0],
-    rightBoundingBox.topLeft[1]
-  )
-
-  line(
-    rightBoundingBox.topLeft[0],
-    rightBoundingBox.bottomRight[1],
-    rightBoundingBox.bottomRight[0],
-    rightBoundingBox.bottomRight[1]
-  )
-
-  const [ x, y, z ] = annotations?.palmBase[0]
-
-  noFill()
-  for (const name in annotations) {
-    const annotation = annotations[ name ];
-
-    beginShape()
-    vertex(x, y, z)
-
-    annotation.forEach( ([x, y, z ]) => {
-      vertex( x, y, z )
-    })
-    endShape()
-  }
-}
-
-function drawKeypoints() {
-
-  // console.log(predictions);
-
-  const [ firstHand ] = predictions;
-
-  if (firstHand) {
-    
-  }
-
-  for (let i = 0; i < predictions.length; i += 1) {
-    const prediction = predictions[i];
-    for (let j = 0; j < prediction.landmarks.length; j += 1) {
-      const keypoint = prediction.landmarks[j];
-      fill(0, 255, 0);
-      noStroke();
-      ellipse(keypoint[0], keypoint[1], 10, 10);
-    }
-  }
-}
+].reverse();
 
 sketch.draw( (time, center) => {
   background(0);
@@ -278,7 +136,7 @@ sketch.draw( (time, center) => {
             easing.easeInOutExpo
           )
         ),
-        font: string.fonts.multicoloure
+        font: string.fonts.sans
       })
     },
     position => {
@@ -322,7 +180,7 @@ sketch.draw( (time, center) => {
             easing.easeInOutExpo
           )
         ),
-        font: string.fonts.multicoloure
+        font: string.fonts.sans
       })
     },
     position => {
@@ -342,13 +200,6 @@ sketch.draw( (time, center) => {
       endShape(CLOSE)    
     }
   )
-
-  push()
-  translate(-W/2, -H/2)
-  drawKeypoints()
-  pop()
-
-  return 
 
   const size = width/4;
   const font = string.fonts.sans;

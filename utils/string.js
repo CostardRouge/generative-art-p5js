@@ -1,4 +1,5 @@
 import events from './events.js';
+import cache from './cache.js';
 
 const string = {
   fonts: {
@@ -69,6 +70,32 @@ const string = {
 
     graphics.text(str, position.x, position.y);
   },
+  getTextPoints: ({ text, size, font, position, sampleFactor, simplifyThreshold }) => {
+    const fontFamily = font.font?.names?.fontFamily?.en;
+    const textPointsCacheKey = cache.key(text, fontFamily, "text-points", sampleFactor, size)
+  
+    return cache.store( textPointsCacheKey, () => {
+      const textPoints = font.textToPoints(text, position.x, position.y, size, {
+        sampleFactor, simplifyThreshold
+      });
+  
+      const xMin = textPoints.reduce((a, {x}) => Math.min(a, x), Infinity);
+      const xMax = textPoints.reduce((a, {x}) => Math.max(a, x), -Infinity);
+      const xCenter = (xMax/2)+(xMin/2)
+  
+      const yMin = textPoints.reduce((a, {y}) => Math.min(a, y), Infinity);
+      const yMax = textPoints.reduce((a, {y}) => Math.max(a, y), -Infinity);
+      const yCenter = (yMax/2)+(yMin/2)
+  
+      return textPoints.map( ({x, y}) => {
+        const testPointVector = createVector(x, y);
+  
+        testPointVector.add((position.x-xCenter),(position.y-yCenter))
+  
+        return testPointVector;
+      })
+    })
+  }
 };
 
 events.register("engine-window-preload", () => {
@@ -78,6 +105,8 @@ events.register("engine-window-preload", () => {
   string.fonts.tilt = loadFont("assets/fonts/tilt-prism.ttf");
   string.fonts.multicoloure = loadFont("assets/fonts/multicoloure.ttf");
   string.fonts.martian = loadFont("assets/fonts/martian.ttf");
+  // string.fonts.comfortaa = loadFont("assets/fonts/comfortaa.ttf");
+  // string.fonts.montepetrum = loadFont("assets/fonts/montepetrum.ttf");
 });
 
 export default string;

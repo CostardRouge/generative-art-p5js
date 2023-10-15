@@ -70,7 +70,7 @@
          },
          "36days-of-type-2023-9": {
             "meta": {
-               "_mtime": "2023-05-30T18:33:44.846Z",
+               "_mtime": "2023-10-13T16:13:35.171Z",
                "name": "36days-of-type-2023-9"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-9"
@@ -585,6 +585,147 @@
          }
       }
    },
+   "alphabet-scroll": {
+      "meta": {
+         "_mtime": "2023-10-04T14:46:55.802Z",
+         "name": "alphabet-scroll"
+      },
+      "sketches": {
+         "alphabet-scroll-optimized": {
+            "meta": {
+               "_mtime": "2023-10-15T03:16:24.845Z",
+               "name": "alphabet-scroll-optimized"
+            },
+            "path": "sketches/alphabet-scroll/alphabet-scroll-optimized"
+         },
+         "alphabet-scroll-v1-a-z-Z-A": {
+            "meta": {
+               "_mtime": "2023-09-27T10:41:09.733Z",
+               "name": "alphabet-scroll-v1-a-z-Z-A"
+            },
+            "path": "sketches/alphabet-scroll/alphabet-scroll-v1-a-z-Z-A"
+         },
+         "alphabet-scroll-v10-alphabet-scroll-viewport": {
+            "meta": {
+               "_mtime": "2023-10-06T10:58:08.976Z",
+               "name": "alphabet-scroll-v10-alphabet-scroll-viewport"
+            },
+            "path": "sketches/alphabet-scroll/alphabet-scroll-v10-alphabet-scroll-viewport"
+         },
+         "alphabet-scroll-v11-alphabet-scroll-zoom": {
+            "meta": {
+               "_mtime": "2023-09-27T23:08:51.173Z",
+               "name": "alphabet-scroll-v11-alphabet-scroll-zoom"
+            },
+            "path": "sketches/alphabet-scroll/alphabet-scroll-v11-alphabet-scroll-zoom"
+         },
+         "alphabet-scroll-v12-text-points-drawer": {
+            "meta": {
+               "_mtime": "2023-10-03T13:22:47.829Z",
+               "name": "alphabet-scroll-v12-text-points-drawer"
+            },
+            "path": "sketches/alphabet-scroll/alphabet-scroll-v12-text-points-drawer"
+         },
+         "alphabet-scroll-v13-letter-swap-spiral": {
+            "meta": {
+               "_mtime": "2023-10-05T14:45:17.213Z",
+               "name": "alphabet-scroll-v13-letter-swap-spiral"
+            },
+            "path": "sketches/alphabet-scroll/alphabet-scroll-v13-letter-swap-spiral"
+         },
+         "alphabet-scroll-v14-flower": {
+            "meta": {
+               "_mtime": "2023-10-05T15:00:25.381Z",
+               "name": "alphabet-scroll-v14-flower"
+            },
+            "path": "sketches/alphabet-scroll/alphabet-scroll-v14-flower"
+         },
+         "alphabet-scroll-v14-vs": {
+            "meta": {
+               "_mtime": "2023-10-06T10:11:04.666Z",
+               "name": "alphabet-scroll-v14-vs"
+            },
+            "path": "sketches/alphabet-scroll/alphabet-scroll-v14-vs"
+         },
+         "alphabet-scroll-v15-french-numbers": {
+            "meta": {
+               "_mtime": "2023-10-06T12:37:24.864Z",
+               "name": "alphabet-scroll-v15-french-numbers"
+            },
+            "path": "sketches/alphabet-scroll/alphabet-scroll-v15-french-numbers"
+         },
+         "alphabet-scroll-v2-xyz": {
+            "meta": {
+               "_mtime": "2023-09-27T10:41:09.735Z",
+               "name": "alphabet-scroll-v2-xyz"
+            },
+            "path": "sketches/alphabet-scroll/alphabet-scroll-v2-xyz"
+         },
+         "alphabet-scroll-v3-numbers": {
+            "meta": {
+               "_mtime": "2023-10-06T10:14:33.423Z",
+               "name": "alphabet-scroll-v3-numbers"
+            },
+            "path": "sketches/alphabet-scroll/alphabet-scroll-v3-numbers"
+         },
+         "alphabet-scroll-v4-alphabet": {
+            "meta": {
+               "_mtime": "2023-09-27T10:41:09.739Z",
+               "name": "alphabet-scroll-v4-alphabet"
+            },
+            "path": "sketches/alphabet-scroll/alphabet-scroll-v4-alphabet"
+         },
+         "alphabet-scroll-v5-la-si-do-re-mi": {
+            "meta": {
+               "_mtime": "2023-09-27T10:41:09.741Z",
+               "name": "alphabet-scroll-v5-la-si-do-re-mi"
+            },
+            "path": "sketches/alphabet-scroll/alphabet-scroll-v5-la-si-do-re-mi"
+         },
+         "alphabet-scroll-v6-debug": {
+            "meta": {
+               "_mtime": "2023-09-27T10:41:09.717Z",
+               "name": "alphabet-scroll-v6-debug"
+            },
+            "path": "sketches/alphabet-scroll/alphabet-scroll-v6-debug"
+         },
+         "alphabet-scroll-v7-chromatic-scales": {
+            "meta": {
+               "_mtime": "2023-09-27T10:49:17.616Z",
+               "name": "alphabet-scroll-v7-chromatic-scales"
+            },
+            "path": "sketches/alphabet-scroll/alphabet-scroll-v7-chromatic-scales"
+         },
+         "alphabet-scroll-v8-alphabet-scroll": {
+            "meta": {
+               "_mtime": "2023-09-27T10:41:09.720Z",
+               "name": "alphabet-scroll-v8-alphabet-scroll"
+            },
+            "path": "sketches/alphabet-scroll/alphabet-scroll-v8-alphabet-scroll"
+         },
+         "alphabet-scroll-v9-alphabet-circular": {
+            "meta": {
+               "_mtime": "2023-09-27T15:31:47.961Z",
+               "name": "alphabet-scroll-v9-alphabet-circular"
+            },
+            "path": "sketches/alphabet-scroll/alphabet-scroll-v9-alphabet-circular"
+         },
+         "alphabet-scroll-v9-alphabet-circular-aurelio": {
+            "meta": {
+               "_mtime": "2023-10-12T11:51:21.554Z",
+               "name": "alphabet-scroll-v9-alphabet-circular-aurelio"
+            },
+            "path": "sketches/alphabet-scroll/alphabet-scroll-v9-alphabet-circular-aurelio"
+         },
+         "alphabet-scroll-v9-alphabet-circular-sbk": {
+            "meta": {
+               "_mtime": "2023-10-04T22:10:58.084Z",
+               "name": "alphabet-scroll-v9-alphabet-circular-sbk"
+            },
+            "path": "sketches/alphabet-scroll/alphabet-scroll-v9-alphabet-circular-sbk"
+         }
+      }
+   },
    "animated-text-points": {
       "meta": {
          "_mtime": "2023-03-27T22:02:30.319Z",
@@ -701,7 +842,7 @@
    },
    "audio-reactive": {
       "meta": {
-         "_mtime": "2023-04-08T10:27:41.450Z",
+         "_mtime": "2023-09-29T11:14:12.774Z",
          "name": "audio-reactive"
       },
       "sketches": {
@@ -760,6 +901,13 @@
                "name": "audio-reactive-v7-spectrograph-3d"
             },
             "path": "sketches/audio-reactive/audio-reactive-v7-spectrograph-3d"
+         },
+         "audio-reactive-v8-music-lines": {
+            "meta": {
+               "_mtime": "2023-09-27T10:41:09.724Z",
+               "name": "audio-reactive-v8-music-lines"
+            },
+            "path": "sketches/audio-reactive/audio-reactive-v8-music-lines"
          }
       }
    },
@@ -1503,7 +1651,7 @@
       "sketches": {
          "media-pipe-v1": {
             "meta": {
-               "_mtime": "2023-09-13T16:59:09.277Z",
+               "_mtime": "2023-10-01T12:27:52.116Z",
                "name": "media-pipe-v1"
             },
             "path": "sketches/media-pipe/media-pipe-v1"
@@ -2216,7 +2364,7 @@
    },
    "sketches-in-berlin": {
       "meta": {
-         "_mtime": "2023-09-11T10:39:36.058Z",
+         "_mtime": "2023-08-15T01:01:49.404Z",
          "name": "sketches-in-berlin"
       },
       "sketches": {
@@ -2226,34 +2374,6 @@
                "name": "sketches-in-berlin-v1-easing-jumping-star-trail"
             },
             "path": "sketches/sketches-in-berlin/sketches-in-berlin-v1-easing-jumping-star-trail"
-         },
-         "sketches-in-berlin-v10-debug": {
-            "meta": {
-               "_mtime": "2023-08-22T16:03:59.256Z",
-               "name": "sketches-in-berlin-v10-debug"
-            },
-            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v10-debug"
-         },
-         "sketches-in-berlin-v11-chromatic-scales": {
-            "meta": {
-               "_mtime": "2023-09-12T23:30:35.180Z",
-               "name": "sketches-in-berlin-v11-chromatic-scales"
-            },
-            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v11-chromatic-scales"
-         },
-         "sketches-in-berlin-v12-alphabet-scroll": {
-            "meta": {
-               "_mtime": "2023-09-17T11:18:26.485Z",
-               "name": "sketches-in-berlin-v12-alphabet-scroll"
-            },
-            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v12-alphabet-scroll"
-         },
-         "sketches-in-berlin-v13-alphabet-scroll-viewport": {
-            "meta": {
-               "_mtime": "2023-09-17T14:04:59.984Z",
-               "name": "sketches-in-berlin-v13-alphabet-scroll-viewport"
-            },
-            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v13-alphabet-scroll-viewport"
          },
          "sketches-in-berlin-v2-jumping-star-trail": {
             "meta": {
@@ -2282,41 +2402,6 @@
                "name": "sketches-in-berlin-v5-asterix"
             },
             "path": "sketches/sketches-in-berlin/sketches-in-berlin-v5-asterix"
-         },
-         "sketches-in-berlin-v6-a-z-Z-A": {
-            "meta": {
-               "_mtime": "2023-08-12T10:20:25.918Z",
-               "name": "sketches-in-berlin-v6-a-z-Z-A"
-            },
-            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v6-a-z-Z-A"
-         },
-         "sketches-in-berlin-v7-xyz": {
-            "meta": {
-               "_mtime": "2023-08-18T13:05:15.322Z",
-               "name": "sketches-in-berlin-v7-xyz"
-            },
-            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v7-xyz"
-         },
-         "sketches-in-berlin-v8-numbers": {
-            "meta": {
-               "_mtime": "2023-09-11T10:21:33.283Z",
-               "name": "sketches-in-berlin-v8-numbers"
-            },
-            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v8-numbers"
-         },
-         "sketches-in-berlin-v9-alphabet": {
-            "meta": {
-               "_mtime": "2023-09-11T10:28:39.223Z",
-               "name": "sketches-in-berlin-v9-alphabet"
-            },
-            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v9-alphabet"
-         },
-         "sketches-in-berlin-v9-la-si-do-re-mi": {
-            "meta": {
-               "_mtime": "2023-09-11T10:39:03.044Z",
-               "name": "sketches-in-berlin-v9-la-si-do-re-mi"
-            },
-            "path": "sketches/sketches-in-berlin/sketches-in-berlin-v9-la-si-do-re-mi"
          }
       }
    },
