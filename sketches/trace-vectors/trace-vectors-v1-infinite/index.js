@@ -1,106 +1,5 @@
 import { midi, events, sketch, string, mappers, easing, animation, colors, cache } from './utils/index.js';
 
-const units = ['', 'un', 'deux', 'trois', 'quatre', 'cinq', 'six', 'sept', 'huit', 'neuf', 'dix', 'onze', 'douze', 'treize', 'quatorze', 'quinze', 'seize', 'dix-sept', 'dix-huit', 'dix-neuf'];
-const tens = ['', '', 'vingt', 'trente', 'quarante', 'cinquante', 'soixante', '', 'quatre-vingt', ''];
-const scales = [
-  [ 'centillion', 67 ],
-  [ 'vigintillion', 64 ],
-  [ 'novemdecillion', 61 ],
-  [ 'octodecillion', 58 ],
-  [ 'septen-decillion', 55 ],
-  [ 'sexdecillion', 52 ],
-  [ 'quindecillion', 49 ],
-  [ 'quatttuor-decillion', 46 ],
-  [ 'tredecillion', 43 ],
-  [ 'duodecillion', 40],
-  [ 'undecillion', 37 ],
-  [ 'decillion', 34 ],
-  [ 'nonillion', 31 ],
-  [ 'octillion', 28 ],
-  [ 'septillion', 25 ],
-  [ 'sextillion', 22 ],
-  [ 'quintillion', 19 ],
-  [ 'quadrillion', 16 ],
-  [ 'trillion', 13 ],
-  [ 'milliard', 10 ],
-  [ 'million', 7 ],
-  [ 'mille', 4 ],
-  [ 'cent', 3 ]
-];
-
-const numberToFrench = ( initialNumber ) => {
-  if ( undefined === initialNumber || '' === initialNumber ) {
-    return '';
-  }
-
-  if ( parseInt( initialNumber, 10 ) === 0 ) {
-    return 'zéro';
-  }
-
-  const resolve = ( input ) => {
-    const number = parseInt( input , 10 );
-    const string = number.toString();
-
-    if ( number < 20 ) {
-      return units[ number ];
-    }
-
-    if ( number < 100 ) {
-      let tenIndex = parseInt( string[ 0 ], 10 );
-      let unitIndex = parseInt( string[ 1 ], 10 );
-
-      if ( 7 === tenIndex || 9 === tenIndex ) {
-        tenIndex -= 1;
-        unitIndex += 10;
-      }
-
-      const tenWord = tens[ tenIndex ];
-      const unitWord = 0 === unitIndex ? '' : units[ unitIndex ];
-      let separator = '-';
-
-      if ( ( 1 === unitIndex || 11 === unitIndex ) && ( 8 > tenIndex ) ) {
-        separator = '-et-';
-      }
-      if ( 0 === unitIndex ) {
-        separator = '';
-      }
-
-      return `${tenWord}${separator}${unitWord}`;
-    }
-
-    const resolvable = string.slice( 0, 67 );
-    const scale = scales.find( ( [ _, length ] ) => resolvable.length >= length );
-
-    if ( !scale ) {
-      // console.error( 'no scale' );
-      return;
-    }
-
-    const [ scaleLabel, scaleLength ] = scale;
-
-    // console.log( '>>>>>>>>>>>>>>>>', scale );
-
-    const scalePart = resolvable.slice( 0, -( scaleLength - 1 ) );
-    const remainingPart = resolvable.slice( -( scaleLength - 1 ) );
-
-    const resolvedScalePart = resolve( scalePart );
-    const resolvedRemainingPart = resolve( remainingPart );
-
-    // console.log( 'scalePart', scalePart, scalePart.length );
-    // console.log( 'resolvedScalePart', resolvedScalePart, resolvedScalePart.length );
-    // console.log( 'remainingPart', remainingPart, remainingPart.length );
-    // console.log( 'resolvedRemainingPart', resolvedRemainingPart, resolvedRemainingPart.length );
-
-    const formattedScalePart = ( 'un' === resolvedScalePart && ( 'cent' === scaleLabel || 'mille' === scaleLabel ) ) ? '' : resolvedScalePart + '-';
-    // const formattedRemainingPart = resolvedRemainingPart ? '-' + resolvedRemainingPart : '';
-    const formattedScale = 'un' !== resolvedScalePart && '' === resolvedRemainingPart ? scaleLabel + 's' : scaleLabel;
-
-    return `${formattedScalePart}${formattedScale} ${resolvedRemainingPart}`;
-  }
-
-  return resolve( initialNumber );
-};
-
 function drawGrid(xCount, yCount, color, weight = 2, offset = 0) {
   const xSize = width / xCount;
   const ySize = height / yCount;
@@ -131,8 +30,6 @@ function traceVectors(count, vectorsGenerator, onStart, onTrace, onEnd) {
 
   const { smooth: longestVectorsLength } = mappers.valuer(`longest-vectors-length`, Math.max( ...vectorsList.map( vectors => vectors.length )))
 
-  console.log(longestVectorsLength);
-
   for (let index = 0; index < longestVectorsLength; index++) {
     const vectorIndexProgression = index / (longestVectorsLength-1);
 
@@ -159,7 +56,7 @@ alphabet = "0123456789".split("")
 // alphabet = "test".split("")
 // alphabet = "ok".split("")
 // alphabet = "aurélie".split("")
-// alphabet = "Vanessa".split("")
+alphabet = "infinite".split("")
 // alphabet = "salsa-or-bachata".split("")
 
 function drawPoints( points ) {
