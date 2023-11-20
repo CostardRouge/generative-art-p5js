@@ -151,7 +151,8 @@ sketch.draw( ( time, center, favoriteColor ) => {
         ),
         // opacityFactor: 1.5,
         hueIndex: mappers.fn(noise(chunkIndex, vectorIndexProgression*2), 0, 1, -PI/2, PI/2)*8,
-        opacityFactor: mappers.fn(noise(chunkIndex*20+time, vectorIndexProgression*2), 0, 1, 5, 1.5),
+        opacityFactor: mappers.fn(noise(chunkIndex*20, vectorIndexProgression*2), 0, 1, 5, 1.5),
+        // opacityFactor: mappers.fn(sin(chunkIndex*10+time+vectorIndexProgression*50), -1, 1, 5, 1.5),
       }))
 
       strokeWeight(10)
@@ -160,7 +161,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
       // pop()
     },
     false,
-    true,
+    false,
     10
   )
 
