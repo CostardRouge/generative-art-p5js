@@ -25,54 +25,6 @@ function drawGrid(xCount, yCount, color, weight = 2, offset = 0, skipX, skipY) {
 
 sketch.setup( undefined, { type: "webgl" } );
 
-function traceVectors(count, vectorsGenerator, onStart, onTrace, onEnd) {
-  const vectorsList = Array( count ).fill(undefined).map( ( _, index ) => (
-    vectorsGenerator( index / (count-1) )
-  ));
-
-  const longestVectorsLength = Math.max( ...vectorsList.map( vectors => vectors.length ) );
-
-  // const { smooth: longestVectorsLength } = mappers.valuer(`longest-vectors-length`, Math.max( ...vectorsList.map( vectors => vectors.length )))
-
-  for (let index = 0; index < longestVectorsLength; index++) {
-    const vectorIndexProgression = index / (longestVectorsLength-1);
-
-    const count = 1;
-    const steps = vectorsList.length / count;
-
-    for (let phase = 0; phase < steps; phase++) {
-      onStart( vectorIndexProgression, phase/(steps-1) );
-
-      const startIndex = (phase * count);
-      const endIndex = ( count + (phase * count) )+1;
-    
-      for (let j = startIndex; (j < endIndex) && vectorsList[j]; j++) {
-        const vectors = vectorsList[j];
-        const vectorsListProgression = j/(vectorsList.length-1);
-
-        onTrace( vectors[index % vectors.length], vectorsListProgression, vectorIndexProgression );
-        // onTrace( vectors[index], vectorsListProgression, vectorIndexProgression );
-      }
-
-      onEnd( vectorIndexProgression, phase/(steps-1) );
-    }
-
-    // onStart( vectorIndexProgression );
-    
-    // for (let j = 0; j < vectorsList.length; j++) {
-    //   const vectors = vectorsList[j];
-    //   const vectorsListProgression = j/(vectorsList.length-1);
-
-    //   onTrace( vectors[index % vectors.length], vectorsListProgression, vectorIndexProgression );
-    //   // onTrace( vectors[index], vectorsListProgression, vectorIndexProgression );
-    // }
-
-    // onEnd( vectorIndexProgression );
-  }
-
-  return vectorsList;
-}
-
 let alphabet = Array(26).fill(undefined).map((_, index) => String.fromCharCode(index + 'a'.charCodeAt(0)))
 // alphabet = "abc".split("")
 alphabet = "0123456789".split("")
@@ -165,7 +117,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
   const end = [];
   const middle = [];
 
-  traceVectors(
+  mappers.traceVectors(
     23,
     ( progression ) => {
       return animation.ease({
