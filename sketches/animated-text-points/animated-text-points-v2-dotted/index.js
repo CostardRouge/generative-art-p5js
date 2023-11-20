@@ -94,6 +94,8 @@ function lerpPoints(from, to, amount, fn) {
   })
 }
 
+const word = Array(26).fill(undefined).map((_, index) => String.fromCharCode(index + 'a'.charCodeAt(0)))
+
 sketch.draw( (time) => {
   background(0);
   noFill()
@@ -102,14 +104,13 @@ sketch.draw( (time) => {
   // rotateZ(time)
 
   const speed = time*3;
-  const word = "abcefghijklmnopqrstuvwxyz"
   const size = (width+height)/3;
-  const font = string.fonts.serif;
+  const font = string.fonts.sans;
 
-  const sampleFactor = 0.1;
+  const sampleFactor = 0.05;
   const simplifyThreshold = 0;
 
-  const [points] = getTextPoints({
+  const points = string.getTextPoints({
     text: mappers.circularIndex(speed, word),
     position: createVector(0, 0),
     size,
@@ -118,7 +119,7 @@ sketch.draw( (time) => {
     simplifyThreshold
   })
 
-  const [points2] = getTextPoints({
+  const points2 = string.getTextPoints({
     text: mappers.circularIndex(speed+1, word),
     position: createVector(0, 0),
     size,
@@ -132,24 +133,37 @@ sketch.draw( (time) => {
   const distance = 500//map(b, 0, 1, 1, 500)//500;
   const from = createVector(0, 0, distance/2)
   const to = createVector(0, 0, -distance/2)
-  const count = 50//map(b, 0, 1, 1, 30)//30;
+  const count = 150//map(b, 0, 1, 1, 30)//30;
 
   for (let n = 0; n < count; n += 1) {
     const progression = n / count;
-    const position = p5.Vector.lerp( from, to, progression );
+    // const position = p5.Vector.lerp( from, to, progression );
+    const position = p5.Vector.lerp( from, to, easing.easeInOutQuad(progression) );
     
-    stroke(colors.rainbow({
-      hueOffset: -time,
-      hueIndex: map(progression, 0, 1, -PI, PI),
-      //opacityFactor: map(n, 0, count, 1, 5)
-    }))
+    // stroke(colors.rainbow({
+    //   hueOffset: -time,
+    //   hueIndex: map(progression, 0, 1, -PI, PI),
+    //   //opacityFactor: map(n, 0, count, 1, 5)
+    // }))
 
     push()
     translate(position)
 
+    const finalPoints = lerpPoints(points, points2, progression );  
+    finalPoints.forEach( ({x, y}) => {
+
+      stroke(colors.rainbow({
+        hueOffset: -time,
+        // hueIndex: map(progression, 0, 1, -PI, PI),
+        hueIndex: map(noise(x/width+progression, y/height+progression, progression), 0, 1, -PI/2, PI/2)*6,
+        // opacityFactor: map(n, 0, count, 1, 5)
+      }))
+      point(x, y)
+    })
+
     drawPoints(
-      lerpPoints(points, points2, progression ),
-      // POINTS
+      finalPoints,
+      POINTS
     )
 
     pop()

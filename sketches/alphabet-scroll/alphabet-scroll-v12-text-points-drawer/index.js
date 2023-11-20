@@ -3,7 +3,6 @@ import { midi, events, sketch, string, mappers, easing, animation, colors, cache
 sketch.setup( undefined, { type: "webgl" } );
 events.register( "post-setup", midi.setup );
 
-
 function drawRangeSlider({from, to}, start, end, steps = 26, stepDrawer, rangeDrawer) {
   const fromPosition = p5.Vector.lerp( start, end, from )
   const toPosition = p5.Vector.lerp( start, end, to )
@@ -27,7 +26,6 @@ function drawRangeSlider({from, to}, start, end, steps = 26, stepDrawer, rangeDr
 // let currentIndex = -1;
 
 let alphabet = Array(26).fill(undefined).map((_, index) => String.fromCharCode(index + 'a'.charCodeAt(0)))
-
 
 alphabet = "123456".split("")
 
@@ -74,7 +72,7 @@ sketch.draw( (time, center) => {
         position: center,
         sampleFactor: .1,
         simplifyThreshold: 0,
-        font: string.fonts.montepetrum
+        font: string.fonts.martian
       }))
     )),
     duration: 1,

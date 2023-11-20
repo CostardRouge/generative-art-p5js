@@ -77,7 +77,7 @@
          },
          "36days-of-type-2023-a": {
             "meta": {
-               "_mtime": "2023-07-10T12:27:17.937Z",
+               "_mtime": "2023-10-28T06:22:38.039Z",
                "name": "36days-of-type-2023-a"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-a"
@@ -587,17 +587,10 @@
    },
    "alphabet-scroll": {
       "meta": {
-         "_mtime": "2023-10-04T14:46:55.802Z",
+         "_mtime": "2023-10-15T11:17:30.898Z",
          "name": "alphabet-scroll"
       },
       "sketches": {
-         "alphabet-scroll-optimized": {
-            "meta": {
-               "_mtime": "2023-10-15T03:16:24.845Z",
-               "name": "alphabet-scroll-optimized"
-            },
-            "path": "sketches/alphabet-scroll/alphabet-scroll-optimized"
-         },
          "alphabet-scroll-v1-a-z-Z-A": {
             "meta": {
                "_mtime": "2023-09-27T10:41:09.733Z",
@@ -621,7 +614,7 @@
          },
          "alphabet-scroll-v12-text-points-drawer": {
             "meta": {
-               "_mtime": "2023-10-03T13:22:47.829Z",
+               "_mtime": "2023-10-28T05:33:50.541Z",
                "name": "alphabet-scroll-v12-text-points-drawer"
             },
             "path": "sketches/alphabet-scroll/alphabet-scroll-v12-text-points-drawer"
@@ -769,7 +762,7 @@
          },
          "animated-text-points-v2-dotted": {
             "meta": {
-               "_mtime": "2023-05-08T16:05:20.131Z",
+               "_mtime": "2023-10-28T06:00:28.008Z",
                "name": "animated-text-points-v2-dotted"
             },
             "path": "sketches/animated-text-points/animated-text-points-v2-dotted"
@@ -1321,6 +1314,13 @@
                "name": "easing-v2-flower"
             },
             "path": "sketches/easing/easing-v2-flower"
+         },
+         "easing-v2-flower copy": {
+            "meta": {
+               "_mtime": "2023-10-28T06:49:21.936Z",
+               "name": "easing-v2-flower copy"
+            },
+            "path": "sketches/easing/easing-v2-flower copy"
          },
          "easing-v2-spikes-with-grid": {
             "meta": {
@@ -2784,6 +2784,126 @@
                "name": "torsade-v9-dna-spiral"
             },
             "path": "sketches/torsade/torsade-v9-dna-spiral"
+         }
+      }
+   },
+   "trace-vectors": {
+      "meta": {
+         "_mtime": "2023-11-20T13:09:33.303Z",
+         "name": "trace-vectors"
+      },
+      "sketches": {
+         "trace-vectors-intp": {
+            "meta": {
+               "_mtime": "2023-10-24T16:18:52.261Z",
+               "name": "trace-vectors-intp"
+            },
+            "path": "sketches/trace-vectors/trace-vectors-intp"
+         },
+         "trace-vectors-sf-height": {
+            "meta": {
+               "_mtime": "2023-11-20T13:10:26.982Z",
+               "name": "trace-vectors-sf-height"
+            },
+            "path": "sketches/trace-vectors/trace-vectors-sf-height"
+         },
+         "trace-vectors-sf-height-2": {
+            "meta": {
+               "_mtime": "2023-10-24T00:04:36.230Z",
+               "name": "trace-vectors-sf-height-2"
+            },
+            "path": "sketches/trace-vectors/trace-vectors-sf-height-2"
+         },
+         "trace-vectors-v1-infinite": {
+            "meta": {
+               "_mtime": "2023-11-01T12:28:24.044Z",
+               "name": "trace-vectors-v1-infinite"
+            },
+            "path": "sketches/trace-vectors/trace-vectors-v1-infinite"
+         },
+         "trace-vectors-v2-circle": {
+            "meta": {
+               "_mtime": "2023-10-19T01:10:18.427Z",
+               "name": "trace-vectors-v2-circle"
+            },
+            "path": "sketches/trace-vectors/trace-vectors-v2-circle"
+         },
+         "trace-vectors-v3-oscillation": {
+            "meta": {
+               "_mtime": "2023-10-21T11:38:37.096Z",
+               "name": "trace-vectors-v3-oscillation"
+            },
+            "path": "sketches/trace-vectors/trace-vectors-v3-oscillation"
+         },
+         "trace-vectors-v4-sample-factor": {
+            "meta": {
+               "_mtime": "2023-10-23T18:12:45.423Z",
+               "name": "trace-vectors-v4-sample-factor"
+            },
+            "path": "sketches/trace-vectors/trace-vectors-v4-sample-factor"
+         },
+         "trace-vectors-v5-sample-factor-wave": {
+            "meta": {
+               "_mtime": "2023-10-26T15:20:39.850Z",
+               "name": "trace-vectors-v5-sample-factor-wave"
+            },
+            "path": "sketches/trace-vectors/trace-vectors-v5-sample-factor-wave"
+         },
+         "trace-vectors-v6-rainbow-curves": {
+            "meta": {
+               "_mtime": "2023-11-13T17:26:03.198Z",
+               "name": "trace-vectors-v6-rainbow-curves"
+            },
+            "path": "sketches/trace-vectors/trace-vectors-v6-rainbow-curves"
+         },
+         "trace-vectors-v6-shiny": {
+            "meta": {
+               "_mtime": "2023-10-26T15:12:00.939Z",
+               "name": "trace-vectors-v6-shiny"
+            },
+            "path": "sketches/trace-vectors/trace-vectors-v6-shiny"
+         },
+         "trace-vectors-v7-123-grid": {
+            "meta": {
+               "_mtime": "2023-11-14T00:18:29.100Z",
+               "name": "trace-vectors-v7-123-grid"
+            },
+            "path": "sketches/trace-vectors/trace-vectors-v7-123-grid"
+         },
+         "trace-vectors-v7-123-grid-extended": {
+            "meta": {
+               "_mtime": "2023-11-20T13:08:17.877Z",
+               "name": "trace-vectors-v7-123-grid-extended"
+            },
+            "path": "sketches/trace-vectors/trace-vectors-v7-123-grid-extended"
+         },
+         "trace-vectors-v7-abc": {
+            "meta": {
+               "_mtime": "2023-11-14T16:18:42.431Z",
+               "name": "trace-vectors-v7-abc"
+            },
+            "path": "sketches/trace-vectors/trace-vectors-v7-abc"
+         },
+         "trace-vectors-v8-color-changer-line": {
+            "meta": {
+               "_mtime": "2023-11-07T12:30:36.123Z",
+               "name": "trace-vectors-v8-color-changer-line"
+            },
+            "path": "sketches/trace-vectors/trace-vectors-v8-color-changer-line"
+         },
+         "trace-vectors-v8-justebe-temple": {
+            "meta": {
+               "_mtime": "2023-10-28T06:46:59.659Z",
+               "name": "trace-vectors-v8-justebe-temple"
+            },
+            "path": "sketches/trace-vectors/trace-vectors-v8-justebe-temple"
+         },
+         "trace-vectors-v8-numbers-grid": {
+            "meta": {
+               "_mtime": "2023-11-14T18:02:57.951Z",
+               "name": "trace-vectors-v8-numbers-grid"
+            },
+            "path": "sketches/trace-vectors/trace-vectors-v8-numbers-grid"
          }
       }
    },

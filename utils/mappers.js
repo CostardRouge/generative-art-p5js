@@ -20,7 +20,7 @@ const mappers = {
     return values[ceil(circularMap(index, scale, 0, values.length - 1))];
   },
   lerpPoints: (from, to, amount, fn = p5.Vector?.lerp) => {
-    const result = {};
+    const result = [];
     const maxLength = Math.max(from.length, to.length);
   
     for (let i = 0; i < maxLength; i++) {
@@ -30,12 +30,78 @@ const mappers = {
           to[i % to.length],
           amount
         );
+
+        result.push(lerpedVector)
     
-        result[`${lerpedVector.x}${lerpedVector.y}`] = lerpedVector;
+        // result[`${lerpedVector.x}${lerpedVector.y}`] = lerpedVector;
       }
     }
   
+    return result;
     return Object.values(result);
+  },
+  fastLerpPoints: (from, to, amount, fn = p5.Vector?.lerp) => {
+    const longest = from;
+    const shortest = to;
+
+    return longest.map( (point, index) => {
+      // const targetIndex = ~~map(index, 0, longest.length-1, 0, shortest.length-1, true);
+      const targetIndex = (index % shortest.length);
+  
+      return fn( longest[index], shortest[~~targetIndex], amount )
+    })
+  },
+  traceVectors(count, vectorsGenerator, onStart, onTrace, onEnd, smoothLength = false, smoothSteps = false, smoothStepsCount = 1) {
+    const vectorsList = Array( count ).fill(undefined).map( ( _, index ) => (
+      vectorsGenerator( index / (count-1) )
+    ));
+  
+    const longestVectorsLength = (
+      smoothLength ?
+      mappers.valuer(`longest-vectors-length`, Math.max( ...vectorsList.map( vectors => vectors.length )))?.smooth :
+      Math.max( ...vectorsList.map( vectors => vectors.length ) )
+    );
+  
+    for (let index = 0; index < longestVectorsLength; index++) {
+      const vectorIndexProgression = index / (longestVectorsLength-1);
+  
+      if ( smoothSteps ) {
+        const count = smoothStepsCount;
+        const steps = vectorsList.length / count;
+  
+        for (let phase = 0; phase < steps; phase++) {
+          onStart( vectorIndexProgression, phase/(steps-1) );
+  
+          const startIndex = (phase * count);
+          const endIndex = ( count + (phase * count) )+1;
+        
+          for (let j = startIndex; (j < endIndex) && vectorsList[j]; j++) {
+            const vectors = vectorsList[j];
+            const vectorsListProgression = j/(vectorsList.length-1);
+  
+            // onTrace( vectors[index % vectors.length], vectorsListProgression, vectorIndexProgression );
+            onTrace( vectors[index], vectorsListProgression, vectorIndexProgression );
+          }
+  
+          onEnd( vectorIndexProgression, phase/(steps-1) );
+        }
+      }
+      else {
+        onStart( vectorIndexProgression );
+      
+        for (let j = 0; j < vectorsList.length; j++) {
+          const vectors = vectorsList[j];
+          const vectorsListProgression = j/(vectorsList.length-1);
+    
+          onTrace( vectors[index % vectors.length], vectorsListProgression, vectorIndexProgression );
+          // onTrace( vectors[index], vectorsListProgression, vectorIndexProgression );
+        }
+    
+        onEnd( vectorIndexProgression,1 );
+      }
+    }
+  
+    return vectorsList;
   },
   valuer: (key, value, amount = 0.07, fn = lerp) => {
     const cacheKey = `valuer-${key}`;

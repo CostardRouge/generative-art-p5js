@@ -117,11 +117,10 @@ sketch.draw( (time, center) => {
   background(0);
 
 
-  // push()
-  // stroke(64, 64, 128)
-  // drawGrid(8, 0)
-  // pop()
-
+  push()
+  stroke(64, 64, 128)
+  drawGrid(8, 0)
+  pop()
 
 
   // rotateY(mappers.fn(cos(time), -1, 1, -PI, PI, easing.easeInOutQuart)/9)
