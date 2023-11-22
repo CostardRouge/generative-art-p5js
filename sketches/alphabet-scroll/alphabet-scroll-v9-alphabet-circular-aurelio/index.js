@@ -4,7 +4,7 @@ sketch.setup( undefined, { type: "webgl" } );
 
 let alphabet = Array(26).fill(undefined).map((_, index) => String.fromCharCode(index + 'a'.charCodeAt(0)))
 
-alphabet = "aurelie-steevou-".split("")
+alphabet = "undefined".split("")
 
 function drawCircle({
   angleCount = 12,
