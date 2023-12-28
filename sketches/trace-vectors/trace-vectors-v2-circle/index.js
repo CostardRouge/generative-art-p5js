@@ -74,7 +74,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
 
   const dValues = [alphabet.length]
   
-  const vectorsList = traceVectors(
+  const vectorsList = mappers.traceVectors(
     alphabet.length*2,
     ( progression ) => {
       const d = animation.ease({

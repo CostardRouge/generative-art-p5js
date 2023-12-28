@@ -1246,7 +1246,7 @@
          },
          "2-wormy-churros": {
             "meta": {
-               "_mtime": "2022-10-30T14:58:07.694Z",
+               "_mtime": "2023-12-25T21:31:52.163Z",
                "name": "2-wormy-churros"
             },
             "path": "sketches/demo-festival-2022/2-wormy-churros"
@@ -1640,6 +1640,21 @@
                "name": "glowing-fishes-v1"
             },
             "path": "sketches/glowing-fish/glowing-fishes-v1"
+         }
+      }
+   },
+   "grid-types": {
+      "meta": {
+         "_mtime": "2023-12-23T23:50:36.133Z",
+         "name": "grid-types"
+      },
+      "sketches": {
+         "grid-types-v1-morphing": {
+            "meta": {
+               "_mtime": "2023-12-24T01:37:44.704Z",
+               "name": "grid-types-v1-morphing"
+            },
+            "path": "sketches/grid-types/grid-types-v1-morphing"
          }
       }
    },
@@ -2816,7 +2831,7 @@
          },
          "trace-vectors-v1-infinite": {
             "meta": {
-               "_mtime": "2023-11-20T13:21:12.839Z",
+               "_mtime": "2023-12-17T13:32:47.044Z",
                "name": "trace-vectors-v1-infinite"
             },
             "path": "sketches/trace-vectors/trace-vectors-v1-infinite"
@@ -2830,14 +2845,49 @@
          },
          "trace-vectors-v11-135-grid-moving": {
             "meta": {
-               "_mtime": "2023-11-22T19:50:45.014Z",
+               "_mtime": "2023-12-03T14:02:05.622Z",
                "name": "trace-vectors-v11-135-grid-moving"
             },
             "path": "sketches/trace-vectors/trace-vectors-v11-135-grid-moving"
          },
+         "trace-vectors-v12-abc-circular-moving": {
+            "meta": {
+               "_mtime": "2023-12-11T18:22:45.265Z",
+               "name": "trace-vectors-v12-abc-circular-moving"
+            },
+            "path": "sketches/trace-vectors/trace-vectors-v12-abc-circular-moving"
+         },
+         "trace-vectors-v13-infinite": {
+            "meta": {
+               "_mtime": "2023-12-23T23:48:38.104Z",
+               "name": "trace-vectors-v13-infinite"
+            },
+            "path": "sketches/trace-vectors/trace-vectors-v13-infinite"
+         },
+         "trace-vectors-v14-random": {
+            "meta": {
+               "_mtime": "2023-12-18T19:26:00.256Z",
+               "name": "trace-vectors-v14-random"
+            },
+            "path": "sketches/trace-vectors/trace-vectors-v14-random"
+         },
+         "trace-vectors-v15-changing-speed": {
+            "meta": {
+               "_mtime": "2023-12-17T15:38:06.658Z",
+               "name": "trace-vectors-v15-changing-speed"
+            },
+            "path": "sketches/trace-vectors/trace-vectors-v15-changing-speed"
+         },
+         "trace-vectors-v16-changing-direction": {
+            "meta": {
+               "_mtime": "2023-12-20T23:53:43.346Z",
+               "name": "trace-vectors-v16-changing-direction"
+            },
+            "path": "sketches/trace-vectors/trace-vectors-v16-changing-direction"
+         },
          "trace-vectors-v2-circle": {
             "meta": {
-               "_mtime": "2023-11-20T13:21:15.734Z",
+               "_mtime": "2023-12-17T13:33:21.748Z",
                "name": "trace-vectors-v2-circle"
             },
             "path": "sketches/trace-vectors/trace-vectors-v2-circle"
@@ -2918,6 +2968,35 @@
                "name": "trace-vectors-v9-123-grid-extended"
             },
             "path": "sketches/trace-vectors/trace-vectors-v9-123-grid-extended"
+         }
+      }
+   },
+   "tree-2d": {
+      "meta": {
+         "_mtime": "2023-12-28T15:20:28.374Z",
+         "name": "tree-2d"
+      },
+      "sketches": {
+         "tree-2d-v1-christmas-whip": {
+            "meta": {
+               "_mtime": "2023-12-28T14:34:49.821Z",
+               "name": "tree-2d-v1-christmas-whip"
+            },
+            "path": "sketches/tree-2d/tree-2d-v1-christmas-whip"
+         },
+         "tree-2d-v2-christmas-linear": {
+            "meta": {
+               "_mtime": "2023-12-28T15:14:50.412Z",
+               "name": "tree-2d-v2-christmas-linear"
+            },
+            "path": "sketches/tree-2d/tree-2d-v2-christmas-linear"
+         },
+         "tree-2d-v3-christmas-eased": {
+            "meta": {
+               "_mtime": "2023-12-28T15:23:29.788Z",
+               "name": "tree-2d-v3-christmas-eased"
+            },
+            "path": "sketches/tree-2d/tree-2d-v3-christmas-eased"
          }
       }
    },
