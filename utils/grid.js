@@ -1,8 +1,18 @@
 import { cache } from './index.js'
 
 const grid = {
-  draw: ({startLeft, startRight, endLeft, endRight, rows, cols, centered = true }, handler) => {
-    const cachedGridVectors = cache.store(`${startLeft.x}-${startLeft.y}-${endLeft.x}-${endLeft.y}-${rows}-${cols}-${centered}`, () => {
+  create: ( {
+    rows = 2,
+    cols = 2,
+    centered = true,
+    startLeft = createVector( 0, 0 ),
+    startRight = createVector( width, 0 ),
+    endLeft = createVector( 0, height ),
+    endRight = createVector( width, height )
+  } ) => {
+    const cacheKey = cache.key(startLeft, endLeft.x, rows, cols, centered);
+
+    return cache.store(cacheKey, () => {
       const gridVectors = [];
       
       const yUnit = 1 / rows;
@@ -39,11 +49,28 @@ const grid = {
       }
 
       return gridVectors;
-    })
+    });
+  },
+  prepare: ( gridOptions ) => {
+    const vectors = grid.create( gridOptions );
 
-    cachedGridVectors.forEach( ([ cellVector, x, y ] ) => {
+    return ({
+      vectors,
+      draw: onGridCell => {
+        vectors.forEach( ([ cellVector, x, y ], index ) => {
+          onGridCell?.( cellVector, { x, y }, index )
+        })
+      }
+    })
+  },
+  draw: ( gridOptions , handler ) => {
+    const cachedGridVectors = grid.create( gridOptions );
+
+    cachedGridVectors.forEach( ( [ cellVector, x, y ] ) => {
       handler(cellVector, { x, y })
     })
+
+    return cachedGridVectors;
   }
 };
 
