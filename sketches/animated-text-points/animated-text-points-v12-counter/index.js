@@ -109,7 +109,7 @@ sketch.draw( (time, center) => {
   })
 
   push()
-  translate(-center.x, -center.y, -200)
+  translate(-width, -height/2, -200)
   pattern(3, n, time)
   pop()
 

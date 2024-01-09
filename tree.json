@@ -691,7 +691,7 @@
          },
          "alphabet-scroll-v8-alphabet-scroll": {
             "meta": {
-               "_mtime": "2023-09-27T10:41:09.720Z",
+               "_mtime": "2023-12-31T19:09:21.924Z",
                "name": "alphabet-scroll-v8-alphabet-scroll"
             },
             "path": "sketches/alphabet-scroll/alphabet-scroll-v8-alphabet-scroll"
@@ -2973,7 +2973,7 @@
    },
    "tree-2d": {
       "meta": {
-         "_mtime": "2023-12-28T15:20:28.374Z",
+         "_mtime": "2023-12-29T14:20:34.308Z",
          "name": "tree-2d"
       },
       "sketches": {
@@ -2986,7 +2986,7 @@
          },
          "tree-2d-v2-christmas-linear": {
             "meta": {
-               "_mtime": "2023-12-28T15:14:50.412Z",
+               "_mtime": "2023-12-28T18:49:49.390Z",
                "name": "tree-2d-v2-christmas-linear"
             },
             "path": "sketches/tree-2d/tree-2d-v2-christmas-linear"
@@ -2997,6 +2997,13 @@
                "name": "tree-2d-v3-christmas-eased"
             },
             "path": "sketches/tree-2d/tree-2d-v3-christmas-eased"
+         },
+         "tree-2d-v4-christmas-bretzel": {
+            "meta": {
+               "_mtime": "2023-12-31T19:06:02.781Z",
+               "name": "tree-2d-v4-christmas-bretzel"
+            },
+            "path": "sketches/tree-2d/tree-2d-v4-christmas-bretzel"
          }
       }
    },

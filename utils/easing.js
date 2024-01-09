@@ -58,9 +58,9 @@ const easing = {
       : x < 0.5 ? Math.pow(2, 20 * x - 10) / 2
       : (2 - Math.pow(2, -20 * x + 10)) / 2;
   },
-  easeInCirc: (x) => {
-    return 1 - Math.sqrt(1 - Math.pow(x, 2));
-  },
+  // easeInCirc: (x) => {
+  //   return 1 - Math.sqrt(1 - Math.pow(x, 2));
+  // },
   easeOutCirc: (x) => {
     return Math.sqrt(1 - Math.pow(x - 1, 2));
   },
