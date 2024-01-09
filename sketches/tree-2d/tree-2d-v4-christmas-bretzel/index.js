@@ -1,4 +1,4 @@
-import { shapes, sketch, converters, events, colors, mappers, options, easing, iterators } from './utils/index.js';
+import { animation, sketch, converters, string, colors, mappers, options, easing, iterators } from './utils/index.js';
 
 options.add( [
   {
@@ -73,7 +73,6 @@ options.add( [
   },
   {
     id: "start-opacity-factor",
-    type: 'slider',
     label: 'Start opacity (reduction factor)',
     min: 1,
     max: 50,
@@ -120,6 +119,19 @@ options.add( [
 
 sketch.setup( );
 
+function easeValue(time, values, functions) {
+  return functions.map( fn => (
+    animation.ease({
+        values,
+        duration: 1,
+        easingFn: fn,
+        currentTime: time
+      })
+  ))
+}
+
+const easingFunctions = Object.values( easing ).slice(0, -9);
+
 function drawGrid(xCount, yCount, color, weight = 2, offset = 0) {
   const xSize = width / xCount;
   const ySize = height / yCount;
@@ -131,16 +143,22 @@ function drawGrid(xCount, yCount, color, weight = 2, offset = 0) {
   const yy = ySize;
 
   for (let x = 0; x < xCount-1; x++) {
-    iterators.vectors([
-      createVector( (xx + x * xSize), 0 ),
-      createVector( (xx + x * xSize), height )
-    ], ({x, y }) => {
-      strokeWeight(6)
-      point(x, y)
-    }, 0.05)
 
-    strokeWeight(weight)
-    line((xx + x * xSize), 0, (xx + x * xSize), height);
+    // const c = noise(x, t*2);
+
+    // if (c > 0.5) {
+      iterators.vectors([
+        createVector( (xx + x * xSize), 0 ),
+        createVector( (xx + x * xSize), height )
+      ], ({x, y }) => {
+        strokeWeight(6)
+        point(x, y)
+      }, 0.05)
+    // }
+    // else {
+      strokeWeight(weight)
+      line((xx + x * xSize), 0, (xx + x * xSize), height);
+    // }
   }
 
   for (let y = 0; y < yCount-1; y++) {
@@ -157,45 +175,79 @@ function drawGrid(xCount, yCount, color, weight = 2, offset = 0) {
   }
 }
 
+
+// console.log(easingFunctions);
+
 sketch.draw( ( time, center, favoriteColor ) => {
   background(0);
 
-  drawGrid(2, 4, favoriteColor );
+  drawGrid(2, 2, favoriteColor );
 
   const margin = 50;
-  const start = createVector(width/2, margin*2)
-  const end = createVector(width/2, height-margin*4)
+  const start = createVector(width/2, margin*3)
+  const end = createVector(width/2, height-margin*3)
+
+  // const start = createVector(margin*2, height/2)
+  // const end = createVector(width-margin*2, height/2)
 
   const steps = options.get("steps");
 
+  // string.write("d", 50, 50, {
+  //   center: true,
+  //   size: 22,
+  //   stroke: 255,
+  //   fill: favoriteColor,
+  //   font: string.fonts.martian
+  // })
+
   for (let i = 0; i < steps; i++) {
     const stepsProgression = i / steps;
+    const polarStepsProgression = map(stepsProgression, 1, 0, -PI/2, PI/2);
+    const circularStepsProgression = mappers.circular(stepsProgression, 0, 1, 0, 1);
+    const easedWaveStrengths = easeValue(circularStepsProgression, [0, 1], easingFunctions)
 
-    const branchCount = 6//mappers.fn(sin(time+stepsProgression), -1, 1, 0, 6, easing.easeInSine);
+    const branchCount = 5//mappers.fn(sin(time), -1, 1, 0, 9, easing.easeInSine);
 
-    for (let branch = 0; branch < branchCount; branch++) {
-      const branchProgression = branch / steps;
+    for (let b = 0; b < branchCount; b++) {
+      const branchProgression = b / steps;
 
       const position = p5.Vector.lerp(start, end, stepsProgression);
 
-      const wavesOffset = (
-        branch
-        -time
-        +stepsProgression
-        +i/120
-      );
-      const wavesStrength = mappers.fn(stepsProgression, 0, 1, 0, 1, easing.easeInOutElastic_);
-      const wavesCount = mappers.fn(stepsProgression, 1, 0, 0, 2, easing.easeInOutQuart);
-      const polarProgression = -map(stepsProgression, 1, 0, -PI/2, PI/2)*wavesCount;
+      const wavesStrength = animation.ease({
+        values: easedWaveStrengths,
+        duration: 1,
+        // easingFn: easing.easeInOutExpo,
+        easingFn: easing.easeInOutBack,
+        currentTime: (
+          time*1.5
+          // +b/19
+          // +stepsProgression*2
+          // +circularStepsProgression
+          // +mappers.circular(stepsProgression, 0, 1, 0, 1)
+        )
+      })
+      const wavesCount = mappers.circular(stepsProgression, 1, 0, 0, 8, easing.easeInOutSine);
       const margin = width/3
 
+      const wavesOffset = (
+        // b
+        +map(b, 0, branchCount, -PI, PI)
+        -time/2
+        // +wavesCount
+        // +i/120
+        // +circularStepsProgression
+        // +polarStepsProgression
+      );
+
+      const a = margin/2//map(sin(time+b), -1, 1, margin, -margin)
+
       position.add(
-        map(sin(polarProgression+wavesOffset), -1, 1, margin, -margin)*wavesStrength,
-        //-map(cos(polarProgression+wavesOffset+b), -1, 1, margin/3, -margin/3)*wavesStrength,
+        map(sin(wavesOffset), -1, 1, margin, -margin)*wavesStrength,
+        map(cos(wavesOffset), -1, 1, a, -a)*wavesStrength,
         0
       )
 
-      const linesCount = mappers.fn(stepsProgression, 0, 1, 1, 3, easing.easeInOutQuad)
+      const linesCount = 3//mappers.fn(circularStepsProgression, 0, 1, 1, 3, easing.easeInOutQuad)
 
       const lineMin = 0;
       const lineMax = PI;
@@ -204,17 +256,21 @@ sketch.draw( ( time, center, favoriteColor ) => {
       for (let lineIndex = lineMin; lineIndex < lineMax; lineIndex += lineStep) {
         const vector = converters.polar.vector(
           lineIndex,
-          mappers.fn(stepsProgression, 0, 1, 1, options.get('lines-length'), easing.easeInQuad)
+          60
+          // mappers.fn(stepsProgression, 0, 1, 1, options.get('lines-length'), easing.easeInQuad),
+          // 1
+          // mappers.circular(stepsProgression, 0, 1, 1, options.get('lines-length'), easing.easeInOutSine)
         );
 
         push();
         translate(position)
 
-        //rotate(time*options.get('rotation-speed')+b+i/30*options.get('rotation-count'));
-        rotate(mappers.fn(sin(time+branch+i/30), -1, 1, -PI/3, PI/3, easing.easeInOutSine));
+        rotate(time*options.get('rotation-speed')+b+i/60*options.get('rotation-count'));
+        // rotate(mappers.fn(sin(time+b+i/30), -1, 1, -PI/3, PI/3, easing.easeInOutSine));
 
         beginShape();
-        strokeWeight(mappers.fn(stepsProgression, 0, 1, 10, 30, easing.easeInOutQuad));
+        // strokeWeight(mappers.fn(circularStepsProgression, 0, 1, 10, 30, easing.easeInOutExpo));
+        strokeWeight(20);
 
         const opacitySpeed = options.get('opacity-speed');
         const opacityCount = options.get('opacity-group-count');
@@ -226,9 +282,9 @@ sketch.draw( ( time, center, favoriteColor ) => {
           map(
             sin(opacitySpeed + branchProgression * opacityCount ), -1, 1,
             options.get("start-opacity-factor"),
-            options.get("end-opacity-factor")
+            1.5
           ),
-          options.get("end-opacity-factor")
+          1.5
         );
   
         if (options.get('ping-pong-opacity')) {
@@ -246,12 +302,14 @@ sketch.draw( ( time, center, favoriteColor ) => {
         stroke(
           colors.rainbow({
             hueOffset: (
-              time
-              +branchProgression
-              // +stepsProgression
-              // +branch/7
+              0
+              +time
+              // +branchProgression
+              // +circularStepsProgression
+              // +b/7
             ),
-            hueIndex: mappers.fn(stepsProgression, 0, 1, -PI/2, PI/2, easing.easeInOutCubic_)*8,
+            // hueIndex: mappers.fn(circularStepsProgression, 1, 0, -PI/2, PI/2, easing.easeInOutCubic_)*8,
+            hueIndex: mappers.fn(sin(time/2+circularStepsProgression), -1, 1, -PI/2, PI/2, easing.easeInOutSine_)*12,
             // hueIndex: mappers.fn((
             //   noise(branchProgression, stepsProgression)
             // ), 0, 1, -PI/2, PI/2, easing.easeInOutCubic_)*16,
@@ -266,6 +324,6 @@ sketch.draw( ( time, center, favoriteColor ) => {
         endShape();
         pop()
       }
-  }
+    }
   }
 });
