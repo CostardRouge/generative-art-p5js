@@ -2,9 +2,9 @@ import { sketch, string, mappers, easing, animation, colors, cache, grid , event
 
 sketch.setup( undefined, { type: 'webgl'});
 
-events.register("engine-window-preload", () => {
-  cache.store("image", () => loadImage( "2.png" ))
-});
+// events.register("engine-window-preload", () => {
+//   cache.store("image", () => loadImage( "2.png" ))
+// });
 
 let xAdd = 0, yAdd = 0;
 
