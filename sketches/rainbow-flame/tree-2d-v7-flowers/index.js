@@ -217,7 +217,7 @@ function drawSketch( time, center, favoriteColor, steps, givenCanvas) {
     const progression = mappers.fn(sin(time+polarBranchProgression), -1, 1, 0, 1, easing.easeInExpo);
 
     const branchLength_ = animation.ease({
-      values: [0.5, 1],
+      values: [0.1, 1],
       duration: 1,
       easingFn: easing.easeInOutExpo,
       easingFn: easing.easeInOutElastic,
@@ -233,7 +233,7 @@ function drawSketch( time, center, favoriteColor, steps, givenCanvas) {
       const polarStepsProgression = map(stepsProgression, 1, 0, -PI/2, PI/2);
       const circularStepsProgression = mappers.circular(stepsProgression, 0, 1, 0, 1);
 
-      // const branchLength_ = mappers.circularIndex( time+branchProgression-stepsProgression/2, [0.5, 1])
+      const branchLength_ = mappers.circularIndex( time+branchProgression-stepsProgression/2, [0.5, 1])
 
       const end = createVector(
         center.x + sin(polarBranchProgression) * branchLength * branchLength_,

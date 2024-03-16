@@ -2228,6 +2228,56 @@
          }
       }
    },
+   "rainbow-flame": {
+      "meta": {
+         "_mtime": "2024-03-14T15:59:58.438Z",
+         "name": "rainbow-flame"
+      },
+      "sketches": {
+         "rainbow-flame-v1": {
+            "meta": {
+               "_mtime": "2024-03-15T17:05:44.674Z",
+               "name": "rainbow-flame-v1"
+            },
+            "path": "sketches/rainbow-flame/rainbow-flame-v1"
+         },
+         "rainbow-flame-v2": {
+            "meta": {
+               "_mtime": "2024-03-15T22:31:47.116Z",
+               "name": "rainbow-flame-v2"
+            },
+            "path": "sketches/rainbow-flame/rainbow-flame-v2"
+         },
+         "tree-2d-v7-flowers": {
+            "meta": {
+               "_mtime": "2024-03-09T19:30:50.973Z",
+               "name": "tree-2d-v7-flowers"
+            },
+            "path": "sketches/rainbow-flame/tree-2d-v7-flowers"
+         },
+         "tree-2d-v7-flowers copy": {
+            "meta": {
+               "_mtime": "2024-01-17T21:56:39.387Z",
+               "name": "tree-2d-v7-flowers copy"
+            },
+            "path": "sketches/rainbow-flame/tree-2d-v7-flowers copy"
+         },
+         "tree-2d-v7-fus-fo-rah": {
+            "meta": {
+               "_mtime": "2024-03-09T19:36:03.180Z",
+               "name": "tree-2d-v7-fus-fo-rah"
+            },
+            "path": "sketches/rainbow-flame/tree-2d-v7-fus-fo-rah"
+         },
+         "tree-2d-v7-fus-fo-rah copy 2": {
+            "meta": {
+               "_mtime": "2024-03-14T15:59:58.438Z",
+               "name": "tree-2d-v7-fus-fo-rah copy 2"
+            },
+            "path": "sketches/rainbow-flame/tree-2d-v7-fus-fo-rah copy 2"
+         }
+      }
+   },
    "ribbons": {
       "meta": {
          "_mtime": "2024-01-10T00:46:22.451Z",
@@ -2987,7 +3037,7 @@
    },
    "tree-2d": {
       "meta": {
-         "_mtime": "2024-01-17T21:56:39.388Z",
+         "_mtime": "2024-01-17T22:13:13.253Z",
          "name": "tree-2d"
       },
       "sketches": {
@@ -3028,7 +3078,7 @@
          },
          "tree-2d-v5-sphere": {
             "meta": {
-               "_mtime": "2024-01-17T21:48:26.302Z",
+               "_mtime": "2024-02-01T20:15:55.704Z",
                "name": "tree-2d-v5-sphere"
             },
             "path": "sketches/tree-2d/tree-2d-v5-sphere"
@@ -3039,20 +3089,6 @@
                "name": "tree-2d-v6-walking"
             },
             "path": "sketches/tree-2d/tree-2d-v6-walking"
-         },
-         "tree-2d-v7-flowers": {
-            "meta": {
-               "_mtime": "2024-01-17T22:10:23.917Z",
-               "name": "tree-2d-v7-flowers"
-            },
-            "path": "sketches/tree-2d/tree-2d-v7-flowers"
-         },
-         "tree-2d-v7-flowers copy": {
-            "meta": {
-               "_mtime": "2024-01-17T21:56:39.387Z",
-               "name": "tree-2d-v7-flowers copy"
-            },
-            "path": "sketches/tree-2d/tree-2d-v7-flowers copy"
          }
       }
    },
