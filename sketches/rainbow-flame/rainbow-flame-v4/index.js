@@ -112,61 +112,6 @@ options.add( [
 
 sketch.setup( );
 
-function drawGrid2(cols, time) {
-  const rows = cols*height/width;
-
-  const gridOptions = {
-    startLeft: createVector( -width/2, -height/2 ),
-    startRight: createVector( width/2, -height/2 ),
-    endLeft: createVector( -width/2, height/2 ),
-    endRight: createVector( width/2, height/2 ),
-    rows,
-    cols,
-    centered: true
-  }
-
-  const W = width / cols;
-  const H = height / rows;
-
-  noFill()
-  strokeWeight(2)
-
-  const xSign = sin(-time/2);
-  const ySign = cos(time/2);
-
-  grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const n = noise(xSign*x/cols+time, ySign*y/rows, time)*2;
-
-    drawGridCell(
-      cellVector.x-W/2,
-      cellVector.y-H/2,
-      W,
-      H,
-      ~~n,
-      ~~n,
-      ( x, y, w, h ) => {
-        stroke(16, 16, 64)
-        rect(x, y, w, h )
-
-        stroke(128, 16, 16)
-
-        const n = noise(x/w, y/h, time);
-
-        if (n > 0.5) {
-          fill(0)
-          // circle(x, y, 15)
-          rect(x-7.5, y-7.5, 15)
-        }
-        else {
-          // ikks(x, y, 15)
-          cross(x, y, 15)
-        }
-
-      }
-    )
-  })
-}
-
 function drawGrid(xCount, yCount, color, weight = 2, offset = 0) {
   const xSize = width / xCount;
   const ySize = height / yCount;
@@ -194,8 +139,11 @@ function drawGrid(xCount, yCount, color, weight = 2, offset = 0) {
     if (xLines[index] <= 0) {
       xLines[index] = width
     }
+    else if (xLines[index] > width) {
+      xLines[index] = 0
+    }
 
-    xLines[index] -= 1.5
+    xLines[index] += 1.5
   })
 
   // draw
@@ -208,7 +156,7 @@ function drawGrid(xCount, yCount, color, weight = 2, offset = 0) {
   const ySpeed = 0;//t*xSize;
 
   // init
-  const yLines = cache.store( "x-lines", () => {
+  const yLines = cache.store( "y-lines", () => {
     const result = []
     for (let y = -1; y < yCount; y++) {
       const yPosition = (ySpeed + (yy + y * ySize));
@@ -222,8 +170,11 @@ function drawGrid(xCount, yCount, color, weight = 2, offset = 0) {
     if (yLines[index] <= 0) {
       yLines[index] = height
     }
+    else if (yLines[index] > height) {
+      yLines[index] = 0
+    }
 
-    yLines[index] -= 1.5
+    yLines[index] += 1.5
   })
 
   // draw
@@ -262,34 +213,36 @@ function drawGrid(xCount, yCount, color, weight = 2, offset = 0) {
   // }
 }
 
+const easingFunctions = Object.entries(easing).filter( ([name, fn]) => (
+  !name.includes(["Elastic"]) &&
+  !name.includes(["Bounce"]) &&
+  !name.includes(["Back"]) &&
+  !name.includes(["easeInBack"]) &&
+  !name.includes(["easeOutQuart"]) &&
+  !name.includes(["easeInOutExpo"]) &&
+  !name.includes(["easeOutExpo"]) &&
+  !name.includes(["Circ"])
+))
+
 sketch.draw( ( time, center, favoriteColor ) => {
-  background(0);
+  // background(0);
+  background(0, 85);
+
 
   const margin = 100;
-  const start = createVector(width/2, margin*3)
+  const start = createVector(width/2, margin)
   const end = createVector(width/2, height-margin)
 
-  drawGrid(1, 2, favoriteColor );
+  drawGrid(2, 4, favoriteColor );
 
   const steps = options.get("steps");
-
-  // const easingFunctions = Object.entries(easing).filter( ([name, fn]) => (
-  //   !name.includes(["Elastic"]) &&
-  //   !name.includes(["Bounce"]) &&
-  //   !name.includes(["Back"]) &&
-  //   !name.includes(["easeInBack"]) &&
-  //   !name.includes(["easeOutQuart"]) &&
-  //   !name.includes(["easeInOutExpo"]) &&
-  //   !name.includes(["easeOutExpo"]) &&
-  //   !name.includes(["Circ"])
-  // ))
 
   // let [easingFunctionName, easingFunction] = mappers.circularIndex(time*2, easingFunctions)
 
   for (let i = 0; i < steps; i++) {
     const stepsProgression = i / steps;
     const polarStepsProgression = map(stepsProgression, 1, 0, -PI/2, PI/2);
-    const circularStepsProgression = mappers.circular(stepsProgression, 0, 1, 0, 1);
+    const circularStepsProgression = mappers.circular(stepsProgression, 0, 1, 0, 1, easing.easeInOutQuad );
     // const branchCount = mappers.fn(cos(time+polarStepsProgression/2), -1, 1, 3, 6, easing.easeInSine);
     let branchCount = animation.ease({
         values: [3, 2, 4 , 1],
@@ -299,80 +252,49 @@ sketch.draw( ( time, center, favoriteColor ) => {
         currentTime: time
       })
 
-    // let [easingFunctionName, easingFunction] = mappers.circularIndex(3, easingFunctions)
+    let [easingFunctionName, easingFunction] = mappers.circularIndex(3, easingFunctions)
 
-    // easingFunction = easing.easeInOutExpo
+    //easingFunction = easing.easeInOutExpo
 
-    branchCount = 1// mappers.circularIndex(time/2, [3, 2, 4, 5, 1])
+    branchCount = 1//mappers.circularIndex(time/2, [3, 2, 4, 5, 1])
 
     for (let b = 0; b < branchCount; b++) {
       const branchProgression = b / steps;
-
       const position = p5.Vector.lerp(start, end, stepsProgression);
-      // const wavesStrength = mappers.fn(stepsProgression, 0, 1, 0, 1, easing.easeInOutBounce);
-      // const wavesStrength = mappers.fn(stepsProgression, 0, 1, 0, 1, easing.easeInOutQuad);
-      // const wavesStrength = mappers.circularIndex(circularStepsProgression*0+time*2, [
-      //   mappers.fn(stepsProgression, 0, 1, 0, 1, easingFunction),
-      //   mappers.fn(stepsProgression, 0, 1, 1, 0, easingFunction),
-      //   mappers.fn(circularStepsProgression, 0, 1, 0, 1, easingFunction),
-      //   mappers.fn(circularStepsProgression, 0, 1, 1, 0, easingFunction),
-      // ])
-      
-      // const margin = width/3
 
-      // const wavesOffset = (
-      //   0
-      //   +b
-      //   +map(b, 0, branchCount, -PI, PI)+PI/(branchCount*2)
-      //   // -time/2
-      //   // +wavesCount
-      //   // +i/120
-      //   // +circularStepsProgression
-      //   // +polarStepsProgression
-      // );
+      let W = width/6
+      let margin = 0//mappers.fn(stepsProgression, -1, 1, -W, W, easing.easeInOutCubic);
 
-      // position.add(
-      //   // animation.ease({
-      //   //   values: [
-      //   //     animation.ease({
-      //   //       values: [-width/4, width/4],
-      //   //       duration: 1,
-      //   //       easingFn: easing.easeInQuad,
-      //   //       currentTime: wavesOffset+time
-      //   //     })*wavesStrength,
-      //   //     mappers.fn(cos(wavesOffset), -1, 1, -margin, margin, easing.easeInOutQuad)*wavesStrength,
-      //   //     mappers.fn(cos(wavesOffset), -1, 1, -margin, margin, easing.easeOutQuad)*wavesStrength
-      //   //   ],
-      //   //   duration: 1,
-      //   //   easingFn: easing.easeInOutExpo,
-      //   //   currentTime: time
-      //   // }),
-      //   // animation.ease({
-      //   //   values: [-width/4, width/4],
-      //   //   duration: 1,
-      //   //   easingFn: easing.easeInQuad,
-      //   //   currentTime: wavesOffset+time
-      //   // })*wavesStrength,
-      //   mappers.fn(cos(wavesOffset), -1, 1, -margin, margin, easing.easeInOutQuad)*wavesStrength,
-      //   mappers.fn(cos(wavesOffset), -1, 1, -margin, margin, easing.easeOutQuad)*wavesStrength,
-      //   0
-      // )
+      margin = animation.ease({
+        values: [-W, W],
+        duration: 1,
+        easingFn: easing.easeInOutCubic,
+        currentTime: time/2+stepsProgression
+      });
 
+      position.add(
+        mappers.fn(cos(time), -1, 1, -margin, margin, easing.easeInOutExpo_),
+        // mappers.fn(sin(time+circularStepsProgression), -1, 1, -margin, margin, easing.easeInOutExpo ),
+        // mappers.fn(stepsProgression, 0, 1, -margin, margin, easing.easeInOutExpo ),
+        // mappers.fn(cos(circularStepsProgression), -1, 1, -margin, margin, easing.easeInOutExpo ),
+      )
       // const linesCount = mappers.circularIndex(time, [
       //   mappers.fn(circularStepsProgression, 0, 1, 1, 2, easing.easeInOutQuad),
       //   mappers.fn(circularStepsProgression, 0, 1, 1, 6, easing.easeInOutQuad),
       // ])
 
-      const linesCount = animation.ease({
-        values: [5, , 2, 1, 3, 6],
-        duration: 1,
-        easingFn: easing.easeInOutQuad,
-        currentTime: time+stepsProgression
-      })
+      let linesCount = 4
       
-      // const linesCount = mappers.fn(circularStepsProgression, 0, 1, 1, 3, easing.easeInOutQuad)
-      // const linesCount = mappers.fn(stepsProgression, 0, 1, 1, 4, easing.easeInOutQuad)
-      // const linesCount = mappers.fn(circularStepsProgression, 0, 1, 1, 4, easing.easeInOutQuad)
+      // linesCount = animation.ease({
+      //   values: [5, , 2, 1, 3],
+      //   duration: 1,
+      //   easingFn: easing.easeInOutQuad,
+      //   currentTime: time+polarStepsProgression
+      // })
+      
+      // linesCount = mappers.fn(circularStepsProgression, 0, 1, 1, 3, easing.easeInOutQuad)
+      // linesCount = mappers.fn(stepsProgression, 0, 1, 1, 4, easing.easeInOutQuad)
+      // linesCount = mappers.fn(circularStepsProgression, 0, 1, 1, 4, easing.easeInOutQuad)
 
       const lineMin = 0;
       const lineMax = PI/2;
@@ -381,43 +303,38 @@ sketch.draw( ( time, center, favoriteColor ) => {
       for (let lineIndex = lineMin; lineIndex < lineMax; lineIndex += lineStep) {
         const lineProgression = lineIndex / lineMax;
 
-        const gapWidth = animation.ease({
-          values: [160, 300, 420],
-          duration: 1,
-          easingFn: easing.easeInOutExpo,
-          currentTime: time+stepsProgression+lineProgression
-        })
+        const gapWidth = 240
+        
+        // animation.ease({
+        //   values: [100, 240],
+        //   duration: 1,
+        //   easingFn: easing.easeInOutExpo,
+        //   currentTime: time/2+lineProgression
+        // })
         const vector = converters.polar.vector(
           lineIndex,
-          // mappers.fn(circularStepsProgression, 0, 1, 1, gapWidth, easing.easeInOutExpo),
-          mappers.fn(stepsProgression, 1, 0, 1, gapWidth, easing.easeInOutQuad),
-          // mappers.fn(sin(time+stepsProgression*15), -1, 1, 80, gapWidth, easing.easeInOutSine)
+          mappers.fn(circularStepsProgression, 0, 1, 1, gapWidth, easing.easeInOutQuad_),
+          // mappers.fn(circularStepsProgression, 0, 1, 1, gapWidth, easing.easeInOutQuad),
+          // mappers.fn(sin(circularStepsProgression), 1, -1, 1, gapWidth, easing.easeInOutSine)
         );
-
-        const rotationAngle = animation.ease({
-          values: [PI/3, PI],
-          duration: 1,
-          easingFn: easing.easeInOutExpo,
-          currentTime: time/2+stepsProgression
-        })
 
         push();
         translate(position)
 
         mappers.circularIndex(time, [
-          // 0,
-          rotate(time/2*options.get('rotation-speed')),
-          rotate(mappers.fn(cos(time+stepsProgression*2), -1, 1, -PI/6, PI, easing.easeInOutSine)),
-          rotate(mappers.fn(cos(stepsProgression), -1, 1, -rotationAngle, rotationAngle, easing.easeInOutElastic)),
-          // rotate(mappers.fn(sin(time+circularStepsProgression*2), -1, 1, -PI/3, PI/3, easing.easeInOutSine))
+          // rotate(time/2*options.get('rotation-speed')),
+          rotate(mappers.fn(cos(time+stepsProgression), -1, 1, -PI, PI, easing.easeInOutExpo)/2),
+          // rotate(mappers.fn(cos(stepsProgression), -1, 1, -rotationAngle, rotationAngle, easing.easeInOutElastic)),
+          // rotate(mappers.fn(sin(time+circularStepsProgression*2), -1, 1, -PI/3, PI/3, easing.easeInOutSine)),
           // rotate(mappers.fn(sin(time+stepsProgression), -1, 1, -PI/3, PI/3, easing.easeInOutCubic))
         ])
 
-        rotate(PI/3)
+        // rotate(PI/3)
 
         beginShape();
-        // strokeWeight(mappers.fn(circularStepsProgression, 0, 1, 30, 3, easingFunction));
-        strokeWeight(30);
+
+        const weight = 40;
+        strokeWeight(weight);
 
         const opacitySpeed = options.get('opacity-speed');
         const opacityCount = options.get('opacity-group-count');
@@ -438,12 +355,12 @@ sketch.draw( ( time, center, favoriteColor ) => {
           colors.rainbow({
             hueOffset: (
               0
-              + lineProgression/2
+              //+ lineProgression/2
               + stepsProgression *2
-              // + (lineIndex/lineStep)/4
+              //+ (lineIndex/lineStep)/4
             ),
             // hueIndex: mappers.fn(sin(time/4+stepsProgression+lineIndex/8), -1, 1, -PI, PI,)*8,
-            hueIndex: mappers.fn(sin(time/1.5+circularStepsProgression+PI), -1, 1, -PI, PI, easing.easeInOutSine)*4,
+            hueIndex: mappers.fn(cos(time+circularStepsProgression), -1, 1, -PI, PI, easing.easeInOutSine_)*4,
             // hueIndex: mappers.fn((
             //   noise(stepsProgression, stepsProgression+time/3)
             // ), 0, 1, -PI/2, PI/2, easing.easeInOutSine)*16,
@@ -451,14 +368,46 @@ sketch.draw( ( time, center, favoriteColor ) => {
           })
         );
 
-        if (mappers.circularIndex(time*1.5, [1])) {
-          vertex(-vector.y, vector.x)
-          vertex(vector.x, -vector.y)
-        }
-        else {
-          vertex(vector.x, vector.y)
-          vertex(-vector.x, -vector.y)
-        }
+        opacityFactor = map(
+          stepsProgression,
+          0,
+          5,
+          mappers.fn(
+            sin(-time * (lineProgression % 2 === 0 ? -1 : 1) * 10 + (stepsProgression) * 30),
+            -1,
+            1,
+            1,
+            5
+          ),
+          1
+        );
+
+        stroke(
+          map(sin(lineProgression + time), -1, 1, 0, 360) / opacityFactor,
+          map(cos(lineProgression + time), -1, 1, 0, 255) / opacityFactor,
+          map(sin(lineProgression + time), -1, 1, 255, 0) / opacityFactor,
+          map(lineProgression + stepsProgression, 0, 4, 0, 255)
+        );
+
+        const xMin = 0//+weight;
+        const xMax = width - weight;
+
+        const yMin = 0//+weight;
+        const yMax = height - weight;
+
+        const cX = constrain(vector.x, xMin, xMax)
+        const cY = constrain(vector.y, yMin, yMax)
+        
+        // if (mappers.circularIndex(time+stepsProgression, [true, false])) {
+          vertex(-cY, cX)
+          vertex(cX, -cY)
+        // }
+        // else {
+          // vertex(vector.x, vector.y)
+          // vertex(-vector.x, -vector.y)
+        // }
+
+        noFill()
         endShape();
         pop()
       }
