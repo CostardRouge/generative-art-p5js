@@ -102,7 +102,7 @@ const borderSize = 2;
 sketch.draw( (time, center) => {
   background(0);
 
-  const cols =10;
+  const cols = 5;
   //const rows = 10;
   const rows = cols*height/width;
 
@@ -125,14 +125,14 @@ sketch.draw( (time, center) => {
   const img = cache.get("image");
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    let n = noise(x/cols, y/rows + time)*4;
-    n = ~~map(
-      cellVector.dist(center),
-      0,
-      map(sin(time*2), -1, 1, 0, width),
-      8,
-      1
-    );
+    let n = noise(x/cols+time, y/rows + time)*4;
+    // n = map(
+    //   cellVector.dist(center),
+    //   0,
+    //   width,//map(sin(time*2), -1, 1, 0, width),
+    //   8,
+    //   1
+    // );
 
     // n = ~~map(
     //   cellVector.dist(center),
