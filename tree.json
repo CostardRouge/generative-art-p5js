@@ -1,343 +1,358 @@
 {
    "36days-of-type-2023": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.525Z",
+         "_mtime": "2024-01-09T18:22:56.157Z",
          "name": "36days-of-type-2023"
       },
       "sketches": {
          "36days-of-type-2023-0": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.434Z",
+               "_mtime": "2023-05-13T11:31:31.823Z",
                "name": "36days-of-type-2023-0"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-0"
          },
          "36days-of-type-2023-1": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.436Z",
+               "_mtime": "2023-05-30T12:44:08.446Z",
                "name": "36days-of-type-2023-1"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-1"
          },
          "36days-of-type-2023-2": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.438Z",
+               "_mtime": "2023-05-18T12:51:54.646Z",
                "name": "36days-of-type-2023-2"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-2"
          },
          "36days-of-type-2023-3": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.441Z",
+               "_mtime": "2023-05-18T15:33:36.716Z",
                "name": "36days-of-type-2023-3"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-3"
          },
          "36days-of-type-2023-4": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.443Z",
+               "_mtime": "2023-05-20T16:55:16.482Z",
                "name": "36days-of-type-2023-4"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-4"
          },
          "36days-of-type-2023-5": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.444Z",
+               "_mtime": "2024-01-04T18:01:38.292Z",
                "name": "36days-of-type-2023-5"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-5"
          },
          "36days-of-type-2023-6": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.447Z",
+               "_mtime": "2023-05-23T18:06:48.590Z",
                "name": "36days-of-type-2023-6"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-6"
          },
          "36days-of-type-2023-7": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.448Z",
+               "_mtime": "2023-05-24T17:31:30.652Z",
                "name": "36days-of-type-2023-7"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-7"
          },
          "36days-of-type-2023-8": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.450Z",
+               "_mtime": "2023-05-24T17:42:16.951Z",
                "name": "36days-of-type-2023-8"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-8"
          },
          "36days-of-type-2023-9": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.453Z",
+               "_mtime": "2023-10-13T16:13:35.171Z",
                "name": "36days-of-type-2023-9"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-9"
          },
          "36days-of-type-2023-a": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.458Z",
+               "_mtime": "2023-10-28T06:22:38.039Z",
                "name": "36days-of-type-2023-a"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-a"
          },
          "36days-of-type-2023-a-grid": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.456Z",
+               "_mtime": "2023-04-10T09:56:23.238Z",
                "name": "36days-of-type-2023-a-grid"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-a-grid"
          },
          "36days-of-type-2023-a-vl": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.457Z",
+               "_mtime": "2023-04-10T06:58:37.105Z",
                "name": "36days-of-type-2023-a-vl"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-a-vl"
          },
          "36days-of-type-2023-b": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.461Z",
+               "_mtime": "2023-04-20T18:14:47.010Z",
                "name": "36days-of-type-2023-b"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-b"
          },
          "36days-of-type-2023-c": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.463Z",
+               "_mtime": "2023-04-20T18:16:29.448Z",
                "name": "36days-of-type-2023-c"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-c"
          },
          "36days-of-type-2023-d": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.464Z",
+               "_mtime": "2023-04-20T18:21:29.628Z",
                "name": "36days-of-type-2023-d"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-d"
          },
          "36days-of-type-2023-e": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.467Z",
+               "_mtime": "2023-04-20T18:23:56.964Z",
                "name": "36days-of-type-2023-e"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-e"
          },
          "36days-of-type-2023-f": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.469Z",
+               "_mtime": "2023-04-20T18:25:46.551Z",
                "name": "36days-of-type-2023-f"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-f"
          },
          "36days-of-type-2023-g": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.472Z",
+               "_mtime": "2023-04-20T18:47:10.939Z",
                "name": "36days-of-type-2023-g"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-g"
          },
          "36days-of-type-2023-h": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.473Z",
+               "_mtime": "2023-04-20T18:49:04.674Z",
                "name": "36days-of-type-2023-h"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-h"
          },
          "36days-of-type-2023-i": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.475Z",
+               "_mtime": "2023-04-20T18:49:21.002Z",
                "name": "36days-of-type-2023-i"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-i"
          },
          "36days-of-type-2023-j": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.478Z",
+               "_mtime": "2023-04-24T22:01:42.837Z",
                "name": "36days-of-type-2023-j"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-j"
          },
          "36days-of-type-2023-j-grid": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.476Z",
+               "_mtime": "2023-04-20T19:00:50.690Z",
                "name": "36days-of-type-2023-j-grid"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-j-grid"
          },
          "36days-of-type-2023-k": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.482Z",
+               "_mtime": "2023-04-23T16:33:15.540Z",
                "name": "36days-of-type-2023-k"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-k"
          },
          "36days-of-type-2023-l": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.484Z",
+               "_mtime": "2023-04-23T17:01:23.910Z",
                "name": "36days-of-type-2023-l"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-l"
          },
          "36days-of-type-2023-m-alpha-mask": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.486Z",
+               "_mtime": "2023-06-11T08:54:31.103Z",
                "name": "36days-of-type-2023-m-alpha-mask"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-m-alpha-mask"
          },
          "36days-of-type-2023-m-optimized": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.487Z",
+               "_mtime": "2023-04-25T02:18:31.630Z",
                "name": "36days-of-type-2023-m-optimized"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-m-optimized"
          },
          "36days-of-type-2023-m-spinner": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.489Z",
+               "_mtime": "2023-04-24T23:50:21.476Z",
                "name": "36days-of-type-2023-m-spinner"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-m-spinner"
          },
          "36days-of-type-2023-n": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.492Z",
+               "_mtime": "2023-04-25T22:57:36.276Z",
                "name": "36days-of-type-2023-n"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-n"
          },
          "36days-of-type-2023-o": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.493Z",
+               "_mtime": "2023-04-27T18:11:35.332Z",
                "name": "36days-of-type-2023-o"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-o"
          },
          "36days-of-type-2023-p": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.495Z",
+               "_mtime": "2023-05-10T01:53:34.742Z",
                "name": "36days-of-type-2023-p"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-p"
          },
          "36days-of-type-2023-q": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.496Z",
+               "_mtime": "2023-04-28T23:53:03.869Z",
                "name": "36days-of-type-2023-q"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-q"
          },
          "36days-of-type-2023-r": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.498Z",
+               "_mtime": "2023-04-29T05:33:44.626Z",
                "name": "36days-of-type-2023-r"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-r"
          },
          "36days-of-type-2023-s": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.500Z",
+               "_mtime": "2023-04-29T05:36:58.783Z",
                "name": "36days-of-type-2023-s"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-s"
          },
          "36days-of-type-2023-t": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.502Z",
+               "_mtime": "2023-04-30T13:30:58.674Z",
                "name": "36days-of-type-2023-t"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-t"
          },
          "36days-of-type-2023-u": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.504Z",
+               "_mtime": "2023-04-30T14:30:19.097Z",
                "name": "36days-of-type-2023-u"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-u"
          },
          "36days-of-type-2023-v": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.505Z",
+               "_mtime": "2023-05-07T17:19:25.543Z",
                "name": "36days-of-type-2023-v"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-v"
          },
          "36days-of-type-2023-w": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.507Z",
+               "_mtime": "2023-05-08T11:51:39.107Z",
                "name": "36days-of-type-2023-w"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-w"
          },
          "36days-of-type-2023-x": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.509Z",
+               "_mtime": "2023-05-08T13:23:36.430Z",
                "name": "36days-of-type-2023-x"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-x"
          },
          "36days-of-type-2023-y": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.511Z",
+               "_mtime": "2023-05-08T15:37:24.982Z",
                "name": "36days-of-type-2023-y"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-y"
          },
          "36days-of-type-2023-z": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.514Z",
+               "_mtime": "2023-05-10T22:13:54.587Z",
                "name": "36days-of-type-2023-z"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-z"
          },
          "36days-of-type-2023-∞": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.524Z",
+               "_mtime": "2023-05-12T00:22:21.242Z",
                "name": "36days-of-type-2023-∞"
             },
             "path": "sketches/36days-of-type-2023/36days-of-type-2023-∞"
          }
       }
    },
+   "36days-of-type-2024": {
+      "meta": {
+         "_mtime": "2024-04-01T00:49:26.026Z",
+         "name": "36days-of-type-2024"
+      },
+      "sketches": {
+         "base": {
+            "meta": {
+               "_mtime": "2024-04-01T02:51:30.084Z",
+               "name": "base"
+            },
+            "path": "sketches/36days-of-type-2024/base"
+         }
+      }
+   },
    "3d-grid-field": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.532Z",
+         "_mtime": "2024-01-09T18:23:03.508Z",
          "name": "3d-grid-field"
       },
       "sketches": {
          "3d-grid-field-v1": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.525Z",
+               "_mtime": "2022-10-22T21:53:46.884Z",
                "name": "3d-grid-field-v1"
             },
             "path": "sketches/3d-grid-field/3d-grid-field-v1"
          },
          "3d-grid-field-v2-rotating": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.527Z",
+               "_mtime": "2023-03-14T18:13:36.758Z",
                "name": "3d-grid-field-v2-rotating"
             },
             "path": "sketches/3d-grid-field/3d-grid-field-v2-rotating"
          },
          "3d-grid-field-v3-rotating-points": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.528Z",
+               "_mtime": "2022-10-22T21:56:53.345Z",
                "name": "3d-grid-field-v3-rotating-points"
             },
             "path": "sketches/3d-grid-field/3d-grid-field-v3-rotating-points"
          },
          "3d-grid-field-v4-rotating-and-warping": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.532Z",
+               "_mtime": "2022-10-22T21:54:06.308Z",
                "name": "3d-grid-field-v4-rotating-and-warping"
             },
             "path": "sketches/3d-grid-field/3d-grid-field-v4-rotating-and-warping"
          },
          "3d-grid-field-v4-rotating-and-warping-2": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.531Z",
+               "_mtime": "2023-04-24T21:37:04.861Z",
                "name": "3d-grid-field-v4-rotating-and-warping-2"
             },
             "path": "sketches/3d-grid-field/3d-grid-field-v4-rotating-and-warping-2"
@@ -346,41 +361,41 @@
    },
    "3d-stuff": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.552Z",
+         "_mtime": "2024-01-09T18:23:10.604Z",
          "name": "3d-stuff"
       },
       "sketches": {
          "ball": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.534Z",
+               "_mtime": "2022-06-01T22:40:28.874Z",
                "name": "ball"
             },
             "path": "sketches/3d-stuff/ball"
          },
          "cube": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.535Z",
+               "_mtime": "2023-06-03T00:45:27.524Z",
                "name": "cube"
             },
             "path": "sketches/3d-stuff/cube"
          },
          "cubes": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.536Z",
+               "_mtime": "2023-07-15T18:24:18.231Z",
                "name": "cubes"
             },
             "path": "sketches/3d-stuff/cubes"
          },
          "hsb": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.537Z",
+               "_mtime": "2022-10-30T14:58:08.611Z",
                "name": "hsb"
             },
             "path": "sketches/3d-stuff/hsb"
          },
          "lines": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.545Z",
+               "_mtime": "2023-01-09T13:33:22.809Z",
                "name": "lines"
             },
             "path": "sketches/3d-stuff/lines"
@@ -389,20 +404,20 @@
    },
    "abrupt": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.555Z",
+         "_mtime": "2024-01-09T18:23:13.366Z",
          "name": "abrupt"
       },
       "sketches": {
          "abrupt-v1-pulse": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.553Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "abrupt-v1-pulse"
             },
             "path": "sketches/abrupt/abrupt-v1-pulse"
          },
          "abrupt-v2-feather": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.554Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "abrupt-v2-feather"
             },
             "path": "sketches/abrupt/abrupt-v2-feather"
@@ -411,174 +426,174 @@
    },
    "accident": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.613Z",
+         "_mtime": "2024-01-09T18:23:45.569Z",
          "name": "accident"
       },
       "sketches": {
          "accident-v1-bubble": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.555Z",
+               "_mtime": "2022-03-18T18:03:22.163Z",
                "name": "accident-v1-bubble"
             },
             "path": "sketches/accident/accident-v1-bubble"
          },
          "accident-v2-rotating-bubble": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.557Z",
+               "_mtime": "2022-03-18T18:03:32.913Z",
                "name": "accident-v2-rotating-bubble"
             },
             "path": "sketches/accident/accident-v2-rotating-bubble"
          },
          "accident-v3-lava-lamp": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.561Z",
+               "_mtime": "2022-03-18T18:03:37.728Z",
                "name": "accident-v3-lava-lamp"
             },
             "path": "sketches/accident/accident-v3-lava-lamp"
          },
          "accident-v4-crack-fire": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.563Z",
+               "_mtime": "2022-03-18T18:03:41.755Z",
                "name": "accident-v4-crack-fire"
             },
             "path": "sketches/accident/accident-v4-crack-fire"
          },
          "accident-v4-cross-fire": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.564Z",
+               "_mtime": "2022-03-18T18:03:45.139Z",
                "name": "accident-v4-cross-fire"
             },
             "path": "sketches/accident/accident-v4-cross-fire"
          },
          "accident-v5-chandelier": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.566Z",
+               "_mtime": "2022-03-18T18:03:49.890Z",
                "name": "accident-v5-chandelier"
             },
             "path": "sketches/accident/accident-v5-chandelier"
          },
          "accident-v6-chandelier-warp": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.569Z",
+               "_mtime": "2022-03-18T18:05:25.068Z",
                "name": "accident-v6-chandelier-warp"
             },
             "path": "sketches/accident/accident-v6-chandelier-warp"
          },
          "accident-v6-chandelier-warp-blurry-vertical": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.567Z",
+               "_mtime": "2022-10-30T14:57:40.778Z",
                "name": "accident-v6-chandelier-warp-blurry-vertical"
             },
             "path": "sketches/accident/accident-v6-chandelier-warp-blurry-vertical"
          },
          "accident-v6-chandelier-warps": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.583Z",
+               "_mtime": "2022-03-18T18:03:58.994Z",
                "name": "accident-v6-chandelier-warps"
             },
             "path": "sketches/accident/accident-v6-chandelier-warps"
          },
          "accident-v6-chandelier-warps-blurry": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.577Z",
+               "_mtime": "2022-10-30T14:57:46.663Z",
                "name": "accident-v6-chandelier-warps-blurry"
             },
             "path": "sketches/accident/accident-v6-chandelier-warps-blurry"
          },
          "accident-v6-chandelier-warps-gradient": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.580Z",
+               "_mtime": "2022-03-18T18:04:05.553Z",
                "name": "accident-v6-chandelier-warps-gradient"
             },
             "path": "sketches/accident/accident-v6-chandelier-warps-gradient"
          },
          "accident-v6-chanderlier-warps-red": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.585Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "accident-v6-chanderlier-warps-red"
             },
             "path": "sketches/accident/accident-v6-chanderlier-warps-red"
          },
          "accident-v7-chewing-gum-strings": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.593Z",
+               "_mtime": "2022-03-18T18:04:12.563Z",
                "name": "accident-v7-chewing-gum-strings"
             },
             "path": "sketches/accident/accident-v7-chewing-gum-strings"
          },
          "accident-v7-chewing-gum-strings-v2": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.588Z",
+               "_mtime": "2022-03-18T18:04:35.635Z",
                "name": "accident-v7-chewing-gum-strings-v2"
             },
             "path": "sketches/accident/accident-v7-chewing-gum-strings-v2"
          },
          "accident-v7-chewing-gum-strings-v3": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.589Z",
+               "_mtime": "2022-03-18T18:04:38.332Z",
                "name": "accident-v7-chewing-gum-strings-v3"
             },
             "path": "sketches/accident/accident-v7-chewing-gum-strings-v3"
          },
          "accident-v8-circle": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.594Z",
+               "_mtime": "2022-03-18T18:04:40.977Z",
                "name": "accident-v8-circle"
             },
             "path": "sketches/accident/accident-v8-circle"
          },
          "accident-v8-dansing-dna": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.596Z",
+               "_mtime": "2022-03-18T18:04:43.072Z",
                "name": "accident-v8-dansing-dna"
             },
             "path": "sketches/accident/accident-v8-dansing-dna"
          },
          "accident-v9-eccentric-acid": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.598Z",
+               "_mtime": "2022-03-18T18:04:45.588Z",
                "name": "accident-v9-eccentric-acid"
             },
             "path": "sketches/accident/accident-v9-eccentric-acid"
          },
          "accident-v9-eccentric-audio": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.600Z",
+               "_mtime": "2022-03-18T18:04:48.212Z",
                "name": "accident-v9-eccentric-audio"
             },
             "path": "sketches/accident/accident-v9-eccentric-audio"
          },
          "accident-v9-eccentric-balls-blurry": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.602Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "accident-v9-eccentric-balls-blurry"
             },
             "path": "sketches/accident/accident-v9-eccentric-balls-blurry"
          },
          "accident-v9-eccentric-mirror": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.604Z",
+               "_mtime": "2022-03-18T18:04:53.342Z",
                "name": "accident-v9-eccentric-mirror"
             },
             "path": "sketches/accident/accident-v9-eccentric-mirror"
          },
          "accident-v9-eccentric-strip": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.607Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "accident-v9-eccentric-strip"
             },
             "path": "sketches/accident/accident-v9-eccentric-strip"
          },
          "accident-v9-eccentric-strip-blurry": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.605Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "accident-v9-eccentric-strip-blurry"
             },
             "path": "sketches/accident/accident-v9-eccentric-strip-blurry"
          },
          "accident-v9-eccentric-twist": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.609Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "accident-v9-eccentric-twist"
             },
             "path": "sketches/accident/accident-v9-eccentric-twist"
@@ -587,132 +602,132 @@
    },
    "alphabet-scroll": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.643Z",
+         "_mtime": "2024-01-09T18:24:10.557Z",
          "name": "alphabet-scroll"
       },
       "sketches": {
          "alphabet-scroll-v1-a-z-Z-A": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.614Z",
+               "_mtime": "2023-09-27T10:41:09.733Z",
                "name": "alphabet-scroll-v1-a-z-Z-A"
             },
             "path": "sketches/alphabet-scroll/alphabet-scroll-v1-a-z-Z-A"
          },
          "alphabet-scroll-v10-alphabet-scroll-viewport": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.615Z",
+               "_mtime": "2023-10-06T10:58:08.976Z",
                "name": "alphabet-scroll-v10-alphabet-scroll-viewport"
             },
             "path": "sketches/alphabet-scroll/alphabet-scroll-v10-alphabet-scroll-viewport"
          },
          "alphabet-scroll-v11-alphabet-scroll-zoom": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.617Z",
+               "_mtime": "2023-09-27T23:08:51.173Z",
                "name": "alphabet-scroll-v11-alphabet-scroll-zoom"
             },
             "path": "sketches/alphabet-scroll/alphabet-scroll-v11-alphabet-scroll-zoom"
          },
          "alphabet-scroll-v12-text-points-drawer": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.619Z",
+               "_mtime": "2023-10-28T05:33:50.541Z",
                "name": "alphabet-scroll-v12-text-points-drawer"
             },
             "path": "sketches/alphabet-scroll/alphabet-scroll-v12-text-points-drawer"
          },
          "alphabet-scroll-v13-letter-swap-spiral": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.620Z",
+               "_mtime": "2023-10-05T14:45:17.213Z",
                "name": "alphabet-scroll-v13-letter-swap-spiral"
             },
             "path": "sketches/alphabet-scroll/alphabet-scroll-v13-letter-swap-spiral"
          },
          "alphabet-scroll-v14-flower": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.621Z",
+               "_mtime": "2023-10-05T15:00:25.381Z",
                "name": "alphabet-scroll-v14-flower"
             },
             "path": "sketches/alphabet-scroll/alphabet-scroll-v14-flower"
          },
          "alphabet-scroll-v14-vs": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.622Z",
+               "_mtime": "2023-10-06T10:11:04.666Z",
                "name": "alphabet-scroll-v14-vs"
             },
             "path": "sketches/alphabet-scroll/alphabet-scroll-v14-vs"
          },
          "alphabet-scroll-v15-french-numbers": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.624Z",
+               "_mtime": "2023-10-06T12:37:24.864Z",
                "name": "alphabet-scroll-v15-french-numbers"
             },
             "path": "sketches/alphabet-scroll/alphabet-scroll-v15-french-numbers"
          },
          "alphabet-scroll-v2-xyz": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.626Z",
+               "_mtime": "2023-09-27T10:41:09.735Z",
                "name": "alphabet-scroll-v2-xyz"
             },
             "path": "sketches/alphabet-scroll/alphabet-scroll-v2-xyz"
          },
          "alphabet-scroll-v3-numbers": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.632Z",
+               "_mtime": "2023-10-06T10:14:33.423Z",
                "name": "alphabet-scroll-v3-numbers"
             },
             "path": "sketches/alphabet-scroll/alphabet-scroll-v3-numbers"
          },
          "alphabet-scroll-v4-alphabet": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.636Z",
+               "_mtime": "2023-09-27T10:41:09.739Z",
                "name": "alphabet-scroll-v4-alphabet"
             },
             "path": "sketches/alphabet-scroll/alphabet-scroll-v4-alphabet"
          },
          "alphabet-scroll-v5-la-si-do-re-mi": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.637Z",
+               "_mtime": "2023-09-27T10:41:09.741Z",
                "name": "alphabet-scroll-v5-la-si-do-re-mi"
             },
             "path": "sketches/alphabet-scroll/alphabet-scroll-v5-la-si-do-re-mi"
          },
          "alphabet-scroll-v6-debug": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.638Z",
+               "_mtime": "2023-09-27T10:41:09.717Z",
                "name": "alphabet-scroll-v6-debug"
             },
             "path": "sketches/alphabet-scroll/alphabet-scroll-v6-debug"
          },
          "alphabet-scroll-v7-chromatic-scales": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.639Z",
+               "_mtime": "2023-09-27T10:49:17.616Z",
                "name": "alphabet-scroll-v7-chromatic-scales"
             },
             "path": "sketches/alphabet-scroll/alphabet-scroll-v7-chromatic-scales"
          },
          "alphabet-scroll-v8-alphabet-scroll": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.641Z",
+               "_mtime": "2023-12-31T19:09:21.924Z",
                "name": "alphabet-scroll-v8-alphabet-scroll"
             },
             "path": "sketches/alphabet-scroll/alphabet-scroll-v8-alphabet-scroll"
          },
          "alphabet-scroll-v9-alphabet-circular": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.644Z",
+               "_mtime": "2023-09-27T15:31:47.961Z",
                "name": "alphabet-scroll-v9-alphabet-circular"
             },
             "path": "sketches/alphabet-scroll/alphabet-scroll-v9-alphabet-circular"
          },
          "alphabet-scroll-v9-alphabet-circular-aurelio": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.641Z",
+               "_mtime": "2023-11-22T20:06:08.696Z",
                "name": "alphabet-scroll-v9-alphabet-circular-aurelio"
             },
             "path": "sketches/alphabet-scroll/alphabet-scroll-v9-alphabet-circular-aurelio"
          },
          "alphabet-scroll-v9-alphabet-circular-sbk": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.642Z",
+               "_mtime": "2023-10-04T22:10:58.084Z",
                "name": "alphabet-scroll-v9-alphabet-circular-sbk"
             },
             "path": "sketches/alphabet-scroll/alphabet-scroll-v9-alphabet-circular-sbk"
@@ -721,90 +736,90 @@
    },
    "animated-text-points": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.658Z",
+         "_mtime": "2024-01-09T18:24:27.649Z",
          "name": "animated-text-points"
       },
       "sketches": {
          "animated-text-points-v0-flower": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.645Z",
+               "_mtime": "2023-04-01T11:42:34.019Z",
                "name": "animated-text-points-v0-flower"
             },
             "path": "sketches/animated-text-points/animated-text-points-v0-flower"
          },
          "animated-text-points-v1-grid": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.646Z",
+               "_mtime": "2023-03-24T15:47:56.659Z",
                "name": "animated-text-points-v1-grid"
             },
             "path": "sketches/animated-text-points/animated-text-points-v1-grid"
          },
          "animated-text-points-v10-asterisk": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.647Z",
+               "_mtime": "2023-04-08T08:42:22.312Z",
                "name": "animated-text-points-v10-asterisk"
             },
             "path": "sketches/animated-text-points/animated-text-points-v10-asterisk"
          },
          "animated-text-points-v12-counter": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.648Z",
+               "_mtime": "2024-01-05T14:02:54.096Z",
                "name": "animated-text-points-v12-counter"
             },
             "path": "sketches/animated-text-points/animated-text-points-v12-counter"
          },
          "animated-text-points-v12-more-warping": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.649Z",
+               "_mtime": "2023-05-13T11:05:32.535Z",
                "name": "animated-text-points-v12-more-warping"
             },
             "path": "sketches/animated-text-points/animated-text-points-v12-more-warping"
          },
          "animated-text-points-v2-dotted": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.650Z",
+               "_mtime": "2023-10-28T06:00:28.008Z",
                "name": "animated-text-points-v2-dotted"
             },
             "path": "sketches/animated-text-points/animated-text-points-v2-dotted"
          },
          "animated-text-points-v3-glitch": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.651Z",
+               "_mtime": "2023-03-24T15:47:56.663Z",
                "name": "animated-text-points-v3-glitch"
             },
             "path": "sketches/animated-text-points/animated-text-points-v3-glitch"
          },
          "animated-text-points-v4-wavy-a": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.653Z",
+               "_mtime": "2023-03-24T15:47:56.665Z",
                "name": "animated-text-points-v4-wavy-a"
             },
             "path": "sketches/animated-text-points/animated-text-points-v4-wavy-a"
          },
          "animated-text-points-v5-wavy-b": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.654Z",
+               "_mtime": "2023-03-24T15:47:56.667Z",
                "name": "animated-text-points-v5-wavy-b"
             },
             "path": "sketches/animated-text-points/animated-text-points-v5-wavy-b"
          },
          "animated-text-points-v6-black": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.656Z",
+               "_mtime": "2023-03-25T02:09:34.239Z",
                "name": "animated-text-points-v6-black"
             },
             "path": "sketches/animated-text-points/animated-text-points-v6-black"
          },
          "animated-text-points-v7-normal-material": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.657Z",
+               "_mtime": "2023-03-24T15:51:35.499Z",
                "name": "animated-text-points-v7-normal-material"
             },
             "path": "sketches/animated-text-points/animated-text-points-v7-normal-material"
          },
          "animated-text-points-v9-warping": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.658Z",
+               "_mtime": "2023-03-26T20:08:04.079Z",
                "name": "animated-text-points-v9-warping"
             },
             "path": "sketches/animated-text-points/animated-text-points-v9-warping"
@@ -813,20 +828,20 @@
    },
    "arrow": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.661Z",
+         "_mtime": "2024-01-09T18:24:30.343Z",
          "name": "arrow"
       },
       "sketches": {
          "arrow-v1-perlin": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.659Z",
+               "_mtime": "2022-12-27T23:02:01.072Z",
                "name": "arrow-v1-perlin"
             },
             "path": "sketches/arrow/arrow-v1-perlin"
          },
          "arrow-v2-polar": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.660Z",
+               "_mtime": "2023-06-17T13:56:39.174Z",
                "name": "arrow-v2-polar"
             },
             "path": "sketches/arrow/arrow-v2-polar"
@@ -835,69 +850,69 @@
    },
    "audio-reactive": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.671Z",
+         "_mtime": "2024-01-09T18:24:42.896Z",
          "name": "audio-reactive"
       },
       "sketches": {
          "audio-reactive-v1-level": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.661Z",
+               "_mtime": "2022-10-30T14:58:07.694Z",
                "name": "audio-reactive-v1-level"
             },
             "path": "sketches/audio-reactive/audio-reactive-v1-level"
          },
          "audio-reactive-v2-fft-debug": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.662Z",
+               "_mtime": "2022-10-30T14:58:07.694Z",
                "name": "audio-reactive-v2-fft-debug"
             },
             "path": "sketches/audio-reactive/audio-reactive-v2-fft-debug"
          },
          "audio-reactive-v3-smooth-test": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.664Z",
+               "_mtime": "2023-06-17T13:36:39.118Z",
                "name": "audio-reactive-v3-smooth-test"
             },
             "path": "sketches/audio-reactive/audio-reactive-v3-smooth-test"
          },
          "audio-reactive-v4-spider": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.665Z",
+               "_mtime": "2022-09-14T19:32:09.358Z",
                "name": "audio-reactive-v4-spider"
             },
             "path": "sketches/audio-reactive/audio-reactive-v4-spider"
          },
          "audio-reactive-v5-droplets": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.666Z",
+               "_mtime": "2022-10-30T14:58:50.089Z",
                "name": "audio-reactive-v5-droplets"
             },
             "path": "sketches/audio-reactive/audio-reactive-v5-droplets"
          },
          "audio-reactive-v6-beat-counter": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.667Z",
+               "_mtime": "2022-10-30T14:58:50.171Z",
                "name": "audio-reactive-v6-beat-counter"
             },
             "path": "sketches/audio-reactive/audio-reactive-v6-beat-counter"
          },
          "audio-reactive-v7-spectrograph": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.669Z",
+               "_mtime": "2023-06-17T14:12:53.936Z",
                "name": "audio-reactive-v7-spectrograph"
             },
             "path": "sketches/audio-reactive/audio-reactive-v7-spectrograph"
          },
          "audio-reactive-v7-spectrograph-3d": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.668Z",
+               "_mtime": "2023-06-28T15:51:22.121Z",
                "name": "audio-reactive-v7-spectrograph-3d"
             },
             "path": "sketches/audio-reactive/audio-reactive-v7-spectrograph-3d"
          },
          "audio-reactive-v8-music-lines": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.670Z",
+               "_mtime": "2023-09-27T10:41:09.724Z",
                "name": "audio-reactive-v8-music-lines"
             },
             "path": "sketches/audio-reactive/audio-reactive-v8-music-lines"
@@ -906,90 +921,90 @@
    },
    "background-pattern": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.686Z",
+         "_mtime": "2024-01-09T18:24:59.283Z",
          "name": "background-pattern"
       },
       "sketches": {
          "background-pattern-easing-lines": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.671Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "background-pattern-easing-lines"
             },
             "path": "sketches/background-pattern/background-pattern-easing-lines"
          },
          "background-pattern-sinwave-lines": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.672Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "background-pattern-sinwave-lines"
             },
             "path": "sketches/background-pattern/background-pattern-sinwave-lines"
          },
          "background-pattern-spring": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.673Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "background-pattern-spring"
             },
             "path": "sketches/background-pattern/background-pattern-spring"
          },
          "background-pattern-v10-crazy": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.674Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "background-pattern-v10-crazy"
             },
             "path": "sketches/background-pattern/background-pattern-v10-crazy"
          },
          "background-pattern-v2-radial": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.676Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "background-pattern-v2-radial"
             },
             "path": "sketches/background-pattern/background-pattern-v2-radial"
          },
          "background-pattern-v3-radial-eyelashes": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.677Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "background-pattern-v3-radial-eyelashes"
             },
             "path": "sketches/background-pattern/background-pattern-v3-radial-eyelashes"
          },
          "background-pattern-v4-radial-purple": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.679Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "background-pattern-v4-radial-purple"
             },
             "path": "sketches/background-pattern/background-pattern-v4-radial-purple"
          },
          "background-pattern-v5-big-eyelashes": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.680Z",
+               "_mtime": "2022-08-15T14:16:35.806Z",
                "name": "background-pattern-v5-big-eyelashes"
             },
             "path": "sketches/background-pattern/background-pattern-v5-big-eyelashes"
          },
          "background-pattern-v6-legs": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.681Z",
+               "_mtime": "2022-10-30T14:58:07.694Z",
                "name": "background-pattern-v6-legs"
             },
             "path": "sketches/background-pattern/background-pattern-v6-legs"
          },
          "background-pattern-v7-butterfly": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.683Z",
+               "_mtime": "2023-05-10T19:28:20.845Z",
                "name": "background-pattern-v7-butterfly"
             },
             "path": "sketches/background-pattern/background-pattern-v7-butterfly"
          },
          "background-pattern-v8-kite": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.684Z",
+               "_mtime": "2023-01-01T14:59:06.941Z",
                "name": "background-pattern-v8-kite"
             },
             "path": "sketches/background-pattern/background-pattern-v8-kite"
          },
          "background-pattern-v9-bounce": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.685Z",
+               "_mtime": "2022-10-30T14:58:07.694Z",
                "name": "background-pattern-v9-bounce"
             },
             "path": "sketches/background-pattern/background-pattern-v9-bounce"
@@ -998,48 +1013,48 @@
    },
    "blob": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.693Z",
+         "_mtime": "2024-01-09T18:25:07.373Z",
          "name": "blob"
       },
       "sketches": {
          "blob-v1-jump": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.687Z",
+               "_mtime": "2022-10-30T14:58:07.694Z",
                "name": "blob-v1-jump"
             },
             "path": "sketches/blob/blob-v1-jump"
          },
          "blob-v2-caterpillar": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.688Z",
+               "_mtime": "2022-10-30T14:58:07.694Z",
                "name": "blob-v2-caterpillar"
             },
             "path": "sketches/blob/blob-v2-caterpillar"
          },
          "blob-v2-invisible-walls": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.689Z",
+               "_mtime": "2022-10-30T14:58:07.694Z",
                "name": "blob-v2-invisible-walls"
             },
             "path": "sketches/blob/blob-v2-invisible-walls"
          },
          "blob-v2a-caterpillar-abrupt-1": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.690Z",
+               "_mtime": "2022-10-30T14:58:07.694Z",
                "name": "blob-v2a-caterpillar-abrupt-1"
             },
             "path": "sketches/blob/blob-v2a-caterpillar-abrupt-1"
          },
          "blob-v2a-caterpillar-abrupt-2": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.691Z",
+               "_mtime": "2022-10-30T14:58:07.694Z",
                "name": "blob-v2a-caterpillar-abrupt-2"
             },
             "path": "sketches/blob/blob-v2a-caterpillar-abrupt-2"
          },
          "blob-v3-sequence": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.692Z",
+               "_mtime": "2022-08-15T11:05:36.201Z",
                "name": "blob-v3-sequence"
             },
             "path": "sketches/blob/blob-v3-sequence"
@@ -1048,62 +1063,62 @@
    },
    "chromatic-rorschach": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.700Z",
+         "_mtime": "2024-01-09T18:25:18.817Z",
          "name": "chromatic-rorschach"
       },
       "sketches": {
          "chromatic-rorschach-1": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.693Z",
+               "_mtime": "2023-07-01T08:48:12.946Z",
                "name": "chromatic-rorschach-1"
             },
             "path": "sketches/chromatic-rorschach/chromatic-rorschach-1"
          },
          "chromatic-rorschach-2": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.695Z",
+               "_mtime": "2023-07-01T08:46:21.411Z",
                "name": "chromatic-rorschach-2"
             },
             "path": "sketches/chromatic-rorschach/chromatic-rorschach-2"
          },
          "chromatic-rorschach-3-audio-reactive": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.700Z",
+               "_mtime": "2023-07-12T22:09:48.248Z",
                "name": "chromatic-rorschach-3-audio-reactive"
             },
             "path": "sketches/chromatic-rorschach/chromatic-rorschach-3-audio-reactive"
          },
          "chromatic-rorschach-3-audio-reactive-pipe-spectrograph": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.696Z",
+               "_mtime": "2023-07-17T18:02:15.296Z",
                "name": "chromatic-rorschach-3-audio-reactive-pipe-spectrograph"
             },
             "path": "sketches/chromatic-rorschach/chromatic-rorschach-3-audio-reactive-pipe-spectrograph"
          },
          "chromatic-rorschach-3-audio-reactive-spectrograph-0": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.697Z",
+               "_mtime": "2023-07-18T12:37:43.357Z",
                "name": "chromatic-rorschach-3-audio-reactive-spectrograph-0"
             },
             "path": "sketches/chromatic-rorschach/chromatic-rorschach-3-audio-reactive-spectrograph-0"
          },
          "chromatic-rorschach-3-audio-reactive-spectrograph-1": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.698Z",
+               "_mtime": "2023-07-27T16:43:18.541Z",
                "name": "chromatic-rorschach-3-audio-reactive-spectrograph-1"
             },
             "path": "sketches/chromatic-rorschach/chromatic-rorschach-3-audio-reactive-spectrograph-1"
          },
          "chromatic-rorschach-3-audio-reactive-spectrograph-2": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.698Z",
+               "_mtime": "2023-07-19T21:43:43.486Z",
                "name": "chromatic-rorschach-3-audio-reactive-spectrograph-2"
             },
             "path": "sketches/chromatic-rorschach/chromatic-rorschach-3-audio-reactive-spectrograph-2"
          },
          "chromatic-rorschach-3-audio-reactive-spectrograph-3": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.699Z",
+               "_mtime": "2023-07-27T13:15:00.259Z",
                "name": "chromatic-rorschach-3-audio-reactive-spectrograph-3"
             },
             "path": "sketches/chromatic-rorschach/chromatic-rorschach-3-audio-reactive-spectrograph-3"
@@ -1112,97 +1127,97 @@
    },
    "churros": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.714Z",
+         "_mtime": "2024-01-09T18:25:36.324Z",
          "name": "churros"
       },
       "sketches": {
          "churros-v1-circle": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.701Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "churros-v1-circle"
             },
             "path": "sketches/churros/churros-v1-circle"
          },
          "churros-v10-tracer": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.702Z",
+               "_mtime": "2022-10-30T17:30:02.169Z",
                "name": "churros-v10-tracer"
             },
             "path": "sketches/churros/churros-v10-tracer"
          },
          "churros-v11-perspective": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.703Z",
+               "_mtime": "2022-10-30T14:58:09.130Z",
                "name": "churros-v11-perspective"
             },
             "path": "sketches/churros/churros-v11-perspective"
          },
          "churros-v2-string": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.704Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "churros-v2-string"
             },
             "path": "sketches/churros/churros-v2-string"
          },
          "churros-v3-loop": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.705Z",
+               "_mtime": "2022-10-30T14:58:08.706Z",
                "name": "churros-v3-loop"
             },
             "path": "sketches/churros/churros-v3-loop"
          },
          "churros-v4-line": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.706Z",
+               "_mtime": "2022-10-30T14:58:08.688Z",
                "name": "churros-v4-line"
             },
             "path": "sketches/churros/churros-v4-line"
          },
          "churros-v5-serpent": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.707Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "churros-v5-serpent"
             },
             "path": "sketches/churros/churros-v5-serpent"
          },
          "churros-v6-scarf": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.708Z",
+               "_mtime": "2022-10-30T14:58:09.090Z",
                "name": "churros-v6-scarf"
             },
             "path": "sketches/churros/churros-v6-scarf"
          },
          "churros-v7-pasta": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.709Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "churros-v7-pasta"
             },
             "path": "sketches/churros/churros-v7-pasta"
          },
          "churros-v8-pasta-guided": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.710Z",
+               "_mtime": "2022-10-30T14:58:09.090Z",
                "name": "churros-v8-pasta-guided"
             },
             "path": "sketches/churros/churros-v8-pasta-guided"
          },
          "churros-v9-pasta-fixer": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.711Z",
+               "_mtime": "2022-10-30T14:58:08.629Z",
                "name": "churros-v9-pasta-fixer"
             },
             "path": "sketches/churros/churros-v9-pasta-fixer"
          },
          "churros-v9-pasta-rgb-fixer": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.713Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "churros-v9-pasta-rgb-fixer"
             },
             "path": "sketches/churros/churros-v9-pasta-rgb-fixer"
          },
          "churros-v9-pasta-scanner": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.714Z",
+               "_mtime": "2022-10-30T14:58:08.940Z",
                "name": "churros-v9-pasta-scanner"
             },
             "path": "sketches/churros/churros-v9-pasta-scanner"
@@ -1211,20 +1226,20 @@
    },
    "danse-motion-bachata": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.717Z",
+         "_mtime": "2024-01-09T18:25:39.086Z",
          "name": "danse-motion-bachata"
       },
       "sketches": {
          "danse-motion-bachata-v1": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.715Z",
+               "_mtime": "2023-09-08T00:11:23.351Z",
                "name": "danse-motion-bachata-v1"
             },
             "path": "sketches/danse-motion-bachata/danse-motion-bachata-v1"
          },
          "danse-motion-bachata-v2-steps": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.716Z",
+               "_mtime": "2023-09-08T02:23:14.132Z",
                "name": "danse-motion-bachata-v2-steps"
             },
             "path": "sketches/danse-motion-bachata/danse-motion-bachata-v2-steps"
@@ -1233,62 +1248,62 @@
    },
    "demo-festival-2022": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.729Z",
+         "_mtime": "2024-01-09T18:25:49.910Z",
          "name": "demo-festival-2022"
       },
       "sketches": {
          "1-guided-pasta": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.717Z",
+               "_mtime": "2022-10-30T14:58:07.694Z",
                "name": "1-guided-pasta"
             },
             "path": "sketches/demo-festival-2022/1-guided-pasta"
          },
          "2-wormy-churros": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.718Z",
+               "_mtime": "2023-12-25T21:31:52.163Z",
                "name": "2-wormy-churros"
             },
             "path": "sketches/demo-festival-2022/2-wormy-churros"
          },
          "3-rainbow-to-purple": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.720Z",
+               "_mtime": "2022-10-30T14:58:07.694Z",
                "name": "3-rainbow-to-purple"
             },
             "path": "sketches/demo-festival-2022/3-rainbow-to-purple"
          },
          "4-rainbowed-medusa": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.721Z",
+               "_mtime": "2022-10-30T14:58:07.694Z",
                "name": "4-rainbowed-medusa"
             },
             "path": "sketches/demo-festival-2022/4-rainbowed-medusa"
          },
          "5-fox-tail": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.722Z",
+               "_mtime": "2022-10-30T14:58:07.694Z",
                "name": "5-fox-tail"
             },
             "path": "sketches/demo-festival-2022/5-fox-tail"
          },
          "6-caterpillar": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.723Z",
+               "_mtime": "2022-10-30T14:58:07.694Z",
                "name": "6-caterpillar"
             },
             "path": "sketches/demo-festival-2022/6-caterpillar"
          },
          "7-rainbow-turbine": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.725Z",
+               "_mtime": "2022-07-10T22:25:20.561Z",
                "name": "7-rainbow-turbine"
             },
             "path": "sketches/demo-festival-2022/7-rainbow-turbine"
          },
          "8-rainbow-turbine-chain": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.728Z",
+               "_mtime": "2022-07-29T15:39:15.452Z",
                "name": "8-rainbow-turbine-chain"
             },
             "path": "sketches/demo-festival-2022/8-rainbow-turbine-chain"
@@ -1297,76 +1312,76 @@
    },
    "easing": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.763Z",
+         "_mtime": "2024-01-09T18:26:02.094Z",
          "name": "easing"
       },
       "sketches": {
          "easing-v1-all-functions": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.730Z",
+               "_mtime": "2022-09-11T19:19:42.895Z",
                "name": "easing-v1-all-functions"
             },
             "path": "sketches/easing/easing-v1-all-functions"
          },
          "easing-v2-flower": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.738Z",
+               "_mtime": "2022-08-29T13:42:30.259Z",
                "name": "easing-v2-flower"
             },
             "path": "sketches/easing/easing-v2-flower"
          },
          "easing-v2-flower copy": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.731Z",
+               "_mtime": "2023-10-28T06:49:21.936Z",
                "name": "easing-v2-flower copy"
             },
             "path": "sketches/easing/easing-v2-flower copy"
          },
          "easing-v2-spikes-with-grid": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.740Z",
+               "_mtime": "2022-09-19T16:25:05.085Z",
                "name": "easing-v2-spikes-with-grid"
             },
             "path": "sketches/easing/easing-v2-spikes-with-grid"
          },
          "easing-v3-warp-a": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.743Z",
+               "_mtime": "2022-08-20T11:55:40.396Z",
                "name": "easing-v3-warp-a"
             },
             "path": "sketches/easing/easing-v3-warp-a"
          },
          "easing-v3-warp-b": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.746Z",
+               "_mtime": "2022-08-25T22:40:03.822Z",
                "name": "easing-v3-warp-b"
             },
             "path": "sketches/easing/easing-v3-warp-b"
          },
          "easing-v4-clock": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.748Z",
+               "_mtime": "2023-01-01T13:29:12.010Z",
                "name": "easing-v4-clock"
             },
             "path": "sketches/easing/easing-v4-clock"
          },
          "easing-v5-star": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.754Z",
+               "_mtime": "2023-01-01T12:56:02.735Z",
                "name": "easing-v5-star"
             },
             "path": "sketches/easing/easing-v5-star"
          },
          "easing-v6-moving-ball": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.758Z",
+               "_mtime": "2023-01-04T23:37:14.854Z",
                "name": "easing-v6-moving-ball"
             },
             "path": "sketches/easing/easing-v6-moving-ball"
          },
          "easing-v7-text-points": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.762Z",
+               "_mtime": "2023-01-04T23:41:47.474Z",
                "name": "easing-v7-text-points"
             },
             "path": "sketches/easing/easing-v7-text-points"
@@ -1375,48 +1390,48 @@
    },
    "flowers": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.774Z",
+         "_mtime": "2024-01-09T18:26:10.707Z",
          "name": "flowers"
       },
       "sketches": {
          "flowers-v0-turbine": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.763Z",
+               "_mtime": "2022-12-27T22:56:35.829Z",
                "name": "flowers-v0-turbine"
             },
             "path": "sketches/flowers/flowers-v0-turbine"
          },
          "flowers-v1-recursive": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.764Z",
+               "_mtime": "2022-12-27T22:51:26.017Z",
                "name": "flowers-v1-recursive"
             },
             "path": "sketches/flowers/flowers-v1-recursive"
          },
          "flowers-v2-triple": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.765Z",
+               "_mtime": "2022-12-27T22:51:26.019Z",
                "name": "flowers-v2-triple"
             },
             "path": "sketches/flowers/flowers-v2-triple"
          },
          "flowers-v3-petals-flapping": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.766Z",
+               "_mtime": "2022-12-27T22:51:26.024Z",
                "name": "flowers-v3-petals-flapping"
             },
             "path": "sketches/flowers/flowers-v3-petals-flapping"
          },
          "flowers-v4-easing-curves": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.768Z",
+               "_mtime": "2022-12-27T22:51:26.034Z",
                "name": "flowers-v4-easing-curves"
             },
             "path": "sketches/flowers/flowers-v4-easing-curves"
          },
          "flowers-v5-spiral": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.769Z",
+               "_mtime": "2023-07-10T13:12:43.380Z",
                "name": "flowers-v5-spiral"
             },
             "path": "sketches/flowers/flowers-v5-spiral"
@@ -1425,90 +1440,90 @@
    },
    "genuary2022": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.795Z",
+         "_mtime": "2024-01-09T18:26:29.028Z",
          "name": "genuary2022"
       },
       "sketches": {
          "genuary2022-day1": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.782Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "genuary2022-day1"
             },
             "path": "sketches/genuary2022/genuary2022-day1"
          },
          "genuary2022-day13": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.784Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "genuary2022-day13"
             },
             "path": "sketches/genuary2022/genuary2022-day13"
          },
          "genuary2022-day15": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.786Z",
+               "_mtime": "2022-10-30T17:02:11.078Z",
                "name": "genuary2022-day15"
             },
             "path": "sketches/genuary2022/genuary2022-day15"
          },
          "genuary2022-day16": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.787Z",
+               "_mtime": "2022-10-30T17:08:10.038Z",
                "name": "genuary2022-day16"
             },
             "path": "sketches/genuary2022/genuary2022-day16"
          },
          "genuary2022-day17": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.788Z",
+               "_mtime": "2022-10-30T17:02:29.906Z",
                "name": "genuary2022-day17"
             },
             "path": "sketches/genuary2022/genuary2022-day17"
          },
          "genuary2022-day2": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.789Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "genuary2022-day2"
             },
             "path": "sketches/genuary2022/genuary2022-day2"
          },
          "genuary2022-day3": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.790Z",
+               "_mtime": "2022-10-30T17:04:38.851Z",
                "name": "genuary2022-day3"
             },
             "path": "sketches/genuary2022/genuary2022-day3"
          },
          "genuary2022-day5": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.791Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "genuary2022-day5"
             },
             "path": "sketches/genuary2022/genuary2022-day5"
          },
          "genuary2022-day8": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.794Z",
+               "_mtime": "2022-10-30T17:18:04.708Z",
                "name": "genuary2022-day8"
             },
             "path": "sketches/genuary2022/genuary2022-day8"
          },
          "genuary2022-day8-polar-worm": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.792Z",
+               "_mtime": "2022-10-30T17:00:36.196Z",
                "name": "genuary2022-day8-polar-worm"
             },
             "path": "sketches/genuary2022/genuary2022-day8-polar-worm"
          },
          "genuary2022-day8-silk": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.793Z",
+               "_mtime": "2022-10-30T17:18:59.447Z",
                "name": "genuary2022-day8-silk"
             },
             "path": "sketches/genuary2022/genuary2022-day8-silk"
          },
          "genuary2022-game": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.795Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "genuary2022-game"
             },
             "path": "sketches/genuary2022/genuary2022-game"
@@ -1517,104 +1532,104 @@
    },
    "genuary2023": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.816Z",
+         "_mtime": "2024-01-10T00:42:59.671Z",
          "name": "genuary2023"
       },
       "sketches": {
          "genuary2023-day1-infinite-loop": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.796Z",
+               "_mtime": "2023-01-03T18:44:26.989Z",
                "name": "genuary2023-day1-infinite-loop"
             },
             "path": "sketches/genuary2023/genuary2023-day1-infinite-loop"
          },
          "genuary2023-day10-generative-music": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.797Z",
+               "_mtime": "2023-02-05T19:39:20.557Z",
                "name": "genuary2023-day10-generative-music"
             },
             "path": "sketches/genuary2023/genuary2023-day10-generative-music"
          },
          "genuary2023-day2-10-minutes": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.798Z",
+               "_mtime": "2024-01-10T00:42:33.345Z",
                "name": "genuary2023-day2-10-minutes"
             },
             "path": "sketches/genuary2023/genuary2023-day2-10-minutes"
          },
          "genuary2023-day3-glitch-art": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.800Z",
+               "_mtime": "2023-01-07T19:54:52.251Z",
                "name": "genuary2023-day3-glitch-art"
             },
             "path": "sketches/genuary2023/genuary2023-day3-glitch-art"
          },
          "genuary2023-day4-debug-view": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.804Z",
+               "_mtime": "2023-01-10T23:33:41.369Z",
                "name": "genuary2023-day4-debug-view"
             },
             "path": "sketches/genuary2023/genuary2023-day4-debug-view"
          },
          "genuary2023-day4-intersections": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.805Z",
+               "_mtime": "2023-03-14T19:13:00.664Z",
                "name": "genuary2023-day4-intersections"
             },
             "path": "sketches/genuary2023/genuary2023-day4-intersections"
          },
          "genuary2023-day5-debug-view": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.806Z",
+               "_mtime": "2023-01-10T23:41:22.191Z",
                "name": "genuary2023-day5-debug-view"
             },
             "path": "sketches/genuary2023/genuary2023-day5-debug-view"
          },
          "genuary2023-day6-steal-like-an-arstist": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.811Z",
+               "_mtime": "2023-01-15T17:02:53.395Z",
                "name": "genuary2023-day6-steal-like-an-arstist"
             },
             "path": "sketches/genuary2023/genuary2023-day6-steal-like-an-arstist"
          },
          "genuary2023-day6-steal-like-an-arstist-a": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.807Z",
+               "_mtime": "2023-04-23T23:08:05.889Z",
                "name": "genuary2023-day6-steal-like-an-arstist-a"
             },
             "path": "sketches/genuary2023/genuary2023-day6-steal-like-an-arstist-a"
          },
          "genuary2023-day6-steal-like-an-arstist-b": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.809Z",
+               "_mtime": "2023-01-11T00:00:53.823Z",
                "name": "genuary2023-day6-steal-like-an-arstist-b"
             },
             "path": "sketches/genuary2023/genuary2023-day6-steal-like-an-arstist-b"
          },
          "genuary2023-day6-steal-like-an-arstist-c": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.810Z",
+               "_mtime": "2023-03-13T16:41:40.996Z",
                "name": "genuary2023-day6-steal-like-an-arstist-c"
             },
             "path": "sketches/genuary2023/genuary2023-day6-steal-like-an-arstist-c"
          },
          "genuary2023-day7-sample-a-color-palette": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.813Z",
+               "_mtime": "2023-01-17T21:14:24.951Z",
                "name": "genuary2023-day7-sample-a-color-palette"
             },
             "path": "sketches/genuary2023/genuary2023-day7-sample-a-color-palette"
          },
          "genuary2023-day8-signed-distance-functions": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.813Z",
+               "_mtime": "2023-01-21T02:34:40.645Z",
                "name": "genuary2023-day8-signed-distance-functions"
             },
             "path": "sketches/genuary2023/genuary2023-day8-signed-distance-functions"
          },
          "genuary2023-day9-plants": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.815Z",
+               "_mtime": "2023-01-21T18:32:17.000Z",
                "name": "genuary2023-day9-plants"
             },
             "path": "sketches/genuary2023/genuary2023-day9-plants"
@@ -1623,20 +1638,20 @@
    },
    "glowing-fish": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.818Z",
+         "_mtime": "2024-01-10T00:43:02.311Z",
          "name": "glowing-fish"
       },
       "sketches": {
          "glowing-fishes-v0": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.817Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "glowing-fishes-v0"
             },
             "path": "sketches/glowing-fish/glowing-fishes-v0"
          },
          "glowing-fishes-v1": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.818Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "glowing-fishes-v1"
             },
             "path": "sketches/glowing-fish/glowing-fishes-v1"
@@ -1645,13 +1660,13 @@
    },
    "grid-types": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.819Z",
+         "_mtime": "2024-01-10T00:43:03.655Z",
          "name": "grid-types"
       },
       "sketches": {
          "grid-types-v1-morphing": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.819Z",
+               "_mtime": "2023-12-24T01:37:44.704Z",
                "name": "grid-types-v1-morphing"
             },
             "path": "sketches/grid-types/grid-types-v1-morphing"
@@ -1660,13 +1675,13 @@
    },
    "media-pipe": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.820Z",
+         "_mtime": "2024-01-10T00:43:05.070Z",
          "name": "media-pipe"
       },
       "sketches": {
          "media-pipe-v1": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.820Z",
+               "_mtime": "2023-10-01T12:27:52.116Z",
                "name": "media-pipe-v1"
             },
             "path": "sketches/media-pipe/media-pipe-v1"
@@ -1675,55 +1690,55 @@
    },
    "midi": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.826Z",
+         "_mtime": "2024-01-10T00:44:36.007Z",
          "name": "midi"
       },
       "sketches": {
          "chromatic-rorschach-4-midi": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.821Z",
+               "_mtime": "2023-07-27T16:48:29.746Z",
                "name": "chromatic-rorschach-4-midi"
             },
             "path": "sketches/midi/chromatic-rorschach-4-midi"
          },
          "midi-v1-output": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.822Z",
+               "_mtime": "2023-07-08T00:01:58.257Z",
                "name": "midi-v1-output"
             },
             "path": "sketches/midi/midi-v1-output"
          },
          "midi-v2-input": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.822Z",
+               "_mtime": "2022-11-27T17:05:07.939Z",
                "name": "midi-v2-input"
             },
             "path": "sketches/midi/midi-v2-input"
          },
          "midi-v3-input-pills": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.823Z",
+               "_mtime": "2023-07-25T15:13:11.890Z",
                "name": "midi-v3-input-pills"
             },
             "path": "sketches/midi/midi-v3-input-pills"
          },
          "midi-v4-blurry": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.824Z",
+               "_mtime": "2022-11-27T17:04:59.438Z",
                "name": "midi-v4-blurry"
             },
             "path": "sketches/midi/midi-v4-blurry"
          },
          "midi-v6-visualizer-strips": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.825Z",
+               "_mtime": "2024-01-10T00:44:33.010Z",
                "name": "midi-v6-visualizer-strips"
             },
             "path": "sketches/midi/midi-v6-visualizer-strips"
          },
          "midi-v7-display-identifier": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.826Z",
+               "_mtime": "2023-08-18T15:16:16.188Z",
                "name": "midi-v7-display-identifier"
             },
             "path": "sketches/midi/midi-v7-display-identifier"
@@ -1732,20 +1747,20 @@
    },
    "motion-blur": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.829Z",
+         "_mtime": "2024-01-10T00:44:38.613Z",
          "name": "motion-blur"
       },
       "sketches": {
          "motion-blur-v1": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.827Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "motion-blur-v1"
             },
             "path": "sketches/motion-blur/motion-blur-v1"
          },
          "motion-blur-v2-alpha-echo": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.828Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "motion-blur-v2-alpha-echo"
             },
             "path": "sketches/motion-blur/motion-blur-v2-alpha-echo"
@@ -1754,55 +1769,55 @@
    },
    "neon": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.835Z",
+         "_mtime": "2024-01-10T00:44:47.624Z",
          "name": "neon"
       },
       "sketches": {
          "neon-v0-legacy": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.829Z",
+               "_mtime": "2022-10-30T14:58:08.568Z",
                "name": "neon-v0-legacy"
             },
             "path": "sketches/neon/neon-v0-legacy"
          },
          "neon-v1-graffiti": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.830Z",
+               "_mtime": "2022-10-30T14:58:08.568Z",
                "name": "neon-v1-graffiti"
             },
             "path": "sketches/neon/neon-v1-graffiti"
          },
          "neon-v2-polar": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.831Z",
+               "_mtime": "2022-10-30T14:58:08.568Z",
                "name": "neon-v2-polar"
             },
             "path": "sketches/neon/neon-v2-polar"
          },
          "neon-v3-can": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.832Z",
+               "_mtime": "2022-10-30T14:58:08.572Z",
                "name": "neon-v3-can"
             },
             "path": "sketches/neon/neon-v3-can"
          },
          "neon-v4-dots": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.833Z",
+               "_mtime": "2022-10-30T14:58:08.572Z",
                "name": "neon-v4-dots"
             },
             "path": "sketches/neon/neon-v4-dots"
          },
          "neon-v5-atoms": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.834Z",
+               "_mtime": "2022-10-30T14:58:08.568Z",
                "name": "neon-v5-atoms"
             },
             "path": "sketches/neon/neon-v5-atoms"
          },
          "neon-v6-sticks-offset": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.834Z",
+               "_mtime": "2022-10-30T14:58:08.530Z",
                "name": "neon-v6-sticks-offset"
             },
             "path": "sketches/neon/neon-v6-sticks-offset"
@@ -1811,97 +1826,97 @@
    },
    "noise-grid": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.860Z",
+         "_mtime": "2024-01-10T00:45:05.193Z",
          "name": "noise-grid"
       },
       "sketches": {
          "noise-grid-v1-basic": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.835Z",
+               "_mtime": "2022-11-09T19:45:46.332Z",
                "name": "noise-grid-v1-basic"
             },
             "path": "sketches/noise-grid/noise-grid-v1-basic"
          },
          "noise-grid-v10-variable-stick": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.837Z",
+               "_mtime": "2022-10-22T21:56:01.017Z",
                "name": "noise-grid-v10-variable-stick"
             },
             "path": "sketches/noise-grid/noise-grid-v10-variable-stick"
          },
          "noise-grid-v11-with-rotation": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.838Z",
+               "_mtime": "2022-10-23T01:52:46.431Z",
                "name": "noise-grid-v11-with-rotation"
             },
             "path": "sketches/noise-grid/noise-grid-v11-with-rotation"
          },
          "noise-grid-v12-field-on-fire": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.840Z",
+               "_mtime": "2022-11-09T19:55:19.833Z",
                "name": "noise-grid-v12-field-on-fire"
             },
             "path": "sketches/noise-grid/noise-grid-v12-field-on-fire"
          },
          "noise-grid-v13-blast-background": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.842Z",
+               "_mtime": "2023-03-07T18:09:02.821Z",
                "name": "noise-grid-v13-blast-background"
             },
             "path": "sketches/noise-grid/noise-grid-v13-blast-background"
          },
          "noise-grid-v2-basic-with-easing": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.843Z",
+               "_mtime": "2022-10-20T11:07:13.184Z",
                "name": "noise-grid-v2-basic-with-easing"
             },
             "path": "sketches/noise-grid/noise-grid-v2-basic-with-easing"
          },
          "noise-grid-v3-basic-with-holes": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.845Z",
+               "_mtime": "2022-10-23T01:35:31.070Z",
                "name": "noise-grid-v3-basic-with-holes"
             },
             "path": "sketches/noise-grid/noise-grid-v3-basic-with-holes"
          },
          "noise-grid-v4-basic-with-audio-reaction": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.847Z",
+               "_mtime": "2022-11-09T20:28:24.068Z",
                "name": "noise-grid-v4-basic-with-audio-reaction"
             },
             "path": "sketches/noise-grid/noise-grid-v4-basic-with-audio-reaction"
          },
          "noise-grid-v5-stick": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.850Z",
+               "_mtime": "2022-10-23T01:35:35.005Z",
                "name": "noise-grid-v5-stick"
             },
             "path": "sketches/noise-grid/noise-grid-v5-stick"
          },
          "noise-grid-v6-field-with-dist-check": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.853Z",
+               "_mtime": "2022-10-23T01:27:55.574Z",
                "name": "noise-grid-v6-field-with-dist-check"
             },
             "path": "sketches/noise-grid/noise-grid-v6-field-with-dist-check"
          },
          "noise-grid-v7-field-with-dist-check-and-audio-reaction": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.854Z",
+               "_mtime": "2022-10-20T11:45:05.372Z",
                "name": "noise-grid-v7-field-with-dist-check-and-audio-reaction"
             },
             "path": "sketches/noise-grid/noise-grid-v7-field-with-dist-check-and-audio-reaction"
          },
          "noise-grid-v8-basic-with-easing-and-audio-reaction": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.857Z",
+               "_mtime": "2022-10-22T21:56:38.212Z",
                "name": "noise-grid-v8-basic-with-easing-and-audio-reaction"
             },
             "path": "sketches/noise-grid/noise-grid-v8-basic-with-easing-and-audio-reaction"
          },
          "noise-grid-v9-basic-with-easing-changing-directions": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.859Z",
+               "_mtime": "2022-11-27T17:04:54.844Z",
                "name": "noise-grid-v9-basic-with-easing-changing-directions"
             },
             "path": "sketches/noise-grid/noise-grid-v9-basic-with-easing-changing-directions"
@@ -1910,27 +1925,27 @@
    },
    "noise-strips": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.866Z",
+         "_mtime": "2024-01-10T00:45:09.408Z",
          "name": "noise-strips"
       },
       "sketches": {
          "noise-strips-v1": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.861Z",
+               "_mtime": "2022-11-09T19:46:14.090Z",
                "name": "noise-strips-v1"
             },
             "path": "sketches/noise-strips/noise-strips-v1"
          },
          "noise-strips-v2": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.863Z",
+               "_mtime": "2022-11-09T20:57:49.117Z",
                "name": "noise-strips-v2"
             },
             "path": "sketches/noise-strips/noise-strips-v2"
          },
          "noise-strips-v3-lava": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.865Z",
+               "_mtime": "2022-11-11T12:31:18.217Z",
                "name": "noise-strips-v3-lava"
             },
             "path": "sketches/noise-strips/noise-strips-v3-lava"
@@ -1939,55 +1954,55 @@
    },
    "orbit": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.880Z",
+         "_mtime": "2024-01-10T00:45:18.860Z",
          "name": "orbit"
       },
       "sketches": {
          "noise-background": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.867Z",
+               "_mtime": "2022-11-23T17:35:59.666Z",
                "name": "noise-background"
             },
             "path": "sketches/orbit/noise-background"
          },
          "orbit-v1-geeko": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.869Z",
+               "_mtime": "2022-11-13T15:54:41.693Z",
                "name": "orbit-v1-geeko"
             },
             "path": "sketches/orbit/orbit-v1-geeko"
          },
          "orbit-v2-molecule": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.870Z",
+               "_mtime": "2022-10-30T14:58:08.611Z",
                "name": "orbit-v2-molecule"
             },
             "path": "sketches/orbit/orbit-v2-molecule"
          },
          "orbit-v3-disk": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.871Z",
+               "_mtime": "2022-10-30T14:58:08.611Z",
                "name": "orbit-v3-disk"
             },
             "path": "sketches/orbit/orbit-v3-disk"
          },
          "orbit-v4-chewing-gum": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.873Z",
+               "_mtime": "2022-10-30T14:58:08.611Z",
                "name": "orbit-v4-chewing-gum"
             },
             "path": "sketches/orbit/orbit-v4-chewing-gum"
          },
          "orbit-v5-chakra": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.874Z",
+               "_mtime": "2022-10-30T14:58:08.611Z",
                "name": "orbit-v5-chakra"
             },
             "path": "sketches/orbit/orbit-v5-chakra"
          },
          "orbit-v6-polar-cross": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.875Z",
+               "_mtime": "2022-11-13T15:53:13.340Z",
                "name": "orbit-v6-polar-cross"
             },
             "path": "sketches/orbit/orbit-v6-polar-cross"
@@ -1996,20 +2011,20 @@
    },
    "pen": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.884Z",
+         "_mtime": "2024-01-10T00:45:21.517Z",
          "name": "pen"
       },
       "sketches": {
          "pen-v1-draw-paths-in-a-grid": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.882Z",
+               "_mtime": "2023-01-08T03:59:58.861Z",
                "name": "pen-v1-draw-paths-in-a-grid"
             },
             "path": "sketches/pen/pen-v1-draw-paths-in-a-grid"
          },
          "pen-v2-draw-paths-with-blob-in-a-grid": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.884Z",
+               "_mtime": "2023-01-08T03:09:32.292Z",
                "name": "pen-v2-draw-paths-with-blob-in-a-grid"
             },
             "path": "sketches/pen/pen-v2-draw-paths-with-blob-in-a-grid"
@@ -2018,41 +2033,41 @@
    },
    "polar-strip": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.892Z",
+         "_mtime": "2024-01-10T00:45:28.145Z",
          "name": "polar-strip"
       },
       "sketches": {
          "polar-strip-v0": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.885Z",
+               "_mtime": "2022-10-30T14:58:07.700Z",
                "name": "polar-strip-v0"
             },
             "path": "sketches/polar-strip/polar-strip-v0"
          },
          "polar-strip-v1": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.888Z",
+               "_mtime": "2022-10-30T14:58:07.700Z",
                "name": "polar-strip-v1"
             },
             "path": "sketches/polar-strip/polar-strip-v1"
          },
          "polar-strip-v1-lights": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.887Z",
+               "_mtime": "2022-10-30T14:58:07.700Z",
                "name": "polar-strip-v1-lights"
             },
             "path": "sketches/polar-strip/polar-strip-v1-lights"
          },
          "polar-strip-v2-lights-mouse": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.890Z",
+               "_mtime": "2022-10-30T14:58:07.700Z",
                "name": "polar-strip-v2-lights-mouse"
             },
             "path": "sketches/polar-strip/polar-strip-v2-lights-mouse"
          },
          "polar-strip-v3-easing-star": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.891Z",
+               "_mtime": "2022-11-09T19:49:24.668Z",
                "name": "polar-strip-v3-easing-star"
             },
             "path": "sketches/polar-strip/polar-strip-v3-easing-star"
@@ -2061,167 +2076,167 @@
    },
    "pulse": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.933Z",
+         "_mtime": "2024-01-10T00:45:59.360Z",
          "name": "pulse"
       },
       "sketches": {
          "pulse-v1-guts": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.892Z",
+               "_mtime": "2022-10-30T14:58:07.707Z",
                "name": "pulse-v1-guts"
             },
             "path": "sketches/pulse/pulse-v1-guts"
          },
          "pulse-v2-kraken": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.893Z",
+               "_mtime": "2022-10-30T14:58:07.700Z",
                "name": "pulse-v2-kraken"
             },
             "path": "sketches/pulse/pulse-v2-kraken"
          },
          "pulse-v3-asterix": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.894Z",
+               "_mtime": "2022-10-30T17:10:13.956Z",
                "name": "pulse-v3-asterix"
             },
             "path": "sketches/pulse/pulse-v3-asterix"
          },
          "pulse-v4-trinity": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.895Z",
+               "_mtime": "2022-10-30T17:10:21.429Z",
                "name": "pulse-v4-trinity"
             },
             "path": "sketches/pulse/pulse-v4-trinity"
          },
          "pulse-v5-flower": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.896Z",
+               "_mtime": "2022-10-30T17:10:50.784Z",
                "name": "pulse-v5-flower"
             },
             "path": "sketches/pulse/pulse-v5-flower"
          },
          "pulse-v6-sonar": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.898Z",
+               "_mtime": "2022-10-30T17:11:02.231Z",
                "name": "pulse-v6-sonar"
             },
             "path": "sketches/pulse/pulse-v6-sonar"
          },
          "pulse-v7-scan": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.917Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "pulse-v7-scan"
             },
             "path": "sketches/pulse/pulse-v7-scan"
          },
          "pulse-v7-scan-asterix": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.899Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "pulse-v7-scan-asterix"
             },
             "path": "sketches/pulse/pulse-v7-scan-asterix"
          },
          "pulse-v7-scan-bar": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.900Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "pulse-v7-scan-bar"
             },
             "path": "sketches/pulse/pulse-v7-scan-bar"
          },
          "pulse-v7-scan-churros": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.902Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "pulse-v7-scan-churros"
             },
             "path": "sketches/pulse/pulse-v7-scan-churros"
          },
          "pulse-v7-scan-folding": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.904Z",
+               "_mtime": "2022-10-30T14:58:07.700Z",
                "name": "pulse-v7-scan-folding"
             },
             "path": "sketches/pulse/pulse-v7-scan-folding"
          },
          "pulse-v7-scan-up-down": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.908Z",
+               "_mtime": "2022-10-30T14:58:07.700Z",
                "name": "pulse-v7-scan-up-down"
             },
             "path": "sketches/pulse/pulse-v7-scan-up-down"
          },
          "pulse-v7-torsade": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.923Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "pulse-v7-torsade"
             },
             "path": "sketches/pulse/pulse-v7-torsade"
          },
          "pulse-v7-turbine": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.929Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "pulse-v7-turbine"
             },
             "path": "sketches/pulse/pulse-v7-turbine"
          },
          "pulse-v7-turbine-butterfly": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.924Z",
+               "_mtime": "2022-10-30T14:58:07.700Z",
                "name": "pulse-v7-turbine-butterfly"
             },
             "path": "sketches/pulse/pulse-v7-turbine-butterfly"
          },
          "pulse-v7-turbine-eccentric": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.926Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "pulse-v7-turbine-eccentric"
             },
             "path": "sketches/pulse/pulse-v7-turbine-eccentric"
          },
          "pulse-v7-turbine-eccentric-squid": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.925Z",
+               "_mtime": "2022-10-30T14:58:07.700Z",
                "name": "pulse-v7-turbine-eccentric-squid"
             },
             "path": "sketches/pulse/pulse-v7-turbine-eccentric-squid"
          },
          "pulse-v7-turbine-flower": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.927Z",
+               "_mtime": "2022-10-30T14:58:07.700Z",
                "name": "pulse-v7-turbine-flower"
             },
             "path": "sketches/pulse/pulse-v7-turbine-flower"
          },
          "pulse-v7-turbine-grid": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.928Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "pulse-v7-turbine-grid"
             },
             "path": "sketches/pulse/pulse-v7-turbine-grid"
          },
          "pulse-v7-turbines-familly": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.930Z",
+               "_mtime": "2022-10-30T14:58:07.701Z",
                "name": "pulse-v7-turbines-familly"
             },
             "path": "sketches/pulse/pulse-v7-turbines-familly"
          },
          "pulse-v8-mirror": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.930Z",
+               "_mtime": "2022-10-30T17:13:19.442Z",
                "name": "pulse-v8-mirror"
             },
             "path": "sketches/pulse/pulse-v8-mirror"
          },
          "pulse-v8-quadra": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.931Z",
+               "_mtime": "2022-10-30T17:13:32.427Z",
                "name": "pulse-v8-quadra"
             },
             "path": "sketches/pulse/pulse-v8-quadra"
          },
          "pulse-v9-curtain": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.932Z",
+               "_mtime": "2022-10-30T14:58:07.700Z",
                "name": "pulse-v9-curtain"
             },
             "path": "sketches/pulse/pulse-v9-curtain"
@@ -2230,63 +2245,70 @@
    },
    "rainbow-flame": {
       "meta": {
-         "_mtime": "2024-03-19T07:01:27.153Z",
+         "_mtime": "2024-03-23T17:48:49.818Z",
          "name": "rainbow-flame"
       },
       "sketches": {
          "_rainbow-flowers": {
             "meta": {
-               "_mtime": "2024-03-19T06:53:40.332Z",
+               "_mtime": "2024-03-23T17:48:49.815Z",
                "name": "_rainbow-flowers"
             },
             "path": "sketches/rainbow-flame/_rainbow-flowers"
          },
          "_rainbow-flowers-blur": {
             "meta": {
-               "_mtime": "2024-03-19T06:53:40.330Z",
+               "_mtime": "2024-03-23T17:48:49.814Z",
                "name": "_rainbow-flowers-blur"
             },
             "path": "sketches/rainbow-flame/_rainbow-flowers-blur"
          },
          "rainbow-flame-v1": {
             "meta": {
-               "_mtime": "2024-03-19T06:53:40.326Z",
+               "_mtime": "2024-03-15T17:05:44.674Z",
                "name": "rainbow-flame-v1"
             },
             "path": "sketches/rainbow-flame/rainbow-flame-v1"
          },
          "rainbow-flame-v2": {
             "meta": {
-               "_mtime": "2024-03-19T06:56:05.449Z",
+               "_mtime": "2024-03-23T17:48:49.816Z",
                "name": "rainbow-flame-v2"
             },
             "path": "sketches/rainbow-flame/rainbow-flame-v2"
          },
          "rainbow-flame-v3": {
             "meta": {
-               "_mtime": "2024-03-19T07:01:18.214Z",
+               "_mtime": "2024-03-23T17:48:49.817Z",
                "name": "rainbow-flame-v3"
             },
             "path": "sketches/rainbow-flame/rainbow-flame-v3"
+         },
+         "rainbow-flame-v4": {
+            "meta": {
+               "_mtime": "2024-03-23T17:48:49.818Z",
+               "name": "rainbow-flame-v4"
+            },
+            "path": "sketches/rainbow-flame/rainbow-flame-v4"
          }
       }
    },
    "rainbow-tribal": {
       "meta": {
-         "_mtime": "2024-03-19T06:58:14.601Z",
+         "_mtime": "2024-03-23T17:48:49.819Z",
          "name": "rainbow-tribal"
       },
       "sketches": {
          "rainbow-tribal-v1": {
             "meta": {
-               "_mtime": "2024-03-19T06:58:14.595Z",
+               "_mtime": "2024-03-23T17:48:49.818Z",
                "name": "rainbow-tribal-v1"
             },
             "path": "sketches/rainbow-tribal/rainbow-tribal-v1"
          },
          "rainbow-tribal-v2": {
             "meta": {
-               "_mtime": "2024-03-19T06:58:14.599Z",
+               "_mtime": "2024-03-23T17:48:49.819Z",
                "name": "rainbow-tribal-v2"
             },
             "path": "sketches/rainbow-tribal/rainbow-tribal-v2"
@@ -2295,125 +2317,125 @@
    },
    "ribbons": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.953Z",
+         "_mtime": "2024-01-10T00:46:22.451Z",
          "name": "ribbons"
       },
       "sketches": {
          "ribbons-v1-invisible-walls-purple": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.933Z",
+               "_mtime": "2022-10-30T14:58:08.611Z",
                "name": "ribbons-v1-invisible-walls-purple"
             },
             "path": "sketches/ribbons/ribbons-v1-invisible-walls-purple"
          },
          "ribbons-v1-invisible-walls-rainbow": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.935Z",
+               "_mtime": "2022-10-30T14:58:08.611Z",
                "name": "ribbons-v1-invisible-walls-rainbow"
             },
             "path": "sketches/ribbons/ribbons-v1-invisible-walls-rainbow"
          },
          "ribbons-v10-blurry-flower": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.936Z",
+               "_mtime": "2022-10-30T14:58:08.632Z",
                "name": "ribbons-v10-blurry-flower"
             },
             "path": "sketches/ribbons/ribbons-v10-blurry-flower"
          },
          "ribbons-v11": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.937Z",
+               "_mtime": "2022-10-30T14:58:08.610Z",
                "name": "ribbons-v11"
             },
             "path": "sketches/ribbons/ribbons-v11"
          },
          "ribbons-v12": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.939Z",
+               "_mtime": "2022-10-30T14:58:08.629Z",
                "name": "ribbons-v12"
             },
             "path": "sketches/ribbons/ribbons-v12"
          },
          "ribbons-v13": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.940Z",
+               "_mtime": "2022-10-30T14:58:08.611Z",
                "name": "ribbons-v13"
             },
             "path": "sketches/ribbons/ribbons-v13"
          },
          "ribbons-v14": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.941Z",
+               "_mtime": "2022-10-30T14:58:08.572Z",
                "name": "ribbons-v14"
             },
             "path": "sketches/ribbons/ribbons-v14"
          },
          "ribbons-v15-gold": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.943Z",
+               "_mtime": "2022-10-30T14:58:08.572Z",
                "name": "ribbons-v15-gold"
             },
             "path": "sketches/ribbons/ribbons-v15-gold"
          },
          "ribbons-v2-circle": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.944Z",
+               "_mtime": "2022-10-30T14:58:08.592Z",
                "name": "ribbons-v2-circle"
             },
             "path": "sketches/ribbons/ribbons-v2-circle"
          },
          "ribbons-v3-caterpillar-circle": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.945Z",
+               "_mtime": "2022-10-30T14:58:08.592Z",
                "name": "ribbons-v3-caterpillar-circle"
             },
             "path": "sketches/ribbons/ribbons-v3-caterpillar-circle"
          },
          "ribbons-v3-caterpillar-up-down": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.946Z",
+               "_mtime": "2022-10-30T14:58:08.610Z",
                "name": "ribbons-v3-caterpillar-up-down"
             },
             "path": "sketches/ribbons/ribbons-v3-caterpillar-up-down"
          },
          "ribbons-v4-petals": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.947Z",
+               "_mtime": "2022-10-30T14:58:08.611Z",
                "name": "ribbons-v4-petals"
             },
             "path": "sketches/ribbons/ribbons-v4-petals"
          },
          "ribbons-v5-flower": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.948Z",
+               "_mtime": "2022-10-30T14:58:08.610Z",
                "name": "ribbons-v5-flower"
             },
             "path": "sketches/ribbons/ribbons-v5-flower"
          },
          "ribbons-v6-flower-dotted": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.949Z",
+               "_mtime": "2022-10-30T14:58:08.592Z",
                "name": "ribbons-v6-flower-dotted"
             },
             "path": "sketches/ribbons/ribbons-v6-flower-dotted"
          },
          "ribbons-v7-travelling-flower-abrubt": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.950Z",
+               "_mtime": "2022-10-30T14:58:08.611Z",
                "name": "ribbons-v7-travelling-flower-abrubt"
             },
             "path": "sketches/ribbons/ribbons-v7-travelling-flower-abrubt"
          },
          "ribbons-v8-globule": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.951Z",
+               "_mtime": "2022-10-30T14:58:08.610Z",
                "name": "ribbons-v8-globule"
             },
             "path": "sketches/ribbons/ribbons-v8-globule"
          },
          "ribbons-v9-atom": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.952Z",
+               "_mtime": "2022-10-30T14:58:08.611Z",
                "name": "ribbons-v9-atom"
             },
             "path": "sketches/ribbons/ribbons-v9-atom"
@@ -2422,20 +2444,20 @@
    },
    "semaphore": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.955Z",
+         "_mtime": "2024-01-10T00:46:25.107Z",
          "name": "semaphore"
       },
       "sketches": {
          "semaphore-v0-dots": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.953Z",
+               "_mtime": "2022-10-30T14:58:07.700Z",
                "name": "semaphore-v0-dots"
             },
             "path": "sketches/semaphore/semaphore-v0-dots"
          },
          "semaphore-v1-lines": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.954Z",
+               "_mtime": "2022-10-30T14:58:07.700Z",
                "name": "semaphore-v1-lines"
             },
             "path": "sketches/semaphore/semaphore-v1-lines"
@@ -2444,41 +2466,41 @@
    },
    "sketches-in-berlin": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.960Z",
+         "_mtime": "2024-01-10T00:46:32.053Z",
          "name": "sketches-in-berlin"
       },
       "sketches": {
          "sketches-in-berlin-v1-easing-jumping-star-trail": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.955Z",
+               "_mtime": "2023-07-31T12:31:46.551Z",
                "name": "sketches-in-berlin-v1-easing-jumping-star-trail"
             },
             "path": "sketches/sketches-in-berlin/sketches-in-berlin-v1-easing-jumping-star-trail"
          },
          "sketches-in-berlin-v2-jumping-star-trail": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.956Z",
+               "_mtime": "2023-07-31T13:01:12.349Z",
                "name": "sketches-in-berlin-v2-jumping-star-trail"
             },
             "path": "sketches/sketches-in-berlin/sketches-in-berlin-v2-jumping-star-trail"
          },
          "sketches-in-berlin-v3-moving-star-trail": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.957Z",
+               "_mtime": "2023-08-08T09:32:46.418Z",
                "name": "sketches-in-berlin-v3-moving-star-trail"
             },
             "path": "sketches/sketches-in-berlin/sketches-in-berlin-v3-moving-star-trail"
          },
          "sketches-in-berlin-v4-rainbow-cyclone": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.958Z",
+               "_mtime": "2023-08-11T12:56:22.390Z",
                "name": "sketches-in-berlin-v4-rainbow-cyclone"
             },
             "path": "sketches/sketches-in-berlin/sketches-in-berlin-v4-rainbow-cyclone"
          },
          "sketches-in-berlin-v5-asterix": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.959Z",
+               "_mtime": "2023-08-13T13:39:36.350Z",
                "name": "sketches-in-berlin-v5-asterix"
             },
             "path": "sketches/sketches-in-berlin/sketches-in-berlin-v5-asterix"
@@ -2487,69 +2509,69 @@
    },
    "spirals": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.969Z",
+         "_mtime": "2024-01-10T00:46:44.285Z",
          "name": "spirals"
       },
       "sketches": {
          "spiral-v1-plots": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.961Z",
+               "_mtime": "2022-10-30T14:58:07.700Z",
                "name": "spiral-v1-plots"
             },
             "path": "sketches/spirals/spiral-v1-plots"
          },
          "spiral-v2-worms": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.962Z",
+               "_mtime": "2022-10-30T14:58:07.700Z",
                "name": "spiral-v2-worms"
             },
             "path": "sketches/spirals/spiral-v2-worms"
          },
          "spiral-v3-easing-field": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.963Z",
+               "_mtime": "2022-10-30T14:58:08.049Z",
                "name": "spiral-v3-easing-field"
             },
             "path": "sketches/spirals/spiral-v3-easing-field"
          },
          "spiral-v4-springs": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.964Z",
+               "_mtime": "2022-10-30T14:58:07.700Z",
                "name": "spiral-v4-springs"
             },
             "path": "sketches/spirals/spiral-v4-springs"
          },
          "spiral-v5-lolipop": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.965Z",
+               "_mtime": "2022-10-30T14:58:07.700Z",
                "name": "spiral-v5-lolipop"
             },
             "path": "sketches/spirals/spiral-v5-lolipop"
          },
          "spiral-v6-tornado": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.966Z",
+               "_mtime": "2022-10-30T14:58:07.700Z",
                "name": "spiral-v6-tornado"
             },
             "path": "sketches/spirals/spiral-v6-tornado"
          },
          "spiral-v7-petals": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.967Z",
+               "_mtime": "2022-10-30T14:58:07.701Z",
                "name": "spiral-v7-petals"
             },
             "path": "sketches/spirals/spiral-v7-petals"
          },
          "spiral-v8-sticks": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.968Z",
+               "_mtime": "2022-10-30T14:58:07.700Z",
                "name": "spiral-v8-sticks"
             },
             "path": "sketches/spirals/spiral-v8-sticks"
          },
          "spiral-v9-donut": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.969Z",
+               "_mtime": "2022-10-30T14:58:08.068Z",
                "name": "spiral-v9-donut"
             },
             "path": "sketches/spirals/spiral-v9-donut"
@@ -2558,118 +2580,118 @@
    },
    "strips": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:31.984Z",
+         "_mtime": "2024-01-10T00:47:05.788Z",
          "name": "strips"
       },
       "sketches": {
          "rainbow-orbit": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.970Z",
+               "_mtime": "2022-03-19T19:08:37.508Z",
                "name": "rainbow-orbit"
             },
             "path": "sketches/strips/rainbow-orbit"
          },
          "strips-v1-up-and-down": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.970Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "strips-v1-up-and-down"
             },
             "path": "sketches/strips/strips-v1-up-and-down"
          },
          "strips-v2-worms": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.971Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "strips-v2-worms"
             },
             "path": "sketches/strips/strips-v2-worms"
          },
          "strips-v3-half-curve-fix-inner-count": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.973Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "strips-v3-half-curve-fix-inner-count"
             },
             "path": "sketches/strips/strips-v3-half-curve-fix-inner-count"
          },
          "strips-v3-half-curve-fix-inner-count-2": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.972Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "strips-v3-half-curve-fix-inner-count-2"
             },
             "path": "sketches/strips/strips-v3-half-curve-fix-inner-count-2"
          },
          "strips-v3-half-play-fix-inner-count": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.974Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "strips-v3-half-play-fix-inner-count"
             },
             "path": "sketches/strips/strips-v3-half-play-fix-inner-count"
          },
          "strips-v3-half-play-variable-inner-count": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.975Z",
+               "_mtime": "2022-10-30T14:58:07.696Z",
                "name": "strips-v3-half-play-variable-inner-count"
             },
             "path": "sketches/strips/strips-v3-half-play-variable-inner-count"
          },
          "strips-v3-knot-fix-inner-count": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.976Z",
+               "_mtime": "2022-10-30T14:58:07.696Z",
                "name": "strips-v3-knot-fix-inner-count"
             },
             "path": "sketches/strips/strips-v3-knot-fix-inner-count"
          },
          "strips-v3-play-fix-inner-count": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.978Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "strips-v3-play-fix-inner-count"
             },
             "path": "sketches/strips/strips-v3-play-fix-inner-count"
          },
          "strips-v3-play-fix-inner-count-high-opacity-factor": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.976Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "strips-v3-play-fix-inner-count-high-opacity-factor"
             },
             "path": "sketches/strips/strips-v3-play-fix-inner-count-high-opacity-factor"
          },
          "strips-v3-play-variable-inner-count": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.979Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "strips-v3-play-variable-inner-count"
             },
             "path": "sketches/strips/strips-v3-play-variable-inner-count"
          },
          "strips-v4-square-cords": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.979Z",
+               "_mtime": "2022-10-30T14:58:07.695Z",
                "name": "strips-v4-square-cords"
             },
             "path": "sketches/strips/strips-v4-square-cords"
          },
          "strips-v5-perpetual-lines": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.981Z",
+               "_mtime": "2022-03-20T16:12:58.245Z",
                "name": "strips-v5-perpetual-lines"
             },
             "path": "sketches/strips/strips-v5-perpetual-lines"
          },
          "strips-v6-white-lines": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.981Z",
+               "_mtime": "2022-03-20T03:31:37.023Z",
                "name": "strips-v6-white-lines"
             },
             "path": "sketches/strips/strips-v6-white-lines"
          },
          "test": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.983Z",
+               "_mtime": "2022-03-19T01:05:11.446Z",
                "name": "test"
             },
             "path": "sketches/strips/test"
          },
          "ukraine": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.983Z",
+               "_mtime": "2022-03-20T02:44:51.227Z",
                "name": "ukraine"
             },
             "path": "sketches/strips/ukraine"
@@ -2678,76 +2700,76 @@
    },
    "tests": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:35.718Z",
+         "_mtime": "2024-01-10T00:48:58.230Z",
          "name": "tests"
       },
       "sketches": {
          "cylinder": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.984Z",
+               "_mtime": "2023-03-27T23:26:36.468Z",
                "name": "cylinder"
             },
             "path": "sketches/tests/cylinder"
          },
          "flower-shape": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:31.985Z",
+               "_mtime": "2023-01-04T23:26:26.873Z",
                "name": "flower-shape"
             },
             "path": "sketches/tests/flower-shape"
          },
          "grid-2023": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:32.443Z",
+               "_mtime": "2023-01-04T23:26:26.871Z",
                "name": "grid-2023"
             },
             "path": "sketches/tests/grid-2023"
          },
          "grid-36daysoftype-10": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.692Z",
+               "_mtime": "2023-06-11T09:18:12.240Z",
                "name": "grid-36daysoftype-10"
             },
             "path": "sketches/tests/grid-36daysoftype-10"
          },
          "noisy-dominant-colors": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.697Z",
+               "_mtime": "2024-03-31T23:33:56.311Z",
                "name": "noisy-dominant-colors"
             },
             "path": "sketches/tests/noisy-dominant-colors"
          },
          "pen-vectors-test": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.703Z",
+               "_mtime": "2023-01-08T03:09:24.802Z",
                "name": "pen-vectors-test"
             },
             "path": "sketches/tests/pen-vectors-test"
          },
          "recursive-shape": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.708Z",
+               "_mtime": "2023-01-04T23:26:26.875Z",
                "name": "recursive-shape"
             },
             "path": "sketches/tests/recursive-shape"
          },
          "splines": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.716Z",
+               "_mtime": "2023-03-29T05:10:23.864Z",
                "name": "splines"
             },
             "path": "sketches/tests/splines"
          },
          "splines copy": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.711Z",
+               "_mtime": "2023-05-13T22:31:02.863Z",
                "name": "splines copy"
             },
             "path": "sketches/tests/splines copy"
          },
          "three-js-and-shaders": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.717Z",
+               "_mtime": "2022-11-01T11:26:08.135Z",
                "name": "three-js-and-shaders"
             },
             "path": "sketches/tests/three-js-and-shaders"
@@ -2756,111 +2778,111 @@
    },
    "torsade": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:35.744Z",
+         "_mtime": "2024-01-10T00:49:24.429Z",
          "name": "torsade"
       },
       "sketches": {
          "torsade-juggle": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.720Z",
+               "_mtime": "2022-10-30T14:58:08.611Z",
                "name": "torsade-juggle"
             },
             "path": "sketches/torsade/torsade-juggle"
          },
          "torsade-v0": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.721Z",
+               "_mtime": "2022-08-19T11:13:34.419Z",
                "name": "torsade-v0"
             },
             "path": "sketches/torsade/torsade-v0"
          },
          "torsade-v1-unmelted": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.725Z",
+               "_mtime": "2022-10-30T14:58:08.611Z",
                "name": "torsade-v1-unmelted"
             },
             "path": "sketches/torsade/torsade-v1-unmelted"
          },
          "torsade-v10-rabbit-hole": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.726Z",
+               "_mtime": "2022-10-30T14:58:08.611Z",
                "name": "torsade-v10-rabbit-hole"
             },
             "path": "sketches/torsade/torsade-v10-rabbit-hole"
          },
          "torsade-v11-infinite": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.727Z",
+               "_mtime": "2022-10-30T14:58:08.628Z",
                "name": "torsade-v11-infinite"
             },
             "path": "sketches/torsade/torsade-v11-infinite"
          },
          "torsade-v12-gradient-worms": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.729Z",
+               "_mtime": "2022-10-30T14:58:08.628Z",
                "name": "torsade-v12-gradient-worms"
             },
             "path": "sketches/torsade/torsade-v12-gradient-worms"
          },
          "torsade-v13-medusa": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.731Z",
+               "_mtime": "2022-10-30T14:58:08.629Z",
                "name": "torsade-v13-medusa"
             },
             "path": "sketches/torsade/torsade-v13-medusa"
          },
          "torsade-v2-chain": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.732Z",
+               "_mtime": "2022-10-30T14:58:08.611Z",
                "name": "torsade-v2-chain"
             },
             "path": "sketches/torsade/torsade-v2-chain"
          },
          "torsade-v3-leaping-over": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.734Z",
+               "_mtime": "2022-10-30T14:58:08.611Z",
                "name": "torsade-v3-leaping-over"
             },
             "path": "sketches/torsade/torsade-v3-leaping-over"
          },
          "torsade-v4-calm": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.736Z",
+               "_mtime": "2022-10-30T14:58:08.628Z",
                "name": "torsade-v4-calm"
             },
             "path": "sketches/torsade/torsade-v4-calm"
          },
          "torsade-v5-flag": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.737Z",
+               "_mtime": "2022-10-30T14:58:08.628Z",
                "name": "torsade-v5-flag"
             },
             "path": "sketches/torsade/torsade-v5-flag"
          },
          "torsade-v6-horn": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.739Z",
+               "_mtime": "2022-10-30T14:58:08.611Z",
                "name": "torsade-v6-horn"
             },
             "path": "sketches/torsade/torsade-v6-horn"
          },
          "torsade-v7-melted": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.740Z",
+               "_mtime": "2022-03-18T18:05:19.199Z",
                "name": "torsade-v7-melted"
             },
             "path": "sketches/torsade/torsade-v7-melted"
          },
          "torsade-v8-chain": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.742Z",
+               "_mtime": "2022-10-30T14:58:08.628Z",
                "name": "torsade-v8-chain"
             },
             "path": "sketches/torsade/torsade-v8-chain"
          },
          "torsade-v9-dna-spiral": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.743Z",
+               "_mtime": "2022-10-30T14:58:08.611Z",
                "name": "torsade-v9-dna-spiral"
             },
             "path": "sketches/torsade/torsade-v9-dna-spiral"
@@ -2869,181 +2891,181 @@
    },
    "trace-vectors": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:35.793Z",
+         "_mtime": "2024-01-10T00:49:57.862Z",
          "name": "trace-vectors"
       },
       "sketches": {
          "2024": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.747Z",
+               "_mtime": "2023-12-31T19:46:22.723Z",
                "name": "2024"
             },
             "path": "sketches/trace-vectors/2024"
          },
          "2024-grid": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.745Z",
+               "_mtime": "2024-01-05T13:15:37.602Z",
                "name": "2024-grid"
             },
             "path": "sketches/trace-vectors/2024-grid"
          },
          "trace-vectors-intp": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.748Z",
+               "_mtime": "2023-11-20T13:21:05.545Z",
                "name": "trace-vectors-intp"
             },
             "path": "sketches/trace-vectors/trace-vectors-intp"
          },
          "trace-vectors-sf-height": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.753Z",
+               "_mtime": "2023-11-20T13:21:08.454Z",
                "name": "trace-vectors-sf-height"
             },
             "path": "sketches/trace-vectors/trace-vectors-sf-height"
          },
          "trace-vectors-sf-height-2": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.750Z",
+               "_mtime": "2023-11-20T13:21:01.993Z",
                "name": "trace-vectors-sf-height-2"
             },
             "path": "sketches/trace-vectors/trace-vectors-sf-height-2"
          },
          "trace-vectors-v1-infinite": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.755Z",
+               "_mtime": "2023-12-17T13:32:47.044Z",
                "name": "trace-vectors-v1-infinite"
             },
             "path": "sketches/trace-vectors/trace-vectors-v1-infinite"
          },
          "trace-vectors-v10-abc-grid-moving": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.757Z",
+               "_mtime": "2023-11-22T18:58:37.565Z",
                "name": "trace-vectors-v10-abc-grid-moving"
             },
             "path": "sketches/trace-vectors/trace-vectors-v10-abc-grid-moving"
          },
          "trace-vectors-v11-135-grid-moving": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.758Z",
+               "_mtime": "2023-12-03T14:02:05.622Z",
                "name": "trace-vectors-v11-135-grid-moving"
             },
             "path": "sketches/trace-vectors/trace-vectors-v11-135-grid-moving"
          },
          "trace-vectors-v12-abc-circular-moving": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.761Z",
+               "_mtime": "2023-12-11T18:22:45.265Z",
                "name": "trace-vectors-v12-abc-circular-moving"
             },
             "path": "sketches/trace-vectors/trace-vectors-v12-abc-circular-moving"
          },
          "trace-vectors-v13-infinite": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.764Z",
+               "_mtime": "2023-12-23T23:48:38.104Z",
                "name": "trace-vectors-v13-infinite"
             },
             "path": "sketches/trace-vectors/trace-vectors-v13-infinite"
          },
          "trace-vectors-v14-random": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.766Z",
+               "_mtime": "2023-12-18T19:26:00.256Z",
                "name": "trace-vectors-v14-random"
             },
             "path": "sketches/trace-vectors/trace-vectors-v14-random"
          },
          "trace-vectors-v15-changing-speed": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.768Z",
+               "_mtime": "2023-12-17T15:38:06.658Z",
                "name": "trace-vectors-v15-changing-speed"
             },
             "path": "sketches/trace-vectors/trace-vectors-v15-changing-speed"
          },
          "trace-vectors-v16-changing-direction": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.769Z",
+               "_mtime": "2023-12-20T23:53:43.346Z",
                "name": "trace-vectors-v16-changing-direction"
             },
             "path": "sketches/trace-vectors/trace-vectors-v16-changing-direction"
          },
          "trace-vectors-v2-circle": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.771Z",
+               "_mtime": "2023-12-17T13:33:21.748Z",
                "name": "trace-vectors-v2-circle"
             },
             "path": "sketches/trace-vectors/trace-vectors-v2-circle"
          },
          "trace-vectors-v3-oscillation": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.773Z",
+               "_mtime": "2023-11-20T13:21:20.293Z",
                "name": "trace-vectors-v3-oscillation"
             },
             "path": "sketches/trace-vectors/trace-vectors-v3-oscillation"
          },
          "trace-vectors-v4-sample-factor": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.775Z",
+               "_mtime": "2023-11-20T13:21:24.712Z",
                "name": "trace-vectors-v4-sample-factor"
             },
             "path": "sketches/trace-vectors/trace-vectors-v4-sample-factor"
          },
          "trace-vectors-v5-sample-factor-wave": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.777Z",
+               "_mtime": "2023-11-20T13:21:27.784Z",
                "name": "trace-vectors-v5-sample-factor-wave"
             },
             "path": "sketches/trace-vectors/trace-vectors-v5-sample-factor-wave"
          },
          "trace-vectors-v6-rainbow-curves": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.779Z",
+               "_mtime": "2023-11-20T13:21:31.242Z",
                "name": "trace-vectors-v6-rainbow-curves"
             },
             "path": "sketches/trace-vectors/trace-vectors-v6-rainbow-curves"
          },
          "trace-vectors-v7-abc": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.782Z",
+               "_mtime": "2023-11-20T13:20:59.269Z",
                "name": "trace-vectors-v7-abc"
             },
             "path": "sketches/trace-vectors/trace-vectors-v7-abc"
          },
          "trace-vectors-v7-shiny": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.784Z",
+               "_mtime": "2023-11-20T13:21:33.818Z",
                "name": "trace-vectors-v7-shiny"
             },
             "path": "sketches/trace-vectors/trace-vectors-v7-shiny"
          },
          "trace-vectors-v8-123-grid": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.785Z",
+               "_mtime": "2023-11-20T13:21:37.226Z",
                "name": "trace-vectors-v8-123-grid"
             },
             "path": "sketches/trace-vectors/trace-vectors-v8-123-grid"
          },
          "trace-vectors-v8-color-changer-line": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.787Z",
+               "_mtime": "2023-11-20T13:20:55.388Z",
                "name": "trace-vectors-v8-color-changer-line"
             },
             "path": "sketches/trace-vectors/trace-vectors-v8-color-changer-line"
          },
          "trace-vectors-v8-justebe-temple": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.789Z",
+               "_mtime": "2023-11-20T13:20:50.929Z",
                "name": "trace-vectors-v8-justebe-temple"
             },
             "path": "sketches/trace-vectors/trace-vectors-v8-justebe-temple"
          },
          "trace-vectors-v8-numbers-grid": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.791Z",
+               "_mtime": "2023-11-20T13:20:48.590Z",
                "name": "trace-vectors-v8-numbers-grid"
             },
             "path": "sketches/trace-vectors/trace-vectors-v8-numbers-grid"
          },
          "trace-vectors-v9-123-grid-extended": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.792Z",
+               "_mtime": "2023-11-20T17:38:28.902Z",
                "name": "trace-vectors-v9-123-grid-extended"
             },
             "path": "sketches/trace-vectors/trace-vectors-v9-123-grid-extended"
@@ -3052,55 +3074,55 @@
    },
    "tree-2d": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:35.805Z",
+         "_mtime": "2024-01-17T22:13:13.253Z",
          "name": "tree-2d"
       },
       "sketches": {
          "tree-2d-v1-whip": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.794Z",
+               "_mtime": "2023-12-28T14:34:49.821Z",
                "name": "tree-2d-v1-whip"
             },
             "path": "sketches/tree-2d/tree-2d-v1-whip"
          },
          "tree-2d-v2-linear": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.796Z",
+               "_mtime": "2024-01-09T16:35:46.529Z",
                "name": "tree-2d-v2-linear"
             },
             "path": "sketches/tree-2d/tree-2d-v2-linear"
          },
          "tree-2d-v3-eased": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.798Z",
+               "_mtime": "2023-12-28T15:23:29.788Z",
                "name": "tree-2d-v3-eased"
             },
             "path": "sketches/tree-2d/tree-2d-v3-eased"
          },
          "tree-2d-v4-bretzel": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.799Z",
+               "_mtime": "2023-12-31T19:06:02.781Z",
                "name": "tree-2d-v4-bretzel"
             },
             "path": "sketches/tree-2d/tree-2d-v4-bretzel"
          },
          "tree-2d-v5-cords": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.800Z",
+               "_mtime": "2024-01-11T13:51:43.138Z",
                "name": "tree-2d-v5-cords"
             },
             "path": "sketches/tree-2d/tree-2d-v5-cords"
          },
          "tree-2d-v5-sphere": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.802Z",
+               "_mtime": "2024-02-01T20:15:55.704Z",
                "name": "tree-2d-v5-sphere"
             },
             "path": "sketches/tree-2d/tree-2d-v5-sphere"
          },
          "tree-2d-v6-walking": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.805Z",
+               "_mtime": "2024-01-12T14:13:15.710Z",
                "name": "tree-2d-v6-walking"
             },
             "path": "sketches/tree-2d/tree-2d-v6-walking"
@@ -3109,90 +3131,90 @@
    },
    "worms": {
       "meta": {
-         "_mtime": "2024-01-23T23:06:35.830Z",
+         "_mtime": "2024-01-10T00:50:23.929Z",
          "name": "worms"
       },
       "sketches": {
          "worms-v0-alga": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.809Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "worms-v0-alga"
             },
             "path": "sketches/worms/worms-v0-alga"
          },
          "worms-v1-rainbow": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.810Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "worms-v1-rainbow"
             },
             "path": "sketches/worms/worms-v1-rainbow"
          },
          "worms-v10-starry-eating": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.811Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "worms-v10-starry-eating"
             },
             "path": "sketches/worms/worms-v10-starry-eating"
          },
          "worms-v2-wavy": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.813Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "worms-v2-wavy"
             },
             "path": "sketches/worms/worms-v2-wavy"
          },
          "worms-v4-starry": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.814Z",
+               "_mtime": "2022-10-30T14:58:09.449Z",
                "name": "worms-v4-starry"
             },
             "path": "sketches/worms/worms-v4-starry"
          },
          "worms-v5-radial": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.816Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "worms-v5-radial"
             },
             "path": "sketches/worms/worms-v5-radial"
          },
          "worms-v6-tentacule": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.820Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "worms-v6-tentacule"
             },
             "path": "sketches/worms/worms-v6-tentacule"
          },
          "worms-v6-tentacule-aperturing": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.817Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "worms-v6-tentacule-aperturing"
             },
             "path": "sketches/worms/worms-v6-tentacule-aperturing"
          },
          "worms-v6-tentacule-dancing": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.819Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "worms-v6-tentacule-dancing"
             },
             "path": "sketches/worms/worms-v6-tentacule-dancing"
          },
          "worms-v7-doodle": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.823Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "worms-v7-doodle"
             },
             "path": "sketches/worms/worms-v7-doodle"
          },
          "worms-v8-starry-blooming": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.827Z",
+               "_mtime": "2022-10-30T14:58:09.111Z",
                "name": "worms-v8-starry-blooming"
             },
             "path": "sketches/worms/worms-v8-starry-blooming"
          },
          "worms-v9-starry-dancing": {
             "meta": {
-               "_mtime": "2024-01-23T23:06:35.828Z",
+               "_mtime": "2022-10-30T14:58:09.110Z",
                "name": "worms-v9-starry-dancing"
             },
             "path": "sketches/worms/worms-v9-starry-dancing"
