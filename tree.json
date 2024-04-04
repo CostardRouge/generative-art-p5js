@@ -303,7 +303,7 @@
    },
    "36days-of-type-2024": {
       "meta": {
-         "_mtime": "2024-04-03T22:46:15.221Z",
+         "_mtime": "2024-04-04T16:46:40.478Z",
          "name": "36days-of-type-2024"
       },
       "sketches": {
@@ -323,10 +323,17 @@
          },
          "c": {
             "meta": {
-               "_mtime": "2024-04-03T22:46:29.788Z",
+               "_mtime": "2024-04-03T23:07:11.174Z",
                "name": "c"
             },
             "path": "sketches/36days-of-type-2024/c"
+         },
+         "d": {
+            "meta": {
+               "_mtime": "2024-04-04T16:56:41.859Z",
+               "name": "d"
+            },
+            "path": "sketches/36days-of-type-2024/d"
          }
       }
    },
