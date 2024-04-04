@@ -1,10 +1,5 @@
 import { events, debug, options } from './index.js';
-import { p5js, threejs } from './engine/index.js';
-
-const engines = {
-  p5js,
-  threejs
-};
+import engines from './engine/index.js';
 
 const sketch = {
   name: location.pathname.split("/").slice(1, -1).join("-"),

@@ -303,16 +303,30 @@
    },
    "36days-of-type-2024": {
       "meta": {
-         "_mtime": "2024-04-01T00:49:26.026Z",
+         "_mtime": "2024-04-03T22:46:15.221Z",
          "name": "36days-of-type-2024"
       },
       "sketches": {
-         "base": {
+         "a": {
             "meta": {
-               "_mtime": "2024-04-01T02:51:30.084Z",
-               "name": "base"
+               "_mtime": "2024-04-02T16:10:03.138Z",
+               "name": "a"
             },
-            "path": "sketches/36days-of-type-2024/base"
+            "path": "sketches/36days-of-type-2024/a"
+         },
+         "b": {
+            "meta": {
+               "_mtime": "2024-04-03T22:30:28.369Z",
+               "name": "b"
+            },
+            "path": "sketches/36days-of-type-2024/b"
+         },
+         "c": {
+            "meta": {
+               "_mtime": "2024-04-03T22:46:29.788Z",
+               "name": "c"
+            },
+            "path": "sketches/36days-of-type-2024/c"
          }
       }
    },
@@ -2245,7 +2259,7 @@
    },
    "rainbow-flame": {
       "meta": {
-         "_mtime": "2024-03-23T17:48:49.818Z",
+         "_mtime": "2024-04-01T02:58:09.187Z",
          "name": "rainbow-flame"
       },
       "sketches": {

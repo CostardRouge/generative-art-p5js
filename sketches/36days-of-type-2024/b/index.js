@@ -1,14 +1,13 @@
 import { sketch, animation, mappers, easing, events, string, cache, grid } from './utils/index.js';
 
-sketch.setup( undefined);
-// sketch.setup( undefined, { type: 'webgl'});
+sketch.setup( undefined, {
+  size: {
+    width: 1080,
+    height: 1080
+  }
+});
 
-const imageURLs = [
-  "./images/0.jpg",
-  "./images/1.jpg",
-  "./images/2.jpg",
-  "./images/3.jpg",
-]
+const imageURLs = Array.from({length: 13}).map( (_, index) => `./images/${index}.png`)
 
 events.register("engine-window-preload", () => {
   // cache.store("image", () => loadImage( "img.png" ))
@@ -61,8 +60,8 @@ const getDominantColorFromPixels = ( pixels, precision = 100 ) => {
   }, null );
 };
 
-function getColor( img, x, y, w, h = w ) {
-  const cacheKey = cache.key("dominant-color", ...arguments)
+function getColor( img, x, y, w, h = w, key ) {
+  const cacheKey = cache.key("dominant-color", ...arguments, key)
 
   return cache.store(cacheKey, () => {
     const { width: imageWidth, height: imageHeight } = img;
@@ -117,8 +116,7 @@ function debugImage(img) {
 const borderSize = 0;
 
 function getImagePart(img, x, y, w, h) {
-
-  //return img.get( x, y, w, h)
+  // return img.get( x, y, w, h)
   
   return (
     img
@@ -133,8 +131,9 @@ function getImagePart(img, x, y, w, h) {
 sketch.draw( ( time, center, favoriteColor ) => {
   background(0);
 
-  const cols = mappers.circularIndex(time, [3, 1, 2, 4, 5]);
-  const rows = mappers.circularIndex(time, [3, 1, 2, 4, 5].reverse())//cols*height/width;
+  const cols = mappers.circularIndex(time, [2, 3, 4, 5, 6, 7]);
+  // const rows = mappers.circularIndex(time, [2, 3, 4, 5, 6, 7, 8, 9, 10].reverse())//cols*height/width;
+  const rows = cols*height/width;
 
   const gridOptions = {
     startLeft: createVector( borderSize, borderSize ),
@@ -160,49 +159,87 @@ sketch.draw( ( time, center, favoriteColor ) => {
     ) )
   ) );
 
-  const imageIndexes = imageParts.map( (_, index) => [index, index]).flat(Infinity);
+  const imageIndexes = imageParts.map( (_, index) => [index]).flat(Infinity);
 
   gridCells.forEach( ([position, xIndex, yIndex], cellIndex ) => {
     const { x, y } = position;
     // const imageIndex = (noise(xIndex+time/5, yIndex+time/5)*imageURLs.length)%imageURLs.length;
     // const imageIndex = mappers.circularIndex(xIndex+yIndex+time, imageIndexes );
-    const imageIndex = animation.ease({
-      values: imageIndexes,
-      currentTime: (
+    // const imageIndex = animation.ease({
+    //   values: imageIndexes,
+    //   currentTime: (
+    //     0
+    //     +time
+    //     +mappers.circularIndex(time/4, [-xIndex, +xIndex])/14
+    //     // -xIndex/14
+    //     // +yIndex/14
+    //     //+noise(xIndex+time, yIndex+time)*imageURLs.length
+    //     //+xIndexx*mappers.fn(sin(time/2), -1, 1, -3, 3, easing.easeInExpo)
+    //     //+yIndex*mappers.fn(cos(time/2), -1, 1, -3, 3, easing.easeOutExpo)
+    //     //+yIndex/10
+    //   ),
+    //   duration: 1,
+    //   easingFn: easing.easeInSine_
+    // })
+    const imageIndex = mappers.circularIndex(
+      (
         0
         +time
+        -cellIndex/(cols*rows)
+        // +mappers.circularIndex(time/2, [-xIndex, +xIndex])/14
+        // +mappers.circularIndex(1+time/2, [-yIndex, +yIndex])/14
+        // -xIndex/15
+        // -yIndex/15
         //+noise(xIndex+time, yIndex+time)*imageURLs.length
-        +xIndex*mappers.fn(sin(time/2), -1, 1, -3, 3, easing.easeInExpo)
-        //+yIndex*mappers.fn(cos(time/2), -1, 1, -3, 3, easing.easeOutExpo)
-        +yIndex/10
+        //+xIndexx*mappers.fn(sin(time/2), -1, 1, -3, 3, easing.easeInExpo)
+        // +yIndex*mappers.fn(cos(time/2), -1, 1, -3, 3, easing.easeOutExpo)
+        //+yIndex/10
       ),
-      duration: 1,
-      easingFn: easing.easeInSine_
-    })
+      imageIndexes
+    )
+
     const imageAtIndex = imageParts?.[~~imageIndex];
     const imagePart = imageAtIndex?.[~~cellIndex];
 
     if (imagePart) {
       image(imagePart, x, y, W, H)
-      // noFill()
-      // strokeWeight(1)
-      // stroke(favoriteColor)
-      // rect(x, y, W, H)
+
+      //const { levels: [ r, g, b ]} = getColor(imagePart, x, y, W, H, `${cols}-${round(imageIndex)}`)
+
+      noFill()
+      //fill(r, g, b, 170)
+      strokeWeight(1)
+      stroke(favoriteColor)
+      rect(x, y, W, H)
 
       // strokeWeight(1)
       // cross(x + W - 30, y + H - 30, 20)
 
-      // string.write(`A${ceil(imageIndex)}`, x+18, y+30, {
-      //   // showBox: true,
-      //   // showLines: true,
-      //   // center: true,
+      const II = round(imageIndex);
+
+      // string.write(`B${II}`, x+18, y+30, {
       //   size: 18,
-      //   stroke: color(0 ,0, 0, 0 ),
-      //   // strokeWeight: 1,
+      //   stroke: 0,
+      //   strokeWeight: 2,
       //   fill: favoriteColor,
       //   font: string.fonts.openSans
       // })
 
+      // string.write(`${xIndex}`, x+W-30, y+30, {
+      //   size: 18,
+      //   stroke: 0,
+      //   strokeWeight: 2,
+      //   fill: favoriteColor,
+      //   font: string.fonts.openSans
+      // })
+
+      // string.write(`${xIndex}`, x+W-30, y+H-20, {
+      //   size: 18,
+      //   stroke: 0,
+      //   strokeWeight: 2,
+      //   fill: favoriteColor,
+      //   font: string.fonts.openSans
+      // })
     }
 
     
