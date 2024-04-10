@@ -4,10 +4,11 @@ sketch.setup( undefined, {
   size: {
     width: 1080,
     height: 1080
-  }
+  },
+  type: "webgl"
 });
 
-const imageURLs = Array.from({length: 23}).map( (_, index) => `./images/${index}.png`)
+const imageURLs = Array.from({length: 20}).map( (_, index) => `./images/${index}.png`)
 
 events.register("engine-window-preload", () => {
   cache.store("images", () => imageURLs.map( url => loadImage( url ) ) )
@@ -65,10 +66,11 @@ function getImagePart(img, x, y, w, h) {
 }
 sketch.draw( ( time, center, favoriteColor ) => {
   background(0);
+  translate(-width/2, -height/2, -10)
 
-  const sizes = [8, 1, 2, 1, 3, 1];
-  const cols = 16//mappers.circularIndex(time/2, sizes);
-  const rows = 16//mappers.circularIndex(time/2, sizes.reverse());
+  let sizes = [2, 4]
+  const cols = 6//mappers.circularIndex(time, sizes);
+  const rows = 6//mappers.circularIndex(time/2, sizes);
   // const rows = cols*height/width;
 
   const gridOptions = {
@@ -106,61 +108,96 @@ sketch.draw( ( time, center, favoriteColor ) => {
   gridCells.forEach( ([position, xIndex, yIndex], cellIndex ) => {
     const { x, y } = position;
     const switchIndex = (
-      //-cellIndex/(cols*rows)
+      // -cellIndex/(cols*rows)
       // +mappers.circularIndex(time, [-xIndex, xIndex])/cols
       // +mappers.circularIndex(time, [-yIndex, yIndex])/rows
       +xIndex/cols
       +yIndex/rows
+      // +noise(xIndex/cols*4, yIndex*4)
+      // +noise(cellIndex/(cols*rows))
     )
+    const timeSpeed = 1.5;
+    const switchImageSpeed = time*timeSpeed+0.5// * 1.75;
+    const rotationSpeed = time*timeSpeed//+cellIndex/(cols*rows)
     const imageIndex = mappers.circularIndex(
       (
         0
-        +time*2
+        +switchImageSpeed
         +switchIndex
       ),
       imageIndexes
     )
 
-    const imageAtIndex = imageParts?.[~~imageIndex];
-    const { imagePart, dominantColor } = imageAtIndex?.[~~cellIndex];
+    // fire, fusilli, flowers, feathers, french fries, fruits, focaccia, flan au caramel, frost ice, foam, flannel, fox, folded paper, folded fabric, fluorescent, fur, fluorite
 
-    if (imagePart) {
+    const currentImage = imageParts?.[~~imageIndex];
+    // const nextImage = imageParts?.[ ( ~~imageIndex ) % imageParts.length ];
 
-      const veil = mappers.circularIndex(time*2+switchIndex, [1, 0])
-      if (dominantColor && veil) {
-        const { levels: [ r, g, b ]} = dominantColor
+    const { imagePart: currentImagePart, dominantColor: currentDominantColor } = currentImage?.[~~cellIndex];
+    // const { imagePart: nextImagePart, dominantColor: nextDominantColor } = nextImage?.[~~cellIndex];
 
+    if (currentImagePart) {
+        push()
+        translate(x+W/2, y+H/2)
+
+        const angle = animation.ease({
+          values: [ -PI, -PI, 0, 0 ],
+          currentTime: (
+            0
+            +rotationSpeed
+            +switchIndex
+          ),
+          duration: 1,
+          easingFn: easing.easeInOutBack
+        })
+
+        rotateY(angle);
+
+        const img = currentImagePart//angle < -PI/2 ? currentImagePart : nextImagePart
+        const w = map(angle, 0, -PI, 1, -1);
+
+        texture(img)
+        // quad(-W/2, -H/2, W/2, -H/2, W/2, H/2, -W/2, H/2)
         strokeWeight(1)
-        fill(r, g, b, 255)
         stroke(favoriteColor)
-        //noStroke()
+        rect(-W/2*w, -H/2, W*w, H)
+        pop()
 
-        // rect(x+W/2, y, 60, 60)
-        rect(x, y, W, H)
-      }
-      else {
-        image(imagePart, x, y, W, H)
 
-        noFill()
-        strokeWeight(1/4)
-        stroke(favoriteColor)
-        rect(x, y, W, H)
-      }
+           // if (currentDominantColor && veil) {
+      //   const { levels: [ r, g, b ]} = currentDominantColor
 
-      
+      //   // strokeWeight(1)
+      //   // fill(r, g, b, 128)
+      //   // stroke(favoriteColor)
+      //   //noStroke()
+
+      //   // rect(x+W/2, y, 60, 60)
+      //   // noFill()
+      //   // strokeWeight(1)
+      //   // stroke(dominantColor)
+      //   // rect(x, y, W, H)
+
+      //   // string.write(`E${round(imageIndex)}`, x+18, y+30, {
+      //   //   size: 18,
+      //   //   stroke: 0,
+      //   //   strokeWeight: 2,
+      //   //   fill: color(r, g, b, 255),
+      //   //   font: string.fonts.openSans
+      //   // })
+
+      //   string.write(`F${round(cellIndex)}`, x+W/2, y+H/2, {
+      //     center: true,
+      //     size: W/2,
+      //     stroke: 0,
+      //     strokeWeight: 2,
+      //     fill: color(r, g, b, 255),
+      //     font: string.fonts.openSans
+      //   })
+      // }
 
       // strokeWeight(1)
       // cross(x + W - 30, y + H - 30, 20)
-
-      const II = round(imageIndex);
-
-      // string.write(`D${II}`, x+18, y+30, {
-      //   size: 18,
-      //   stroke: 0,
-      //   strokeWeight: 2,
-      //   fill: favoriteColor,
-      //   font: string.fonts.openSans
-      // })
 
       // string.write(`${xIndex}`, x+W-30, y+30, {
       //   size: 18,
@@ -179,4 +216,6 @@ sketch.draw( ( time, center, favoriteColor ) => {
       // })
     }
   })
+
+  orbitControl()
 });

@@ -4,13 +4,40 @@ sketch.setup( undefined, {
   size: {
     width: 1080,
     height: 1080
-  }
+  },
+  type: "webgl"
 });
 
-const imageURLs = Array.from({length: 23}).map( (_, index) => `./images/${index}.png`)
+const imageURLs = [
+//  "gabardine",
+//  "gallery",
+ "garlic",
+ "gas",
+ "gecko",
+ "gelatin",
+//  "gelato",
+//  "ghost",
+ "glitter",
+ "ginger",
+ "giraffe",
+ "glass",
+ "gnocchi",
+ "gold",
+ "goldfish",
+//  "golem",
+ "gouda",
+//  "gorilla",
+ "granola",
+ "grapes",
+ "graphite",
+//  "grass",
+//  "grizzly",
+//  "guacamole",
+//  "guava"
+].map( name => `./images/webp/${name}.webp`)
 
 events.register("engine-window-preload", () => {
-  cache.store("images", () => imageURLs.map( url => loadImage( url ) ) )
+  cache.store("images", () => [imageURLs[0], imageURLs[1]].map( url => loadImage( url ) ) )
 });
 
 function chunk(array, chunkSize) {
@@ -65,10 +92,11 @@ function getImagePart(img, x, y, w, h) {
 }
 sketch.draw( ( time, center, favoriteColor ) => {
   background(0);
+  translate(-width/2, -height/2)
 
-  const sizes = [8, 1, 2, 1, 3, 1];
-  const cols = 16//mappers.circularIndex(time/2, sizes);
-  const rows = 16//mappers.circularIndex(time/2, sizes.reverse());
+  const sizes = [8, 2, 3, 2, 6, 2]//[8, 1, 2, 1, 3, 1];
+  const cols = 3//mappers.circularIndex(time/2, sizes);
+  const rows = 5//mappers.circularIndex(time/2, sizes.reverse());
   // const rows = cols*height/width;
 
   const gridOptions = {
@@ -105,17 +133,21 @@ sketch.draw( ( time, center, favoriteColor ) => {
 
   gridCells.forEach( ([position, xIndex, yIndex], cellIndex ) => {
     const { x, y } = position;
+    const switchImageSpeed = time;
+    const rotationSpeed = switchImageSpeed;
     const switchIndex = (
-      //-cellIndex/(cols*rows)
+      // -cellIndex/(cols*rows)
       // +mappers.circularIndex(time, [-xIndex, xIndex])/cols
       // +mappers.circularIndex(time, [-yIndex, yIndex])/rows
       +xIndex/cols
       +yIndex/rows
+      // +noise(xIndex, yIndex)
+      // +noise(cellIndex/(cols*rows))
     )
     const imageIndex = mappers.circularIndex(
       (
         0
-        +time*2
+        +switchImageSpeed+0.5
         +switchIndex
       ),
       imageIndexes
@@ -125,34 +157,75 @@ sketch.draw( ( time, center, favoriteColor ) => {
     const { imagePart, dominantColor } = imageAtIndex?.[~~cellIndex];
 
     if (imagePart) {
+      const [xRotationMin, xRotationMax] = [0, PI];
+      const [yRotationMin, yRotationMax] = [0, PI];
 
-      const veil = mappers.circularIndex(time*2+switchIndex, [1, 0])
-      if (dominantColor && veil) {
-        const { levels: [ r, g, b ]} = dominantColor
-
-        strokeWeight(1)
-        fill(r, g, b, 255)
-        stroke(favoriteColor)
-        //noStroke()
-
-        // rect(x+W/2, y, 60, 60)
-        rect(x, y, W, H)
-      }
-      else {
-        image(imagePart, x, y, W, H)
-
-        noFill()
-        strokeWeight(1/4)
-        stroke(favoriteColor)
-        rect(x, y, W, H)
-      }
-
+      const xAngle = animation.ease({
+        values: [ xRotationMin, xRotationMin, xRotationMax, xRotationMax ],
+        currentTime: (
+          0
+          +rotationSpeed
+          +switchIndex
+        ),
+        duration: 1,
+        easingFn: easing.easeInOutQuad
+      })
+      const yAngle = animation.ease({
+        values: [ yRotationMin, yRotationMin, yRotationMax, yRotationMax ],
+        currentTime: (
+          0
+          +rotationSpeed
+          +switchIndex
+        ),
+        duration: 1,
+        easingFn: easing.easeInOutQuad
+      })
       
+      const yDirection = map(xAngle, xRotationMin, xRotationMax, 1, -1);
+      const xDirection = map(yAngle, yRotationMin, yRotationMax, 1, -1);
+      
+      push()
+
+      rotateY(yAngle)
+      rotateX(xAngle)
+
+      translate(x+W/2, y+H/2)
+
+      noFill()
+      strokeWeight(1/1.5)
+      stroke(favoriteColor)
+
+      texture(imagePart)
+      rect(
+        -W/2*xDirection,
+        -H/2*yDirection,
+        W*xDirection,
+        H*yDirection
+      )
+
+      pop()
+
+
+      // if (dominantColor && veil) {
+      //   const { levels: [ r, g, b ]} = dominantColor
+
+      //   strokeWeight(1)
+      //   fill(r, g, b, 255)
+      //   stroke(favoriteColor)
+      //   //noStroke()
+
+      //   // rect(x+W/2, y, 60, 60)
+      //   rect(x, y, W, H)
+      // }
+
+     
+
+     
 
       // strokeWeight(1)
       // cross(x + W - 30, y + H - 30, 20)
 
-      const II = round(imageIndex);
+      // const II = round(imageIndex);
 
       // string.write(`D${II}`, x+18, y+30, {
       //   size: 18,
@@ -179,4 +252,5 @@ sketch.draw( ( time, center, favoriteColor ) => {
       // })
     }
   })
+  orbitControl()
 });
