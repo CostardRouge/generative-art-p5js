@@ -5,6 +5,7 @@ const core = require( 'puppeteer-core' );
 const treePath = process.argv[2];
 const size = process.argv[3];
 const type = process.argv[4];
+const timeout = process.argv[5] || 1000;
 
 let _page;
 
@@ -57,7 +58,7 @@ async function getScreenshotWithURL(url, size) {
   await page.setViewport({ width, height});
   await page.goto(url, { waitUntil: 'domcontentloaded' });
   await page.waitForSelector('.p5Canvas');
-  await page.waitForTimeout(1000);
+  await page.waitForTimeout(timeout);
 
   return await page.screenshot({ type });
 }
@@ -68,10 +69,6 @@ async function buildPreviews() {
 
   for (const [ , {sketches} ] of Object.entries(tree)) {
     for (const [ sketchName, sketch ] of Object.entries(sketches)) {
-      // if ( sketchName !== 'midi-v1-output') {
-      //   break;
-      // }
-
       //const indexPath = `${sketch.path}/index.html`;
       //const indexFileContent = readFileSync(indexPath, 'utf8');
       console.log(">>: ", sketchName);

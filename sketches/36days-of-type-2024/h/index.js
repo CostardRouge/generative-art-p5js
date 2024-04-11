@@ -1,39 +1,24 @@
 import { sketch, animation, mappers, easing, events, string, cache, grid } from './utils/index.js';
 
 sketch.setup( undefined, {
-  size: {
-    width: 1080,
-    height: 1080
-  },
+  // size: {
+  //   width: 1080,
+  //   height: 1080
+  // },
   type: "webgl"
 });
 
 const images = [
-  //  "gabardine",
-  //  "gallery",
-  "garlic",
-  // "gas",
-  "gecko",
-  "gelatin",
-  //  "gelato",
-  //  "ghost",
-  // "glitter",
-  "ginger",
-  "giraffe",
-  // "glass",
-  "gnocchi",
-  "gold",
-  "goldfish",
-  //  "golem",
-  "gouda",
-  //  "gorilla",
-  // "granola",
-  // "grapes",
-  // "graphite",
-  // "grass",
-  //  "grizzly",
-  "guacamole",
-  // "guava"
+  "hydrogel",
+  "honey",
+  "hibiscus",
+  "hessian",
+  "horchata",
+  "helium",
+  "hula",
+  "hazelnuts",
+  "haricots",
+  "haricot-beans",
 ]
 
 events.register("engine-window-preload", () => {
@@ -98,8 +83,9 @@ sketch.draw( ( time, center, favoriteColor ) => {
   background(0);
   translate(-width/2, -height/2, -10)
 
-  const cols = 1//mappers.circularIndex(time/2, sizes);
-  const rows = 14//mappers.circularIndex(time/2, sizes.reverse());
+  const cols = 14//mappers.circularIndex(time/2, sizes);
+  const rows = 3
+  //mappers.circularIndex(time/2, sizes.reverse());
   // const rows = cols*height/width;
 
   const gridOptions = {
@@ -125,7 +111,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
         imageCells.push( {
           name,
           imagePart,
-          dominantColor: getDominantColor( imagePart, 50 )
+          //dominantColor: getDominantColor( imagePart, 50 )
         } );
 
         return imageCells;
@@ -165,7 +151,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
       const [yRotationMin, yRotationMax] = [0, PI];
 
       const xAngle = animation.ease({
-        values: [ xRotationMin, xRotationMin, xRotationMax, xRotationMax ],
+        values: [  xRotationMax, xRotationMax, xRotationMin, xRotationMin, ],
         currentTime: (
           0
           +rotationSpeed
@@ -175,7 +161,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
         easingFn: easing.easeInOutCirc
       })
       const yAngle = animation.ease({
-        values: [ yRotationMin, yRotationMin, yRotationMax, yRotationMax ],
+        values: [  yRotationMax, yRotationMax, yRotationMin, yRotationMin, ],
         currentTime: (
           0
           +rotationSpeed
@@ -191,7 +177,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
       translate(x+W/2, y+H/2)
 
       rotateX(xAngle) && (direction[0] = map(xAngle, xRotationMin, xRotationMax, 1, -1))
-      // rotateY(yAngle) && (direction[1] = map(yAngle, yRotationMin, yRotationMax, 1, -1))
+      rotateY(yAngle) && (direction[1] = map(yAngle, yRotationMin, yRotationMax, 1, -1))
 
       const weight = (
         0
@@ -199,14 +185,12 @@ sketch.draw( ( time, center, favoriteColor ) => {
         +mappers.circularPolar(direction[1], 1, -1, 0, 4)
       )
 
-      console.log(direction[0]);
-
       const [ yDirection, xDirection ] = direction
 
       noFill()
-      strokeWeight(weight)
+      //strokeWeight(weight)
       stroke(favoriteColor)
-      stroke(lerpColor(favoriteColor, dominantColor ?? favoriteColor, weight))
+      //stroke(lerpColor(favoriteColor, dominantColor ?? favoriteColor, weight))
 
       texture(imagePart)
       rect(
