@@ -95,7 +95,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
 
         imageCells.push( {
           imagePart,
-          dominantColor: getDominantColor( imagePart, 50 )
+          // dominantColor: getDominantColor( imagePart, 50 )
         } );
 
         return imageCells;
