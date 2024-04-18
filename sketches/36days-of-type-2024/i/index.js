@@ -1,31 +1,90 @@
-import { sketch, animation, mappers, easing, events, string, cache, grid } from './utils/index.js';
+import { sketch, animation, mappers, easing, events, string, cache, grid, options } from './utils/index.js';
+
+options.add( [
+  {
+    id: "grid-rows",
+    type: 'slider',
+    label: 'Rows',
+    min: 1,
+    max: 50,
+    defaultValue: 4,
+    category: 'Grid'
+  },
+  {
+    id: "grid-cols",
+    type: 'slider',
+    label: 'Cols',
+    min: 1,
+    max: 50,
+    defaultValue: 2,
+    category: 'Grid'
+  },
+] );
 
 sketch.setup( undefined, {
-  size: {
-    width: 1080,
-    height: 1080
-  },
+  // size: {
+  //   width: 1080,
+  //   height: 1080
+  // },
   type: "webgl"
 });
 
-const images = [
-  "hydrogel",
-  "honey",
-  "hibiscus",
-  "hessian",
-  "horchata",
-  "helium",
-  "hula",
-  "hazelnuts",
-  "haricots",
-  "haricot-beans",
+let images = [
+  "iricendent2.webp",
+  "ivory.webp",
+  "iron3.webp",
+  "iceberg.jpeg",
+  "impressionism.webp",
+  "iricendent.webp",
+  "icecube2.jpeg",
+  "iceberg.webp",
+  "icecream.jpeg",
+  "ivory.jpeg",
+  "icecream.webp",
+  "icecream2.jpeg",
+  "iridescent.jpeg",
+  "icecream3.jpeg",
+  "iridescent1.jpeg",
+  "ivory.webp",
+]
+
+images = [
+  "iceberg.jpeg",
+  "icecube2.jpeg",
+  "iricendent2.webp",
+  "iron3.webp",
+  "icecream.webp",
+  "impressionism.webp",
+  "iridescent.jpeg",
+  "ivory.jpeg"
+]
+
+// images = [
+//   "iceberg.webp",
+//   "icecream3.jpeg",
+//   "iricendent.webp",
+//   "iron3.jpeg",
+//   "icecream.jpeg",
+//   "intaglio.webp",
+//   "iridescent1.jpeg",
+//   "ivory.webp"
+// ]
+
+images = [
+  "framed.jpeg",
+  "impressionism.jpeg",
+  "iridescent2.jpeg",
+  "iron2.jpeg",
+  "icecream2.jpeg",
+  "impressionism3.jpeg",
+  "iridium.jpeg"
 ]
 
 events.register("engine-window-preload", () => {
   cache.store("images", () => images.map( name => ({
     name,
     url: `./images/${name}.webp`,
-    image: loadImage( `./images/${name}.webp` )
+    image: loadImage( `./images/v3/${name}` )
   }) ) )
 });
 
@@ -83,9 +142,10 @@ sketch.draw( ( time, center, favoriteColor ) => {
   background(0);
   translate(-width/2, -height/2, -10)
 
-  const cols = 14//mappers.circularIndex(time/2, sizes);
-  const rows = 3
-  //mappers.circularIndex(time/2, sizes.reverse());
+  const cols = options.get("grid-cols")//mappers.circularIndex(time/2, sizes);
+  const rows = options.get("grid-rows")//mappers.circularIndex(time/2, []);
+  // const rows = mappers.circularIndex(time/4, [2, 10, 30, 50]);
+  //
   // const rows = cols*height/width;
 
   const gridOptions = {
@@ -129,8 +189,9 @@ sketch.draw( ( time, center, favoriteColor ) => {
       // -cellIndex/(cols*rows)
       // +mappers.circularIndex(time, [-xIndex, xIndex])/cols
       // +mappers.circularIndex(time, [-yIndex, yIndex])/rows
-      +xIndex/cols
+      //+xIndex/cols
       +yIndex/rows
+      //+[ 5, 4, 2, 0, 1, 3 ][cellIndex]/(cols*rows)
       // +noise(xIndex, yIndex)
       // +noise(cellIndex/(cols*rows))
     )
@@ -147,21 +208,30 @@ sketch.draw( ( time, center, favoriteColor ) => {
     const { imagePart, dominantColor, name } = imageAtIndex?.[~~cellIndex];
 
     if (imagePart) {
-      const [xRotationMin, xRotationMax] = [0, PI];
-      const [yRotationMin, yRotationMax] = [0, PI];
+      const rotationRange = [0, PI];
+      const xRotationRange = yIndex % 2 === 0 ? rotationRange : rotationRange.toReversed();
+      const yRotationRange = xIndex ? rotationRange : rotationRange.toReversed();
+      
+      const [xRotationStart, xRotationEnd] = xRotationRange;
+      const xRotationMin = Math.min(...xRotationRange);
+      const xRotationMax = Math.max(...xRotationRange);
+
+      const [yRotationStart, yRotationEnd] = yRotationRange;
+      const yRotationMin = Math.min(...yRotationRange);
+      const yRotationMax = Math.max(...yRotationRange);
 
       const xAngle = animation.ease({
-        values: [  xRotationMax, xRotationMax, xRotationMin, xRotationMin, ],
+        values: [  xRotationEnd, xRotationEnd, xRotationStart, xRotationStart, ],
         currentTime: (
           0
           +rotationSpeed
           +switchIndex
         ),
         duration: 1,
-        easingFn: easing.easeInOutCirc
+        easingFn: easing.easeInOutBack
       })
       const yAngle = animation.ease({
-        values: [  yRotationMax, yRotationMax, yRotationMin, yRotationMin, ],
+        values: [ yRotationEnd, yRotationEnd, yRotationStart, yRotationStart, ],
         currentTime: (
           0
           +rotationSpeed
@@ -176,7 +246,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
       push()
       translate(x+W/2, y+H/2)
 
-      rotateX(xAngle) && (direction[0] = map(xAngle, xRotationMin, xRotationMax, 1, -1))
+      //rotateX(xAngle) && (direction[0] = map(xAngle, xRotationMin, xRotationMax, 1, -1))
       rotateY(yAngle) && (direction[1] = map(yAngle, yRotationMin, yRotationMax, 1, -1))
 
       const weight = (
@@ -188,9 +258,9 @@ sketch.draw( ( time, center, favoriteColor ) => {
       const [ yDirection, xDirection ] = direction
 
       noFill()
-      //strokeWeight(weight)
+      
       stroke(favoriteColor)
-      //stroke(lerpColor(favoriteColor, dominantColor ?? favoriteColor, weight))
+      //stroke(lerpColor(favoriteColor, dominantColor ?? favoriteColor, weight)) && strokeWeight(weight)
 
       texture(imagePart)
       rect(
