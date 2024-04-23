@@ -1,4 +1,25 @@
-import { sketch, animation, mappers, easing, events, string, cache, grid } from './utils/index.js';
+import { sketch, animation, mappers, easing, events, string, cache, grid, options } from './utils/index.js';
+
+options.add( [
+  {
+    id: "grid-rows",
+    type: 'slider',
+    label: 'Rows',
+    min: 1,
+    max: 50,
+    defaultValue: 4,
+    category: 'Grid'
+  },
+  {
+    id: "grid-cols",
+    type: 'slider',
+    label: 'Cols',
+    min: 1,
+    max: 50,
+    defaultValue: 2,
+    category: 'Grid'
+  },
+] );
 
 sketch.setup( undefined, {
   // size: {
@@ -8,24 +29,22 @@ sketch.setup( undefined, {
   type: "webgl"
 });
 
-const images = [
-  "hydrogel",
-  "honey",
-  "hibiscus",
-  "hessian",
-  "horchata",
-  "helium",
-  "hula",
-  "hazelnuts",
-  "haricots",
-  "haricot-beans",
+let images = [
+  "latte.webp",
+  "lavander.webp",
+  "leather.webp",
+  "lotus.webp",
+  "lava.webp",
+  "leafs.webp",
+  "lego.webp",
+  "lychee.webp"
 ]
 
 events.register("engine-window-preload", () => {
   cache.store("images", () => images.map( name => ({
     name,
     url: `./images/${name}.webp`,
-    image: loadImage( `./images/${name}.webp` )
+    image: loadImage( `./images/${name}` )
   }) ) )
 });
 
@@ -83,10 +102,8 @@ sketch.draw( ( time, center, favoriteColor ) => {
   background(0);
   translate(-width/2, -height/2, -10)
 
-  const cols = 14//mappers.circularIndex(time/2, sizes);
-  const rows = 3
-  //mappers.circularIndex(time/2, sizes.reverse());
-  // const rows = cols*height/width;
+  const cols = 10//options.get("grid-cols")
+  const rows = 30 //options.get("grid-rows")
 
   const gridOptions = {
     startLeft: createVector( borderSize, borderSize ),
@@ -123,15 +140,33 @@ sketch.draw( ( time, center, favoriteColor ) => {
 
   gridCells.forEach( ([position, xIndex, yIndex], cellIndex ) => {
     const { x, y } = position;
-    const switchImageSpeed = time//*1.5;
-    const rotationSpeed = switchImageSpeed;
+    const switchImageSpeed = time*2//*1.5;
+    const rotationSpeed = switchImageSpeed/2;
     const switchIndex = -(
-      // -cellIndex/(cols*rows)
+      //-cellIndex/(cols*rows)
       // +mappers.circularIndex(time, [-xIndex, xIndex])/cols
       // +mappers.circularIndex(time, [-yIndex, yIndex])/rows
-      +xIndex/cols
-      +yIndex/rows
-      // +noise(xIndex, yIndex)
+      // +xIndex/cols
+      // +yIndex/rows
+
+      // +mappers.fn(
+      //   position.dist(center),
+      //   0,
+      //   map(
+      //     sin(time),
+      //     -1,
+      //     1,
+      //     0,
+      //     width
+      //   ), 0, 1, easing.easeInOutExpo
+      // )
+      // +mappers.fn(-xIndex/cols, 0, width, 0, 1)
+      // +mappers.fn(y, 0, height, 0, 1)
+      // +map(sin(time/4+xIndex/cols/4), -1, 1, 0, 1)
+      // +map(cos(time/4+yIndex/rows/4), -1, 1, 0, 1)
+      //+[ 5, 4, 2, 0, 1, 3 ][cellIndex]/(cols*rows)
+      +noise(xIndex/cols*2, yIndex/rows*2)
+      //+noise(xIndex, yIndex)
       // +noise(cellIndex/(cols*rows))
     )
     const imageIndex = mappers.circularIndex(
@@ -147,34 +182,53 @@ sketch.draw( ( time, center, favoriteColor ) => {
     const { imagePart, dominantColor, name } = imageAtIndex?.[~~cellIndex];
 
     if (imagePart) {
-      const [xRotationMin, xRotationMax] = [0, PI];
-      const [yRotationMin, yRotationMax] = [0, PI];
+      const rotationRange = [0, PI];
+      const xRotationRange = yIndex % 2 === 0 ? rotationRange : rotationRange.toReversed();
+      const yRotationRange = xIndex ? rotationRange : rotationRange.toReversed();
+      
+      const [xRotationStart, xRotationEnd] = xRotationRange;
+      const xRotationMin = Math.min(...xRotationRange);
+      const xRotationMax = Math.max(...xRotationRange);
+
+      const [yRotationStart, yRotationEnd] = yRotationRange;
+      const yRotationMin = Math.min(...yRotationRange);
+      const yRotationMax = Math.max(...yRotationRange);
 
       const xAngle = animation.ease({
-        values: [  xRotationMax, xRotationMax, xRotationMin, xRotationMin, ],
+        values: [  xRotationEnd, xRotationEnd, xRotationStart, xRotationStart, ],
         currentTime: (
           0
           +rotationSpeed
           +switchIndex
         ),
         duration: 1,
-        easingFn: easing.easeInOutCirc
+        easingFn: easing.easeInOutExpo
       })
       const yAngle = animation.ease({
-        values: [  yRotationMax, yRotationMax, yRotationMin, yRotationMin, ],
+        values: [ yRotationEnd, yRotationEnd, yRotationStart, yRotationStart, ],
         currentTime: (
           0
           +rotationSpeed
           +switchIndex
         ),
         duration: 1,
-        easingFn: easing.easeInOutBack
+        easingFn: easing.easeInOutExpo
       })
       
       const direction = [ 1, 1 ]
       
       push()
-      translate(x+W/2, y+H/2)
+      const z = animation.ease({
+        values: [ -900, 0 ],
+        currentTime: (
+          0
+          +rotationSpeed
+          +switchIndex
+        ),
+        duration: 1,
+        easingFn: easing.easeInOutExpo
+      })
+      translate(x+W/2, y+H/2, z)
 
       rotateX(xAngle) && (direction[0] = map(xAngle, xRotationMin, xRotationMax, 1, -1))
       rotateY(yAngle) && (direction[1] = map(yAngle, yRotationMin, yRotationMax, 1, -1))
@@ -182,15 +236,17 @@ sketch.draw( ( time, center, favoriteColor ) => {
       const weight = (
         0
         +mappers.circularPolar(direction[0], 1, -1, 0, 4)
-        +mappers.circularPolar(direction[1], 1, -1, 0, 4)
+        +mappers.circularPolar(direction[1], 1, -1, 0.25, 4)
+        +mappers.circularPolar(z, 0, 1000, 0, 4)
       )
 
       const [ yDirection, xDirection ] = direction
 
       noFill()
-      //strokeWeight(weight)
+      
       stroke(favoriteColor)
-      //stroke(lerpColor(favoriteColor, dominantColor ?? favoriteColor, weight))
+      //stroke(lerpColor(favoriteColor, dominantColor ?? favoriteColor, weight)) && 
+      strokeWeight(weight)
 
       texture(imagePart)
       rect(
