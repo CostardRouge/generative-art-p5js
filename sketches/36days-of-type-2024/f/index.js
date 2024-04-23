@@ -1,10 +1,10 @@
 import { sketch, animation, mappers, easing, events, string, cache, grid } from './utils/index.js';
 
 sketch.setup( undefined, {
-  size: {
-    width: 1080,
-    height: 1080
-  },
+  // size: {
+  //   width: 1080,
+  //   height: 1080
+  // },
   type: "webgl"
 });
 
