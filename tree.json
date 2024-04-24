@@ -303,7 +303,7 @@
    },
    "36days-of-type-2024": {
       "meta": {
-         "_mtime": "2024-04-23T20:17:35.163Z",
+         "_mtime": "2024-04-24T18:18:02.833Z",
          "name": "36days-of-type-2024"
       },
       "sketches": {
@@ -390,6 +390,13 @@
                "name": "l"
             },
             "path": "sketches/36days-of-type-2024/l"
+         },
+         "m": {
+            "meta": {
+               "_mtime": "2024-04-24T23:13:13.546Z",
+               "name": "m"
+            },
+            "path": "sketches/36days-of-type-2024/m"
          }
       }
    },
