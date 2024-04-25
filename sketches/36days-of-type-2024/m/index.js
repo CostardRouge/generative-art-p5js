@@ -40,7 +40,7 @@ let images = [
   "microfiber.WEBP",
   "mozzarella.webp",
   "muslin.webp",
-  "mafé.webp",
+  "mafe.webp",
   "margherita.webp",
   "milkshake.webp",
   "muesli.webp",
