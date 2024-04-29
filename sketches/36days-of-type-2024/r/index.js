@@ -30,16 +30,16 @@ sketch.setup( undefined, {
 });
 
 let images = [
-  "1-quiche.webp",
-  "2-quesadilla.webp",
-  "3-quinoa.webp",
-  "4-quartz.webp",
-  "5-quicksilver.webp",
-  "6-quick-sand.webp",
-  "7-quill.webp",
-  "8-quasar.webp",
-  "9-quail-eggs.webp",
-  "10-quince.webp"
+  "1-raspberry.webp",
+  "2-ravioli.webp",
+  "3-rice.webp",
+  "4-raisins.webp",
+  "5-riccota.webp",
+  "6-raddish.webp",
+  "7-ratatouille.webp",
+  "8-ring.webp",
+  "9-resin.webp",
+  "10-ruby.webp"
 ]
 
 events.register("engine-window-preload", () => {
@@ -101,11 +101,11 @@ function getImagePart(img, x, y, w, h) {
   )
 }
 sketch.draw( ( time, center, favoriteColor ) => {
-  background(0);
+  background(0)
   translate(-width/2, -height/2, -10)
 
-  const cols = 14//options.get("grid-cols")
-  const rows = 1 //options.get("grid-rows")
+  const cols = 3//options.get("grid-cols")
+  const rows = 1//options.get("grid-rows")
 
   const gridOptions = {
     startLeft: createVector( borderSize, borderSize ),
@@ -189,7 +189,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
           +switchIndex
         ),
         duration: 1,
-        easingFn: easing.easeInOutExpo
+        easingFn: easing.easeInOutBack
       })
       const yAngle = animation.ease({
         values: [ yRotationEnd, yRotationEnd, yRotationStart, yRotationStart ],
@@ -199,7 +199,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
           +switchIndex
         ),
         duration: 1,
-        easingFn: easing.easeInOutExpo
+        easingFn: easing.easeInOutBack
       })
       
       const direction = [ 1, 1 ]
@@ -216,11 +216,11 @@ sketch.draw( ( time, center, favoriteColor ) => {
         duration: 1,
         easingFn: easingFunction
       })
-      translate(x+W, y+H, z)
+      translate(x+W/2, y+H/2, z)
 
       rotateX(xAngle) && (direction[0] = map(xAngle, xRotationMin, xRotationMax, 1, -1))
       //rotateY(yAngle) && (direction[1] = map(yAngle, yRotationMin, yRotationMax, 1, -1))
-      // rotateZ(yAngle)// && (direction[1] = map(yAngle, yRotationMin, yRotationMax, 1, -1))
+      //rotateZ(yAngle)// && (direction[1] = map(yAngle, yRotationMin, yRotationMax, 1, -1))
 
       const weight = (
         0
@@ -239,8 +239,8 @@ sketch.draw( ( time, center, favoriteColor ) => {
 
       texture(imagePart)
       rect(
-        -W*xDirection,
-        -H*yDirection,
+        -W/2*xDirection,
+        -H/2*yDirection,
         W*xDirection,
         H*yDirection
       )
