@@ -9,9 +9,9 @@
     <link rel="stylesheet" type="text/css" href="">
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@BlousonRouge" />
-    <meta name="twitter:image" content="screenshot.jpeg" />
+    <meta name="twitter:image" content="./screenshot.jpeg" />
     <meta property="og:title" content="" />
-    <meta property="og:image" content="screenshot.jpeg" />
+    <meta property="og:image" content="./screenshot.jpeg" />
 
     <script>
       const loadScript = (src, async = true, type = 'text/javascript') => {
@@ -50,7 +50,7 @@
       document.querySelector("meta[property='og:title']").setAttribute("content", document.title)
     
       // open graph images urls
-      const previewURL = "screenshot.jpeg"
+      const previewURL =  location.hostname + location.pathname + "screenshot.jpeg"
 
       document.querySelector("meta[name='twitter:image']").setAttribute("content", previewURL);
       document.querySelector("meta[property='og:image']").setAttribute("content", previewURL);
