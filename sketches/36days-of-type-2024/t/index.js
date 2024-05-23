@@ -30,17 +30,24 @@ sketch.setup( undefined, {
 });
 
 let images = [
-  "1-oranges.webp",
-  "2-oreos.webp",
-  "3-olives.webp",
-  "4-oysters.webp",
-  "5-octopus.webp",
-  "6-onions.webp",
-  "7-oatmeal.webp",
-  "8-omelette.webp",
-  "9-opal.webp",
-  "10-onyx.webp",
-  "11-obsidian.webp"
+  "tagliatelle.webp",
+  "tangerine.webp",
+  "tomato.webp",
+  "tiramisu.webp",
+  "tortilla.webp",
+  "tofu-2.webp",
+  "turnip.webp",
+  "tamarin.webp",
+  // "terracotta.webp",
+  // "topaz-1.webp",
+
+  // "topaz-2.webp",
+  // "tungsten.webp",
+  // "talc.webp",
+  // "tempura.webp",
+  // "titanium.webp",
+
+  // "tofu-1.webp",
 ]
 
 events.register("engine-window-preload", () => {
@@ -102,11 +109,11 @@ function getImagePart(img, x, y, w, h) {
   )
 }
 sketch.draw( ( time, center, favoriteColor ) => {
-  background(0);
+  background(0)
   translate(-width/2, -height/2, -10)
 
-  const cols = 14//options.get("grid-cols")
-  const rows = 14 //options.get("grid-rows")
+  const cols = 8//options.get("grid-cols")
+  const rows = 8//options.get("grid-rows")
 
   const gridOptions = {
     startLeft: createVector( borderSize, borderSize ),
@@ -141,7 +148,20 @@ sketch.draw( ( time, center, favoriteColor ) => {
 
   const imageIndexes = imageParts.map( (_, index) => [index, index]).flat(Infinity);
 
-  const easingFunction = easing.easeInOut;
+  const easingFunction = easing.easeInOutSine;
+
+  const anchorData = {
+    x: {
+      left: [ 0, 0 ],
+      middle: [ W/2, -W/2 ],
+      right: [ W, -W ]
+    },
+    y: {
+      top: [ 0, 0 ],
+      middle: [ H/2, -H/2 ],
+      bottom: [ H, -H ]
+    }
+  }
 
   gridCells.forEach( ([position, xIndex, yIndex], cellIndex ) => {
     const circularX = mappers.circular(xIndex, 0, (cols-1), 0, 1, easingFunction )
@@ -150,10 +170,14 @@ sketch.draw( ( time, center, favoriteColor ) => {
     const { x, y } = position;
     const switchImageSpeed = time//*1.5;
     const rotationSpeed = switchImageSpeed;
-    const switchIndex = -(
+    const switchIndex = +(
       0
-      -circularX
-      -circularY
+      //+yIndex/rows
+      //+noise(circularX, circularY)
+      //+noise(xIndex/rows, yIndex/cols)
+      +circularX
+      +circularY
+      //+cellIndex/(cols+rows)
     )
     const imageIndex = mappers.circularIndex(
       (
@@ -168,18 +192,12 @@ sketch.draw( ( time, center, favoriteColor ) => {
     const { imagePart, dominantColor, name } = imageAtIndex?.[~~cellIndex];
 
     if (imagePart) {
-      const rotationRange = [0, PI];
-      const xRotationRange = yIndex % 2 === 0 ? rotationRange : rotationRange.toReversed();
-      const yRotationRange = xIndex % 2 === 0 ? rotationRange : rotationRange.toReversed();
+      const rotationMin = 0;
+      const rotationMax = PI;
+      const rotationRange = [rotationMin, rotationMax];
+      const [xRotationStart, xRotationEnd] = yIndex % 2 === 0 ? rotationRange : rotationRange.toReversed();
+      const [yRotationStart, yRotationEnd] = xIndex % 2 === 0 ? rotationRange : rotationRange.toReversed();
       
-      const [xRotationStart, xRotationEnd] = xRotationRange;
-      const xRotationMin = Math.min(...xRotationRange);
-      const xRotationMax = Math.max(...xRotationRange);
-
-      const [yRotationStart, yRotationEnd] = yRotationRange;
-      const yRotationMin = Math.min(...yRotationRange);
-      const yRotationMax = Math.max(...yRotationRange);
-
       const xAngle = animation.ease({
         values: [  xRotationEnd, xRotationEnd, xRotationStart, xRotationStart ],
         currentTime: (
@@ -188,7 +206,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
           +switchIndex
         ),
         duration: 1,
-        easingFn: easing.easeInOutExpo
+        easingFn: easing.easeInOutCubic
       })
       const yAngle = animation.ease({
         values: [ yRotationEnd, yRotationEnd, yRotationStart, yRotationStart ],
@@ -198,13 +216,14 @@ sketch.draw( ( time, center, favoriteColor ) => {
           +switchIndex
         ),
         duration: 1,
-        easingFn: easing.easeInOutExpo
+        easingFn: easing.easeInOutCubic
       })
       
       const direction = [ 1, 1 ]
       
       push()
-      const z = animation.ease({
+      const z = 0
+      animation.ease({
         values: [ -300, 0 ],
         currentTime: (
           0
@@ -214,10 +233,22 @@ sketch.draw( ( time, center, favoriteColor ) => {
         duration: 1,
         easingFn: easingFunction
       })
-      translate(x+W/2, y+H/2, z)
 
-      //rotateX(xAngle) && (direction[0] = map(xAngle, xRotationMin, xRotationMax, 1, -1))
-      //rotateY(yAngle) && (direction[1] = map(yAngle, yRotationMin, yRotationMax, 1, -1))
+      const anchor = position.copy()
+
+      const anchorXType = !(xIndex % 2 === 0) ? "right" : "left"
+      const anchorYType = !(yIndex % 2 === 0) ? "bottom" : "top"
+
+      const [ anchorX, rectX ] = anchorData.x?.[anchorXType];
+      const [ anchorY, rectY ] = anchorData.y?.[anchorYType];
+
+      anchor.add(anchorX, anchorY)
+
+      translate(anchor.x, anchor.y, anchor.z)
+
+      rotateX(xAngle) && (direction[0] = map(xAngle, rotationMin, rotationMax, 1, -1))
+      rotateY(yAngle) && (direction[1] = map(yAngle, rotationMin, rotationMax, 1, -1))
+      //rotateZ(yAngle)// && (direction[1] = map(yAngle, rotationMin, rotationMax, 1, -1))
 
       const weight = (
         0
@@ -236,17 +267,19 @@ sketch.draw( ( time, center, favoriteColor ) => {
 
       texture(imagePart)
       rect(
-        -W/2*xDirection,
-        -H/2*yDirection,
+        rectX*xDirection,
+        rectY*yDirection,
         W*xDirection,
         H*yDirection
       )
 
       pop()
 
-      push()
-      translate(0, 0, 10)
-      // string.write(`${name}`, x+18, y+30, {
+      // push()
+      // translate(0, 0, 10)
+      // const letter = name[ cellIndex % name.length]
+
+      // string.write(`${letter}`, x+18, y+30, {
       //   // center: true,
       //   size: 18,
       //   stroke: 0,
@@ -254,16 +287,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
       //   fill: favoriteColor,
       //   font: string.fonts.openSans
       // })
-
-      // string.write(`${name}`, x+W/2, y+H/2, {
-      //   center: true,
-      //   size: 18,
-      //   stroke: 0,
-      //   strokeWeight: 2,
-      //   fill: favoriteColor,
-      //   font: string.fonts.openSans
-      // })
-      pop()
+      // pop()
     }
   })
   orbitControl()

@@ -222,48 +222,6 @@ sketch.draw( ( time, center, favoriteColor ) => {
       //   font: string.fonts.openSans
       // })
       pop()
-
-
-      // if (dominantColor && veil) {
-      //   const { levels: [ r, g, b ]} = dominantColor
-
-      //   strokeWeight(1)
-      //   fill(r, g, b, 255)
-      //   stroke(favoriteColor)
-      //   //noStroke()
-
-      //   // rect(x+W/2, y, 60, 60)
-      //   rect(x, y, W, H)
-      // }
-
-      // strokeWeight(1)
-      // cross(x + W - 30, y + H - 30, 20)
-
-      // const II = round(imageIndex);
-
-      // string.write(`D${II}`, x+18, y+30, {
-      //   size: 18,
-      //   stroke: 0,
-      //   strokeWeight: 2,
-      //   fill: favoriteColor,
-      //   font: string.fonts.openSans
-      // })
-
-      // string.write(`${xIndex}`, x+W-30, y+30, {
-      //   size: 18,
-      //   stroke: 0,
-      //   strokeWeight: 2,
-      //   fill: favoriteColor,
-      //   font: string.fonts.openSans
-      // })
-
-      // string.write(`${cellIndex}`, x+W-30, y+H-20, {
-      //   size: 18,
-      //   stroke: 0,
-      //   strokeWeight: 2,
-      //   fill: favoriteColor,
-      //   font: string.fonts.openSans
-      // })
     }
   })
   orbitControl()
