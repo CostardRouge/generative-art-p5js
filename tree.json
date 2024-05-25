@@ -303,7 +303,7 @@
    },
    "36days-of-type-2024": {
       "meta": {
-         "_mtime": "2024-05-23T17:25:14.339Z",
+         "_mtime": "2024-05-25T13:21:18.488Z",
          "name": "36days-of-type-2024"
       },
       "sketches": {
@@ -453,6 +453,13 @@
                "name": "u"
             },
             "path": "sketches/36days-of-type-2024/u"
+         },
+         "v": {
+            "meta": {
+               "_mtime": "2024-05-25T13:20:52.036Z",
+               "name": "v"
+            },
+            "path": "sketches/36days-of-type-2024/v"
          }
       }
    },
