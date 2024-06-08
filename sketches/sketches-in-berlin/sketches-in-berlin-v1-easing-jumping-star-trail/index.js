@@ -45,11 +45,11 @@ function lerpPoints(from, to, amount, fn) {
   })
 }
 
-function drawGridCell(_x, _y, w, h, cols, rows, drawer) {
-  const xSize = w / cols;
+function drawGridCell(_x, _y, w, h, columns, rows, drawer) {
+  const xSize = w / columns;
   const ySize = h / rows;
 
-  for (let x = 0; x <= cols; x++) {
+  for (let x = 0; x <= columns; x++) {
     for (let y = 0; y <= rows; y++) {
       drawer?.(_x + x*xSize, _y + y*ySize, xSize, ySize)
     }
@@ -57,7 +57,7 @@ function drawGridCell(_x, _y, w, h, cols, rows, drawer) {
 }
 
 // function drawGrid(xCount, yCount, offset = 1) {
-function drawGrid(cols, time) {
+function drawGrid(columns, time) {
   //   const xSize = width / xCount;
   // const ySize = height / yCount;
 
@@ -68,26 +68,26 @@ function drawGrid(cols, time) {
   //   }
   // }
 
-  const rows = cols*height/width;
+  const rows = columns*height/width;
 
   const gridOptions = {
-    startLeft: createVector( -width/2, -height/2 ),
-    startRight: createVector( width/2, -height/2 ),
-    endLeft: createVector( -width/2, height/2 ),
-    endRight: createVector( width/2, height/2 ),
+    topLeft: createVector( -width/2, -height/2 ),
+    topRight: createVector( width/2, -height/2 ),
+    bottomLeft: createVector( -width/2, height/2 ),
+    bottomRight: createVector( width/2, height/2 ),
     rows,
-    cols: ~~cols,
+    columns: ~~columns,
     centered: true
   }
 
-  const W = width / cols;
+  const W = width / columns;
   const H = height / rows;
 
   noFill()
   strokeWeight(2)
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const n = noise(x/cols, y/rows + time)*4;
+    const n = noise(x/columns, y/rows + time)*4;
 
     drawGridCell(
       cellVector.x-W/2,
@@ -267,16 +267,16 @@ sketch.draw( (time, center) => {
 
   return 
   
-  const cols = width / (size * letterScale);
-  const rows = ~~cols*height/width;
+  const columns = width / (size * letterScale);
+  const rows = ~~columns*height/width;
 
   const gridOptions = {
-    startLeft: createVector( -width/2, -height/2 ),
-    startRight: createVector( width/2, -height/2 ),
-    endLeft: createVector( -width/2, height/2 ),
-    endRight: createVector( width/2, height/2 ),
+    topLeft: createVector( -width/2, -height/2 ),
+    topRight: createVector( width/2, -height/2 ),
+    bottomLeft: createVector( -width/2, height/2 ),
+    bottomRight: createVector( width/2, height/2 ),
     rows,
-    cols: ~~cols,
+    columns: ~~columns,
     centered: true
   }
 
@@ -285,7 +285,7 @@ sketch.draw( (time, center) => {
     push()
     translate(cellVector)
 
-    const n = noise(x/cols, y/rows-time/100);
+    const n = noise(x/columns, y/rows-time/100);
 
     const p = animation.ease({
       values: [ 0, 1 ],

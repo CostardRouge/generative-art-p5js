@@ -127,22 +127,22 @@ function dice(size = width, render) {
   }
 }
 
-function six(time, cols = 50, diceIndex, rotationIndex) {
+function six(time, columns = 50, diceIndex, rotationIndex) {
   const size = (width);
   const sampleFactor = 1/10;
   const simplifyThreshold = 0;
 
-  // cols = 100*3;
-  const rows = cols*height/width;
-  const cellSize = width/cols;
+  // columns = 100*3;
+  const rows = columns*height/width;
+  const cellSize = width/columns;
 
   const gridOptions = {
-    startLeft: createVector( -width/2, -height/2 ),
-    startRight: createVector( width/2, -height/2 ),
-    endLeft: createVector( -width/2, height/2 ),
-    endRight: createVector( width/2, height/2),
+    topLeft: createVector( -width/2, -height/2 ),
+    topRight: createVector( width/2, -height/2 ),
+    bottomLeft: createVector( -width/2, height/2 ),
+    bottomRight: createVector( width/2, height/2),
     rows,
-    cols,
+    columns,
     centered: true
   }
 
@@ -170,7 +170,7 @@ function six(time, cols = 50, diceIndex, rotationIndex) {
     }
 
     const hue = noise(
-      position.x/cols + (
+      position.x/columns + (
         0
         +map(sin(time), -1, 1, 0, 1)*3
       ),

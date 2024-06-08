@@ -11,7 +11,7 @@ options.add( [
     category: 'Grid'
   },
   {
-    id: "grid-cols",
+    id: "grid-columns",
     type: 'slider',
     label: 'Rows',
     min: 1,
@@ -57,22 +57,22 @@ sketch.draw((time, center) => {
   background(0);
 
   const rows = options.get("grid-rows");
-  const cols = options.get("grid-cols");
+  const columns = options.get("grid-columns");
 
   const W = ( width / 2 ) * 2.4;
   const H = ( height / 2 ) * 2;
 
   const gridOptions = {
-    startLeft: createVector( -W, -H ),
-    startRight: createVector( W, -H ),
-    endLeft: createVector( -W, H/2 ),
-    endRight: createVector( W, H/2 ),
+    topLeft: createVector( -W, -H ),
+    topRight: createVector( W, -H ),
+    bottomLeft: createVector( -W, H/2 ),
+    bottomRight: createVector( W, H/2 ),
     rows,
-    cols,
+    columns,
     centered: options.get("grid-cell-centered")
   }
 
-  const scale = ( (width / cols) + (height / rows) ) / 2;
+  const scale = ( (width / columns) + (height / rows) ) / 2;
 
   noiseDetail(4, 0.1)
 
@@ -80,7 +80,7 @@ sketch.draw((time, center) => {
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
     const [ rotatedX, rotatedY ] = rotateVector(cellVector, center.div(2), mouseAngle);
-    const xOff = rotatedX/cols;
+    const xOff = rotatedX/columns;
     const yOff = rotatedY/rows;
     const angle = noise(xOff+direction.x, yOff+direction.y) * TAU;
 
@@ -88,7 +88,7 @@ sketch.draw((time, center) => {
     translate( cellVector.x, cellVector.y );
 
     const z = zMax * cos(angle);
-    const easingFunction = mappers.circularIndex(noise(x/cols+time/8, y/rows-time/5, time/10)+time*3, easingFunctions)
+    const easingFunction = mappers.circularIndex(noise(x/columns+time/8, y/rows-time/5, time/10)+time*3, easingFunctions)
     const colorFunction = colors.purple//mappers.circularIndex(xOff+yOff+time, [colors.rainbow,colors.purple])
 
     stroke(colorFunction({

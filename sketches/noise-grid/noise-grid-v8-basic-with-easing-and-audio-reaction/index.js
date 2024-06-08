@@ -11,9 +11,9 @@ options.add( [
     category: 'Grid'
   },
   {
-    id: "grid-cols",
+    id: "grid-columnsmns",
     type: 'slider',
-    label: 'Cols',
+    label: 'columnsmns',
     min: 1,
     max: 200,
     defaultValue: 40,
@@ -43,19 +43,19 @@ sketch.draw((time) => {
   background(0);
 
   const rows = options.get("grid-rows");
-  const cols = options.get("grid-cols");
+  const columnsmns = options.get("grcolumnsolumns");
 
   const gridOptions = {
-    startLeft: createVector( 0, 0 ),
-    startRight: createVector( width, 0 ),
-    endLeft: createVector( 0, height ),
-    endRight: createVector( width, height ),
+    topLeft: createVector( 0, 0 ),
+    topRight: createVector( width, 0 ),
+    bottomLeft: createVector( 0, height ),
+    bottomRight: createVector( width, height ),
     rows,
-    cols,
+    columnsmns,
     centered: options.get("grid-cell-centered")
   }
 
-  const scale = (width / cols);
+  const scale = (width / columnsmns);
 
   const audioEnergyAverage = audio.capture.energy.average("smooth");
   const bassAverage = audio.capture.energy.byIndex(2, "smooth");
@@ -78,7 +78,7 @@ sketch.draw((time) => {
   const [ , easingFunction ] = mappers.circularIndex( time*2, easingFunctions);
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const angle = noise(x/cols, y/rows+time/5, time/10) * (TAU*4);
+    const angle = noise(x/columnsmns, y/rows+time/5, time/10) * (TAU*4);
 
     let weight = map(angle, min, TAU, 1, 10, true );
     weight = mappers.fn(angle, min, TAU, 1, 10, easingFunctions[24][1] );

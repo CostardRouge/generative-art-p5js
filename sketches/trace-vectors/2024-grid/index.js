@@ -84,9 +84,9 @@ function createGridAlphaPoints(gridOptions, maskPoints, cacheKey) {
 }
 
 function style4(text, letterSize, gridOptions, time) {
-  const cols = gridOptions.cols;
+  const columns = gridOptions.columns;
   const rows = gridOptions.rows;
-  const cellSize = letterSize/cols-2;
+  const cellSize = letterSize/columns-2;
 
   const firstLetterPoints = string.getTextPoints({
     text,
@@ -102,7 +102,7 @@ function style4(text, letterSize, gridOptions, time) {
 
   for ( const position of alphaPoints ) {
     const hue = noise(
-      position.x/cols/10 + (
+      position.x/columns/10 + (
         0
         //+map(sin(time/2), -1, 1, 0, 1)*2
       ),
@@ -115,7 +115,7 @@ function style4(text, letterSize, gridOptions, time) {
       hueIndex: map(hue, 0, 1, -PI, PI)*3,
       hueIndex: map(
         (
-          noise(position.x/cols/10, position.y/rows/10, time/2)*5
+          noise(position.x/columns/10, position.y/rows/10, time/2)*5
         ), 0, 1, -PI, PI),
       opacityFactor: 1.5,
     })
@@ -139,7 +139,7 @@ function style4(text, letterSize, gridOptions, time) {
         values,
         currentTime: (
           time/2
-          +position.x/cols/20
+          +position.x/columns/20
           +position.y/rows/50
         ),
         duration: 1,
@@ -152,7 +152,7 @@ function style4(text, letterSize, gridOptions, time) {
         values,
         currentTime: (
           time/2
-          +position.x/cols/50
+          +position.x/columns/50
           +position.y/rows/20
         ),
         duration: 1,
@@ -173,9 +173,9 @@ function style4(text, letterSize, gridOptions, time) {
 }
 
 function style5(text, letterSize, gridOptions, time) {
-  const cols = gridOptions.cols;
+  const columns = gridOptions.columns;
   const rows = gridOptions.rows;
-  const cellSize = letterSize/cols-2;
+  const cellSize = letterSize/columns-2;
 
   const firstLetterPoints = string.getTextPoints({
     text,
@@ -192,7 +192,7 @@ function style5(text, letterSize, gridOptions, time) {
   for ( const position of alphaPoints) {
 
     const hue = noise(
-      position.x/cols + (
+      position.x/columns + (
         0
         +map(sin(time/2), -1, 1, 0, 1)*3
       ),
@@ -231,7 +231,7 @@ function style5(text, letterSize, gridOptions, time) {
         values: [ 0, 0, PI ],
         currentTime: (
           time/2
-          // +position.x/cols/50
+          // +position.x/columns/50
           +position.y/rows/20
         ),
         duration: 1,
@@ -245,7 +245,7 @@ function style5(text, letterSize, gridOptions, time) {
         values:  [ PI, 0, 0 ],
         currentTime: (
           time/2
-          +position.x/cols/20
+          +position.x/columns/20
           // +position.y/rows/50
         ),
         duration: 1,
@@ -261,9 +261,9 @@ function style5(text, letterSize, gridOptions, time) {
 }
 
 function style7( text, letterSize, gridOptions, time ) {
-  const cols = gridOptions.cols;
+  const columns = gridOptions.columns;
   const rows = gridOptions.rows;
-  const cellSize = letterSize/cols;
+  const cellSize = letterSize/columns;
 
   const fonts = [
     // string.fonts.martian,
@@ -340,7 +340,7 @@ function style7( text, letterSize, gridOptions, time ) {
   alphaPoints.forEach( ( { layers, position, randomPosition }, index ) => {
     const switchIndex = time+(
       +index/alphaPoints.length/5
-      +position.x/cols/50
+      +position.x/columns/50
       +position.y/rows/50
     )
 
@@ -353,7 +353,7 @@ function style7( text, letterSize, gridOptions, time ) {
     });
 
     const hue = noise(
-      position.x/cols/3 + (
+      position.x/columns/3 + (
         +map(sin(time), -1, 1, 0, 1)
       ),
       position.y/rows/3 + (
@@ -377,7 +377,7 @@ function style7( text, letterSize, gridOptions, time ) {
 
     translate(
       movingPosition.x + (
-        1//50 * sin(time*2+movingPosition.x/cols+index/alphaPoints.length)
+        1//50 * sin(time*2+movingPosition.x/columns+index/alphaPoints.length)
       ),
       movingPosition.y + (
         1//50 * cos(time+movingPosition.y/rows+index/alphaPoints.length)
@@ -405,9 +405,9 @@ function style7( text, letterSize, gridOptions, time ) {
 }
 
 function style8(text, letterSize, gridOptions, time ) {
-  const cols = gridOptions.cols;
+  const columns = gridOptions.columns;
   const rows = gridOptions.rows;
-  const cellSize = letterSize/cols-2;
+  const cellSize = letterSize/columns-2;
 
   const fonts = [
     string.fonts.martian,
@@ -487,12 +487,12 @@ function style8(text, letterSize, gridOptions, time ) {
 
     const switchIndex = generalAnimationTime*2+(
       +index/alphaPoints.length/5
-      +position.x/cols/100
+      +position.x/columns/100
       +position.y/rows/100
     )
 
     const hue = noise(
-      position.x/cols + (
+      position.x/columns + (
         +map(sin(time), -1, 1, 0, 1)
       ),
       position.y/rows + (
@@ -533,18 +533,18 @@ sketch.draw( ( time, center, favoriteColor ) => {
 
   push()
   translate(-W, -H)
-  const cols = 2;
+  const columns = 2;
   const rows = 2;
-  // drawGrid(cols, rows, favoriteColor, 0.5, 0, [], [])
+  // drawGrid(columns, rows, favoriteColor, 0.5, 0, [], [])
   pop()
 
   const gridOptions = {
-    startLeft: createVector( -width/2, -height/2 ),
-    startRight: createVector( width/2, -height/2 ),
-    endLeft: createVector( -width/2, height/2 ),
-    endRight: createVector( width/2, height/2),
+    topLeft: createVector( -width/2, -height/2 ),
+    topRight: createVector( width/2, -height/2 ),
+    bottomLeft: createVector( -width/2, height/2 ),
+    bottomRight: createVector( width/2, height/2),
     rows: 60,
-    cols: 60
+    columns: 60
   }
 
   const cells = [

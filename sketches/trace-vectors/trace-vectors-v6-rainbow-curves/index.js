@@ -98,9 +98,9 @@ sketch.draw( ( time, center, favoriteColor ) => {
 
   push()
   translate(-W, -H)
-  const cols = 1;
-  const rows = 10//cols * (height/width);
-  drawGrid(cols, rows, favoriteColor, 0.5, 0)
+  const columns = 1;
+  const rows = 10//columns * (height/width);
+  drawGrid(columnsmns, rows, favoriteColor, 0.5, 0)
   pop()
 
   translate(0, 0, 1)
