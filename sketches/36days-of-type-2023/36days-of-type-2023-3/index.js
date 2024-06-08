@@ -126,17 +126,17 @@ sketch.draw( (time, center) => {
   const sampleFactor = 1/10;
   const simplifyThreshold = 0;
 
-  const columns = 65;
-  const rows = columns*height/width;
-  const cellSize = width/columns;
+  const cols = 65;
+  const rows = cols*height/width;
+  const cellSize = width/cols;
 
   const gridOptions = {
-    topLeft: createVector( -width/2, -height/2 ),
-    topRight: createVector( width/2, -height/2 ),
-    bottomLeft: createVector( -width/2, height/2 ),
-    bottomRight: createVector( width/2, height/2),
+    startLeft: createVector( -width/2, -height/2 ),
+    startRight: createVector( width/2, -height/2 ),
+    endLeft: createVector( -width/2, height/2 ),
+    endRight: createVector( width/2, height/2),
     rows,
-    columns,
+    cols,
     centered: true
   }
 
@@ -223,7 +223,7 @@ sketch.draw( (time, center) => {
       continue
     }
   
-    const angle = noise(position.x/columns, position.y/rows) * TAU;
+    const angle = noise(position.x/cols, position.y/rows) * TAU;
     const [ rotatedX, rotatedY ] = rotateVector(
       position,
       center.div(2),
@@ -232,10 +232,10 @@ sketch.draw( (time, center) => {
     );
 
     const hue = noise(
-      // position.x/columns,
+      // position.x/cols,
       // position.y/rows,
       rotatedY/rows,
-      rotatedX/columns
+      rotatedX/cols
       //+depth/150+time/2
     )
     const tint = colors.rainbow({
@@ -248,7 +248,7 @@ sketch.draw( (time, center) => {
       //     // +easedAlpha/2
       //     // +depth/15
       //     +rotatedY/rows
-      //     +rotatedX/columns
+      //     +rotatedX/cols
       //     // +index/100
       //   ),
       //   -1,
@@ -272,12 +272,12 @@ sketch.draw( (time, center) => {
     const d = depth//*s
 
     // rotateX(mappers.fn(cos(2*time-rotatedY/rows), -1, 1, -PI, PI)/6)
-    // rotateY(mappers.fn(sin(time+rotatedX/columns), -1, 1, -PI, PI)/6)
-    // rotateY(mappers.fn(sin(time+rotatedY/columns/2+depth/150), -1, 1, -PI, PI)/9)
+    // rotateY(mappers.fn(sin(time+rotatedX/cols), -1, 1, -PI, PI)/6)
+    // rotateY(mappers.fn(sin(time+rotatedY/cols/2+depth/150), -1, 1, -PI, PI)/9)
     let rotateAngle = PI/12;
 
     rotateX(mappers.fn(cos(2*time-position.y/rows), -1, 1, -rotateAngle, rotateAngle))
-    // rotateY(mappers.fn(sin(time+position.x/columns), -1, 1, -rotateAngle, rotateAngle))
+    // rotateY(mappers.fn(sin(time+position.x/cols), -1, 1, -rotateAngle, rotateAngle))
 
     translate(
       position.x*scale,
@@ -286,19 +286,19 @@ sketch.draw( (time, center) => {
     )
 
     // rotateX(mappers.fn(cos(2*time-rotatedX/rows), -1, 1, -PI, PI, easing.easeInOutQuart)/6)
-    // rotateY(mappers.fn(sin(time+rotatedY/columns), -1, 1, -PI, PI, easing.easeInOutExpo)/6)
+    // rotateY(mappers.fn(sin(time+rotatedY/cols), -1, 1, -PI, PI, easing.easeInOutExpo)/6)
 
     // rotateX(mappers.fn(cos(2*time-rotatedY/rows), -1, 1, -rotateAngle, rotateAngle))
-    // rotateY(mappers.fn(sin(time+rotatedX/columns), -1, 1, -rotateAngle, rotateAngle))
+    // rotateY(mappers.fn(sin(time+rotatedX/cols), -1, 1, -rotateAngle, rotateAngle))
 
     rotateAngle = PI/12;
 
     // let c = mappers.fn(sin(time), -1, 1, 1, 6, easing.easeInExpo);
     // c = mappers.fn(sin(time+rotatedY/rows), -1, 1, -PI, 6, easing.easeInExpo);
-    // c = mappers.fn(sin(time+position.y/columns), -1, 1, -PI, PI, easing.easeOutExpo);
+    // c = mappers.fn(sin(time+position.y/cols), -1, 1, -PI, PI, easing.easeOutExpo);
 
     // rotateX(mappers.fn(cos(2*time-position.y/rows*c), -1, 1, -rotateAngle, rotateAngle))
-    // rotateY(mappers.fn(sin(time+position.x/columns*c), -1, 1, -rotateAngle, rotateAngle))
+    // rotateY(mappers.fn(sin(time+position.x/cols*c), -1, 1, -rotateAngle, rotateAngle))
 
     // box(w, h, -d)
     box(w, h, d)

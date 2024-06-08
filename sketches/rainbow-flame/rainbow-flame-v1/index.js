@@ -112,20 +112,20 @@ options.add( [
 
 sketch.setup( );
 
-function drawGrid2(columns, time) {
-  const rows = columns*height/width;
+function drawGrid2(cols, time) {
+  const rows = cols*height/width;
 
   const gridOptions = {
-    topLeft: createVector( -width/2, -height/2 ),
-    topRight: createVector( width/2, -height/2 ),
-    bottomLeft: createVector( -width/2, height/2 ),
-    bottomRight: createVector( width/2, height/2 ),
+    startLeft: createVector( -width/2, -height/2 ),
+    startRight: createVector( width/2, -height/2 ),
+    endLeft: createVector( -width/2, height/2 ),
+    endRight: createVector( width/2, height/2 ),
     rows,
-    columns,
+    cols,
     centered: true
   }
 
-  const W = width / columns;
+  const W = width / cols;
   const H = height / rows;
 
   noFill()
@@ -135,7 +135,7 @@ function drawGrid2(columns, time) {
   const ySign = cos(time/2);
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const n = noise(xSign*x/columns+time, ySign*y/rows, time)*2;
+    const n = noise(xSign*x/cols+time, ySign*y/rows, time)*2;
 
     drawGridCell(
       cellVector.x-W/2,

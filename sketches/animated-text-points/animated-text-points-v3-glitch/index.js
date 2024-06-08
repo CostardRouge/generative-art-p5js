@@ -4,9 +4,9 @@ sketch.setup( undefined, { type: 'webgl'});
 
 options.add( [
   {
-    id: "grid-columns",
+    id: "grid-cols",
     type: 'slider',
-    label: 'columns',
+    label: 'Cols',
     min: 1,
     max: 200,
     defaultValue: 30,
@@ -59,17 +59,17 @@ sketch.draw( (time) => {
     simplifyThreshold
   })
 
-  const columns = options.get("grid-columns") ?? 30;
-  const rows = columns*height/width;
-  const size = width/columns
+  const cols = options.get("grid-cols") ?? 30;
+  const rows = cols*height/width;
+  const size = width/cols
 
   const gridOptions = {
-    topLeft: createVector( -width/2, -height/2 ),
-    topRight: createVector( width/2, -height/2 ),
-    bottomLeft: createVector( -width/2, height/2 ),
-    bottomRight: createVector( width/2, height/2 ),
+    startLeft: createVector( -width/2, -height/2 ),
+    startRight: createVector( width/2, -height/2 ),
+    endLeft: createVector( -width/2, height/2 ),
+    endRight: createVector( width/2, height/2 ),
     rows,
-    columns,
+    cols,
     centered: true
   }
   
@@ -97,7 +97,7 @@ sketch.draw( (time) => {
 
     const xSign = sin(time);
     const ySign = cos(time);
-    let chance = noise((xSign*(x/columns)+ySign*(y/rows))+time)
+    let chance = noise((xSign*(x/cols)+ySign*(y/rows))+time)
 
     chance = noise(x, y+time/10)
 
@@ -117,7 +117,7 @@ sketch.draw( (time) => {
     else {
       const w = 15//size-1//map(sin(cellVector.x+time), -1, 1, 10, 20)
       const h = 15//size-1//map(cos(cellVector.x+time), -1, 1, 10, 20)
-      const d = 75// * noise(x/columns/2, y/rows+time/2)
+      const d = 75// * noise(x/cols/2, y/rows+time/2)
 
       push()
       

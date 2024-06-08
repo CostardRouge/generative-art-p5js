@@ -29,38 +29,38 @@ function getTextPoints({ text, size, font, position, sampleFactor, simplifyThres
   });
 }
 
-function drawGridCell(_x, _y, w, h, columns, rows, drawer) {
-  const xSize = w / columns;
+function drawGridCell(_x, _y, w, h, cols, rows, drawer) {
+  const xSize = w / cols;
   const ySize = h / rows;
 
-  for (let x = 0; x <= columns; x++) {
+  for (let x = 0; x <= cols; x++) {
     for (let y = 0; y <= rows; y++) {
       drawer?.(_x + x*xSize, _y + y*ySize, xSize, ySize)
     }
   }
 }
 
-function drawGrid(columns, time) {
-  const rows = columns*height/width;
+function drawGrid(cols, time) {
+  const rows = cols*height/width;
 
   const gridOptions = {
-    topLeft: createVector( -width/2, -height/2 ),
-    topRight: createVector( width/2, -height/2 ),
-    bottomLeft: createVector( -width/2, height/2 ),
-    bottomRight: createVector( width/2, height/2 ),
+    startLeft: createVector( -width/2, -height/2 ),
+    startRight: createVector( width/2, -height/2 ),
+    endLeft: createVector( -width/2, height/2 ),
+    endRight: createVector( width/2, height/2 ),
     rows,
-    columns: ~~columns,
+    cols: ~~cols,
     centered: true
   }
 
-  const W = width / columns;
+  const W = width / cols;
   const H = height / rows;
 
   noFill()
   strokeWeight(2)
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const n = noise(x/columns+time/4, y/rows)*4;
+    const n = noise(x/cols+time/4, y/rows)*4;
 
     drawGridCell(
       cellVector.x-W,

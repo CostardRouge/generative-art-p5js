@@ -8,9 +8,9 @@ sketch.setup( () => {
 
 options.add( [
   {
-    id: "grid-columns",
+    id: "grid-cols",
     type: 'slider',
-    label: 'columns',
+    label: 'Cols',
     min: 1,
     max: 200,
     defaultValue: 30,
@@ -64,17 +64,17 @@ sketch.draw( (time) => {
   //rotateY(map(cos(time/2), -1, 1, -PI, PI)/12)
 
   const word = " sunday bloody sunday"//"abcdef"
-  const columns = options.get("grid-columns") ?? 30//map(sin(time), -1, 1, 30, 40);
-  const rows = columns*height/width;
-  const size = width/columns
+  const cols = options.get("grid-cols") ?? 30//map(sin(time), -1, 1, 30, 40);
+  const rows = cols*height/width;
+  const size = width/cols
 
   const gridOptions = {
-    topLeft: createVector( -width/2, -height/2 ),
-    topRight: createVector( width/2, -height/2 ),
-    bottomLeft: createVector( -width/2, height/2 ),
-    bottomRight: createVector( width/2, height/2 ),
+    startLeft: createVector( -width/2, -height/2 ),
+    startRight: createVector( width/2, -height/2 ),
+    endLeft: createVector( -width/2, height/2 ),
+    endRight: createVector( width/2, height/2 ),
     rows,
-    columns,
+    cols,
     centered: true
   }
 
@@ -90,7 +90,7 @@ sketch.draw( (time) => {
   grid.draw(gridOptions, (cellVector, { x, y }) => {
     const xSign = sin(time);
     const ySign = cos(time);
-    const commonSwitchingIndex = (xSign*(x/columns)+ySign*(y/rows));
+    const commonSwitchingIndex = (xSign*(x/cols)+ySign*(y/rows));
     const currentLetter = mappers.circularIndex(commonSwitchingIndex+time, word)
     const currentFontName = mappers.circularIndex(commonSwitchingIndex+time, Object.keys(fonts))
     const points = getTextPoints({
@@ -120,7 +120,7 @@ sketch.draw( (time) => {
       return;
     }
 
-    const hue = noise(x/columns, y/rows+time/4 )
+    const hue = noise(x/cols, y/rows+time/4 )
 
     const coco = colors.rainbow({
       hueOffset: 0,
@@ -138,7 +138,7 @@ sketch.draw( (time) => {
 
     const w = size-borderSize*2//map(sin(time-y/10), -1, 1, 10, 20)
     const h = size-borderSize*2//map(cos(time+x/10), -1, 1, 10, 20)
-    const d = 150// * 20*noise(x/columns/2, y/rows+time/2)
+    const d = 150// * 20*noise(x/cols/2, y/rows+time/2)
 
     push()
 
@@ -147,7 +147,7 @@ sketch.draw( (time) => {
 
     // const t = time// * .5;
 
-    // rotateX(mappers.fn(cos(t+x/columns), -1, 1, -PI, PI, easing.easeInOutQuart))
+    // rotateX(mappers.fn(cos(t+x/cols), -1, 1, -PI, PI, easing.easeInOutQuart))
     // rotateY(mappers.fn(sin(t+y/rows), -1, 1, -PI, PI, easing.easeInOutExpo))
 
     translate(

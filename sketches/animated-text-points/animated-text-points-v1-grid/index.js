@@ -47,16 +47,16 @@ sketch.draw( (time) => {
     simplifyThreshold
   })
 
-  const columns = 30
+  const cols = 30
   const rows = 50;
 
   const gridOptions = {
-    topLeft: createVector( -width/2, -height/2 ),
-    topRight: createVector( width/2, -height/2 ),
-    bottomLeft: createVector( -width/2, height/2 ),
-    bottomRight: createVector( width/2, height/2 ),
+    startLeft: createVector( -width/2, -height/2 ),
+    startRight: createVector( width/2, -height/2 ),
+    endLeft: createVector( -width/2, height/2 ),
+    endRight: createVector( width/2, height/2 ),
     rows,
-    columns,
+    cols,
     centered: true
   }
   

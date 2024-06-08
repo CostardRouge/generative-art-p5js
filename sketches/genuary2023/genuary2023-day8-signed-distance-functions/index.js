@@ -11,9 +11,9 @@ options.add( [
     category: 'Grid'
   },
   {
-    id: "grid-columns",
+    id: "grid-cols",
     type: 'slider',
-    label: 'columns',
+    label: 'Cols',
     min: 1,
     max: 200,
     defaultValue: 40,
@@ -123,20 +123,20 @@ sketch.draw((time, center) => {
   const W = width/2;
   const H = height/2;
 
-  const columns = options.get("grid-columns");
-  const rows = columns*height/width;
-  const size = width/columns
+  const cols = options.get("grid-cols");
+  const rows = cols*height/width;
+  const size = width/cols
   const hSize = size/2;
 
   randomSeed(56)
 
   const gridOptions = {
-    topLeft: createVector( -width/2, -height/2 ),
-    topRight: createVector( width/2, -height/2 ),
-    bottomLeft: createVector( -width/2, height/2 ),
-    bottomRight: createVector( width/2, height/2 ),
+    startLeft: createVector( -width/2, -height/2 ),
+    startRight: createVector( width/2, -height/2 ),
+    endLeft: createVector( -width/2, height/2 ),
+    endRight: createVector( width/2, height/2 ),
     rows,
-    columns,
+    cols,
     centered: options.get("grid-cell-centered")
   }
 
@@ -238,7 +238,7 @@ sketch.draw((time, center) => {
     
     if (distance) {
       const currentColor = colors.rainbow({
-        hueOffset: noise(x/columns, y/rows)*2,
+        hueOffset: noise(x/cols, y/rows)*2,
         hueIndex: mappers.fn(distance, 0, 255, -PI, PI),
         opacityFactor: map(distance, 0, 255, 5, 1.5)
       })
@@ -251,7 +251,7 @@ sketch.draw((time, center) => {
       point( currentPosition.x, currentPosition.y, z);
     }
     else {
-      const showBackgroundDot = mappers.circularIndex(time/2+noise(x/columns, y/rows), [true, false])
+      const showBackgroundDot = mappers.circularIndex(time/2+noise(x/cols, y/rows), [true, false])
 
       if (showBackgroundDot)  {
         stroke(32, 32, 64)

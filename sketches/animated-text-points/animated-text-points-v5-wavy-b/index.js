@@ -4,9 +4,9 @@ sketch.setup( undefined, { type: 'webgl'});
 
 options.add( [
   {
-    id: "grid-columns",
+    id: "grid-cols",
     type: 'slider',
-    label: 'columns',
+    label: 'Cols',
     min: 1,
     max: 200,
     defaultValue: 30,
@@ -69,17 +69,17 @@ sketch.draw( (time) => {
     simplifyThreshold
   })
 
-  const columns = options.get("grid-columns") ?? 30;
-  const rows = columns*height/width;
-  const size = width/columns
+  const cols = options.get("grid-cols") ?? 30;
+  const rows = cols*height/width;
+  const size = width/cols
 
   const gridOptions = {
-    topLeft: createVector( -width/2, -height/2 ),
-    topRight: createVector( width/2, -height/2 ),
-    bottomLeft: createVector( -width/2, height/2 ),
-    bottomRight: createVector( width/2, height/2 ),
+    startLeft: createVector( -width/2, -height/2 ),
+    startRight: createVector( width/2, -height/2 ),
+    endLeft: createVector( -width/2, height/2 ),
+    endRight: createVector( width/2, height/2 ),
     rows,
-    columns,
+    cols,
     centered: true
   }
   
@@ -97,9 +97,9 @@ sketch.draw( (time) => {
       }, 0);
     });
 
-    const ww = noise(x/columns+time*2) > 0.2;
+    const ww = noise(x/cols+time*2) > 0.2;
     const hh = noise(y/rows-time) > 0.25;
-    const extraLines = ( ww && hh )// * (noise(x/columns+cos(time/4), y/rows+sin(time/2)) > 0.5)
+    const extraLines = ( ww && hh )// * (noise(x/cols+cos(time/4), y/rows+sin(time/2)) > 0.5)
 
     if (!alpha && extraLines) {
       return;
@@ -107,7 +107,7 @@ sketch.draw( (time) => {
 
     const xSign = sin(time);
     const ySign = cos(time);
-    const chance = noise((xSign*(x/columns)+ySign*(y/rows))+time)
+    const chance = noise((xSign*(x/cols)+ySign*(y/rows))+time)
 
     const coco = colors.rainbow({
       hueOffset: time,
@@ -127,7 +127,7 @@ sketch.draw( (time) => {
 
       const w = size-1//map(sin(cellVector.x+time), -1, 1, 10, 20)
       const h = size-1//map(cos(cellVector.x+time), -1, 1, 10, 20)
-      let d = 100 * noise(x/columns/2, y/rows+time/2)
+      let d = 100 * noise(x/cols/2, y/rows+time/2)
       d = sin(5*time+y/rows*4) * 100
 
       push()

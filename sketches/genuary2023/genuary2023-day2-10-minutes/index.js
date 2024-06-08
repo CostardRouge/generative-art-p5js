@@ -17,20 +17,20 @@ sketch.draw( (time, center) => {
   // texture(img);
   //image(img, -width/2, -height/2, width, height);
 
-  const columns = 15;
+  const cols = 15;
   const rows = 24;
 
   const gridOptions = {
-    topLeft: createVector( -width/2, -height/2 ),
-    topRight: createVector( width/2, -height/2 ),
-    bottomLeft: createVector( -width/2, height/2 ),
-    bottomRight: createVector( width/2, height/2 ),
+    startLeft: createVector( -width/2, -height/2 ),
+    startRight: createVector( width/2, -height/2 ),
+    endLeft: createVector( -width/2, height/2 ),
+    endRight: createVector( width/2, height/2 ),
     rows,
-    columns,
+    cols,
     centered: true
   }
 
-  const h = height / columns;
+  const h = height / cols;
   const w = width / rows;
 
   noiseDetail( 8, 0.3  )
@@ -43,12 +43,12 @@ sketch.draw( (time, center) => {
   yAdd += cos(time) * 0.01
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const xOff = x/columns;
+    const xOff = x/cols;
     const yOff = y/rows;
     const angleX = noise(xOff+xAdd, yOff+yAdd) * PI;
     const angleY = (angleX) * PI/8;
 
-    // const imageX = ~~map(x, 0, columns -1, 0, img.width);
+    // const imageX = ~~map(x, 0, cols -1, 0, img.width);
     // const imageY = ~~map(y, 0, rows-1, 0, img.height);
     // const imagePixel = img.get( imageX, imageY );
 

@@ -11,9 +11,9 @@ options.add( [
     category: 'Grid'
   },
   {
-    id: "grid-columns",
+    id: "grid-cols",
     type: 'slider',
-    label: 'columns',
+    label: 'Cols',
     min: 1,
     max: 200,
     defaultValue: 40,
@@ -101,28 +101,28 @@ sketch.draw((time,center) => {
 
   background(secondary);
 
-  const columns = options.get("grid-columns");
-  const rows = columns*height/width;
+  const cols = options.get("grid-cols");
+  const rows = cols*height/width;
   // const rows = options.get("grid-rows");
-  // const columns = options.get("grid-columns");
+  // const cols = options.get("grid-cols");
 
   const gridOptions = {
-    topLeft: createVector( 0, 0 ),
-    topRight: createVector( width, 0 ),
-    bottomLeft: createVector( 0, height ),
-    bottomRight: createVector( width, height ),
+    startLeft: createVector( 0, 0 ),
+    startRight: createVector( width, 0 ),
+    endLeft: createVector( 0, height ),
+    endRight: createVector( width, height ),
     rows,
-    columns,
+    cols,
     centered: options.get("grid-cell-centered")
   }
-  const scale = (width / columns)
+  const scale = (width / cols)
 
   noiseDetail(
     options.get("noise-detail-lod"),
     options.get("noise-detail-falloff"),
   );
 
-  const commonCacheKey = `${columns}-${rows}-${intermediary}`;
+  const commonCacheKey = `${cols}-${rows}-${intermediary}`;
 
   cachedGraphics(`vl`, commonCacheKey, buffer => {
     buffer.stroke(intermediary)
@@ -146,7 +146,7 @@ sketch.draw((time,center) => {
 
     grid.draw({
       ...gridOptions,
-      columns: 1,
+      cols: 1,
     }, ({ y }, { y: yy }) => {
       if ( yy < 1 ) return;
 
@@ -160,7 +160,7 @@ sketch.draw((time,center) => {
     ...gridOptions,
     centered: 0,
   }, (cellVector, { x, y}) => {
-    if ( x < 1 || x > columns - 1 ) return;
+    if ( x < 1 || x > cols - 1 ) return;
     if ( y < 1 || y > rows - 1 ) return;
     const n = noise(cellVector.x+cos(time/20), cellVector.y+sin(time/20), time/20);
     if ( n > 0.5 ) return;

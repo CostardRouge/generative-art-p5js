@@ -51,25 +51,25 @@ sketch.draw((time, center) => {
   //   easingFn: easing.easeInOutExpo
   // }));
 
-  // const columns = animation.ease({
+  // const cols = animation.ease({
   //   values: [ 20, 40 ],
   //   currentTime: time/6,
   //   duration: 1,
   //   easingFn: easing.easeInOutExpo
   // });
 
-  const columns = 44;
-  // const columns = mappers.circularIndex(time, [10, 10, 20, 20, 30, 30, 40, 40]);
-  const rows = (columns * height) / width;
-  const cellSize = width / columns;
+  const cols = 44;
+  // const cols = mappers.circularIndex(time, [10, 10, 20, 20, 30, 30, 40, 40]);
+  const rows = (cols * height) / width;
+  const cellSize = width / cols;
 
   const gridOptions = {
-    topLeft: createVector(-width / 2, -height / 2),
-    topRight: createVector(width / 2, -height / 2),
-    bottomLeft: createVector(-width / 2, height / 2),
-    bottomRight: createVector(width / 2, height / 2),
+    startLeft: createVector(-width / 2, -height / 2),
+    startRight: createVector(width / 2, -height / 2),
+    endLeft: createVector(-width / 2, height / 2),
+    endRight: createVector(width / 2, height / 2),
     rows,
-    columns,
+    cols,
     centered: true,
   };
 
@@ -77,14 +77,14 @@ sketch.draw((time, center) => {
 
   grid.draw(gridOptions, (position, { x, y }) => {
     const xOff = position.x / rows;
-    const yOff = position.y / columns;
+    const yOff = position.y / cols;
 
-    // const energy = audio.capture.energy.map(x / (columns + 2), y / (rows - 1));
+    // const energy = audio.capture.energy.map(x / (cols + 2), y / (rows - 1));
 
-    // const normalizedX = mappers.circular(x, 0, columns-1, 0, 1, easing.easeInOutCubic)
+    // const normalizedX = mappers.circular(x, 0, cols-1, 0, 1, easing.easeInOutCubic)
     // const normalizedY = mappers.circular(y, 0, rows-1, 0, 1)
 
-    const normalizedX = circular(x, 0, columns-1, 1, 0, easing.easeInOutExpo)
+    const normalizedX = circular(x, 0, cols-1, 1, 0, easing.easeInOutExpo)
     const normalizedY = circular(y, 0, rows-1, 1, 0)
 
     // const xx = map(sin(time/2), -1, 1, normalizedX, normalizedY).toFixed(2)

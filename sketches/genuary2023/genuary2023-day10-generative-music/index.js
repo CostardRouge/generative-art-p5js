@@ -94,19 +94,19 @@ function flower(size, step) {
   }
 }
 
-function drawBackgroundPattern(time, columns = 30, rows = 50) {
+function drawBackgroundPattern(time, cols = 30, rows = 50) {
   const gridOptions = {
-    topLeft: createVector( 0, 0 ),
-    topRight: createVector( width, 0 ),
-    bottomLeft: createVector( 0, height ),
-    bottomRight: createVector( width, height ),
+    startLeft: createVector( 0, 0 ),
+    startRight: createVector( width, 0 ),
+    endLeft: createVector( 0, height ),
+    endRight: createVector( width, height ),
     rows,
-    columns,
+    cols,
     centered: true
   }
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const xOff = x/columns;
+    const xOff = x/cols;
     const yOff = y/rows;
     const innerAngle = mappers.circularIndex(-time+xOff/2-yOff/2, [-PI/4, PI/2]);
     const borderColor = mappers.circularIndex(time+xOff/2+yOff/2, [

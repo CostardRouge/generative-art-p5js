@@ -126,17 +126,17 @@ sketch.draw( (time, center) => {
   const sampleFactor = 1/10;
   const simplifyThreshold = 0;
 
-  const columns = 65//*3;
-  const rows = columns*height/width;
-  const cellSize = width/columns;
+  const cols = 65//*3;
+  const rows = cols*height/width;
+  const cellSize = width/cols;
 
   const gridOptions = {
-    topLeft: createVector( -width/2, -height/2 ),
-    topRight: createVector( width/2, -height/2 ),
-    bottomLeft: createVector( -width/2, height/2 ),
-    bottomRight: createVector( width/2, height/2),
+    startLeft: createVector( -width/2, -height/2 ),
+    startRight: createVector( width/2, -height/2 ),
+    endLeft: createVector( -width/2, height/2 ),
+    endRight: createVector( width/2, height/2),
     rows,
-    columns,
+    cols,
     centered: true
   }
 
@@ -225,7 +225,7 @@ sketch.draw( (time, center) => {
       continue
     }
   
-    // const angle = noise(position.x/columns, position.y/rows) * TAU;
+    // const angle = noise(position.x/cols, position.y/rows) * TAU;
     // const [ rotatedX, rotatedY ] = rotateVector(
     //   position,
     //   center.div(2),
@@ -234,7 +234,7 @@ sketch.draw( (time, center) => {
     // );
 
     const hue = noise(
-      position.x/columns + (
+      position.x/cols + (
         0
         +map(sin(time/2), -1, 1, 0, 1)*3
       ),
@@ -243,7 +243,7 @@ sketch.draw( (time, center) => {
         +map(cos(time/2), -1, 1, 0, 1)*3
       ),
       // rotatedY/rows,
-      // rotatedX/columns
+      // rotatedX/cols
       //+depth/150+time/2
       //+mappers.fn(start?.a, 0, 255, 0, 100, easing.easeOutQuad)/150
     )
@@ -282,7 +282,7 @@ sketch.draw( (time, center) => {
         currentTime: (
           time/2
           // +index/pairedPoints.length/5
-          // +position.x/columns/50
+          // +position.x/cols/50
           +position.y/rows/20
         ),
         duration: 1,
@@ -297,7 +297,7 @@ sketch.draw( (time, center) => {
         currentTime: (
           time/2
           // +index/pairedPoints.length/5
-          +position.x/columns/20
+          +position.x/cols/20
           // +position.y/rows/50
         ),
         duration: 1,

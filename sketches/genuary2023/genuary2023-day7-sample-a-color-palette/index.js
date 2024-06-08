@@ -75,30 +75,30 @@ sketch.draw( (time, center) => {
   const cc = 20//~~map(bassAverage, 0, 1, 2, 30)
   // const cc = ~~map(sin(time+audioEnergyAverage), -1, 1, 4, 30)
 
-  const columns = cc;
+  const cols = cc;
   const rows = cc*height/width;
-  const size = width/columns
+  const size = width/cols
 
   if (Object.values(dominantColors).length === 0) {
     const img = cache.get("image");
 
     const gridOptions = {
-      topLeft: createVector( -width/2, -height/2 ),
-      topRight: createVector( width/2, -height/2 ),
-      bottomLeft: createVector( -width/2, height/2 ),
-      bottomRight: createVector( width/2, height/2 ),
+      startLeft: createVector( -width/2, -height/2 ),
+      startRight: createVector( width/2, -height/2 ),
+      endLeft: createVector( -width/2, height/2 ),
+      endRight: createVector( width/2, height/2 ),
       rows,
-      columns,
+      cols,
       centered: true
     }
 
     grid.draw(gridOptions, (cellVector, { x, y}) => {
-      const dominantColor = cache.store(`image-pixels-${x}-${y}-${rows}-${columns}`, () => {
+      const dominantColor = cache.store(`image-pixels-${x}-${y}-${rows}-${cols}`, () => {
         const { width: imageWidth, height: imageHeight } = img;
   
-        const subWidth = imageWidth / columns;
+        const subWidth = imageWidth / cols;
         const subHeight = imageHeight / rows;
-        const subX = x/columns * imageWidth;
+        const subX = x/cols * imageWidth;
         const subY = y/rows * imageHeight;
         const subImage = img.get( subX, subY, subWidth, subHeight );
   
@@ -121,7 +121,7 @@ sketch.draw( (time, center) => {
 
   for ( const key in dominantColors ) {
     const { color, position, x, y } = dominantColors[key]
-    const nextX = x//~~map(sin(time-x/columns), -1, 1, 0, columns);
+    const nextX = x//~~map(sin(time-x/cols), -1, 1, 0, cols);
     const nextY = y//~~map(sin(time/8+y/rows), -1, 1, 0, rows);
 
     const {color: nextColor } = dominantColors[ `${nextX}-${nextY}` ];
@@ -132,22 +132,22 @@ sketch.draw( (time, center) => {
 
     const { levels: [ r, g, b ] } = nextColor;
 
-    const xx = ~~(x/columns*audio.capture.bins)
+    const xx = ~~(x/cols*audio.capture.bins)
     const yy = ~~(y/rows*audio.capture.historyBufferSize)
     const audioHistoryLine = audio.capture.history?.spectrum[yy];
     const energy = audioHistoryLine?.[xx]
 
-    const n = noise(x/columns, y/rows+energy/255)
+    const n = noise(x/cols, y/rows+energy/255)
     const z = energy/255 * 500 * bassAverage//map((((r+g+b)/3)/255), 1, 0, 0, 1)
 
     push()
     // fill(nextColor);
     ambientMaterial(nextColor);
 
-    // rotateY(audioActivity+x/columns)
+    // rotateY(audioActivity+x/cols)
     translate(position.x, position.y, z/2)
 
-    //rotateZ(time+x/columns)
+    //rotateZ(time+x/cols)
 
     box(size, size, z+100*bassAverage)
     pop()

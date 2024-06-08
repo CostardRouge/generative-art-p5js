@@ -106,9 +106,9 @@ sketch.draw( ( time, center, favoriteColor ) => {
   translate(-W, -H)
   // translate(-center.x, -center.y/2)
   
-  const columns = 20;
-  const rows = columns * (height/width);
-  drawGrid(columns, rows, favoriteColor, 0.5, 0)
+  const cols = 20;
+  const rows = cols * (height/width);
+  drawGrid(cols, rows, favoriteColor, 0.5, 0)
   pop()
 
   // const from = createVector(0, -H+margin, 0);

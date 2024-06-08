@@ -38,19 +38,19 @@ function vl(x) {
 
 
 
-function drawBackgroundPattern(time, columns = 30, rows = 50) {
+function drawBackgroundPattern(time, cols = 30, rows = 50) {
   const gridOptions = {
-    topLeft: createVector( -width/2, -height/2 ),
-    topRight: createVector( width/2, -height/2 ),
-    bottomLeft: createVector( -width/2, height/2 ),
-    bottomRight: createVector( width/2, height/2 ),
+    startLeft: createVector( -width/2, -height/2 ),
+    startRight: createVector( width/2, -height/2 ),
+    endLeft: createVector( -width/2, height/2 ),
+    endRight: createVector( width/2, height/2 ),
     rows,
-    columns,
+    cols,
     centered: true
   }
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const xOff = x/columns;
+    const xOff = x/cols;
     const yOff = y/rows;
     const amt = mappers.circularIndex(time/2+noise(yOff+time, xOff+time), [0, 2, 5, 3]);
 

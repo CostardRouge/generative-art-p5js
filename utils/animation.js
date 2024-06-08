@@ -23,7 +23,7 @@ const animation = {
   ease: ({
     values,
     currentTime,
-    duration = 1,
+    duration,
     easingFn = x => x,
     lerpFn = lerp,
     startIndex = currentTime,

@@ -117,17 +117,17 @@ sketch.draw( (time, center) => {
   const sampleFactor = 1/10;
   const simplifyThreshold = 0;
 
-  const columns = 50//*2;
-  const rows = columns*height/width;
-  const cellSize = width/columns;
+  const cols = 50//*2;
+  const rows = cols*height/width;
+  const cellSize = width/cols;
 
   const gridOptions = {
-    topLeft: createVector( -width/2, -height/2 ),
-    topRight: createVector( width/2, -height/2 ),
-    bottomLeft: createVector( -width/2, height/2 ),
-    bottomRight: createVector( width/2, height/2),
+    startLeft: createVector( -width/2, -height/2 ),
+    startRight: createVector( width/2, -height/2 ),
+    endLeft: createVector( -width/2, height/2 ),
+    endRight: createVector( width/2, height/2),
     rows,
-    columns,
+    cols,
     centered: true
   }
 
@@ -179,7 +179,7 @@ sketch.draw( (time, center) => {
   alphaPoints.forEach( ( { layers, position, randomPosition }, index ) => {
     const switchIndex = time+(
       +index/alphaPoints.length/5
-      +position.x/columns/50
+      +position.x/cols/50
       +position.y/rows/50
     )
 
@@ -192,7 +192,7 @@ sketch.draw( (time, center) => {
     });
 
     const hue = noise(
-      position.x/columns/3 + (
+      position.x/cols/3 + (
         +map(sin(time), -1, 1, 0, 1)
       ),
       position.y/rows/3 + (
@@ -216,7 +216,7 @@ sketch.draw( (time, center) => {
 
     translate(
       movingPosition.x + (
-        1//50 * sin(time*2+movingPosition.x/columns+index/alphaPoints.length)
+        1//50 * sin(time*2+movingPosition.x/cols+index/alphaPoints.length)
       ),
       movingPosition.y + (
         1//50 * cos(time+movingPosition.y/rows+index/alphaPoints.length)

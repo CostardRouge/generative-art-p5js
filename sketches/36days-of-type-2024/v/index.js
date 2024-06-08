@@ -11,9 +11,9 @@ options.add( [
     category: 'Grid'
   },
   {
-    id: "grid-columns",
+    id: "grid-cols",
     type: 'slider',
-    label: 'columns',
+    label: 'Cols',
     min: 1,
     max: 50,
     defaultValue: 2,
@@ -107,26 +107,26 @@ sketch.draw( ( time, center, favoriteColor ) => {
   background(0)
   translate(-width/2, -height/2, -10)
 
-  const columns = 2//options.get("grid-columns")
+  const cols = 2//options.get("grid-cols")
   const rows = 12//options.get("grid-rows")
 
   const gridOptions = {
-    topLeft: createVector( borderSize, borderSize ),
-    topRight: createVector( width-borderSize, borderSize ),
-    bottomLeft: createVector( borderSize, height-borderSize ),
-    bottomRight: createVector( width-borderSize, height-borderSize ),
+    startLeft: createVector( borderSize, borderSize ),
+    startRight: createVector( width-borderSize, borderSize ),
+    endLeft: createVector( borderSize, height-borderSize ),
+    endRight: createVector( width-borderSize, height-borderSize ),
     rows,
-    columns,
+    cols,
     centered: false
   }
 
-  const W = width / columns;
+  const W = width / cols;
   const H = height / rows;
   const cc = createVector(width/2-W/2, height/2-H/2);
 
   const gridCells = grid.create( gridOptions );
 
-  const imageParts = cache.store(`image-parts-${columns}-${rows}`, () => (
+  const imageParts = cache.store(`image-parts-${cols}-${rows}`, () => (
     cache.get("images").map( ( { image, name } ) => (
       gridCells.reduce( ( imageCells, [ { x , y } ] ) => {
         const imagePart = getImagePart( image, x, y, W, H );
@@ -160,7 +160,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
   }
 
   gridCells.forEach( ([position, xIndex, yIndex], cellIndex ) => {
-    const circularX = mappers.circular(xIndex, 0, (columns-1), 0, 1, easingFunction )
+    const circularX = mappers.circular(xIndex, 0, (cols-1), 0, 1, easingFunction )
     const circularY = mappers.circular(yIndex, 0, (rows-1), 0, 1, easingFunction )
 
     const { x, y } = position;
@@ -170,12 +170,12 @@ sketch.draw( ( time, center, favoriteColor ) => {
       0
       //+yIndex/rows
       //+noise(circularX, circularY)
-      //+noise(xIndex/rows, yIndex/columns)
-      //+circularX/columns
+      //+noise(xIndex/rows, yIndex/cols)
+      //+circularX/cols
       +circularY/rows
-      //+xIndex/columns
+      //+xIndex/cols
       //+yIndex/rows
-      // +cellIndex/(columns+rows)
+      // +cellIndex/(cols+rows)
     )
     const imageIndex = mappers.circularIndex(
       (
@@ -239,9 +239,9 @@ sketch.draw( ( time, center, favoriteColor ) => {
       //   currentTime: (
       //     0
       //     // +noise(circularX, circularY)
-      //     // +noise(xIndex/rows, yIndex/columns)
-      //     // // +cellIndex/(columns+rows)
-      //     // +circularX/columns
+      //     // +noise(xIndex/rows, yIndex/cols)
+      //     // // +cellIndex/(cols+rows)
+      //     // +circularX/cols
       //     // +circularY/rows
       //     +rotationSpeed
       //     +switchIndex

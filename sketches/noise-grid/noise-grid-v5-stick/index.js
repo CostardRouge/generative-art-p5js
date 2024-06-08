@@ -11,7 +11,7 @@ options.add( [
     category: 'Grid'
   },
   {
-    id: "grid-columns",
+    id: "grid-cols",
     type: 'slider',
     label: 'Rows',
     min: 1,
@@ -36,25 +36,25 @@ sketch.draw((time) => {
   background(0);
 
   const rows = options.get("grid-rows");
-  const columns = options.get("grid-columns");
+  const cols = options.get("grid-cols");
 
   const gridOptions = {
-    topLeft: createVector( 0, 0 ),
-    topRight: createVector( width, 0 ),
-    bottomLeft: createVector( 0, height ),
-    bottomRight: createVector( width, height ),
+    startLeft: createVector( 0, 0 ),
+    startRight: createVector( width, 0 ),
+    endLeft: createVector( 0, height ),
+    endRight: createVector( width, height ),
     rows,
-    columns,
+    cols,
     centered: options.get("grid-cell-centered")
   }
   const z = frameCount/300//mappers.fn(sin(time), -1, 1, 3, 3.5)
-  const scale = (width / columns);
+  const scale = (width / cols);
 
   // noiseDetail(2, 4, 1);
   // noiseSeed()
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const angle = noise(x/columns, y/rows+time/8, z) * (TAU*4);
+    const angle = noise(x/cols, y/rows+time/8, z) * (TAU*4);
     // const vector = p5.Vector.fromAngle(angle);
     const cellScale = map(angle, min, max, scale, scale*2, true )
     const weight = 20
@@ -90,7 +90,7 @@ sketch.draw((time) => {
     //   1/2, (position, index) => {
     //     translate(position.x, position.y)
 
-    //     const _angle = noise((position.x)/columns, (position.y)/rows+time/8, z) * (PI);
+    //     const _angle = noise((position.x)/cols, (position.y)/rows+time/8, z) * (PI);
     //     const vector = p5.Vector.fromAngle(_angle)//.limit(35)
 
     //     rotate(vector.heading())

@@ -124,22 +124,22 @@ sketch.draw( (time, center) => {
 
   // return
   const rows = 15//animation.sequence("rows", time, [50, 75])
-  const columns = 10//animation.sequence("columns", time, [75, 20])
+  const cols = 10//animation.sequence("cols", time, [75, 20])
 
   const gridOptions = {
-    topLeft: createVector( 0, 0 ),
-    topRight: createVector( width, 0 ),
-    bottomLeft: createVector( 0, height ),
-    bottomRight: createVector( width, height ),
+    startLeft: createVector( 0, 0 ),
+    startRight: createVector( width, 0 ),
+    endLeft: createVector( 0, height ),
+    endRight: createVector( width, height ),
     rows,
-    columns,
+    cols,
     centered: true
   }
 
   strokeWeight(2)
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const xOff = x/columns;
+    const xOff = x/cols;
     const yOff = y/rows;
     // const amt = mappers.circularIndex(time+yOff-xOff, [ 1, 2, 3, 4, 3, 2, 1]);
     const amt = mappers.circularIndex(time+noise(yOff + time/5,xOff, time), [ 3, 4, 5, 6, 5]);
@@ -154,7 +154,7 @@ sketch.draw( (time, center) => {
 
     const cooo = colorFunction({
       hueOffset: time+sin(y+time),
-      hueIndex: map(x, 0, columns-1, -PI, PI),
+      hueIndex: map(x, 0, cols-1, -PI, PI),
       // opacityFactor: 1
     });
 

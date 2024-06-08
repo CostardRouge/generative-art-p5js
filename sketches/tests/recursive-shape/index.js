@@ -77,19 +77,19 @@ function shaper(options) {
   pop();
 }
 
-function drawBackgroundPattern(time, columns = 30, rows = 50) {
+function drawBackgroundPattern(time, cols = 30, rows = 50) {
   const gridOptions = {
-    topLeft: createVector( 0, 0 ),
-    topRight: createVector( width, 0 ),
-    bottomLeft: createVector( 0, height ),
-    bottomRight: createVector( width, height ),
+    startLeft: createVector( 0, 0 ),
+    startRight: createVector( width, 0 ),
+    endLeft: createVector( 0, height ),
+    endRight: createVector( width, height ),
     rows,
-    columns,
+    cols,
     centered: true
   }
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const xOff = x/columns;
+    const xOff = x/cols;
     const yOff = y/rows;
 
     shaper({
@@ -97,7 +97,7 @@ function drawBackgroundPattern(time, columns = 30, rows = 50) {
       sides: mappers.circularIndex(time/2+noise(yOff + time, xOff), [ 0, 1, 2, 4]),
       borderColor: colors.purple({
         hueOffset: time+noise(yOff + time, xOff + time),
-        hueIndex: map(x, 0, columns-1, -PI, PI),
+        hueIndex: map(x, 0, cols-1, -PI, PI),
         opacityFactor: 3.5
       }),
       borderWidth: 3,

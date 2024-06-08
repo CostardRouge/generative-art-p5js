@@ -61,7 +61,7 @@ let paths = [];
 // vertex(nextVector.x, nextVector.y, nextVector.z);
 // circle(vector.x, vector.y, vector.z);
 
-const columns = 10;
+const cols = 10;
 const rows = 15;
 const pathsCount = 5;
 const pathLength = [3, 10]
@@ -75,7 +75,7 @@ function createPaths() {
     .fill()
     .map(() => {
       const max = ~~random(pathMinLength, pathMaxLength);
-      const start = [~~random(0, columns), ~~random(0, rows)];
+      const start = [~~random(0, cols), ~~random(0, rows)];
       const path = [ start ];
 
       for (let i = 1; i < max; i++ ) {
@@ -83,7 +83,7 @@ function createPaths() {
         const [ previousX, previousY ] = path[ path.length -1 ];
 
         for (let j = 0; j < 2; j++ ) {
-          const x = XorY ? ~~random(0, columns) : previousX;
+          const x = XorY ? ~~random(0, cols) : previousX;
           const y = !XorY ? ~~random(0, rows) : previousY;
 
           const found = path.find( ([xx, yy ]) => {
@@ -132,7 +132,7 @@ function cross({ x, y }, size) {
 }
 
 function getPosition([x, y]) {
-  const xSize = width / columns;
+  const xSize = width / cols;
   const ySize = height / rows;
 
   return createVector(
@@ -146,7 +146,7 @@ sketch.draw( (time, center) => {
 
   // push()
   // translate(-center.x, -center.y, -10)
-  // drawGrid(columns, rows)
+  // drawGrid(cols, rows)
   // pop()
 
   translate(-center.x, -center.y)

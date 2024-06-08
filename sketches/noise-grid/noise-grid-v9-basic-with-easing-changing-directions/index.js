@@ -11,9 +11,9 @@ options.add( [
     category: 'Grid'
   },
   {
-    id: "grid-columns",
+    id: "grid-cols",
     type: 'slider',
-    label: 'columns',
+    label: 'Cols',
     min: 1,
     max: 200,
     defaultValue: 40,
@@ -44,15 +44,15 @@ sketch.draw((time) => {
   background(0);
 
   const rows = options.get("grid-rows");
-  const columns = options.get("grid-columns");
+  const cols = options.get("grid-cols");
 
   const gridOptions = {
-    topLeft: createVector( 0, 0 ),
-    topRight: createVector( width, 0 ),
-    bottomLeft: createVector( 0, height ),
-    bottomRight: createVector( width, height ),
+    startLeft: createVector( 0, 0 ),
+    startRight: createVector( width, 0 ),
+    endLeft: createVector( 0, height ),
+    endRight: createVector( width, height ),
     rows,
-    columns,
+    cols,
     centered: options.get("grid-cell-centered")
   }
 
@@ -65,7 +65,7 @@ sketch.draw((time) => {
   const i = map(mouseX, 0, width, 0, easingFunctions.length);
   const [ , easingFunction ] = mappers.circularIndex( time*2, easingFunctions);
 
-  const cellSize = ((width+height) / (rows+columns))/2;
+  const cellSize = ((width+height) / (rows+cols))/2;
   let detail = animation.sequence("detail", clickCount, [0.2, 0.3, 0.4, 0.5])
   detail = animation.sequence("detail", time, [0.2, 0.3, 0.4, 0.5])
   const hueMax = PI//animation.sequence("hue-max", clickCount, [PI/2, PI])
@@ -85,7 +85,7 @@ sketch.draw((time) => {
   )
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const angle = noise(x/columns+xOff, y/rows+yOff) * (TAU*4);
+    const angle = noise(x/cols+xOff, y/rows+yOff) * (TAU*4);
     
     let weight = map(angle, min, TAU, 1, 10, true );
     weight = mappers.fn(angle, min, TAU, 1, cellSize, easingFunctions[24][1] );

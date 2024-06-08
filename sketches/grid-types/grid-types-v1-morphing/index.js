@@ -215,13 +215,13 @@ sketch.draw( ( time, center, favoriteColor ) => {
   const W = width/2;
   const H = height/2;
 
-  const columns = options.get("grid-columns-count");
-  const rows = options.get("grid-proportional-rows-count") ? columns * (height/width) : options.get("grid-rows-count");
+  const cols = options.get("grid-columns-count");
+  const rows = options.get("grid-proportional-rows-count") ? cols * (height/width) : options.get("grid-rows-count");
 
   const {
     draw: drawTextGrid,
     vectors: positions
-  } = grid.prepare({ rows, columns });
+  } = grid.prepare({ rows, cols });
 
   if (options.get("grid-show")) {
     push()
@@ -231,8 +231,8 @@ sketch.draw( ( time, center, favoriteColor ) => {
     
     drawTextGrid( ({ x, y }, _, i) => {
       // const tint = colors.rainbow({
-      //   hueOffset: time+i/(columns*rows),
-      //   hueIndex: map(i, 0, rows*columns, -PI/2, PI/2)
+      //   hueOffset: time+i/(cols*rows),
+      //   hueIndex: map(i, 0, rows*cols, -PI/2, PI/2)
       // })
 
       // stroke(tint)

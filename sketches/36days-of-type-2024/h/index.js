@@ -83,27 +83,27 @@ sketch.draw( ( time, center, favoriteColor ) => {
   background(0);
   translate(-width/2, -height/2, -10)
 
-  const columns = 14//mappers.circularIndex(time/2, sizes);
+  const cols = 14//mappers.circularIndex(time/2, sizes);
   const rows = 3
   //mappers.circularIndex(time/2, sizes.reverse());
-  // const rows = columns*height/width;
+  // const rows = cols*height/width;
 
   const gridOptions = {
-    topLeft: createVector( borderSize, borderSize ),
-    topRight: createVector( width-borderSize, borderSize ),
-    bottomLeft: createVector( borderSize, height-borderSize ),
-    bottomRight: createVector( width-borderSize, height-borderSize ),
+    startLeft: createVector( borderSize, borderSize ),
+    startRight: createVector( width-borderSize, borderSize ),
+    endLeft: createVector( borderSize, height-borderSize ),
+    endRight: createVector( width-borderSize, height-borderSize ),
     rows,
-    columns,
+    cols,
     centered: false
   }
 
-  const W = width / columns;
+  const W = width / cols;
   const H = height / rows;
 
   const gridCells = grid.create( gridOptions );
 
-  const imageParts = cache.store(`image-parts-${columns}-${rows}`, () => (
+  const imageParts = cache.store(`image-parts-${cols}-${rows}`, () => (
     cache.get("images").map( ( { image, name } ) => (
       gridCells.reduce( ( imageCells, [ { x , y } ] ) => {
         const imagePart = getImagePart( image, x, y, W, H );
@@ -126,13 +126,13 @@ sketch.draw( ( time, center, favoriteColor ) => {
     const switchImageSpeed = time//*1.5;
     const rotationSpeed = switchImageSpeed;
     const switchIndex = -(
-      // -cellIndex/(columns*rows)
-      // +mappers.circularIndex(time, [-xIndex, xIndex])/columns
+      // -cellIndex/(cols*rows)
+      // +mappers.circularIndex(time, [-xIndex, xIndex])/cols
       // +mappers.circularIndex(time, [-yIndex, yIndex])/rows
-      +xIndex/columns
+      +xIndex/cols
       +yIndex/rows
       // +noise(xIndex, yIndex)
-      // +noise(cellIndex/(columnsmnsmnsmns*rows))
+      // +noise(cellIndex/(cols*rows))
     )
     const imageIndex = mappers.circularIndex(
       (

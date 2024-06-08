@@ -50,19 +50,19 @@ function arrow(options) {
   pop()
 }
 
-function drawBackgroundPattern(time, columns = 30, rows = 50, center) {
+function drawBackgroundPattern(time, cols = 30, rows = 50, center) {
   const gridOptions = {
-    topLeft: createVector( 0, 0 ),
-    topRight: createVector( width, 0 ),
-    bottomLeft: createVector( 0, height ),
-    bottomRight: createVector( width, height ),
+    startLeft: createVector( 0, 0 ),
+    startRight: createVector( width, 0 ),
+    endLeft: createVector( 0, height ),
+    endRight: createVector( width, height ),
     rows,
-    columns,
+    cols,
     centered: true
   }
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const xOff = x/columns;
+    const xOff = x/cols;
     const yOff = y/rows;
     const angle = noise(yOff + time/5, xOff + time/2)*TAU;
 

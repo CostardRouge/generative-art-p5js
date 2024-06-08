@@ -26,26 +26,26 @@ sketch.draw((time, center) => {
   background(0);
   translate(0, 0, -500);
 
-  const columns = 20;
-  const rows = (columns * height) / width;
-  const cellSize = width / columns;
+  const cols = 20;
+  const rows = (cols * height) / width;
+  const cellSize = width / cols;
 
   const gridOptions = {
-    topLeft: createVector(-width / 2, -height / 2),
-    topRight: createVector(width / 2, -height / 2),
-    bottomLeft: createVector(-width / 2, height / 2),
-    bottomRight: createVector(width / 2, height / 2),
+    startLeft: createVector(-width / 2, -height / 2),
+    startRight: createVector(width / 2, -height / 2),
+    endLeft: createVector(-width / 2, height / 2),
+    endRight: createVector(width / 2, height / 2),
     rows,
-    columns,
+    cols,
     centered: true,
   };
 
   grid.draw(gridOptions, (position, { x, y }) => {
     const xOff = position.x / rows;
-    const yOff = position.y / columns;
+    const yOff = position.y / cols;
 
-    // const energy = audio.capture.energy.map(x / (columns + 2), y / (rows - 1));
-    const capture = audio.capture.energy.map(x / (columns + 2), y / (rows - 1));
+    // const energy = audio.capture.energy.map(x / (cols + 2), y / (rows - 1));
+    const capture = audio.capture.energy.map(x / (cols + 2), y / (rows - 1));
     const energy = capture.next().value;
     const binIndex = capture.next().value;
     const historyBufferIndex = capture.next().value;
@@ -85,7 +85,7 @@ sketch.draw((time, center) => {
 
     // // stroke(tint)
     // const hue = color(
-    //   map(x, 0, columns-1, 0, 255),
+    //   map(x, 0, cols-1, 0, 255),
     //   map(y, 0, rows-1, 0, 255),
     //   map(energy, 0, 1, 0, 255),
 

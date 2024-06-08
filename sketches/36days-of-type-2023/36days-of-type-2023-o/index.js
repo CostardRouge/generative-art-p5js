@@ -62,11 +62,11 @@ function lerpPoints(from, to, amount, fn) {
   // })
 }
 
-function drawGridCell(_x, _y, w, h, columns, rows, drawer) {
-  const xSize = w / columns;
+function drawGridCell(_x, _y, w, h, cols, rows, drawer) {
+  const xSize = w / cols;
   const ySize = h / rows;
 
-  for (let x = 0; x <= columns; x++) {
+  for (let x = 0; x <= cols; x++) {
     for (let y = 0; y <= rows; y++) {
       drawer?.(_x + x*xSize, _y + y*ySize, xSize, ySize)
     }
@@ -83,20 +83,20 @@ function cross( x, y , size) {
   line(x + size/2, y, x - size/2, y)
 }
 
-function drawGrid(columns, time) {
-  const rows = columns*height/width;
+function drawGrid(cols, time) {
+  const rows = cols*height/width;
 
   const gridOptions = {
-    topLeft: createVector( -width, -height ),
-    topRight: createVector( width, -height ),
-    bottomLeft: createVector( -width, height ),
-    bottomRight: createVector( width, height),
+    startLeft: createVector( -width, -height ),
+    startRight: createVector( width, -height ),
+    endLeft: createVector( -width, height ),
+    endRight: createVector( width, height),
     rows,
-    columns,
+    cols,
     centered: true
   }
 
-  const W = width*2 / columns;
+  const W = width*2 / cols;
   const H = height*2 / rows;
 
   noFill()
@@ -108,7 +108,7 @@ function drawGrid(columns, time) {
   const n = mappers.circularIndex( time*4, [1, 2, 3, 2])
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    // const n = noise(xSign*x/columns+time, ySign*y/rows)*2;
+    // const n = noise(xSign*x/cols+time, ySign*y/rows)*2;
 
     drawGridCell(
       cellVector.x-W/2,
@@ -254,16 +254,16 @@ sketch.draw( (time, center) => {
 
   push()
 
-  const columns = 150//*2;
-  const rows = columns*height/width;
+  const cols = 150//*2;
+  const rows = cols*height/width;
 
   const gridOptions = {
-    topLeft: createVector( -width/2, -height/2 ),
-    topRight: createVector( width/2, -height/2 ),
-    bottomLeft: createVector( -width/2, height/2 ),
-    bottomRight: createVector( width/2, height/2),
+    startLeft: createVector( -width/2, -height/2 ),
+    startRight: createVector( width/2, -height/2 ),
+    endLeft: createVector( -width/2, height/2 ),
+    endRight: createVector( width/2, height/2),
     rows,
-    columns,
+    cols,
     centered: true
   }
 
@@ -313,7 +313,7 @@ sketch.draw( (time, center) => {
 
     const position = createVector( ...key.split("@") )
   
-    const angle = noise(position.x/columns, position.y/rows, ) * TAU;
+    const angle = noise(position.x/cols, position.y/rows, ) * TAU;
     const [ rotatedX, rotatedY ] = rotateVector(
       position,
       center.div(1),
@@ -322,10 +322,10 @@ sketch.draw( (time, center) => {
     );
 
     const hue = noise(
-      // position.x/columns,
+      // position.x/cols,
       // position.y/rows,
       rotatedY/rows/2,
-      rotatedX/columns/2
+      rotatedX/cols/2
       // +depth/150//+time/2
     )
     const tint = colors.rainbow({
@@ -357,7 +357,7 @@ sketch.draw( (time, center) => {
       +map(s, 2, 1, position.x/15, 0)
       +map(s, 1, 2, position.y/15, 0)
       // +rotatedY/rows*8
-      // +rotatedX/columnsmnsmnsmnsmns*8
+      // +rotatedX/cols*8
     ), -1, 1, -m, m)
 
     point(

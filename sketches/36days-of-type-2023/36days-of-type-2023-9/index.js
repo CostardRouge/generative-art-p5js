@@ -111,11 +111,11 @@ sketch.setup( undefined , { type: 'webgl'});
 //   });
 // });
 
-function drawGridCell(_x, _y, w, h, columns, rows, drawer) {
-  const xSize = w / columns;
+function drawGridCell(_x, _y, w, h, cols, rows, drawer) {
+  const xSize = w / cols;
   const ySize = h / rows;
 
-  for (let x = 0; x <= columns; x++) {
+  for (let x = 0; x <= cols; x++) {
     for (let y = 0; y <= rows; y++) {
       drawer?.(_x + x*xSize, _y + y*ySize, xSize, ySize)
     }
@@ -127,9 +127,9 @@ sketch.draw( (time, center) => {
 
   //const audioEnergyAverage = audio.capture.energy.average("raw");
 
-  const columns = 50;
-  const rows = columns*height/width;
-  const cellSize = width/columns;
+  const cols = 50;
+  const rows = cols*height/width;
+  const cellSize = width/cols;
 
   // rotateX(PI/4)
 
@@ -141,14 +141,14 @@ sketch.draw( (time, center) => {
   //     new Cube({
   //       position: createVector(0, 0),
   //       size: cellSize,
-  //       columns, rows
+  //       cols, rows
   //     })
   //   ]
   // });
 
   // push()
   // translate(-center.x, -center.y)
-  // drawGrid(columns, rows, -time)
+  // drawGrid(cols, rows, -time)
   // pop()
 
   // cubes.forEach( cube => cube.update(time) );
@@ -161,12 +161,12 @@ sketch.draw( (time, center) => {
   const simplifyThreshold = 0;
 
   const gridOptions = {
-    topLeft: createVector( -width/2, -height/2 ),
-    topRight: createVector( width/2, -height/2 ),
-    bottomLeft: createVector( -width/2, height/2 ),
-    bottomRight: createVector( width/2, height/2),
+    startLeft: createVector( -width/2, -height/2 ),
+    startRight: createVector( width/2, -height/2 ),
+    endLeft: createVector( -width/2, height/2 ),
+    endRight: createVector( width/2, height/2),
     rows,
-    columns,
+    cols,
     centered: true
   }
 
@@ -237,7 +237,7 @@ sketch.draw( (time, center) => {
     
     const switchIndex = generalAnimationTime*2+(
       +index/alphaPoints.length/5
-      +position.x/columns/100
+      +position.x/cols/100
       +position.y/rows/100
     )
     
@@ -262,7 +262,7 @@ sketch.draw( (time, center) => {
 
 
     const hue = noise(
-      position.x/columns/2 + (
+      position.x/cols/2 + (
         0
         +generalAnimationTime
         //+map(sin(time), -1, 1, 0, 1)
@@ -284,14 +284,14 @@ sketch.draw( (time, center) => {
     const w = cellSize//-2
     const h = cellSize//-2
 
-    let n = noise(position.x/columns, position.y/rows + time)*2;
+    let n = noise(position.x/cols, position.y/rows + time)*2;
     // n = noise(position.y/rows/20 + time/2)*2;
 
     // n = mappers.circularIndex(
     //   (
     //     generalAnimationTime*2+(
     //       // +index/alphaPoints.length/5
-    //       +position.x/columns/20
+    //       +position.x/cols/20
     //       +position.y/rows/20
     //     )
     //   ),
@@ -303,7 +303,7 @@ sketch.draw( (time, center) => {
     //   currentTime: (
     //     generalAnimationTime*2+(
     //       // +index/alphaPoints.length/5
-    //       +position.x/columns/20
+    //       +position.x/cols/20
     //       +position.y/rows/20
     //     )
     //   ),
@@ -323,7 +323,7 @@ sketch.draw( (time, center) => {
         generalAnimationTime*2+(
           0
           +index/alphaPoints.length/5
-          // // +position.x/columns/20
+          // // +position.x/cols/20
           // +position.y/rows/20
         )
       ),
@@ -339,10 +339,10 @@ sketch.draw( (time, center) => {
       currentTime: (
         generalAnimationTime*2+(
           0
-          // +(x/columns)/5
+          // +(x/cols)/5
           // +(y/rows)/5
           // -index/alphaPoints.length/5
-          // +position.x/columns/10
+          // +position.x/cols/10
           // +position.y/rows/10
         )
       ),
@@ -355,7 +355,7 @@ sketch.draw( (time, center) => {
   //   d *= mappers.circularIndex( (
   //     generalAnimationTime*2+(
   //       +index/alphaPoints.length/5
-  //       +position.x/columns/50
+  //       +position.x/cols/50
   //       +position.y/rows/50
   //     )
   //   ),
@@ -363,17 +363,17 @@ sketch.draw( (time, center) => {
   // );
 
   // d = mappers.fn(
-  //   noise(position.x/columns/10+position.y/rows/10+time),
+  //   noise(position.x/cols/10+position.y/rows/10+time),
   //   0, 1,
   //   20, 500,
   //   easing.easeInOutQuad,
   // )
 
-  // const xx = floor(map(x, 0, columns - 1, 0, audio.capture.bins -1)/3)
+  // const xx = floor(map(x, 0, cols - 1, 0, audio.capture.bins -1)/3)
   // const yy = floor(map(y, 0, rows - 1, 0, audio.capture.historyBufferSize))
   // const line = audio.capture.history?.spectrum[yy];
 
-  // // console.log(x, columns,  x/columns, audio.capture.bins-1, xx);
+  // // console.log(x, cols,  x/cols, audio.capture.bins-1, xx);
   // // console.log(y, rows,  y/rows, audio.capture.historyBufferSize-1, yy);
 
   // d = (line?.[xx]) //*cellSize
@@ -389,7 +389,7 @@ sketch.draw( (time, center) => {
     const gap = mappers.circularIndex( (
       generalAnimationTime*2+(
         +index/alphaPoints.length/20
-        +position.x/columns/50
+        +position.x/cols/50
         +position.y/rows/50
       )
     ),
@@ -401,7 +401,7 @@ sketch.draw( (time, center) => {
   //     currentTime: (
   //       generalAnimationTime*2+(
   //         +index/alphaPoints.length/20
-  //         +position.x/columns/50
+  //         +position.x/cols/50
   //         +position.y/rows/50
   //       )
   //     ),
