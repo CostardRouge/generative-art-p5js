@@ -8,9 +8,9 @@ sketch.setup( () => {
 
 options.add( [
   {
-    id: "grid-cols",
+    id: "grid-columns",
     type: 'slider',
-    label: 'Cols',
+    label: 'columns',
     min: 1,
     max: 200,
     defaultValue: 30,
@@ -64,17 +64,17 @@ sketch.draw( (time) => {
   rotateY(map(cos(time*2), -1, 1, -PI, PI)/12)
 
   const word = "#sans"
-  const cols = options.get("grid-cols") ?? 30//map(sin(time), -1, 1, 20, 30);
-  const rows = cols*height/width;
-  const size = width/cols
+  const columns = options.get("grid-columns") ?? 30//map(sin(time), -1, 1, 20, 30);
+  const rows = columns*height/width;
+  const size = width/columns
 
   const gridOptions = {
-    startLeft: createVector( -width/2, -height/2 ),
-    startRight: createVector( width/2, -height/2 ),
-    endLeft: createVector( -width/2, height/2 ),
-    endRight: createVector( width/2, height/2 ),
+    topLeft: createVector( -width/2, -height/2 ),
+    topRight: createVector( width/2, -height/2 ),
+    bottomLeft: createVector( -width/2, height/2 ),
+    bottomRight: createVector( width/2, height/2 ),
     rows,
-    cols,
+    columns,
     centered: true
   }
 
@@ -86,8 +86,8 @@ sketch.draw( (time) => {
   grid.draw(gridOptions, (cellVector, { x, y }) => {
     const xx = sin(time);
     const yy = cos(time);
-    const currentLetter = mappers.circularIndex((xx*(x/cols)+yy*(y/rows))+time, word)
-    const currentFontName = mappers.circularIndex((xx*(x/cols)+yy*(y/rows))+time, Object.keys(fonts))
+    const currentLetter = mappers.circularIndex((xx*(x/columns)+yy*(y/rows))+time, word)
+    const currentFontName = mappers.circularIndex((xx*(x/columns)+yy*(y/rows))+time, Object.keys(fonts))
     const points = getTextPoints({
       font: fonts[currentFontName],
       size: 1200,
@@ -97,7 +97,7 @@ sketch.draw( (time) => {
       position: createVector(0, 0),
     })
     
-    const alphaCacheKey = cache.key(x, y, ~~cols, currentLetter, currentFontName, "alpha")
+    const alphaCacheKey = cache.key(x, y, ~~columns, currentLetter, currentFontName, "alpha")
     const alpha = cache.store(alphaCacheKey, () => {
       return points.reduce( ( result, point ) => {
         if (255 <= result) {
@@ -117,12 +117,12 @@ sketch.draw( (time) => {
 
     const xSign = sin(time);
     const ySign = cos(time);
-    const chance = noise((xSign*(x/cols)+time/3+ySign*(y/rows))+time)
+    const chance = noise((xSign*(x/columns)+time/3+ySign*(y/rows))+time)
 
     const coco = colors.rainbow({
       hueOffset: time*2,
       hueIndex: cellVector.x + cellVector.y,
-      hueIndex: (x/cols*8*2)+(y/rows*8*2)
+      hueIndex: (x/columns*8*2)+(y/rows*8*2)
     })
 
     const { levels: [ r, g, b ] } = coco;
@@ -136,7 +136,7 @@ sketch.draw( (time) => {
 
     const w = size-borderSize//map(sin(cellVector.x+time), -1, 1, 10, 20)
     const h = size-borderSize//map(cos(cellVector.x+time), -1, 1, 10, 20)
-    const d = 1000// * noise(x/cols/2, y/rows+time/2)
+    const d = 1000// * noise(x/columns/2, y/rows+time/2)
 
     push()
     
@@ -150,7 +150,7 @@ sketch.draw( (time) => {
     // rotateY(map(cos(time+x/10), -1, 1, -PI, PI)/2)
 
     // rotateY(mappers.fn(sin(time-y/rows), -1, 1, -PI, PI, easing.easeInOutExpo)/6)
-    // rotateX(mappers.fn(cos(time+x/cols), -1, 1, -PI, PI, easing.easeInOutQuart)/6)
+    // rotateX(mappers.fn(cos(time+x/columns), -1, 1, -PI, PI, easing.easeInOutQuart)/6)
 
     box(w, h, d)
     

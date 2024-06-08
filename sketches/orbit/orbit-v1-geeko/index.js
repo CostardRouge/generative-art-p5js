@@ -18,22 +18,22 @@ function cross({x, y}, size, amount = 2) {
 sketch.draw( (time, center) => {
   background(0);
 
-  const cols = 20;
+  const columns = 20;
   const rows = 20;
   const gridOptions = {
-    startLeft: createVector( 0, 0 ),
-    startRight: createVector( width, 0 ),
-    endLeft: createVector( 0, height ),
-    endRight: createVector( width, height ),
+    topLeft: createVector( 0, 0 ),
+    topRight: createVector( width, 0 ),
+    bottomLeft: createVector( 0, height ),
+    bottomRight: createVector( width, height ),
     rows,
-    cols,
+    columns,
     centered: true
   }
 
   strokeWeight(2)
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const xOff = x/cols;
+    const xOff = x/columns;
     const yOff = y/rows;
     const amt = mappers.circularIndex(time+yOff-xOff, [ 0, 1, 2, 3, 4, 3, 2, 1]);
 

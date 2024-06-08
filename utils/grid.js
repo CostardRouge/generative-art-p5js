@@ -3,53 +3,87 @@ import { cache } from './index.js'
 const grid = {
   create: ( {
     rows = 2,
-    cols = 2,
+    columns = 2,
     centered = true,
-    startLeft = createVector( 0, 0 ),
-    startRight = createVector( width, 0 ),
-    endLeft = createVector( 0, height ),
-    endRight = createVector( width, height )
-  } ) => {
-    const cacheKey = cache.key(startLeft, endLeft.x, rows, cols, centered);
+    topLeft = createVector( 0, 0 ),
+    topRight = createVector( width, 0 ),
+    bottomLeft = createVector( 0, height ),
+    bottomRight = createVector( width, height )
+  }, cached = true ) => {
+    const compute = () => {
+      const cells = [];
+      const cellWidth = p5.Vector.dist(topLeft, topRight) / columns;
+      const cellHeight = p5.Vector.dist(topLeft, bottomLeft) / rows;
 
-    return cache.store(cacheKey, () => {
-      const gridVectors = [];
-      
-      const yUnit = 1 / rows;
-      const xUnit = 1 / cols;
+      for (let row = 0; row < rows; row++) {
+        for (let column = 0; column < columns; column++) {
+          const x = lerp(topLeft.x, topRight.x, (column + 0) / columns);
+          const y = lerp(topLeft.y, bottomLeft.y, (row + 0) / rows);
 
-      const yOffset = centered ? yUnit/2 : 0;
-      const xOffset = centered ? xUnit/2 : 0;
-      const yEnd = centered ? rows - 0.5 : rows;
-
-      for (let y = 0; y < yEnd; y++) {
-        // const left = p5.Vector.lerp(startLeft, endLeft, (y * yUnit));
-        const leftWithOffset = p5.Vector.lerp(startLeft, endLeft, (y * yUnit) + yOffset);
-
-        // const right = p5.Vector.lerp(startRight, endRight, (y * yUnit));
-        const rightWithOffset = p5.Vector.lerp(startRight, endRight, (y * yUnit) + yOffset);
-
-        // stroke("red")
-        // strokeWeight(50)
-        // point(left.x, left.y)
-        // point(leftWithOffset.x, leftWithOffset.y)
-        // point(right.x, right.y)
-        // point(rightWithOffset.x, rightWithOffset.y)
-
-        for (let x = 0; x < cols; x++) {
-          const cellVector = p5.Vector.lerp(leftWithOffset, rightWithOffset, (x * xUnit) + xOffset);
-
-          // stroke("blue")
-          // strokeWeight(50)
-          // point(cellVector.x, cellVector.y)
-          // handler(cellVector, { x, y })
-
-          gridVectors.push([ cellVector, x, y ])
+          cells.push({
+            xIndex: column,
+            yIndex: row,
+            column,
+            row,
+            x,
+            y,
+            position: createVector(x, y),
+            width: cellWidth + (centered ? cellWidth / 2 : 0),
+            height: cellHeight + (centered ? cellHeight / 2 : 0),
+          });
         }
       }
 
-      return gridVectors;
-    });
+      const corners = { topLeft, topRight, bottomLeft, bottomRight };
+
+      return { cells, corners, cellWidth, cellHeight };
+    };
+
+    if (false === cached) {
+      return compute();
+    }
+
+    const cacheKey = cache.key(
+      topLeft.x, topRight.x, bottomLeft.x, bottomRight.x,
+      topLeft.y, topRight.y, bottomLeft.y, bottomRight.y,
+      rows, columns, centered
+    );
+
+    return cache.store(cacheKey, compute);
+  },
+  debug: ( gridOptions, cells, corners ) => {
+    // Draw grid corners
+    stroke(255, 0, 0);
+    strokeWeight(10);
+    point(corners.topLeft.x, corners.topLeft.y);
+    point(corners.topRight.x, corners.topRight.y);
+    point(corners.bottomLeft.x, corners.bottomLeft.y);
+    point(corners.bottomRight.x, corners.bottomRight.y);
+    
+    // Draw grid lines
+    stroke(0);
+    strokeWeight(1);
+    for (let row = 0; row < gridOptions.rows + 1; row++) {
+      let startX = lerp(corners.topLeft.x, corners.bottomLeft.x, row / gridOptions.rows);
+      let startY = lerp(corners.topLeft.y, corners.bottomLeft.y, row / gridOptions.rows);
+      let endX = lerp(corners.topRight.x, corners.bottomRight.x, row / gridOptions.rows);
+      let endY = lerp(corners.topRight.y, corners.bottomRight.y, row / gridOptions.rows);
+      line(startX, startY, endX, endY);
+    }
+    for (let col = 0; col < gridOptions.columns + 1; col++) {
+      let startX = lerp(corners.topLeft.x, corners.topRight.x, col / gridOptions.columns);
+      let startY = lerp(corners.topLeft.y, corners.topRight.y, col / gridOptions.columns);
+      let endX = lerp(corners.bottomLeft.x, corners.bottomRight.x, col / gridOptions.columns);
+      let endY = lerp(corners.bottomLeft.y, corners.bottomRight.y, col / gridOptions.columns);
+      line(startX, startY, endX, endY);
+    }
+    
+    // Draw grid cells as dots
+    stroke(0, 0, 255);
+    strokeWeight(5);
+    for (let cell of cells) {
+      point(cell.x, cell.y);
+    }
   },
   prepare: ( gridOptions ) => {
     const vectors = grid.create( gridOptions );

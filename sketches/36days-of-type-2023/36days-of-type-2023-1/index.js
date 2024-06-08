@@ -129,17 +129,17 @@ sketch.draw( (time, center) => {
   const sampleFactor = 1/10;
   const simplifyThreshold = 0;
 
-  const cols = 100/2
-  const rows = cols*height/width;
-  const cellSize = width/cols
+  const columns = 100/2
+  const rows = columns*height/width;
+  const cellSize = width/columns
 
   const gridOptions = {
-    startLeft: createVector( -width/2, -height/2 ),
-    startRight: createVector( width/2, -height/2 ),
-    endLeft: createVector( -width/2, height/2 ),
-    endRight: createVector( width/2, height/2),
+    topLeft: createVector( -width/2, -height/2 ),
+    topRight: createVector( width/2, -height/2 ),
+    bottomLeft: createVector( -width/2, height/2 ),
+    bottomRight: createVector( width/2, height/2),
     rows,
-    cols,
+    columns,
     centered: true
   }
 
@@ -205,7 +205,7 @@ sketch.draw( (time, center) => {
       continue
     }
   
-    // const angle = noise(position.x/cols, position.y/rows) * TAU;
+    // const angle = noise(position.x/columns, position.y/rows) * TAU;
     // const [ rotatedX, rotatedY ] = rotateVector(
     //   position,
     //   center.div(2),
@@ -220,7 +220,7 @@ sketch.draw( (time, center) => {
     let d = 200
 
     d = mappers.fn(
-      noise(position.x/cols/10+position.y/rows/10+time/2),
+      noise(position.x/columns/10+position.y/rows/10+time/2),
       // noise(rotatedX/rows/5, rotatedY/rows/5),
       0, 1,
       20, 500,
@@ -231,7 +231,7 @@ sketch.draw( (time, center) => {
     )
 
     // d = mappers.fn(
-    //   sin(index/200+position.x/cols/10+position.y/rows/10+time),
+    //   sin(index/200+position.x/columns/10+position.y/rows/10+time),
     //   -1, 1,
     //   20, 500,
     //   easing.easeInOutElastic,
@@ -257,10 +257,10 @@ sketch.draw( (time, center) => {
     //   )
 
     const hue = noise(
-      position.x/cols/2,
+      position.x/columns/2,
       position.y/rows/2+time/2,
       // rotatedY/rows/2,
-      // rotatedX/cols/2
+      // rotatedX/columns/2
       +depth/150
     )
     const tint = colors.rainbow({
@@ -269,7 +269,7 @@ sketch.draw( (time, center) => {
       opacityFactor: 1.5,
     })
 
-    const chance = noise( position.x/cols, position.y/rows, time/2)
+    const chance = noise( position.x/columns, position.y/rows, time/2)
 
     stroke( tint )
 
@@ -296,7 +296,7 @@ sketch.draw( (time, center) => {
 
 
     // rotateX(mappers.fn(cos(time+rotatedX/rows/5), -1, 1, -rotateAngle, rotateAngle, easing.easeInOutExpo))
-    // rotateY(mappers.fn(sin(time+rotatedY/cols/5), -1, 1, -rotateAngle, rotateAngle, easing.easeInOutExpo))
+    // rotateY(mappers.fn(sin(time+rotatedY/columns/5), -1, 1, -rotateAngle, rotateAngle, easing.easeInOutExpo))
 
     
 
@@ -307,9 +307,9 @@ sketch.draw( (time, center) => {
     )
 
     // rotateX(mappers.fn(cos(time+position.x/rows/5), -1, 1, -rotateAngle, rotateAngle, easing.easeInOutExpo))
-    // rotateY(mappers.fn(sin(time+position.y/cols/5), -1, 1, -rotateAngle, rotateAngle, easing.easeInOutExpo))
+    // rotateY(mappers.fn(sin(time+position.y/columns/5), -1, 1, -rotateAngle, rotateAngle, easing.easeInOutExpo))
     
-    // rotateZ(mappers.fn(sin(time+position.x/rows+position.y/cols), -1, 1, -PI, PI, easing.easeInOutExpo)/2)
+    // rotateZ(mappers.fn(sin(time+position.x/rows+position.y/columns), -1, 1, -PI, PI, easing.easeInOutExpo)/2)
 
     box(w, h, d)
 

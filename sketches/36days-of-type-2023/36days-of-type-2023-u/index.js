@@ -39,11 +39,11 @@ function vl(x) {
   line(x, 0, x, height)
 }
 
-function drawGridCell(_x, _y, w, h, cols, rows, drawer) {
-  const xSize = w / cols;
+function drawGridCell(_x, _y, w, h, columns, rows, drawer) {
+  const xSize = w / columns;
   const ySize = h / rows;
 
-  for (let x = 0; x <= cols; x++) {
+  for (let x = 0; x <= columns; x++) {
     for (let y = 0; y <= rows; y++) {
       drawer?.(_x + x*xSize, _y + y*ySize, xSize, ySize)
     }
@@ -61,21 +61,21 @@ function cross( x, y , size) {
 }
 
 
-function drawGrid(cols, time, center) {
-  //cols = 10
-  const rows = cols*height/width;
+function drawGrid(columns, time, center) {
+  //columns = 10
+  const rows = columns*height/width;
 
   const gridOptions = {
-    startLeft: createVector( -width, -height/2 ),
-    startRight: createVector( width, -height/2 ),
-    endLeft: createVector( -width, height/2 ),
-    endRight: createVector( width, height/2 ),
+    topLeft: createVector( -width, -height/2 ),
+    topRight: createVector( width, -height/2 ),
+    bottomLeft: createVector( -width, height/2 ),
+    bottomRight: createVector( width, height/2 ),
     rows,
-    cols,
+    columns,
     centered: true
   }
 
-  const W = width/2 / cols;
+  const W = width/2 / columns;
   const H = height/2 / rows;
 
   noFill()
@@ -87,7 +87,7 @@ function drawGrid(cols, time, center) {
   center.add( -width/2, -height/2 )
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const n = 2//noise(xSign*x/cols+time, ySign*y/rows)*2;
+    const n = 2//noise(xSign*x/columns+time, ySign*y/rows)*2;
     const colorIntensity = 64
     //  map(
     //   center.dist(cellVector),

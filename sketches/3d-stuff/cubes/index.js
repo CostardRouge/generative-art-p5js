@@ -73,7 +73,7 @@ sketch.draw( (time, center) => {
     // z: map(sin(time/6), -1, 1, 1, 6),
   }
 
-  const cols = 12;
+  const columns = 12;
   const rows = 12//mappers.circularIndex(time*2, [10, 12, 15])
   // const rows = animation.ease({
   //   values: [ 10, 15],
@@ -82,7 +82,7 @@ sketch.draw( (time, center) => {
   //   easingFn: easing.easeInOutCubic,
   //   // easingFn: easing.easeInOutSine
   // });
-  // const cols = animation.ease({
+  // const columns = animation.ease({
   //   values: [ 10, 15],
   //   currentTime: time/2,
   //   duration: 1,
@@ -100,7 +100,7 @@ sketch.draw( (time, center) => {
       // stroke(255)
       // stroke(128, 128, 255)
 
-      drawGrid(cols, rows, (x, y, w, h) => {
+      drawGrid(columns, rows, (x, y, w, h) => {
         push()
         translate(x, y)
 

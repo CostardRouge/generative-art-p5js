@@ -90,25 +90,25 @@ function flower(size, step) {
   }
 }
 
-function drawBackgroundPattern(time, cols = 30, rows = 50) {
+function drawBackgroundPattern(time, columns = 30, rows = 50) {
   const gridOptions = {
-    startLeft: createVector( 0, 0 ),
-    startRight: createVector( width, 0 ),
-    endLeft: createVector( 0, height ),
-    endRight: createVector( width, height ),
+    topLeft: createVector( 0, 0 ),
+    topRight: createVector( width, 0 ),
+    bottomLeft: createVector( 0, height ),
+    bottomRight: createVector( width, height ),
     rows,
-    cols,
+    columns,
     centered: true
   }
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const xOff = x/cols;
+    const xOff = x/columns;
     const yOff = y/rows;
     const innerAngle = mappers.circularIndex(time+xOff+yOff, [-PI/4, PI/2]);
 
     // colors.purple({
     //   hueOffset: time+noise(yOff + time, xOff + time),
-    //   hueIndex: map(x, 0, cols-1, -PI, PI),
+    //   hueIndex: map(x, 0, columns-1, -PI, PI),
     //   opacityFactor: 3.5
     // })
 

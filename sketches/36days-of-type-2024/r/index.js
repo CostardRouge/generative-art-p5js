@@ -11,9 +11,9 @@ options.add( [
     category: 'Grid'
   },
   {
-    id: "grid-cols",
+    id: "grid-columns",
     type: 'slider',
-    label: 'Cols',
+    label: 'columns',
     min: 1,
     max: 50,
     defaultValue: 2,
@@ -104,25 +104,25 @@ sketch.draw( ( time, center, favoriteColor ) => {
   background(0)
   translate(-width/2, -height/2, -10)
 
-  const cols = 3//options.get("grid-cols")
+  const columns = 3//options.get("grid-columns")
   const rows = 1//options.get("grid-rows")
 
   const gridOptions = {
-    startLeft: createVector( borderSize, borderSize ),
-    startRight: createVector( width-borderSize, borderSize ),
-    endLeft: createVector( borderSize, height-borderSize ),
-    endRight: createVector( width-borderSize, height-borderSize ),
+    topLeft: createVector( borderSize, borderSize ),
+    topRight: createVector( width-borderSize, borderSize ),
+    bottomLeft: createVector( borderSize, height-borderSize ),
+    bottomRight: createVector( width-borderSize, height-borderSize ),
     rows,
-    cols,
+    columns,
     centered: false
   }
 
-  const W = width / cols;
+  const W = width / columns;
   const H = height / rows;
 
   const gridCells = grid.create( gridOptions );
 
-  const imageParts = cache.store(`image-parts-${cols}-${rows}`, () => (
+  const imageParts = cache.store(`image-parts-${columns}-${rows}`, () => (
     cache.get("images").map( ( { image, name } ) => (
       gridCells.reduce( ( imageCells, [ { x , y } ] ) => {
         const imagePart = getImagePart( image, x, y, W, H );
@@ -143,7 +143,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
   const easingFunction = easing.easeInOutSine;
 
   gridCells.forEach( ([position, xIndex, yIndex], cellIndex ) => {
-    const circularX = mappers.circular(xIndex, 0, (cols-1), 0, 1, easingFunction )
+    const circularX = mappers.circular(xIndex, 0, (columns-1), 0, 1, easingFunction )
     const circularY = mappers.circular(yIndex, 0, (rows-1), 0, 1, easingFunction )
 
     const { x, y } = position;
@@ -152,7 +152,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
     const switchIndex = -(
       0
       // +noise(circularX, circularY)
-      //+noise(xIndex/rows, yIndex/cols)
+      //+noise(xIndex/rows, yIndex/columns)
       -circularX
       //-circularY
     )

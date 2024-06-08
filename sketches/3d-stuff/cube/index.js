@@ -143,14 +143,14 @@ class Cube {
 
   draw() {
     const {
-      size, cols, rows,
+      size, columns, rows,
       position: { x, y },
       rotation: { x: rX, y: rY },
       next: { x: nextX, y: nextY },
       animation: { x: xAnimation, y: yAnimation },
     } = this;
 
-    const W = width / cols;
+    const W = width / columns;
     const H = height / rows;
 
     const position = createVector(
@@ -174,7 +174,7 @@ class Cube {
 
   update(time) {
     const {
-      cols, rows, position, next, animation, animationSpeed,
+      columns, rows, position, next, animation, animationSpeed,
     } = this;
 
     if ( animation.x < 1 ) {
@@ -217,12 +217,12 @@ class Cube {
 
     if ( animation.x >= 1 ) {
       if (keyIsDown(LEFT_ARROW)) {
-        next.x = constrain(position.x - 1, 0, cols -1)
+        next.x = constrain(position.x - 1, 0, columns -1)
         this.animation.x = 0;
       }
 
       if (keyIsDown(RIGHT_ARROW)) {
-        next.x = constrain(position.x + 1, 0, cols -1)
+        next.x = constrain(position.x + 1, 0, columns -1)
         this.animation.x = 0;
       }
     }
@@ -243,9 +243,9 @@ sketch.setup( undefined , { type: 'webgl'});
 sketch.draw( (time, center) => {
   background(0);
 
-  const cols = 10;
-  const rows = cols*height/width;
-  const cellSize = width/cols;
+  const columns = 10;
+  const rows = columns*height/width;
+  const cellSize = width/columns;
 
   rotateX(PI/4)
 
@@ -258,14 +258,14 @@ sketch.draw( (time, center) => {
         position: createVector(0, 0),
         animationSpeed: 0.1,
         size: cellSize,
-        cols, rows
+        columns, rows
       })
     ]
   });
 
   push()
   translate(-center.x, -center.y)
-  drawGrid(cols, rows, -time)
+  drawGrid(columns, rows, -time)
   pop()
 
   cubes.forEach( cube => cube.update(time) );
@@ -278,12 +278,12 @@ sketch.draw( (time, center) => {
   const simplifyThreshold = 0;
 
   const gridOptions = {
-    startLeft: createVector( -width/2, -height/2 ),
-    startRight: createVector( width/2, -height/2 ),
-    endLeft: createVector( -width/2, height/2 ),
-    endRight: createVector( width/2, height/2),
+    topLeft: createVector( -width/2, -height/2 ),
+    topRight: createVector( width/2, -height/2 ),
+    bottomLeft: createVector( -width/2, height/2 ),
+    bottomRight: createVector( width/2, height/2),
     rows,
-    cols,
+    columns,
     centered: true
   }
 
@@ -357,12 +357,12 @@ sketch.draw( (time, center) => {
 
     const switchIndex = generalAnimationTime*2+(
       +index/alphaPoints.length/5
-      +position.x/cols/100
+      +position.x/columns/100
       +position.y/rows/100
     )
 
     const hue = noise(
-      position.x/cols + (
+      position.x/columns + (
         +map(sin(time), -1, 1, 0, 1)
       ),
       position.y/rows + (
