@@ -21,17 +21,17 @@ let z = 0;
 
 sketch.draw((time, center) => {
   background(0);
-  const cols = 40;
-  const rows = (cols * height) / width;
-  const cellSize = width / cols;
+  const columns = 40;
+  const rows = (columns * height) / width;
+  const cellSize = width / columns;
 
   const gridOptions = {
-    startLeft: createVector(-width / 2, -height / 2),
-    startRight: createVector(width / 2, -height / 2),
-    endLeft: createVector(-width / 2, height / 2),
-    endRight: createVector(width / 2, height / 2),
+    topLeft: createVector(-width / 2, -height / 2),
+    topRight: createVector(width / 2, -height / 2),
+    bottomLeft: createVector(-width / 2, height / 2),
+    bottomRight: createVector(width / 2, height / 2),
     rows,
-    cols,
+    columns,
     centered: true,
   };
   // rotateY(mappers.fn(sin(time), -1, 1, -PI, PI, easing.easeInOutExpo) / 6);
@@ -47,13 +47,13 @@ sketch.draw((time, center) => {
   grid.draw(gridOptions, (position) => {
     const vector = createVector(position.x, position.y);
     const xOff = position.x / rows;
-    const yOff = position.y / cols;
+    const yOff = position.y / columns;
     const rotateAngle = PI / 6;
     const n = 9;
     const hue = noise(xOff / 4, yOff / 4 + time / 2);
 
     let d = mappers.fn(
-      // noise(position.x/cols/10+position.y/rows/10+time/2),
+      // noise(position.x/columns/10+position.y/rows/10+time/2),
       noise(xOff / n, yOff / n, hue / 2 + time / 2),
       //hue/2,
       0,

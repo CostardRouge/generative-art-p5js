@@ -8,9 +8,9 @@ sketch.setup( () => {
 
 options.add( [
   {
-    id: "grid-cols",
+    id: "grid-columns",
     type: 'slider',
-    label: 'Cols',
+    label: 'columns',
     min: 1,
     max: 200,
     defaultValue: 30,
@@ -61,24 +61,24 @@ sketch.draw( (time) => {
   const word = "abcdefgh"
   const font = string.fonts.sans;
 
-  const cols = options.get("grid-cols") ?? 30//map(sin(time), -1, 1, 20, 30);
-  const rows = cols*height/width;
-  const size = width/cols
+  const columns = options.get("grcolumnsolumns") ?? 30//map(sin(time), -1, 1, 20, 30);
+  const rows = columns*height/width;
+  const size = width/columns
 
   const gridOptions = {
-    startLeft: createVector( -width/2, -height/2 ),
-    startRight: createVector( width/2, -height/2 ),
-    endLeft: createVector( -width/2, height/2 ),
-    endRight: createVector( width/2, height/2 ),
+    topLeft: createVector( -width/2, -height/2 ),
+    topRight: createVector( width/2, -height/2 ),
+    bottomLeft: createVector( -width/2, height/2 ),
+    bottomRight: createVector( width/2, height/2 ),
     rows,
-    cols,
+    columns,
     centered: true
   }
   
   grid.draw(gridOptions, (cellVector, { x, y }) => {
     const xx = sin(time);
     const yy = cos(time);
-    const currentLetter = mappers.circularIndex((xx*(x/cols)+yy*(y/rows))+time, word)
+    const currentLetter = mappers.circularIndex((xx*(x/columns)+yy*(y/rows))+time, word)
     const points = getTextPoints({
       font,
       size: 800,
@@ -107,7 +107,7 @@ sketch.draw( (time) => {
 
     const xSign = sin(time);
     const ySign = cos(time);
-    const chance = noise((xSign*(x/cols)+time/3+ySign*(y/rows))+time)
+    const chance = noise((xSign*(x/columns)+time/3+ySign*(y/rows))+time)
 
     const coco = colors.rainbow({
       hueOffset: time*5,
@@ -128,7 +128,7 @@ sketch.draw( (time) => {
   
       const w = size-1//map(sin(cellVector.x+time), -1, 1, 10, 20)
       const h = size-1//map(cos(cellVector.x+time), -1, 1, 10, 20)
-      const d = -10000// * noise(x/cols/2, y/rows+time/2)
+      const d = -10000// * noise(x/columns/2, y/rows+time/2)
 
       push()
       

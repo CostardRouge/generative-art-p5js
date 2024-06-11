@@ -124,25 +124,25 @@ let min = Math.PI, max = Math.PI;
 sketch.draw((time, center) => {
   background(0);
 
-  const cols = 30;
+  const columns = 30;
   const rows = 30;
 
   const gridOptions = {
-    startLeft: createVector( 0, 0 ),
-    startRight: createVector( width, 0 ),
-    endLeft: createVector( 0, height ),
-    endRight: createVector( width, height ),
+    topLeft: createVector( 0, 0 ),
+    topRight: createVector( width, 0 ),
+    bottomLeft: createVector( 0, height ),
+    bottomRight: createVector( width, height ),
     rows,
-    cols
+    columns
   }
   const z = frameCount/300//mappers.fn(sin(time), -1, 1, 3, 3.5)
-  const scale = (width / cols);
+  const scale = (width / columns);
 
   // noiseDetail(2, 4, 1);
   noiseSeed(5)
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const angle = noise(x/cols, y/rows+time/8, z) * (TAU*4);
+    const angle = noise(x/columns, y/rows+time/8, z) * (TAU*4);
     const cellScale = map(angle, min, max, scale, scale*4, true )
     let weight = map(angle, min, max, 1, 20, true )
     weight = map(center.dist(cellVector), 0, width, -10, scale, true )

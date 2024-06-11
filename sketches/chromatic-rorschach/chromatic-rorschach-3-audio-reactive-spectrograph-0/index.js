@@ -51,30 +51,30 @@ sketch.draw((time, center) => {
   //   easingFn: easing.easeInOutExpo
   // }));
 
-  // const cols = animation.ease({
+  // const columns = animation.ease({
   //   values: [ 20, 40 ],
   //   currentTime: time/6,
   //   duration: 1,
   //   easingFn: easing.easeInOutExpo
   // });
 
-  // const cols = 30;
-  // const cols = mappers.circularIndex(time, [10, 10, 20, 20, 30, 30, 40, 40]);
+  // const columns = 30;
+  // const columns = mappers.circularIndex(time, [10, 10, 20, 20, 30, 30, 40, 40]);
 
   const c = audio.capture.energy.byIndex( 0, "count" )
 
-  const cols = mappers.circularIndex(c, [ 20, 30, 40]);
-  // const cols = ~~mappers.fn(audio.capture.audioIn.getLevel(), 0, 1, 20, 50);
-  const rows = (cols * height) / width;
-  const cellSize = width / cols;
+  const columns = mappers.circularIndex(c, [ 20, 30, 40]);
+  // const columns = ~~mappers.fn(audio.capture.audioIn.getLevel(), 0, 1, 20, 50);
+  const rows = (columns * height) / width;
+  const cellSize = width / columns;
 
   const gridOptions = {
-    startLeft: createVector(-width / 2, -height / 2),
-    startRight: createVector(width / 2, -height / 2),
-    endLeft: createVector(-width / 2, height / 2),
-    endRight: createVector(width / 2, height / 2),
+    topLeft: createVector(-width / 2, -height / 2),
+    topRight: createVector(width / 2, -height / 2),
+    bottomLeft: createVector(-width / 2, height / 2),
+    bottomRight: createVector(width / 2, height / 2),
     rows,
-    cols,
+    columns,
     centered: true,
   };
 
@@ -82,15 +82,15 @@ sketch.draw((time, center) => {
 
   grid.draw(gridOptions, (position, { x, y }) => {
     const xOff = position.x / rows;
-    const yOff = position.y / cols;
+    const yOff = position.y / columns;
 
 
-    // const energy = audio.capture.energy.map(x / (cols + 2), y / (rows - 1));
+    // const energy = audio.capture.energy.map(x / (columns + 2), y / (rows - 1));
 
-    // const normalizedX = mappers.circular(x, 0, cols-1, 0, 1, easing.easeInOutCubic)
+    // const normalizedX = mappers.circular(x, 0, columns-1, 0, 1, easing.easeInOutCubic)
     // const normalizedY = mappers.circular(y, 0, rows-1, 0, 1)
 
-    const normalizedX = circular(x, 0, cols-1, 1, 0, easing.easeInOutCubic)
+    const normalizedX = circular(x, 0, columns-1, 1, 0, easing.easeInOutCubic)
     const normalizedY = circular(y, 0, rows-1, 1, 0)
 
     const capture = audio.capture.energy.map(normalizedX, normalizedY);
@@ -134,7 +134,7 @@ sketch.draw((time, center) => {
 
     // // stroke(tint)
     // const hue = color(
-    //   map(x, 0, cols-1, 0, 255),
+    //   map(x, 0, columns-1, 0, 255),
     //   map(y, 0, rows-1, 0, 255),
     //   map(energy, 0, 1, 0, 255),
 

@@ -11,7 +11,7 @@ options.add( [
     category: 'Grid'
   },
   {
-    id: "grid-cols",
+    id: "grid-columns",
     type: 'slider',
     label: 'Rows',
     min: 1,
@@ -50,22 +50,22 @@ sketch.draw((time, center) => {
   background(0);
 
   const rows = options.get("grid-rows");
-  const cols = options.get("grid-cols");
+  const columns = options.get("grid-columns");
 
   const gridOptions = {
-    startLeft: createVector( 0, 0 ),
-    startRight: createVector( width, 0 ),
-    endLeft: createVector( 0, height ),
-    endRight: createVector( width, height ),
+    topLeft: createVector( 0, 0 ),
+    topRight: createVector( width, 0 ),
+    bottomLeft: createVector( 0, height ),
+    bottomRight: createVector( width, height ),
     rows,
-    cols,
+    columns,
     centered: options.get("grid-cell-centered")
   }
 
-  const scale = (width / cols);
+  const scale = (width / columns);
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const angle = noise(x/cols+direction.x, y/rows+direction.y) * (TAU*4);
+    const angle = noise(x/columns+direction.x, y/rows+direction.y) * (TAU*4);
     const weight = mappers.fn(angle, 0, TAU, 1, 20 );
 
     const z = scale * cos(angle) * 5;

@@ -11,9 +11,9 @@ options.add( [
     category: 'Grid'
   },
   {
-    id: "grid-cols",
+    id: "grid-columns",
     type: 'slider',
-    label: 'Cols',
+    label: 'columns',
     min: 1,
     max: 200,
     defaultValue: 40,
@@ -67,19 +67,19 @@ sketch.draw((time, center) => {
   // )
 
   const rows = options.get("grid-rows");
-  const cols = options.get("grid-cols");
+  const columns = options.get("grid-columns");
 
   const gridOptions = {
-    startLeft: createVector( 0, 0 ),
-    startRight: createVector( width, 0 ),
-    endLeft: createVector( 0, height ),
-    endRight: createVector( width, height ),
+    topLeft: createVector( 0, 0 ),
+    topRight: createVector( width, 0 ),
+    bottomLeft: createVector( 0, height ),
+    bottomRight: createVector( width, height ),
     rows,
-    cols,
+    columns,
     centered: options.get("grid-cell-centered")
   }
 
-  const cellSize = ((width+height) / (cols+rows));
+  const cellSize = ((width+height) / (columns+rows));
   const audioEnergyAverage = audio.capture.energy.average("raw");
   const bassAverage = audio.capture.energy.byIndex(2, "raw");
 
@@ -98,7 +98,7 @@ sketch.draw((time, center) => {
   grid.draw(gridOptions, (cellVector, { x, y}) => {
     push();
 
-    const energy = audio.capture.energy.map(x / (cols - 1), y / (rows - 1));
+    const energy = audio.capture.energy.map(x / (columns - 1), y / (rows - 1));
 
     fill(colors.rainbow({
       hueOffset: 0,

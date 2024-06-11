@@ -103,17 +103,17 @@ sketch.draw( (time, center) => {
   const sampleFactor = 1/10;
   const simplifyThreshold = 0;
 
-  const cols = 65;
-  const rows = cols*height/width;
-  const cellSize = width/cols;
+  const columns = 65;
+  const rows = columns*height/width;
+  const cellSize = width/columns;
 
   const gridOptions = {
-    startLeft: createVector( -width/2, -height/2 ),
-    startRight: createVector( width/2, -height/2 ),
-    endLeft: createVector( -width/2, height/2 ),
-    endRight: createVector( width/2, height/2),
+    topLeft: createVector( -width/2, -height/2 ),
+    topRight: createVector( width/2, -height/2 ),
+    bottomLeft: createVector( -width/2, height/2 ),
+    bottomRight: createVector( width/2, height/2),
     rows,
-    cols,
+    columns,
     centered: true
   }
 
@@ -187,12 +187,12 @@ sketch.draw( (time, center) => {
 
     const switchIndex = generalAnimationTime*2+(
       +index/alphaPoints.length/5
-      +position.x/cols/100
+      +position.x/columns/100
       +position.y/rows/100
     )
 
     const hue = noise(
-      position.x/cols + (
+      position.x/columns + (
         +map(sin(time), -1, 1, 0, 1)
       ),
       position.y/rows + (

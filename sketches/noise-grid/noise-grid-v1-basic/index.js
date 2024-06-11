@@ -11,7 +11,7 @@ options.add( [
     category: 'Grid'
   },
   {
-    id: "grid-cols",
+    id: "grid-columns",
     type: 'slider',
     label: 'Rows',
     min: 1,
@@ -53,19 +53,19 @@ sketch.draw((time) => {
   background(0);
 
   const rows = options.get("grid-rows");
-  const cols = options.get("grid-cols");
+  const columns = options.get("grid-columns");
 
   const gridOptions = {
-    startLeft: createVector( 0, 0 ),
-    startRight: createVector( width, 0 ),
-    endLeft: createVector( 0, height ),
-    endRight: createVector( width, height ),
+    topLeft: createVector( 0, 0 ),
+    topRight: createVector( width, 0 ),
+    bottomLeft: createVector( 0, height ),
+    bottomRight: createVector( width, height ),
     rows,
-    cols,
+    columns,
     centered: options.get("grid-cell-centered")
   }
 
-  const scale = ((width / cols) + (height / rows) ) /2 ;
+  const scale = ((width / columns) + (height / rows) ) /2 ;
 
   noiseDetail(
     options.get("noise-detail-lod"),
@@ -82,7 +82,7 @@ sketch.draw((time) => {
   const colorPrecision = animation.sequence('color-precision', time/2, [ 0.1, 0.5, 1, 2])
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const angle = noise(x/cols-frameCount/300, y/rows+time/5, time/15) * (TAU*4);
+    const angle = noise(x/columns-frameCount/300, y/rows+time/5, time/15) * (TAU*4);
 
     const z = zMax * cos(angle);
 

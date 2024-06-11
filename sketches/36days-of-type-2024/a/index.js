@@ -83,11 +83,11 @@ function getColor( img, x, y, w, h = w ) {
   });
 }
 
-function drawGridCell(_x, _y, w, h, cols, rows, drawer) {
-  const xSize = w / cols;
+function drawGridCell(_x, _y, w, h, columns, rows, drawer) {
+  const xSize = w / columns;
   const ySize = h / rows;
 
-  for (let x = 0; x <= cols; x++) {
+  for (let x = 0; x <= columns; x++) {
     for (let y = 0; y <= rows; y++) {
       drawer?.(_x + x*xSize, _y + y*ySize, xSize, ySize)
     }
@@ -137,28 +137,28 @@ function getImagePart(img, x, y, w, h) {
 sketch.draw( ( time, center, favoriteColor ) => {
   background(0);
 
-  const cols = mappers.circularIndex(time, [3, 1, 2, 4, 5]);
-  const rows = mappers.circularIndex(time, [3, 1, 2, 4, 5].reverse())//cols*height/width;
-  // const rows = cols*height/width;
+  const columns = mappers.circularIndex(time, [3, 1, 2, 4, 5]);
+  const rows = mappers.circularIndex(time, [3, 1, 2, 4, 5].reverse())//columns*height/width;
+  // const rows = columns*height/width;
 
   const gridOptions = {
-    startLeft: createVector( borderSize, borderSize ),
-    startRight: createVector( width-borderSize, borderSize ),
-    endLeft: createVector( borderSize, height-borderSize ),
-    endRight: createVector( width-borderSize, height-borderSize ),
+    topLeft: createVector( borderSize, borderSize ),
+    topRight: createVector( width-borderSize, borderSize ),
+    bottomLeft: createVector( borderSize, height-borderSize ),
+    bottomRight: createVector( width-borderSize, height-borderSize ),
     rows,
-    cols,
+    columns,
     centered: false
   }
 
-  const W = width / cols;
+  const W = width / columns;
   const H = height / rows;
 
-  const gridCells = grid.create( gridOptions );
+  const { cells: gridCells } = grid.create( gridOptions );
 
-  const imageParts = cache.store(`image-parts-${cols}-${rows}`, () => (
+  const imageParts = cache.store(`image-parts-${columns}-${rows}`, () => (
     cache.get("images").map( image => (
-      gridCells.reduce( ( imageCells, [ { x , y } ] ) => {
+      gridCells.reduce( ( imageCells, { x , y } ) => {
         imageCells.push( getImagePart( image, x, y, W, H ) );
         return imageCells;
       }, [])
@@ -167,7 +167,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
 
   const imageIndexes = imageParts.map( (_, index) => [index, index]).flat(Infinity);
 
-  gridCells.forEach( ([position, xIndex, yIndex], cellIndex ) => {
+  gridCells.forEach( ({position, xIndex, yIndex}, cellIndex ) => {
     const { x, y } = position;
     // const imageIndex = (noise(xIndex+time/5, yIndex+time/5)*imageURLs.length)%imageURLs.length;
     // const imageIndex = mappers.circularIndex(xIndex+yIndex+time, imageIndexes );
@@ -200,7 +200,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
       // cross(x + W - 30, y + 30, 20)
       // cross(x + 30, y + H - 30, 20)
 
-      // const xx = map(xIndex, 0, cols-1, x+18, x+W-36, true)
+      // const xx = map(xIndex, 0, columns-1, x+18, x+W-36, true)
 
       string.write(`A${ceil(imageIndex)}`, x+18, y+30, {
         // showBox: true,
@@ -222,7 +222,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
 
     // image(getImagePart(cache.get("images")[~~imageIndex], x, y, W, H), x, y, W, H)
 
-    // let n = noise(x/cols, y/rows + time)*8;
+    // let n = noise(x/columns, y/rows + time)*8;
     //  n = map(
     //   position.dist(center),
     //   0,

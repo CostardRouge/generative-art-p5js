@@ -11,9 +11,9 @@ options.add( [
     category: 'Grid'
   },
   {
-    id: "grid-cols",
+    id: "grid-columns",
     type: 'slider',
-    label: 'Cols',
+    label: 'columns',
     min: 1,
     max: 200,
     defaultValue: 40,
@@ -78,21 +78,21 @@ sketch.draw((time, center) => {
   // )
 
   const rows = options.get("grid-rows");
-  const cols = options.get("grid-cols");
+  const columns = options.get("grid-columns");
 
   const gridOptions = {
-    startLeft: createVector( 0, 0 ),
-    startRight: createVector( width, 0 ),
-    endLeft: createVector( 0, height ),
-    endRight: createVector( width, height ),
+    topLeft: createVector( 0, 0 ),
+    topRight: createVector( width, 0 ),
+    bottomLeft: createVector( 0, height ),
+    bottomRight: createVector( width, height ),
     rows,
-    cols,
+    columns,
     centered: options.get("grid-cell-centered")
   }
 
-  const cellSize = ((width+height) / (cols+rows));
+  const cellSize = ((width+height) / (columns+rows));
   const cellHeight = (height) / (rows);
-  const cellWidth = ((width) / (cols));
+  const cellWidth = ((width) / (columns));
 
 
   noStroke()
@@ -115,7 +115,7 @@ sketch.draw((time, center) => {
   grid.draw(gridOptions, (cellVector, { x, y}) => {
     const [ rotatedX, rotatedY ] = rotateVector(cellVector, center, mouseAngle);
 //
-    const noiseValue =cache.store(`noise-${rotatedX}-${rotatedY}`, () => noise(rotatedX/cols, rotatedY/rows));
+    const noiseValue =cache.store(`noise-${rotatedX}-${rotatedY}`, () => noise(rotatedX/columns, rotatedY/rows));
     const angle = noiseValue * TAU * 4
 
     const cachedColor = cache.store(angle.toPrecision(3), () => (

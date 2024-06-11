@@ -6,9 +6,9 @@ sketch.setup( () => {
 
 options.add( [
   {
-    id: "grid-cols",
+    id: "grid-columns",
     type: 'slider',
-    label: 'Cols',
+    label: 'columns',
     min: 1,
     max: 200,
     defaultValue: 30,
@@ -114,17 +114,17 @@ sketch.draw( (time, center) => {
   pop()
 
   const word = "0123456789 "
-  const cols = options.get("grid-cols") ?? 30//map(sin(time), -1, 1, 30, 40);
-  const rows = cols*height/width;
-  const size = width/cols
+  const columns = options.get("grid-columns") ?? 30//map(sin(time), -1, 1, 30, 40);
+  const rows = columns*height/width;
+  const size = width/columns
 
   const gridOptions = {
-    startLeft: createVector( -width/2, -height/2 ),
-    startRight: createVector( width/2, -height/2 ),
-    endLeft: createVector( -width/2, height/2 ),
-    endRight: createVector( width/2, height/2 ),
+    topLeft: createVector( -width/2, -height/2 ),
+    topRight: createVector( width/2, -height/2 ),
+    bottomLeft: createVector( -width/2, height/2 ),
+    bottomRight: createVector( width/2, height/2 ),
     rows,
-    cols,
+    columns,
     centered: true
   }
 
@@ -139,7 +139,7 @@ sketch.draw( (time, center) => {
   grid.draw(gridOptions, (cellVector, { x, y }) => {
     const xSign = 1//sin(time);
     const ySign = -1//cos(time);
-    const commonSwitchingIndex = (xSign*(x/cols)+ySign*(y/rows));
+    const commonSwitchingIndex = (xSign*(x/columns)+ySign*(y/rows));
     const currentLetter = mappers.circularIndex(commonSwitchingIndex+time, word)
     const currentFontName = mappers.circularIndex(commonSwitchingIndex+time, Object.keys(fonts))
     const points = getTextPoints({
@@ -151,7 +151,7 @@ sketch.draw( (time, center) => {
       position: createVector(0, 0),
     })
     
-    const alphaCacheKey = cache.key(x, y, ~~cols, currentLetter, currentFontName, "alpha")
+    const alphaCacheKey = cache.key(x, y, ~~columns, currentLetter, currentFontName, "alpha")
     const alpha = cache.store(alphaCacheKey, () => {
       return points.reduce( ( result, point ) => {
         if (255 <= result) {
@@ -169,7 +169,7 @@ sketch.draw( (time, center) => {
       return;
     }
 
-    const hue = noise(x/cols, y/rows+time/4 )
+    const hue = noise(x/columns, y/rows+time/4 )
 
     const coco = colors.rainbow({
       hueOffset: 0,
@@ -185,7 +185,7 @@ sketch.draw( (time, center) => {
 
     const w = size//-borderSize*2//map(sin(time-y/10), -1, 1, 10, 20)
     const h = size//-borderSize*2//map(cos(time+x/10), -1, 1, 10, 20)
-    const d = 150// * 20*noise(x/cols/2, y/rows+time/2)
+    const d = 150// * 20*noise(x/columns/2, y/rows+time/2)
 
     push()
 
@@ -197,7 +197,7 @@ sketch.draw( (time, center) => {
 
     // const angleX = animation.ease({
     //   values: [ -PI, PI ],
-    //   currentTime: time+x/cols,
+    //   currentTime: time+x/columns,
     //   duration: 1,
     //   easingFn: easing.easeInOutExpo,
     //   // easingFn: easing.easeInOutQuart,
@@ -220,7 +220,7 @@ sketch.draw( (time, center) => {
     //rotateX(angleX*2)
     rotateY(angleY*2)
 
-    // rotateX(mappers.fn(cos(t+x/cols), -1, 1, -PI, PI, easing.easeInOutQuart)*2)
+    // rotateX(mappers.fn(cos(t+x/columns), -1, 1, -PI, PI, easing.easeInOutQuart)*2)
     // rotateY(mappers.fn(sin(t+y/rows), -1, 1, -PI, PI, easing.easeInOutExpo)*2)
 
     translate(

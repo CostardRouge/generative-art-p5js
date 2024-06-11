@@ -98,28 +98,28 @@ sketch.draw( ( time, center, favoriteColor ) => {
   background(0);
   translate(-width/2, -height/2, -10)
 
-  const cols = 1//mappers.circularIndex(time/2, sizes);
+  const columns = 1//mappers.circularIndex(time/2, sizes);
   const rows = 14//mappers.circularIndex(time/2, sizes.reverse());
-  // const rows = cols*height/width;
+  // const rows = columns*height/width;
 
   const gridOptions = {
-    startLeft: createVector( borderSize, borderSize ),
-    startRight: createVector( width-borderSize, borderSize ),
-    endLeft: createVector( borderSize, height-borderSize ),
-    endRight: createVector( width-borderSize, height-borderSize ),
+    topLeft: createVector( borderSize, borderSize ),
+    topRight: createVector( width-borderSize, borderSize ),
+    bottomLeft: createVector( borderSize, height-borderSize ),
+    bottomRight: createVector( width-borderSize, height-borderSize ),
     rows,
-    cols,
+    columns,
     centered: false
   }
 
-  const W = width / cols;
+  const W = width / columns;
   const H = height / rows;
 
-  const gridCells = grid.create( gridOptions );
+  const { cells: gridCells } = grid.create( gridOptions );
 
-  const imageParts = cache.store(`image-parts-${cols}-${rows}`, () => (
+  const imageParts = cache.store(`image-parts-${columns}-${rows}`, () => (
     cache.get("images").map( ( { image, name } ) => (
-      gridCells.reduce( ( imageCells, [ { x , y } ] ) => {
+      gridCells.reduce( ( imageCells, { x , y } ) => {
         const imagePart = getImagePart( image, x, y, W, H );
 
         imageCells.push( {
@@ -135,18 +135,18 @@ sketch.draw( ( time, center, favoriteColor ) => {
 
   const imageIndexes = imageParts.map( (_, index) => [index, index]).flat(Infinity);
 
-  gridCells.forEach( ([position, xIndex, yIndex], cellIndex ) => {
+  gridCells.forEach( ({position, xIndex, yIndex}, cellIndex ) => {
     const { x, y } = position;
     const switchImageSpeed = time//*1.5;
     const rotationSpeed = switchImageSpeed;
     const switchIndex = -(
-      // -cellIndex/(cols*rows)
-      // +mappers.circularIndex(time, [-xIndex, xIndex])/cols
+      // -cellIndex/(columns*rows)
+      // +mappers.circularIndex(time, [-xIndex, xIndex])/columns
       // +mappers.circularIndex(time, [-yIndex, yIndex])/rows
-      +xIndex/cols
+      +xIndex/columns
       +yIndex/rows
       // +noise(xIndex, yIndex)
-      // +noise(cellIndex/(cols*rows))
+      // +noise(cellIndex/(columns*rows))
     )
     const imageIndex = mappers.circularIndex(
       (
@@ -198,8 +198,6 @@ sketch.draw( ( time, center, favoriteColor ) => {
         +mappers.circularPolar(direction[0], 1, -1, 0, 4)
         +mappers.circularPolar(direction[1], 1, -1, 0, 4)
       )
-
-      console.log(direction[0]);
 
       const [ yDirection, xDirection ] = direction
 

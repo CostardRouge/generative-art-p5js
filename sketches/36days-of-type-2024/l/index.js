@@ -11,9 +11,9 @@ options.add( [
     category: 'Grid'
   },
   {
-    id: "grid-cols",
+    id: "grid-columns",
     type: 'slider',
-    label: 'Cols',
+    label: 'columns',
     min: 1,
     max: 50,
     defaultValue: 2,
@@ -102,27 +102,27 @@ sketch.draw( ( time, center, favoriteColor ) => {
   background(0);
   translate(-width/2, -height/2, -10)
 
-  const cols = 10//options.get("grid-cols")
+  const columns = 10//options.get("grid-columns")
   const rows = 30 //options.get("grid-rows")
 
   const gridOptions = {
-    startLeft: createVector( borderSize, borderSize ),
-    startRight: createVector( width-borderSize, borderSize ),
-    endLeft: createVector( borderSize, height-borderSize ),
-    endRight: createVector( width-borderSize, height-borderSize ),
+    topLeft: createVector( borderSize, borderSize ),
+    topRight: createVector( width-borderSize, borderSize ),
+    bottomLeft: createVector( borderSize, height-borderSize ),
+    bottomRight: createVector( width-borderSize, height-borderSize ),
     rows,
-    cols,
+    columns,
     centered: false
   }
 
-  const W = width / cols;
+  const W = width / columns;
   const H = height / rows;
 
-  const gridCells = grid.create( gridOptions );
+  const { cells: gridCells } = grid.create( gridOptions );
 
-  const imageParts = cache.store(`image-parts-${cols}-${rows}`, () => (
+  const imageParts = cache.store(`image-parts-${columns}-${rows}`, () => (
     cache.get("images").map( ( { image, name } ) => (
-      gridCells.reduce( ( imageCells, [ { x , y } ] ) => {
+      gridCells.reduce( ( imageCells, { x , y } ) => {
         const imagePart = getImagePart( image, x, y, W, H );
 
         imageCells.push( {
@@ -138,15 +138,15 @@ sketch.draw( ( time, center, favoriteColor ) => {
 
   const imageIndexes = imageParts.map( (_, index) => [index, index]).flat(Infinity);
 
-  gridCells.forEach( ([position, xIndex, yIndex], cellIndex ) => {
+  gridCells.forEach( ({position, xIndex, yIndex}, cellIndex ) => {
     const { x, y } = position;
     const switchImageSpeed = time*2//*1.5;
     const rotationSpeed = switchImageSpeed/2;
     const switchIndex = -(
-      //-cellIndex/(cols*rows)
-      // +mappers.circularIndex(time, [-xIndex, xIndex])/cols
+      //-cellIndex/(columns*rows)
+      // +mappers.circularIndex(time, [-xIndex, xIndex])/columns
       // +mappers.circularIndex(time, [-yIndex, yIndex])/rows
-      // +xIndex/cols
+      // +xIndex/columns
       // +yIndex/rows
 
       // +mappers.fn(
@@ -160,14 +160,14 @@ sketch.draw( ( time, center, favoriteColor ) => {
       //     width
       //   ), 0, 1, easing.easeInOutExpo
       // )
-      // +mappers.fn(-xIndex/cols, 0, width, 0, 1)
+      // +mappers.fn(-xIndex/columns, 0, width, 0, 1)
       // +mappers.fn(y, 0, height, 0, 1)
-      // +map(sin(time/4+xIndex/cols/4), -1, 1, 0, 1)
+      // +map(sin(time/4+xIndex/columns/4), -1, 1, 0, 1)
       // +map(cos(time/4+yIndex/rows/4), -1, 1, 0, 1)
-      //+[ 5, 4, 2, 0, 1, 3 ][cellIndex]/(cols*rows)
-      +noise(xIndex/cols*2, yIndex/rows*2)
+      //+[ 5, 4, 2, 0, 1, 3 ][cellIndex]/(columns*rows)
+      +noise(xIndex/columns*2, yIndex/rows*2)
       //+noise(xIndex, yIndex)
-      // +noise(cellIndex/(cols*rows))
+      // +noise(cellIndex/(columns*rows))
     )
     const imageIndex = mappers.circularIndex(
       (

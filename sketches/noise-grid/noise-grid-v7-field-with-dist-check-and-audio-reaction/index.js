@@ -11,7 +11,7 @@ options.add( [
     category: 'Grid'
   },
   {
-    id: "grid-cols",
+    id: "grid-columns",
     type: 'slider',
     label: 'Rows',
     min: 1,
@@ -45,18 +45,18 @@ sketch.draw((time,center) => {
   // translate( center )
 
   const rows = options.get("grid-rows");
-  const cols = options.get("grid-cols");
+  const columns = options.get("grid-columns");
 
   const gridOptions = {
-    startLeft: createVector( 0, 0 ),
-    startRight: createVector( width, 0 ),
-    endLeft: createVector( 0, height ),
-    endRight: createVector( width, height ),
+    topLeft: createVector( 0, 0 ),
+    topRight: createVector( width, 0 ),
+    bottomLeft: createVector( 0, height ),
+    bottomRight: createVector( width, height ),
     rows,
-    cols,
+    columns,
     centered: options.get("grid-cell-centered")
   }
-  const cellSize = (width / cols)-0;
+  const cellSize = (width / columns)-0;
 
   // noiseDetail(1.1, 0.5, 1);
   // noFill()
@@ -82,7 +82,7 @@ sketch.draw((time,center) => {
     // const weight = map(distance, 0, width, 0, scale, true );
 
 
-    const angle = noise(x/cols+time/6, y/rows+time/3, time/10) * (TAU*4);
+    const angle = noise(x/columns+time/6, y/rows+time/3, time/10) * (TAU*4);
     const weight = map(angle, min, max, 0, cellSize, true );
 
     min = Math.min(min, angle);

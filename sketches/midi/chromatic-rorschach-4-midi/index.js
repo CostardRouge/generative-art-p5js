@@ -23,25 +23,25 @@ sketch.setup(undefined, { type: "webgl" });
 
 sketch.draw((time, center) => {
   background(0);
-  const cols = 40;
-  const rows = (cols * height) / width;
-  const cellSize = width / cols;
+  const columns = 40;
+  const rows = (columns * height) / width;
+  const cellSize = width / columns;
 
   const gridOptions = {
-    startLeft: createVector(-width / 2, -height / 2),
-    startRight: createVector(width / 2, -height / 2),
-    endLeft: createVector(-width / 2, height / 2),
-    endRight: createVector(width / 2, height / 2),
+    topLeft: createVector(-width / 2, -height / 2),
+    topRight: createVector(width / 2, -height / 2),
+    bottomLeft: createVector(-width / 2, height / 2),
+    bottomRight: createVector(width / 2, height / 2),
     rows,
-    cols,
+    columns,
     centered: true,
   };
 
   grid.draw(gridOptions, (position, { x, y }) => {
     const xOff = position.x / rows;
-    const yOff = position.y / cols;
+    const yOff = position.y / columns;
 
-    const energy = audio.capture.energy.map(x / (cols - 1), y / (rows - 1));
+    const energy = audio.capture.energy.map(x / (columns - 1), y / (rows - 1));
 
     const hue = noise(xOff / 4, yOff / 4 + time / 2);
     const d = mappers.fn(energy, 0, 1, 20, 500);

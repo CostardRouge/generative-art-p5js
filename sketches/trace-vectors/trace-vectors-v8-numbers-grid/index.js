@@ -51,7 +51,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
   const to = createVector(0, H-margin, 0);
 
   const columns = 3;
-  const rows = 3;//cols * (height/width)
+  const rows = 3;//columns * (height/width)
   const cells = columns * rows;
 
   push()
