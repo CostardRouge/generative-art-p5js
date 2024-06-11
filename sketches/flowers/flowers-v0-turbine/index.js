@@ -51,7 +51,7 @@ function cross(options) {
 sketch.draw( (time, center) => {
   background(0);
 
-  const columnsmns = 30;
+  const columns = 30;
   const rows = 50;
   const gridOptions = {
     topLeft: createVector( 0, 0 ),
@@ -59,12 +59,12 @@ sketch.draw( (time, center) => {
     bottomLeft: createVector( 0, height ),
     bottomRight: createVector( width, height ),
     rows,
-    columnsmns,
+    columns,
     centered: true
   }
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const xOff = x/columnsmns;
+    const xOff = x/columns;
     const yOff = y/rows;
 
     cross({
@@ -74,7 +74,7 @@ sketch.draw( (time, center) => {
       // sides: animation.sequence("kl"+x+"-"+y, time+noise(yOff + time, xOff), [ 3, 4, 5, 6]),
       borderColor: colors.purple({
         hueOffset: time+sin(y+time),
-        hueIndex: map(x, 0, columnsmns-1, -PI, PI),
+        hueIndex: map(x, 0, columns-1, -PI, PI),
         opacityFactor: 4.5
       }),
       borderWidth: 2,

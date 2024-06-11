@@ -100,7 +100,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
   translate(-W, -H)
   const columns = 1;
   const rows = 10//columns * (height/width);
-  drawGrid(columnsmns, rows, favoriteColor, 0.5, 0)
+  drawGrid(columns, rows, favoriteColor, 0.5, 0)
   pop()
 
   translate(0, 0, 1)

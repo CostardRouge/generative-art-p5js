@@ -118,7 +118,7 @@ function drawGrid(columns, time) {
   // rotate(PI/4)
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const n = noise(xSign*x/columnsmnsmnsmns+time, ySign*y/rows)*4;
+    const n = noise(xSign*x/columns+time, ySign*y/rows)*4;
 
     drawGridCell(
       cellVector.x-W/2,

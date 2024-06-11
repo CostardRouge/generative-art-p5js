@@ -80,7 +80,7 @@ function drawGrid(columns, time) {
   strokeWeight(2)
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const n = noise(x/columnsmnsmnsmns+time, y/rows, time)*2;
+    const n = noise(x/columns+time, y/rows, time)*2;
 
     drawGridCell(
       cellVector.x-W/2,

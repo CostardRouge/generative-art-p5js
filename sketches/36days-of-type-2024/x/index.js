@@ -158,6 +158,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
   }
 
   const { cells, corners, cellWidth, cellHeight } = grid.create( gridOptions, false );
+  // const { cells } = grid.create( gridOptions, false );
   // grid.debug( gridOptions, cells, corners )
 
   const imageParts = cache.store(`image-parts-${columns}-${rows}`, () => (

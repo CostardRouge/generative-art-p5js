@@ -121,11 +121,11 @@ sketch.draw( ( time, center, favoriteColor ) => {
   const W = width / columns;
   const H = height / rows;
 
-  const gridCells = grid.create( gridOptions );
+  const { cells: gridCells } = grid.create( gridOptions );
 
   const imageParts = cache.store(`image-parts-${columns}-${rows}`, () => (
     cache.get("images").map( ( { image, name } ) => (
-      gridCells.reduce( ( imageCells, [ { x , y } ] ) => {
+      gridCells.reduce( ( imageCells, { x , y } ) => {
         const imagePart = getImagePart( image, x, y, W, H );
 
         imageCells.push( {
@@ -143,8 +143,8 @@ sketch.draw( ( time, center, favoriteColor ) => {
 
   const easingFunction = easing.easeInOut;
 
-  gridCells.forEach( ([position, xIndex, yIndex], cellIndex ) => {
-    const circularX = mappers.circular(xIndex, 0, (columnsmns-1), 0, 1, easingFunction )
+  gridCells.forEach( ({position, xIndex, yIndex}, cellIndex ) => {
+    const circularX = mappers.circular(xIndex, 0, (columns-1), 0, 1, easingFunction )
     const circularY = mappers.circular(yIndex, 0, (rows-1), 0, 1, easingFunction )
 
     const { x, y } = position;

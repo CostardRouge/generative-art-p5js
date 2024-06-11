@@ -4,9 +4,9 @@ sketch.setup( undefined, { type: 'webgl'});
 
 options.add( [
   {
-    id: "grid-columnsmns",
+    id: "grid-columns",
     type: 'slider',
-    label: 'columnsmns',
+    label: 'columns',
     min: 1,
     max: 200,
     defaultValue: 30,
@@ -54,9 +54,9 @@ sketch.draw( time => {
   const sampleFactor = 0.5;
   const simplifyThreshold = 0;
 
-  const columnsmns = options.get("grcolumnsolumns") ?? 30;
-  const rows = columnsmns*height/width;
-  const size = width/columnsmns
+  const columns = options.get("grcolumnsolumns") ?? 30;
+  const rows = columns*height/width;
+  const size = width/columns
 
   const gridOptions = {
     topLeft: createVector( -width/2, -height/2 ),
@@ -64,14 +64,14 @@ sketch.draw( time => {
     bottomLeft: createVector( -width/2, height/2 ),
     bottomRight: createVector( width/2, height/2 ),
     rows,
-    columnsmns,
+    columns,
     centered: true
   }
   
   grid.draw(gridOptions, (cellVector, { x, y }) => {
     const xSign = sin(time);
     const ySign = cos(time);
-    const chance = noise((xSign*(x/columnsmns)+ySign*(y/rows))+time)
+    const chance = noise((xSign*(x/columns)+ySign*(y/rows))+time)
 
     const currentLetter = mappers.circularIndex(chance+time/2, word)
     const points = getTextPoints({
@@ -101,10 +101,10 @@ sketch.draw( time => {
     }
 
     const coco = colors.rainbowCrazy({
-      hueOffset: time,//+map(sin(time+y/columnsmns*10), -1, 1, 1, 5),
+      hueOffset: time,//+map(sin(time+y/columns*10), -1, 1, 1, 5),
       hueIndex: cellVector.x+cellVector.y,
       // opacityFactor: map(alpha, 0, 255, 1, 2.5)
-      // opacityFactor: map(sin(10*time+y/columnsmns*10), -1, 1, 1, 5)
+      // opacityFactor: map(sin(10*time+y/columns*10), -1, 1, 1, 5)
       //hueIndex: (chance * TAU)*6
     })
 

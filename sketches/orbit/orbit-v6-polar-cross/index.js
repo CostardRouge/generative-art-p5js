@@ -18,7 +18,7 @@ function cross({x, y}, size, amount = 2) {
 sketch.draw( (time, center) => {
   background(0);
 
-  const columnsmns = 20;
+  const columns = 20;
   const rows = 20;
   const gridOptions = {
     topLeft: createVector( 0, 0 ),
@@ -26,14 +26,14 @@ sketch.draw( (time, center) => {
     bottomLeft: createVector( 0, height ),
     bottomRight: createVector( width, height ),
     rows,
-    columnsmns,
+    columns,
     centered: true
   }
 
   strokeWeight(2)
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    const xOff = x/columnsmns;
+    const xOff = x/columns;
     const yOff = y/rows;
     const amt = mappers.circularIndex(time+yOff-xOff, [ 0, 1, 2, 3, 4, 3, 2, 1]);
 

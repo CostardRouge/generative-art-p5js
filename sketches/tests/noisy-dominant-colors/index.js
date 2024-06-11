@@ -62,11 +62,11 @@ function getColor( img, x, y, w, h = w ) {
   });
 }
 
-function drawGridCell(_x, _y, w, h, columnsmns, rows, drawer) {
-  const xSize = w / columnsmns;
+function drawGridCell(_x, _y, w, h, columns, rows, drawer) {
+  const xSize = w / columns;
   const ySize = h / rows;
 
-  for (let x = 0; x <= columnsmns; x++) {
+  for (let x = 0; x <= columns; x++) {
     for (let y = 0; y <= rows; y++) {
       drawer?.(_x + x*xSize, _y + y*ySize, xSize, ySize)
     }
@@ -102,9 +102,9 @@ const borderSize = 2;
 sketch.draw( (time, center) => {
   background(0);
 
-  const columnsmns = 5;
+  const columns = 5;
   //const rows = 10;
-  const rows = columnsmns*height/width;
+  const rows = columns*height/width;
 
   const gridOptions = {
     topLeft: createVector( borderSize, borderSize ),
@@ -112,11 +112,11 @@ sketch.draw( (time, center) => {
     bottomLeft: createVector( borderSize, height-borderSize ),
     bottomRight: createVector( width-borderSize, height-borderSize ),
     rows,
-    columnsmns,
+    columns,
     centered: true
   }
 
-  const W = width / columnsmns;
+  const W = width / columns;
   const H = height / rows;
 
   noStroke()
@@ -125,7 +125,7 @@ sketch.draw( (time, center) => {
   const img = cache.get("image");
 
   grid.draw(gridOptions, (cellVector, { x, y}) => {
-    let n = noise(x/columnsmns+time, y/rows + time)*4;
+    let n = noise(x/columns+time, y/rows + time)*4;
     // n = map(
     //   cellVector.dist(center),
     //   0,

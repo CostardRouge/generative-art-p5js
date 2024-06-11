@@ -357,7 +357,7 @@ sketch.draw( (time, center) => {
       +map(s, 2, 1, position.x/15, 0)
       +map(s, 1, 2, position.y/15, 0)
       // +rotatedY/rows*8
-      // +rotatedX/columnsmnsmnsmnsmns*8
+      // +rotatedX/columns*8
     ), -1, 1, -m, m)
 
     point(

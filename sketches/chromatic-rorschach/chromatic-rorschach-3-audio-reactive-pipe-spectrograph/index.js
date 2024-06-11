@@ -53,17 +53,17 @@ sketch.draw((time, center) => {
   //   easingFn: easing.easeInOutExpo
   // }));
 
-  // const columnsmns = animation.ease({
+  // const columns = animation.ease({
   //   values: [ 20, 40 ],
   //   currentTime: time/6,
   //   duration: 1,
   //   easingFn: easing.easeInOutExpo
   // });
 
-  const columnsmns = 30;
-  // const columnsmns = mappers.circularIndex(time, [10, 10, 20, 20, 30, 30, 40, 40]);
-  const rows = (columnsmns * height) / width;
-  const cellSize = width / columnsmns;
+  const columns = 30;
+  // const columns = mappers.circularIndex(time, [10, 10, 20, 20, 30, 30, 40, 40]);
+  const rows = (columns * height) / width;
+  const cellSize = width / columns;
 
   const gridOptions = {
     topLeft: createVector(-width / 2, -height / 2),
@@ -71,7 +71,7 @@ sketch.draw((time, center) => {
     bottomLeft: createVector(-width / 2, height / 2),
     bottomRight: createVector(width / 2, height / 2),
     rows,
-    columnsmns,
+    columns,
     centered: true,
   };
 
@@ -117,19 +117,19 @@ sketch.draw((time, center) => {
 
   grid.draw(gridOptions, (position, { x, y }) => {
     const xOff = position.x / rows;
-    const yOff = position.y / columnsmns;
+    const yOff = position.y / columns;
 
 
-    // const energy = audio.capture.energy.map(x / (columnsmns + 2), y / (rows - 1));
+    // const energy = audio.capture.energy.map(x / (columns + 2), y / (rows - 1));
 
-    // const normalizedX = mappers.circular(x, 0, columnsmns-1, 0, 1, easing.easeInOutCubic)
+    // const normalizedX = mappers.circular(x, 0, columns-1, 0, 1, easing.easeInOutCubic)
     // const normalizedY = mappers.circular(y, 0, rows-1, 0, 1)
 
-    const normalizedX = circular(x, 0, columnsmns-1, 1, 0, easing.easeInOutCubic)
+    const normalizedX = circular(x, 0, columns-1, 1, 0, easing.easeInOutCubic)
     const normalizedY = circular(y, 0, rows-1, 1, 0)
 
     // const capture = audio.capture.energy.map(normalizedX, normalizedY);
-    const capture = audio.capture.energy.map(x / (columnsmns +2), y / (rows - 1));
+    const capture = audio.capture.energy.map(x / (columns +2), y / (rows - 1));
     const energy = capture.next().value;
     const binIndex = capture.next().value;
     const historyBufferIndex = capture.next().value;
@@ -191,7 +191,7 @@ sketch.draw((time, center) => {
 
     // translate(position.x, position.y, 0)
 
-    const angle = map(x, 0, columnsmns-1, -PI, PI);
+    const angle = map(x, 0, columns-1, -PI, PI);
     const from = createVector(0, position.y+250, -500)
     const to = createVector( sin(angle) * 250, 0, (cos(angle) * 250 ) -500 );
 

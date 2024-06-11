@@ -154,11 +154,11 @@ sketch.draw( ( time, center, favoriteColor ) => {
   const W = width / columns;
   const H = height / rows;
 
-  const gridCells = grid.create( gridOptions );
+  const { cells: gridCells } = grid.create( gridOptions );
 
   const imageParts = cache.store(`image-parts-${columns}-${rows}`, () => (
     cache.get("images").map( image => (
-      gridCells.reduce( ( imageCells, [ { x , y } ] ) => {
+      gridCells.reduce( ( imageCells, { x , y } ) => {
         imageCells.push( getImagePart( image, x, y, W, H ) );
         return imageCells;
       }, [])
@@ -167,7 +167,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
 
   const imageIndexes = imageParts.map( (_, index) => [index, index]).flat(Infinity);
 
-  gridCells.forEach( ([position, xIndex, yIndex], cellIndex ) => {
+  gridCells.forEach( ({position, xIndex, yIndex}, cellIndex ) => {
     const { x, y } = position;
     // const imageIndex = (noise(xIndex+time/5, yIndex+time/5)*imageURLs.length)%imageURLs.length;
     // const imageIndex = mappers.circularIndex(xIndex+yIndex+time, imageIndexes );
@@ -222,7 +222,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
 
     // image(getImagePart(cache.get("images")[~~imageIndex], x, y, W, H), x, y, W, H)
 
-    // let n = noise(x/columnsmns, y/rows + time)*8;
+    // let n = noise(x/columns, y/rows + time)*8;
     //  n = map(
     //   position.dist(center),
     //   0,

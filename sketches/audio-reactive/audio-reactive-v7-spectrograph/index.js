@@ -18,9 +18,9 @@ options.add([
     category: "Grid",
   },
   {
-    id: "grid-columnsmns",
+    id: "grid-columns",
     type: "slider",
-    label: "columnsmns",
+    label: "columns",
     min: 1,
     max: 200,
     defaultValue: 40,
@@ -45,7 +45,7 @@ sketch.draw((time) => {
   background(0);
 
   const rows = options.get("grid-rows");
-  const columnsmns = options.get("grcolumnsolumns");
+  const columns = options.get("grcolumnsolumns");
 
   const gridOptions = {
     topLeft: createVector(0, 0),
@@ -53,16 +53,16 @@ sketch.draw((time) => {
     bottomLeft: createVector(0, height),
     bottomRight: createVector(width, height),
     rows,
-    columnsmns,
+    columns,
     centered: options.get("grid-cell-centered"),
   };
 
-  const cellSize = (width + height) / (columnsmns + rows);
+  const cellSize = (width + height) / (columns + rows);
 
   noFill();
 
   grid.draw(gridOptions, (cellVector, { x, y }) => {
-    const energy = audio.capture.energy.map(x / (columnsmns - 1), y / (rows - 1));
+    const energy = audio.capture.energy.map(x / (columns - 1), y / (rows - 1));
 
     push();
     translate(cellVector.x, cellVector.y);
