@@ -89,9 +89,7 @@ function getDominantColor( img, precision ) {
 
 const borderSize = 0;
 
-let previousProgression = 0;
 let _imageIndex = 0;
-let goingUp = true;
 
 function getImagePart(img, x, y, w, h) {
   // return img.get( x, y, w, h)
@@ -106,6 +104,39 @@ function getImagePart(img, x, y, w, h) {
       )
   )
 }
+
+function drawCell(x, y, cellWidth, cellHeight, losange) {
+  if (losange) {
+    // Calculate the half diagonal for the diamond-shaped cell
+    const halfDiagonal = cellWidth / sqrt(2);
+
+    // Calculate the vertices for the diamond shape
+    let v1 = createVector(x, y - halfDiagonal);
+    let v2 = createVector(x + halfDiagonal, y);
+    let v3 = createVector(x, y + halfDiagonal);
+    let v4 = createVector(x - halfDiagonal, y);
+
+    // Draw the filled shape
+    beginShape();
+    vertex(v1.x, v1.y);
+    vertex(v2.x, v2.y);
+    vertex(v3.x, v3.y);
+    vertex(v4.x, v4.y);
+    endShape(CLOSE);
+
+    // Draw the border
+    stroke(0); // Set stroke color for the border
+    strokeWeight(1); // Set stroke weight for the border
+    line(v1.x, v1.y, v2.x, v2.y);
+    line(v2.x, v2.y, v3.x, v3.y);
+    line(v3.x, v3.y, v4.x, v4.y);
+    line(v4.x, v4.y, v1.x, v1.y);
+  } else {
+    // Draw a regular square cell
+    rect(x, y, cellWidth, cellHeight);
+  }
+}
+
 sketch.draw( ( time, center, favoriteColor ) => {
   background(0)
   // rotateX(PI/6)
@@ -113,6 +144,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
   const animationProgression = animation.ease({
     values: [0, 1],
     currentTime: time,
+    currentTime: 0,
     // currentTime: map(mouseX, 0, width, 0, 1),
     easingFn: easing.easeInOutSine
   });
@@ -120,8 +152,6 @@ sketch.draw( ( time, center, favoriteColor ) => {
   if ( animationProgression === 1) {
     _imageIndex++
   }
-
-  // console.log(animationProgression);
 
   const zoom = animation.ease({
     values: [-10, -500],
@@ -133,8 +163,8 @@ sketch.draw( ( time, center, favoriteColor ) => {
 
 
   const foldingSpeed = animationProgression
-  const columns = 16//options.get("grid-columns")
-  const rows = 1//options.get("grid-rows")
+  const columns = 3//options.get("grid-columns")
+  const rows = 6//options.get("grid-rows")
 
   const L = animation.ease({
     values: [0, width/2],
@@ -150,6 +180,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
   const gridOptions = {
     rows,
     columns,
+    losange: true,
     centered: 0,
     topLeft: createVector( L, borderSize ),
     topRight: createVector( R, borderSize ),
@@ -158,7 +189,6 @@ sketch.draw( ( time, center, favoriteColor ) => {
   }
 
   const { cells, corners, cellWidth, cellHeight } = grid.create( gridOptions, false );
-  // const { cells } = grid.create( gridOptions, false );
   // grid.debug( gridOptions, cells, corners )
 
   const imageParts = cache.store(`image-parts-${columns}-${rows}`, () => (
@@ -179,101 +209,57 @@ sketch.draw( ( time, center, favoriteColor ) => {
 
   const imageIndexes = imageParts.map( (_, index) => [index, index, index]).flat(Infinity);
 
-  // const anchorData = {
-  //   x: {
-  //     left: [ 0, 0 ],
-  //     middle: [ W/2, -W/2 ],
-  //     right: [ W, -W ]
-  //   },
-  //   y: {
-  //     top: [ 0, 0 ],
-  //     middle: [ H/2, -H/2 ],
-  //     bottom: [ H, -H ]
-  //   }
-  // }
-
-  cells.forEach( ({position, xIndex, yIndex}, cellIndex ) => {
+  cells.forEach( ({position, xIndex, yIndex, x, y, width: cellWidth, height: cellHeight}, cellIndex ) => {
     // const circularX = mappers.circular(xIndex, 0, (columns-1), 0, 1, easingFunction )
     // const circularY = mappers.circular(yIndex, 0, (rows-1), 0, 1, easingFunction )
 
-    const { x, y } = position;
+    // const { x, y } = position;
     const imageIndex = _imageIndex % images.length;
     const imageAtIndex = imageParts?.[imageIndex];
     const { imagePart, dominantColor, name } = imageAtIndex?.[~~cellIndex];
 
     if (imagePart) {
-      // push()
-      // translate(position.x, position.y)
 
-      // const anchor = position.copy()
-      // animation.ease({
-      //   values: [ cc, cc, position, position ],
-      //   currentTime: (
-      //     0
-      //     // +noise(circularX, circularY)
-      //     // +noise(xIndex/rows, yIndex/columns)
-      //     // // +cellIndex/(columns+rows)
-      //     // +circularX/columns
-      //     // +circularY/rows
-      //     +rotationSpeed
-      //     +switchIndex*5
-      //   ),
-      //   duration: 1,
-      //   easingFn: easing.easeInOutExpo,
-      //   lerpFn: p5.Vector.lerp,
-      // })
-
-      // const anchorXType = "left"//(xIndex % 2 === 0) ? "right" : "left"
-      // const anchorYType = (yIndex % 2 === 0) ? "bottom" : "top"
-
-      // const [ anchorX, rectX ] = anchorData.x?.[anchorXType];
-      // const [ anchorY, rectY ] = anchorData.y?.[anchorYType];
-
-      // anchor.add(anchorX, anchorY)
-      
+      // return drawCell(x, y, cellWidth, cellHeight, true)
 
       push()
 
+      translate(
+        x+cellWidth/2,
+        y
+      )
+      rotateZ(PI/4)
+      
+      push()
       textureMode(NORMAL);
       texture(imagePart)
 
       const zMax = animation.ease({
         values: [0, 500],
-        // values: [0, -(cellWidth+cellHeight)/3],
         currentTime: animationProgression,
         easingFn: easing.easeInOutCubic
       })
       const z1 = !(xIndex % 2 === 0) ? zMax : 0;
       const z2 = (xIndex % 2 === 0) ? zMax : 0;
 
-      // stroke(0, 255, 0)
-      // point(x, y, z1);
-      // point(x+cellWidth, y, z2);
-      // point(x, y+cellHeight, z1);
-      // point(x+cellWidth, y+cellHeight, z2);
-
       beginShape();
-      vertex(x, y, z1, 0, 0);
-      vertex(x+cellWidth, y, z2, 1, 0);
-      vertex(x+cellWidth, y+cellHeight, z2, 1, 1);
-      vertex(x, y+cellHeight, z1, 0, 1);
+      vertex(0, 0, z1, 0, 0);
+      vertex(0+cellWidth, 0, z2, 1, 0);
+      vertex(0+cellWidth, 0+cellHeight, z2, 1, 1);
+      vertex(0, 0+cellHeight, z1, 0, 1);
       endShape(CLOSE)
       pop()
 
       // Draw border
       stroke(favoriteColor);
       strokeWeight(1);
-      line(x, y, z1, x+cellWidth, y, z2); // Top border
-      line(x+cellWidth, y, z2, x+cellWidth, y+cellHeight, z2); 
-      line(x+cellWidth, y+cellHeight, z2, x, y+cellHeight, z1);
-      line(x, y+cellHeight, z1, x, y, z1);
-    
-      // pop()
+      line(0, 0, z1, 0+cellWidth, 0, z2);
+      line(0+cellWidth, 0, z2, 0+cellWidth, 0+cellHeight, z2); 
+      line(0+cellWidth, 0+cellHeight, z2, 0, 0+cellHeight, z1);
+      line(0, 0+cellHeight, z1, 0, 0, z1);
+
+      pop()
     }
   })
-
-  // stroke(255, 0, 0);
-  // strokeWeight(20);
-  // line(0, 0, 50, width, height, cellHeight)/
   orbitControl()
 });

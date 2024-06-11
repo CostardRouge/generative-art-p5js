@@ -4,6 +4,7 @@ const grid = {
   create: ( {
     rows = 2,
     columns = 2,
+    losange = false,
     centered = true,
     topLeft = createVector( 0, 0 ),
     topRight = createVector( width, 0 ),
@@ -17,20 +18,40 @@ const grid = {
 
       for (let row = 0; row < rows; row++) {
         for (let column = 0; column < columns; column++) {
-          const x = lerp(topLeft.x, topRight.x, (column + 0) / columns);
-          const y = lerp(topLeft.y, bottomLeft.y, (row + 0) / rows);
-
-          cells.push({
-            xIndex: column,
-            yIndex: row,
-            column,
-            row,
-            x,
-            y,
-            position: createVector(x, y),
-            width: cellWidth + (centered ? cellWidth / 2 : 0),
-            height: cellHeight + (centered ? cellHeight / 2 : 0),
-          });
+          if (losange) {
+            // Adjust cell size and position for losange (diamond-shaped) cells
+            const halfDiagonal = cellWidth / sqrt(2);
+            const x = topLeft.x + column * halfDiagonal * 2 + (row % 2) * halfDiagonal;
+            const y = topLeft.y + row * halfDiagonal;
+    
+            cells.push({
+              x,
+              y,
+              xIndex: column,
+              yIndex: row,
+              column,
+              row,
+              position: createVector(column, row),
+              width: halfDiagonal * sqrt(2),
+              height: halfDiagonal * sqrt(2)
+            });
+          }
+          else {
+            const x = lerp(topLeft.x, topRight.x, (column + 0) / columns);
+            const y = lerp(topLeft.y, bottomLeft.y, (row + 0) / rows);
+  
+            cells.push({
+              xIndex: column,
+              yIndex: row,
+              column,
+              row,
+              x,
+              y,
+              position: createVector(x, y),
+              width: cellWidth + (centered ? cellWidth / 2 : 0),
+              height: cellHeight + (centered ? cellHeight / 2 : 0),
+            });
+          }
         }
       }
 
