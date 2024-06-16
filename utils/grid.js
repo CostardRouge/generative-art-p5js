@@ -4,7 +4,7 @@ const grid = {
   create: ( {
     rows = 2,
     columns = 2,
-    losange = false,
+    diamond = false,
     centered = true,
     topLeft = createVector( 0, 0 ),
     topRight = createVector( width, 0 ),
@@ -12,48 +12,90 @@ const grid = {
     bottomRight = createVector( width, height )
   }, cached = true ) => {
     const compute = () => {
+      const baseCellWidth = p5.Vector.dist(topLeft, topRight) / columns;
+      const baseCellHeight = p5.Vector.dist(topLeft, bottomLeft) / rows;
+    
+      const cellWidth = diamond ? baseCellWidth / sqrt(2) : baseCellWidth;
+      const cellHeight = diamond ? baseCellWidth / sqrt(2) : baseCellHeight;
+    
       const cells = [];
-      const cellWidth = p5.Vector.dist(topLeft, topRight) / columns;
-      const cellHeight = p5.Vector.dist(topLeft, bottomLeft) / rows;
-
+      
       for (let row = 0; row < rows; row++) {
         for (let column = 0; column < columns; column++) {
-          if (losange) {
-            // Adjust cell size and position for losange (diamond-shaped) cells
-            const halfDiagonal = cellWidth / sqrt(2);
-            const x = topLeft.x + column * halfDiagonal * 2 + (row % 2) * halfDiagonal;
-            const y = topLeft.y + row * halfDiagonal;
-    
-            cells.push({
-              x,
-              y,
-              xIndex: column,
-              yIndex: row,
-              column,
-              row,
-              position: createVector(column, row),
-              width: halfDiagonal * sqrt(2),
-              height: halfDiagonal * sqrt(2)
-            });
+          const x = topLeft.x + column * baseCellWidth;
+          const y = topLeft.y + row * baseCellHeight;
+          const halfDiagonal = baseCellWidth / (2);
+          const corners = [];
+        
+          if (diamond) {
+            corners.push(createVector(x + halfDiagonal, y)); // top
+            corners.push(createVector(x + halfDiagonal * 2, y + halfDiagonal)); // right
+            corners.push(createVector(x + halfDiagonal, y + halfDiagonal * 2)); // bottom
+            corners.push(createVector(x, y + halfDiagonal)); // left
+          } else {
+            corners.push(createVector(x, y));
+            corners.push(createVector(x + cellWidth, y));
+            corners.push(createVector(x + cellWidth, y + cellHeight));
+            corners.push(createVector(x, y + cellHeight));
           }
-          else {
-            const x = lerp(topLeft.x, topRight.x, (column + 0) / columns);
-            const y = lerp(topLeft.y, bottomLeft.y, (row + 0) / rows);
+
+          const center = diamond ?
+            createVector(x + halfDiagonal, y + halfDiagonal) :
+            createVector(x + cellWidth / 2, y + cellHeight / 2);
+    
+          cells.push({
+            center,
+            position: createVector(x, y),
+            height: cellHeight,
+            width: cellWidth,
+            xIndex: column,
+            yIndex: row,
+            corners,
+            absoluteCorners: corners.map( corner => corner.copy().add(x, y) ),
+            column,
+            row,
+            x,
+            y
+          });
+
+          if (diamond && row < rows - 1 && column < columns - 1) {
+            const corners = [
+              createVector(x + halfDiagonal * 2, y + halfDiagonal), // top
+              createVector(x + halfDiagonal * 3, y + halfDiagonal * 2), // right
+              createVector(x + halfDiagonal * 2, y + halfDiagonal * 3), // bottom
+              createVector(x + halfDiagonal, y + halfDiagonal * 2) // left
+            ];
+
+            const center = createVector(
+              x + halfDiagonal + baseCellWidth / 2,
+              y + halfDiagonal * 2
+            );
   
             cells.push({
-              xIndex: column,
-              yIndex: row,
-              column,
-              row,
-              x,
-              y,
-              position: createVector(x, y),
-              width: cellWidth + (centered ? cellWidth / 2 : 0),
-              height: cellHeight + (centered ? cellHeight / 2 : 0),
+              position: createVector(x + halfDiagonal, y + halfDiagonal),
+              absoluteCorners: corners.map( corner => corner.copy().add(x, y) ),
+              center,
+              corners,
+              height: cellHeight,
+              width: cellWidth,
+              xIndex: column+.5,
+              yIndex: row+.5,
+              column: column+.5,
+              row: row+.5,
+              x: x + halfDiagonal,
+              y: y + halfDiagonal
             });
           }
         }
       }
+
+      // return cells;
+      
+      // Array.from({ length: rows }, (_, row) =>
+      //   Array.from({ length: columns }, (_, column) => {
+
+      //   })
+      // ).flat();
 
       const corners = { topLeft, topRight, bottomLeft, bottomRight };
 
