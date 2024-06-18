@@ -22,26 +22,19 @@ options.add( [
 ] );
 
 sketch.setup( undefined, {
-  size: {
-    width: 1080,
-    height: 1080
-  },
+  // size: {
+  //   width: 1080,
+  //   height: 1080
+  // },
   type: "webgl"
 });
 
 const images = [
-  "waffle.webp",
-  "watches.webp",
-  "wave.webp",
-  "whale.webp",
-  "wildflowers.webp",
-  "wolf.webp",
-  "walnut.webp",
-  "waterfall.webp",
-  "wax.webp",
-  "wheat.webp",
-  "wing.webp",
-  "wool.webp"
+  "style-a.webp",
+  "x-ray.webp",
+  "xenoliths.webp",
+  "xenon.webp",
+  "xylophone.webp"
 ]
 
 events.register("engine-window-preload", () => {
@@ -89,9 +82,15 @@ function getDominantColor( img, precision ) {
 
 const borderSize = 0;
 
-let previousProgression = 0;
-let _imageIndex = 0;
-let goingUp = true;
+let _imageIndexes = {
+
+};
+
+const cursor = {
+  current: 0,
+  speed: 1/100,
+  direction: 1
+}
 
 function getImagePart(img, x, y, w, h) {
   // return img.get( x, y, w, h)
@@ -106,13 +105,34 @@ function getImagePart(img, x, y, w, h) {
       )
   )
 }
+
+function debounce(func, timeout = 300){
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => { func.apply(this, args); }, timeout);
+  };
+}
+
 sketch.draw( ( time, center, favoriteColor ) => {
   background(0)
   // rotateX(PI/6)
 
+  cursor.current += cursor.direction * cursor.speed;
+
+  if ( cursor.current > 1 ) {
+    cursor.direction = -1
+  } else if ( cursor.current < 0 ) {
+    cursor.direction = 1
+  }
+
+
+  // console.log(cursor.current);
+
   const animationProgression = animation.ease({
     values: [0, 1],
     currentTime: time,
+    currentTime: 0,
     // currentTime: map(mouseX, 0, width, 0, 1),
     easingFn: easing.easeInOutSine
   });
@@ -120,8 +140,6 @@ sketch.draw( ( time, center, favoriteColor ) => {
   if ( animationProgression === 1) {
     _imageIndex++
   }
-
-  // console.log(animationProgression);
 
   const zoom = animation.ease({
     values: [-10, -500],
@@ -131,10 +149,9 @@ sketch.draw( ( time, center, favoriteColor ) => {
 
   translate(-width/2, -height/2, zoom)
 
-
   const foldingSpeed = animationProgression
-  const columns = 16//options.get("grid-columns")
-  const rows = 1//options.get("grid-rows")
+  const columns = 6//options.get("grid-columns")
+  const rows = 6//options.get("grid-rows")
 
   const L = animation.ease({
     values: [0, width/2],
@@ -147,9 +164,12 @@ sketch.draw( ( time, center, favoriteColor ) => {
     easingFn: easing.easeInOutExpo
   });
 
+  const diamond = 1;
+
   const gridOptions = {
     rows,
     columns,
+    diamond,
     centered: 0,
     topLeft: createVector( L, borderSize ),
     topRight: createVector( R, borderSize ),
@@ -158,122 +178,145 @@ sketch.draw( ( time, center, favoriteColor ) => {
   }
 
   const { cells, corners, cellWidth, cellHeight } = grid.create( gridOptions, false );
-  // const { cells } = grid.create( gridOptions, false );
+
+  // console.log(cells.length);
+
+  // console.log(cells);
   // grid.debug( gridOptions, cells, corners )
 
-  const imageParts = cache.store(`image-parts-${columns}-${rows}`, () => (
-    cache.get("images").map( ( { image, name } ) => (
-      cells.reduce( ( imageCells, { x , y, height, width }  ) => {
-        const imagePart = getImagePart( image, x, y, width, height );
+  // const imageParts = cache.store(`image-parts-${columns}-${rows}`, () => (
+  //   cache.get("images").map( ( { image, name } ) => (
+  //     cells.reduce( ( imageCells, { x , y, height, width } ) => {
+  //       const imagePart = getImagePart( image, x, y, width, height );
 
-        imageCells.push( {
-          name,
-          imagePart,
-          //dominantColor: getDominantColor( imagePart, 50 )
-        } );
+  //       imageCells.push( {
+  //         name,
+  //         imagePart,
+  //         //dominantColor: getDominantColor( imagePart, 50 )
+  //       } );
 
-        return imageCells;
-      }, [])
-    ) )
-  ) );
+  //       return imageCells;
+  //     }, [])
+  //   ) )
+  // ) );
+  const images = cache.get("images")
 
-  const imageIndexes = imageParts.map( (_, index) => [index, index, index]).flat(Infinity);
+  // console.log(_imageIndexes);
 
-  // const anchorData = {
-  //   x: {
-  //     left: [ 0, 0 ],
-  //     middle: [ W/2, -W/2 ],
-  //     right: [ W, -W ]
-  //   },
-  //   y: {
-  //     top: [ 0, 0 ],
-  //     middle: [ H/2, -H/2 ],
-  //     bottom: [ H, -H ]
-  //   }
-  // }
+  const imageIndexes = images.map( (_, index) => [index]).flat(Infinity);
 
-  cells.forEach( ({position, xIndex, yIndex}, cellIndex ) => {
-    // const circularX = mappers.circular(xIndex, 0, (columns-1), 0, 1, easingFunction )
-    // const circularY = mappers.circular(yIndex, 0, (rows-1), 0, 1, easingFunction )
+  console.log(imageIndexes);
 
-    const { x, y } = position;
-    const imageIndex = _imageIndex % images.length;
-    const imageAtIndex = imageParts?.[imageIndex];
-    const { imagePart, dominantColor, name } = imageAtIndex?.[~~cellIndex];
+  cells.forEach( ({center, corners, absoluteCorners, width: cellWidth, height: cellHeight, row, column}, cellIndex ) => {
+    const circularX = mappers.circular(row, 0, (columns-1), 0, 1, easing.easeInOutSine )
+    const circularY = mappers.circular(column, 0, (rows-1), 0, 1, easing.easeInOutSine )
 
-    if (imagePart) {
-      // push()
-      // translate(position.x, position.y)
+    const switchImageSpeed = time//*1.5;
+    const rotationSpeed = switchImageSpeed;
+    const switchIndex = (
+      // +column/columns
+      // +row/rows
+      +circularX/columns*2
+      +circularY/rows*2
+    )
+    const imageIndex = mappers.circularIndex(
+      (
+        0
+        +switchImageSpeed+0.5
+        +switchIndex
+      ),
+      imageIndexes
+    )
 
-      // const anchor = position.copy()
-      // animation.ease({
-      //   values: [ cc, cc, position, position ],
-      //   currentTime: (
-      //     0
-      //     // +noise(circularX, circularY)
-      //     // +noise(xIndex/rows, yIndex/columns)
-      //     // // +cellIndex/(columns+rows)
-      //     // +circularX/columns
-      //     // +circularY/rows
-      //     +rotationSpeed
-      //     +switchIndex*5
-      //   ),
-      //   duration: 1,
-      //   easingFn: easing.easeInOutExpo,
-      //   lerpFn: p5.Vector.lerp,
-      // })
+    const imageAtIndex = images?.[~~imageIndex]?.image;
+    // const { imagePart, dominantColor, name } = imageAtIndex?.[~~cellIndex];
 
-      // const anchorXType = "left"//(xIndex % 2 === 0) ? "right" : "left"
-      // const anchorYType = (yIndex % 2 === 0) ? "bottom" : "top"
+    console.log(imageIndex, imageAtIndex);
 
-      // const [ anchorX, rectX ] = anchorData.x?.[anchorXType];
-      // const [ anchorY, rectY ] = anchorData.y?.[anchorYType];
+    // const cellCacheKey = `cell-${row}-${column}`;
+    // const imageIndex = _imageIndexes[cellCacheKey] || (_imageIndexes[cellCacheKey] = 0 );
+    // const imageAtIndex = images?.[imageIndex]?.image;
 
-      // anchor.add(anchorX, anchorY)
+    // if (cursor.current === 1 && cursor.direction === 1) {
+    //   _imageIndexes[cellCacheKey] = (imageIndex + 1) % images.length
       
-
+    // }
+  
+    if (imageAtIndex) {
       push()
 
-      textureMode(NORMAL);
-      texture(imagePart)
-
-      const zMax = animation.ease({
-        values: [0, 500],
-        // values: [0, -(cellWidth+cellHeight)/3],
-        currentTime: animationProgression,
+      const angle = animation.ease({
+        values: [0, PI ],
+        // currentTime: switchIndex,
+        currentTime: (
+          0
+          +rotationSpeed
+          +switchIndex
+        ),
         easingFn: easing.easeInOutCubic
-      })
-      const z1 = !(xIndex % 2 === 0) ? zMax : 0;
-      const z2 = (xIndex % 2 === 0) ? zMax : 0;
+      });
 
-      // stroke(0, 255, 0)
-      // point(x, y, z1);
-      // point(x+cellWidth, y, z2);
-      // point(x, y+cellHeight, z1);
-      // point(x+cellWidth, y+cellHeight, z2);
+      // const { value, max } = mappers.valuer(cellCacheKey, cursor.current)
+
+
+      // if ( max === cursor.current && cursor.direction === 1 ) {
+      //   // _imageIndexes[cellCacheKey] = (imageIndex + 1) % images.length
+      //   console.log("gg");
+      // console.log(cellCacheKey, {max, value});
+
+      // }
+
+      
+      beginClip();
+      translate(center.x, center.y)
+      rotateY(angle)
+
+      // stroke(favoriteColor);
+      // strokeWeight(1);
+      // noFill()
+      // circle(0, 0, cellWidth)
+      
+      // stroke("red");
+      // strokeWeight(15);
+      // point(0, 0)
+
+      // strokeWeight(10);
+      // for (const corner of corners) {
+      //   point(corner.x, corner.y);
+      // }
 
       beginShape();
-      vertex(x, y, z1, 0, 0);
-      vertex(x+cellWidth, y, z2, 1, 0);
-      vertex(x+cellWidth, y+cellHeight, z2, 1, 1);
-      vertex(x, y+cellHeight, z1, 0, 1);
-      endShape(CLOSE)
+      // translate(center.x, center.y)
+
+      // stroke("green");
+      // strokeWeight(5);
+      for (const corner of corners) {
+        vertex(corner.x, corner.y);
+        // vertex(corner.x-(cellWidth/sqrt(2))*2, corner.y-(cellHeight/sqrt(2))*2);
+      }
+      endShape(CLOSE);
+
+      endClip();
+
+      stroke(favoriteColor);
+      strokeWeight(2);
+      image(imageAtIndex, 0, 0, width, height);
+
       pop()
 
-      // Draw border
+
+
+      push()
+      translate(center.x, center.y)
+      rotateY(angle)
       stroke(favoriteColor);
-      strokeWeight(1);
-      line(x, y, z1, x+cellWidth, y, z2); // Top border
-      line(x+cellWidth, y, z2, x+cellWidth, y+cellHeight, z2); 
-      line(x+cellWidth, y+cellHeight, z2, x, y+cellHeight, z1);
-      line(x, y+cellHeight, z1, x, y, z1);
-    
-      // pop()
+      strokeWeight(2);
+      for (let i = 0; i < corners.length; i++) {
+        const nextIndex = (i + 1) % corners.length;
+        line(corners[i].x, corners[i].y, corners[nextIndex].x, corners[nextIndex].y);
+      }
+      pop()
     }
   })
-
-  // stroke(255, 0, 0);
-  // strokeWeight(20);
-  // line(0, 0, 50, width, height, cellHeight)/
   orbitControl()
 });

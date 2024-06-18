@@ -4,33 +4,83 @@ const grid = {
   create: ( {
     rows = 2,
     columns = 2,
-    centered = true,
+    diamond = false,
     topLeft = createVector( 0, 0 ),
     topRight = createVector( width, 0 ),
     bottomLeft = createVector( 0, height ),
     bottomRight = createVector( width, height )
   }, cached = true ) => {
     const compute = () => {
-      const cells = [];
-      const cellWidth = p5.Vector.dist(topLeft, topRight) / columns;
-      const cellHeight = p5.Vector.dist(topLeft, bottomLeft) / rows;
+      const baseCellWidth = p5.Vector.dist(topLeft, topRight) / columns;
+      const baseCellHeight = p5.Vector.dist(topLeft, bottomLeft) / rows;
+    
+      const cellWidth = diamond ? baseCellWidth / sqrt(2) : baseCellWidth;
+      const cellHeight = diamond ? baseCellWidth / sqrt(2) : baseCellHeight;
 
+      const halfDiagonal = baseCellWidth / (2);
+    
+      const cells = [];
+      
       for (let row = 0; row < rows; row++) {
         for (let column = 0; column < columns; column++) {
-          const x = lerp(topLeft.x, topRight.x, (column + 0) / columns);
-          const y = lerp(topLeft.y, bottomLeft.y, (row + 0) / rows);
+          const corners = [];
+          const x = topLeft.x + column * baseCellWidth;
+          const y = topLeft.y + row * baseCellHeight;
+        
+          if (diamond) {
+            corners.push(createVector(0, -halfDiagonal)); // top
+            corners.push(createVector(halfDiagonal, 0)); // right
+            corners.push(createVector(0, halfDiagonal)); // bottom
+            corners.push(createVector(-halfDiagonal, 0)); // left
+          } else {
+            corners.push(createVector(0, 0));
+            corners.push(createVector(cellWidth, 0));
+            corners.push(createVector(cellWidth, cellHeight));
+            corners.push(createVector(0, cellHeight));
+          }
 
           cells.push({
+            center: (
+              diamond ?
+              createVector(x + halfDiagonal, y + halfDiagonal) :
+              createVector(x + cellWidth / 2, y + cellHeight / 2)
+            ),
+            absoluteCorners: corners.map( corner => corner.copy().add(x, y) ),
+            position: createVector(x, y),
+            height: cellHeight,
+            width: cellWidth,
             xIndex: column,
             yIndex: row,
+            corners,
             column,
             row,
             x,
-            y,
-            position: createVector(x, y),
-            width: cellWidth + (centered ? cellWidth / 2 : 0),
-            height: cellHeight + (centered ? cellHeight / 2 : 0),
+            y
           });
+
+          if (diamond && row < rows - 1 && column < columns - 1) {
+            const corners = [
+              createVector(0, -halfDiagonal), // top
+              createVector(halfDiagonal, 0), // right
+              createVector(0, halfDiagonal), // bottom
+              createVector(-halfDiagonal, 0) // left
+            ];
+  
+            cells.push({
+              // position: createVector(x + halfDiagonal, y + halfDiagonal),
+              center: createVector(x + halfDiagonal * 2, y + halfDiagonal * 2),
+              absoluteCorners: corners.map( corner => corner.copy().add(x, y) ),
+              corners,
+              height: cellHeight,
+              width: cellWidth,
+              xIndex: column+.5,
+              yIndex: row+.5,
+              column: column+.5,
+              row: row+.5,
+              x: x + halfDiagonal,
+              y: y + halfDiagonal
+            });
+          }
         }
       }
 
@@ -46,7 +96,7 @@ const grid = {
     const cacheKey = cache.key(
       topLeft.x, topRight.x, bottomLeft.x, bottomRight.x,
       topLeft.y, topRight.y, bottomLeft.y, bottomRight.y,
-      rows, columns, centered
+      rows, columns, diamond
     );
 
     return cache.store(cacheKey, compute);
@@ -98,13 +148,13 @@ const grid = {
     })
   },
   draw: ( gridOptions , handler ) => {
-    const cachedGridVectors = grid.create( gridOptions );
+    const { cells } = grid.create( gridOptions );
 
-    cachedGridVectors.forEach( ( [ cellVector, x, y ] ) => {
-      handler(cellVector, { x, y })
+    cells.forEach( ({ position, x, y } ) => {
+      handler( position, { x, y })
     })
 
-    return cachedGridVectors;
+    return cells;
   }
 };
 

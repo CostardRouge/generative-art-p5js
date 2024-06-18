@@ -2,7 +2,7 @@ import { sketch } from './index.js';
 
 const time = {
   seconds: function () {
-    // return millis() / 1000;
+    return millis() / 1000;
     return sketch?.engine?.getFrameCount() / 60;
   },
   every: function (second, callback) {
