@@ -103,15 +103,16 @@ const mappers = {
   
     return vectorsList;
   },
-  valuer: (key, value, amount = 0.07, fn = lerp) => {
+  valuer: (key, value, smoothAmount = 0.07, fn = lerp) => {
     const cacheKey = `valuer-${key}`;
     const storedValue = cache.store(cacheKey, () => undefined );
   
     return cache.set( cacheKey, {
       value: storedValue?.value,
+      value: value,
       min: Math.min(storedValue?.min ?? Infinity, value),
       max: Math.max(storedValue?.max ?? -Infinity, value),
-      smooth: fn(storedValue?.smooth ?? 0, value, amount)
+      smooth: fn(storedValue?.smooth ?? 0, value, smoothAmount)
     } );
   },
   smoother: (key, value, amount = 0.07, fn = lerp) => {

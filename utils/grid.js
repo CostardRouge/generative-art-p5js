@@ -5,7 +5,6 @@ const grid = {
     rows = 2,
     columns = 2,
     diamond = false,
-    centered = true,
     topLeft = createVector( 0, 0 ),
     topRight = createVector( width, 0 ),
     bottomLeft = createVector( 0, height ),
@@ -17,41 +16,42 @@ const grid = {
     
       const cellWidth = diamond ? baseCellWidth / sqrt(2) : baseCellWidth;
       const cellHeight = diamond ? baseCellWidth / sqrt(2) : baseCellHeight;
+
+      const halfDiagonal = baseCellWidth / (2);
     
       const cells = [];
       
       for (let row = 0; row < rows; row++) {
         for (let column = 0; column < columns; column++) {
+          const corners = [];
           const x = topLeft.x + column * baseCellWidth;
           const y = topLeft.y + row * baseCellHeight;
-          const halfDiagonal = baseCellWidth / (2);
-          const corners = [];
         
           if (diamond) {
-            corners.push(createVector(x + halfDiagonal, y)); // top
-            corners.push(createVector(x + halfDiagonal * 2, y + halfDiagonal)); // right
-            corners.push(createVector(x + halfDiagonal, y + halfDiagonal * 2)); // bottom
-            corners.push(createVector(x, y + halfDiagonal)); // left
+            corners.push(createVector(0, -halfDiagonal)); // top
+            corners.push(createVector(halfDiagonal, 0)); // right
+            corners.push(createVector(0, halfDiagonal)); // bottom
+            corners.push(createVector(-halfDiagonal, 0)); // left
           } else {
-            corners.push(createVector(x, y));
-            corners.push(createVector(x + cellWidth, y));
-            corners.push(createVector(x + cellWidth, y + cellHeight));
-            corners.push(createVector(x, y + cellHeight));
+            corners.push(createVector(0, 0));
+            corners.push(createVector(cellWidth, 0));
+            corners.push(createVector(cellWidth, cellHeight));
+            corners.push(createVector(0, cellHeight));
           }
 
-          const center = diamond ?
-            createVector(x + halfDiagonal, y + halfDiagonal) :
-            createVector(x + cellWidth / 2, y + cellHeight / 2);
-    
           cells.push({
-            center,
+            center: (
+              diamond ?
+              createVector(x + halfDiagonal, y + halfDiagonal) :
+              createVector(x + cellWidth / 2, y + cellHeight / 2)
+            ),
+            absoluteCorners: corners.map( corner => corner.copy().add(x, y) ),
             position: createVector(x, y),
             height: cellHeight,
             width: cellWidth,
             xIndex: column,
             yIndex: row,
             corners,
-            absoluteCorners: corners.map( corner => corner.copy().add(x, y) ),
             column,
             row,
             x,
@@ -60,21 +60,16 @@ const grid = {
 
           if (diamond && row < rows - 1 && column < columns - 1) {
             const corners = [
-              createVector(x + halfDiagonal * 2, y + halfDiagonal), // top
-              createVector(x + halfDiagonal * 3, y + halfDiagonal * 2), // right
-              createVector(x + halfDiagonal * 2, y + halfDiagonal * 3), // bottom
-              createVector(x + halfDiagonal, y + halfDiagonal * 2) // left
+              createVector(0, -halfDiagonal), // top
+              createVector(halfDiagonal, 0), // right
+              createVector(0, halfDiagonal), // bottom
+              createVector(-halfDiagonal, 0) // left
             ];
-
-            const center = createVector(
-              x + halfDiagonal + baseCellWidth / 2,
-              y + halfDiagonal * 2
-            );
   
             cells.push({
-              position: createVector(x + halfDiagonal, y + halfDiagonal),
+              // position: createVector(x + halfDiagonal, y + halfDiagonal),
+              center: createVector(x + halfDiagonal * 2, y + halfDiagonal * 2),
               absoluteCorners: corners.map( corner => corner.copy().add(x, y) ),
-              center,
               corners,
               height: cellHeight,
               width: cellWidth,
@@ -89,14 +84,6 @@ const grid = {
         }
       }
 
-      // return cells;
-      
-      // Array.from({ length: rows }, (_, row) =>
-      //   Array.from({ length: columns }, (_, column) => {
-
-      //   })
-      // ).flat();
-
       const corners = { topLeft, topRight, bottomLeft, bottomRight };
 
       return { cells, corners, cellWidth, cellHeight };
@@ -109,7 +96,7 @@ const grid = {
     const cacheKey = cache.key(
       topLeft.x, topRight.x, bottomLeft.x, bottomRight.x,
       topLeft.y, topRight.y, bottomLeft.y, bottomRight.y,
-      rows, columns, centered
+      rows, columns, diamond
     );
 
     return cache.store(cacheKey, compute);
@@ -161,13 +148,13 @@ const grid = {
     })
   },
   draw: ( gridOptions , handler ) => {
-    const cachedGridVectors = grid.create( gridOptions );
+    const { cells } = grid.create( gridOptions );
 
-    cachedGridVectors.forEach( ( [ cellVector, x, y ] ) => {
-      handler(cellVector, { x, y })
+    cells.forEach( ({ position, x, y } ) => {
+      handler( position, { x, y })
     })
 
-    return cachedGridVectors;
+    return cells;
   }
 };
 

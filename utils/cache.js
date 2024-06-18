@@ -1,8 +1,6 @@
 const cache = {
   values: {},
   store: function(key, compute, enabled = true) {
-    //cache.values = cache.values ?? {};
-  
     if ( enabled !== true ) {
       return compute();
     }

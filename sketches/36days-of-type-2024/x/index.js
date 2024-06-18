@@ -22,10 +22,10 @@ options.add( [
 ] );
 
 sketch.setup( undefined, {
-  size: {
-    width: 1080,
-    height: 1080
-  },
+  // size: {
+  //   width: 1080,
+  //   height: 1080
+  // },
   type: "webgl"
 });
 
@@ -82,7 +82,15 @@ function getDominantColor( img, precision ) {
 
 const borderSize = 0;
 
-let _imageIndex = 0;
+let _imageIndexes = {
+
+};
+
+const cursor = {
+  current: 0,
+  speed: 1/100,
+  direction: 1
+}
 
 function getImagePart(img, x, y, w, h) {
   // return img.get( x, y, w, h)
@@ -98,9 +106,28 @@ function getImagePart(img, x, y, w, h) {
   )
 }
 
+function debounce(func, timeout = 300){
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => { func.apply(this, args); }, timeout);
+  };
+}
+
 sketch.draw( ( time, center, favoriteColor ) => {
   background(0)
   // rotateX(PI/6)
+
+  cursor.current += cursor.direction * cursor.speed;
+
+  if ( cursor.current > 1 ) {
+    cursor.direction = -1
+  } else if ( cursor.current < 0 ) {
+    cursor.direction = 1
+  }
+
+
+  // console.log(cursor.current);
 
   const animationProgression = animation.ease({
     values: [0, 1],
@@ -123,8 +150,8 @@ sketch.draw( ( time, center, favoriteColor ) => {
   translate(-width/2, -height/2, zoom)
 
   const foldingSpeed = animationProgression
-  const columns = 5//options.get("grid-columns")
-  const rows = 5//options.get("grid-rows")
+  const columns = 6//options.get("grid-columns")
+  const rows = 6//options.get("grid-rows")
 
   const L = animation.ease({
     values: [0, width/2],
@@ -157,64 +184,138 @@ sketch.draw( ( time, center, favoriteColor ) => {
   // console.log(cells);
   // grid.debug( gridOptions, cells, corners )
 
-  const imageParts = cache.store(`image-parts-${columns}-${rows}`, () => (
-    cache.get("images").map( ( { image, name } ) => (
-      cells.reduce( ( imageCells, { x , y, height, width } ) => {
-        const imagePart = getImagePart( image, x, y, width, height );
+  // const imageParts = cache.store(`image-parts-${columns}-${rows}`, () => (
+  //   cache.get("images").map( ( { image, name } ) => (
+  //     cells.reduce( ( imageCells, { x , y, height, width } ) => {
+  //       const imagePart = getImagePart( image, x, y, width, height );
 
-        imageCells.push( {
-          name,
-          imagePart,
-          //dominantColor: getDominantColor( imagePart, 50 )
-        } );
+  //       imageCells.push( {
+  //         name,
+  //         imagePart,
+  //         //dominantColor: getDominantColor( imagePart, 50 )
+  //       } );
 
-        return imageCells;
-      }, [])
-    ) )
-  ) );
-  const img = cache.get("images")[0].image;
+  //       return imageCells;
+  //     }, [])
+  //   ) )
+  // ) );
+  const images = cache.get("images")
 
-  // image(img, 0, 0, width, height);
+  // console.log(_imageIndexes);
+
+  const imageIndexes = images.map( (_, index) => [index]).flat(Infinity);
+
+  console.log(imageIndexes);
 
   cells.forEach( ({center, corners, absoluteCorners, width: cellWidth, height: cellHeight, row, column}, cellIndex ) => {
-    const imageIndex = _imageIndex % images.length;
-    const imageAtIndex = imageParts?.[imageIndex];
-    const { imagePart, dominantColor, name } = imageAtIndex?.[~~cellIndex];
+    const circularX = mappers.circular(row, 0, (columns-1), 0, 1, easing.easeInOutSine )
+    const circularY = mappers.circular(column, 0, (rows-1), 0, 1, easing.easeInOutSine )
 
-    if (imagePart) {
+    const switchImageSpeed = time//*1.5;
+    const rotationSpeed = switchImageSpeed;
+    const switchIndex = (
+      // +column/columns
+      // +row/rows
+      +circularX/columns*2
+      +circularY/rows*2
+    )
+    const imageIndex = mappers.circularIndex(
+      (
+        0
+        +switchImageSpeed+0.5
+        +switchIndex
+      ),
+      imageIndexes
+    )
+
+    const imageAtIndex = images?.[~~imageIndex]?.image;
+    // const { imagePart, dominantColor, name } = imageAtIndex?.[~~cellIndex];
+
+    console.log(imageIndex, imageAtIndex);
+
+    // const cellCacheKey = `cell-${row}-${column}`;
+    // const imageIndex = _imageIndexes[cellCacheKey] || (_imageIndexes[cellCacheKey] = 0 );
+    // const imageAtIndex = images?.[imageIndex]?.image;
+
+    // if (cursor.current === 1 && cursor.direction === 1) {
+    //   _imageIndexes[cellCacheKey] = (imageIndex + 1) % images.length
+      
+    // }
+  
+    if (imageAtIndex) {
       push()
+
+      const angle = animation.ease({
+        values: [0, PI ],
+        // currentTime: switchIndex,
+        currentTime: (
+          0
+          +rotationSpeed
+          +switchIndex
+        ),
+        easingFn: easing.easeInOutCubic
+      });
+
+      // const { value, max } = mappers.valuer(cellCacheKey, cursor.current)
+
+
+      // if ( max === cursor.current && cursor.direction === 1 ) {
+      //   // _imageIndexes[cellCacheKey] = (imageIndex + 1) % images.length
+      //   console.log("gg");
+      // console.log(cellCacheKey, {max, value});
+
+      // }
+
+      
+      beginClip();
+      translate(center.x, center.y)
+      rotateY(angle)
 
       // stroke(favoriteColor);
       // strokeWeight(1);
-      // translate(x, y)
+      // noFill()
+      // circle(0, 0, cellWidth)
+      
+      // stroke("red");
+      // strokeWeight(15);
+      // point(0, 0)
 
-      // translate(center.x, center.y)
-      // circle(0, 0, cellWidth/2)
-      // translate(-x-cellWidth/2, -y-cellHeight/2)
-
-      beginClip();
-      // translate(center.x, center.y)
+      // strokeWeight(10);
+      // for (const corner of corners) {
+      //   point(corner.x, corner.y);
+      // }
 
       beginShape();
+      // translate(center.x, center.y)
+
+      // stroke("green");
+      // strokeWeight(5);
       for (const corner of corners) {
         vertex(corner.x, corner.y);
+        // vertex(corner.x-(cellWidth/sqrt(2))*2, corner.y-(cellHeight/sqrt(2))*2);
       }
       endShape(CLOSE);
-      // rotateX(time)
 
       endClip();
 
-      image(img, 0, 0, width, height);
+      stroke(favoriteColor);
+      strokeWeight(2);
+      image(imageAtIndex, 0, 0, width, height);
 
       pop()
 
 
+
+      push()
+      translate(center.x, center.y)
+      rotateY(angle)
       stroke(favoriteColor);
       strokeWeight(2);
-      for (let i = 0; i < absoluteCorners.length; i++) {
-        const nextIndex = (i + 1) % absoluteCorners.length;
+      for (let i = 0; i < corners.length; i++) {
+        const nextIndex = (i + 1) % corners.length;
         line(corners[i].x, corners[i].y, corners[nextIndex].x, corners[nextIndex].y);
       }
+      pop()
     }
   })
   orbitControl()
