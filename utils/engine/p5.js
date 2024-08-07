@@ -34,7 +34,7 @@ const p5js = {
       const _time = time.seconds() * options.get("time-speed");
 
       events.handle("pre-draw");
-      events.handle("draw", _time, p5js.getCanvasCenter(), p5js.favoriteColors.purple );
+      events.handle("draw", _time, p5js.getCanvasCenter(), p5js.favoriteColors.purple);
       events.handle("post-draw");
     };
     window.keyTyped = () => {

@@ -30,13 +30,15 @@ sketch.setup( undefined, {
 });
 
 const images = [
-    "yams.webp",
-    "yarn.webp",
-    // "yellow-squash.webp",
-    "yerbal-mate.webp",
-    "yogurt-1.webp",
-    "yolk-1.webp",
-    "yuzu-1.webp"
+  "zucchini.webp",
+  // "zombies.webp",
+  "zip.webp",
+  "zigzag.webp",
+  "zenith.webp",
+  "zen.webp",
+  "zebra.webp",
+  "zap.webp",
+  "zabaglione.webp"
 ]
 
 events.register("engine-window-preload", () => {
@@ -46,41 +48,6 @@ events.register("engine-window-preload", () => {
     image: loadImage( `./images/${name}` )
   }) ) )
 });
-
-function chunk(array, chunkSize) {
-  const chunkedArray = [];
-
-  for (let i = 0; i < array.length; i += chunkSize) {
-    chunkedArray.push(array.slice(i, i + chunkSize));
-  }
-
-  return chunkedArray;
-}
-
-const getDominantColorFromPixels = ( pixels, precision = 100 ) => {
-  const chunkedPixels = chunk( pixels, 4 );
-
-  const filteredPixels = chunkedPixels
-    .filter( ( [ r, g, b ], index ) => (
-      index % precision === 0 && [ r, g, b ].every( channel => channel > 10 )
-    ) )
-
-  return filteredPixels.reduce( ( accumulator, [ r, g, b, a ] ) => {
-    const pixelColor = color( r, g, b, a );
-
-    if ( null === accumulator ) {
-      return pixelColor;
-    }
-
-    return lerpColor( accumulator, pixelColor, 0.5 )
-  }, null );
-};
-
-function getDominantColor( img, precision ) {
-  img.loadPixels()
-
-  return getDominantColorFromPixels( img.pixels, precision );
-}
 
 const borderSize = 0;
 
@@ -111,22 +78,39 @@ sketch.draw( ( time, center, favoriteColor ) => {
   // });
 
   const zoom = animation.ease({
-    values: [-10, -10, -1000, -1000, -2000, -2000],
-    // values: [-2000, -2000],
-    // values: [-10],
+    values: [-2000, -3000, -3000, -2500],
     currentTime: (
-      // + cellIndex/images.length
-      // + imageIndex/images.length
-      + time
+      + time/2
     ),
     easingFn: easing.easeInOutQuart
   })
 
-  translate(-width/2, -height/2, zoom)
+  translate(0, 0, zoom)
+
+  rotateX(animation.ease({
+    values: [0, PI/6, -PI/6, PI/2],
+    // values: [0, PI/6, -PI/6],
+    currentTime: (
+      +time/2
+    ),
+    easingFn: easing.easeInOutExpo
+  }))
+
+  // rotateZ(animation.ease({
+  //   values: [0, PI/2],
+  //   currentTime: (
+  //     +time
+  //   ),
+  //   easingFn: easing.easeInOutExpo
+  // }))
+
+  translate(-width/2, -height/2)
+
+  
 
   const foldingSpeed = 0//animationProgression
-  const columns = 14//options.get("grid-columns")
-  const rows = 1//options.get("grid-rows")
+  const columns = 1//options.get("grid-columns")
+  const rows = 5//options.get("grid-rows")
 
   const L = animation.ease({
     values: [0, width/2],
@@ -161,8 +145,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
 
         imageCells.push( {
           name,
-          imagePart,
-          // dominantColor: getDominantColor( imagePart, 50 )
+          imagePart
         } );
 
         return imageCells;
@@ -179,27 +162,47 @@ sketch.draw( ( time, center, favoriteColor ) => {
     // const circularX = mappers.circular(xIndex, 0, (columns-1), 0, 1,  easing.easeInOutExpo )
     // const circularY = mappers.circular(yIndex, 0, (rows-1), 0, 1,  easing.easeInOutQuint )
 
+    const circonference = cellWidth*images.length;
+
     push()
     translate(center.x, center.y)
-    translate(0, cellHeight*(
-      animation.ease({
-        values: images.map((_, index) => [index * -1]).flat(Infinity),
-        currentTime: (
-          +column/columns
-          // +row/rows
-          // +circularX/columns
-          + time
-        ),
-        easingFn: easing.easeInOutQuint
-      })
-    ))
 
-    for (let imageIndex = 0; imageIndex < imageIndexes.length; imageIndex++) {
+    // translate(cellWidth*(
+    //   animation.ease({
+    //     values: images.map((_, index) => [index * -1]).flat(Infinity),
+    //     currentTime: (
+    //       +column/columns
+    //       +row/rows
+    //       // +circularX/columns
+    //       + time
+    //     ),
+    //     easingFn: easing.easeInOutQuint
+    //   })
+    // ), 0)
+
+    for (let imageIndex = 0; imageIndex < images.length; imageIndex++) {
       const imageAtIndex = imageParts?.[~~imageIndex];
       const imagePart = imageAtIndex?.[~~cellIndex]?.imagePart;
 
+      const angle = map(imageIndex, 0, images.length, 0, TAU)
+
       push()
-      translate(0, cellHeight*imageIndex)
+      rotateY(angle+time/3)
+
+      rotateY(animation.ease({
+        values: images.map((_, index) => [index * images.length/TAU, index * images.length/TAU]).flat(Infinity),
+        currentTime: (
+          // +column/columns
+          +row/rows
+          // +circularX/columns
+          // +circularX/columns
+          +time
+        ),
+        easingFn: easing.easeInOutExpo
+      }))
+
+      translate(0, 0, (circonference/2)/PI)
+      // translate(cellWidth*imageIndex, 0)
 
       noFill()
   
