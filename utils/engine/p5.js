@@ -59,6 +59,8 @@ const p5js = {
       events.handle("engine-window-resized");
     };
     window.preload = () => {
+      console.log("PRELOAD");
+      
       events.handle("engine-window-preload");
     };
   },
