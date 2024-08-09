@@ -98,7 +98,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
   }) 
 
   mappers.traceVectors(
-    33,
+    3,
     ( progression ) => {
       return animation.ease({
         values: alphabet.map( text => (
@@ -106,7 +106,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
             text,
             size: letterSize,
             position: center,
-            sampleFactor: .5,
+            sampleFactor: .3,
             font: string.fonts.martian,
           })
         )),
