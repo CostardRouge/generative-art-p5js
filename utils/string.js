@@ -43,6 +43,7 @@ const string = {
     if ( center ) {
       // translate( -box.w / 2, (asc + desc)/4 );
       position.add( -box.w / 2, (asc + desc)/4 );
+      // position.add( -(asc + desc)/3, box.h/2 );
     }
 
     if ( showLines ) {
