@@ -83,8 +83,8 @@ sketch.setup(() => {
 }, {
   type: "2d",
   size: {
-    width: 1080,
-    height: 1920,
+    // width: 1080,
+    // height: 1920,
     // ratio: 9/16
   },
   animation: {
@@ -101,7 +101,7 @@ const drawRadialPattern = (count = 7, time, _color) => {
 
   const size = (width + height)/7;
   const center = createVector( 0, 0 );
-  const precision = 1/300//options.get("background-lines-precision")
+  const precision = 1/150//options.get("background-lines-precision")
 
   iterators.angle(0, TAU, TAU / count, angle => {
     const edge = converters.polar.vector(
