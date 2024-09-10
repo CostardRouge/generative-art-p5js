@@ -1,4 +1,4 @@
-import { events, debug, options } from './index.js';
+import { events, debug, options, animation } from './index.js';
 import engines from './engine/index.js';
 
 const sketch = {
@@ -6,8 +6,17 @@ const sketch = {
   engine: undefined,
   setup: (
     setupEngineFunction,
-    sketchOptions = { engine: "p5js" }
+    sketchOptions = {
+      engine: "p5js",
+      animation: {
+        framerate: 60,
+        duration: 10
+      }
+    }
   ) => {
+    // persist sketchOptions
+    sketch.sketchOptions = sketchOptions
+
     // options system
     options.init( );
 
@@ -41,13 +50,14 @@ const sketch = {
     );
 
     if ('fill' === canvasSize) {
-      return [window.innerWidth, window.innerHeight ];
+      return [window.innerWidth, window.innerHeight];
     }
 
     return canvasSize.split('x').map(Number);
   },
   draw: (drawFunction) => {
     events.register("pre-draw", debug.fps);
+    events.register("pre-draw", animation.incrementTime);
     events.register("draw", drawFunction);
   },
 };

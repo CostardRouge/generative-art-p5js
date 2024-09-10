@@ -1,6 +1,11 @@
 import { midi, events, sketch, string, mappers, easing, animation, colors, cache } from './utils/index.js';
 
-sketch.setup(() => frameRate(25), { type: "webgl", width: 1080, height: 1920} );
+sketch.setup(() => {
+  p5.disableFriendlyErrors = true;
+  frameRate(25)
+  pixelDensity(1)
+}, { type: "webgl", width: 1080, height: 1920} );
+
 events.register( "post-setup", midi.setup );
 
 function drawRangeSlider({from, to}, start, end, steps = 26, stepDrawer, rangeDrawer) {
@@ -54,20 +59,27 @@ sketch.draw( (time, center) => {
   //   // midi.play(notes[currentIndex]);
   // }
 
+  // time = (frameCount / (25 * 5)) * PI;
+
+  const animationProgression = map(time, 0, 10, 0, 1)*"demofestival".length
+
   const letterRange = 1;
-  const letterSliderSpeed = time*1.5;
+  const letterSliderSpeed = animationProgression;
   // const letterSliderSpeed = map(mouseX, 0, width, 0, alphabet.length-1);
   
   const letterStartIndex = animation.ease({
-    values: Array(alphabet.length-letterRange).fill(undefined).map((_, index) => index),
+    values: [0, ...Array(alphabet.length-letterRange).fill(undefined).map((_, index) => index)],
     duration: 1,
     currentTime: letterSliderSpeed,
     // easingFn: easing.easeInOutExpo,
     easingFn: easing.easeOutSine
   });
 
+  // const letterStartIndex = mappers.circular(letterSliderSpeed, Array(alphabet.length-letterRange).fill(undefined).map((_, index) => index))
+  // const letterEndIndex = mappers.circular(letterSliderSpeed+1, Array(alphabet.length-letterRange).fill(undefined).map((_, index) => index + letterRange))
+
   const letterEndIndex = animation.ease({
-    values: Array(alphabet.length-letterRange).fill(undefined).map((_, index) => index + letterRange),
+    values: [0, ...Array(alphabet.length-letterRange).fill(undefined).map((_, index) => index + letterRange)],
     duration: 2,
     currentTime: letterSliderSpeed,
     easingFn: easing.easeInOutExpo,
@@ -81,7 +93,7 @@ sketch.draw( (time, center) => {
   // const from = createVector(-W+letterMargin, 0);
   // const to = createVector(W-letterMargin, 0);
 
-  const from = createVector(0, -H, -W*2);
+  const from = createVector(0, 0, -W*2);
   const to = createVector(0, 0, 0);
 
   for (let t = 0; t < count; t++) {
@@ -95,7 +107,7 @@ sketch.draw( (time, center) => {
           text,
           size: letterSize,
           position: center,
-          sampleFactor: .2,
+          sampleFactor: .34,
           simplifyThreshold: 0,
           font: string.fonts.sans
         })
@@ -109,9 +121,14 @@ sketch.draw( (time, center) => {
     })
 
     push();
+    // rotateX(mappers.fn(sin(time*3), -1, 1, -PI, PI, easing.easeInOutSine)/16)
+    // rotateZ(mappers.fn(cos(time*2), -1, 1, -PI, PI, easing.easeInOutQuad)/16)
     translate( p5.Vector.lerp(from, to, horizontalProgression) )
+
+
     // rotateY(PI/3)
     strokeWeight( 5 )
+    // strokeWeight( mappers.fn(horizontalProgression, 0, 1, 1, 8 , easing.easeInExpo) )
 
     for (let i = 0; i < points.length; i++) {
       const progression = i / points.length
@@ -127,14 +144,28 @@ sketch.draw( (time, center) => {
           +0
         ),
         // hueIndex: mappers.circularPolar(progression, 0, 1, -PI, PI),
-        hueIndex: mappers.fn(noise(x/width*3, y/height*3, horizontalProgression), 0, 1, -PI, PI)*12,
+        hueIndex: mappers.fn(sin(
+          +progression*3
+          +pointsProgression
+          // +horizontalProgression
+          // +time/4
+          +animationProgression/2
+          +x/width/5
+          +y/height
+        ), -1, 1, -PI, PI)*3,
+        // hueIndex: mappers.fn(noise(x/width*3, y/height*3, horizontalProgression), 0, 1, -PI, PI)*12,
         // opacityFactor,
-        opacityFactor: mappers.fn(horizontalProgression, 0, 1, 16, 1, easing.easeInOutExpo),
+        // opacityFactor: mappers.fn(horizontalProgression, 0, 1, 6, 1/2, easing.easeInExpo),
+        // opacityFactor: mappers.fn(sin(horizontalProgression+time*4), -1, 1, 16, 1, easing.easeInOutExpo),
+        opacityFactor: mappers.fn(horizontalProgression, 0, 1, 18, 1, easing.easeInOutExpo),
       }))
 
-      const scale = mappers.fn(horizontalProgression, 0, 1, 16, 1, easing.easeInCubic)
+      const scale = mappers.fn(horizontalProgression, 0, 1, 18, 1, easing.easeInCubic)
 
-      point(x*scale, y*scale)
+      point(
+        x*scale,
+        y*scale
+      )
       // point(x*letterScale, y*letterScale)
     }
 

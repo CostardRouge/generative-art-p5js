@@ -16,9 +16,10 @@ const getDefaultOptions = () => {
   const defaultFramerate = 60;
   const defaultTimeSpeed = 1;
   const defaultPixelDensity = isMobile ? 1 : window.devicePixelRatio
-  const defaultCanvasSize = isMobile ? 'fill' :`768x1366`;
+  const defaultCanvasSize = isMobile ? 'fill' :`1080x1920`;
 
   defaultOptions.push( ...[
+    // EVENTS
     {
       id: 'pause-canvas-on-single-click',
       type: 'switch',
@@ -61,13 +62,8 @@ const getDefaultOptions = () => {
       defaultValue: true,
       category: 'Events'
     },
-    {
-      id: 'show-fps',
-      type: 'switch',
-      label: 'Show framerate',
-      defaultValue: debug.options.fps.display,
-      category: 'Debug'
-    },
+
+    // CANVAS
     {
       id: 'pixel-density',
       type: 'number',
@@ -77,10 +73,9 @@ const getDefaultOptions = () => {
       precision: 1,
       step: 0.1,
       defaultValue: defaultPixelDensity,
-      category: 'Debug',
+      category: 'Canvas',
       onChange: (value) => {
         events.handle("engine-pixel-density-change", value)
-        //pixelDensity(value);
       }
     },
     {
@@ -88,7 +83,7 @@ const getDefaultOptions = () => {
       type: 'switch',
       label: 'Smooth pixel',
       defaultValue: true,
-      category: 'Debug',
+      category: 'Canvas',
       onChange: checked => events.handle("engine-smooth-pixel-change", checked)
     },
     {
@@ -99,12 +94,28 @@ const getDefaultOptions = () => {
       min: 1,
       max: 120,
       marks: [
-        { value: 20, label: '20 fps' },
+        { value: 30, label: '30 fps' },
         { value: 60, label: '60 fps' },
-        { value: 100, label: '100 fps' },
+        { value: 90, label: '90 fps' }
       ],
-      category: 'Debug',
+      category: 'Canvas',
       onChange: value => events.handle("engine-framerate-change", value)
+    },
+    {
+      type: 'button',
+      text: 'Toggle fullscreen',
+      icon: 'ScreenShare',
+      onClick: () => events.handle("engine-fullscreen-toggle"),
+      category: 'Canvas'
+    },
+
+    // DEBUG
+    {
+      id: 'show-fps',
+      type: 'switch',
+      label: 'Show framerate',
+      defaultValue: debug.options.fps.display,
+      category: 'Debug'
     },
     {
       id: 'time-speed',
@@ -120,13 +131,6 @@ const getDefaultOptions = () => {
         { value: 3, label: '3' },
       ],
       category: 'Debug'
-    },
-    {
-      type: 'button',
-      text: 'Toggle fullscreen',
-      icon: 'ScreenShare',
-      onClick: () => events.handle("engine-fullscreen-toggle"),
-      category: 'Canvas'
     }
   ] );
 
@@ -260,11 +264,19 @@ const getDefaultOptions = () => {
       id: 'recording-framerate',
       type: 'select',
       label: 'Recording framerate',
-      defaultValue: '60',
+      defaultValue: String(defaultFramerate),
       options: [
+        {
+          value: '10',
+          label: '10 fps',
+        },
         {
           value: '25',
           label: '25 fps',
+        },
+        {
+          value: '30',
+          label: '30 fps',
         },
         {
           value: '60',
