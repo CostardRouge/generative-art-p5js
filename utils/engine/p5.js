@@ -20,6 +20,8 @@ const p5js = {
   },
   getCanvasElement: () => p5js.canvas.elt,
   getFrameCount: () => frameCount,
+  getFrameRate: () => frameRate(),
+  getElapsedTime: () => millis(),
   loadScripts: async () => {
     await loadScript("libraries/p5.min.js");
     await loadScript("libraries/p5.sound.min.js");
@@ -31,10 +33,8 @@ const p5js = {
       events.handle("post-setup");
     };
     window.draw = () => {
-      const _time = time.seconds() * options.get("time-speed");
-
       events.handle("pre-draw");
-      events.handle("draw", _time, p5js.getCanvasCenter(), p5js.favoriteColors.purple);
+      events.handle("draw", time.seconds(), p5js.getCanvasCenter(), p5js.favoriteColors.purple);
       events.handle("post-draw");
     };
     window.keyTyped = () => {
@@ -64,7 +64,7 @@ const p5js = {
   },
   setup: (sketchOptions, setupEngineFunction) => {
     events.register("pre-setup", () => {
-       // init favorite colors
+      // init favorite colors
       p5js.favoriteColors.purple = color(128, 128, 255)
 
       // canvas creation
@@ -81,7 +81,7 @@ const p5js = {
       }
 
       // applying options
-      frameRate(options.get("framerate"));
+      frameRate(sketchOptions?.animation?.framerate ?? options.get("framerate"));
       options.get("smooth-pixel") ? smooth() : noSmooth();
 
       // registering events

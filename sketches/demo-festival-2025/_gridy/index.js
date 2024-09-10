@@ -22,7 +22,7 @@ options.add( [
   },
 ] );
 
-function drawGrid(xCount, yCount, color, weight = 2, offset = 0) {
+function drawGrid(xCount, yCount, color, weight = 2) {
   const xSize = width / xCount;
   const ySize = height / yCount;
 
@@ -43,10 +43,9 @@ function drawGrid(xCount, yCount, color, weight = 2, offset = 0) {
 
 sketch.setup(() => {
   p5.disableFriendlyErrors = true;
-  frameRate(60)
-}, { type: "webgl", width: 1080, height: 1920} );
-
-const text = "demofestival2025".split("")
+  frameRate(25)
+  pixelDensity(1)
+}, { type: "2d", width: 1080, height: 1920} );
 
 function getRandomIndices(maxIndex, amount, unique = true) {
   if (!unique) {
@@ -63,6 +62,32 @@ function getRandomIndices(maxIndex, amount, unique = true) {
   }
 
   return result;
+}
+
+function randomizeString(str) {
+  const arr = str.split(''); // Convert the string to an array of characters
+  for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1)); // Pick a random index
+      [arr[i], arr[j]] = [arr[j], arr[i]]; // Swap elements
+  }
+  return arr.join(''); // Convert the array back to a string
+}
+
+function getIndicesOfString(str, target, uniq) {
+  if (uniq) {
+    const usedIndices = new Set(); // To keep track of used indices
+    return target.split('').map(char => {
+        let idx = str.indexOf(char);
+        while (idx !== -1 && usedIndices.has(idx)) {
+            idx = str.indexOf(char, idx + 1); // Look for the next occurrence
+        }
+        if (idx !== -1) {
+            usedIndices.add(idx); // Mark this index as used
+        }
+        return idx;
+    });
+  }
+  return target.split('').map(char => str.indexOf(char));
 }
 
 function reorderByIndices(data, indices) {
@@ -82,20 +107,22 @@ function drawLine( points, type ) {
   endShape(CLOSE)
 }
 
+const initialText = "demofestival2025"
+const text = randomizeString(initialText)
+
 sketch.draw( ( time, center, favoriteColor ) => {
   background(0);
   noFill();
 
   const W = width/2;
   const H = height/2;
-
   const letterSize = W/1.5
 
   push()
-  translate(-W, -H)
+  // translate(-W, -H)
   const columns = 4//options.get("grid-columns")//4;
   const rows = 4//options.get("grid-rows")//3///columns * (height/width);
-  drawGrid(columns, rows, favoriteColor, 0.5, 0)
+  drawGrid(columns, rows, favoriteColor, 1)
   pop()
 
   const gridOptions = {
@@ -106,17 +133,21 @@ sketch.draw( ( time, center, favoriteColor ) => {
     topLeft: createVector( -W, -H ),
     topRight: createVector( W, -H ),
     bottomLeft: createVector( -W, H),
-    bottomRight: createVector( W, H )
+    bottomRight: createVector( W, H ),
+    topLeft: createVector( 0, 0 ),
+    topRight: createVector( width, 0 ),
+    bottomLeft: createVector( 0, height),
+    bottomRight: createVector( width, height )
   }
 
   const { cells, corners, cellWidth, cellHeight } = grid.create( gridOptions );
 
   // display cells / letters
   push()
-  cells.forEach(({center}, index) => {
+  cells.forEach(({center, x: _x, y: _y}, index) => {
     const { x, y } = center;
 
-    // string.write(index, x, y, {
+    // string.write(index, _x+22, _y+44, {
     //   center: true,
     //   size: 22,
     //   stroke: 255,
@@ -126,9 +157,9 @@ sketch.draw( ( time, center, favoriteColor ) => {
 
     string.write(text[index], x, y, {
       center: true,
-      size: 22,
+      size: 48,
       // size: letterSize,
-      stroke: 255,
+      stroke: 0,
       fill: favoriteColor,
       font: string.fonts.martian
     })
@@ -136,7 +167,8 @@ sketch.draw( ( time, center, favoriteColor ) => {
   pop()
 
   const cases = cache.store("cases", () => cells.map(cell => cell.center));
-  const trajectoryIndices = cache.store("trajectory-indices", () => getRandomIndices(cells.length, cells.length));
+  // const trajectoryIndices = cache.store("trajectory-indices", () => getRandomIndices(cells.length, cells.length));
+  const trajectoryIndices = cache.store("trajectory-indices", () => getIndicesOfString(text, "demofestival2025", true));
   // const trajectoryIndices = cells.map((_, index) => index);
   const trajectoryPositions = cache.store("trajectory-positions", () => reorderByIndices(cases, trajectoryIndices));
   const trajectoryText = cache.store("trajectory-text", () => reorderByIndices(text, trajectoryIndices));
@@ -158,29 +190,58 @@ sketch.draw( ( time, center, favoriteColor ) => {
 
   // translate(0, 0, -100)
 
-  const start = [];
-  const end = [];
+  const settings = {
+    steps: 333,
+    timeSpeed: 1.25,
+    sampleFactor: .3,
+    smooth: true,
+    smoothSteps: 1
+  }
+
+  settings.steps = 400
+  settings.sampleFactor = .2
+  settings.smooth = 0
+  settings.smoothSteps = 0
+  settings.smoothLength = 1
+
+  const letterRange = 3;
+  const letterSliderSpeed = time*settings.timeSpeed;
+
+  const pointsArray = Array(~~(1+letterRange)).fill([])
+  // const letterStartIndex = animation.ease({
+  //   values: Array(Math.floor(trajectoryText.length-letterRange)).fill(undefined).map((_, index) => index),
+  //   duration: 1,
+  //   currentTime: letterSliderSpeed,
+  //   easingFn: easing.easeInOutSine,
+  // });
+
+  // const letterEndIndex = animation.ease({
+  //   values: Array(Math.floor(trajectoryText.length-letterRange)).fill(undefined).map((_, index) => index + letterRange),
+  //   duration: 2,
+  //   currentTime: letterSliderSpeed,
+  //   easingFn: easing.easeInOutExpo,
+  // });
+
+  const letterStartIndex = letterSliderSpeed;
+  const letterEndIndex = letterSliderSpeed+letterRange;
 
   mappers.traceVectors(
-    200,
+    Math.floor(settings.steps),
     ( progression ) => {
       return animation.ease({
-        values: trajectoryText.map( (character, index) => (
+        values: trajectoryText.split("").map( (character, index) => (
           string.getTextPoints({
             text: character,
             size: letterSize,
-            position: cases[index].center,
             position: createVector(0, 0),
-            sampleFactor: .1,
+            sampleFactor: settings.sampleFactor,
             font: string.fonts.martian,
           })
         )),
-        duration: 1,
         lerpFn: mappers.lerpPoints,
-        // easingFn: easing.easeInOutExpo,
-        // easingFn: easing.easeInOutSine,
-        // currentTime: map(progression, 0, 1, 0, 1)+time,
-        currentTime: progression*2+time
+        easingFn: easing.easeInOutSine,
+        // currentTime: progression+time,
+        currentTime: map(progression, 0, 1, letterStartIndex, letterEndIndex)+letterSliderSpeed
       }) 
     },
     () => {
@@ -189,17 +250,15 @@ sketch.draw( ( time, center, favoriteColor ) => {
     },
     ( vector, vectorsListProgression, vectorIndexProgression ) => {
       const positionTime = (
-        +time
-        +vectorsListProgression
+        +letterSliderSpeed
+        +vectorsListProgression/3
+        +map(vectorsListProgression, 0, 1, letterStartIndex, letterEndIndex)
         // +vectorIndexProgression
       )
       const position = animation.ease({
         values: trajectoryPositions,
         lerpFn: p5.Vector.lerp,
         easingFn: easing.easeInOutExpo,
-        // easingFn: easing.easeInOutQuart,
-        // easingFn: easing.easeInOutCirc,
-        easingFn: easing.easeInOutCubic,
         currentTime: positionTime
       })
 
@@ -209,7 +268,7 @@ sketch.draw( ( time, center, favoriteColor ) => {
       // const a = animation.ease({
       //   values: [0, 2, 3, 1],
       //   duration: 1,
-      //   easingFn: easing.easeInOutExpo,
+      //   // easingFn: easing.easeInOutExpo,
       //   // easingFn: easing.easeInOutCubic,
       //   currentTime: time/2+vectorsListProgression/2
       // })
@@ -228,33 +287,37 @@ sketch.draw( ( time, center, favoriteColor ) => {
       // )
 
       // const position = createVector(
-      //   sin(positionTime*3)*W/2,
-      //   cos(positionTime)*H/2,
+      //   sin(positionTime*a)*(W-letterSize/2),
+      //   cos(positionTime*b)*(H-letterSize/2),
       // )
 
       position.add( vector )
 
-      // if (vectorsListProgression==1) {
-      //   end.push( position)
-      // }
+      for (let index = 0; index < pointsArray.length; index++) {
+        const points = pointsArray[index];
+        const progression = index/(pointsArray.length-1)
 
-      // if (vectorsListProgression==0) {
-      //   start.push( position )
-      // }
+        if (progression.toPrecision(3)===vectorsListProgression.toPrecision(3)) {
+          points.push(position)
+        }
+      }
 
       vertex( position.x, position.y, position.z )
     },
     ( vectorIndexProgression, chunkIndex = 1 ) => {
       stroke(colors.rainbow({
         hueOffset: (
-          // +time
-          //+chunkIndex*sin(time)
+          // +chunkIndex*sin(time)
+          +time//*sin(map(chunkIndex, 0, 1, -PI/2, -PI/2))
+          +vectorIndexProgression*cos(map(chunkIndex, 0, 1, -PI/2, -PI/2))*2
           +0
         ),
-        // opacityFactor: 1.5,
-        hueIndex: mappers.fn(noise(chunkIndex, time), 0, 1 -PI/2, PI/2)*8,
-        // opacityFactor: mappers.fn(noise(chunkIndex/4, vectorIndexProgression), 0, 1, 2.5, 1.5),
-        // opacityFactor: mappers.fn(sin(chunkIndex*0+time+vectorIndexProgression*10), -1, 1, 5, 1.5),
+        hueIndex: mappers.fn(noise(
+          vectorIndexProgression/2*easing.easeInOutQuart(chunkIndex)+time/4,
+          // chunkIndex*cos(map(vectorIndexProgression, 0, 1, -PI/2, -PI/2))*8,
+          chunkIndex*easing.easeInOutSine(vectorIndexProgression*4)
+        ), 0, 1, -PI/2, PI/2)*6,
+        opacityFactor: mappers.fn(sin(chunkIndex*2+vectorIndexProgression*4+time*3), -1, 1, 5, 1.5),
       }))
 
       // const c = mappers.fn(sin(time/4+chunkIndex), -1, 1, 1, 1, easing.easeInOutExpo_)
@@ -265,18 +328,20 @@ sketch.draw( ( time, center, favoriteColor ) => {
 
       // pop()
     },
-    1,
-    1,
-    5
+    settings.smoothLength,
+    settings.smooth,
+    settings.smoothSteps
   )
 
-  // stroke(favoriteColor)
-  // fill(128, 128, 255, 32)
-  // strokeWeight(4)
-  // drawLine( end, POINTS )
-  // drawLine( start, POINTS )
+  stroke(favoriteColor)
+  fill(128, 128, 255, 32)
+  strokeWeight(4)
 
-  orbitControl()
+  pointsArray.forEach(points => {
+    drawLine(points, POINTS)
+  })
+
+  // orbitControl()
 });
 
 

@@ -1,4 +1,4 @@
-import { shapes, sketch, converters, events, colors, mappers, options, string } from './utils/index.js';
+import { sketch, converters, colors, mappers, options, animation, easing } from './utils/index.js';
 
 options.add( [
   {
@@ -166,14 +166,21 @@ options.add( [
   }
 ] );
 
-sketch.setup( () => {
-  frameRate(25);
-  },
-  {
+sketch.setup(() => {
+  p5.disableFriendlyErrors = true;
+  pixelDensity(1)
+}, {
+  type: "2d",
+  size: {
     width: 1080,
     height: 1920,
+    // ratio: 9/16
+  },
+  animation: {
+    framerate: 60,
+    duration: 10
   }
-);
+});
 
 function drawer( lerper, positioner, shaper, time, index ) {
   const [lerpMin, lerpMax, lerpStep] = lerper(time, index);
@@ -189,80 +196,40 @@ function drawer( lerper, positioner, shaper, time, index ) {
   }
 }
 
-function drawGrid(xCount, yCount, time) {
-  const xSize = width / xCount;
-  const ySize = height / yCount;
+const size = 250;
+const halfSize = size/2;
 
-  strokeWeight(3)
-
-  stroke(
-    128,
-    128,
-    255,
-    // map(sin(time), -1, 1, 0, 100)
-  );
-
-  const offset = 0;
-  const xx = xSize * cos(time + xSize )
-  const yy = ySize * sin(time + ySize)
-
-  for (let x = offset; x <= xCount - offset; x++) {
-    for (let y = offset; y <= yCount - offset; y++) {
-      line(0, (yy + y * ySize) % height, width, (y * ySize + yy) % height);
-      line((xx + x * xSize) % width, 0, (xx + x * xSize) % width, height);
-    }
-  }
-}
-
-sketch.draw((time) => {
+sketch.draw((time, center, favoriteColor) => {
   background(0);
 
-  // drawGrid(1, 1, time/4);
-  // drawGrid(3, 4, time );
-  //drawGrid(0, 0, time );
-
-  // translate(width / 2, height / 2);
-  //churro(time);
-
-  // rotate(time*2)
+  // ellipse(map(animation.circularProgression, 0, 1, halfSize, width-halfSize), height / 2, size);
+  
+  const timeProgression = (frameCount / (25 * 5)) * PI;
 
   drawer(
     ( time, index ) => {
       const lerpMin = 0//map(cos(time), -1, 1, 0.1, -PI);
-      const lerpMax = map(sin(time), -1, 1, 0.5, PI);
+      const lerpMax = map(animation.circularProgression, 0, 1, PI/2, TAU);
       const lerpStep = lerpMax / options.get('quality');
     
       return [lerpMin, lerpMax, lerpStep];
     },
     ( lerpIndex, lerpMin, lerpMax, lerpStep, time, index ) => {
-      // translate(
-      //   converters.polar.get(sin, width/4, lerpIndex, 1),
-      //   converters.polar.get(cos, height/3, lerpIndex, 1)
-      // );
-
-      // translate(
-      //   p5.Vector.fromAngle(lerpIndex, options.get('lines-length')).x,
-      //   p5.Vector.fromAngle(lerpIndex, options.get('lines-length')).y
-      // );
-
-      const l = map(cos(lerpIndex-time), -1, 1, -1.5, 1.5);
-
       translate(
-        map(sin(lerpIndex*1.5-time*2), -1, 1, width/2-200, width/2+200),
+        map(sin(lerpIndex*3+animation.sinAngle*3), -1, 1, width/2-200, width/2+200),
+        // map(cos(lerpIndex+animation.cosAngle), -1, 1, 250, height-250),
         map(lerpIndex, lerpMin, lerpMax,
-          map(cos(time), -1, 1, 150, height-150),
-          map(sin(time), -1, 1, 150, height-150), true
+          map(sin(animation.sinAngle+lerpIndex), -1, 1, 250, height-250),
+          map(sin(animation.cosAngle-lerpIndex), -1, 1, 250, height-250),
+
+          // map(sin(animation.sinAngle+lerpIndex), -1, 1, 150, height-200),
+          // map(cos(animation.cosAngle+lerpIndex), -1, 1, 150, height-200),
         )
         // map(lerpIndex, lerpMin, lerpMax, 150, height-150, true)
       );
 
       strokeWeight(4)
-      stroke(
-        128,
-        128,
-        255,
-        // map(sin(time), -1, 1, 0, 100)
-      );
+      stroke(favoriteColor);
 
       if (lerpIndex == lerpMin) {
         // stroke('red')
@@ -271,51 +238,32 @@ sketch.draw((time) => {
       }
 
       if (lerpIndex+lerpStep > lerpMax ) {
-        // stroke('red')
+        stroke('red')
         line(-width, 0, width, 0)
         line(0, -height, 0, height)
-        // string.write(0, 0)
       }
 
-      rotate(time*options.get('rotation-speed')+lerpIndex*l*2*options.get('rotation-count'));
+      // const angle = map(sin(lerpIndex+animation.sinAngle), -1, 1, PI, -PI)/2
+
+      rotate(timeProgression*3)
+      rotate(options.get('rotation-speed')+lerpIndex*-animation.sinAngle*2*options.get('rotation-count'));
     },
     ( lerpIndex, lerpMin, lerpMax, time, index ) => {
 
       const opacitySpeed = options.get('opacity-speed');
       const opacityCount = options.get('opacity-group-count');
 
-      let opacityFactor = mappers.circularMap(
-        lerpIndex,
-        // angleMin,
-        lerpMax*4,
-        map(
-          sin(-time * opacitySpeed + lerpIndex * opacityCount ), -1, 1,
-          options.get("start-opacity-factor"),
-          options.get("end-opacity-factor")
-        ),
-        options.get("end-opacity-factor")
+      const opacityFactor = map(
+        map(sin(timeProgression+lerpIndex*opacityCount-animation.sinAngle*3), -1, 1, -1, 1),
+        -1,
+        1,
+        map(cos(timeProgression*3+lerpIndex*2*opacityCount+animation.cosAngle), -1, 1, 1, 2),
+        // 10,
+        1
       );
 
-      if (options.get('ping-pong-opacity')) {
-        opacityFactor = map(
-          map(sin(lerpIndex*opacityCount-time*opacitySpeed), -1, 1, -1, 1),
-          -1,
-          1,
-          // map(sin(lerpIndex), -1, 1, 1, 50),
-          map(cos(lerpIndex*opacityCount+time*opacitySpeed), -1, 1, 1, 15),
-          // 10,
-          1
-        );
-      }
-    
-      let linesCount = options.get("max-lines-count");
-
-      if (options.get("change-lines-count")) {
-        linesCount = map(sin(lerpIndex-time*3), 0, 1, 1, options.get("max-lines-count"), true);
-      }
-
-      //const weight = map(cos(lerpIndex/2-time*3), 0, 1, 25, options.get("lines-weight"), true);
-
+      const linesCount = 3//mappers.circularPolar(lerpIndex, lerpMin, lerpMax, 1, 3)
+      strokeWeight(mappers.circularPolar(lerpIndex, lerpMin, lerpMax, 60, 100));
 
       const lineMin = 0;
       const lineMax = PI;
@@ -324,29 +272,41 @@ sketch.draw((time) => {
       for (let lineIndex = lineMin; lineIndex < lineMax; lineIndex += lineStep) {
         const vector = converters.polar.vector(
           lineIndex,
-          options.get('lines-length'),
-          // map(sin(lerpIndex*2+time*2), -1, 1, 1, options.get('lines-length'), true)
-          // map(lerpIndex, lerpMin, lerpMax, 1, options.get('lines-length'), true)
-          );
+          mappers.circularPolar(lerpIndex, lerpMin, lerpMax, 1, 190)
+        );
         push();
-    
-        beginShape();
-        strokeWeight(options.get("lines-weight"));
-        //strokeWeight(weight);
 
-        const hueSpeed = -time * options.get("hue-speed");
-        const c = color(
-          map(sin(hueSpeed+lerpIndex*7), -1, 1, 0, 360) /
-            opacityFactor,
-          map(sin(hueSpeed-lerpIndex*7), -1, 1, 360, 0) /
-            opacityFactor,
-          map(sin(hueSpeed+lerpIndex*7), -1, 1, 360, 0) /
-            opacityFactor,
-          //mappers.circularMap(lerpIndex, lerpMax, 0, 100)
-        )
+        beginShape();
+
+        const hueSpeed = animation.sinAngle
+
+        stroke(colors.rainbow({
+          hueOffset: (
+            // +horizontalProgression
+            // +time
+            // +(lineIndex/lineMax)/6
+            // +animation.circularProgression*2
+            +timeProgression
+            +0
+          ),
+          hueIndex: mappers.fn(sin(
+            +lerpIndex
+            +(lineIndex/lineMax)/6
+            +hueSpeed
+          ), -1, 1, -PI, PI)*2,
+          opacityFactor
+        }))
     
-        stroke( c );
-      
+        // stroke( color(
+        //   map(sin(hueSpeed+lerpIndex*7), -1, 1, 0, 360) /
+        //     opacityFactor,
+        //   map(sin(hueSpeed-lerpIndex*7), -1, 1, 360, 0) /
+        //     opacityFactor,
+        //   map(sin(hueSpeed+lerpIndex*7), -1, 1, 360, 0) /
+        //   opacityFactor,
+        //   //mappers.circularMap(lerpIndex, lerpMax, 0, 100)
+        // ) );
+
         vertex(vector.x, vector.y);
         vertex(-vector.x, -vector.y);
     
@@ -358,5 +318,4 @@ sketch.draw((time) => {
     0
   )
 
-  // shapes.forEach((shape, index) => shape.draw(time, index));
 });

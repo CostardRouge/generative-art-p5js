@@ -1,4 +1,6 @@
 import mappers from './mappers.js';
+import sketch from './sketch.js';
+import time from './time.js';
 
 const animation = {
   animate: (fn, duration, onProgress, onComplete) => {
@@ -20,6 +22,51 @@ const animation = {
   
     requestAnimationFrame(animate);
   },
+
+  time: 0,
+  incrementTime() {
+    const timeIncrement = 1 / (sketch.sketchOptions?.animation?.duration * sketch.sketchOptions?.animation?.framerate);
+
+    animation.time += timeIncrement; 
+  },
+
+  get progression() {
+    return time.seconds() % sketch.sketchOptions?.animation?.duration / sketch.sketchOptions?.animation?.duration;
+  },
+  get circularProgression() {
+    return mappers.circular(animation.progression, 0, 1);
+  },
+
+  get angle() {
+    return animation.time * TAU
+    return map(animation.circularProgression, 0, 1, 0, TAU)
+  },
+
+  get sinAngle() {
+    return animation.angle
+    return map(animation.circularProgression, 0, 1, -PI/2, PI/2)
+  },
+  get cosAngle() {
+    return animation.angle
+    return map(animation.circularProgression, 0, 1, PI, TAU)
+  },
+
+  get sinOscillation() {
+    return Math.sin(animation.angle)
+  },
+  get cosOscillation() {
+    return Math.cos(animation.angle)
+  },
+  get linearOscillation() {
+    const progression = animation.progression
+  
+    if (progression < 0.5) {
+      return map(progression, 0, 0.5, -1, 1); // Forward phase
+    }
+
+    return map(progression, 0.5, 1, 1, -1); // Backward phase
+  },
+
   ease: ({
     values,
     currentTime,

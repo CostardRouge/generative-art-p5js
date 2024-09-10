@@ -4,10 +4,10 @@ const mappers = {
   circularMap: function (value, length, min, max, fn) {
     return mappers.fn(abs((value % length) - length / 2), 0, length / 2, max, min, fn);
   },
-  circular: function (value, min, max, start, end, fn, base = 1) {
+  circular: function (value, min, max, start = min, end = max, fn, base = 1) {
     return constrain(base - Math.abs(mappers.fn(value, min, max, -1, 1, fn)), start, end)
   },
-  circularPolar: function (v, min, max, start, end, fn = cos) {
+  circularPolar: function (v, min, max, start = min, end = max, fn = cos) {
     return map(fn(map(v, min, max, -PI, PI)), -1, 1, start, end)
   },
   fn: function (value, min, max, start, end, fn = x => x) {
@@ -80,7 +80,9 @@ const mappers = {
             const vectorsListProgression = j/(vectorsList.length-1);
   
             // onTrace( vectors[index % vectors.length], vectorsListProgression, vectorIndexProgression );
-            onTrace( vectors[index], vectorsListProgression, vectorIndexProgression );
+            if (vectors[index]) {
+              onTrace( vectors[index], vectorsListProgression, vectorIndexProgression );
+            }
           }
   
           onEnd( vectorIndexProgression, phase/(steps-1) );

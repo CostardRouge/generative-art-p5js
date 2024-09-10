@@ -1,6 +1,26 @@
 import { sketch, options, iterators, converters, debug, events, string, mappers, easing, animation, colors, cache, grid } from './utils/index.js';
 
-sketch.setup(() => frameRate(25), { type: "webgl", width: 1080, height: 1920} );
+// sketch.setup(() => {
+//   p5.disableFriendlyErrors = true;
+//   frameRate(25)
+//   pixelDensity(1)
+// }, { type: "webgl", width: 1080, height: 1920} );
+
+sketch.setup(() => {
+  p5.disableFriendlyErrors = true;
+  pixelDensity(1)
+}, {
+  type: "webgl",
+  size: {
+    width: 1080,
+    height: 1920,
+    // ratio: 9/16
+  },
+  animation: {
+    framerate: 25,
+    duration: 10
+  }
+});
 
 function getTextPoints({ text, size, font, position, sampleFactor, simplifyThreshold }) {
   const fontFamily = font.font?.names?.fontFamily?.en;
@@ -99,6 +119,8 @@ function createGridAlphaPoints(gridOptions, textPointsMatrix) {
 sketch.draw( (time, center) => {
   background(0);
 
+  // time = (frameCount / (25 * 5)) * PI;
+
   const size = (width);
   const sampleFactor = 1/10;
   const simplifyThreshold = 0;
@@ -117,7 +139,9 @@ sketch.draw( (time, center) => {
     centered: true
   }
 
-  const textPointsMatrix = "demo2025".split("").map( text => (
+  const t = "demofestival"
+
+  const textPointsMatrix = t.split("").map( text => (
     getTextPoints({
       text,
       position: createVector(0, 0),
@@ -134,7 +158,6 @@ sketch.draw( (time, center) => {
   )
 
   const rotationMax = TAU
-  const generalAnimationTime = time
 
   const {
     x: rX,
@@ -147,8 +170,7 @@ sketch.draw( (time, center) => {
       createVector(rotationMax, rotationMax),
       createVector(rotationMax),
     ],
-    currentTime: generalAnimationTime,
-    duration: 1,
+    currentTime: animation.progression*t.length,
     lerpFn: p5.Vector.lerp,
     easingFn: easing.easeInOutExpo,
     // easingFn: easing.easeInOutElastic,
@@ -161,8 +183,9 @@ sketch.draw( (time, center) => {
   // const finalPoints = alphaPoints
 
   alphaPoints.forEach( ( { layers, position }, index ) => {
+    const i = animation.progression*t.length
     const layer = mappers.circularIndex(
-      generalAnimationTime+1/2,
+      i+1/2,
       layers
     )
 
@@ -170,7 +193,7 @@ sketch.draw( (time, center) => {
       return;
     }
 
-    const switchIndex = generalAnimationTime*2+(
+    const switchIndex = i*2+(
       +index/alphaPoints.length/5
       +position.x/columns/100
       +position.y/rows/100
@@ -178,15 +201,15 @@ sketch.draw( (time, center) => {
 
     const hue = noise(
       position.x/columns + (
-        +map(sin(time), -1, 1, 0, 1)
+        +map(sin(animation.sinAngle*2), -1, 1, 0, 1)
       ),
       position.y/rows + (
-        +map(cos(time), -1, 1, 0, 1)
+        +map(cos(animation.cosAngle*2), -1, 1, 0, 1)
       )
     )
 
     const tint = colors.rainbow({
-      hueOffset: time,
+      hueOffset: animation.time,
       hueIndex: map(hue, 0, 1, -PI, PI)*2,
       opacityFactor: 1.5
     })

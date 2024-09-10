@@ -1,14 +1,23 @@
 import { sketch, string, mappers, easing, animation, colors, cache } from './utils/index.js';
 
-sketch.setup(() => frameRate(25), { type: "webgl", width: 1080, height: 1920} );
+// sketch.setup(() => frameRate(25), { type: "webgl", width: 1080, height: 1920} );
+
+sketch.setup(() => {
+  p5.disableFriendlyErrors = true;
+  frameRate(25)
+  pixelDensity(1)
+}, { type: "webgl", width: 1080, height: 1920} );
 
 sketch.draw( (time, center, favoriteColor) => {
   background(0, 0, 0, 150);
 
-  const animationProgression = map(time, 0, 12, 0, 1)
+  // time = (frameCount / (25 * 5)) * PI;
+
+
+  const animationProgression = map(time, 0, 10, 0, 1)
 
   const points = animation.ease({
-    values: "DdEeMmOo".split("").map( text => (
+    values: "demofestival".split("").map( text => (
       string.getTextPoints({
         text,
         position: createVector(0, 0),
@@ -28,12 +37,12 @@ sketch.draw( (time, center, favoriteColor) => {
       createVector(0, 0, 0),
       createVector(PI/5, 0, 0),
       createVector(-PI/5, PI/5, 0),
-      // createVector(0, 0, PI/5),
+      createVector(0, 0, PI/5),
       createVector(PI/4, PI/5),
       createVector(-PI/5, -PI/5, 0),
     ],
     duration: 1,
-    currentTime: animationProgression*12,
+    currentTime: animationProgression*"demofestival".length,
     lerpFn: p5.Vector.lerp,
     easingFn: easing.easeInOutBack
   })
@@ -44,7 +53,7 @@ sketch.draw( (time, center, favoriteColor) => {
   rotateY(rY)
   rotateZ(rZ)
   
-  const depth = 30
+  const depth = 60
 
   for (let z = 0; z < depth; z++) {
     const depthProgression = -(z/depth)

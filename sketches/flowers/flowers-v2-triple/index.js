@@ -77,7 +77,7 @@ function drawBackgroundPattern(time, columns = 30, rows = 50) {
         hueOffset: time+noise(yOff + time, xOff + time),
         hueIndex: map(x, 0, columns-1, -PI, PI),
         // hueIndex: map(noise(yOff, xOff), 0, 1, -PI, PI),
-        opacityFactor: 4//map(noise(yOff, xOff), 0, 1, 1, 15)
+        opacityFactor: 2//map(noise(yOff, xOff), 0, 1, 1, 15)
       }),
       borderWidth: 3,
       size: 30,
@@ -92,15 +92,31 @@ function drawBackgroundPattern(time, columns = 30, rows = 50) {
 let clickCount = 0;
 
 sketch.setup(() => {
+  p5.disableFriendlyErrors = true;
+  pixelDensity(1)
   events.register("engine-mouse-pressed", () => {
     console.log(clickCount++);
   });
+}, {
+  type: "2d",
+  size: {
+    width: 1080,
+    height: 1920,
+    // ratio: 9/16
+  },
+  animation: {
+    framerate: 25,
+    duration: 10
+  }
 });
 
 sketch.draw( (time, center) => {
   background(0);
 
-  drawBackgroundPattern(time, 6, 10);
+  push()
+  translate((width/6)/2, (height/10)/2)
+  drawBackgroundPattern(animation.time*10, 6, 10);
+  pop()
 
 
   const boundary = 250;
@@ -108,32 +124,32 @@ sketch.draw( (time, center) => {
   // const end = createVector( width/2, height - boundary );
 
 
-  const index = time/2
+  const index = time/1.5
 
-  let start = animation.sequence( "start", index, [
-    createVector( boundary, boundary ),
-    createVector( width-boundary, boundary ),
-    createVector( width/2, height/4 ),
+  const start = animation.sequence( "start", index, [
+      createVector( boundary, boundary ),
+      createVector( width-boundary, boundary ),
+      createVector( width/2, height/4 ),
     ],
     0.1,
     p5.Vector.lerp
-    )
-  let end = animation.sequence( "end", index, [
+  );
+  const end = animation.sequence( "end", index, [
       createVector( width-boundary, height-boundary ),
       createVector( boundary, height- boundary ),
       createVector( width/2, height- boundary )
     ], 
     0.1,
     p5.Vector.lerp
-  )
+  );
 
-  const speed = time;
+  const speed = animation.time*10;
 
   iterators.vector(start, end, 1 / 512  , ( vector, lerpIndex) => {
     //const easingFunction = mappers.circularIndex(speed+lerpIndex, easingFunctions)[1]
 
-    const sides = animation.sequence("amt", speed+lerpIndex, [ 2, 3, 4, 5, 4, 3 ]);
-    const times = 3//mappers.circularIndex(speed+lerpIndex, [ 1, 3, 5 ]);
+    const sides = animation.sequence("amt", speed+lerpIndex, [ 2, 3, 4, 2 ]);
+    const times = mappers.circularIndex(speed+lerpIndex, [ 3, 5 ]);
     const borderWidth = mappers.fn(sides, 2, 5, 80, 20);
     const maxSize = mappers.fn(sides, 2, 5, 150, 250);
     const sizeRatio = mappers.fn(lerpIndex, 0, 1, -PI, PI)*times;
@@ -155,7 +171,7 @@ sketch.draw( (time, center) => {
           hueIndex: mappers.fn(lerpIndex, 0, 1, -PI, PI)*4,
           //opacityFactor: mappers.fn(cos(sizeRatio), -1, 1, 4, 1.2),
           //opacityFactor: mappers.fn(lerpIndex, 0, 1, 5, 1.1),
-          opacityFactor: mappers.fn(sin(2*time+lerpIndex*15+index/50), -1, 1, 5, 1.1)
+          opacityFactor: mappers.fn(sin(3*animation.sinAngle+lerpIndex*15+index/50), -1, 1, 3, 1.1)
         })
       ),
       borderWidth,
