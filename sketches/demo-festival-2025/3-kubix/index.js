@@ -12,8 +12,8 @@ sketch.setup(() => {
 }, {
   type: "webgl",
   size: {
-    width: 1080,
-    height: 1920,
+    // width: 1080,
+    // height: 1920,
     // ratio: 9/16
   },
   animation: {

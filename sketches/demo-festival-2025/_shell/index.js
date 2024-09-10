@@ -172,12 +172,12 @@ sketch.setup(() => {
 }, {
   type: "2d",
   size: {
-    width: 1080,
-    height: 1080,
+    // width: 1080,
+    // height: 1080,
     // ratio: 9/16
   },
   animation: {
-    framerate: 120,
+    framerate: 60,
     duration: 10
   }
 });
