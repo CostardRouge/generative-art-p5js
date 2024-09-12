@@ -1,20 +1,23 @@
 import { sketch, string, mappers, easing, animation, colors, cache } from './utils/index.js';
 
-// sketch.setup(() => frameRate(25), { type: "webgl", width: 1080, height: 1920} );
-
 sketch.setup(() => {
   p5.disableFriendlyErrors = true;
-  frameRate(25)
   pixelDensity(1)
-}, { type: "webgl", width: 1080, height: 1920} );
+}, {
+  type: "webgl",
+  // size: {
+  //   // width: 1080,
+  //   // height: 1920,
+  //   // ratio: 9/16
+  // },
+  animation: {
+    framerate: 60,
+    duration: 10
+  }
+});
 
 sketch.draw( (time, center, favoriteColor) => {
   background(0, 0, 0, 150);
-
-  // time = (frameCount / (25 * 5)) * PI;
-
-
-  const animationProgression = map(time, 0, 10, 0, 1)
 
   const points = animation.ease({
     values: "demofestival".split("").map( text => (
@@ -28,7 +31,7 @@ sketch.draw( (time, center, favoriteColor) => {
       })
     )),
     lerpFn: mappers.lerpPoints,
-    currentTime: animationProgression*"demofestival".length,
+    currentTime: animation.progression*"demofestival".length,
     easingFn: easing.easeInOutExpo
   })
 
@@ -42,7 +45,7 @@ sketch.draw( (time, center, favoriteColor) => {
       createVector(-PI/5, -PI/5, 0),
     ],
     duration: 1,
-    currentTime: animationProgression*"demofestival".length,
+    currentTime: animation.progression*"demofestival".length,
     lerpFn: p5.Vector.lerp,
     easingFn: easing.easeInOutBack
   })

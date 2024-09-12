@@ -11,11 +11,11 @@ sketch.setup(() => {
   pixelDensity(1)
 }, {
   type: "webgl",
-  size: {
-    // width: 1080,
-    // height: 1920,
-    // ratio: 9/16
-  },
+  // size: {
+  //   // width: 1080,
+  //   // height: 1920,
+  //   // ratio: 9/16
+  // },
   animation: {
     framerate: 25,
     duration: 10

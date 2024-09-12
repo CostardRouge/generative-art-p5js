@@ -118,14 +118,22 @@ options.add( [
   }
 ] );
 
-sketch.setup( () => {
-  frameRate(25);
-  },
-  {
-    width: 1080,
-    height: 1920,
+sketch.setup(() => {
+  p5.disableFriendlyErrors = true;
+  pixelDensity(1)
+}, {
+  type: "2d",
+  // size: {
+  //   // width: 1080,
+  //   // height: 1920,
+  //   // ratio: 9/16
+  // },
+  animation: {
+    framerate: 60,
+    duration: 10
   }
-);
+});
+
 
 function drawer( lerper, positioner, shaper, time, index ) {
   const [lerpMin, lerpMax, lerpStep] = lerper(time, index);
