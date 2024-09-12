@@ -2,9 +2,20 @@ import { midi, events, sketch, string, mappers, easing, animation, colors, cache
 
 sketch.setup(() => {
   p5.disableFriendlyErrors = true;
-  frameRate(25)
   pixelDensity(1)
-}, { type: "webgl", width: 1080, height: 1920} );
+}, {
+  type: "webgl",
+  // size: {
+  //   // width: 1080,
+  //   // height: 1920,
+  //   // ratio: 9/16
+  // },
+  animation: {
+    framerate: 60,
+    duration: 10
+  }
+});
+
 
 events.register( "post-setup", midi.setup );
 

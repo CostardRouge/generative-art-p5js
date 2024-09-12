@@ -43,9 +43,20 @@ function drawGrid(xCount, yCount, color, weight = 2) {
 
 sketch.setup(() => {
   p5.disableFriendlyErrors = true;
-  frameRate(25)
   pixelDensity(1)
-}, { type: "2d", width: 1080, height: 1920} );
+}, {
+  type: "2d",
+  // size: {
+  //   // width: 1080,
+  //   // height: 1920,
+  //   // ratio: 9/16
+  // },
+  animation: {
+    framerate: 60,
+    duration: 10
+  }
+});
+
 
 function getRandomIndices(maxIndex, amount, unique = true) {
   if (!unique) {

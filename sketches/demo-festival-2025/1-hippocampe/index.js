@@ -171,11 +171,11 @@ sketch.setup(() => {
   pixelDensity(1)
 }, {
   type: "2d",
-  size: {
-    // width: 1080,
-    // height: 1920,
-    // ratio: 9/16
-  },
+  // size: {
+  //   // width: 1080,
+  //   // height: 1920,
+  //   // ratio: 9/16
+  // },
   animation: {
     framerate: 60,
     duration: 10
