@@ -43,7 +43,7 @@ function drawGrid(xCount, yCount, color, weight = 2) {
 
 sketch.setup(() => {
   p5.disableFriendlyErrors = true;
-  pixelDensity(1)
+  // pixelDensity(1)
 }, {
   type: "2d",
   // size: {

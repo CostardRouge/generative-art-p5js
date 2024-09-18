@@ -8,7 +8,7 @@ import { sketch, options, iterators, converters, debug, events, string, mappers,
 
 sketch.setup(() => {
   p5.disableFriendlyErrors = true;
-  pixelDensity(1)
+  // pixelDensity(1)
 }, {
   type: "webgl",
   // size: {
@@ -17,8 +17,8 @@ sketch.setup(() => {
   //   // ratio: 9/16
   // },
   animation: {
-    framerate: 25,
-    duration: 10
+    framerate: 60,
+    duration: 4
   }
 });
 
@@ -119,9 +119,7 @@ function createGridAlphaPoints(gridOptions, textPointsMatrix) {
 sketch.draw( (time, center) => {
   background(0);
 
-  // time = (frameCount / (25 * 5)) * PI;
-
-  const size = (width);
+  const size = width;
   const sampleFactor = 1/10;
   const simplifyThreshold = 0;
 
@@ -139,13 +137,15 @@ sketch.draw( (time, center) => {
     centered: true
   }
 
-  const t = "demofestival"
+  let text = "nft".split("")
 
-  const textPointsMatrix = t.split("").map( text => (
+  // text = "be here NOW".split(" ")
+
+  const textPointsMatrix = text.map( text => (
     getTextPoints({
       text,
       position: createVector(0, 0),
-      size: size,
+      size,
       font: string.fonts.martian,
       sampleFactor,
       simplifyThreshold
@@ -159,31 +159,29 @@ sketch.draw( (time, center) => {
 
   const rotationMax = TAU
 
-  const {
-    x: rX,
-    y: rY,
-    //z: rZ
-  } = animation.ease({
-    values: [
-      createVector(), 
-      createVector(0, rotationMax),
-      createVector(rotationMax, rotationMax),
-      createVector(rotationMax),
-    ],
-    currentTime: animation.progression*t.length,
-    lerpFn: p5.Vector.lerp,
-    easingFn: easing.easeInOutExpo,
-    // easingFn: easing.easeInOutElastic,
-    // easingFn: easing.easeInOutCirc,
-  })
+  // const {
+  //   x: rX,
+  //   y: rY,
+  //   //z: rZ
+  // } = animation.ease({
+  //   values: [
+  //     createVector(), 
+  //     createVector(0, rotationMax),
+  //     // createVector(rotationMax, rotationMax),
+  //     // createVector(rotationMax),
+  //   ],
+  //   currentTime: animation.progression*t.length,
+  //   lerpFn: p5.Vector.lerp,
+  //   easingFn: easing.easeInOutExpo,
+  //   // easingFn: easing.easeInOutElastic,
+  //   // easingFn: easing.easeInOutCirc,
+  // })
 
-  rotateX(rX)
-  rotateY(rY)
-
-  // const finalPoints = alphaPoints
+  // rotateX(rX)
+  // rotateY(rY)
 
   alphaPoints.forEach( ( { layers, position }, index ) => {
-    const i = animation.progression*t.length
+    const i = animation.progression*text.length
     const layer = mappers.circularIndex(
       i+1/2,
       layers
@@ -193,24 +191,18 @@ sketch.draw( (time, center) => {
       return;
     }
 
-    const switchIndex = i*2+(
-      +index/alphaPoints.length/5
-      +position.x/columns/100
-      +position.y/rows/100
-    )
-
     const hue = noise(
-      position.x/columns + (
+      position.x/columns/5 + (
         +map(sin(animation.sinAngle*2), -1, 1, 0, 1)
       ),
-      position.y/rows + (
+      position.y/rows/5 + (
         +map(cos(animation.cosAngle*2), -1, 1, 0, 1)
       )
     )
 
     const tint = colors.rainbow({
       hueOffset: animation.time,
-      hueIndex: map(hue, 0, 1, -PI, PI)*2,
+      hueIndex: map(hue, 0, 1, -PI, PI)*4,
       opacityFactor: 1.5
     })
 
@@ -218,21 +210,61 @@ sketch.draw( (time, center) => {
 
     push()
 
-    const w = cellSize//-2
-    const h = cellSize//-2
+    const edge = animation.ease({
+      values: [ 0, 5 ],
+      currentTime: i*2+(
+        +index/alphaPoints.length/50
+        +position.x/columns/100
+        +position.y/rows/100
+      ),
+      duration: 1,
+      easingFn: easing.easeInOutExpo,
+    });
+
+    const w = cellSize-edge
+    const h = cellSize-edge
     const d = cellSize*20
+
+    const {
+      x: rX,
+      y: rY,
+      //z: rZ
+    } = animation.ease({
+      values: [
+        createVector(), 
+        createVector(0, rotationMax),
+        createVector(rotationMax, rotationMax),
+        createVector(rotationMax),
+      ],
+      currentTime: i+(
+        // +index/alphaPoints.length/10
+        +position.x/columns/200
+        +position.y/rows/200
+      ),
+      lerpFn: p5.Vector.lerp,
+      easingFn: easing.easeInOutExpo,
+      // easingFn: easing.easeInOutElastic,
+      // easingFn: easing.easeInOutCirc,
+    })
+  
+    rotateX(rX)
+    rotateY(rY)
 
     translate( position )
 
     const fillAlpha = animation.ease({
-      values: [ 240, 0 ],
-      currentTime: switchIndex,
+      values: [ 200, 0 ],
+      currentTime: i*2+(
+        +index/alphaPoints.length/50
+        +position.x/columns/100
+        +position.y/rows/100
+      ),
       duration: 1,
       easingFn: easing.easeInOutExpo,
     });
 
     fill( red, green, blue, fillAlpha )
-    stroke( red, green, blue, 200 )
+    stroke( red, green, blue, fillAlpha/2+100 )
     box(w, h, -d)
 
     pop()
