@@ -129,7 +129,7 @@ const drawRadialPattern = (count = 7, time, _color) => {
         const vector = converters.polar.vector(
           // lerpIndex*3*animation.cosOscillation*2+lineIndex+animation.time*3,
           lineIndex+lerpIndex*3,
-          mappers.circularPolar(lerpIndex, 0, 1, 10, 150, easing.easeInOutSine_),
+          mappers.circularPolar(lerpIndex, 0, 1, 10, (width+height)/2/10, easing.easeInOutSine_),
         );
         // vector.add(fromEdgeToCenter)
         vector.add(position)
@@ -160,8 +160,7 @@ const drawRadialPattern = (count = 7, time, _color) => {
         );
 
         // strokeWeight(mappers.fn(lerpIndex, 0, 1, 10, 80, easing.easeInOutExpo_));
-        strokeWeight(map(lerpIndex, 0, 1, 10, 120));
-        strokeWeight(map(lerpIndex, 0, 1, 10, 120));
+        strokeWeight(map(lerpIndex, 0, 1, 10, (width+height)/2/10));
 
         stroke(colors.rainbow({
           hueOffset: (

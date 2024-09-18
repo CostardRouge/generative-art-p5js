@@ -2,7 +2,7 @@ import { sketch, string, mappers, easing, animation, colors, cache } from './uti
 
 sketch.setup(() => {
   p5.disableFriendlyErrors = true;
-  pixelDensity(1)
+  // pixelDensity(1)
 }, {
   type: "webgl",
   // size: {
@@ -16,22 +16,25 @@ sketch.setup(() => {
   }
 });
 
+let text = "demofestival"
+    text = "canyoureadme"
+
 sketch.draw( (time, center, favoriteColor) => {
   background(0, 0, 0, 150);
 
   const points = animation.ease({
-    values: "demofestival".split("").map( text => (
+    values:text.split("").map( text => (
       string.getTextPoints({
         text,
         position: createVector(0, 0),
-        size: width/2,
+        size: width/1.75,
         font: string.fonts.sans,
         sampleFactor: .1,
         simplifyThreshold: 0
       })
     )),
     lerpFn: mappers.lerpPoints,
-    currentTime: animation.progression*"demofestival".length,
+    currentTime: animation.progression*text.length,
     easingFn: easing.easeInOutExpo
   })
 
@@ -45,7 +48,7 @@ sketch.draw( (time, center, favoriteColor) => {
       createVector(-PI/5, -PI/5, 0),
     ],
     duration: 1,
-    currentTime: animation.progression*"demofestival".length,
+    currentTime: animation.progression*text.length,
     lerpFn: p5.Vector.lerp,
     easingFn: easing.easeInOutBack
   })
@@ -62,7 +65,7 @@ sketch.draw( (time, center, favoriteColor) => {
     const depthProgression = -(z/depth)
 
     push();
-    translate( 0, 0, mappers.fn(z, 0, depth, 0, -500, easing.easeInExpo_ ) )
+    translate( 0, 0, mappers.fn(z, 0, depth, 0, -1500, easing.easeInExpo_ ) )
     // translate( 0, 0, mappers.fn(depthProgression, 0, 1, -500, -1500, easing.easeInOutExpo) )
 
     // strokeWeight( mappers.fn(z, 0, depth, 10, 5, easing.easeInOutExpo) )
@@ -85,7 +88,7 @@ sketch.draw( (time, center, favoriteColor) => {
           +0
         ),
         // hueIndex: mappers.circularPolar(progression, 0, 1, -PI, PI)*2,
-        hueIndex: mappers.fn(noise(x/width, y/height, depthProgression/2), 0, 1, -PI, PI)*12,
+        hueIndex: mappers.fn(noise(x/width, y/height+animation.circularProgression, depthProgression/2), 0, 1, -PI, PI)*14,
         // hueIndex:mappers.fn(noise(x/width, y/height, progression/2+depthProgression/2), 0, 1, -PI, PI)*10,
         opacityFactor,
         // opacityFactor: map(depthProgression, 0, 1, 1.75, 1) * Math.pow(1.05, z)
