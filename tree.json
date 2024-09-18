@@ -2004,26 +2004,26 @@
          "name": "motion-capture"
       },
       "sketches": {
-         "motion-capture-with-media-pipe-v1": {
+         "_motion-capture-with-media-pipe-v1": {
             "meta": {
                "_mtime": "2023-10-01T12:27:52.116Z",
-               "name": "motion-capture-with-media-pipe-v1"
+               "name": "_motion-capture-with-media-pipe-v1"
             },
-            "path": "sketches/motion-capture/motion-capture-with-media-pipe-v1"
+            "path": "sketches/motion-capture/_motion-capture-with-media-pipe-v1"
          },
-         "motion-capture-with-ml5-v2": {
+         "_motion-capture-with-ml5-v2": {
             "meta": {
                "_mtime": "2024-08-10T23:54:00.454Z",
-               "name": "motion-capture-with-ml5-v2"
+               "name": "_motion-capture-with-ml5-v2"
             },
-            "path": "sketches/motion-capture/motion-capture-with-ml5-v2"
+            "path": "sketches/motion-capture/_motion-capture-with-ml5-v2"
          },
-         "motion-capture-with-ml5-v3": {
+         "_motion-capture-with-ml5-v3": {
             "meta": {
                "_mtime": "2024-08-11T23:21:07.153Z",
-               "name": "motion-capture-with-ml5-v3"
+               "name": "_motion-capture-with-ml5-v3"
             },
-            "path": "sketches/motion-capture/motion-capture-with-ml5-v3"
+            "path": "sketches/motion-capture/_motion-capture-with-ml5-v3"
          }
       }
    },
