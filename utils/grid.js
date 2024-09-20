@@ -136,13 +136,13 @@ const grid = {
     }
   },
   prepare: ( gridOptions ) => {
-    const vectors = grid.create( gridOptions );
+    const { cells } = grid.create( gridOptions );
 
     return ({
-      vectors,
+      cells,
       draw: onGridCell => {
-        vectors.forEach( ([ cellVector, x, y ], index ) => {
-          onGridCell?.( cellVector, { x, y }, index )
+        cells.forEach( ({ position, x, y }, index ) => {
+          onGridCell?.( position, { x, y }, index )
         })
       }
     })

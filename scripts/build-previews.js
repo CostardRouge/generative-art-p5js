@@ -63,41 +63,29 @@ async function getScreenshotWithURL(url, size) {
   return await page.screenshot({ type });
 }
 
-const ignoredSketches = [];
-
 async function buildPreviews() {
   const treeFileContent = readFileSync(treePath, 'utf8');
   const tree = JSON.parse(treeFileContent);
 
   for (const [ , {sketches} ] of Object.entries(tree)) {
     for (const [ sketchName, sketch ] of Object.entries(sketches)) {
+      //const indexPath = `${sketch.path}/index.html`;
+      //const indexFileContent = readFileSync(indexPath, 'utf8');
 
-      if (sketchName.startsWith("_")) {
-        ignoredSketches.push(sketchName);
-      }
-      else {
-        //const indexPath = `${sketch.path}/index.html`;
-        //const indexFileContent = readFileSync(indexPath, 'utf8');
+      const screenShootFilePath = `${sketch.path}/screenshot.${type}`;
+
+      if (!existsSync(screenShootFilePath)) {
         console.log(">>: ", sketchName);
 
-        const screenShootFilePath = `${sketch.path}/screenshot.${type}`;
+        const indexFileURL = `http://127.0.0.1:3000/${sketch.path}/?preview&size=${size}`;
+        const screenShootFileContent = await getScreenshotWithURL(indexFileURL, size);
 
-        if (!existsSync(screenShootFilePath)) {
-          const indexFileURL = `http://127.0.0.1:3000/${sketch.path}/?preview&size=${size}`;
-          const screenShootFileContent = await getScreenshotWithURL(indexFileURL, size);
-
-          writeFileSync(screenShootFilePath, screenShootFileContent);
-          console.log("OK: ", sketchName, screenShootFilePath);
-        }
+        writeFileSync(screenShootFilePath, screenShootFileContent);
+        console.log("OK: ", sketchName, screenShootFilePath);
       }
     }
   }
-
-  console.log(`\nignoredSketches (${ignoredSketches.length}):`);
-  console.log(`${ignoredSketches.map(ignoredSketch => ignoredSketch).join("\n")}`);
   
-  
-
   process.exit(0);
 }
 
