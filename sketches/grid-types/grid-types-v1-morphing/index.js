@@ -220,8 +220,9 @@ sketch.draw( ( time, center, favoriteColor ) => {
 
   const {
     draw: drawTextGrid,
-    vectors: positions
+    cells
   } = grid.prepare({ rows, columns });
+
 
   if (options.get("grid-show")) {
     push()
@@ -245,9 +246,8 @@ sketch.draw( ( time, center, favoriteColor ) => {
   const randomTrajectory = options.get("trajectory-random");
 
   const trajectory = cache.store(`trajectory-${text}-${randomTrajectory}`, () => (
-    [...positions].sort( () => .5 - Math.random() )
+    [...cells].sort( () => .5 - Math.random() )
   ));
-
 
   const trajectoryLinesWeight = options.get("trajectory-lines-weight");
   
@@ -281,9 +281,6 @@ sketch.draw( ( time, center, favoriteColor ) => {
     // endShape()
 
   }
-
-  return;
-
   const directionSpeed = 0.025;
   const direction = mappers.fn(sin(time/2), -1, 1, -directionSpeed, directionSpeed, easing.easeInOutElastic);
   const directionNormalized = map(direction, -directionSpeed, directionSpeed, 0, 1);

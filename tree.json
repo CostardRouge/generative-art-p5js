@@ -1487,7 +1487,7 @@
    },
    "demo-festival-2025": {
       "meta": {
-         "_mtime": "2024-09-10T14:11:16.214Z",
+         "_mtime": "2024-09-18T19:01:38.234Z",
          "name": "demo-festival-2025"
       },
       "sketches": {
@@ -1525,34 +1525,6 @@
                "name": "5-dancing-flurry"
             },
             "path": "sketches/demo-festival-2025/5-dancing-flurry"
-         },
-         "_classic-worm": {
-            "meta": {
-               "_mtime": "2024-09-12T10:06:57.226Z",
-               "name": "_classic-worm"
-            },
-            "path": "sketches/demo-festival-2025/_classic-worm"
-         },
-         "_gridy": {
-            "meta": {
-               "_mtime": "2024-09-12T10:07:34.856Z",
-               "name": "_gridy"
-            },
-            "path": "sketches/demo-festival-2025/_gridy"
-         },
-         "_shell": {
-            "meta": {
-               "_mtime": "2024-09-12T10:07:13.236Z",
-               "name": "_shell"
-            },
-            "path": "sketches/demo-festival-2025/_shell"
-         },
-         "_zoom": {
-            "meta": {
-               "_mtime": "2024-09-12T10:07:45.943Z",
-               "name": "_zoom"
-            },
-            "path": "sketches/demo-festival-2025/_zoom"
          }
       }
    },
@@ -1906,13 +1878,13 @@
    },
    "grid-types": {
       "meta": {
-         "_mtime": "2024-06-11T10:29:37.047Z",
+         "_mtime": "2024-09-18T19:22:33.615Z",
          "name": "grid-types"
       },
       "sketches": {
          "grid-types-v1-morphing": {
             "meta": {
-               "_mtime": "2024-06-11T10:29:37.047Z",
+               "_mtime": "2024-09-18T19:21:35.881Z",
                "name": "grid-types-v1-morphing"
             },
             "path": "sketches/grid-types/grid-types-v1-morphing"
@@ -1995,35 +1967,6 @@
                "name": "motion-blur-v2-alpha-echo"
             },
             "path": "sketches/motion-blur/motion-blur-v2-alpha-echo"
-         }
-      }
-   },
-   "motion-capture": {
-      "meta": {
-         "_mtime": "2024-09-10T14:11:23.811Z",
-         "name": "motion-capture"
-      },
-      "sketches": {
-         "_motion-capture-with-media-pipe-v1": {
-            "meta": {
-               "_mtime": "2023-10-01T12:27:52.116Z",
-               "name": "_motion-capture-with-media-pipe-v1"
-            },
-            "path": "sketches/motion-capture/_motion-capture-with-media-pipe-v1"
-         },
-         "_motion-capture-with-ml5-v2": {
-            "meta": {
-               "_mtime": "2024-08-10T23:54:00.454Z",
-               "name": "_motion-capture-with-ml5-v2"
-            },
-            "path": "sketches/motion-capture/_motion-capture-with-ml5-v2"
-         },
-         "_motion-capture-with-ml5-v3": {
-            "meta": {
-               "_mtime": "2024-08-11T23:21:07.153Z",
-               "name": "_motion-capture-with-ml5-v3"
-            },
-            "path": "sketches/motion-capture/_motion-capture-with-ml5-v3"
          }
       }
    },
@@ -2509,20 +2452,6 @@
          "name": "rainbow-flame"
       },
       "sketches": {
-         "_rainbow-flowers": {
-            "meta": {
-               "_mtime": "2024-03-23T17:48:49.815Z",
-               "name": "_rainbow-flowers"
-            },
-            "path": "sketches/rainbow-flame/_rainbow-flowers"
-         },
-         "_rainbow-flowers-blur": {
-            "meta": {
-               "_mtime": "2024-03-23T17:48:49.814Z",
-               "name": "_rainbow-flowers-blur"
-            },
-            "path": "sketches/rainbow-flame/_rainbow-flowers-blur"
-         },
          "rainbow-flame-v1": {
             "meta": {
                "_mtime": "2024-06-11T10:29:37.050Z",
