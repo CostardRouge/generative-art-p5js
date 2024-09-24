@@ -24,8 +24,11 @@ const animation = {
   },
 
   time: 0,
+  get maximumFramesCount() {
+    return sketch.sketchOptions?.animation?.duration * sketch.sketchOptions?.animation?.framerate
+  },
   incrementTime() {
-    const timeIncrement = 1 / (sketch.sketchOptions?.animation?.duration * sketch.sketchOptions?.animation?.framerate);
+    const timeIncrement = 1 / animation.maximumFramesCount;
 
     animation.time += timeIncrement; 
   },

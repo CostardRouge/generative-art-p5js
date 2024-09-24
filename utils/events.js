@@ -1,4 +1,4 @@
-import { debug, recorder, options } from './index.js';
+import { debug, recorder, options, animation } from './index.js';
 
 const events = {
   lastEventId: 0,
@@ -87,7 +87,7 @@ const events = {
       if (recorder.recording) {
         recorder.stop();
       } else {
-        recorder.start();
+        recorder.start(animation.maximumFramesCount);
       }
     });
   },

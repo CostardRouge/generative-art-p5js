@@ -1,6 +1,6 @@
 import SketchUI from '../libraries/sketch-ui.es.js';
 
-import { recorder, debug, sketch, events, cache } from './index.js';
+import { recorder, debug, sketch, events, animation } from './index.js';
 
 const getDefaultOptions = () => {
   // const { type } = screen.orientation;
@@ -204,7 +204,6 @@ const getDefaultOptions = () => {
     ],
     category: 'Canvas'
   } );
-
     
   defaultOptions.push( ...[
     {
@@ -236,6 +235,16 @@ const getDefaultOptions = () => {
       category: 'Canvas'
     },
     {
+      type: 'button',
+      text: 'Save .png',
+      icon: 'DeviceFloppy',
+      onClick: () => events.handle("engine-canvas-save", sketch.name, "png"),
+      category: 'Canvas'
+    }
+  ] );
+
+  defaultOptions.push( ...[
+    {
       id: 'recording-format',
       type: 'select',
       label: 'Video recording format',
@@ -258,7 +267,7 @@ const getDefaultOptions = () => {
           label: '.webm',
         }
       ],
-      category: 'Canvas'
+      category: 'Video recorder'
     },
     {
       id: 'recording-framerate',
@@ -287,28 +296,28 @@ const getDefaultOptions = () => {
           label: '120 fps',
         },
       ],
-      category: 'Canvas'
+      category: 'Video recorder'
+    },
+    {
+      type: 'button',
+      text: 'Record animation loop',
+      icon: 'Circle',
+      onClick: () => recorder.start(animation.maximumFramesCount),
+      category: 'Video recorder'
     },
     {
       type: 'button',
       text: 'Start recording',
       icon: 'Circle',
       onClick: () => recorder.start(),
-      category: 'Canvas'
+      category: 'Video recorder'
     },
     {
       type: 'button',
       text: 'Stop recording',
       icon: 'PlayerStop',
       onClick: () => recorder.stop(),
-      category: 'Canvas'
-    },
-    {
-      type: 'button',
-      text: 'Save .png',
-      icon: 'DeviceFloppy',
-      onClick: () => events.handle("engine-canvas-save", sketch.name, "png"),
-      category: 'Canvas'
+      category: 'Video recorder'
     }
   ] );
 
@@ -319,13 +328,11 @@ const options = {
   sketchUI: undefined,
   addedOptions: [],
   add: (_options) => {
-    for (const option of _options) {
-      options.create(option)
-    }
-
-    return options.addedOptions;
+    options.addedOptions.push(... _options)
   },
   create: (option, synchronize = false) => {
+    options.addedOptions.push(option)
+
     const existingOptionIds = options.addedOptions.map( ({id}) => id);
 
     if (existingOptionIds.indexOf(option.id) !== -1) {
@@ -338,19 +345,17 @@ const options = {
     return options.get(option.id)
   },
   init: () => {
-    const initialOptions = options.add(getDefaultOptions());
+    options.add(getDefaultOptions());
 
-    options.sketchUI = new SketchUI( {
+    return options.sketchUI = new SketchUI( {
       open: false,
       name: sketch.name,
-      options: initialOptions,
+      options: options.addedOptions,
       elements: {
         drawer: 'div#sketch-ui-drawer'
       },
       logger: console.log
     });
-
-    return options.sketchUI;
   },
 
   get: id => options.sketchUI?.getValue(id),
