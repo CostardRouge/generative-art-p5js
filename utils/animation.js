@@ -24,6 +24,9 @@ const animation = {
   },
 
   time: 0,
+  reset() {
+    animation.time = 0;
+  },
   get maximumFramesCount() {
     return sketch.sketchOptions?.animation?.duration * sketch.sketchOptions?.animation?.framerate
   },
