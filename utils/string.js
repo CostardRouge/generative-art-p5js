@@ -3,12 +3,24 @@ import cache from './cache.js';
 
 const string = {
   fonts: {
-    serif: undefined,
-    sans: undefined,
-    tilt: undefined,
-    martian: undefined,
-    multicoloure: undefined,
-    openSans: undefined,
+    get serif() {
+      return loadFont("assets/fonts/libre-baskerville.ttf")
+    },
+    get sans() {
+      return loadFont("assets/fonts/passion-one.ttf")
+    },
+    get openSans() {
+      return loadFont("assets/fonts/open-sans.ttf")
+    },
+    get tilt() {
+      return loadFont("assets/fonts/tilt-prism.ttf")
+    },
+    get multicoloure() {
+      return loadFont("assets/fonts/multicoloure.ttf")
+    },
+    get martian() {
+      return loadFont("assets/fonts/martian.ttf")
+    },
   },
   write: function (
     str,
@@ -100,12 +112,7 @@ const string = {
 };
 
 events.register("engine-window-preload", () => {
-  string.fonts.serif = loadFont("assets/fonts/libre-baskerville.ttf");
-  string.fonts.sans = loadFont("assets/fonts/passion-one.ttf");
-  string.fonts.openSans = loadFont("assets/fonts/open-sans.ttf");
-  string.fonts.tilt = loadFont("assets/fonts/tilt-prism.ttf");
-  string.fonts.multicoloure = loadFont("assets/fonts/multicoloure.ttf");
-  string.fonts.martian = loadFont("assets/fonts/martian.ttf");
+  
   // string.fonts.comfortaa = loadFont("assets/fonts/comfortaa.ttf");
   // string.fonts.montepetrum = loadFont("assets/fonts/montepetrum.ttf");
 });

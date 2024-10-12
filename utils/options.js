@@ -16,7 +16,7 @@ const getDefaultOptions = () => {
   const defaultFramerate = 60;
   const defaultTimeSpeed = 1;
   const defaultPixelDensity = isMobile ? 1 : window.devicePixelRatio
-  const defaultCanvasSize = isMobile ? 'fill' :`1080x1920`;
+  const defaultCanvasSize = isMobile ? 'fill' : `1080x1920`;
 
   defaultOptions.push( ...[
     // EVENTS
@@ -168,7 +168,7 @@ const getDefaultOptions = () => {
       },
       {
         label: `Default 768 x 1366`,
-        value: defaultCanvasSize,
+        value: "768x1366",
         group: 'Portrait'
       },
       {

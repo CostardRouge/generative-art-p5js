@@ -1,21 +1,26 @@
 let pixilatedCanvas = null;
+let maskImage = null;
+let masked = null;
 
-import { shapes, sketch, events } from './utils/index.js';
+import { shapes, sketch, events, animation } from './utils/index.js';
 
 sketch.setup(() => {
-  noStroke();
-
   pixilatedCanvas = createGraphics(
     sketch?.engine?.canvas?.width,
     sketch?.engine?.canvas?.height
   );
+
   pixilatedCanvas.pixelDensity(0.05);
   pixilatedCanvas.noStroke();
+
+  maskImage = createGraphics(
+    sketch?.engine?.canvas?.width,
+    sketch?.engine?.canvas?.height
+  );
 
   events.register("windowResized", () => {
     pixilatedCanvas.width = sketch?.engine?.canvas?.width;
     pixilatedCanvas.height = sketch?.engine?.canvas?.height;
-    pixilatedCanvas.pixelDensity(0.05);
   });
 
   const xCount = 1;
@@ -53,7 +58,12 @@ sketch.setup(() => {
   //      );
   //    }
   //  }
-} );
+}, {
+  animation: {
+    framerate: 60,
+    duration: 10
+  }
+});
 
 class Spiral {
   constructor(options) {
@@ -72,95 +82,63 @@ class Spiral {
     this.calculateRelativePosition();
   }
 
-  draw(time, index, target, lerpStep = 1 / 800) {
+  draw( index, target, lerpStep = 1 / 800) {
     let { position, size, start, end } = this;
 
-    const hueCadence = index + time;
-    const waveAmplitude = size / 1.5//map(sin(time), -1, 1, 1, 2);
+    const hueCadence = index + animation.time;
+    const waveAmplitude = size / 1.5//map(sin(animation.sinAngle), -1, 1, 1, 2);
 
     target.push();
     target.translate(position.x, position.y);
 
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
-      //       const f = 15//map(lerpIndex, 0, 1, 1, 30)
-      //       const opacityFactor = map(
-      //         lerpIndex,
-      //         0,
-      //         1,
-      //         map(
-      //           sin(lerpIndex*f + time * 3),
-      //           -1,
-      //           1,
-      //           1,
-      //           2
-      //         ),
-      //         1
-      //       );
+        const f = 18
+        const opacityFactor = map(
+          lerpIndex,
+          0,
+          1,
+          map(
+            sin(lerpIndex*f + animation.sinAngle * 3),
+            -1,
+            1,
+            1,
+            2
+          ),
+          1
+        );
 
       let angle = map(
         lerpIndex,
         0,
         1.5,
-        map(sin(time / 2), -1, 1, -TAU, TAU),
-        -map(cos(time / 2), -1, 1, -TAU, TAU)
+        map(sin(animation.sinAngle / 2), -1, 1, -TAU, TAU),
+        -map(cos(animation.cosAngle / 2), -1, 1, -TAU, TAU)
       );
-      // angle = lerpIndex * 10;
-      // angle = map(
-      //   lerpIndex,
-      //   0,
-      //   1.5,
-      //   sin(lerpIndex) * TAU,
-      //   cos(lerpIndex) * TAU
-      // );
-      //  angle = map(lerpIndex, 0, 1/5, cos(TAU*lerpIndex), sin(TAU*lerpIndex));
-      angle = map(
-        lerpIndex,
-        0,
-        1.5,
-        sin(lerpIndex) * TAU,
-        cos(lerpIndex) * TAU
-      );
-      angle += map(
-        lerpIndex,
-        0,
-        1 / map(sin(time + index), -1, 1, -8, 8),
-        cos(lerpIndex * PI),
-        sin(lerpIndex * PI)
-      );
-      //  angle += map(
-      //    lerpIndex,
-      //    0,
-      //    1 / map(sin(time), -1, 1, -8, 8),
-      //    cos(lerpIndex * map(cos(time), -1, 1, -PI, PI)),
-      //    sin(lerpIndex * map(sin(time), -1, 1, -PI, PI))
-      //  );
-      angle += lerpIndex * 5 * (index + 1);
       angle *= (index % 2 === 0 ? 1 : -1);
       
       const lerpPosition = p5.Vector.lerp(start, end, lerpIndex);
-      let waveIndex = angle * sin(-time + lerpIndex + index);
-      waveIndex = angle + time * 2;
+      let waveIndex = angle * sin(-animation.sinAngle + lerpIndex + index);
+
+      waveIndex = angle// + time * 2;
+
       const xOffset = map(sin(angle), -1, 1, -waveAmplitude, waveAmplitude);
       const yOffset = map(cos(angle), 1, -1, -waveAmplitude, waveAmplitude);
 
       target.fill(
-        map(sin(angle + hueCadence), -1, 1, 0, 360) / 1,
-        map(cos(angle + hueCadence), -1, 1, 0, 255) / 1,
-        map(sin(angle + hueCadence), -1, 1, 255, 0) / 1
+        map(sin(angle + hueCadence*4), -1, 1, 0, 360) / opacityFactor,
+        map(cos(angle - hueCadence*4), -1, 1, 0, 255) / opacityFactor,
+        map(sin(angle + hueCadence*4), -1, 1, 255, 0) / opacityFactor
       );
 
-      let s = 25;
-      s = map(sin(time + waveIndex + lerpIndex), -1, 1, 10, 70);
+      const s = map(sin(animation.sinAngle + waveIndex + lerpIndex), -1, 1, 50, 140);
+      const c = map(sin(animation.sinAngle + lerpIndex * waveIndex), -1, 1, 1, 4);
 
-      // target.translate(map(sin(waveIndex + index), -1, 1, -1, 1), 0);
-
-      let c = 3 + index; // map(sin(time+waveIndex), -1, 1, 2, 5);
-      c = map(sin(time + lerpIndex * waveIndex), -1, 1, 1, 4);
+      target.translate(map(sin(lerpIndex*4+animation.time), -1, 1, -1, 1), 0);
 
       for (let i = 0; i < c; i++) {
         const x = lerp(
-          lerpPosition.x + xOffset,
-          lerpPosition.x - xOffset,
+          lerpPosition.x + xOffset*2,
+          lerpPosition.x - xOffset*2,
           i / c
         );
         const y = lerp(
@@ -172,29 +150,69 @@ class Spiral {
         target.circle(x, y, s);
       }
 
-      // target.circle(lerpPosition.x + xOffset, lerpPosition.y + yOffset, s);
-      // target.circle(lerpPosition.x - xOffset, lerpPosition.y - yOffset, s);
+      // target.circle(lerpPosition.x + xOffset, lerpPosition.y + yOffset, 50);
+      // target.circle(lerpPosition.x - xOffset, lerpPosition.y - yOffset, 50);
     }
 
     target.pop();
   }
 }
 
-sketch.draw((time) => {
-  noSmooth()
-
+sketch.draw(() => {
+  noStroke();
+  noSmooth();
   background(0);
 
-  pixilatedCanvas.filter(BLUR, 1);
-  pixilatedCanvas.background(0, 0, 0, 2);
-  image(pixilatedCanvas, 0, 0);
+
+  shapes[0].draw(1, window, 1 / 400);
+
+  pixilatedCanvas.background(0);
+  shapes[0].draw(1, pixilatedCanvas, 1 / 400);
+
+  // pixilatedCanvas.background(0, 0, 0, 32);
+
+  const position = createVector(
+    mouseX,
+    mouseY
+  );
+
+  const strokeSize = 3;
+  const w = 500;
+  const h = w;
 
 
-  // pixilatedCanvas.pixelDensity(map(sin(time), -1, 1, 0.01, 0.05));
+  // position.x = width/2
+  // position.y = map(cos(animation.cosAngle), -1, 1, 0, height)
+
+  // position.x = map(sin(animation.sinAngle), -1, 1, w/2+strokeSize/2, width-w/2-strokeSize/2)
+  // position.y = map(cos(animation.cosAngle/3), -1, 1, h/2+strokeSize/2, height-h/2-strokeSize/2)
+
+  // position.x = map(sin(animation.sinAngle), -1, 1, 20, width-20)
+  // position.y = map(cos(animation.cosAngle/3), -1, 1, 20, height-20)
+
+  maskImage.erase();
+  maskImage.rect(0, 0, width, height);
+  maskImage.noErase();
+
+  maskImage.beginShape();
+  maskImage.vertex(position.x-w/2, position.y-h/2);
+  maskImage.vertex(position.x+w/2, position.y-h/2);
+  maskImage.vertex(position.x+w/2, position.y+h/2);
+  maskImage.vertex(position.x-w/2, position.y+h/2);
+  maskImage.endShape(CLOSE);
 
 
-  shapes.forEach((shape, index) => {
-    shape.draw(-time, index, pixilatedCanvas, 1 / 300);
-    // shape.draw(-time, index, window, 1 / 800);
-  });
+  ( masked = pixilatedCanvas.get()).mask(maskImage);
+  image(masked, 0, 0);
+
+  noFill();
+  stroke(128, 128, 255);
+  strokeWeight(strokeSize);
+
+  beginShape();
+  vertex(constrain(position.x-w/2, 0, width), constrain(position.y-h/2, 0, height));
+  vertex(constrain(position.x+w/2, 0, width), constrain(position.y-h/2, 0, height));
+  vertex(constrain(position.x+w/2, 0, width), constrain(position.y+h/2, 0, height));
+  vertex(constrain(position.x-w/2, 0, width), constrain(position.y+h/2, 0, height));
+  endShape(CLOSE);
 });

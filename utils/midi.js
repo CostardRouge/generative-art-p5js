@@ -1,5 +1,6 @@
 import { events } from './index.js';
-import * as $C from 'https://cdn.jsdelivr.net/npm/js-combinatorics@2.1.1/combinatorics.min.js';
+// import * as $C from 'https://cdn.jsdelivr.net/npm/js-combinatorics@2.1.1/combinatorics.min.js';
+import * as $C from '../libraries/js-combinatorics.js';
 
 const MONITORING_BUFFER = 60;
 
