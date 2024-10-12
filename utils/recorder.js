@@ -1,4 +1,4 @@
-import { sketch, options, debug } from './index.js';
+import { sketch, options, debug, animation } from './index.js';
 
 const recorder = {
   savedFramesCount: 0,
@@ -20,24 +20,18 @@ const recorder = {
     }
 
     if (maximumFrames) {
-      const progressBar = document.getElementById('progressBar') ?? document.createElement('div');
-      progressBar.id = 'progressBar';
+      animation.time = 0;
 
-      document.getElementsByTagName('main')[0].prepend(progressBar);
-  
-      const style = document.createElement('style');
-      style.innerHTML = `
-        #progressBar {
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: 4px;
-          background-color: red;
-          width: 0;
-          z-index: 10;
-        }
-      `;
-      document.head.appendChild(style);
+      console.log(animation);
+      
+
+      if (!document.getElementById('recording-progression')) {
+        const progressBar = document.createElement('div')
+        
+        progressBar.id = 'recording-progression';
+
+        document.getElementsByTagName('main')[0].prepend(progressBar);
+      }
     }
 
     recorder.recording = true;
@@ -62,6 +56,9 @@ const recorder = {
   render: () => {
     requestAnimationFrame(recorder.render);
 
+    // console.log(animation );
+    
+
     debug.createElement( "body", "recorder-saved-frames", () => {
       if (recorder.maximumFrames) {
         return `${recorder.savedFramesCount} / ${recorder.maximumFrames}`
@@ -70,8 +67,8 @@ const recorder = {
       return recorder.savedFramesCount
     }, !recorder.recording)
 
-    if (recorder.maximumFrames && document.getElementById('progressBar')) {
-      document.getElementById('progressBar').style.width = (recorder.savedFramesCount / recorder.maximumFrames) * 100 + '%';
+    if (recorder.maximumFrames && document.getElementById('recording-progression')) {
+      document.getElementById('recording-progression').style.width = (recorder.savedFramesCount / recorder.maximumFrames) * 100 + '%';
     }
 
     if (undefined === recorder.capturer) {

@@ -76,6 +76,16 @@ recorder-saved-frames {
   text-shadow: 0 0 3px rgb(24 24 24);
 }
 
+body.recording #recording-progression {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background-color: red;
+  width: 0;
+  z-index: 10;
+}
+
 #sketch-ui-drawer {
   z-index: 10;
   position: absolute;
