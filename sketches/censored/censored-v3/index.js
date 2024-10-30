@@ -69,12 +69,11 @@ class Spiral {
   draw( index, target, lerpStep = 1 / 800) {
     let { position, size, start, end } = this;
 
-
     target.push();
     target.translate(position.x, position.y);
 
     for (let lerpIndex = 0; lerpIndex < 1; lerpIndex += lerpStep) {
-        const waveAmplitude = size*mappers.fn(Math.sin(lerpIndex*2+animation.sinAngle*5), -1, 1, 0.8, 1.25, easing.easeInOutBack)
+        const waveAmplitude = size//*mappers.fn(Math.sin(lerpIndex*2+animation.sinAngle*5), -1, 1, 0.8, 1.25, easing.easeInOutBack)
 
         const f = 50
         const opacityFactor = map(
@@ -94,32 +93,28 @@ class Spiral {
       
       const lerpPosition = p5.Vector.lerp(start, end, lerpIndex);
 
-      const xOffset = mappers.fn(
-        Math.sin(animation.sinAngle*2+animation.time+animation.time+8*lerpIndex), -1, 1, -waveAmplitude, waveAmplitude,
-        easing.easeInOutExpo
-      );
+      const xOffset = waveAmplitude*2.5
       const yOffset = mappers.fn(
-        Math.cos(animation.cosAngle*2+animation.time+8*lerpIndex), -1, 1, -waveAmplitude, waveAmplitude,
-        easing.easeInSine
+        Math.cos(animation.cosAngle*3+lerpIndex*3), -1, 1, -waveAmplitude, waveAmplitude,
+        easing.easeInOutSine
       );
 
-      const s = mappers.fn(Math.sin(animation.time+8 * lerpIndex), -1, 1, 40, 90, easing.easeInOutSine);
-      const c = 10//mappers.fn(Math.sin(animation.sinAngle+ 8 *lerpIndex), -1, 1, 3, 5, easing.easeInOutExpo);
+      const s = mappers.fn(Math.sin(animation.sinAngle+8 * lerpIndex*2), -1, 1, 20, 90, easing.easeInOutQuad);
+      const c = 8//mappers.fn(Math.sin(animation.sinAngle **lerpIndex), -1, 1, 2, 6, easing.easeInOutExpo);
 
-      for (let i = 0; i < c; i++) {
+      for (let i = 0; i <= c; i++) {
         const x = lerp(
-          lerpPosition.x + xOffset*1.5,
-          lerpPosition.y - yOffset,
+          lerpPosition.x - xOffset,
+          lerpPosition.x + xOffset,
           i / c
         );
         const y = lerp(
+          lerpPosition.y - yOffset,
           lerpPosition.y + yOffset,
-          lerpPosition.x - xOffset,
           i / c
         );
 
-      const a = lerpIndex*lerpIndex*8+i;
-
+        const a = lerpIndex*lerpIndex*8+i;
 
         target.fill(
           // colors.rainbow({
@@ -147,6 +142,8 @@ sketch.draw(() => {
 
   shapes[0].draw(1, window, 1 / 800);
 
+  // return;
+
   pixilatedCanvas.background(0);
   shapes[0].draw(1, pixilatedCanvas, 1 / 300);
 
@@ -158,8 +155,8 @@ sketch.draw(() => {
   );
 
   const strokeSize = 3;
-  const w = 500;
-  const h = w;
+  const w = width/2;
+  const h = height*2;
 
   // position.x = width/2
   // position.y = map(cos(animation.cosAngle), -1, 1, 0, height)
@@ -167,8 +164,9 @@ sketch.draw(() => {
   // position.x = map(sin(animation.sinAngle), -1, 1, w/2+strokeSize/2, width-w/2-strokeSize/2)
   // position.y = map(cos(animation.cosAngle/3), -1, 1, h/2+strokeSize/2, height-h/2-strokeSize/2)
 
-  position.x = map(sin(animation.sinAngle*5), -1, 1, 20, width-20)
-  position.y = map(cos(animation.cosAngle), -1, 1, 20, height-20)
+  position.x = 0//map(sin(animation.sinAngle), -1, 1, 20, width-20)
+  position.x = map(sin(animation.sinAngle*2), -1, 1, 20, width-20)
+  position.y = map(cos(animation.cosAngle*2), -1, 1, 20, height-20)
 
   maskImage.erase();
   maskImage.rect(0, 0, width, height);
