@@ -1238,7 +1238,7 @@
    },
    "censored": {
       "meta": {
-         "_mtime": "2024-10-23T21:02:26.123Z",
+         "_mtime": "2024-11-29T11:38:04.222Z",
          "name": "censored"
       },
       "sketches": {
@@ -1255,6 +1255,41 @@
                "name": "censored-v2"
             },
             "path": "sketches/censored/censored-v2"
+         },
+         "censored-v3": {
+            "meta": {
+               "_mtime": "2024-10-26T20:11:22.109Z",
+               "name": "censored-v3"
+            },
+            "path": "sketches/censored/censored-v3"
+         },
+         "censored-v4": {
+            "meta": {
+               "_mtime": "2024-11-14T00:05:24.907Z",
+               "name": "censored-v4"
+            },
+            "path": "sketches/censored/censored-v4"
+         },
+         "censored-v5": {
+            "meta": {
+               "_mtime": "2024-11-14T00:05:24.907Z",
+               "name": "censored-v5"
+            },
+            "path": "sketches/censored/censored-v5"
+         },
+         "censored-v6-mirror-test": {
+            "meta": {
+               "_mtime": "2024-11-28T22:12:37.019Z",
+               "name": "censored-v6-mirror-test"
+            },
+            "path": "sketches/censored/censored-v6-mirror-test"
+         },
+         "censored-v7-pixalated-gradient": {
+            "meta": {
+               "_mtime": "2024-11-29T11:38:04.221Z",
+               "name": "censored-v7-pixalated-gradient"
+            },
+            "path": "sketches/censored/censored-v7-pixalated-gradient"
          }
       }
    },
@@ -1509,7 +1544,7 @@
    },
    "demo-festival-2025": {
       "meta": {
-         "_mtime": "2024-10-05T10:11:59.231Z",
+         "_mtime": "2024-10-23T21:03:49.731Z",
          "name": "demo-festival-2025"
       },
       "sketches": {
