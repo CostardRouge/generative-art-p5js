@@ -3,12 +3,13 @@ import cache from './cache.js';
 
 const string = {
   fonts: {
+    sans: undefined,
     get serif() {
       return loadFont("assets/fonts/libre-baskerville.ttf")
     },
-    get sans() {
-      return loadFont("assets/fonts/passion-one.ttf")
-    },
+    // get sans() {
+    //   return loadFont("assets/fonts/passion-one.ttf")
+    // },
     get openSans() {
       return loadFont("assets/fonts/open-sans.ttf")
     },
@@ -112,8 +113,10 @@ const string = {
 };
 
 events.register("engine-window-preload", () => {
+  string.fonts.sans = loadFont("assets/fonts/passion-one.ttf");
   
   // string.fonts.comfortaa = loadFont("assets/fonts/comfortaa.ttf");
+  string.fonts.sans = loadFont("assets/fonts/passion-one.ttf");
   // string.fonts.montepetrum = loadFont("assets/fonts/montepetrum.ttf");
 });
 

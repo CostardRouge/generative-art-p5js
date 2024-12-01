@@ -223,7 +223,7 @@ sketch.draw(() => {
   //       vertex(constrain(center.x+cellWidth/2, 0, width), constrain(center.y+cellHeight/2, 0, height));
   //       endShape(CLOSE);
   //     }
-     
+
   //     const bottom = getCell(column, row+1);
   //     if (bottom?.on === false) {
   //       // bottom
