@@ -1238,7 +1238,7 @@
    },
    "censored": {
       "meta": {
-         "_mtime": "2024-11-29T23:52:28.344Z",
+         "_mtime": "2024-11-30T18:16:58.730Z",
          "name": "censored"
       },
       "sketches": {
@@ -1272,7 +1272,7 @@
          },
          "censored-v5": {
             "meta": {
-               "_mtime": "2024-11-14T00:05:24.907Z",
+               "_mtime": "2024-11-30T18:36:56.420Z",
                "name": "censored-v5"
             },
             "path": "sketches/censored/censored-v5"
@@ -1284,12 +1284,19 @@
             },
             "path": "sketches/censored/censored-v6-mirror-test"
          },
-         "censored-v7-pixalated-gradient": {
+         "censored-v7-pixelated-gradient": {
             "meta": {
                "_mtime": "2024-11-29T18:25:36.309Z",
-               "name": "censored-v7-pixalated-gradient"
+               "name": "censored-v7-pixelated-gradient"
             },
-            "path": "sketches/censored/censored-v7-pixalated-gradient"
+            "path": "sketches/censored/censored-v7-pixelated-gradient"
+         },
+         "censored-v8-changing-letter": {
+            "meta": {
+               "_mtime": "2024-12-01T01:46:03.635Z",
+               "name": "censored-v8-changing-letter"
+            },
+            "path": "sketches/censored/censored-v8-changing-letter"
          }
       }
    },
