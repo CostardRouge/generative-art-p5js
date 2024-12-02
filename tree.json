@@ -1238,7 +1238,7 @@
    },
    "censored": {
       "meta": {
-         "_mtime": "2024-11-30T18:16:58.730Z",
+         "_mtime": "2024-12-02T19:39:58.930Z",
          "name": "censored"
       },
       "sketches": {
@@ -1279,7 +1279,7 @@
          },
          "censored-v6-mirror-test": {
             "meta": {
-               "_mtime": "2024-11-28T22:12:37.019Z",
+               "_mtime": "2024-12-02T18:39:58.888Z",
                "name": "censored-v6-mirror-test"
             },
             "path": "sketches/censored/censored-v6-mirror-test"
@@ -1293,10 +1293,17 @@
          },
          "censored-v8-changing-letter": {
             "meta": {
-               "_mtime": "2024-12-01T01:46:03.635Z",
+               "_mtime": "2024-12-02T19:41:14.828Z",
                "name": "censored-v8-changing-letter"
             },
             "path": "sketches/censored/censored-v8-changing-letter"
+         },
+         "censored-v9-wave": {
+            "meta": {
+               "_mtime": "2024-12-02T19:56:00.971Z",
+               "name": "censored-v9-wave"
+            },
+            "path": "sketches/censored/censored-v9-wave"
          }
       }
    },

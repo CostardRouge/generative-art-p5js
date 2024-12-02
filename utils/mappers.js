@@ -21,7 +21,7 @@ const mappers = {
   },
   lerpPoints: (from, to, amount, fn = p5.Vector?.lerp) => {
     const result = [];
-    const maxLength = Math.max(from.length, to.length);
+    const maxLength = Math.max(from?.length, to?.length);
   
     for (let i = 0; i < maxLength; i++) {
       if ( from[i % from.length] && to[i % to.length] ) {

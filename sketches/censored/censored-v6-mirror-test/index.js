@@ -1,7 +1,3 @@
-let pixilatedCanvas = null;
-let maskImage = null;
-let masked = null;
-
 import { shapes, sketch, events, animation, colors, mappers, easing, grid } from './utils/index.js';
 
 const canvases = {}
@@ -18,7 +14,6 @@ sketch.setup(() => {
   );
 
   canvases.pixilated.pixelDensity(0.1)
-
 
   const xCount = 1;
   const yCount = 1;
@@ -42,7 +37,7 @@ sketch.setup(() => {
 }, {
   animation: {
     framerate: 60,
-    duration: 20
+    duration: 10
   },
   type: '2d'
 });
@@ -154,8 +149,8 @@ sketch.draw((time) => {
   image(canvases.pixilated, 0, -height, width, height/2);
 
 
-  // canvases.pixilated.pixelDensity(0.085)
-  canvases.pixilated.pixelDensity(mappers.circularIndex(time*2, [1, 1, 0.1, 0.01, 0.05, 0.025, 0.085]))
+  canvases.pixilated.pixelDensity(0.05)
+  // canvases.pixilated.pixelDensity(mappers.circularIndex(time*2, [1, 1, 0.1, 0.01, 0.05, 0.025, 0.085]))
   // canvases.pixilated.pixelDensity(animation.ease({
   //   values: [ 0.1, 0.01, 0.05, 0.025, 0.085],
   //   currentTime: time/2,
