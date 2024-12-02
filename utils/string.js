@@ -1,26 +1,28 @@
-import events from './events.js';
 import cache from './cache.js';
 
 const string = {
   fonts: {
-    sans: undefined,
-    get serif() {
-      return loadFont("assets/fonts/libre-baskerville.ttf")
+    loaded: {},
+    loadFont: (key, path) => {
+      return string.fonts.loaded[key] ?? (string.fonts.loaded[key] = loadFont(path)) ;
     },
-    // get sans() {
-    //   return loadFont("assets/fonts/passion-one.ttf")
-    // },
+    get serif() {
+      return string.fonts.loadFont("serif", "assets/fonts/libre-baskerville.ttf");
+    },
+    get sans() {
+      return string.fonts.loadFont("sans", "assets/fonts/passion-one.ttf")
+    },
     get openSans() {
-      return loadFont("assets/fonts/open-sans.ttf")
+      return string.fonts.loadFont("openSans", "assets/fonts/open-sans.ttf");
     },
     get tilt() {
-      return loadFont("assets/fonts/tilt-prism.ttf")
+      return string.fonts.loadFont("tilt", "assets/fonts/tilt-prism.ttf");
     },
     get multicoloure() {
-      return loadFont("assets/fonts/multicoloure.ttf")
+      return string.fonts.loadFont("multicoloure", "assets/fonts/multicoloure.ttf");
     },
     get martian() {
-      return loadFont("assets/fonts/martian.ttf")
+      return string.fonts.loadFont("martian", "assets/fonts/martian.ttf");
     },
   },
   write: function (
@@ -85,6 +87,10 @@ const string = {
     graphics.text(str, position.x, position.y);
   },
   getTextPoints: ({ text, size, font, position, sampleFactor, simplifyThreshold }) => {
+    if (!font?.font) {
+      return;
+    }
+    
     const fontFamily = font.font?.names?.fontFamily?.en;
     const textPointsCacheKey = cache.key(text, fontFamily, "text-points", sampleFactor, size)
   
@@ -111,13 +117,5 @@ const string = {
     })
   }
 };
-
-events.register("engine-window-preload", () => {
-  string.fonts.sans = loadFont("assets/fonts/passion-one.ttf");
-  
-  // string.fonts.comfortaa = loadFont("assets/fonts/comfortaa.ttf");
-  string.fonts.sans = loadFont("assets/fonts/passion-one.ttf");
-  // string.fonts.montepetrum = loadFont("assets/fonts/montepetrum.ttf");
-});
 
 export default string;
