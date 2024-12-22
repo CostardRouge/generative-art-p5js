@@ -1238,7 +1238,7 @@
    },
    "censored": {
       "meta": {
-         "_mtime": "2024-12-02T19:39:58.930Z",
+         "_mtime": "2024-12-02T20:20:48.204Z",
          "name": "censored"
       },
       "sketches": {
@@ -1248,6 +1248,13 @@
                "name": "censored-v1"
             },
             "path": "sketches/censored/censored-v1"
+         },
+         "censored-v10-circle": {
+            "meta": {
+               "_mtime": "2024-12-22T15:10:24.724Z",
+               "name": "censored-v10-circle"
+            },
+            "path": "sketches/censored/censored-v10-circle"
          },
          "censored-v2": {
             "meta": {
