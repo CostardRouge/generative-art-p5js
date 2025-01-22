@@ -1,10 +1,14 @@
 import { sketch, options, debug, animation } from './index.js';
 
+
+
 const recorder = {
   savedFramesCount: 0,
   recording: false,
   capturer: undefined,
-  createRecorder: () => {
+  createRecorder: async () => {
+    // await loadScript("libraries/CCapture.all.min.js");
+
     recorder.capturer = new CCapture({
       format: options.get('recording-format'),
       quality: "best",
