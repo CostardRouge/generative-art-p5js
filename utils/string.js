@@ -86,7 +86,7 @@ const string = {
 
     graphics.text(str, position.x, position.y);
   },
-  getTextPoints: ({ text, size, font, position, sampleFactor, simplifyThreshold }) => {
+  getTextPoints: ({ text, size, font, position = createVector(0, 0), sampleFactor, simplifyThreshold }) => {
     if (!font?.font) {
       return;
     }
