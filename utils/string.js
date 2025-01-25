@@ -42,8 +42,18 @@ const string = {
       showLines = false,
       center = false,
     } = options;
+// console.log(font?.textBounds);
+
+
+    if (!font?.font) {
+      console.log({font});
+
+      return;
+    }
 
     const position = createVector( x, y )
+
+    push()
 
     graphics.fill(fill);
     graphics.stroke(stroke);
@@ -85,6 +95,8 @@ const string = {
     // rect( box.x, box.y, box.w, box.h )
 
     graphics.text(str, position.x, position.y);
+
+    pop()
   },
   getTextPoints: ({ text, size, font, position = createVector(0, 0), sampleFactor, simplifyThreshold }) => {
     if (!font?.font) {
