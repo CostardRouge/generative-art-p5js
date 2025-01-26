@@ -21,15 +21,15 @@ sketch.setup(() => {
     sketch?.engine?.canvas?.height
   );
 
-  // canvases.foreground.pixelDensity(0.035)
+  // canvases.foreground.pixelDensity(0.1)
 }, {
   animation: {
     framerate: 60,
     duration: 12
   },
   size: {
-    width: 768,
-    height: 1366
+    width: 1080,
+    height: 1920
   },
   type: '2d'
 });
@@ -47,9 +47,8 @@ function drawShape( { canvas, depth = 1, points, position }) {
     const depthProgression = -(z/depth)
 
     canvas.push();
-    canvas.translate( position.x, position.y )
-    canvas.translate( 0, 0, mappers.fn(z, 0, depth, 0, -1000, easing.easeInExpo_ ) )
-    canvas.strokeWeight( 5 )
+    canvas.translate( position.x, position.y, mappers.fn(z, 0, depth, 0, -500, easing.easeInExpo_ ) )
+    canvas.strokeWeight( 8 )
 
     for (let i = 0; i < points.length; i++) {
       //const progression = i / points.length
@@ -58,36 +57,43 @@ function drawShape( { canvas, depth = 1, points, position }) {
       const colorFunction = colors.rainbow;
 
       const opacityFactor = mappers.fn(
-        sin(depthProgression*2*PI, easing.easeInOutExpo),
+        Math.sin(depthProgression+animation.sinAngle),
           -1, 1,
-          1.25, 1
-        ) * Math.pow(1.3, z);
+          1.25, 1,
+          easing.easeInOutExpo) * Math.pow(1.29, z);
 
-      canvas.stroke(colorFunction({
+      const _color = colorFunction({
         hueOffset: (
           // +depthProgression*10
+          +drawShapeNth/10
           // +mappers.fn(depthProgression, 0, 1, 0, PI/2, easing.easeInOutExpo)
           +animation.circularProgression
           +0
         ),
         // hueIndex: mappers.circularPolar(progression, 0, 1, -PI, PI)*2,
-        hueIndex: mappers.fn(noise(x/width*2, y/height*3+animation.circularProgression*2, drawShapeNth/10+depthProgression), 0, 1, -PI, PI)*14,
+        hueIndex: mappers.fn(noise(x/width+i/points.length, y/height+animation.circularProgression, drawShapeNth/10+depthProgression), 0, 1, -PI, PI)*14,
         // hueIndex:mappers.fn(noise(x/width, y/height, progression/2+depthProgression/2), 0, 1, -PI, PI)*10,
         opacityFactor,
         // opacityFactor: map(depthProgression, 0, 1, 1.75, 1) * Math.pow(1.05, z)
-      }))
+      });
 
-      const xx = (
-        x*mappers.fn(z, 0, depth, 1, 0, easing.easeInExpo)
-        +x*Math.pow(1.25, z)
-      )
+      const { levels: [r, g, b ] } = _color;
 
-      const yy = (
-        y*mappers.fn(z, 0, depth, 1, 0, easing.easeInExpo)
-        +y*Math.pow(1.11, z)
-      )
+      if (1 || r >= 10 && g >= 10 && b >= 10) {
+        canvas.stroke(_color)
 
-      canvas.point(xx, yy)
+        const xx = (
+          x*mappers.fn(z, 0, depth, 1, 0, easing.easeInExpo)
+          +x*Math.pow(1.2, z)
+        )
+  
+        const yy = (
+          y*mappers.fn(z, 0, depth, 1, 0, easing.easeInExpo)
+          +y*Math.pow(1.05, z)
+        )
+  
+        canvas.point(xx, yy)
+      }
     }
     canvas.pop()
   }
@@ -102,8 +108,8 @@ function drawMask(canvas, step = 1/100) {
   const radius = width/4;
   const margin = radius+50;
   const position = createVector(
-    mappers.fn(Math.sin(animation.sinAngle*6), -1, 1, -width/2+margin, width/2-margin, easing.easeInOutSdine ),
-    mappers.fn(Math.cos(animation.cosAngle*1), -1, 1, -height/2+margin, height/2-margin, easing.easeInOutSine )
+    mappers.fn(Math.sin(animation.sinAngle*3), -1, 1, -width/2+margin, width/2-margin, easing.easeInOutQuad ),
+    mappers.fn(Math.cos(animation.cosAngle*1), -1, 1, -height/2+margin, height/2-margin, easing.easeInOutQuad )
   )
 
   position.add(width/2, height/2)
@@ -156,13 +162,13 @@ sketch.draw((time, _, favoriteColor) => {
     position: createVector(0, 0),
     size: width/5.5,
     font: string.fonts.sans,
-    sampleFactor: 0.3,
+    sampleFactor: 0.21,
     simplifyThreshold: 0
   }
 
   const drawShapeOptions = {
     // depth: 20,
-    depth: 35
+    depth: 20
   }
 
   // Now: 2025
