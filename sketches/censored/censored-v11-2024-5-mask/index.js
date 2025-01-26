@@ -27,10 +27,6 @@ sketch.setup(() => {
     framerate: 60,
     duration: 12
   },
-  size: {
-    width: 1350,
-    height: 1080
-  },
   type: '2d'
 });
 
