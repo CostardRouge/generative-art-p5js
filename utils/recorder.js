@@ -26,9 +26,6 @@ const recorder = {
     if (maximumFrames) {
       animation.time = 0;
 
-      console.log(animation);
-      
-
       if (!document.getElementById('recording-progression')) {
         const progressBar = document.createElement('div')
         
