@@ -1263,26 +1263,19 @@
             },
             "path": "sketches/censored/censored-v11-2024-5-mask"
          },
-         "censored-v11-blur": {
-            "meta": {
-               "_mtime": "2025-01-22T23:31:36.635Z",
-               "name": "censored-v11-blur"
-            },
-            "path": "sketches/censored/censored-v11-blur"
-         },
-         "censored-v11-gradient": {
-            "meta": {
-               "_mtime": "2024-12-29T00:38:26.440Z",
-               "name": "censored-v11-gradient"
-            },
-            "path": "sketches/censored/censored-v11-gradient"
-         },
          "censored-v12-xray": {
             "meta": {
                "_mtime": "2025-01-26T00:28:59.566Z",
                "name": "censored-v12-xray"
             },
             "path": "sketches/censored/censored-v12-xray"
+         },
+         "censored-v13-gradient": {
+            "meta": {
+               "_mtime": "2024-12-29T00:38:26.440Z",
+               "name": "censored-v13-gradient"
+            },
+            "path": "sketches/censored/censored-v13-gradient"
          },
          "censored-v2": {
             "meta": {
