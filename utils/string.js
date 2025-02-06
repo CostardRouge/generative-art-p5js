@@ -24,6 +24,12 @@ const string = {
     get martian() {
       return string.fonts.loadFont("martian", "assets/fonts/martian.ttf");
     },
+    get cloitre() {
+      return string.fonts.loadFont("cloitre", "assets/fonts/cloitre.ttf");
+    },
+    get agiro() {
+      return string.fonts.loadFont("agiro", "assets/fonts/agiro.otf");
+    },
   },
   write: function (
     str,
