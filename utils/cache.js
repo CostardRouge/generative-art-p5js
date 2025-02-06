@@ -1,12 +1,14 @@
 const cache = {
   values: {},
   store: function(key, compute, enabled = true) {
+    const currentValue = cache.values[ key ];
+
     if ( enabled !== true ) {
-      return compute();
+      return compute(currentValue);
     }
 
     if ( undefined === cache.values[ key ] ) {
-      return cache.set( key, compute() );
+      return cache.set( key, compute(currentValue) );
     }
   
     return cache.get(key);

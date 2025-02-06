@@ -1265,7 +1265,7 @@
          },
          "censored-v12-xray": {
             "meta": {
-               "_mtime": "2025-01-26T00:28:59.566Z",
+               "_mtime": "2025-01-27T12:43:58.589Z",
                "name": "censored-v12-xray"
             },
             "path": "sketches/censored/censored-v12-xray"
@@ -1276,6 +1276,13 @@
                "name": "censored-v13-gradient"
             },
             "path": "sketches/censored/censored-v13-gradient"
+         },
+         "censored-v14-bali": {
+            "meta": {
+               "_mtime": "2025-02-06T00:02:58.877Z",
+               "name": "censored-v14-bali"
+            },
+            "path": "sketches/censored/censored-v14-bali"
          },
          "censored-v2": {
             "meta": {
@@ -2799,6 +2806,21 @@
                "name": "sketches-in-berlin-v5-asterix"
             },
             "path": "sketches/sketches-in-berlin/sketches-in-berlin-v5-asterix"
+         }
+      }
+   },
+   "social-media-templates": {
+      "meta": {
+         "_mtime": "2025-01-27T12:32:36.756Z",
+         "name": "social-media-templates"
+      },
+      "sketches": {
+         "social-media-templates-v1-basic": {
+            "meta": {
+               "_mtime": "2025-01-27T13:07:44.551Z",
+               "name": "social-media-templates-v1-basic"
+            },
+            "path": "sketches/social-media-templates/social-media-templates-v1-basic"
          }
       }
    },
