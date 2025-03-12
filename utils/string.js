@@ -48,12 +48,7 @@ const string = {
       showLines = false,
       center = false,
     } = options;
-// console.log(font?.textBounds);
-
-
     if (!font?.font) {
-      console.log({font});
-
       return;
     }
 
