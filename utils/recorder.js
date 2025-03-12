@@ -1,7 +1,5 @@
 import { sketch, options, debug, animation } from './index.js';
 
-
-
 const recorder = {
   savedFramesCount: 0,
   recording: false,

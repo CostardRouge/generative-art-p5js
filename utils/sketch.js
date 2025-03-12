@@ -62,5 +62,4 @@ const sketch = {
   },
 };
 
-
 export default sketch;
