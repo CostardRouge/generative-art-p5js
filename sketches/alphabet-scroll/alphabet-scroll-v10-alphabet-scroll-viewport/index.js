@@ -2,12 +2,30 @@ import { midi, events, sketch, string, mappers, easing, animation, colors, cache
 
 // let slider;
 
-sketch.setup( () => {
-  // slider = createSlider(0, 1, 0.5, 0.01);
-}, { type: "webgl" } );
-events.register( "post-setup", midi.setup );
+// sketch.setup( () => {
+//   // slider = createSlider(0, 1, 0.5, 0.01);
+// }, { type: "webgl" } );
+
+sketch.setup(() => {
+  pixelDensity(1)
+}, {
+  type: "webgl",
+  size: {
+    // width: 5120,
+    // height: 1080
+
+     width: 1080,
+    height: 1350
+  },
+});
+
+// events.register( "post-setup", midi.setup );
 
 function getTextPoints({ text, size, font, position, sampleFactor, simplifyThreshold }) {
+  if ( !font?.font ) {
+      return;
+    }
+
   const fontFamily = font.font?.names?.fontFamily?.en;
   const textPointsCacheKey = cache.key(text, fontFamily, "text-points", sampleFactor)
 
@@ -34,23 +52,46 @@ function getTextPoints({ text, size, font, position, sampleFactor, simplifyThres
   });
 }
 
-function lerpPoints(from, to, amount, fn) {
-  const result = {};
-  const maxLength = Math.max(from.length, to.length);
+function lerpPoints(from, to, amount, fn = p5.Vector?.lerp) {
+   const result = [
+    ];
+    const maxLength = Math.max(
+      from?.length,
+      to?.length
+    );
 
-  for (let i = 0; i < maxLength; i++) {
-    if ( from[i % from.length] && to[i % to.length] ) {
-      const lerpedVector = p5.Vector?.lerp(
-        from[i % from.length],
-        to[i % to.length],
-        amount
-      );
-  
-      result[`${lerpedVector.x}${lerpedVector.y}`] = lerpedVector;
+    for ( let i = 0; i < maxLength; i++ ) {
+      if ( from[ i % from.length ] && to[ i % to.length ] ) {
+        const lerpedVector = fn(
+          from[ i % from.length ],
+          to[ i % to.length ],
+          amount
+        );
+
+        result.push( lerpedVector );
+
+        // result[`${lerpedVector.x}${lerpedVector.y}`] = lerpedVector;
+      }
     }
-  }
 
-  return Object.values(result);
+    return result;
+
+  // const result = {};
+  // const maxLength = Math.max(from.length, to.length);
+
+  // for (let i = 0; i < maxLength; i++) {
+  //   if ( from[i % from.length] && to[i % to.length] ) {
+  //     const lerpedVector = p5.Vector?.lerp(
+  //       from[i % from.length],
+  //       to[i % to.length],
+  //       amount
+  //     );
+  
+  //     result[`${lerpedVector.x}${lerpedVector.y}`] = lerpedVector;
+  //   }
+  // }
+
+  // return Object.values(result);
 
   // const result = [];
   // const maxLength = Math.max(from.length, to.length);
@@ -100,20 +141,17 @@ let alphabet = Array(26).fill(undefined).map((_, index) => String.fromCharCode(i
 
 // alphabet = "text-scroll-?".toUpperCase().split("")
 // alphabet = "salsa-bachata".toUpperCase().split("")
-alphabet = "test".split("")
-alphabet = "0123456789".split("")
+// alphabet = "test".split("")
+// alphabet = "0123456789".split("")
+// alphabet = "ultrawide".split("")
+alphabet = "1080x1350".split("")
 
 sketch.draw( (time, center) => {
   background(0);
   noFill();
   stroke(128, 128, 255);
 
-  const W = width/2;
-  const H = height/2
 
-  const margin = 50;
-  const triangleHeight = 30;
-  const triangleWidth = 20;
 
   // if (currentIndex !== Math.round(pointsProgression)) {
   //   currentIndex = Math.round(pointsProgression)
@@ -124,7 +162,8 @@ sketch.draw( (time, center) => {
   //   // midi.play(notes[currentIndex]);
   // }
 
-  const letterRange = 2;
+  const letterRange = 1;
+
   const letterSliderSpeed = time;
   
   const letterStartIndex = animation.ease({
@@ -143,12 +182,14 @@ sketch.draw( (time, center) => {
     // easingFn: easing.easeInSine
   });
 
-  const count = 50;
-  const letterScale = 1.75;
-  const letterSize = width/4;
-  const letterMargin = margin+100;
-  const from = createVector(-W+letterMargin, 0);
-  const to = createVector(W-letterMargin, 0);
+  const W = width/2;
+  const H = height/2
+  const count = 150;
+  const letterScale = 0.75;
+  const margin = (width*0.3);
+  const letterSize = height-(height*0.1);
+  const from = createVector(-W+margin, 0);
+  const to = createVector(W-margin, 0);
 
   for (let t = 0; t < count; t++) {
     const horizontalProgression = t/count;
@@ -161,7 +202,7 @@ sketch.draw( (time, center) => {
           text,
           size: letterSize,
           position: center,
-          sampleFactor: .1/2,
+          sampleFactor: .02,
           simplifyThreshold: 0,
           font: string.fonts.martian
         })
@@ -177,7 +218,7 @@ sketch.draw( (time, center) => {
     push();
     translate( p5.Vector.lerp(from, to, horizontalProgression) )
     // rotateY(PI/3)
-    strokeWeight( 5 )
+    strokeWeight( 20 )
 
     for (let i = 0; i < points.length; i++) {
       const progression = i / points.length
@@ -193,7 +234,7 @@ sketch.draw( (time, center) => {
           +0
         ),
         // hueIndex: mappers.circularPolar(progression, 0, 1, -PI, PI),
-        hueIndex: mappers.fn(noise(x/width+horizontalProgression, y/height+horizontalProgression, horizontalProgression/3), 0, 1, -PI, PI)*12,
+        hueIndex: mappers.fn(noise(x/width+horizontalProgression, y/height+horizontalProgression, horizontalProgression/3), 0, 1, -PI, PI)*6,
         opacityFactor,
       }))
 
@@ -203,13 +244,20 @@ sketch.draw( (time, center) => {
     pop()
   }
 
+  const sliderTextSize = height/alphabet.length;
+  const triangleHeight = sliderTextSize;
+  const triangleWidth = sliderTextSize;
+
+  const sliderXMargin = sliderTextSize;
+  const sliderYMargin = sliderTextSize;
+
   drawRangeSlider(
     {
       from: letterStartIndex/(alphabet.length-1),
       to: letterEndIndex/(alphabet.length-1)
     },
-    createVector(-W+margin, H-margin, 0),
-    createVector(W-margin, H-margin, 0),
+    createVector(-W+sliderXMargin, H-sliderYMargin, 0),
+    createVector(W-sliderXMargin, H-sliderYMargin, 0),
     alphabet.length-1,
     ( index, position, fromPosition, toPosition ) => {
       // const inside = index >= letterStartIndex && index <= letterEndIndex+1
@@ -219,7 +267,7 @@ sketch.draw( (time, center) => {
         // showBox: true,
         // showLines: true,
         center: true,
-        size: 36,
+        size: sliderTextSize,
         // stroke: 255,
         // strokeWeight: 1,
         fill: inside ? color( 128, 128, 255 ) : 255,
@@ -227,18 +275,18 @@ sketch.draw( (time, center) => {
       })
     },
     ( fromPosition, toPosition ) => {
-      strokeWeight(2)
+      // strokeWeight(5)
       
-      beginShape()
-      vertex(fromPosition.x-triangleWidth, fromPosition.y-triangleHeight)
-      vertex(fromPosition.x-triangleWidth, fromPosition.y+triangleHeight)
+      // beginShape()
+      // vertex(fromPosition.x-triangleWidth, fromPosition.y-triangleHeight)
+      // vertex(fromPosition.x-triangleWidth, fromPosition.y+triangleHeight)
 
-      vertex(toPosition.x+triangleWidth, toPosition.y+triangleHeight)
-      vertex(toPosition.x+triangleWidth, toPosition.y-triangleHeight)
+      // vertex(toPosition.x+triangleWidth, toPosition.y+triangleHeight)
+      // vertex(toPosition.x+triangleWidth, toPosition.y-triangleHeight)
     
-      endShape(CLOSE)
+      // endShape(CLOSE)
     }
   )
 
-  orbitControl();
+  // orbitControl();
 });
