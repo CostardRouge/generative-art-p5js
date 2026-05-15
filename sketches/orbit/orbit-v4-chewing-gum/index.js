@@ -84,7 +84,6 @@ class Spiral {
   }
 }
 
-
 sketch.draw( time => {
   background(0);
   shapes.forEach((shape, index) => shape.draw(time, index));

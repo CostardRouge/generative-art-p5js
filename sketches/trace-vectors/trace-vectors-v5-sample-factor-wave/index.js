@@ -19,7 +19,15 @@ function drawGrid(xCount, yCount, color, weight = 2, offset = 0) {
   }
 }
 
-sketch.setup( undefined, { type: "webgl" } );
+sketch.setup(() => {
+  pixelDensity(1)
+}, {
+  type: "webgl",
+  size: {
+    width: 5120,
+    height: 1080
+  },
+});
 
 const alphabet = "123".split("")
 
@@ -41,27 +49,27 @@ sketch.draw( ( time, center, favoriteColor ) => {
   const W = width/2;
   const H = height/2;
 
-  const letterSize = W/1.5//1.25;
-  const margin = letterSize/2;
+  const letterSize = W/2.25;
+  const margin = 200+letterSize;
 
   const from = createVector(-W+margin, 0);
   const to = createVector(W-margin, 0);
 
-  push()
-  translate(-W, -H)
-  const columns = 3;
-  const rows = 1//columns * (height/width);
-  drawGrid(columns, rows, favoriteColor, 0.5, 0)
-  pop()
+  // push()
+  // translate(-W, -H)
+  // const columns = 3;
+  // const rows = 1//columns * (height/width);
+  // drawGrid(columns, rows, favoriteColor, 4, 0)
+  // pop()
 
-  translate(0, 0, 1)
+  // translate(0, 0, 1)
 
   const start = [];
   const end = [];
   const middle = [];
 
   mappers.traceVectors(
-    alphabet.length*9,
+    alphabet.length,
     ( progression ) => {
       const sampleFactor = animation.ease({
         values: [.1, .075, .065, .05, .045, .03, .025], 
