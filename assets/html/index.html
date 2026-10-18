@@ -59,22 +59,9 @@
       document.querySelector("head > link[rel=stylesheet]").href = "assets/stylesheets/common.css";
     </script>
 
-    <script async>
-      async function loadGA() {
-        if ("127.0.0.1" === location.hostname) {
-          return;
-        }
-      
-        await import("https://www.googletagmanager.com/gtag/js?id=G-PMQPYZEY5F");
-
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-PMQPYZEY5F');
-      }
-    </script>
 
   <script src="libraries/CCapture.all.min.js"></script>
+<script async data-umami="audience" src="https://insight.steevepommier.com/insight" data-website-id="66bbc932-2bef-4b32-ba37-d07163f3d639" data-domains="art.steeve.website,costardrouge.github.io" data-do-not-track="true" data-exclude-search="true" data-exclude-hash="true"></script>
 </head>
 
   <body>
