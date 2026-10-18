@@ -19,12 +19,10 @@ jobs:
           npm install --prefix ./node_modules/sketch-gallery
           npm run gallery:build
       # Audience measurement (scripts/inject-umami.js): the tracker tag goes
-      # into every built page. UMAMI_WEBSITE_ID is a repository variable;
-      # without it no page gets the tag.
+      # into every built page. The website id is in the script; set
+      # UMAMI_WEBSITE_ID here to override it, empty to switch it off.
       - name: Count visits with Umami 📈
         run: npm run umami:inject
-        env:
-          UMAMI_WEBSITE_ID: ${{ vars.UMAMI_WEBSITE_ID }}
       - name: Deploy to GitHub pages🚀
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:

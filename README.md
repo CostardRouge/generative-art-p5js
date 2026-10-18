@@ -18,8 +18,9 @@ gallery is built, `scripts/inject-umami.js` writes it into every page of the
 built folder (`npm run umami:inject`), asking the tracker to honour Do Not
 Track and to drop the query and the fragment of an address.
 
-- `UMAMI_WEBSITE_ID`: the site's id in the Umami dashboard, a repository
-  variable read by the workflow. **Unset or empty, no page gets the tag** and
-  nothing is sent — a fork or a local build measures nothing.
+- The site's id in the Umami dashboard is in the script (`DEFAULT_WEBSITE_ID`);
+  `UMAMI_WEBSITE_ID` overrides it, and **empty, no page gets the tag** and
+  nothing is sent (`UMAMI_WEBSITE_ID= npm run umami:inject`).
 - `UMAMI_SRC` (the tracker's address) and `UMAMI_DOMAINS` (hosts allowed to
-  report, comma-separated) override the defaults in the script.
+  report, comma-separated) override the other defaults; a host not listed
+  (localhost, a fork) loads the tracker but never counts.
