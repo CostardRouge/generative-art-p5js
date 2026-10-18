@@ -16,7 +16,8 @@
 //   UMAMI_SRC         the tracker's address (default: the owner's instance,
 //                     named /insight: filter lists block /script.js)
 //   UMAMI_DOMAINS     hosts allowed to report, comma-separated (default: the
-//                     GitHub Pages host); anything else loads but never counts
+//                     gallery's own domain and the GitHub Pages host);
+//                     anything else loads but never counts
 //
 // Umami is self-hosted by the owner, cookie-free, and the tag asks it to
 // honour Do Not Track and to drop the query and the fragment of an address.
@@ -26,7 +27,7 @@ const { join } = require("path");
 
 const DEFAULT_SRC = "https://insight.steevepommier.com/insight";
 const DEFAULT_WEBSITE_ID = "66bbc932-2bef-4b32-ba37-d07163f3d639";
-const DEFAULT_DOMAINS = "costardrouge.github.io";
+const DEFAULT_DOMAINS = "art.steeve.website,costardrouge.github.io";
 const MARKER = 'data-umami="audience"';
 
 function* htmlFiles(dir) {

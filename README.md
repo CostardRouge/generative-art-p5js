@@ -22,5 +22,6 @@ Track and to drop the query and the fragment of an address.
   `UMAMI_WEBSITE_ID` overrides it, and **empty, no page gets the tag** and
   nothing is sent (`UMAMI_WEBSITE_ID= npm run umami:inject`).
 - `UMAMI_SRC` (the tracker's address) and `UMAMI_DOMAINS` (hosts allowed to
-  report, comma-separated) override the other defaults; a host not listed
+  report, comma-separated: `art.steeve.website` and the GitHub Pages host by
+  default) override the other defaults; a host not listed
   (localhost, a fork) loads the tracker but never counts.
