@@ -23,6 +23,10 @@ jobs:
       # UMAMI_WEBSITE_ID here to override it, empty to switch it off.
       - name: Count visits with Umami 📈
         run: npm run umami:inject
+      # The version at the foot of the gallery's page (scripts/inject-version.js),
+      # read from package.json: rule 4 of CLAUDE.md.
+      - name: Show the version 🏷️
+        run: npm run version:inject
       - name: Deploy to GitHub pages🚀
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:

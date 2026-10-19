@@ -25,3 +25,13 @@ Track and to drop the query and the fragment of an address.
   report, comma-separated: `art.steeve.website` and the GitHub Pages host by
   default) override the other defaults; a host not listed
   (localhost, a fork) loads the tracker but never counts.
+
+## Versions
+
+The gallery carries one version, `version` in `package.json`, shown at the
+foot of its page: `scripts/inject-version.js` writes it into the built page
+after the build, like the tracker (`npm run version:inject`); the sketch
+pages carry nothing. `CHANGELOG.md` says what each release brought;
+`.github/workflows/release.yml` tags and publishes each section once it
+reaches `main`, and `node .github/release.mjs check` holds the file to the
+version before a pull request is merged.
