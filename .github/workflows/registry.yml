@@ -1,0 +1,209 @@
+name: Registry
+
+# Rapporte l'état du projet au registre (les fiches de costardrouge/second-brain)
+# sans qu'aucune session n'ait à toucher second-brain — CLAUDE.md, règle
+# « Report the project's state ».
+#
+# À chaque push sur main : retrouver la PR fusionnée de ce commit, lire le bloc
+# Registry de sa description — ou, sans PR ou sans bloc, ceux des messages des
+# commits poussés (une session locale l'écrit là) — et l'envoyer à second-brain
+# par un `repository_dispatch`. C'est second-brain qui écrit la fiche
+# (`.github/workflows/registry-intake.yml` là-bas). Ce fichier est identique
+# dans chaque dépôt du portfolio : le modifier ici, c'est le modifier partout.
+#
+# Le bloc, dans une PR, est un commentaire HTML — `<!-- Registry` … `-->` — :
+# invisible dans la PR affichée, il ne la pollue pas, et son français ne se
+# mêle pas à une description en anglais. Un message de commit (session locale)
+# le porte après une ligne « Registry: ». Invisible n'est pas privé : l'API le
+# rend à quiconque lit le dépôt. Donc, dans un dépôt PUBLIC, le bloc ne porte
+# que ce qui est déjà public — la ligne `Project:`, des cases cochées
+# (`- [x]`) et une ligne `Log:` ; jamais de `Last point:`, jamais de case
+# ouverte, rien d'autre.
+#
+# Le job `check` vérifie tout cela SUR LA PR, avant la fusion — après, il est
+# trop tard : la description est déjà publique. Il échoue sur un bloc mal formé,
+# sur un bloc en clair (titre `### Registry`) dans une PR, et, dans un dépôt
+# public, sur une ligne interdite. Au push sur main, il refait la lecture et,
+# si une ligne interdite est passée quand même, la retire avant l'envoi.
+#
+# Le secret REGISTRE_TOKEN (un token fin, « Contents: write » sur second-brain
+# SEUL) vit dans l'environnement `registre`, réservé à la branche main : un
+# workflow poussé sur une autre branche ne peut pas le lire, et le job `send`
+# ne tourne que sur un push. Sans secret, il le dit et sort en vert ; un token
+# refusé (expiré) le fait rougir.
+#
+# `registre` et `REGISTRE_TOKEN` gardent leur nom français, seuls de tout le
+# circuit : ils vivent dans les réglages GitHub de chaque dépôt, pas dans un
+# fichier, et seul `bin/registry-setup.sh` lancé sur la machine du mainteneur
+# peut les recréer. Les renommer ici sans relancer ce script couperait tous les
+# rapports en silence.
+#
+# Rejouer un rapport : relancer ce workflow sur le commit concerné.
+# Second-brain ignore une source qu'il a déjà, donc c'est sans risque.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+# Les deux jobs n'appellent que l'API GitHub. Leur machine est nommée
+# (`ubuntu-24.04`) plutôt que `ubuntu-latest`, qui passe à Ubuntu 26 à partir
+# du 19 octobre 2026 : le changement d'OS devient un choix, pas une surprise.
+# `github-script@v8` tourne sur Node 24 ; la v7 visait Node 20, déprécié.
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      payload: ${{ steps.lire.outputs.payload }}
+    steps:
+      - id: lire
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const isPublic = context.payload.repository && context.payload.repository.private === false;
+
+            // Le bloc en commentaire : `<!-- Registry` sur sa ligne, puis le
+            // bloc, puis `-->`.
+            const hidden = (text) => {
+              const m = /<!--[ \t]*Registry[ \t]*:?[ \t]*\n([\s\S]*?)-->/i.exec(text);
+              return m ? m[1].trim() : null;
+            };
+            // Le bloc en clair : de « ### Registry » (ou une ligne « Registry »
+            // seule) jusqu'au titre suivant de niveau 1 à 3 hors bloc de code.
+            const visible = (text) => {
+              const lines = text.split("\n");
+              const start = lines.findIndex((l) => /^\s*(#{1,4}\s*)?Registry\s*:?\s*$/i.test(l));
+              if (start < 0) return null;
+              const out = [];
+              let fence = false;
+              for (const l of lines.slice(start + 1)) {
+                if (/^\s*```/.test(l)) fence = !fence;
+                else if (!fence && /^#{1,3}\s/.test(l)) break;
+                out.push(l);
+              }
+              return out.join("\n").trim() || null;
+            };
+            const read = (raw) => {
+              const text = String(raw || "").replace(/\r/g, "");
+              const h = hidden(text);
+              if (h) return { block: h, form: "hidden" };
+              const v = visible(text);
+              return v ? { block: v, form: "visible" } : null;
+            };
+
+            // Ce qu'un dépôt public a le droit d'écrire : le projet, des cases
+            // cochées, une ligne de journal. Le reste est une fuite.
+            const publicLine = (l) =>
+              /^\s*$/.test(l) ||
+              /^\s*Project\s*:\s*[a-z0-9][a-z0-9-]*\s*$/i.test(l) ||
+              /^\s*[-*]\s*\[[xX]\]\s+\S/.test(l) ||
+              /^\s*Log\s*:/i.test(l);
+            const check = (block) => {
+              const problems = [];
+              const first = block.split("\n").map((l) => l.trim()).find(Boolean) || "";
+              if (!/^Project\s*:\s*[a-z0-9][a-z0-9-]*$/i.test(first)) {
+                problems.push(`la première ligne doit nommer la fiche (Project: <slug>), pas « ${first.slice(0, 80)} »`);
+              }
+              const leaks = isPublic ? block.split("\n").filter((l) => !publicLine(l)) : [];
+              for (const l of leaks) problems.push(`dépôt public, ligne interdite : « ${l.trim().slice(0, 80)} »`);
+              return { problems, leaks };
+            };
+
+            const { owner, repo } = context.repo;
+            const full = `${owner}/${repo}`;
+
+            // Sur une PR : vérifier, et rien d'autre.
+            if (context.eventName === "pull_request") {
+              const found = read(context.payload.pull_request.body);
+              if (!found) {
+                core.info("Pas de bloc Registry dans cette PR : rien à vérifier.");
+                return;
+              }
+              const { problems } = check(found.block);
+              if (found.form === "visible") {
+                problems.unshift("le bloc est en clair dans la description : mettez-le dans un commentaire HTML, `<!-- Registry` … `-->`");
+              }
+              if (problems.length) {
+                core.setFailed(`Bloc Registry refusé${isPublic ? " (dépôt public)" : ""} :\n- ${problems.join("\n- ")}`);
+                return;
+              }
+              core.info(`Bloc Registry conforme${isPublic ? " pour un dépôt public" : ""}.`);
+              return;
+            }
+
+            // Sur un push sur main : rassembler les sources.
+            const sources = [];
+            const add = (src, raw) => {
+              const found = read(raw);
+              if (!found) return;
+              const { problems, leaks } = check(found.block);
+              let block = found.block;
+              if (leaks.length) {
+                block = block.split("\n").filter(publicLine).join("\n").trim();
+                core.warning(`${src.ref} : ${leaks.length} ligne(s) interdite(s) dans un dépôt public, retirée(s) avant l'envoi.`);
+              }
+              if (problems.length > leaks.length) {
+                core.warning(`${src.ref} : bloc ignoré — ${problems[0]}`);
+                return;
+              }
+              sources.push({ ...src, block: block.slice(0, 6000) });
+            };
+
+            const { data: prs } = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+              owner, repo, commit_sha: context.sha,
+            });
+            for (const pr of prs.filter((p) => p.merged_at)) {
+              add({ ref: `${full}#${pr.number}`, title: pr.title, url: pr.html_url, date: pr.merged_at }, pr.body);
+            }
+            if (sources.length === 0) {
+              for (const c of context.payload.commits || []) {
+                add({ ref: `${full}@${c.id.slice(0, 7)}`, title: c.message.split("\n")[0], url: c.url, date: c.timestamp }, c.message);
+              }
+            }
+
+            if (sources.length === 0) {
+              core.info("Aucun bloc Registry dans ce push : rien à rapporter.");
+              return;
+            }
+            core.setOutput("payload", JSON.stringify({ repo: full, sources: sources.slice(0, 10) }));
+
+  send:
+    needs: check
+    if: github.event_name == 'push' && needs.check.outputs.payload != ''
+    runs-on: ubuntu-24.04
+    environment: registre
+    timeout-minutes: 5
+    steps:
+      - uses: actions/github-script@v8
+        env:
+          REGISTRE_TOKEN: ${{ secrets.REGISTRE_TOKEN }}
+          PAYLOAD: ${{ needs.check.outputs.payload }}
+        with:
+          script: |
+            const token = process.env.REGISTRE_TOKEN;
+            if (!token) {
+              core.warning("REGISTRE_TOKEN absent de l'environnement « registre » : rien n'est rapporté.");
+              return;
+            }
+            const payload = JSON.parse(process.env.PAYLOAD);
+            const res = await fetch("https://api.github.com/repos/costardrouge/second-brain/dispatches", {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${token}`,
+                Accept: "application/vnd.github+json",
+                "X-GitHub-Api-Version": "2022-11-28",
+              },
+              body: JSON.stringify({ event_type: "registry", client_payload: payload }),
+            });
+            if (res.status !== 204) {
+              core.setFailed(`second-brain a refusé le rapport (${res.status}) : ${await res.text()}`);
+              return;
+            }
+            core.info(`Rapporté à second-brain : ${payload.sources.map((s) => s.ref).join(", ")}`);
