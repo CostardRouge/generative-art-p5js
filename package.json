@@ -1,6 +1,7 @@
 {
     "name": "generative-art-p5js",
     "version": "1.0.0",
+    "license": "MIT",
     "scripts": {
         "gallery:deploy": "sketch-gallery deploy / tree.json assets libraries utils sketches",
         "gallery:build": "sketch-gallery build / tree.json assets libraries utils sketches",

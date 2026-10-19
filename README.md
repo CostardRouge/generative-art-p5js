@@ -35,3 +35,9 @@ pages carry nothing. `CHANGELOG.md` says what each release brought;
 `.github/workflows/release.yml` tags and publishes each section once it
 reaches `main`, and `node .github/release.mjs check` holds the file to the
 version before a pull request is merged.
+
+## Licence
+
+MIT (`LICENSE`): the sketches, their runtime in `utils/` and the scripts are
+Steeve Pommier's own work. The libraries vendored in `libraries/` (p5.js,
+three.js, simplex-noise, webmidi, CCapture…) keep their authors' licences.
