@@ -1,21 +1,39 @@
 name: Build and Deploy to github-pages
+
+# Every push to main rebuilds the gallery and publishes
+# node_modules/sketch-gallery/dist to the gh-pages branch, which GitHub Pages
+# serves at art.steeve.website (the custom domain is set in the repository's
+# Pages settings; the branch keeps its CNAME). What is published has not
+# changed since 2026-10-19 — the toolchain did: Node from .nvmrc, npm ci on
+# the lockfile, the actions on their current majors, a named runner
+# (ubuntu-latest moves to Ubuntu 26 from 2026-10-19).
+
 on:
   push:
     branches:
       - main
+
 permissions:
   contents: write
+
 jobs:
   build-and-deploy:
     concurrency: ci-${{ github.ref }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
 
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      # The gallery package ships no lockfile, hence its own install after npm ci.
       - name: Install and Build 🔧
         run: |
-          npm install
+          npm ci
           npm install --prefix ./node_modules/sketch-gallery
           npm run gallery:build
       # Audience measurement (scripts/inject-umami.js): the tracker tag goes

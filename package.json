@@ -2,7 +2,11 @@
     "name": "generative-art-p5js",
     "version": "1.0.0",
     "license": "MIT",
+    "engines": {
+        "node": ">=22"
+    },
     "scripts": {
+        "lint": "biome lint .",
         "gallery:deploy": "sketch-gallery deploy / tree.json assets libraries utils sketches",
         "gallery:build": "sketch-gallery build / tree.json assets libraries utils sketches",
         "umami:inject": "node ./scripts/inject-umami.js node_modules/sketch-gallery/dist",
@@ -12,6 +16,7 @@
         "build:previews": "node ./scripts/build-previews.js tree.json 512x512 jpeg"
     },
     "devDependencies": {
+        "@biomejs/biome": "^2.5.15",
         "chrome-aws-lambda": "^10.1.0",
         "puppeteer-core": "^10.4.0",
         "sketch-gallery": "github:CostardRouge/sketch-gallery#0.0.15"

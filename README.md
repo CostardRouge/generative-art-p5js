@@ -41,3 +41,15 @@ version before a pull request is merged.
 MIT (`LICENSE`): the sketches, their runtime in `utils/` and the scripts are
 Steeve Pommier's own work. The libraries vendored in `libraries/` (p5.js,
 three.js, simplex-noise, webmidi, CCapture…) keep their authors' licences.
+
+## Development
+
+Node 24 (`.nvmrc`; 22 is the floor), npm with `package-lock.json`. `npm ci`,
+then `npm install --prefix ./node_modules/sketch-gallery` (the gallery
+package ships no lockfile), `npm run gallery:build`, `npm run umami:inject`,
+`npm run version:inject`: the built site is in `node_modules/sketch-gallery/dist`
+— an `npm ci` deletes it. `npm run lint` runs Biome over `scripts/` (the
+sketches and `utils/` are left as they were made, `biome.jsonc` says why).
+`.github/workflows/ci.yml` runs the lint and that build on every pull request
+and every push to `main`; Dependabot raises the dev dependencies and the
+workflows' actions weekly.

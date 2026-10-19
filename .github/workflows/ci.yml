@@ -1,0 +1,52 @@
+name: CI
+
+# The gate (CLAUDE.md, Context): the lint, then what the deploy builds — the
+# gallery page, the sources copied beside it, the tracker and the version
+# written into the built page — on every pull request and every push to main.
+# Nothing is deployed here. The previews (scripts/build-previews.js) are not
+# part of it: they need the owner's Mac and its Chrome. Every run checks out
+# the whole repository, 1.5 GB of sketches and their media.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Lint and build
+    # Named rather than ubuntu-latest, which moves to Ubuntu 26 from 2026-10-19.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      # The gallery package ships no lockfile, hence its own install after npm ci.
+      - name: Build the gallery
+        run: |
+          npm install --prefix ./node_modules/sketch-gallery
+          npm run gallery:build
+
+      - name: Write the tracker and the version into the built page
+        run: |
+          npm run umami:inject
+          npm run version:inject
+          grep -q 'data-version="' node_modules/sketch-gallery/dist/index.html
