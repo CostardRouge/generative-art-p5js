@@ -18,7 +18,7 @@
     "devDependencies": {
         "@biomejs/biome": "^2.5.15",
         "chrome-aws-lambda": "^10.1.0",
-        "puppeteer-core": "^10.4.0",
+        "puppeteer-core": "^25.14.0",
         "sketch-gallery": "github:CostardRouge/sketch-gallery#0.0.15"
     }
 }
