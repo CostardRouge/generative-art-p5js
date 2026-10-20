@@ -22,8 +22,8 @@
 // Umami is self-hosted by the owner, cookie-free, and the tag asks it to
 // honour Do Not Track and to drop the query and the fragment of an address.
 
-const { readdirSync, readFileSync, writeFileSync } = require("fs");
-const { join } = require("path");
+const { readdirSync, readFileSync, writeFileSync } = require("node:fs");
+const { join } = require("node:path");
 
 const DEFAULT_SRC = "https://insight.steevepommier.com/insight";
 const DEFAULT_WEBSITE_ID = "66bbc932-2bef-4b32-ba37-d07163f3d639";

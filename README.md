@@ -25,3 +25,31 @@ Track and to drop the query and the fragment of an address.
   report, comma-separated: `art.steeve.website` and the GitHub Pages host by
   default) override the other defaults; a host not listed
   (localhost, a fork) loads the tracker but never counts.
+
+## Versions
+
+The gallery carries one version, `version` in `package.json`, shown at the
+foot of its page: `scripts/inject-version.js` writes it into the built page
+after the build, like the tracker (`npm run version:inject`); the sketch
+pages carry nothing. `CHANGELOG.md` says what each release brought;
+`.github/workflows/release.yml` tags and publishes each section once it
+reaches `main`, and `node .github/release.mjs check` holds the file to the
+version before a pull request is merged.
+
+## Licence
+
+MIT (`LICENSE`): the sketches, their runtime in `utils/` and the scripts are
+Steeve Pommier's own work. The libraries vendored in `libraries/` (p5.js,
+three.js, simplex-noise, webmidi, CCapture…) keep their authors' licences.
+
+## Development
+
+Node 24 (`.nvmrc`; 22 is the floor), npm with `package-lock.json`. `npm ci`,
+then `npm install --prefix ./node_modules/sketch-gallery` (the gallery
+package ships no lockfile), `npm run gallery:build`, `npm run umami:inject`,
+`npm run version:inject`: the built site is in `node_modules/sketch-gallery/dist`
+— an `npm ci` deletes it. `npm run lint` runs Biome over `scripts/` (the
+sketches and `utils/` are left as they were made, `biome.jsonc` says why).
+`.github/workflows/ci.yml` runs the lint and that build on every pull request
+and every push to `main`; Dependabot raises the dev dependencies and the
+workflows' actions weekly.

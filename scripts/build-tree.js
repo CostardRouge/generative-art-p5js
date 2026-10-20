@@ -1,5 +1,5 @@
-const { writeFileSync, statSync, promises } = require("fs");
-const { resolve } = require("path");
+const { writeFileSync, statSync, promises } = require("node:fs");
+const { resolve } = require("node:path");
 const { readdir } = promises;
 
 async function* getFiles(dir) {

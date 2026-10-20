@@ -1,0 +1,49 @@
+name: Release
+
+# Versions and releases (COMMON-PROJECT-SPEC, C13), identical in every repo: copy it with .github/release.mjs.
+# On a pull request, `check` refuses a CHANGELOG.md that disagrees with package.json's version or breaks its shape.
+# On main, `publish` gives every CHANGELOG section that has none its tag v<version> and its GitHub Release: the
+# release pull request's merge commit for package.json's version, the named commit for a backfilled one. Merging a
+# pull request that does not bump the version publishes nothing.
+# A backfilled tag points at an older commit, whose .github/workflows differ from main's: GitHub refuses that to the
+# workflow's own token, so backfills are skipped here with a warning and published by second-brain's "Backfill
+# releases" workflow, which holds the maintainer's token. "Run workflow" re-runs publish on main by hand.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - run: node .github/release.mjs check
+
+  publish:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    concurrency:
+      group: release
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - run: node .github/release.mjs publish
+        env:
+          GH_TOKEN: ${{ github.token }}

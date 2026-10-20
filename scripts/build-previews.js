@@ -1,4 +1,4 @@
-const { writeFileSync, readFileSync, existsSync } = require("fs");
+const { writeFileSync, readFileSync, existsSync } = require("node:fs");
 const core = require( 'puppeteer-core' );
 //const chrome = require( 'chrome-aws-lambda' );
 
@@ -8,24 +8,6 @@ const type = process.argv[4];
 const timeout = process.argv[5] || 1000;
 
 let _page;
-
-async function getScreenshot(html) {
-  const [ width, height ] = size.split( 'x' ).map( Number );
-
-  const browser = await core.launch({
-    args: [],
-    // args: chrome.args,
-    executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-    // executablePath: await chrome.executablePath,
-    headless: false
-    // headless: true
-  });
-
-  const page = await browser.newPage();
-  await page.setViewport({ width, height});
-  await page.setContent(html);
-  return await page.screenshot({ type });
-}
 
 async function getPage() {
   if (_page) {

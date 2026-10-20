@@ -105,3 +105,10 @@ dist
 
 .DS_Store
 nft-gallery
+
+# Editors and environment files (COMMON-PROJECT-SPEC C16). .idea/ and
+# .vscode/settings.json were tracked until 2026-10-19; a settings file holds
+# one machine's paths, never the project's.
+.idea/
+.vscode/
+.env*
