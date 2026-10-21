@@ -1,25 +1,38 @@
+# Dependabot, the portfolio's shape (COMMON-PROJECT-SPEC.md, C20).
+# Trimmed to what this repository has: one package.json at the root and
+# the workflows; no Dockerfile, no compose file.
 version: 2
 updates:
   - package-ecosystem: npm
     directory: /
     schedule:
-      interval: weekly
-      day: monday
-    open-pull-requests-limit: 5
-    ignore:
-      # Keep Node type definitions in step with the Node.js version in .nvmrc.
-      - dependency-name: '@types/node'
-        update-types: ['version-update:semver-major']
+      interval: monthly
+    cooldown:
+      default-days: 7
+      semver-major-days: 30
+    open-pull-requests-limit: 3
     groups:
-      dev-dependencies:
-        dependency-type: development
+      # Every minor and patch, production and development together:
+      # one pull request a month.
+      minor-and-patch:
         update-types: [minor, patch]
+      security:
+        applies-to: security-updates
+        patterns: ['*']
+    ignore:
+      # chrome-aws-lambda 10.1.0, the last ever published, peers on
+      # puppeteer-core ^10: any later major fails `npm ci` with ERESOLVE.
+      # Lift when the Mac-only preview script leaves chrome-aws-lambda
+      # (the owner's call, docs/memory/gallery-and-deploy.md).
+      - dependency-name: 'puppeteer-core'
+        update-types: ['version-update:semver-major']
 
   - package-ecosystem: github-actions
     directory: /
     schedule:
-      interval: weekly
-      day: monday
+      interval: monthly
+    cooldown:
+      default-days: 7
     groups:
       actions:
         patterns: ['*']
