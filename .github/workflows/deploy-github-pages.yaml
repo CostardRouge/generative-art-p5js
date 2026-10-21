@@ -46,7 +46,7 @@ jobs:
       - name: Show the version 🏷️
         run: npm run version:inject
       - name: Deploy to GitHub pages🚀
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        uses: JamesIves/github-pages-deploy-action@v4.9.0
         with:
           branch: gh-pages
           folder: node_modules/sketch-gallery/dist
