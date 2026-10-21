@@ -64,7 +64,7 @@ jobs:
       payload: ${{ steps.lire.outputs.payload }}
     steps:
       - id: lire
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const isPublic = context.payload.repository && context.payload.repository.private === false;
@@ -181,7 +181,7 @@ jobs:
     environment: registre
     timeout-minutes: 5
     steps:
-      - uses: actions/github-script@v8
+      - uses: actions/github-script@v9
         env:
           REGISTRE_TOKEN: ${{ secrets.REGISTRE_TOKEN }}
           PAYLOAD: ${{ needs.check.outputs.payload }}
