@@ -7,6 +7,7 @@
     },
     "scripts": {
         "lint": "biome lint .",
+        "test": "node --test \"tests/**/*.test.js\"",
         "gallery:deploy": "sketch-gallery deploy / tree.json assets libraries utils sketches",
         "gallery:build": "sketch-gallery build / tree.json assets libraries utils sketches",
         "site:copy": "node ./scripts/copy-site.js node_modules/sketch-gallery/dist",

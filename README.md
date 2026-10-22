@@ -28,6 +28,14 @@ hand and its output is committed:
 The manifest says `display: browser`: an installed gallery opens in a normal
 browser window, so a sketch keeps its back button.
 
+## Legal notice
+
+`site/legal/index.html` is the legal notice, served at `/legal/` and linked
+from the gallery's footer beside the version: the publisher, the host, what
+the audience measurement sends and what the browser keeps, with a switch that
+stops counting this browser's visits (it sets `umami.disabled`, Umami's own
+opt-out key). `tests/legal.test.js` (`npm test`) holds it to the code.
+
 ## Audience measurement
 
 Visits are counted with [Umami](https://umami.is), self-hosted by the author

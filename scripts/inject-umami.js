@@ -98,4 +98,4 @@ function main() {
 
 if (require.main === module) main();
 
-module.exports = { inject, settings, trackerTag };
+module.exports = { inject, settings, trackerTag, DEFAULT_SRC, DEFAULT_DOMAINS, MARKER };

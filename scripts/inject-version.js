@@ -12,7 +12,8 @@
 //
 // The line is a <footer> before </body>, in the flow after the gallery —
 // not fixed, because the page already pins its social links to the bottom
-// edge — linking to the repository's releases. Idempotent: a page already
+// edge — holding the legal notice's link and the version, which links to the
+// repository's releases. Idempotent: a page already
 // carrying the marker is left alone, so the script can run twice without
 // harm.
 
@@ -21,6 +22,9 @@ const { join, resolve } = require("node:path");
 
 const MARKER = 'data-version="';
 const RELEASES = "https://github.com/CostardRouge/generative-art-p5js/releases";
+// The legal notice, site/legal/index.html, copied to the built root by
+// copy-site.js: linked from the one footer the gallery has.
+const LEGAL = "/legal/";
 
 function escapeHtml(value) {
   return String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
@@ -32,6 +36,7 @@ function footer(version) {
   const v = escapeHtml(version);
   return (
     `<footer data-version="${v}" style="padding:0 12px 80px;text-align:right;font-size:.75rem;opacity:.6">` +
+    `<a href="${LEGAL}" style="color:inherit">Legal notice</a> · ` +
     `<a href="${RELEASES}" style="color:inherit" rel="noopener">v${v}</a></footer>`
   );
 }
