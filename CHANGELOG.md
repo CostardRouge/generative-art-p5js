@@ -8,6 +8,8 @@ Codenames are drawing tools, in alphabetical order.
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-10-22 — Brush
+
 ### Added
 
 - An icon of its own — a light spiral on the gallery's dark ground — in browser tabs, on a phone's home screen and in
