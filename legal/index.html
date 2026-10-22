@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Legal notice and privacy — My sketches using p5js</title>
+    <meta name="description" content="Who publishes art.steeve.website, who hosts it, and what it knows about you: very little." />
+    <link rel="canonical" href="https://art.steeve.website/legal/" />
+    <!--
+      The gallery's legal notice (COMMON-PROJECT-SPEC C17), served at /legal/.
+      Copied to the built root from site/ by scripts/copy-site.js; the tracker
+      and the icons are written into it after the build like every other page.
+      tests/legal.test.js holds its facts to the code: the tracker's host and
+      settings (scripts/inject-umami.js), the keys kept in the browser, the
+      absence of any event. Change what is measured or stored, change this page
+      in the same commit.
+    -->
+    <style>
+      :root { --dark: #1e1d1d; --light: #f9f7f2; color-scheme: dark; }
+      body { background: var(--dark); color: var(--light); font-family: "Lexend Deca", system-ui, sans-serif; line-height: 1.6; margin: 0; }
+      main { max-width: 42rem; margin: 0 auto; padding: 2rem 1rem 4rem; }
+      h1 { font-size: 1.6rem; line-height: 1.25; margin: 1.5rem 0 .5rem; }
+      h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: .04em; margin: 2.2rem 0 .4rem; padding: .4rem 0; border-bottom: 1px solid rgba(249, 247, 242, .25); }
+      a { color: inherit; text-decoration: underline; text-underline-offset: .15em; }
+      a:focus-visible, button:focus-visible { outline: 2px solid var(--light); outline-offset: 2px; }
+      code { font-size: .9em; background: rgba(249, 247, 242, .1); padding: .05em .3em; border-radius: 3px; }
+      .muted { opacity: .7; font-size: .9rem; }
+      .switch { border: 1px solid rgba(249, 247, 242, .35); padding: .8rem 1rem; margin: 1rem 0; }
+      .switch p { margin: 0 0 .6rem; }
+      button { font: inherit; color: var(--dark); background: var(--light); border: 0; padding: .4rem .9rem; cursor: pointer; }
+      button[hidden] { display: none; }
+    </style>
+  <script async data-umami="audience" src="https://insight.steevepommier.com/insight" data-website-id="66bbc932-2bef-4b32-ba37-d07163f3d639" data-domains="art.steeve.website,costardrouge.github.io" data-do-not-track="true" data-exclude-search="true" data-exclude-hash="true"></script>
+<link rel="icon" href="/icon.svg" type="image/svg+xml" data-icons>
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/favicon-16.png" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#1e1d1d">
+<meta name="apple-mobile-web-app-title" content="Sketches">
+</head>
+  <body>
+    <main>
+      <p><a href="/">← Back to the sketches</a></p>
+      <h1>Legal notice and privacy</h1>
+      <p>Who publishes this site, who hosts it, and what it knows about you: very little.</p>
+      <p class="muted">Last updated on 22 October 2026.</p>
+
+      <h2 id="publisher">Publisher</h2>
+      <p>art.steeve.website is published by <b>Steeve Pommier</b>, a private individual, on a non-commercial basis: it is free, carries no advertising and sells nothing. The sketches are his own work.</p>
+      <p>Contact: through the site's <a href="https://github.com/CostardRouge/generative-art-p5js">repository on GitHub</a>.</p>
+      <p>As a non-professional publisher, the identification details required by French law (Loi pour la confiance dans l’économie numérique, art. 6-III) are held by the host below.</p>
+
+      <h2 id="hosting">Hosting</h2>
+      <p>The site is served by GitHub Pages: GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, United States, <a href="https://github.com">github.com</a>. Visit counting runs on a server of the publisher's (see below).</p>
+
+      <h2 id="measurement">Audience measurement</h2>
+      <p>Visits are counted with <a href="https://umami.is">Umami</a>, self-hosted by the publisher at <code>insight.steevepommier.com</code>: no third party receives the data, and none of it is used for advertising.</p>
+      <p><b>What is sent</b>, for each page viewed: its address (the path alone, without query string or fragment), its title, the site you came from, your screen size and your browser’s language. From the request, the server works out your browser, your operating system, the type of device and your country. No event is sent: what you do inside a sketch is never reported.</p>
+      <p><b>What never is</b>: your IP address is not stored, and nothing can follow you from one site to another. No cookie is set.</p>
+      <p>Visits are only counted on <code>art.steeve.website</code> and <code>costardrouge.github.io</code>, and never when your browser sends <i>Do Not Track</i> or when you switch counting off here; that choice is kept in this browser.</p>
+      <div class="switch" id="audience-switch">
+        <p id="audience-state">Without JavaScript, this page cannot tell whether your visits are counted; the counter does not run without it either.</p>
+        <button type="button" id="audience-toggle" hidden></button>
+      </div>
+
+      <h2 id="device">On your device</h2>
+      <p>The site has no account and keeps nothing about you on a server. In your browser’s local storage, on this device only:</p>
+      <ul>
+        <li>if you switch counting off above, the choice is kept under the key <code>umami.disabled</code>;</li>
+        <li>the control drawer of a sketch keeps its settings under the key <code>sketch-ui-settings</code>.</li>
+      </ul>
+      <p>Some sketches react to sound, to a camera or to a MIDI instrument: your browser asks for your permission first, and what they read is processed in your browser — the site has no server to send it to. To erase what is kept, clear this site’s data in your browser’s settings.</p>
+
+      <h2 id="third-parties">Cookies and third parties</h2>
+      <p>The site sets no cookie, so there is no consent banner: there is nothing to accept.</p>
+      <p>The gallery’s page loads its typeface from Google Fonts, so your browser asks Google’s servers for it, as described in <a href="https://policies.google.com/privacy">Google’s privacy policy</a>. Like any host, GitHub processes your IP address to deliver the pages and protect the site: see <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub’s privacy statement</a>. The site itself has no server and keeps no log.</p>
+
+      <h2 id="rights">Your rights</h2>
+      <p>The GDPR lets you ask for access to the data concerning you, or for its erasure. The site keeps none that names you: what is in your browser stays on your device, and the audience measurement carries no identifier. For any question or request, write through the <a href="https://github.com/CostardRouge/generative-art-p5js">site’s repository</a>; you may also complain to the <a href="https://www.cnil.fr">CNIL</a>.</p>
+
+      <h2 id="licence">Licence</h2>
+      <p>The sketches, their runtime and the site’s scripts are Steeve Pommier’s own work, published under the <a href="https://github.com/CostardRouge/generative-art-p5js/blob/main/LICENSE">MIT licence</a> with their <a href="https://github.com/CostardRouge/generative-art-p5js">source code</a>. The libraries the sketches use (p5.js, three.js, simplex-noise, WebMidi.js, CCapture.js and others, in <code>libraries/</code>) keep their authors’ licences.</p>
+
+      <h2 id="liability">Liability</h2>
+      <p>The site is provided as is, in good faith, with no warranty of any kind. Links to other sites are given for convenience; their content belongs to them.</p>
+    </main>
+    <script>
+      // The counting switch. Umami's tracker skips every send while
+      // localStorage holds "umami.disabled" (its own opt-out key), so this is
+      // all the switch needs; the checks below mirror the tracker's own.
+      (() => {
+        const KEY = "umami.disabled";
+        const DOMAINS = ["art.steeve.website", "costardrouge.github.io"];
+        const state = document.getElementById("audience-state");
+        const toggle = document.getElementById("audience-toggle");
+        const storage = (() => { try { return window.localStorage; } catch { return null; } })();
+        const dnt = [window.doNotTrack, navigator.doNotTrack, navigator.msDoNotTrack].some((v) => v === 1 || v === "1" || v === "yes");
+        const tracker = document.querySelector("script[data-umami]");
+        const render = () => {
+          toggle.hidden = true;
+          if (!tracker || !DOMAINS.includes(location.hostname)) {
+            state.textContent = "This copy of the site does not count visits.";
+          } else if (dnt) {
+            state.textContent = "Your browser asks not to be tracked: your visits are not counted.";
+          } else if (!storage) {
+            state.textContent = "Your visits are counted, anonymously. This browser keeps no site data, so the switch cannot be kept: send Do Not Track to stop counting.";
+          } else if (storage.getItem(KEY)) {
+            state.textContent = "Your visits are not counted in this browser.";
+            toggle.textContent = "Count my visits again";
+            toggle.hidden = false;
+          } else {
+            state.textContent = "Your visits are counted, anonymously, in this browser.";
+            toggle.textContent = "Stop counting my visits";
+            toggle.hidden = false;
+          }
+        };
+        toggle.addEventListener("click", () => {
+          if (storage.getItem(KEY)) storage.removeItem(KEY);
+          else storage.setItem(KEY, "1");
+          render();
+        });
+        render();
+      })();
+    </script>
+  </body>
+</html>

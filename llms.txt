@@ -1,0 +1,599 @@
+# My sketches using p5js — CostardRouge
+
+> Steeve Pommier's generative-art sketches written with p5.js between 2021 and 2025, published as a gallery where each sketch runs live in the browser.
+
+The gallery lists 453 sketches in 45 groups, newest groups first. Each sketch page runs its code full screen in the browser — some react to sound, a camera or a MIDI instrument — and its source code is on GitHub under the MIT licence.
+
+## The site
+
+- [Gallery](https://art.steeve.website/): every group and sketch, a tile per sketch
+- [Source code](https://github.com/CostardRouge/generative-art-p5js): the sketches, their runtime in utils/ and the gallery's build
+- [Legal notice](https://art.steeve.website/legal/): publisher, host, what is measured and kept
+
+## worms (12 sketches)
+
+- [worms-v0-alga](https://art.steeve.website/sketches/worms/worms-v0-alga/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/worms/worms-v0-alga/index.js
+- [worms-v1-rainbow](https://art.steeve.website/sketches/worms/worms-v1-rainbow/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/worms/worms-v1-rainbow/index.js
+- [worms-v10-starry-eating](https://art.steeve.website/sketches/worms/worms-v10-starry-eating/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/worms/worms-v10-starry-eating/index.js
+- [worms-v2-wavy](https://art.steeve.website/sketches/worms/worms-v2-wavy/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/worms/worms-v2-wavy/index.js
+- [worms-v4-starry](https://art.steeve.website/sketches/worms/worms-v4-starry/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/worms/worms-v4-starry/index.js
+- [worms-v5-radial](https://art.steeve.website/sketches/worms/worms-v5-radial/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/worms/worms-v5-radial/index.js
+- [worms-v6-tentacule](https://art.steeve.website/sketches/worms/worms-v6-tentacule/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/worms/worms-v6-tentacule/index.js
+- [worms-v6-tentacule-aperturing](https://art.steeve.website/sketches/worms/worms-v6-tentacule-aperturing/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/worms/worms-v6-tentacule-aperturing/index.js
+- [worms-v6-tentacule-dancing](https://art.steeve.website/sketches/worms/worms-v6-tentacule-dancing/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/worms/worms-v6-tentacule-dancing/index.js
+- [worms-v7-doodle](https://art.steeve.website/sketches/worms/worms-v7-doodle/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/worms/worms-v7-doodle/index.js
+- [worms-v8-starry-blooming](https://art.steeve.website/sketches/worms/worms-v8-starry-blooming/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/worms/worms-v8-starry-blooming/index.js
+- [worms-v9-starry-dancing](https://art.steeve.website/sketches/worms/worms-v9-starry-dancing/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/worms/worms-v9-starry-dancing/index.js
+
+## tree-2d (7 sketches)
+
+- [tree-2d-v1-whip](https://art.steeve.website/sketches/tree-2d/tree-2d-v1-whip/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/tree-2d/tree-2d-v1-whip/index.js
+- [tree-2d-v2-linear](https://art.steeve.website/sketches/tree-2d/tree-2d-v2-linear/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/tree-2d/tree-2d-v2-linear/index.js
+- [tree-2d-v3-eased](https://art.steeve.website/sketches/tree-2d/tree-2d-v3-eased/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/tree-2d/tree-2d-v3-eased/index.js
+- [tree-2d-v4-bretzel](https://art.steeve.website/sketches/tree-2d/tree-2d-v4-bretzel/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/tree-2d/tree-2d-v4-bretzel/index.js
+- [tree-2d-v5-cords](https://art.steeve.website/sketches/tree-2d/tree-2d-v5-cords/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/tree-2d/tree-2d-v5-cords/index.js
+- [tree-2d-v5-sphere](https://art.steeve.website/sketches/tree-2d/tree-2d-v5-sphere/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/tree-2d/tree-2d-v5-sphere/index.js
+- [tree-2d-v6-walking](https://art.steeve.website/sketches/tree-2d/tree-2d-v6-walking/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/tree-2d/tree-2d-v6-walking/index.js
+
+## trace-vectors (25 sketches)
+
+- [2024](https://art.steeve.website/sketches/trace-vectors/2024/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/trace-vectors/2024/index.js
+- [2024-grid](https://art.steeve.website/sketches/trace-vectors/2024-grid/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/trace-vectors/2024-grid/index.js
+- [trace-vectors-intp](https://art.steeve.website/sketches/trace-vectors/trace-vectors-intp/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/trace-vectors/trace-vectors-intp/index.js
+- [trace-vectors-sf-height](https://art.steeve.website/sketches/trace-vectors/trace-vectors-sf-height/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/trace-vectors/trace-vectors-sf-height/index.js
+- [trace-vectors-sf-height-2](https://art.steeve.website/sketches/trace-vectors/trace-vectors-sf-height-2/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/trace-vectors/trace-vectors-sf-height-2/index.js
+- [trace-vectors-v1-infinite](https://art.steeve.website/sketches/trace-vectors/trace-vectors-v1-infinite/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/trace-vectors/trace-vectors-v1-infinite/index.js
+- [trace-vectors-v10-abc-grid-moving](https://art.steeve.website/sketches/trace-vectors/trace-vectors-v10-abc-grid-moving/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/trace-vectors/trace-vectors-v10-abc-grid-moving/index.js
+- [trace-vectors-v11-135-grid-moving](https://art.steeve.website/sketches/trace-vectors/trace-vectors-v11-135-grid-moving/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/trace-vectors/trace-vectors-v11-135-grid-moving/index.js
+- [trace-vectors-v12-abc-circular-moving](https://art.steeve.website/sketches/trace-vectors/trace-vectors-v12-abc-circular-moving/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/trace-vectors/trace-vectors-v12-abc-circular-moving/index.js
+- [trace-vectors-v13-infinite](https://art.steeve.website/sketches/trace-vectors/trace-vectors-v13-infinite/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/trace-vectors/trace-vectors-v13-infinite/index.js
+- [trace-vectors-v14-random](https://art.steeve.website/sketches/trace-vectors/trace-vectors-v14-random/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/trace-vectors/trace-vectors-v14-random/index.js
+- [trace-vectors-v15-changing-speed](https://art.steeve.website/sketches/trace-vectors/trace-vectors-v15-changing-speed/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/trace-vectors/trace-vectors-v15-changing-speed/index.js
+- [trace-vectors-v16-changing-direction](https://art.steeve.website/sketches/trace-vectors/trace-vectors-v16-changing-direction/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/trace-vectors/trace-vectors-v16-changing-direction/index.js
+- [trace-vectors-v2-circle](https://art.steeve.website/sketches/trace-vectors/trace-vectors-v2-circle/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/trace-vectors/trace-vectors-v2-circle/index.js
+- [trace-vectors-v3-oscillation](https://art.steeve.website/sketches/trace-vectors/trace-vectors-v3-oscillation/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/trace-vectors/trace-vectors-v3-oscillation/index.js
+- [trace-vectors-v4-sample-factor](https://art.steeve.website/sketches/trace-vectors/trace-vectors-v4-sample-factor/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/trace-vectors/trace-vectors-v4-sample-factor/index.js
+- [trace-vectors-v5-sample-factor-wave](https://art.steeve.website/sketches/trace-vectors/trace-vectors-v5-sample-factor-wave/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/trace-vectors/trace-vectors-v5-sample-factor-wave/index.js
+- [trace-vectors-v6-rainbow-curves](https://art.steeve.website/sketches/trace-vectors/trace-vectors-v6-rainbow-curves/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/trace-vectors/trace-vectors-v6-rainbow-curves/index.js
+- [trace-vectors-v7-abc](https://art.steeve.website/sketches/trace-vectors/trace-vectors-v7-abc/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/trace-vectors/trace-vectors-v7-abc/index.js
+- [trace-vectors-v7-shiny](https://art.steeve.website/sketches/trace-vectors/trace-vectors-v7-shiny/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/trace-vectors/trace-vectors-v7-shiny/index.js
+- [trace-vectors-v8-123-grid](https://art.steeve.website/sketches/trace-vectors/trace-vectors-v8-123-grid/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/trace-vectors/trace-vectors-v8-123-grid/index.js
+- [trace-vectors-v8-color-changer-line](https://art.steeve.website/sketches/trace-vectors/trace-vectors-v8-color-changer-line/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/trace-vectors/trace-vectors-v8-color-changer-line/index.js
+- [trace-vectors-v8-justebe-temple](https://art.steeve.website/sketches/trace-vectors/trace-vectors-v8-justebe-temple/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/trace-vectors/trace-vectors-v8-justebe-temple/index.js
+- [trace-vectors-v8-numbers-grid](https://art.steeve.website/sketches/trace-vectors/trace-vectors-v8-numbers-grid/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/trace-vectors/trace-vectors-v8-numbers-grid/index.js
+- [trace-vectors-v9-123-grid-extended](https://art.steeve.website/sketches/trace-vectors/trace-vectors-v9-123-grid-extended/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/trace-vectors/trace-vectors-v9-123-grid-extended/index.js
+
+## torsade (15 sketches)
+
+- [torsade-juggle](https://art.steeve.website/sketches/torsade/torsade-juggle/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/torsade/torsade-juggle/index.js
+- [torsade-v0](https://art.steeve.website/sketches/torsade/torsade-v0/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/torsade/torsade-v0/index.js
+- [torsade-v1-unmelted](https://art.steeve.website/sketches/torsade/torsade-v1-unmelted/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/torsade/torsade-v1-unmelted/index.js
+- [torsade-v10-rabbit-hole](https://art.steeve.website/sketches/torsade/torsade-v10-rabbit-hole/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/torsade/torsade-v10-rabbit-hole/index.js
+- [torsade-v11-infinite](https://art.steeve.website/sketches/torsade/torsade-v11-infinite/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/torsade/torsade-v11-infinite/index.js
+- [torsade-v12-gradient-worms](https://art.steeve.website/sketches/torsade/torsade-v12-gradient-worms/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/torsade/torsade-v12-gradient-worms/index.js
+- [torsade-v13-medusa](https://art.steeve.website/sketches/torsade/torsade-v13-medusa/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/torsade/torsade-v13-medusa/index.js
+- [torsade-v2-chain](https://art.steeve.website/sketches/torsade/torsade-v2-chain/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/torsade/torsade-v2-chain/index.js
+- [torsade-v3-leaping-over](https://art.steeve.website/sketches/torsade/torsade-v3-leaping-over/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/torsade/torsade-v3-leaping-over/index.js
+- [torsade-v4-calm](https://art.steeve.website/sketches/torsade/torsade-v4-calm/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/torsade/torsade-v4-calm/index.js
+- [torsade-v5-flag](https://art.steeve.website/sketches/torsade/torsade-v5-flag/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/torsade/torsade-v5-flag/index.js
+- [torsade-v6-horn](https://art.steeve.website/sketches/torsade/torsade-v6-horn/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/torsade/torsade-v6-horn/index.js
+- [torsade-v7-melted](https://art.steeve.website/sketches/torsade/torsade-v7-melted/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/torsade/torsade-v7-melted/index.js
+- [torsade-v8-chain](https://art.steeve.website/sketches/torsade/torsade-v8-chain/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/torsade/torsade-v8-chain/index.js
+- [torsade-v9-dna-spiral](https://art.steeve.website/sketches/torsade/torsade-v9-dna-spiral/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/torsade/torsade-v9-dna-spiral/index.js
+
+## tests (10 sketches)
+
+- [cylinder](https://art.steeve.website/sketches/tests/cylinder/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/tests/cylinder/index.js
+- [flower-shape](https://art.steeve.website/sketches/tests/flower-shape/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/tests/flower-shape/index.js
+- [grid-2023](https://art.steeve.website/sketches/tests/grid-2023/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/tests/grid-2023/index.js
+- [grid-36daysoftype-10](https://art.steeve.website/sketches/tests/grid-36daysoftype-10/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/tests/grid-36daysoftype-10/index.js
+- [noisy-dominant-colors](https://art.steeve.website/sketches/tests/noisy-dominant-colors/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/tests/noisy-dominant-colors/index.js
+- [pen-vectors-test](https://art.steeve.website/sketches/tests/pen-vectors-test/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/tests/pen-vectors-test/index.js
+- [recursive-shape](https://art.steeve.website/sketches/tests/recursive-shape/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/tests/recursive-shape/index.js
+- [splines](https://art.steeve.website/sketches/tests/splines/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/tests/splines/index.js
+- [splines copy](https://art.steeve.website/sketches/tests/splines%20copy/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/tests/splines%20copy/index.js
+- [three-js-and-shaders](https://art.steeve.website/sketches/tests/three-js-and-shaders/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/tests/three-js-and-shaders/index.js
+
+## strips (16 sketches)
+
+- [rainbow-orbit](https://art.steeve.website/sketches/strips/rainbow-orbit/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/strips/rainbow-orbit/index.js
+- [strips-v1-up-and-down](https://art.steeve.website/sketches/strips/strips-v1-up-and-down/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/strips/strips-v1-up-and-down/index.js
+- [strips-v2-worms](https://art.steeve.website/sketches/strips/strips-v2-worms/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/strips/strips-v2-worms/index.js
+- [strips-v3-half-curve-fix-inner-count](https://art.steeve.website/sketches/strips/strips-v3-half-curve-fix-inner-count/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/strips/strips-v3-half-curve-fix-inner-count/index.js
+- [strips-v3-half-curve-fix-inner-count-2](https://art.steeve.website/sketches/strips/strips-v3-half-curve-fix-inner-count-2/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/strips/strips-v3-half-curve-fix-inner-count-2/index.js
+- [strips-v3-half-play-fix-inner-count](https://art.steeve.website/sketches/strips/strips-v3-half-play-fix-inner-count/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/strips/strips-v3-half-play-fix-inner-count/index.js
+- [strips-v3-half-play-variable-inner-count](https://art.steeve.website/sketches/strips/strips-v3-half-play-variable-inner-count/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/strips/strips-v3-half-play-variable-inner-count/index.js
+- [strips-v3-knot-fix-inner-count](https://art.steeve.website/sketches/strips/strips-v3-knot-fix-inner-count/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/strips/strips-v3-knot-fix-inner-count/index.js
+- [strips-v3-play-fix-inner-count](https://art.steeve.website/sketches/strips/strips-v3-play-fix-inner-count/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/strips/strips-v3-play-fix-inner-count/index.js
+- [strips-v3-play-fix-inner-count-high-opacity-factor](https://art.steeve.website/sketches/strips/strips-v3-play-fix-inner-count-high-opacity-factor/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/strips/strips-v3-play-fix-inner-count-high-opacity-factor/index.js
+- [strips-v3-play-variable-inner-count](https://art.steeve.website/sketches/strips/strips-v3-play-variable-inner-count/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/strips/strips-v3-play-variable-inner-count/index.js
+- [strips-v4-square-cords](https://art.steeve.website/sketches/strips/strips-v4-square-cords/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/strips/strips-v4-square-cords/index.js
+- [strips-v5-perpetual-lines](https://art.steeve.website/sketches/strips/strips-v5-perpetual-lines/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/strips/strips-v5-perpetual-lines/index.js
+- [strips-v6-white-lines](https://art.steeve.website/sketches/strips/strips-v6-white-lines/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/strips/strips-v6-white-lines/index.js
+- [test](https://art.steeve.website/sketches/strips/test/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/strips/test/index.js
+- [ukraine](https://art.steeve.website/sketches/strips/ukraine/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/strips/ukraine/index.js
+
+## spirals (9 sketches)
+
+- [spiral-v1-plots](https://art.steeve.website/sketches/spirals/spiral-v1-plots/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/spirals/spiral-v1-plots/index.js
+- [spiral-v2-worms](https://art.steeve.website/sketches/spirals/spiral-v2-worms/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/spirals/spiral-v2-worms/index.js
+- [spiral-v3-easing-field](https://art.steeve.website/sketches/spirals/spiral-v3-easing-field/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/spirals/spiral-v3-easing-field/index.js
+- [spiral-v4-springs](https://art.steeve.website/sketches/spirals/spiral-v4-springs/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/spirals/spiral-v4-springs/index.js
+- [spiral-v5-lolipop](https://art.steeve.website/sketches/spirals/spiral-v5-lolipop/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/spirals/spiral-v5-lolipop/index.js
+- [spiral-v6-tornado](https://art.steeve.website/sketches/spirals/spiral-v6-tornado/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/spirals/spiral-v6-tornado/index.js
+- [spiral-v7-petals](https://art.steeve.website/sketches/spirals/spiral-v7-petals/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/spirals/spiral-v7-petals/index.js
+- [spiral-v8-sticks](https://art.steeve.website/sketches/spirals/spiral-v8-sticks/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/spirals/spiral-v8-sticks/index.js
+- [spiral-v9-donut](https://art.steeve.website/sketches/spirals/spiral-v9-donut/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/spirals/spiral-v9-donut/index.js
+
+## sketches-in-berlin (5 sketches)
+
+- [sketches-in-berlin-v1-easing-jumping-star-trail](https://art.steeve.website/sketches/sketches-in-berlin/sketches-in-berlin-v1-easing-jumping-star-trail/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/sketches-in-berlin/sketches-in-berlin-v1-easing-jumping-star-trail/index.js
+- [sketches-in-berlin-v2-jumping-star-trail](https://art.steeve.website/sketches/sketches-in-berlin/sketches-in-berlin-v2-jumping-star-trail/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/sketches-in-berlin/sketches-in-berlin-v2-jumping-star-trail/index.js
+- [sketches-in-berlin-v3-moving-star-trail](https://art.steeve.website/sketches/sketches-in-berlin/sketches-in-berlin-v3-moving-star-trail/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/sketches-in-berlin/sketches-in-berlin-v3-moving-star-trail/index.js
+- [sketches-in-berlin-v4-rainbow-cyclone](https://art.steeve.website/sketches/sketches-in-berlin/sketches-in-berlin-v4-rainbow-cyclone/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/sketches-in-berlin/sketches-in-berlin-v4-rainbow-cyclone/index.js
+- [sketches-in-berlin-v5-asterix](https://art.steeve.website/sketches/sketches-in-berlin/sketches-in-berlin-v5-asterix/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/sketches-in-berlin/sketches-in-berlin-v5-asterix/index.js
+
+## semaphore (2 sketches)
+
+- [semaphore-v0-dots](https://art.steeve.website/sketches/semaphore/semaphore-v0-dots/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/semaphore/semaphore-v0-dots/index.js
+- [semaphore-v1-lines](https://art.steeve.website/sketches/semaphore/semaphore-v1-lines/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/semaphore/semaphore-v1-lines/index.js
+
+## ribbons (17 sketches)
+
+- [ribbons-v1-invisible-walls-purple](https://art.steeve.website/sketches/ribbons/ribbons-v1-invisible-walls-purple/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/ribbons/ribbons-v1-invisible-walls-purple/index.js
+- [ribbons-v1-invisible-walls-rainbow](https://art.steeve.website/sketches/ribbons/ribbons-v1-invisible-walls-rainbow/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/ribbons/ribbons-v1-invisible-walls-rainbow/index.js
+- [ribbons-v10-blurry-flower](https://art.steeve.website/sketches/ribbons/ribbons-v10-blurry-flower/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/ribbons/ribbons-v10-blurry-flower/index.js
+- [ribbons-v11](https://art.steeve.website/sketches/ribbons/ribbons-v11/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/ribbons/ribbons-v11/index.js
+- [ribbons-v12](https://art.steeve.website/sketches/ribbons/ribbons-v12/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/ribbons/ribbons-v12/index.js
+- [ribbons-v13](https://art.steeve.website/sketches/ribbons/ribbons-v13/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/ribbons/ribbons-v13/index.js
+- [ribbons-v14](https://art.steeve.website/sketches/ribbons/ribbons-v14/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/ribbons/ribbons-v14/index.js
+- [ribbons-v15-gold](https://art.steeve.website/sketches/ribbons/ribbons-v15-gold/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/ribbons/ribbons-v15-gold/index.js
+- [ribbons-v2-circle](https://art.steeve.website/sketches/ribbons/ribbons-v2-circle/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/ribbons/ribbons-v2-circle/index.js
+- [ribbons-v3-caterpillar-circle](https://art.steeve.website/sketches/ribbons/ribbons-v3-caterpillar-circle/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/ribbons/ribbons-v3-caterpillar-circle/index.js
+- [ribbons-v3-caterpillar-up-down](https://art.steeve.website/sketches/ribbons/ribbons-v3-caterpillar-up-down/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/ribbons/ribbons-v3-caterpillar-up-down/index.js
+- [ribbons-v4-petals](https://art.steeve.website/sketches/ribbons/ribbons-v4-petals/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/ribbons/ribbons-v4-petals/index.js
+- [ribbons-v5-flower](https://art.steeve.website/sketches/ribbons/ribbons-v5-flower/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/ribbons/ribbons-v5-flower/index.js
+- [ribbons-v6-flower-dotted](https://art.steeve.website/sketches/ribbons/ribbons-v6-flower-dotted/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/ribbons/ribbons-v6-flower-dotted/index.js
+- [ribbons-v7-travelling-flower-abrubt](https://art.steeve.website/sketches/ribbons/ribbons-v7-travelling-flower-abrubt/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/ribbons/ribbons-v7-travelling-flower-abrubt/index.js
+- [ribbons-v8-globule](https://art.steeve.website/sketches/ribbons/ribbons-v8-globule/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/ribbons/ribbons-v8-globule/index.js
+- [ribbons-v9-atom](https://art.steeve.website/sketches/ribbons/ribbons-v9-atom/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/ribbons/ribbons-v9-atom/index.js
+
+## rainbow-tribal (2 sketches)
+
+- [rainbow-tribal-v1](https://art.steeve.website/sketches/rainbow-tribal/rainbow-tribal-v1/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/rainbow-tribal/rainbow-tribal-v1/index.js
+- [rainbow-tribal-v2](https://art.steeve.website/sketches/rainbow-tribal/rainbow-tribal-v2/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/rainbow-tribal/rainbow-tribal-v2/index.js
+
+## rainbow-flame (4 sketches)
+
+- [rainbow-flame-v1](https://art.steeve.website/sketches/rainbow-flame/rainbow-flame-v1/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/rainbow-flame/rainbow-flame-v1/index.js
+- [rainbow-flame-v2](https://art.steeve.website/sketches/rainbow-flame/rainbow-flame-v2/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/rainbow-flame/rainbow-flame-v2/index.js
+- [rainbow-flame-v3](https://art.steeve.website/sketches/rainbow-flame/rainbow-flame-v3/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/rainbow-flame/rainbow-flame-v3/index.js
+- [rainbow-flame-v4](https://art.steeve.website/sketches/rainbow-flame/rainbow-flame-v4/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/rainbow-flame/rainbow-flame-v4/index.js
+
+## pulse (23 sketches)
+
+- [pulse-v1-guts](https://art.steeve.website/sketches/pulse/pulse-v1-guts/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/pulse/pulse-v1-guts/index.js
+- [pulse-v2-kraken](https://art.steeve.website/sketches/pulse/pulse-v2-kraken/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/pulse/pulse-v2-kraken/index.js
+- [pulse-v3-asterix](https://art.steeve.website/sketches/pulse/pulse-v3-asterix/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/pulse/pulse-v3-asterix/index.js
+- [pulse-v4-trinity](https://art.steeve.website/sketches/pulse/pulse-v4-trinity/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/pulse/pulse-v4-trinity/index.js
+- [pulse-v5-flower](https://art.steeve.website/sketches/pulse/pulse-v5-flower/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/pulse/pulse-v5-flower/index.js
+- [pulse-v6-sonar](https://art.steeve.website/sketches/pulse/pulse-v6-sonar/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/pulse/pulse-v6-sonar/index.js
+- [pulse-v7-scan](https://art.steeve.website/sketches/pulse/pulse-v7-scan/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/pulse/pulse-v7-scan/index.js
+- [pulse-v7-scan-asterix](https://art.steeve.website/sketches/pulse/pulse-v7-scan-asterix/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/pulse/pulse-v7-scan-asterix/index.js
+- [pulse-v7-scan-bar](https://art.steeve.website/sketches/pulse/pulse-v7-scan-bar/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/pulse/pulse-v7-scan-bar/index.js
+- [pulse-v7-scan-churros](https://art.steeve.website/sketches/pulse/pulse-v7-scan-churros/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/pulse/pulse-v7-scan-churros/index.js
+- [pulse-v7-scan-folding](https://art.steeve.website/sketches/pulse/pulse-v7-scan-folding/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/pulse/pulse-v7-scan-folding/index.js
+- [pulse-v7-scan-up-down](https://art.steeve.website/sketches/pulse/pulse-v7-scan-up-down/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/pulse/pulse-v7-scan-up-down/index.js
+- [pulse-v7-torsade](https://art.steeve.website/sketches/pulse/pulse-v7-torsade/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/pulse/pulse-v7-torsade/index.js
+- [pulse-v7-turbine](https://art.steeve.website/sketches/pulse/pulse-v7-turbine/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/pulse/pulse-v7-turbine/index.js
+- [pulse-v7-turbine-butterfly](https://art.steeve.website/sketches/pulse/pulse-v7-turbine-butterfly/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/pulse/pulse-v7-turbine-butterfly/index.js
+- [pulse-v7-turbine-eccentric](https://art.steeve.website/sketches/pulse/pulse-v7-turbine-eccentric/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/pulse/pulse-v7-turbine-eccentric/index.js
+- [pulse-v7-turbine-eccentric-squid](https://art.steeve.website/sketches/pulse/pulse-v7-turbine-eccentric-squid/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/pulse/pulse-v7-turbine-eccentric-squid/index.js
+- [pulse-v7-turbine-flower](https://art.steeve.website/sketches/pulse/pulse-v7-turbine-flower/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/pulse/pulse-v7-turbine-flower/index.js
+- [pulse-v7-turbine-grid](https://art.steeve.website/sketches/pulse/pulse-v7-turbine-grid/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/pulse/pulse-v7-turbine-grid/index.js
+- [pulse-v7-turbines-familly](https://art.steeve.website/sketches/pulse/pulse-v7-turbines-familly/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/pulse/pulse-v7-turbines-familly/index.js
+- [pulse-v8-mirror](https://art.steeve.website/sketches/pulse/pulse-v8-mirror/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/pulse/pulse-v8-mirror/index.js
+- [pulse-v8-quadra](https://art.steeve.website/sketches/pulse/pulse-v8-quadra/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/pulse/pulse-v8-quadra/index.js
+- [pulse-v9-curtain](https://art.steeve.website/sketches/pulse/pulse-v9-curtain/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/pulse/pulse-v9-curtain/index.js
+
+## polar-strip (5 sketches)
+
+- [polar-strip-v0](https://art.steeve.website/sketches/polar-strip/polar-strip-v0/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/polar-strip/polar-strip-v0/index.js
+- [polar-strip-v1](https://art.steeve.website/sketches/polar-strip/polar-strip-v1/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/polar-strip/polar-strip-v1/index.js
+- [polar-strip-v1-lights](https://art.steeve.website/sketches/polar-strip/polar-strip-v1-lights/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/polar-strip/polar-strip-v1-lights/index.js
+- [polar-strip-v2-lights-mouse](https://art.steeve.website/sketches/polar-strip/polar-strip-v2-lights-mouse/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/polar-strip/polar-strip-v2-lights-mouse/index.js
+- [polar-strip-v3-easing-star](https://art.steeve.website/sketches/polar-strip/polar-strip-v3-easing-star/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/polar-strip/polar-strip-v3-easing-star/index.js
+
+## pen (2 sketches)
+
+- [pen-v1-draw-paths-in-a-grid](https://art.steeve.website/sketches/pen/pen-v1-draw-paths-in-a-grid/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/pen/pen-v1-draw-paths-in-a-grid/index.js
+- [pen-v2-draw-paths-with-blob-in-a-grid](https://art.steeve.website/sketches/pen/pen-v2-draw-paths-with-blob-in-a-grid/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/pen/pen-v2-draw-paths-with-blob-in-a-grid/index.js
+
+## orbit (7 sketches)
+
+- [noise-background](https://art.steeve.website/sketches/orbit/noise-background/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/orbit/noise-background/index.js
+- [orbit-v1-geeko](https://art.steeve.website/sketches/orbit/orbit-v1-geeko/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/orbit/orbit-v1-geeko/index.js
+- [orbit-v2-molecule](https://art.steeve.website/sketches/orbit/orbit-v2-molecule/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/orbit/orbit-v2-molecule/index.js
+- [orbit-v3-disk](https://art.steeve.website/sketches/orbit/orbit-v3-disk/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/orbit/orbit-v3-disk/index.js
+- [orbit-v4-chewing-gum](https://art.steeve.website/sketches/orbit/orbit-v4-chewing-gum/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/orbit/orbit-v4-chewing-gum/index.js
+- [orbit-v5-chakra](https://art.steeve.website/sketches/orbit/orbit-v5-chakra/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/orbit/orbit-v5-chakra/index.js
+- [orbit-v6-polar-cross](https://art.steeve.website/sketches/orbit/orbit-v6-polar-cross/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/orbit/orbit-v6-polar-cross/index.js
+
+## noise-strips (3 sketches)
+
+- [noise-strips-v1](https://art.steeve.website/sketches/noise-strips/noise-strips-v1/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/noise-strips/noise-strips-v1/index.js
+- [noise-strips-v2](https://art.steeve.website/sketches/noise-strips/noise-strips-v2/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/noise-strips/noise-strips-v2/index.js
+- [noise-strips-v3-lava](https://art.steeve.website/sketches/noise-strips/noise-strips-v3-lava/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/noise-strips/noise-strips-v3-lava/index.js
+
+## noise-grid (13 sketches)
+
+- [noise-grid-v1-basic](https://art.steeve.website/sketches/noise-grid/noise-grid-v1-basic/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/noise-grid/noise-grid-v1-basic/index.js
+- [noise-grid-v10-variable-stick](https://art.steeve.website/sketches/noise-grid/noise-grid-v10-variable-stick/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/noise-grid/noise-grid-v10-variable-stick/index.js
+- [noise-grid-v11-with-rotation](https://art.steeve.website/sketches/noise-grid/noise-grid-v11-with-rotation/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/noise-grid/noise-grid-v11-with-rotation/index.js
+- [noise-grid-v12-field-on-fire](https://art.steeve.website/sketches/noise-grid/noise-grid-v12-field-on-fire/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/noise-grid/noise-grid-v12-field-on-fire/index.js
+- [noise-grid-v13-blast-background](https://art.steeve.website/sketches/noise-grid/noise-grid-v13-blast-background/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/noise-grid/noise-grid-v13-blast-background/index.js
+- [noise-grid-v2-basic-with-easing](https://art.steeve.website/sketches/noise-grid/noise-grid-v2-basic-with-easing/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/noise-grid/noise-grid-v2-basic-with-easing/index.js
+- [noise-grid-v3-basic-with-holes](https://art.steeve.website/sketches/noise-grid/noise-grid-v3-basic-with-holes/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/noise-grid/noise-grid-v3-basic-with-holes/index.js
+- [noise-grid-v4-basic-with-audio-reaction](https://art.steeve.website/sketches/noise-grid/noise-grid-v4-basic-with-audio-reaction/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/noise-grid/noise-grid-v4-basic-with-audio-reaction/index.js
+- [noise-grid-v5-stick](https://art.steeve.website/sketches/noise-grid/noise-grid-v5-stick/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/noise-grid/noise-grid-v5-stick/index.js
+- [noise-grid-v6-field-with-dist-check](https://art.steeve.website/sketches/noise-grid/noise-grid-v6-field-with-dist-check/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/noise-grid/noise-grid-v6-field-with-dist-check/index.js
+- [noise-grid-v7-field-with-dist-check-and-audio-reaction](https://art.steeve.website/sketches/noise-grid/noise-grid-v7-field-with-dist-check-and-audio-reaction/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/noise-grid/noise-grid-v7-field-with-dist-check-and-audio-reaction/index.js
+- [noise-grid-v8-basic-with-easing-and-audio-reaction](https://art.steeve.website/sketches/noise-grid/noise-grid-v8-basic-with-easing-and-audio-reaction/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/noise-grid/noise-grid-v8-basic-with-easing-and-audio-reaction/index.js
+- [noise-grid-v9-basic-with-easing-changing-directions](https://art.steeve.website/sketches/noise-grid/noise-grid-v9-basic-with-easing-changing-directions/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/noise-grid/noise-grid-v9-basic-with-easing-changing-directions/index.js
+
+## neon (7 sketches)
+
+- [neon-v0-legacy](https://art.steeve.website/sketches/neon/neon-v0-legacy/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/neon/neon-v0-legacy/index.js
+- [neon-v1-graffiti](https://art.steeve.website/sketches/neon/neon-v1-graffiti/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/neon/neon-v1-graffiti/index.js
+- [neon-v2-polar](https://art.steeve.website/sketches/neon/neon-v2-polar/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/neon/neon-v2-polar/index.js
+- [neon-v3-can](https://art.steeve.website/sketches/neon/neon-v3-can/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/neon/neon-v3-can/index.js
+- [neon-v4-dots](https://art.steeve.website/sketches/neon/neon-v4-dots/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/neon/neon-v4-dots/index.js
+- [neon-v5-atoms](https://art.steeve.website/sketches/neon/neon-v5-atoms/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/neon/neon-v5-atoms/index.js
+- [neon-v6-sticks-offset](https://art.steeve.website/sketches/neon/neon-v6-sticks-offset/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/neon/neon-v6-sticks-offset/index.js
+
+## motion-blur (2 sketches)
+
+- [motion-blur-v1](https://art.steeve.website/sketches/motion-blur/motion-blur-v1/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/motion-blur/motion-blur-v1/index.js
+- [motion-blur-v2-alpha-echo](https://art.steeve.website/sketches/motion-blur/motion-blur-v2-alpha-echo/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/motion-blur/motion-blur-v2-alpha-echo/index.js
+
+## midi (7 sketches)
+
+- [chromatic-rorschach-4-midi](https://art.steeve.website/sketches/midi/chromatic-rorschach-4-midi/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/midi/chromatic-rorschach-4-midi/index.js
+- [midi-v1-output](https://art.steeve.website/sketches/midi/midi-v1-output/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/midi/midi-v1-output/index.js
+- [midi-v2-input](https://art.steeve.website/sketches/midi/midi-v2-input/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/midi/midi-v2-input/index.js
+- [midi-v3-input-pills](https://art.steeve.website/sketches/midi/midi-v3-input-pills/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/midi/midi-v3-input-pills/index.js
+- [midi-v4-blurry](https://art.steeve.website/sketches/midi/midi-v4-blurry/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/midi/midi-v4-blurry/index.js
+- [midi-v6-visualizer-strips](https://art.steeve.website/sketches/midi/midi-v6-visualizer-strips/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/midi/midi-v6-visualizer-strips/index.js
+- [midi-v7-display-identifier](https://art.steeve.website/sketches/midi/midi-v7-display-identifier/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/midi/midi-v7-display-identifier/index.js
+
+## grid-types (1 sketch)
+
+- [grid-types-v1-morphing](https://art.steeve.website/sketches/grid-types/grid-types-v1-morphing/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/grid-types/grid-types-v1-morphing/index.js
+
+## glowing-fish (2 sketches)
+
+- [glowing-fishes-v0](https://art.steeve.website/sketches/glowing-fish/glowing-fishes-v0/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/glowing-fish/glowing-fishes-v0/index.js
+- [glowing-fishes-v1](https://art.steeve.website/sketches/glowing-fish/glowing-fishes-v1/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/glowing-fish/glowing-fishes-v1/index.js
+
+## genuary2023 (14 sketches)
+
+- [genuary2023-day1-infinite-loop](https://art.steeve.website/sketches/genuary2023/genuary2023-day1-infinite-loop/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2023/genuary2023-day1-infinite-loop/index.js
+- [genuary2023-day10-generative-music](https://art.steeve.website/sketches/genuary2023/genuary2023-day10-generative-music/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2023/genuary2023-day10-generative-music/index.js
+- [genuary2023-day2-10-minutes](https://art.steeve.website/sketches/genuary2023/genuary2023-day2-10-minutes/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2023/genuary2023-day2-10-minutes/index.js
+- [genuary2023-day3-glitch-art](https://art.steeve.website/sketches/genuary2023/genuary2023-day3-glitch-art/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2023/genuary2023-day3-glitch-art/index.js
+- [genuary2023-day4-debug-view](https://art.steeve.website/sketches/genuary2023/genuary2023-day4-debug-view/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2023/genuary2023-day4-debug-view/index.js
+- [genuary2023-day4-intersections](https://art.steeve.website/sketches/genuary2023/genuary2023-day4-intersections/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2023/genuary2023-day4-intersections/index.js
+- [genuary2023-day5-debug-view](https://art.steeve.website/sketches/genuary2023/genuary2023-day5-debug-view/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2023/genuary2023-day5-debug-view/index.js
+- [genuary2023-day6-steal-like-an-arstist](https://art.steeve.website/sketches/genuary2023/genuary2023-day6-steal-like-an-arstist/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2023/genuary2023-day6-steal-like-an-arstist/index.js
+- [genuary2023-day6-steal-like-an-arstist-a](https://art.steeve.website/sketches/genuary2023/genuary2023-day6-steal-like-an-arstist-a/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2023/genuary2023-day6-steal-like-an-arstist-a/index.js
+- [genuary2023-day6-steal-like-an-arstist-b](https://art.steeve.website/sketches/genuary2023/genuary2023-day6-steal-like-an-arstist-b/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2023/genuary2023-day6-steal-like-an-arstist-b/index.js
+- [genuary2023-day6-steal-like-an-arstist-c](https://art.steeve.website/sketches/genuary2023/genuary2023-day6-steal-like-an-arstist-c/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2023/genuary2023-day6-steal-like-an-arstist-c/index.js
+- [genuary2023-day7-sample-a-color-palette](https://art.steeve.website/sketches/genuary2023/genuary2023-day7-sample-a-color-palette/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2023/genuary2023-day7-sample-a-color-palette/index.js
+- [genuary2023-day8-signed-distance-functions](https://art.steeve.website/sketches/genuary2023/genuary2023-day8-signed-distance-functions/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2023/genuary2023-day8-signed-distance-functions/index.js
+- [genuary2023-day9-plants](https://art.steeve.website/sketches/genuary2023/genuary2023-day9-plants/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2023/genuary2023-day9-plants/index.js
+
+## genuary2022 (12 sketches)
+
+- [genuary2022-day1](https://art.steeve.website/sketches/genuary2022/genuary2022-day1/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2022/genuary2022-day1/index.js
+- [genuary2022-day13](https://art.steeve.website/sketches/genuary2022/genuary2022-day13/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2022/genuary2022-day13/index.js
+- [genuary2022-day15](https://art.steeve.website/sketches/genuary2022/genuary2022-day15/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2022/genuary2022-day15/index.js
+- [genuary2022-day16](https://art.steeve.website/sketches/genuary2022/genuary2022-day16/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2022/genuary2022-day16/index.js
+- [genuary2022-day17](https://art.steeve.website/sketches/genuary2022/genuary2022-day17/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2022/genuary2022-day17/index.js
+- [genuary2022-day2](https://art.steeve.website/sketches/genuary2022/genuary2022-day2/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2022/genuary2022-day2/index.js
+- [genuary2022-day3](https://art.steeve.website/sketches/genuary2022/genuary2022-day3/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2022/genuary2022-day3/index.js
+- [genuary2022-day5](https://art.steeve.website/sketches/genuary2022/genuary2022-day5/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2022/genuary2022-day5/index.js
+- [genuary2022-day8](https://art.steeve.website/sketches/genuary2022/genuary2022-day8/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2022/genuary2022-day8/index.js
+- [genuary2022-day8-polar-worm](https://art.steeve.website/sketches/genuary2022/genuary2022-day8-polar-worm/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2022/genuary2022-day8-polar-worm/index.js
+- [genuary2022-day8-silk](https://art.steeve.website/sketches/genuary2022/genuary2022-day8-silk/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2022/genuary2022-day8-silk/index.js
+- [genuary2022-game](https://art.steeve.website/sketches/genuary2022/genuary2022-game/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/genuary2022/genuary2022-game/index.js
+
+## flowers (6 sketches)
+
+- [flowers-v0-turbine](https://art.steeve.website/sketches/flowers/flowers-v0-turbine/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/flowers/flowers-v0-turbine/index.js
+- [flowers-v1-recursive](https://art.steeve.website/sketches/flowers/flowers-v1-recursive/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/flowers/flowers-v1-recursive/index.js
+- [flowers-v2-triple](https://art.steeve.website/sketches/flowers/flowers-v2-triple/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/flowers/flowers-v2-triple/index.js
+- [flowers-v3-petals-flapping](https://art.steeve.website/sketches/flowers/flowers-v3-petals-flapping/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/flowers/flowers-v3-petals-flapping/index.js
+- [flowers-v4-easing-curves](https://art.steeve.website/sketches/flowers/flowers-v4-easing-curves/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/flowers/flowers-v4-easing-curves/index.js
+- [flowers-v5-spiral](https://art.steeve.website/sketches/flowers/flowers-v5-spiral/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/flowers/flowers-v5-spiral/index.js
+
+## easing (10 sketches)
+
+- [easing-v1-all-functions](https://art.steeve.website/sketches/easing/easing-v1-all-functions/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/easing/easing-v1-all-functions/index.js
+- [easing-v2-flower](https://art.steeve.website/sketches/easing/easing-v2-flower/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/easing/easing-v2-flower/index.js
+- [easing-v2-flower copy](https://art.steeve.website/sketches/easing/easing-v2-flower%20copy/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/easing/easing-v2-flower%20copy/index.js
+- [easing-v2-spikes-with-grid](https://art.steeve.website/sketches/easing/easing-v2-spikes-with-grid/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/easing/easing-v2-spikes-with-grid/index.js
+- [easing-v3-warp-a](https://art.steeve.website/sketches/easing/easing-v3-warp-a/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/easing/easing-v3-warp-a/index.js
+- [easing-v3-warp-b](https://art.steeve.website/sketches/easing/easing-v3-warp-b/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/easing/easing-v3-warp-b/index.js
+- [easing-v4-clock](https://art.steeve.website/sketches/easing/easing-v4-clock/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/easing/easing-v4-clock/index.js
+- [easing-v5-star](https://art.steeve.website/sketches/easing/easing-v5-star/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/easing/easing-v5-star/index.js
+- [easing-v6-moving-ball](https://art.steeve.website/sketches/easing/easing-v6-moving-ball/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/easing/easing-v6-moving-ball/index.js
+- [easing-v7-text-points](https://art.steeve.website/sketches/easing/easing-v7-text-points/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/easing/easing-v7-text-points/index.js
+
+## demo-festival-2025 (6 sketches)
+
+- [1-hippocampe](https://art.steeve.website/sketches/demo-festival-2025/1-hippocampe/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/demo-festival-2025/1-hippocampe/index.js
+- [2-letter-3d-show](https://art.steeve.website/sketches/demo-festival-2025/2-letter-3d-show/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/demo-festival-2025/2-letter-3d-show/index.js
+- [3-kubix](https://art.steeve.website/sketches/demo-festival-2025/3-kubix/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/demo-festival-2025/3-kubix/index.js
+- [4-follow-me](https://art.steeve.website/sketches/demo-festival-2025/4-follow-me/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/demo-festival-2025/4-follow-me/index.js
+- [5-dancing-flurry](https://art.steeve.website/sketches/demo-festival-2025/5-dancing-flurry/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/demo-festival-2025/5-dancing-flurry/index.js
+- [touch](https://art.steeve.website/sketches/demo-festival-2025/touch/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/demo-festival-2025/touch/index.js
+
+## demo-festival-2022 (8 sketches)
+
+- [1-guided-pasta](https://art.steeve.website/sketches/demo-festival-2022/1-guided-pasta/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/demo-festival-2022/1-guided-pasta/index.js
+- [2-wormy-churros](https://art.steeve.website/sketches/demo-festival-2022/2-wormy-churros/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/demo-festival-2022/2-wormy-churros/index.js
+- [3-rainbow-to-purple](https://art.steeve.website/sketches/demo-festival-2022/3-rainbow-to-purple/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/demo-festival-2022/3-rainbow-to-purple/index.js
+- [4-rainbowed-medusa](https://art.steeve.website/sketches/demo-festival-2022/4-rainbowed-medusa/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/demo-festival-2022/4-rainbowed-medusa/index.js
+- [5-fox-tail](https://art.steeve.website/sketches/demo-festival-2022/5-fox-tail/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/demo-festival-2022/5-fox-tail/index.js
+- [6-caterpillar](https://art.steeve.website/sketches/demo-festival-2022/6-caterpillar/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/demo-festival-2022/6-caterpillar/index.js
+- [7-rainbow-turbine](https://art.steeve.website/sketches/demo-festival-2022/7-rainbow-turbine/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/demo-festival-2022/7-rainbow-turbine/index.js
+- [8-rainbow-turbine-chain](https://art.steeve.website/sketches/demo-festival-2022/8-rainbow-turbine-chain/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/demo-festival-2022/8-rainbow-turbine-chain/index.js
+
+## danse-motion-bachata (2 sketches)
+
+- [danse-motion-bachata-v1](https://art.steeve.website/sketches/danse-motion-bachata/danse-motion-bachata-v1/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/danse-motion-bachata/danse-motion-bachata-v1/index.js
+- [danse-motion-bachata-v2-steps](https://art.steeve.website/sketches/danse-motion-bachata/danse-motion-bachata-v2-steps/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/danse-motion-bachata/danse-motion-bachata-v2-steps/index.js
+
+## churros (13 sketches)
+
+- [churros-v1-circle](https://art.steeve.website/sketches/churros/churros-v1-circle/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/churros/churros-v1-circle/index.js
+- [churros-v10-tracer](https://art.steeve.website/sketches/churros/churros-v10-tracer/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/churros/churros-v10-tracer/index.js
+- [churros-v11-perspective](https://art.steeve.website/sketches/churros/churros-v11-perspective/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/churros/churros-v11-perspective/index.js
+- [churros-v2-string](https://art.steeve.website/sketches/churros/churros-v2-string/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/churros/churros-v2-string/index.js
+- [churros-v3-loop](https://art.steeve.website/sketches/churros/churros-v3-loop/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/churros/churros-v3-loop/index.js
+- [churros-v4-line](https://art.steeve.website/sketches/churros/churros-v4-line/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/churros/churros-v4-line/index.js
+- [churros-v5-serpent](https://art.steeve.website/sketches/churros/churros-v5-serpent/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/churros/churros-v5-serpent/index.js
+- [churros-v6-scarf](https://art.steeve.website/sketches/churros/churros-v6-scarf/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/churros/churros-v6-scarf/index.js
+- [churros-v7-pasta](https://art.steeve.website/sketches/churros/churros-v7-pasta/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/churros/churros-v7-pasta/index.js
+- [churros-v8-pasta-guided](https://art.steeve.website/sketches/churros/churros-v8-pasta-guided/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/churros/churros-v8-pasta-guided/index.js
+- [churros-v9-pasta-fixer](https://art.steeve.website/sketches/churros/churros-v9-pasta-fixer/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/churros/churros-v9-pasta-fixer/index.js
+- [churros-v9-pasta-rgb-fixer](https://art.steeve.website/sketches/churros/churros-v9-pasta-rgb-fixer/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/churros/churros-v9-pasta-rgb-fixer/index.js
+- [churros-v9-pasta-scanner](https://art.steeve.website/sketches/churros/churros-v9-pasta-scanner/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/churros/churros-v9-pasta-scanner/index.js
+
+## chromatic-rorschach (8 sketches)
+
+- [chromatic-rorschach-1](https://art.steeve.website/sketches/chromatic-rorschach/chromatic-rorschach-1/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/chromatic-rorschach/chromatic-rorschach-1/index.js
+- [chromatic-rorschach-2](https://art.steeve.website/sketches/chromatic-rorschach/chromatic-rorschach-2/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/chromatic-rorschach/chromatic-rorschach-2/index.js
+- [chromatic-rorschach-3-audio-reactive](https://art.steeve.website/sketches/chromatic-rorschach/chromatic-rorschach-3-audio-reactive/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/chromatic-rorschach/chromatic-rorschach-3-audio-reactive/index.js
+- [chromatic-rorschach-3-audio-reactive-pipe-spectrograph](https://art.steeve.website/sketches/chromatic-rorschach/chromatic-rorschach-3-audio-reactive-pipe-spectrograph/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/chromatic-rorschach/chromatic-rorschach-3-audio-reactive-pipe-spectrograph/index.js
+- [chromatic-rorschach-3-audio-reactive-spectrograph-0](https://art.steeve.website/sketches/chromatic-rorschach/chromatic-rorschach-3-audio-reactive-spectrograph-0/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/chromatic-rorschach/chromatic-rorschach-3-audio-reactive-spectrograph-0/index.js
+- [chromatic-rorschach-3-audio-reactive-spectrograph-1](https://art.steeve.website/sketches/chromatic-rorschach/chromatic-rorschach-3-audio-reactive-spectrograph-1/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/chromatic-rorschach/chromatic-rorschach-3-audio-reactive-spectrograph-1/index.js
+- [chromatic-rorschach-3-audio-reactive-spectrograph-2](https://art.steeve.website/sketches/chromatic-rorschach/chromatic-rorschach-3-audio-reactive-spectrograph-2/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/chromatic-rorschach/chromatic-rorschach-3-audio-reactive-spectrograph-2/index.js
+- [chromatic-rorschach-3-audio-reactive-spectrograph-3](https://art.steeve.website/sketches/chromatic-rorschach/chromatic-rorschach-3-audio-reactive-spectrograph-3/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/chromatic-rorschach/chromatic-rorschach-3-audio-reactive-spectrograph-3/index.js
+
+## censored (15 sketches)
+
+- [censored-v1](https://art.steeve.website/sketches/censored/censored-v1/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/censored/censored-v1/index.js
+- [censored-v10-circle](https://art.steeve.website/sketches/censored/censored-v10-circle/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/censored/censored-v10-circle/index.js
+- [censored-v11-2024-5-mask](https://art.steeve.website/sketches/censored/censored-v11-2024-5-mask/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/censored/censored-v11-2024-5-mask/index.js
+- [censored-v12-xray](https://art.steeve.website/sketches/censored/censored-v12-xray/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/censored/censored-v12-xray/index.js
+- [censored-v13-gradient](https://art.steeve.website/sketches/censored/censored-v13-gradient/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/censored/censored-v13-gradient/index.js
+- [censored-v14-bali](https://art.steeve.website/sketches/censored/censored-v14-bali/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/censored/censored-v14-bali/index.js
+- [censored-v15-sydney](https://art.steeve.website/sketches/censored/censored-v15-sydney/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/censored/censored-v15-sydney/index.js
+- [censored-v2](https://art.steeve.website/sketches/censored/censored-v2/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/censored/censored-v2/index.js
+- [censored-v3](https://art.steeve.website/sketches/censored/censored-v3/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/censored/censored-v3/index.js
+- [censored-v4](https://art.steeve.website/sketches/censored/censored-v4/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/censored/censored-v4/index.js
+- [censored-v5](https://art.steeve.website/sketches/censored/censored-v5/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/censored/censored-v5/index.js
+- [censored-v6-mirror-test](https://art.steeve.website/sketches/censored/censored-v6-mirror-test/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/censored/censored-v6-mirror-test/index.js
+- [censored-v7-pixelated-gradient](https://art.steeve.website/sketches/censored/censored-v7-pixelated-gradient/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/censored/censored-v7-pixelated-gradient/index.js
+- [censored-v8-changing-letter](https://art.steeve.website/sketches/censored/censored-v8-changing-letter/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/censored/censored-v8-changing-letter/index.js
+- [censored-v9-wave](https://art.steeve.website/sketches/censored/censored-v9-wave/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/censored/censored-v9-wave/index.js
+
+## blob (6 sketches)
+
+- [blob-v1-jump](https://art.steeve.website/sketches/blob/blob-v1-jump/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/blob/blob-v1-jump/index.js
+- [blob-v2-caterpillar](https://art.steeve.website/sketches/blob/blob-v2-caterpillar/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/blob/blob-v2-caterpillar/index.js
+- [blob-v2-invisible-walls](https://art.steeve.website/sketches/blob/blob-v2-invisible-walls/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/blob/blob-v2-invisible-walls/index.js
+- [blob-v2a-caterpillar-abrupt-1](https://art.steeve.website/sketches/blob/blob-v2a-caterpillar-abrupt-1/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/blob/blob-v2a-caterpillar-abrupt-1/index.js
+- [blob-v2a-caterpillar-abrupt-2](https://art.steeve.website/sketches/blob/blob-v2a-caterpillar-abrupt-2/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/blob/blob-v2a-caterpillar-abrupt-2/index.js
+- [blob-v3-sequence](https://art.steeve.website/sketches/blob/blob-v3-sequence/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/blob/blob-v3-sequence/index.js
+
+## background-pattern (12 sketches)
+
+- [background-pattern-easing-lines](https://art.steeve.website/sketches/background-pattern/background-pattern-easing-lines/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/background-pattern/background-pattern-easing-lines/index.js
+- [background-pattern-sinwave-lines](https://art.steeve.website/sketches/background-pattern/background-pattern-sinwave-lines/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/background-pattern/background-pattern-sinwave-lines/index.js
+- [background-pattern-spring](https://art.steeve.website/sketches/background-pattern/background-pattern-spring/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/background-pattern/background-pattern-spring/index.js
+- [background-pattern-v10-crazy](https://art.steeve.website/sketches/background-pattern/background-pattern-v10-crazy/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/background-pattern/background-pattern-v10-crazy/index.js
+- [background-pattern-v2-radial](https://art.steeve.website/sketches/background-pattern/background-pattern-v2-radial/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/background-pattern/background-pattern-v2-radial/index.js
+- [background-pattern-v3-radial-eyelashes](https://art.steeve.website/sketches/background-pattern/background-pattern-v3-radial-eyelashes/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/background-pattern/background-pattern-v3-radial-eyelashes/index.js
+- [background-pattern-v4-radial-purple](https://art.steeve.website/sketches/background-pattern/background-pattern-v4-radial-purple/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/background-pattern/background-pattern-v4-radial-purple/index.js
+- [background-pattern-v5-big-eyelashes](https://art.steeve.website/sketches/background-pattern/background-pattern-v5-big-eyelashes/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/background-pattern/background-pattern-v5-big-eyelashes/index.js
+- [background-pattern-v6-legs](https://art.steeve.website/sketches/background-pattern/background-pattern-v6-legs/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/background-pattern/background-pattern-v6-legs/index.js
+- [background-pattern-v7-butterfly](https://art.steeve.website/sketches/background-pattern/background-pattern-v7-butterfly/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/background-pattern/background-pattern-v7-butterfly/index.js
+- [background-pattern-v8-kite](https://art.steeve.website/sketches/background-pattern/background-pattern-v8-kite/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/background-pattern/background-pattern-v8-kite/index.js
+- [background-pattern-v9-bounce](https://art.steeve.website/sketches/background-pattern/background-pattern-v9-bounce/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/background-pattern/background-pattern-v9-bounce/index.js
+
+## audio-reactive (9 sketches)
+
+- [audio-reactive-v1-level](https://art.steeve.website/sketches/audio-reactive/audio-reactive-v1-level/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/audio-reactive/audio-reactive-v1-level/index.js
+- [audio-reactive-v2-fft-debug](https://art.steeve.website/sketches/audio-reactive/audio-reactive-v2-fft-debug/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/audio-reactive/audio-reactive-v2-fft-debug/index.js
+- [audio-reactive-v3-smooth-test](https://art.steeve.website/sketches/audio-reactive/audio-reactive-v3-smooth-test/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/audio-reactive/audio-reactive-v3-smooth-test/index.js
+- [audio-reactive-v4-spider](https://art.steeve.website/sketches/audio-reactive/audio-reactive-v4-spider/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/audio-reactive/audio-reactive-v4-spider/index.js
+- [audio-reactive-v5-droplets](https://art.steeve.website/sketches/audio-reactive/audio-reactive-v5-droplets/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/audio-reactive/audio-reactive-v5-droplets/index.js
+- [audio-reactive-v6-beat-counter](https://art.steeve.website/sketches/audio-reactive/audio-reactive-v6-beat-counter/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/audio-reactive/audio-reactive-v6-beat-counter/index.js
+- [audio-reactive-v7-spectrograph](https://art.steeve.website/sketches/audio-reactive/audio-reactive-v7-spectrograph/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/audio-reactive/audio-reactive-v7-spectrograph/index.js
+- [audio-reactive-v7-spectrograph-3d](https://art.steeve.website/sketches/audio-reactive/audio-reactive-v7-spectrograph-3d/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/audio-reactive/audio-reactive-v7-spectrograph-3d/index.js
+- [audio-reactive-v8-music-lines](https://art.steeve.website/sketches/audio-reactive/audio-reactive-v8-music-lines/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/audio-reactive/audio-reactive-v8-music-lines/index.js
+
+## arrow (2 sketches)
+
+- [arrow-v1-perlin](https://art.steeve.website/sketches/arrow/arrow-v1-perlin/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/arrow/arrow-v1-perlin/index.js
+- [arrow-v2-polar](https://art.steeve.website/sketches/arrow/arrow-v2-polar/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/arrow/arrow-v2-polar/index.js
+
+## animated-text-points (12 sketches)
+
+- [animated-text-points-v0-flower](https://art.steeve.website/sketches/animated-text-points/animated-text-points-v0-flower/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/animated-text-points/animated-text-points-v0-flower/index.js
+- [animated-text-points-v1-grid](https://art.steeve.website/sketches/animated-text-points/animated-text-points-v1-grid/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/animated-text-points/animated-text-points-v1-grid/index.js
+- [animated-text-points-v10-asterisk](https://art.steeve.website/sketches/animated-text-points/animated-text-points-v10-asterisk/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/animated-text-points/animated-text-points-v10-asterisk/index.js
+- [animated-text-points-v12-counter](https://art.steeve.website/sketches/animated-text-points/animated-text-points-v12-counter/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/animated-text-points/animated-text-points-v12-counter/index.js
+- [animated-text-points-v12-more-warping](https://art.steeve.website/sketches/animated-text-points/animated-text-points-v12-more-warping/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/animated-text-points/animated-text-points-v12-more-warping/index.js
+- [animated-text-points-v2-dotted](https://art.steeve.website/sketches/animated-text-points/animated-text-points-v2-dotted/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/animated-text-points/animated-text-points-v2-dotted/index.js
+- [animated-text-points-v3-glitch](https://art.steeve.website/sketches/animated-text-points/animated-text-points-v3-glitch/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/animated-text-points/animated-text-points-v3-glitch/index.js
+- [animated-text-points-v4-wavy-a](https://art.steeve.website/sketches/animated-text-points/animated-text-points-v4-wavy-a/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/animated-text-points/animated-text-points-v4-wavy-a/index.js
+- [animated-text-points-v5-wavy-b](https://art.steeve.website/sketches/animated-text-points/animated-text-points-v5-wavy-b/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/animated-text-points/animated-text-points-v5-wavy-b/index.js
+- [animated-text-points-v6-black](https://art.steeve.website/sketches/animated-text-points/animated-text-points-v6-black/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/animated-text-points/animated-text-points-v6-black/index.js
+- [animated-text-points-v7-normal-material](https://art.steeve.website/sketches/animated-text-points/animated-text-points-v7-normal-material/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/animated-text-points/animated-text-points-v7-normal-material/index.js
+- [animated-text-points-v9-warping](https://art.steeve.website/sketches/animated-text-points/animated-text-points-v9-warping/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/animated-text-points/animated-text-points-v9-warping/index.js
+
+## alphabet-scroll (18 sketches)
+
+- [alphabet-scroll-v1-a-z-Z-A](https://art.steeve.website/sketches/alphabet-scroll/alphabet-scroll-v1-a-z-Z-A/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/alphabet-scroll/alphabet-scroll-v1-a-z-Z-A/index.js
+- [alphabet-scroll-v10-alphabet-scroll-viewport](https://art.steeve.website/sketches/alphabet-scroll/alphabet-scroll-v10-alphabet-scroll-viewport/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/alphabet-scroll/alphabet-scroll-v10-alphabet-scroll-viewport/index.js
+- [alphabet-scroll-v11-alphabet-scroll-zoom](https://art.steeve.website/sketches/alphabet-scroll/alphabet-scroll-v11-alphabet-scroll-zoom/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/alphabet-scroll/alphabet-scroll-v11-alphabet-scroll-zoom/index.js
+- [alphabet-scroll-v12-text-points-drawer](https://art.steeve.website/sketches/alphabet-scroll/alphabet-scroll-v12-text-points-drawer/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/alphabet-scroll/alphabet-scroll-v12-text-points-drawer/index.js
+- [alphabet-scroll-v13-letter-swap-spiral](https://art.steeve.website/sketches/alphabet-scroll/alphabet-scroll-v13-letter-swap-spiral/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/alphabet-scroll/alphabet-scroll-v13-letter-swap-spiral/index.js
+- [alphabet-scroll-v14-flower](https://art.steeve.website/sketches/alphabet-scroll/alphabet-scroll-v14-flower/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/alphabet-scroll/alphabet-scroll-v14-flower/index.js
+- [alphabet-scroll-v14-vs](https://art.steeve.website/sketches/alphabet-scroll/alphabet-scroll-v14-vs/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/alphabet-scroll/alphabet-scroll-v14-vs/index.js
+- [alphabet-scroll-v15-french-numbers](https://art.steeve.website/sketches/alphabet-scroll/alphabet-scroll-v15-french-numbers/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/alphabet-scroll/alphabet-scroll-v15-french-numbers/index.js
+- [alphabet-scroll-v2-xyz](https://art.steeve.website/sketches/alphabet-scroll/alphabet-scroll-v2-xyz/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/alphabet-scroll/alphabet-scroll-v2-xyz/index.js
+- [alphabet-scroll-v3-numbers](https://art.steeve.website/sketches/alphabet-scroll/alphabet-scroll-v3-numbers/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/alphabet-scroll/alphabet-scroll-v3-numbers/index.js
+- [alphabet-scroll-v4-alphabet](https://art.steeve.website/sketches/alphabet-scroll/alphabet-scroll-v4-alphabet/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/alphabet-scroll/alphabet-scroll-v4-alphabet/index.js
+- [alphabet-scroll-v5-la-si-do-re-mi](https://art.steeve.website/sketches/alphabet-scroll/alphabet-scroll-v5-la-si-do-re-mi/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/alphabet-scroll/alphabet-scroll-v5-la-si-do-re-mi/index.js
+- [alphabet-scroll-v6-debug](https://art.steeve.website/sketches/alphabet-scroll/alphabet-scroll-v6-debug/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/alphabet-scroll/alphabet-scroll-v6-debug/index.js
+- [alphabet-scroll-v7-chromatic-scales](https://art.steeve.website/sketches/alphabet-scroll/alphabet-scroll-v7-chromatic-scales/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/alphabet-scroll/alphabet-scroll-v7-chromatic-scales/index.js
+- [alphabet-scroll-v8-alphabet-scroll](https://art.steeve.website/sketches/alphabet-scroll/alphabet-scroll-v8-alphabet-scroll/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/alphabet-scroll/alphabet-scroll-v8-alphabet-scroll/index.js
+- [alphabet-scroll-v9-alphabet-circular](https://art.steeve.website/sketches/alphabet-scroll/alphabet-scroll-v9-alphabet-circular/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/alphabet-scroll/alphabet-scroll-v9-alphabet-circular/index.js
+- [alphabet-scroll-v9-alphabet-circular-aurelio](https://art.steeve.website/sketches/alphabet-scroll/alphabet-scroll-v9-alphabet-circular-aurelio/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/alphabet-scroll/alphabet-scroll-v9-alphabet-circular-aurelio/index.js
+- [alphabet-scroll-v9-alphabet-circular-sbk](https://art.steeve.website/sketches/alphabet-scroll/alphabet-scroll-v9-alphabet-circular-sbk/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/alphabet-scroll/alphabet-scroll-v9-alphabet-circular-sbk/index.js
+
+## accident (24 sketches)
+
+- [accident-v1-bubble](https://art.steeve.website/sketches/accident/accident-v1-bubble/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/accident/accident-v1-bubble/index.js
+- [accident-v2-rotating-bubble](https://art.steeve.website/sketches/accident/accident-v2-rotating-bubble/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/accident/accident-v2-rotating-bubble/index.js
+- [accident-v3-lava-lamp](https://art.steeve.website/sketches/accident/accident-v3-lava-lamp/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/accident/accident-v3-lava-lamp/index.js
+- [accident-v4-crack-fire](https://art.steeve.website/sketches/accident/accident-v4-crack-fire/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/accident/accident-v4-crack-fire/index.js
+- [accident-v4-cross-fire](https://art.steeve.website/sketches/accident/accident-v4-cross-fire/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/accident/accident-v4-cross-fire/index.js
+- [accident-v5-chandelier](https://art.steeve.website/sketches/accident/accident-v5-chandelier/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/accident/accident-v5-chandelier/index.js
+- [accident-v6-chandelier-warp](https://art.steeve.website/sketches/accident/accident-v6-chandelier-warp/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/accident/accident-v6-chandelier-warp/index.js
+- [accident-v6-chandelier-warp-blurry-vertical](https://art.steeve.website/sketches/accident/accident-v6-chandelier-warp-blurry-vertical/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/accident/accident-v6-chandelier-warp-blurry-vertical/index.js
+- [accident-v6-chandelier-warps](https://art.steeve.website/sketches/accident/accident-v6-chandelier-warps/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/accident/accident-v6-chandelier-warps/index.js
+- [accident-v6-chandelier-warps-blurry](https://art.steeve.website/sketches/accident/accident-v6-chandelier-warps-blurry/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/accident/accident-v6-chandelier-warps-blurry/index.js
+- [accident-v6-chandelier-warps-gradient](https://art.steeve.website/sketches/accident/accident-v6-chandelier-warps-gradient/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/accident/accident-v6-chandelier-warps-gradient/index.js
+- [accident-v6-chanderlier-warps-red](https://art.steeve.website/sketches/accident/accident-v6-chanderlier-warps-red/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/accident/accident-v6-chanderlier-warps-red/index.js
+- [accident-v7-chewing-gum-strings](https://art.steeve.website/sketches/accident/accident-v7-chewing-gum-strings/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/accident/accident-v7-chewing-gum-strings/index.js
+- [accident-v7-chewing-gum-strings-v2](https://art.steeve.website/sketches/accident/accident-v7-chewing-gum-strings-v2/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/accident/accident-v7-chewing-gum-strings-v2/index.js
+- [accident-v7-chewing-gum-strings-v3](https://art.steeve.website/sketches/accident/accident-v7-chewing-gum-strings-v3/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/accident/accident-v7-chewing-gum-strings-v3/index.js
+- [accident-v8-circle](https://art.steeve.website/sketches/accident/accident-v8-circle/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/accident/accident-v8-circle/index.js
+- [accident-v8-dansing-dna](https://art.steeve.website/sketches/accident/accident-v8-dansing-dna/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/accident/accident-v8-dansing-dna/index.js
+- [accident-v9-eccentric-acid](https://art.steeve.website/sketches/accident/accident-v9-eccentric-acid/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/accident/accident-v9-eccentric-acid/index.js
+- [accident-v9-eccentric-audio](https://art.steeve.website/sketches/accident/accident-v9-eccentric-audio/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/accident/accident-v9-eccentric-audio/index.js
+- [accident-v9-eccentric-balls-blurry](https://art.steeve.website/sketches/accident/accident-v9-eccentric-balls-blurry/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/accident/accident-v9-eccentric-balls-blurry/index.js
+- [accident-v9-eccentric-mirror](https://art.steeve.website/sketches/accident/accident-v9-eccentric-mirror/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/accident/accident-v9-eccentric-mirror/index.js
+- [accident-v9-eccentric-strip](https://art.steeve.website/sketches/accident/accident-v9-eccentric-strip/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/accident/accident-v9-eccentric-strip/index.js
+- [accident-v9-eccentric-strip-blurry](https://art.steeve.website/sketches/accident/accident-v9-eccentric-strip-blurry/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/accident/accident-v9-eccentric-strip-blurry/index.js
+- [accident-v9-eccentric-twist](https://art.steeve.website/sketches/accident/accident-v9-eccentric-twist/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/accident/accident-v9-eccentric-twist/index.js
+
+## abrupt (2 sketches)
+
+- [abrupt-v1-pulse](https://art.steeve.website/sketches/abrupt/abrupt-v1-pulse/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/abrupt/abrupt-v1-pulse/index.js
+- [abrupt-v2-feather](https://art.steeve.website/sketches/abrupt/abrupt-v2-feather/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/abrupt/abrupt-v2-feather/index.js
+
+## 3d-stuff (5 sketches)
+
+- [ball](https://art.steeve.website/sketches/3d-stuff/ball/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/3d-stuff/ball/index.js
+- [cube](https://art.steeve.website/sketches/3d-stuff/cube/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/3d-stuff/cube/index.js
+- [cubes](https://art.steeve.website/sketches/3d-stuff/cubes/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/3d-stuff/cubes/index.js
+- [hsb](https://art.steeve.website/sketches/3d-stuff/hsb/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/3d-stuff/hsb/index.js
+- [lines](https://art.steeve.website/sketches/3d-stuff/lines/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/3d-stuff/lines/index.js
+
+## 3d-grid-field (5 sketches)
+
+- [3d-grid-field-v1](https://art.steeve.website/sketches/3d-grid-field/3d-grid-field-v1/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/3d-grid-field/3d-grid-field-v1/index.js
+- [3d-grid-field-v2-rotating](https://art.steeve.website/sketches/3d-grid-field/3d-grid-field-v2-rotating/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/3d-grid-field/3d-grid-field-v2-rotating/index.js
+- [3d-grid-field-v3-rotating-points](https://art.steeve.website/sketches/3d-grid-field/3d-grid-field-v3-rotating-points/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/3d-grid-field/3d-grid-field-v3-rotating-points/index.js
+- [3d-grid-field-v4-rotating-and-warping](https://art.steeve.website/sketches/3d-grid-field/3d-grid-field-v4-rotating-and-warping/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/3d-grid-field/3d-grid-field-v4-rotating-and-warping/index.js
+- [3d-grid-field-v4-rotating-and-warping-2](https://art.steeve.website/sketches/3d-grid-field/3d-grid-field-v4-rotating-and-warping-2/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/3d-grid-field/3d-grid-field-v4-rotating-and-warping-2/index.js
+
+## 36days-of-type-2024 (26 sketches)
+
+- [a](https://art.steeve.website/sketches/36days-of-type-2024/a/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/a/index.js
+- [b](https://art.steeve.website/sketches/36days-of-type-2024/b/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/b/index.js
+- [c](https://art.steeve.website/sketches/36days-of-type-2024/c/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/c/index.js
+- [d](https://art.steeve.website/sketches/36days-of-type-2024/d/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/d/index.js
+- [e](https://art.steeve.website/sketches/36days-of-type-2024/e/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/e/index.js
+- [f](https://art.steeve.website/sketches/36days-of-type-2024/f/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/f/index.js
+- [g](https://art.steeve.website/sketches/36days-of-type-2024/g/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/g/index.js
+- [h](https://art.steeve.website/sketches/36days-of-type-2024/h/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/h/index.js
+- [i](https://art.steeve.website/sketches/36days-of-type-2024/i/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/i/index.js
+- [j](https://art.steeve.website/sketches/36days-of-type-2024/j/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/j/index.js
+- [k](https://art.steeve.website/sketches/36days-of-type-2024/k/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/k/index.js
+- [l](https://art.steeve.website/sketches/36days-of-type-2024/l/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/l/index.js
+- [m](https://art.steeve.website/sketches/36days-of-type-2024/m/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/m/index.js
+- [n](https://art.steeve.website/sketches/36days-of-type-2024/n/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/n/index.js
+- [o](https://art.steeve.website/sketches/36days-of-type-2024/o/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/o/index.js
+- [p](https://art.steeve.website/sketches/36days-of-type-2024/p/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/p/index.js
+- [q](https://art.steeve.website/sketches/36days-of-type-2024/q/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/q/index.js
+- [r](https://art.steeve.website/sketches/36days-of-type-2024/r/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/r/index.js
+- [s](https://art.steeve.website/sketches/36days-of-type-2024/s/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/s/index.js
+- [t](https://art.steeve.website/sketches/36days-of-type-2024/t/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/t/index.js
+- [u](https://art.steeve.website/sketches/36days-of-type-2024/u/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/u/index.js
+- [v](https://art.steeve.website/sketches/36days-of-type-2024/v/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/v/index.js
+- [w](https://art.steeve.website/sketches/36days-of-type-2024/w/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/w/index.js
+- [x](https://art.steeve.website/sketches/36days-of-type-2024/x/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/x/index.js
+- [y](https://art.steeve.website/sketches/36days-of-type-2024/y/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/y/index.js
+- [z](https://art.steeve.website/sketches/36days-of-type-2024/z/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2024/z/index.js
+
+## 36days-of-type-2023 (42 sketches)
+
+- [36days-of-type-2023-0](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-0/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-0/index.js
+- [36days-of-type-2023-1](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-1/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-1/index.js
+- [36days-of-type-2023-2](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-2/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-2/index.js
+- [36days-of-type-2023-3](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-3/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-3/index.js
+- [36days-of-type-2023-4](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-4/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-4/index.js
+- [36days-of-type-2023-5](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-5/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-5/index.js
+- [36days-of-type-2023-6](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-6/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-6/index.js
+- [36days-of-type-2023-7](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-7/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-7/index.js
+- [36days-of-type-2023-8](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-8/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-8/index.js
+- [36days-of-type-2023-9](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-9/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-9/index.js
+- [36days-of-type-2023-a](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-a/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-a/index.js
+- [36days-of-type-2023-a-grid](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-a-grid/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-a-grid/index.js
+- [36days-of-type-2023-a-vl](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-a-vl/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-a-vl/index.js
+- [36days-of-type-2023-b](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-b/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-b/index.js
+- [36days-of-type-2023-c](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-c/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-c/index.js
+- [36days-of-type-2023-d](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-d/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-d/index.js
+- [36days-of-type-2023-e](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-e/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-e/index.js
+- [36days-of-type-2023-f](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-f/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-f/index.js
+- [36days-of-type-2023-g](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-g/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-g/index.js
+- [36days-of-type-2023-h](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-h/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-h/index.js
+- [36days-of-type-2023-i](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-i/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-i/index.js
+- [36days-of-type-2023-j](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-j/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-j/index.js
+- [36days-of-type-2023-j-grid](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-j-grid/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-j-grid/index.js
+- [36days-of-type-2023-k](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-k/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-k/index.js
+- [36days-of-type-2023-l](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-l/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-l/index.js
+- [36days-of-type-2023-m-alpha-mask](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-m-alpha-mask/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-m-alpha-mask/index.js
+- [36days-of-type-2023-m-optimized](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-m-optimized/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-m-optimized/index.js
+- [36days-of-type-2023-m-spinner](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-m-spinner/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-m-spinner/index.js
+- [36days-of-type-2023-n](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-n/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-n/index.js
+- [36days-of-type-2023-o](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-o/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-o/index.js
+- [36days-of-type-2023-p](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-p/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-p/index.js
+- [36days-of-type-2023-q](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-q/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-q/index.js
+- [36days-of-type-2023-r](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-r/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-r/index.js
+- [36days-of-type-2023-s](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-s/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-s/index.js
+- [36days-of-type-2023-t](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-t/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-t/index.js
+- [36days-of-type-2023-u](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-u/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-u/index.js
+- [36days-of-type-2023-v](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-v/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-v/index.js
+- [36days-of-type-2023-w](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-w/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-w/index.js
+- [36days-of-type-2023-x](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-x/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-x/index.js
+- [36days-of-type-2023-y](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-y/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-y/index.js
+- [36days-of-type-2023-z](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-z/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-z/index.js
+- [36days-of-type-2023-∞](https://art.steeve.website/sketches/36days-of-type-2023/36days-of-type-2023-%E2%88%9E/): the sketch running live; source: https://github.com/CostardRouge/generative-art-p5js/blob/main/sketches/36days-of-type-2023/36days-of-type-2023-%E2%88%9E/index.js
