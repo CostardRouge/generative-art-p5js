@@ -22,21 +22,13 @@
 // Umami is self-hosted by the owner, cookie-free, and the tag asks it to
 // honour Do Not Track and to drop the query and the fragment of an address.
 
-const { readdirSync, readFileSync, writeFileSync } = require("node:fs");
-const { join } = require("node:path");
+const { readFileSync, writeFileSync } = require("node:fs");
+const { htmlFiles } = require("./html-files.js");
 
 const DEFAULT_SRC = "https://insight.steevepommier.com/insight";
 const DEFAULT_WEBSITE_ID = "66bbc932-2bef-4b32-ba37-d07163f3d639";
 const DEFAULT_DOMAINS = "art.steeve.website,costardrouge.github.io";
 const MARKER = 'data-umami="audience"';
-
-function* htmlFiles(dir) {
-  for (const entry of readdirSync(dir, { withFileTypes: true })) {
-    const path = join(dir, entry.name);
-    if (entry.isDirectory()) yield* htmlFiles(path);
-    else if (entry.name.toLowerCase().endsWith(".html")) yield path;
-  }
-}
 
 function escapeAttribute(value) {
   return String(value).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");

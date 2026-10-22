@@ -9,6 +9,25 @@ and an `index.html` that is a symlink to the one template,
 `.github/workflows/deploy-github-pages.yaml` builds the gallery with the
 `sketch-gallery` package on every push to `main` and publishes it.
 
+## Site files and icons
+
+`site/` holds what the gallery serves beside the sketch-gallery package's
+page: the icon set and the web manifest. After the build,
+`scripts/copy-site.js` copies it to the root of the built folder
+(`npm run site:copy`) and `scripts/inject-icons.js` writes the icon links,
+the manifest and the theme colour into every built page's head, in place of
+the 🌀 emoji the pages carried (`npm run icons:inject`); the template in
+`assets/html/` is not touched. The drawing — a light spiral on the gallery's
+dark ground — lives in `scripts/build-icons.mjs`, which writes the three SVG
+sources and rasterises the PNGs and `favicon.ico` into `site/`; it runs by
+hand and its output is committed:
+
+    npm i --no-save sharp && npm run icons
+    npm install --prefix ./node_modules/sketch-gallery   # the install pruned it
+
+The manifest says `display: browser`: an installed gallery opens in a normal
+browser window, so a sketch keeps its back button.
+
 ## Audience measurement
 
 Visits are counted with [Umami](https://umami.is), self-hosted by the author
@@ -46,8 +65,8 @@ three.js, simplex-noise, webmidi, CCapture…) keep their authors' licences.
 
 Node 24 (`.nvmrc`; 22 is the floor), npm with `package-lock.json`. `npm ci`,
 then `npm install --prefix ./node_modules/sketch-gallery` (the gallery
-package ships no lockfile), `npm run gallery:build`, `npm run umami:inject`,
-`npm run version:inject`: the built site is in `node_modules/sketch-gallery/dist`
+package ships no lockfile), `npm run gallery:build`, `npm run site:copy`, `npm run umami:inject`,
+`npm run icons:inject`, `npm run version:inject`: the built site is in `node_modules/sketch-gallery/dist`
 — an `npm ci` deletes it. `npm run lint` runs Biome over `scripts/` (the
 sketches and `utils/` are left as they were made, `biome.jsonc` says why).
 `.github/workflows/ci.yml` runs the lint and that build on every pull request

@@ -8,6 +8,11 @@ Codenames are drawing tools, in alphabetical order.
 
 ## [Unreleased]
 
+### Added
+
+- An icon of its own — a light spiral on the gallery's dark ground — in browser tabs, on a phone's home screen and in
+  Android's launcher, with a web manifest, on the gallery and on every sketch page.
+
 ## [1.0.0] - 2026-10-19 — Airbrush
 
 The first numbered release: the gallery as it is live today at art.steeve.website.

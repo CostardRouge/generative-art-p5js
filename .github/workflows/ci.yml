@@ -1,8 +1,9 @@
 name: CI
 
 # The gate (CLAUDE.md, Context): the lint, then what the deploy builds — the
-# gallery page, the sources copied beside it, the tracker and the version
-# written into the built page — on every pull request and every push to main.
+# gallery page, the sources copied beside it, the site's own files (site/),
+# the tracker, the icons and the version written into the built pages — on
+# every pull request and every push to main.
 # Nothing is deployed here. The previews (scripts/build-previews.js) are not
 # part of it: they need the owner's Mac and its Chrome. Every run checks out
 # the whole repository, 1.5 GB of sketches and their media.
@@ -45,8 +46,14 @@ jobs:
           npm install --prefix ./node_modules/sketch-gallery
           npm run gallery:build
 
-      - name: Write the tracker and the version into the built page
+      # site/ (the icon set, the manifest) to the built root, then the
+      # tracker, the icons and the version written into the built pages.
+      - name: Add the site's own files and write into the built pages
         run: |
+          npm run site:copy
           npm run umami:inject
+          npm run icons:inject
           npm run version:inject
           grep -q 'data-version="' node_modules/sketch-gallery/dist/index.html
+          grep -q 'rel="apple-touch-icon"' node_modules/sketch-gallery/dist/index.html
+          test -f node_modules/sketch-gallery/dist/manifest.webmanifest

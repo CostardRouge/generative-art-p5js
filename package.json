@@ -9,8 +9,11 @@
         "lint": "biome lint .",
         "gallery:deploy": "sketch-gallery deploy / tree.json assets libraries utils sketches",
         "gallery:build": "sketch-gallery build / tree.json assets libraries utils sketches",
+        "site:copy": "node ./scripts/copy-site.js node_modules/sketch-gallery/dist",
         "umami:inject": "node ./scripts/inject-umami.js node_modules/sketch-gallery/dist",
         "version:inject": "node ./scripts/inject-version.js node_modules/sketch-gallery/dist",
+        "icons:inject": "node ./scripts/inject-icons.js node_modules/sketch-gallery/dist",
+        "icons": "node ./scripts/build-icons.mjs",
         "build:tree": "node ./scripts/build-tree.js sketches tree.json",
         "prebuild:previews": "npm run build:tree",
         "build:previews": "node ./scripts/build-previews.js tree.json 512x512 jpeg"

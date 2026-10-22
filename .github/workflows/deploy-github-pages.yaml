@@ -36,11 +36,19 @@ jobs:
           npm ci
           npm install --prefix ./node_modules/sketch-gallery
           npm run gallery:build
+      # The gallery's own files (site/: the icon set, the manifest) copied to
+      # the built root, before the injections so its pages get them too.
+      - name: Add the site's own files 🗂️
+        run: npm run site:copy
       # Audience measurement (scripts/inject-umami.js): the tracker tag goes
       # into every built page. The website id is in the script; set
       # UMAMI_WEBSITE_ID here to override it, empty to switch it off.
       - name: Count visits with Umami 📈
         run: npm run umami:inject
+      # The icon set and the manifest in every built page's head
+      # (scripts/inject-icons.js), replacing the emoji favicon.
+      - name: Write the icons 🌀
+        run: npm run icons:inject
       # The version at the foot of the gallery's page (scripts/inject-version.js),
       # read from package.json: rule 4 of CLAUDE.md.
       - name: Show the version 🏷️
