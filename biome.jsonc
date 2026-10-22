@@ -1,14 +1,14 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   // Biome lints the gallery's own code only: scripts/ (the tree, the previews,
-  // the two injections) and package.json. The sketches and utils/ are the
+  // the injections, the icons), their tests in tests/, and package.json. The sketches and utils/ are the
   // owner's hand-written art, left as it was made: on 2026-10-19 Biome's
   // recommended rules reported 13 501 errors in sketches/ and 12 in utils/,
   // and fixing them would rewrite the art. The formatter stays off until a
   // repo-wide reformat is its own pull request. Reasons and counts:
   // docs/memory/gallery-and-deploy.md.
   "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
-  "files": { "includes": ["scripts/**", "package.json"] },
+  "files": { "includes": ["scripts/**", "tests/**", "package.json"] },
   "formatter": { "enabled": false },
   "linter": {
     "enabled": true,

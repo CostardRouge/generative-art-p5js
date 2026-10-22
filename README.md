@@ -9,6 +9,41 @@ and an `index.html` that is a symlink to the one template,
 `.github/workflows/deploy-github-pages.yaml` builds the gallery with the
 `sketch-gallery` package on every push to `main` and publishes it.
 
+## Site files and icons
+
+`site/` holds what the gallery serves beside the sketch-gallery package's
+page: the icon set and the web manifest. After the build,
+`scripts/copy-site.js` copies it to the root of the built folder
+(`npm run site:copy`) and `scripts/inject-icons.js` writes the icon links,
+the manifest and the theme colour into every built page's head, in place of
+the 🌀 emoji the pages carried (`npm run icons:inject`); the template in
+`assets/html/` is not touched. The drawing — a light spiral on the gallery's
+dark ground — lives in `scripts/build-icons.mjs`, which writes the three SVG
+sources and rasterises the PNGs and `favicon.ico` into `site/`; it runs by
+hand and its output is committed:
+
+    npm i --no-save sharp && npm run icons
+    npm install --prefix ./node_modules/sketch-gallery   # the install pruned it
+
+The manifest says `display: browser`: an installed gallery opens in a normal
+browser window, so a sketch keeps its back button.
+
+## llms.txt
+
+`scripts/build-llms.js` (`npm run llms:build`) writes `/llms.txt` into the
+built folder after the build, from `tree.json` — the index the gallery itself
+draws from: a summary of the gallery, then one section per group in the
+gallery's order, each sketch with its live page and its source file. Nothing
+links to it; `SITE_URL` overrides the origin (`https://art.steeve.website`).
+
+## Legal notice
+
+`site/legal/index.html` is the legal notice, served at `/legal/` and linked
+from the gallery's footer beside the version: the publisher, the host, what
+the audience measurement sends and what the browser keeps, with a switch that
+stops counting this browser's visits (it sets `umami.disabled`, Umami's own
+opt-out key). `tests/legal.test.js` (`npm test`) holds it to the code.
+
 ## Audience measurement
 
 Visits are counted with [Umami](https://umami.is), self-hosted by the author
@@ -46,10 +81,11 @@ three.js, simplex-noise, webmidi, CCapture…) keep their authors' licences.
 
 Node 24 (`.nvmrc`; 22 is the floor), npm with `package-lock.json`. `npm ci`,
 then `npm install --prefix ./node_modules/sketch-gallery` (the gallery
-package ships no lockfile), `npm run gallery:build`, `npm run umami:inject`,
-`npm run version:inject`: the built site is in `node_modules/sketch-gallery/dist`
-— an `npm ci` deletes it. `npm run lint` runs Biome over `scripts/` (the
-sketches and `utils/` are left as they were made, `biome.jsonc` says why).
-`.github/workflows/ci.yml` runs the lint and that build on every pull request
+package ships no lockfile), `npm run gallery:build`, `npm run site:copy`, `npm run umami:inject`,
+`npm run icons:inject`, `npm run version:inject`, `npm run llms:build`: the built site is in `node_modules/sketch-gallery/dist`
+— an `npm ci` deletes it. `npm run lint` runs Biome over `scripts/` and `tests/` (the
+sketches and `utils/` are left as they were made, `biome.jsonc` says why);
+`npm test` runs Node's own test runner over `tests/` (no dependency).
+`.github/workflows/ci.yml` runs the lint, the tests and that build on every pull request
 and every push to `main`; Dependabot raises the dev dependencies and the
 workflows' actions weekly.
