@@ -13,6 +13,7 @@
         "site:copy": "node ./scripts/copy-site.js node_modules/sketch-gallery/dist",
         "umami:inject": "node ./scripts/inject-umami.js node_modules/sketch-gallery/dist",
         "version:inject": "node ./scripts/inject-version.js node_modules/sketch-gallery/dist",
+        "llms:build": "node ./scripts/build-llms.js node_modules/sketch-gallery/dist",
         "icons:inject": "node ./scripts/inject-icons.js node_modules/sketch-gallery/dist",
         "icons": "node ./scripts/build-icons.mjs",
         "build:tree": "node ./scripts/build-tree.js sketches tree.json",

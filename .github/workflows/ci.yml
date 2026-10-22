@@ -2,8 +2,8 @@ name: CI
 
 # The gate (CLAUDE.md, Context): the lint, then what the deploy builds — the
 # gallery page, the sources copied beside it, the site's own files (site/),
-# the tracker, the icons and the version written into the built pages — on
-# every pull request and every push to main.
+# the tracker, the icons and the version written into the built pages, the
+# llms.txt written beside them — on every pull request and every push to main.
 # Nothing is deployed here. The previews (scripts/build-previews.js) are not
 # part of it: they need the owner's Mac and its Chrome. Every run checks out
 # the whole repository, 1.5 GB of sketches and their media.
@@ -54,6 +54,8 @@ jobs:
           npm run umami:inject
           npm run icons:inject
           npm run version:inject
+          npm run llms:build
           grep -q 'data-version="' node_modules/sketch-gallery/dist/index.html
           grep -q 'rel="apple-touch-icon"' node_modules/sketch-gallery/dist/index.html
           test -f node_modules/sketch-gallery/dist/manifest.webmanifest
+          test -s node_modules/sketch-gallery/dist/llms.txt

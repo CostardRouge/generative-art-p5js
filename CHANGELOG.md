@@ -14,6 +14,8 @@ Codenames are drawing tools, in alphabetical order.
   Android's launcher, with a web manifest, on the gallery and on every sketch page.
 - A legal notice, linked from the gallery's foot: who publishes and hosts the site, exactly what visit counting sends
   and what the browser keeps, and a switch to stop counting your visits.
+- An `llms.txt` at the site's root listing every group and sketch of the gallery, with their live pages and source code,
+  for the assistants and search tools that read one.
 
 ## [1.0.0] - 2026-10-19 — Airbrush
 

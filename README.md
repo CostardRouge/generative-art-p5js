@@ -28,6 +28,14 @@ hand and its output is committed:
 The manifest says `display: browser`: an installed gallery opens in a normal
 browser window, so a sketch keeps its back button.
 
+## llms.txt
+
+`scripts/build-llms.js` (`npm run llms:build`) writes `/llms.txt` into the
+built folder after the build, from `tree.json` — the index the gallery itself
+draws from: a summary of the gallery, then one section per group in the
+gallery's order, each sketch with its live page and its source file. Nothing
+links to it; `SITE_URL` overrides the origin (`https://art.steeve.website`).
+
 ## Legal notice
 
 `site/legal/index.html` is the legal notice, served at `/legal/` and linked
@@ -74,7 +82,7 @@ three.js, simplex-noise, webmidi, CCapture…) keep their authors' licences.
 Node 24 (`.nvmrc`; 22 is the floor), npm with `package-lock.json`. `npm ci`,
 then `npm install --prefix ./node_modules/sketch-gallery` (the gallery
 package ships no lockfile), `npm run gallery:build`, `npm run site:copy`, `npm run umami:inject`,
-`npm run icons:inject`, `npm run version:inject`: the built site is in `node_modules/sketch-gallery/dist`
+`npm run icons:inject`, `npm run version:inject`, `npm run llms:build`: the built site is in `node_modules/sketch-gallery/dist`
 — an `npm ci` deletes it. `npm run lint` runs Biome over `scripts/` (the
 sketches and `utils/` are left as they were made, `biome.jsonc` says why).
 `.github/workflows/ci.yml` runs the lint and that build on every pull request

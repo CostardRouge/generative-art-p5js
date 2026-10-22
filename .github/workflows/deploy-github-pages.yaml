@@ -53,6 +53,10 @@ jobs:
       # read from package.json: rule 4 of CLAUDE.md.
       - name: Show the version 🏷️
         run: npm run version:inject
+      # The llms.txt at the built root, generated from tree.json
+      # (scripts/build-llms.js).
+      - name: Write llms.txt 🤖
+        run: npm run llms:build
       - name: Deploy to GitHub pages🚀
         uses: JamesIves/github-pages-deploy-action@v4.9.0
         with:
