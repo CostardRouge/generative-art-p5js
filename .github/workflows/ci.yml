@@ -1,6 +1,6 @@
 name: CI
 
-# The gate (CLAUDE.md, Context): the lint, then what the deploy builds — the
+# The gate (CLAUDE.md, Context): the lint and the tests, then what the deploy builds — the
 # gallery page, the sources copied beside it, the site's own files (site/),
 # the tracker, the icons and the version written into the built pages, the
 # llms.txt written beside them — on every pull request and every push to main.
@@ -39,6 +39,11 @@ jobs:
 
       - name: Lint
         run: npm run lint
+
+      # Node's own runner over tests/: the scripts that write the built site,
+      # the icon set, the legal notice against the tracker, tree.json's paths.
+      - name: Test
+        run: npm test
 
       # The gallery package ships no lockfile, hence its own install after npm ci.
       - name: Build the gallery

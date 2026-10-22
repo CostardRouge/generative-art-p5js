@@ -83,8 +83,9 @@ Node 24 (`.nvmrc`; 22 is the floor), npm with `package-lock.json`. `npm ci`,
 then `npm install --prefix ./node_modules/sketch-gallery` (the gallery
 package ships no lockfile), `npm run gallery:build`, `npm run site:copy`, `npm run umami:inject`,
 `npm run icons:inject`, `npm run version:inject`, `npm run llms:build`: the built site is in `node_modules/sketch-gallery/dist`
-— an `npm ci` deletes it. `npm run lint` runs Biome over `scripts/` (the
-sketches and `utils/` are left as they were made, `biome.jsonc` says why).
-`.github/workflows/ci.yml` runs the lint and that build on every pull request
+— an `npm ci` deletes it. `npm run lint` runs Biome over `scripts/` and `tests/` (the
+sketches and `utils/` are left as they were made, `biome.jsonc` says why);
+`npm test` runs Node's own test runner over `tests/` (no dependency).
+`.github/workflows/ci.yml` runs the lint, the tests and that build on every pull request
 and every push to `main`; Dependabot raises the dev dependencies and the
 workflows' actions weekly.
