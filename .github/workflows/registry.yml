@@ -9,7 +9,9 @@ name: Registry
 # commits poussés (une session locale l'écrit là) — et l'envoyer à second-brain
 # par un `repository_dispatch`. C'est second-brain qui écrit la fiche
 # (`.github/workflows/registry-intake.yml` là-bas). Ce fichier est identique
-# dans chaque dépôt du portfolio : le modifier ici, c'est le modifier partout.
+# dans chaque dépôt du portfolio : sa copie de référence est
+# `system/meta/common-project-spec/shared/registry.yml` dans second-brain. Le
+# modifier, c'est modifier cette copie, puis la recopier partout.
 #
 # Le bloc, dans une PR, est un commentaire HTML — `<!-- Registry` … `-->` — :
 # invisible dans la PR affichée, il ne la pollue pas, et son français ne se
@@ -40,6 +42,28 @@ name: Registry
 #
 # Rejouer un rapport : relancer ce workflow sur le commit concerné.
 # Second-brain ignore une source qu'il a déjà, donc c'est sans risque.
+#
+# Les minutes (COMMON-PROJECT-SPEC, C10, revu le 2026-10-24). Dans un dépôt
+# privé, chaque job se paie, arrondi à la minute entière ; un job sauté par son
+# `if:` ne coûte rien. Quatre règles, aucune ne retire une vérification :
+# - sur une PR, `check` ne démarre que si la description contient « registry »
+#   (sans casse, comme `contains`). Sans ce mot, aucun bloc n'est possible, et
+#   le job aurait conclu « rien à vérifier » : le sauter donne le même verdict
+#   pour zéro minute, et GitHub compte un job sauté comme réussi. Avec un bloc,
+#   il tourne à chaque événement, `synchronize` compris : le statut est porté
+#   par le commit de tête, et un nouveau commit sans vérification ferait
+#   disparaître un refus. Une modification du seul titre n'est pas sautée non
+#   plus : un run sauté sur le même commit remplacerait un refus par un succès ;
+# - sur une PR, un nouveau run annule celui qu'il rend caduc : il lit la
+#   description la plus récente. Sur `main`, le groupe est le commit lui-même :
+#   rien n'est jamais annulé, et aucun run en attente n'est remplacé (GitHub
+#   n'en garde qu'un par groupe), donc chaque push envoie son rapport ;
+# - `check` peut tourner sur le runner auto-hébergé que nomme la variable de
+#   dépôt CI_RUNNER (`optiplex`) : il ne lit que l'API, avec le jeton du
+#   workflow en lecture seule, et n'écrit rien. `send` reste chez GitHub. Un
+#   runner éteint retarde un rapport sans le perdre : le run attend (24 h au
+#   plus, sans être facturé), puis échoue en rouge sur `main`, et se rejoue ;
+# - chaque job a un `timeout-minutes` : quelques secondes d'habitude.
 
 on:
   push:
@@ -51,15 +75,28 @@ permissions:
   contents: read
   pull-requests: read
 
-# Les deux jobs n'appellent que l'API GitHub. Leur machine est nommée
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.ref || github.sha }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+# Les deux jobs n'appellent que l'API GitHub. Leur machine hébergée est nommée
 # (`ubuntu-24.04`) plutôt que `ubuntu-latest`, qui passe à Ubuntu 26 à partir
 # du 19 octobre 2026 : le changement d'OS devient un choix, pas une surprise.
-# `github-script@v8` tourne sur Node 24 ; la v7 visait Node 20, déprécié.
+# `github-script@v9` tourne sur Node 24 ; la v7 visait Node 20, déprécié.
 
 jobs:
   check:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 5
+    # Sur un push, toujours : c'est ce job qui lit le bloc que `send` envoie.
+    if: github.event_name == 'push' || contains(github.event.pull_request.body, 'registry')
+    # CI_RUNNER n'est posée que dans les six dépôts privés, qui seuls ont un
+    # runner enregistré (un enregistrement vaut pour un dépôt). Un dépôt public
+    # ne la pose jamais : ses minutes sont gratuites, et un runner auto-hébergé
+    # y exécuterait le code d'une PR venue d'un fork. Vide, le job reste chez
+    # GitHub. Le runner suffit : `github-script` est une action JavaScript,
+    # aucun `gh`, aucun Docker.
+    runs-on: ${{ vars.CI_RUNNER || 'ubuntu-24.04' }}
+    # Moins de dix secondes d'habitude.
+    timeout-minutes: 2
     outputs:
       payload: ${{ steps.lire.outputs.payload }}
     steps:
@@ -177,9 +214,12 @@ jobs:
   send:
     needs: check
     if: github.event_name == 'push' && needs.check.outputs.payload != ''
+    # Chez GitHub, jamais sur CI_RUNNER : ce job lit REGISTRE_TOKEN, un droit
+    # d'écriture sur second-brain, qu'aucune machine auto-hébergée ne tient.
     runs-on: ubuntu-24.04
     environment: registre
-    timeout-minutes: 5
+    # Un appel d'API, quelques secondes d'habitude.
+    timeout-minutes: 2
     steps:
       - uses: actions/github-script@v9
         env:
