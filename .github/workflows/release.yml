@@ -1,6 +1,7 @@
 name: Release
 
-# Versions and releases (COMMON-PROJECT-SPEC, C13), identical in every repo: copy it with .github/release.mjs.
+# Versions and releases (COMMON-PROJECT-SPEC, C13), identical in every repo: copy it with .github/release.mjs. The
+# reference copy of both lives in second-brain, under system/meta/common-project-spec/shared/.
 # On a pull request, `check` refuses a CHANGELOG.md that disagrees with package.json's version or breaks its shape.
 # On main, `publish` gives every CHANGELOG section that has none its tag v<version> and its GitHub Release: the
 # release pull request's merge commit for package.json's version, the named commit for a backfilled one. Merging a
@@ -8,20 +9,46 @@ name: Release
 # A backfilled tag points at an older commit, whose .github/workflows differ from main's: GitHub refuses that to the
 # workflow's own token, so backfills are skipped here with a warning and published by second-brain's "Backfill
 # releases" workflow, which holds the maintainer's token. "Run workflow" re-runs publish on main by hand.
+#
+# Minutes (C13, revised 2026-10-24). In a private repo every job is billed, rounded up to the whole minute.
+# - A push to main runs this workflow only when it touches what publish reads: CHANGELOG.md, package.json, or the two
+#   release files. A release pull request touches the first two by definition, so it always publishes; a Keystatic
+#   save, a nightly snapshot or a tooling merge starts nothing. The flip side: a publish that failed is no longer
+#   retried by the next unrelated push. Re-run it, or "Run workflow" (workflow_dispatch is never filtered).
+# - A pull request always runs `check`, whatever it touches: no `paths` filter there, so the check stays a status a
+#   branch protection can require (a workflow filtered out by `paths` reports nothing, and a required check waits on
+#   it forever). It costs nothing on the self-hosted runner.
+# - On a pull request, a new push cancels the run it supersedes. On main, the workflow's group is the commit itself,
+#   so nothing is cancelled or replaced there; `publish` keeps its own `release` group (see below).
 
 on:
   pull_request:
   push:
     branches: [main]
+    paths:
+      - CHANGELOG.md
+      - package.json
+      - .github/release.mjs
+      - .github/workflows/release.yml
   workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.ref || github.sha }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   check:
     if: github.event_name == 'pull_request'
-    runs-on: ubuntu-24.04
+    # The repository variable CI_RUNNER moves this job to the owner's self-hosted runner (`optiplex`). It qualifies:
+    # it holds no secret, writes nothing, and needs only actions/checkout, git and the runner's `node` on the PATH.
+    # Only the six private repos set CI_RUNNER, since only they have a runner registered (a registration is per
+    # repository). A public repo never sets it: its minutes are free, and a self-hosted runner there would run a
+    # fork's pull request. Unset, the job stays hosted.
+    runs-on: ${{ vars.CI_RUNNER || 'ubuntu-24.04' }}
+    # About ten seconds, up to a minute and a half where the history is large (generative-art-p5js, 1.5 GB).
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v7
@@ -32,10 +59,16 @@ jobs:
 
   publish:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    # Hosted, never on CI_RUNNER: it writes tags and Releases (contents: write), and release.mjs calls the GitHub CLI,
+    # which the hosted image ships and the self-hosted runner does not.
     runs-on: ubuntu-24.04
+    # Same durations as check.
     timeout-minutes: 5
     permissions:
       contents: write
+    # One group per repo, never cancelled, so two publishes never race to create the same Release. GitHub keeps one
+    # pending run per group, so a burst of three merges can replace the middle one; the newest always runs, and
+    # publish creates every Release still missing, so none is lost (at worst a tag lands on that newer commit).
     concurrency:
       group: release
       cancel-in-progress: false
