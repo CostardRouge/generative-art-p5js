@@ -79,7 +79,7 @@ three.js, simplex-noise, webmidi, CCapture…) keep their authors' licences.
 
 ## Development
 
-Node 24 (`.nvmrc`; 22 is the floor), npm with `package-lock.json`. `npm ci`,
+Node 26 (`.nvmrc`; 22 is the floor), npm with `package-lock.json`. `npm ci`,
 then `npm install --prefix ./node_modules/sketch-gallery` (the gallery
 package ships no lockfile), `npm run gallery:build`, `npm run site:copy`, `npm run umami:inject`,
 `npm run icons:inject`, `npm run version:inject`, `npm run llms:build`: the built site is in `node_modules/sketch-gallery/dist`
