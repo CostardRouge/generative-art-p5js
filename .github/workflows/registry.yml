@@ -60,7 +60,8 @@ name: Registry
 #   n'en garde qu'un par groupe), donc chaque push envoie son rapport ;
 # - `check` peut tourner sur le runner auto-hébergé que nomme la variable de
 #   dépôt CI_RUNNER (`optiplex`) : il ne lit que l'API, avec le jeton du
-#   workflow en lecture seule, et n'écrit rien. `send` reste chez GitHub. Un
+#   workflow en lecture seule, et n'écrit rien. `send` aussi, depuis
+#   l'option C (2026-10-25), avec REGISTRE_TOKEN (voir le job). Un
 #   runner éteint retarde un rapport sans le perdre : le run attend (24 h au
 #   plus, sans être facturé), puis échoue en rouge sur `main`, et se rejoue ;
 # - chaque job a un `timeout-minutes` : quelques secondes d'habitude.
@@ -214,9 +215,11 @@ jobs:
   send:
     needs: check
     if: github.event_name == 'push' && needs.check.outputs.payload != ''
-    # Chez GitHub, jamais sur CI_RUNNER : ce job lit REGISTRE_TOKEN, un droit
-    # d'écriture sur second-brain, qu'aucune machine auto-hébergée ne tient.
-    runs-on: ubuntu-24.04
+    # CI_RUNNER aussi, depuis l'option C (2026-10-25) : le jeton n'est exposé
+    # qu'à ce job (un conteneur jetable par job), et la machine tient déjà des
+    # droits plus larges (docs/runner.md de homelab). Seuls les dépôts privés
+    # posent la variable ; un dépôt public reste chez GitHub.
+    runs-on: ${{ vars.CI_RUNNER || 'ubuntu-24.04' }}
     environment: registre
     # Un appel d'API, quelques secondes d'habitude.
     timeout-minutes: 2
