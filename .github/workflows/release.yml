@@ -59,9 +59,10 @@ jobs:
 
   publish:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-    # Hosted, never on CI_RUNNER: it writes tags and Releases (contents: write), and release.mjs calls the GitHub CLI,
-    # which the hosted image ships and the self-hosted runner does not.
-    runs-on: ubuntu-24.04
+    # CI_RUNNER too since option C (2026-10-25): it writes tags and Releases with the job's own GITHUB_TOKEN, which
+    # expires with the job, and the owner's runner image carries the GitHub CLI that release.mjs calls. Only the
+    # private repos set the variable; a public repo stays hosted.
+    runs-on: ${{ vars.CI_RUNNER || 'ubuntu-24.04' }}
     # Same durations as check.
     timeout-minutes: 5
     permissions:
