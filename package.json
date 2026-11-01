@@ -21,7 +21,7 @@
         "build:previews": "node ./scripts/build-previews.js tree.json 512x512 jpeg"
     },
     "devDependencies": {
-        "@biomejs/biome": "^2.5.15",
+        "@biomejs/biome": "^2.6.3",
         "chrome-aws-lambda": "^10.1.0",
         "puppeteer-core": "^10.4.0",
         "sketch-gallery": "github:CostardRouge/sketch-gallery#0.0.15"
